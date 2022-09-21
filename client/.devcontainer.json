@@ -1,0 +1,14 @@
+{
+	"name": "Client Container",
+	"dockerComposeFile": ["../docker-compose.devcontainer.yml"],
+	"extensions": [
+		"dbaeumer.vscode-eslint",
+		"esbenp.prettier-vscode",
+		"bradlc.vscode-tailwindcss",
+		"svelte.svelte-vscode",
+		"github.copilot"
+	],
+	"service": "client",
+	"shutdownAction": "none",
+	"workspaceFolder": "/workspace/client"
+}
