@@ -5,5 +5,10 @@ module.exports = {
 		extend: {}
 	},
 	// @ts-ignore
-	plugins: [require('daisyui')]
+	plugins: [require('daisyui')],
+	daisyui: {
+		themes: [
+			"light", "dark", "cupcake", "aqua", "lofi", "night"
+		]
+	}
 };

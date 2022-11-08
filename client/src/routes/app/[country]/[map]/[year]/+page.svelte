@@ -1,28 +1,47 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 	import ConfirmModal from '$lib/components/modals/common/ConfirmModal.svelte';
 	import NavBar from '$lib/components/navbar/NavBar.svelte';
 	import SideBar from '$lib/components/sidebar/SideBar.svelte';
 	import CandidateBox from '$lib/components/candidatebox/CandidateBox.svelte';
-	import { zoom } from 'd3-zoom';
-	import { select } from 'd3-selection';
 	import type Candidate from '$lib/types/Candidate';
 	import EditCandidateModal from '$lib/components/modals/editcandidatemodal/EditCandidateModal.svelte';
 	import ChartBar from '$lib/components/chartbar/ChartBar.svelte';
+	import EditStateModal from '$lib/components/modals/editstatemodal/EditStateModal.svelte';
+	import type { Mode } from '$lib/types/Mode';
+	import type State from '$lib/types/State';
+	import { applyPanZoom, initializeMap, setupRegions, setupButtons } from './initialize';
+	import type { PanZoom } from 'panzoom';
+	import { _fillRegion, _editRegion, _refreshRegions } from './logic';
+	import { onMount } from 'svelte';
+	import { themeChange } from 'theme-change';
 
 	const imports = {
 		usa: () => import('$lib/assets/usa.svg?raw'),
 		nz: () => import('$lib/assets/nz.svg?raw')
 	};
 
+	let mode: Mode = 'fill';
+
 	let currentMap = 'usa' as keyof typeof imports;
 	let mapBind: HTMLDivElement;
+	let panZoom: PanZoom | undefined;
 
 	let selectedCandidateId = 0;
 
 	let candidates: Candidate[] = [
-		{ id: 0, name: 'Joe Biden', margins: [{ color: 'blue', count: 0 }] },
-		{ id: 1, name: 'Donald Trump', margins: [{ color: 'red', count: 0 }] }
+		{ id: -1, name: 'Tossup', margins: [{ color: '#cccccc', count: 0 }] },
+		{
+			id: 0,
+			name: 'Joe Biden',
+			margins: [
+				{ color: '#00ff00', count: 0 },
+				{ color: '#0000ff', count: 0 },
+				{ color: '#ff0000', count: 0 }
+			]
+		},
+		{ id: 1, name: 'Donald Trump', margins: [{ color: '#ff0000', count: 0 }] }
 	];
 
 	let sidebar = {
@@ -43,9 +62,26 @@
 
 	let editCandidateModal = {
 		open: false,
-		candidate: {} as Candidate,
-		onConfirm: () => {}
+		candidate: { id: -1, name: '', margins: [] } as Candidate,
+		onConfirm: (candidateId: number, name: string, colors: string[]) => {
+			editCandidate(candidateId, name, colors);
+			closeEditCandidateModal();
+		}
 	};
+
+	let editStateModal = {
+		open: false,
+		state: {
+			shortName: '',
+			longName: '',
+			value: 0
+		},
+		onConfirm: (values: { newValue: number }) => {}
+	};
+
+	onMount(() => {
+		themeChange(false);
+	});
 
 	function toggleMap() {
 		currentMap = currentMap === 'usa' ? 'nz' : 'usa';
@@ -112,9 +148,7 @@
 		editCandidateModal = {
 			open: true,
 			candidate,
-			onConfirm: () => {
-				closeEditCandidateModal();
-			}
+			onConfirm: editCandidateModal.onConfirm
 		};
 	}
 
@@ -125,64 +159,69 @@
 		};
 	}
 
-	$: (() => {
-		currentMap;
-		selectedCandidateId;
-		const states = mapBind?.querySelector('.state');
-		states?.childNodes.forEach((node) => {
-			const domNode = node as HTMLElement;
-			domNode.onclick = () => {
-				const newCandidates = candidates;
-				const selectedCandidateColor = newCandidates.find(
-					(candidate) => candidate.id === selectedCandidateId
-				)?.margins[0].color;
-				domNode.setAttribute('fill', selectedCandidateColor || 'green');
-				const currentCandidate = domNode.getAttribute('candidate');
-				if (currentCandidate) {
-					const candidate = newCandidates.find((c) => c.id === parseInt(currentCandidate, 10));
-					if (candidate) {
-						candidate.margins[0].count--;
-					}
-				}
-				domNode.setAttribute('candidate', selectedCandidateId.toString());
-				const candidate = newCandidates.find((c) => c.id === selectedCandidateId);
-				if (candidate) {
-					candidate.margins[0].count++;
-				}
-
-				candidates = newCandidates;
-				console.log(candidates);
-			};
-		});
-	})();
-
-	$: (() => {
-		const selection = select(mapBind);
-
-		const myZoom = zoom().on('zoom', ({ transform }) => {
-			const { k, x, y } = transform;
-			const states = selection.select('.state');
-			const text = selection.select('#text');
-			states.attr('transform', `translate(${x}, ${y}) scale(${k})`);
-			text.attr('transform', `translate(${x}, ${y}) scale(${k})`);
-		});
-
-		// @ts-ignore
-		selection.call(myZoom).on('dblclick.zoom', null);
-	})();
-
-	$: if (mapBind) {
-		const states = mapBind.querySelector('.state');
-		states?.childNodes.forEach((child) => {
-			const childHTML = child as HTMLElement;
-			console.log(childHTML);
-			if(childHTML.setAttribute) {
-				childHTML.setAttribute('fill', 'grey');
-				childHTML.setAttribute('stroke', 'black');
+	export function openEditStateModal(state: State) {
+		editStateModal = {
+			open: true,
+			state: state,
+			onConfirm: (newValues) => {
+				editRegion(state.shortName, newValues);
+				closeEditStateModal();
 			}
-		});
+		};
 	}
 
+	function closeEditStateModal() {
+		editStateModal = {
+			...editStateModal,
+			open: false
+		};
+	}
+
+	function editCandidate(candidateId: number, name: string, colors: string[]) {
+		const newCandidates = [...candidates];
+		const newCandidate = newCandidates.find((candidate) => {
+			return candidate.id === candidateId;
+		});
+		if (newCandidate) {
+			newCandidate.name = name;
+			/*
+			newCandidate.margins = newCandidate.margins.map((margin, index) => {
+				margin.color = colors[index];
+				return margin;
+			});
+			*/
+			console.log(newCandidate.margins);
+			newCandidate.margins = colors.map((color, index) => {
+				return { color, count: newCandidate.margins[index]?.count ?? 0 };
+			});
+			console.log(newCandidate.margins);
+			candidates = newCandidates;
+		}
+		closeEditCandidateModal();
+		_refreshRegions(mapBind, candidates);
+	}
+
+	function getMode() {
+		return mode;
+	}
+
+	function fillRegion(region: HTMLElement) {
+		candidates = _fillRegion(mapBind, region, selectedCandidateId, candidates, true);
+	}
+
+	function editRegion(shortName: string, newValues: { newValue: number }) {
+		const region = mapBind.querySelector(`[short-name="${shortName}"]`);
+		if (region) {
+			candidates = _editRegion(mapBind, region as HTMLElement, candidates, newValues.newValue);
+		}
+	}
+
+	function setupMap(node: HTMLDivElement) {
+		panZoom = applyPanZoom(node);
+		candidates = initializeMap(node, candidates);
+		setupRegions(node, fillRegion, getMode, openEditStateModal);
+		setupButtons(node, fillRegion, getMode);
+	}
 </script>
 
 <div class="flex flex-col h-full">
@@ -192,6 +231,10 @@
 		onMaps={openMapSelectionModal}
 		onChartPosition={toggleChartPosition}
 		onToggleSideBar={toggleSideBar}
+		onSetMode={(newMode) => {
+			mode = newMode;
+		}}
+		{mode}
 	/>
 
 	<div class="flex flex-row h-full">
@@ -202,13 +245,17 @@
 		>
 			<div
 				class="flex basis-3/12 justify-center items-center"
-				class:border-r-2={chartbar.position === 'left'}
-				class:border-t-2={chartbar.position === 'bottom'}
 			>
+				{#if chartbar.position === 'bottom'}
+				<div class="divider divider-vertical" />
+				{/if}
 				<ChartBar {candidates} />
+				{#if chartbar.position === 'left'}
+				<div class="divider divider-horizontal" />
+				{/if}
 			</div>
 			<div class="basis-9/12 overflow-hidden">
-				<div class="flex flex-row flex-wrap justify-center relative pointer-events-none h-0">
+				<div class="flex flex-row flex-wrap justify-center relative pointer-events-none h-0 z-10">
 					{#each candidates as candidate}
 						<CandidateBox
 							{candidate}
@@ -219,14 +266,14 @@
 					{/each}
 				</div>
 				{#await imports[currentMap]() then module}
-					<div bind:this={mapBind} class="overflow-hidden h-full">
+					<div bind:this={mapBind} use:setupMap class="overflow-hidden h-full">
 						{@html module.default}
 					</div>
 				{/await}
 			</div>
 		</div>
 
-		<SideBar open={sidebar.open} />
+		<SideBar open={sidebar.open} path={$page.url.pathname} />
 	</div>
 </div>
 
@@ -243,4 +290,11 @@
 	candidate={editCandidateModal.candidate}
 	onConfirm={editCandidateModal.onConfirm}
 	onClose={closeEditCandidateModal}
+/>
+
+<EditStateModal
+	open={editStateModal.open}
+	state={editStateModal.state}
+	onConfirm={editStateModal.onConfirm}
+	onClose={closeEditStateModal}
 />

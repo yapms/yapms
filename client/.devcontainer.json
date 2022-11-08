@@ -10,5 +10,7 @@
 	],
 	"service": "client",
 	"shutdownAction": "none",
-	"workspaceFolder": "/workspace/client"
+	"workspaceFolder": "/workspace/client",
+	"remoteUser": "node",
+	"updateRemoteUserUID": true
 }

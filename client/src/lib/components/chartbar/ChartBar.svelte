@@ -9,24 +9,23 @@
 	let canvasBind: HTMLCanvasElement;
 	let myChart: Chart;
 
-  $: if (myChart) {
-    console.log('update');
-    const counts = candidates.map((candidate) => {
-      return candidate.margins.reduce((acc, margin) => {
-        return acc + margin.count;
-      }, 0);
-    });
-    const colors = candidates.map((candidate) => {
-      return candidate.margins[0].color;
-    });
-    const labels = candidates.map((candidate) => {
-      return candidate.name;
-    });
-    myChart.data.datasets[0].data = counts;
-    myChart.data.datasets[0].backgroundColor = colors;
-    myChart.data.labels = labels;
-    myChart.update();
-  }
+	$: if (myChart) {
+		const counts = candidates.map((candidate) => {
+			return candidate.margins.reduce((acc, margin) => {
+				return acc + margin.count;
+			}, 0);
+		});
+		const colors = candidates.map((candidate) => {
+			return candidate.margins[0].color;
+		});
+		const labels = candidates.map((candidate) => {
+			return candidate.name;
+		});
+		myChart.data.datasets[0].data = counts;
+		myChart.data.datasets[0].backgroundColor = colors;
+		myChart.data.labels = labels;
+		myChart.update();
+	}
 
 	onMount(() => {
 		const ctx = canvasBind.getContext('2d');
@@ -41,15 +40,15 @@
 		myChart = new Chart(ctx, {
 			type: 'pie',
 			data: {
-        labels: [],
-        datasets: [
-          {
-            label: '# of votes',
-            data: [],
-            backgroundColor: [],
-          }
-        ]
-      },
+				labels: [],
+				datasets: [
+					{
+						label: '# of votes',
+						data: [],
+						backgroundColor: []
+					}
+				]
+			},
 			options: {
 				responsive: true,
 				plugins: {
@@ -61,9 +60,9 @@
 					},
 					datalabels: {
 						color: 'black',
-						borderColor: 'black',
+						borderColor: 'white',
 						borderRadius: 5,
-						borderWidth: 1,
+						borderWidth: 2,
 						backgroundColor: 'white',
 						font: {
 							weight: 'bold',

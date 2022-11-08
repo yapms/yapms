@@ -1,9 +1,15 @@
 <script lang="ts">
 	export let open = true;
+	export let path: string;
+
+	import titles from '$lib/assets/other/Titles.json';
+
+	const title = titles.find((obj) => {
+		return obj.key === path;
+	});
 
 	import Fa from 'svelte-fa';
-	import { faLandmarkDome } from '@fortawesome/free-solid-svg-icons';
-	import { faDiscord, faReddit, faTwitter } from '@fortawesome/free-brands-svg-icons';
+	import { faReddit, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 	import type { TransitionConfig } from 'svelte/transition';
 
@@ -18,13 +24,14 @@
 	}
 </script>
 
+<svelte:head>
+	<title>YAPms {title ? ' - ' + title.title : ''}</title>
+</svelte:head>
+
 {#if open}
-	<div class="border-l-2 basis-3/12 hidden md:inline" transition:slideX={{ duration: 300 }}>
+	<div class="divider divider-horizontal"></div>
+	<div class="basis-3/12 hidden md:inline" transition:slideX={{ duration: 300 }}>
 		<div class="flex flex-wrap justify-center gap-2 p-2">
-			<button type="button" class="btn btn-sm gap-2">
-				<Fa icon={faDiscord} />
-				<div>Discord</div>
-			</button>
 			<button type="button" class="btn btn-sm gap-2">
 				<Fa icon={faReddit} />
 				Reddit
@@ -33,12 +40,8 @@
 				<Fa icon={faTwitter} />
 				Twitter
 			</button>
-			<button type="button" class="btn btn-sm gap-2">
-				<Fa icon={faLandmarkDome} />
-				Mock Gov
-			</button>
 		</div>
-		<h1 class="text-xl text-center font-bold">USA 2024 Presidential Election</h1>
+		<h1 class="text-xl text-center font-bold">{path}</h1>
 		<div class="divider">Shortcuts</div>
 	</div>
 {/if}

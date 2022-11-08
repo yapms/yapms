@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type Candidate from '$lib/types/Candidate';
-	import { transition_in } from 'svelte/internal';
+	import { calculateLumaHEX } from '$lib/utils/luma';
 
 	export let candidate: Candidate;
-	export let selected: boolean = false;
+	export let selected = false;
 	export let onSelect: (candidate: Candidate) => void;
 	export let onEdit: (candidate: Candidate) => void;
 
@@ -19,6 +19,7 @@
 	<button
 		class={buttonStyle}
 		style:background-color={candidate.margins[0].color}
+		style:color={calculateLumaHEX(candidate.margins[0].color) > 0.5 ? 'black' : 'white'}
 		style:transition_in={'0.15s'}
 		style="transition: all 0.15s"
 		on:click={() => onSelect(candidate)}

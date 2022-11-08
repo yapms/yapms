@@ -5,5 +5,7 @@
   ],
   "service": "server",
   "shutdownAction": "none",
-  "workspaceFolder": "/workspace/server"
+  "workspaceFolder": "/workspace/server",
+  "remoteUser": "node",
+  "updateRemoteUserUID": true
 }
