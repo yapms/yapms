@@ -13,7 +13,7 @@
 	import type State from '$lib/types/State';
 	import { applyPanZoom, initializeMap, setupRegions, setupButtons } from './initialize';
 	import type { PanZoom } from 'panzoom';
-	import { _fillRegion, _editRegion, _refreshRegions } from './logic';
+	import { _fillRegion, _editRegion, _refreshRegions, _clearRegions } from './logic';
 	import { onMount } from 'svelte';
 	import { themeChange } from 'theme-change';
 
@@ -121,6 +121,7 @@
 			title: 'Confirm Clear',
 			message: 'You will lose all your current progress.',
 			onConfirm: () => {
+				_clearRegions(mapBind, candidates);
 				closeConfirm();
 			}
 		};

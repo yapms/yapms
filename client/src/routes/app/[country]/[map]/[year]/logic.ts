@@ -12,17 +12,19 @@ function _fillRegion(
 	if (selectedCandidate === undefined) {
 		return candidates;
 	}
-	const currentCandidateID = region.getAttribute('candidate') || '-2';
+	const currentCandidateID = parseInt(region.getAttribute('candidate') || '-2', 10);
 	const currentCandidate = candidates.find(
-		(candidate) => candidate.id === parseInt(currentCandidateID, 10)
+		(candidate) => candidate.id === currentCandidateID
 	);
 	if (currentCandidate === undefined) {
 		return candidates;
 	}
 
-	const currentCandidateColor = parseInt(region.getAttribute('candidate-color') || '-1', 10);
+	const currentCandidateColor = parseInt(region.getAttribute('candidate-color') || '0', 10);
 	let nextCandidateColor = currentCandidateColor;
-	if (increment === true) {
+	if (region.hasAttribute('candidate-color') === false || selectedCandidateId !== currentCandidateID) {
+		nextCandidateColor = 0;
+	} else if (increment === true) {
 		nextCandidateColor =
 			currentCandidateColor + 1 >= selectedCandidate.margins.length ? 0 : currentCandidateColor + 1;
 	}
@@ -36,6 +38,8 @@ function _fillRegion(
 	if (regionName) {
 		const text = mapBind.querySelector(`.region-texts [for="${regionName}"]`);
 		if (text) {
+			console.log(selectedCandidate);
+			console.log(nextCandidateColor);
 			const luma = calculateLumaHEX(selectedCandidate.margins[nextCandidateColor].color);
 			(text as HTMLElement).style.color = luma > 0.5 ? '#000000' : '#ffffff';
 		}
@@ -62,8 +66,19 @@ function _refreshRegions(mapBind: HTMLDivElement, candidates: Candidate[]) {
 				mapBind,
 				region as HTMLElement,
 				parseInt(regionDom.getAttribute('candidate') || '-2', 10),
-				candidates
+				candidates,
+				false
 			);
+		}
+	});
+}
+
+function _clearRegions(mapBind: HTMLDivElement, candidates: Candidate[]) {
+	const regions = mapBind.querySelector('.regions');
+	regions?.childNodes.forEach((region) => {
+		const regionDom = region as HTMLElement;
+		if (typeof regionDom.getAttribute === 'function') {
+			_fillRegion(mapBind, regionDom, -1, candidates, false)
 		}
 	});
 }
@@ -95,4 +110,4 @@ function _editRegion(
 	return candidates;
 }
 
-export { _fillRegion, _refreshRegions, _editRegion };
+export { _fillRegion, _refreshRegions, _clearRegions, _editRegion };
