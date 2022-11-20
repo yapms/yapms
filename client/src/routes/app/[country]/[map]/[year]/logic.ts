@@ -13,16 +13,17 @@ function _fillRegion(
 		return candidates;
 	}
 	const currentCandidateID = parseInt(region.getAttribute('candidate') || '-2', 10);
-	const currentCandidate = candidates.find(
-		(candidate) => candidate.id === currentCandidateID
-	);
+	const currentCandidate = candidates.find((candidate) => candidate.id === currentCandidateID);
 	if (currentCandidate === undefined) {
 		return candidates;
 	}
 
 	const currentCandidateColor = parseInt(region.getAttribute('candidate-color') || '0', 10);
 	let nextCandidateColor = currentCandidateColor;
-	if (region.hasAttribute('candidate-color') === false || selectedCandidateId !== currentCandidateID) {
+	if (
+		region.hasAttribute('candidate-color') === false ||
+		selectedCandidateId !== currentCandidateID
+	) {
 		nextCandidateColor = 0;
 	} else if (increment === true) {
 		nextCandidateColor =
@@ -78,9 +79,10 @@ function _clearRegions(mapBind: HTMLDivElement, candidates: Candidate[]) {
 	regions?.childNodes.forEach((region) => {
 		const regionDom = region as HTMLElement;
 		if (typeof regionDom.getAttribute === 'function') {
-			_fillRegion(mapBind, regionDom, -1, candidates, false)
+			candidates = _fillRegion(mapBind, regionDom, -1, candidates, false);
 		}
 	});
+	return candidates;
 }
 
 function _editRegion(

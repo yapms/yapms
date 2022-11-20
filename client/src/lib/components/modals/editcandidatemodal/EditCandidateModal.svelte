@@ -43,7 +43,7 @@
 					}}
 				/>
 			</div>
-			<div class="divider divider-horizontal"></div>
+			<div class="divider divider-horizontal" />
 			<div class="form-control w-full max-w-xs flex flex-col gap-3">
 				<!-- svelte-ignore a11y-label-has-associated-control -->
 				<label class="label">
@@ -61,8 +61,18 @@
 					{/each}
 				</div>
 				<div class="btn-group btn-group-horizontal">
-					<input type="button" class="btn btn-error btn-sm grow" on:click={removeColor} value="Remove" />
-					<input type="button" class="btn btn-primary btn-sm grow" on:click={addColor} value="Add" />
+					<input
+						type="button"
+						class="btn btn-error btn-sm grow"
+						on:click={removeColor}
+						value="Remove"
+					/>
+					<input
+						type="button"
+						class="btn btn-primary btn-sm grow"
+						on:click={addColor}
+						value="Add"
+					/>
 				</div>
 			</div>
 		</div>
