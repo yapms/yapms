@@ -13,7 +13,7 @@
 	import type State from '$lib/types/State';
 	import { applyPanZoom, initializeMap, setupRegions, setupButtons } from './initialize';
 	import type { PanZoom } from 'panzoom';
-	import { _fillRegion, _editRegion, _refreshRegions } from './logic';
+	import { _fillRegion, _editRegion, _refreshRegions, _clearRegions } from './logic';
 	import { onMount } from 'svelte';
 	import { themeChange } from 'theme-change';
 
@@ -121,6 +121,7 @@
 			title: 'Confirm Clear',
 			message: 'You will lose all your current progress.',
 			onConfirm: () => {
+				candidates = _clearRegions(mapBind, candidates);
 				closeConfirm();
 			}
 		};
@@ -243,15 +244,13 @@
 			class:flex-row={chartbar.position === 'left'}
 			class:flex-col-reverse={chartbar.position === 'bottom'}
 		>
-			<div
-				class="flex basis-3/12 justify-center items-center"
-			>
+			<div class="flex basis-3/12 justify-center items-center">
 				{#if chartbar.position === 'bottom'}
-				<div class="divider divider-vertical" />
+					<div class="divider divider-vertical" />
 				{/if}
 				<ChartBar {candidates} />
 				{#if chartbar.position === 'left'}
-				<div class="divider divider-horizontal" />
+					<div class="divider divider-horizontal" />
 				{/if}
 			</div>
 			<div class="basis-9/12 overflow-hidden">

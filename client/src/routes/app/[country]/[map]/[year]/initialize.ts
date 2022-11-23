@@ -47,13 +47,12 @@ function initializeMap(mapBind: HTMLDivElement, candidates: Candidate[]) {
 				const value = parseInt(childHTML.getAttribute('value') || '0');
 				candidate.margins[0].count += value;
 
-				const regionName= childHTML.getAttribute('class') || '';
-				const text = mapBind.querySelector(`.region-texts [for="${regionName}"]`)
+				const regionName = childHTML.getAttribute('class') || '';
+				const text = mapBind.querySelector(`.region-texts [for="${regionName}"]`);
 				if (text) {
 					const luma = calculateLumaHEX(candidate.margins[0].color);
 					(text as HTMLElement).style.color = luma > 0.5 ? 'black' : 'white';
 				}
-				
 			}
 
 			if (texts) {

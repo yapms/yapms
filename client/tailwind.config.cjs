@@ -7,8 +7,6 @@ module.exports = {
 	// @ts-ignore
 	plugins: [require('daisyui')],
 	daisyui: {
-		themes: [
-			"light", "dark", "cupcake", "aqua", "lofi", "night"
-		]
+		themes: ['light', 'dark', 'cupcake', 'aqua', 'lofi', 'night']
 	}
 };
