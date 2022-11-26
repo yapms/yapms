@@ -16,6 +16,7 @@
 	import { _fillRegion, _editRegion, _refreshRegions, _clearRegions } from './logic';
 	import { onMount } from 'svelte';
 	import { themeChange } from 'theme-change';
+	import MapModal from '$lib/components/modals/mapmodal/MapModal.svelte';
 
 	const imports = {
 		usa: () => import('$lib/assets/usa.svg?raw'),
@@ -80,6 +81,10 @@
 		onConfirm: (values: { newValue: number }) => {}
 	};
 
+	let mapModal = {
+		open: false
+	};
+
 	onMount(() => {
 		themeChange(false);
 	});
@@ -128,14 +133,15 @@
 		};
 	}
 
-	function openMapSelectionModal() {
-		confirmModal = {
+	function openMapModal() {
+		mapModal = {
 			open: true,
-			title: 'Confirm Maps',
-			message: 'Are you sure you want to go to the maps page?',
-			onConfirm: () => {
-				closeConfirm();
-			}
+		};
+	}
+
+	function closeMapModal() {
+		mapModal = {
+			open: false,
 		};
 	}
 
@@ -249,7 +255,7 @@
 	<NavBar
 		onHome={openGoHomeModal}
 		onClear={openClearMapModal}
-		onMaps={openMapSelectionModal}
+		onMaps={openMapModal}
 		onChartPosition={toggleChartPosition}
 		onToggleSideBar={toggleSideBar}
 		onSetMode={(newMode) => {
@@ -316,4 +322,9 @@
 	state={editStateModal.state}
 	onConfirm={editStateModal.onConfirm}
 	onClose={closeEditStateModal}
+/>
+
+<MapModal
+	open={mapModal.open}
+	onClose={closeMapModal}
 />
