@@ -70,8 +70,9 @@ function initializeMap(mapBind: HTMLDivElement, candidates: Candidate[]) {
 
 function setupRegions(
 	mapBind: HTMLDivElement,
-	fillRegion: (region: HTMLElement) => void,
+	fillRegion: (region: HTMLElement, increment: boolean) => void,
 	getMode: () => string,
+	getFillKeyPressed: () => boolean,
 	openEditStateModal: (state: State) => void
 ) {
 	const regions = mapBind.querySelector('.regions');
@@ -80,7 +81,7 @@ function setupRegions(
 		const regionDom = region as HTMLElement;
 		regionDom.onclick = () => {
 			if (getMode() === 'fill') {
-				fillRegion(regionDom);
+				fillRegion(regionDom, true);
 			} else if (getMode() === 'edit') {
 				const shortName = regionDom.getAttribute('short-name') ?? '';
 				const longName = regionDom.getAttribute('short-name') ?? '';
@@ -92,13 +93,19 @@ function setupRegions(
 				});
 			}
 		};
+		regionDom.onmouseover = () => {
+			if(getFillKeyPressed() && getMode() === 'fill') {
+				fillRegion(regionDom, false);
+			}
+		}
 	});
 }
 
 function setupButtons(
 	mapBind: HTMLDivElement,
-	fillRegion: (a: HTMLElement) => void,
-	getMode: () => string
+	fillRegion: (a: HTMLElement, increment: boolean) => void,
+	getMode: () => string,
+	getFillKeyPressed: () => boolean
 ) {
 	const buttons = mapBind.querySelector('.region-buttons');
 	if (buttons === null) return;
@@ -108,9 +115,16 @@ function setupButtons(
 			const forRegion = buttonDom.getAttribute('for');
 			const region = mapBind.querySelector(`[short-name="${forRegion}"]`);
 			if (region && getMode() === 'fill') {
-				fillRegion(region as HTMLElement);
+				fillRegion(region as HTMLElement, true);
 			}
 		};
+		buttonDom.onmouseover = () => {
+			const forRegion = buttonDom.getAttribute('for');
+			const region = mapBind.querySelector(`[short-name="${forRegion}"]`);
+			if(region && getFillKeyPressed() && getMode() === 'fill') {
+				fillRegion(region as HTMLElement, false);
+			}
+		}
 	});
 }
 
