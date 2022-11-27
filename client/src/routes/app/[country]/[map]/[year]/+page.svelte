@@ -23,6 +23,7 @@
 	};
 
 	let mode: Mode = 'fill';
+	let fillKeyPressed: boolean = false;
 
 	let currentMap = 'usa' as keyof typeof imports;
 	let mapBind: HTMLDivElement;
@@ -206,8 +207,24 @@
 		return mode;
 	}
 
-	function fillRegion(region: HTMLElement) {
-		candidates = _fillRegion(mapBind, region, selectedCandidateId, candidates, true);
+	function getFillKeyPressed() {
+		return fillKeyPressed;
+	}
+
+	function handleKeyDown(e: KeyboardEvent) {
+		if (e.code === 'KeyF') { //Fill button
+			fillKeyPressed = true;
+		}
+	}
+
+	function handleKeyUp(e: KeyboardEvent) {
+		if (e.code === 'KeyF') { //Fill button
+			fillKeyPressed = false;
+		}
+	}
+
+	function fillRegion(region: HTMLElement, increment:boolean) {
+		candidates = _fillRegion(mapBind, region, selectedCandidateId, candidates, increment);
 	}
 
 	function editRegion(shortName: string, newValues: { newValue: number }) {
@@ -220,10 +237,13 @@
 	function setupMap(node: HTMLDivElement) {
 		panZoom = applyPanZoom(node);
 		candidates = initializeMap(node, candidates);
-		setupRegions(node, fillRegion, getMode, openEditStateModal);
-		setupButtons(node, fillRegion, getMode);
+		setupRegions(node, fillRegion, getMode, getFillKeyPressed, openEditStateModal);
+		setupButtons(node, fillRegion, getMode, getFillKeyPressed);
 	}
 </script>
+
+<!--Tell Svelte to use the handleKeyDown function when any key pressed and handleKeyUp when key released-->
+<svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp}/>
 
 <div class="flex flex-col h-full">
 	<NavBar
