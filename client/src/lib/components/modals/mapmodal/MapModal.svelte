@@ -35,8 +35,6 @@
 			selectedCountry = country;
 		}
 	}
-
-	console.log('TEST');
 </script>
 
 {#if open}
