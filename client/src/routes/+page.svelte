@@ -1,7 +1,3 @@
-<script>
-	export const prerender = true;
-</script>
-
 <div class="navbar bg-base-200">
 	<h1 class="text-lg font-bold m-auto">Yet Another Political Map Simulator</h1>
 </div>
