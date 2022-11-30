@@ -94,10 +94,10 @@ function setupRegions(
 			}
 		};
 		regionDom.onmouseover = () => {
-			if(getFillKeyPressed() && getMode() === 'fill') {
+			if (getFillKeyPressed() && getMode() === 'fill') {
 				fillRegion(regionDom, false);
 			}
-		}
+		};
 	});
 }
 
@@ -121,10 +121,10 @@ function setupButtons(
 		buttonDom.onmouseover = () => {
 			const forRegion = buttonDom.getAttribute('for');
 			const region = mapBind.querySelector(`[short-name="${forRegion}"]`);
-			if(region && getFillKeyPressed() && getMode() === 'fill') {
+			if (region && getFillKeyPressed() && getMode() === 'fill') {
 				fillRegion(region as HTMLElement, false);
 			}
-		}
+		};
 	});
 }
 

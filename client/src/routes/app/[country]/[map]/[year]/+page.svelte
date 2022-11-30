@@ -24,7 +24,7 @@
 	};
 
 	let mode: Mode = 'fill';
-	let fillKeyPressed: boolean = false;
+	let fillKeyPressed = false;
 
 	let currentMap = 'usa' as keyof typeof imports;
 	let mapBind: HTMLDivElement;
@@ -59,7 +59,9 @@
 		open: false,
 		title: '',
 		message: '',
-		onConfirm: () => {}
+		onConfirm: () => {
+			console.log('default');
+		}
 	};
 
 	let editCandidateModal = {
@@ -88,10 +90,6 @@
 	onMount(() => {
 		themeChange(false);
 	});
-
-	function toggleMap() {
-		currentMap = currentMap === 'usa' ? 'nz' : 'usa';
-	}
 
 	function setSelectedCandidate(candidate: Candidate) {
 		selectedCandidateId = candidate.id;
@@ -135,13 +133,13 @@
 
 	function openMapModal() {
 		mapModal = {
-			open: true,
+			open: true
 		};
 	}
 
 	function closeMapModal() {
 		mapModal = {
-			open: false,
+			open: false
 		};
 	}
 
@@ -218,18 +216,20 @@
 	}
 
 	function handleKeyDown(e: KeyboardEvent) {
-		if (e.code === 'KeyF') { //Fill button
+		if (e.code === 'KeyF') {
+			//Fill button
 			fillKeyPressed = true;
 		}
 	}
 
 	function handleKeyUp(e: KeyboardEvent) {
-		if (e.code === 'KeyF') { //Fill button
+		if (e.code === 'KeyF') {
+			//Fill button
 			fillKeyPressed = false;
 		}
 	}
 
-	function fillRegion(region: HTMLElement, increment:boolean) {
+	function fillRegion(region: HTMLElement, increment: boolean) {
 		candidates = _fillRegion(mapBind, region, selectedCandidateId, candidates, increment);
 	}
 
@@ -249,7 +249,7 @@
 </script>
 
 <!--Tell Svelte to use the handleKeyDown function when any key pressed and handleKeyUp when key released-->
-<svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp}/>
+<svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp} />
 
 <div class="flex flex-col h-full">
 	<NavBar
@@ -324,7 +324,4 @@
 	onClose={closeEditStateModal}
 />
 
-<MapModal
-	open={mapModal.open}
-	onClose={closeMapModal}
-/>
+<MapModal open={mapModal.open} onClose={closeMapModal} />
