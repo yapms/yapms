@@ -246,6 +246,7 @@
 		setupRegions(node, fillRegion, getMode, getFillKeyPressed, openEditStateModal);
 		setupButtons(node, fillRegion, getMode, getFillKeyPressed);
 	}
+
 </script>
 
 <!--Tell Svelte to use the handleKeyDown function when any key pressed and handleKeyUp when key released-->
