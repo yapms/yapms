@@ -1,1 +1,1 @@
-export type Mode = 'fill' | 'edit';
+export type Mode = 'fill' | 'edit' | 'disable';

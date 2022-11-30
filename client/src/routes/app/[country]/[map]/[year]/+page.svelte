@@ -13,7 +13,7 @@
 	import type State from '$lib/types/State';
 	import { applyPanZoom, initializeMap, setupRegions, setupButtons } from './initialize';
 	import type { PanZoom } from 'panzoom';
-	import { _fillRegion, _editRegion, _refreshRegions, _clearRegions } from './logic';
+	import { _fillRegion, _editRegion, _refreshRegions, _clearRegions, _toggleRegion } from './logic';
 	import { onMount } from 'svelte';
 	import { themeChange } from 'theme-change';
 
@@ -227,6 +227,10 @@
 		candidates = _fillRegion(mapBind, region, selectedCandidateId, candidates, increment);
 	}
 
+	function toggleRegion(region: HTMLElement) {
+		candidates = _toggleRegion(mapBind, region as HTMLElement, candidates);
+	}
+
 	function editRegion(shortName: string, newValues: { newValue: number }) {
 		const region = mapBind.querySelector(`[short-name="${shortName}"]`);
 		if (region) {
@@ -237,8 +241,8 @@
 	function setupMap(node: HTMLDivElement) {
 		panZoom = applyPanZoom(node);
 		candidates = initializeMap(node, candidates);
-		setupRegions(node, fillRegion, getMode, getFillKeyPressed, openEditStateModal);
-		setupButtons(node, fillRegion, getMode, getFillKeyPressed);
+		setupRegions(node, fillRegion, toggleRegion, getMode, getFillKeyPressed, openEditStateModal);
+		setupButtons(node, fillRegion, toggleRegion, getMode, getFillKeyPressed);
 	}
 </script>
 
