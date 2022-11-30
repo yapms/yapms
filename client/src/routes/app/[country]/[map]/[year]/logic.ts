@@ -8,7 +8,7 @@ function _fillRegion(
 	candidates: Candidate[],
 	increment: boolean
 ) {
-	if (region.hasAttribute("disabled")) {
+	if (region.hasAttribute("disabled")) { //If a region is disabled, do nothing.
 		return candidates;
 	}
 	const selectedCandidate = candidates.find((candidate) => candidate.id === selectedCandidateId);

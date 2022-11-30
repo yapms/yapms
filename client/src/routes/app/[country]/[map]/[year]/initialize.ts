@@ -54,7 +54,7 @@ function initializeMap(mapBind: HTMLDivElement, candidates: Candidate[]) {
 					(text as HTMLElement).style.color = luma > 0.5 ? 'black' : 'white';
 				}
 
-				if (childHTML.hasAttribute("disabled")) { //Set disabled styles
+				if (childHTML.hasAttribute("disabled")) { //Set disabled styles & remove state value, styles from yapms1
 					candidate.margins[0].count -= value;
 					childHTML.style.fillOpacity = "0.25";
 					childHTML.style.strokeOpacity = "0.25";
