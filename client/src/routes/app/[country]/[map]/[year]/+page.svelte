@@ -16,6 +16,7 @@
 	import { _fillRegion, _editRegion, _refreshRegions, _clearRegions } from './logic';
 	import { onMount } from 'svelte';
 	import { themeChange } from 'theme-change';
+	import MapModal from '$lib/components/modals/mapmodal/MapModal.svelte';
 
 	const imports = {
 		usa: () => import('$lib/assets/usa.svg?raw'),
@@ -23,7 +24,7 @@
 	};
 
 	let mode: Mode = 'fill';
-	let fillKeyPressed: boolean = false;
+	let fillKeyPressed = false;
 
 	let currentMap = 'usa' as keyof typeof imports;
 	let mapBind: HTMLDivElement;
@@ -58,7 +59,9 @@
 		open: false,
 		title: '',
 		message: '',
-		onConfirm: () => {}
+		onConfirm: () => {
+			console.log('default');
+		}
 	};
 
 	let editCandidateModal = {
@@ -80,13 +83,13 @@
 		onConfirm: (values: { newValue: number }) => {}
 	};
 
+	let mapModal = {
+		open: false
+	};
+
 	onMount(() => {
 		themeChange(false);
 	});
-
-	function toggleMap() {
-		currentMap = currentMap === 'usa' ? 'nz' : 'usa';
-	}
 
 	function setSelectedCandidate(candidate: Candidate) {
 		selectedCandidateId = candidate.id;
@@ -128,14 +131,15 @@
 		};
 	}
 
-	function openMapSelectionModal() {
-		confirmModal = {
-			open: true,
-			title: 'Confirm Maps',
-			message: 'Are you sure you want to go to the maps page?',
-			onConfirm: () => {
-				closeConfirm();
-			}
+	function openMapModal() {
+		mapModal = {
+			open: true
+		};
+	}
+
+	function closeMapModal() {
+		mapModal = {
+			open: false
 		};
 	}
 
@@ -212,18 +216,20 @@
 	}
 
 	function handleKeyDown(e: KeyboardEvent) {
-		if (e.code === 'KeyF') { //Fill button
+		if (e.code === 'KeyF') {
+			//Fill button
 			fillKeyPressed = true;
 		}
 	}
 
 	function handleKeyUp(e: KeyboardEvent) {
-		if (e.code === 'KeyF') { //Fill button
+		if (e.code === 'KeyF') {
+			//Fill button
 			fillKeyPressed = false;
 		}
 	}
 
-	function fillRegion(region: HTMLElement, increment:boolean) {
+	function fillRegion(region: HTMLElement, increment: boolean) {
 		candidates = _fillRegion(mapBind, region, selectedCandidateId, candidates, increment);
 	}
 
@@ -243,13 +249,13 @@
 </script>
 
 <!--Tell Svelte to use the handleKeyDown function when any key pressed and handleKeyUp when key released-->
-<svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp}/>
+<svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp} />
 
 <div class="flex flex-col h-full">
 	<NavBar
 		onHome={openGoHomeModal}
 		onClear={openClearMapModal}
-		onMaps={openMapSelectionModal}
+		onMaps={openMapModal}
 		onChartPosition={toggleChartPosition}
 		onToggleSideBar={toggleSideBar}
 		onSetMode={(newMode) => {
@@ -317,3 +323,5 @@
 	onConfirm={editStateModal.onConfirm}
 	onClose={closeEditStateModal}
 />
+
+<MapModal open={mapModal.open} onClose={closeMapModal} />
