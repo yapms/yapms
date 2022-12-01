@@ -53,8 +53,13 @@ function initializeMap(mapBind: HTMLDivElement, candidates: Candidate[]) {
 					const luma = calculateLumaHEX(candidate.margins[0].color);
 					(text as HTMLElement).style.color = luma > 0.5 ? 'black' : 'white';
 				}
-			}
 
+				if (childHTML.hasAttribute("disabled")) { //Set disabled styles & remove state value, styles from yapms1
+					candidate.margins[0].count -= value;
+					childHTML.style.fillOpacity = "0.25";
+					childHTML.style.strokeOpacity = "0.25";
+				}
+			}
 			if (texts) {
 				(texts as HTMLElement).style.pointerEvents = 'none';
 				const shortName = childHTML.getAttribute('short-name');
@@ -71,6 +76,7 @@ function initializeMap(mapBind: HTMLDivElement, candidates: Candidate[]) {
 function setupRegions(
 	mapBind: HTMLDivElement,
 	fillRegion: (region: HTMLElement, increment: boolean) => void,
+	toggleRegion: (region: HTMLElement) => void,
 	getMode: () => string,
 	getFillKeyPressed: () => boolean,
 	openEditStateModal: (state: State) => void
@@ -91,6 +97,8 @@ function setupRegions(
 					longName: longName,
 					value: parseInt(value, 10)
 				});
+			} else if (getMode() == 'disable') {
+				toggleRegion(regionDom);
 			}
 		};
 		regionDom.onmouseover = () => {
@@ -104,6 +112,7 @@ function setupRegions(
 function setupButtons(
 	mapBind: HTMLDivElement,
 	fillRegion: (a: HTMLElement, increment: boolean) => void,
+	toggleRegion: (region: HTMLElement) => void,
 	getMode: () => string,
 	getFillKeyPressed: () => boolean
 ) {
@@ -116,6 +125,8 @@ function setupButtons(
 			const region = mapBind.querySelector(`[short-name="${forRegion}"]`);
 			if (region && getMode() === 'fill') {
 				fillRegion(region as HTMLElement, true);
+			} else if (region && getMode() == 'disable') {
+				toggleRegion(region as HTMLElement);
 			}
 		};
 		buttonDom.onmouseover = () => {
