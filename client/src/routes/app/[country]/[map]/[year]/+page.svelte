@@ -272,14 +272,14 @@
 			class:flex-col-reverse={chartbar.position === 'bottom'}
 		>
 			<div class="flex basis-3/12 justify-center items-center">
-				{#if chartbar.position === 'bottom'}
-					<div class="divider divider-vertical" />
-				{/if}
 				<ChartBar {candidates} />
-				{#if chartbar.position === 'left'}
-					<div class="divider divider-horizontal" />
-				{/if}
 			</div>
+			{#if chartbar.position === 'bottom'}
+				<div class="divider divider-vertical mb-0 mt-0 h-0" />
+			{:else if chartbar.position === 'left'}
+				<div class="divider divider-horizontal ml-0 mr-0 w-0" />
+			{/if}
+
 			<div class="basis-9/12 overflow-hidden">
 				<div class="flex flex-row flex-wrap justify-center relative pointer-events-none h-0 z-10">
 					{#each candidates as candidate}
