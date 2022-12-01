@@ -13,10 +13,14 @@
 	import type State from '$lib/types/State';
 	import { applyPanZoom, initializeMap, setupRegions, setupButtons } from './initialize';
 	import type { PanZoom } from 'panzoom';
-	import { _fillRegion, _editRegion, _refreshRegions, _clearRegions, _toggleRegion } from './logic';
 	import { onMount } from 'svelte';
 	import { themeChange } from 'theme-change';
 	import MapModal from '$lib/components/modals/mapmodal/MapModal.svelte';
+	import _clearRegions from './logic/ClearRegions';
+	import _refreshRegions from './logic/RefreshRegions';
+	import _toggleRegion from './logic/ToggleRegion';
+	import _fillRegion from './logic/FillRegion';
+	import _editRegion from './logic/EditRegion';
 
 	const imports = {
 		usa: () => import('$lib/assets/usa.svg?raw'),
@@ -250,7 +254,6 @@
 		setupRegions(node, fillRegion, toggleRegion, getMode, getFillKeyPressed, openEditStateModal);
 		setupButtons(node, fillRegion, toggleRegion, getMode, getFillKeyPressed);
 	}
-
 </script>
 
 <!--Tell Svelte to use the handleKeyDown function when any key pressed and handleKeyUp when key released-->
