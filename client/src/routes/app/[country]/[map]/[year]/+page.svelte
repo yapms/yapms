@@ -5,7 +5,7 @@
 	import NavBar from '$lib/components/navbar/NavBar.svelte';
 	import SideBar from '$lib/components/sidebar/SideBar.svelte';
 	import CandidateBox from '$lib/components/candidatebox/CandidateBox.svelte';
-	import type Candidate from '$lib/types/Candidate';
+	import type { Candidate } from '$lib/types/Candidate';
 	import EditCandidateModal from '$lib/components/modals/editcandidatemodal/EditCandidateModal.svelte';
 	import ChartBar from '$lib/components/chartbar/ChartBar.svelte';
 	import EditStateModal from '$lib/components/modals/editstatemodal/EditStateModal.svelte';
@@ -21,6 +21,8 @@
 	import _toggleRegion from './logic/ToggleRegion';
 	import _fillRegion from './logic/FillRegion';
 	import _editRegion from './logic/EditRegion';
+	import CandidateBoxContainer from '$lib/components/candidatebox/CandidateBoxContainer.svelte';
+	import loadRegions from './initialize/LoadRegions';
 
 	const imports = {
 		usa: () => import('$lib/assets/usa.svg?raw'),
@@ -250,9 +252,7 @@
 
 	function setupMap(node: HTMLDivElement) {
 		panZoom = applyPanZoom(node);
-		candidates = initializeMap(node, candidates);
-		setupRegions(node, fillRegion, toggleRegion, getMode, getFillKeyPressed, openEditStateModal);
-		setupButtons(node, fillRegion, toggleRegion, getMode, getFillKeyPressed);
+		loadRegions(node);
 	}
 </script>
 
@@ -286,18 +286,8 @@
 			{:else if chartbar.position === 'left'}
 				<div class="divider divider-horizontal ml-0 mr-0 w-0" />
 			{/if}
-
+			<CandidateBoxContainer />
 			<div class="basis-9/12 overflow-hidden">
-				<div class="flex flex-row flex-wrap justify-center relative pointer-events-none h-0 z-10">
-					{#each candidates as candidate}
-						<CandidateBox
-							{candidate}
-							onSelect={setSelectedCandidate}
-							onEdit={openEditCandidateModal}
-							selected={selectedCandidateId === candidate.id}
-						/>
-					{/each}
-				</div>
 				{#await imports[currentMap]() then module}
 					<div bind:this={mapBind} use:setupMap class="overflow-hidden h-full">
 						{@html module.default}

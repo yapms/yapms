@@ -1,7 +1,5 @@
-interface Candidate {
-	id: number;
+export type Candidate = {
+	id: string;
 	name: string;
-	margins: { color: string; count: number }[];
-}
-
-export default Candidate;
+	margins: { color: string }[];
+};

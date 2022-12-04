@@ -1,4 +1,4 @@
-import type Candidate from '$lib/types/Candidate';
+import type { Candidate } from '$lib/types/Candidate';
 import type State from '$lib/types/State';
 import { calculateLumaHEX } from '$lib/utils/luma';
 import panzoom from 'panzoom';

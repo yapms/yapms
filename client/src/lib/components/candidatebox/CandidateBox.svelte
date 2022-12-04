@@ -1,18 +1,17 @@
 <script lang="ts">
-	import type Candidate from '$lib/types/Candidate';
+	import { SelectedCandidateStore } from '$lib/stores/Candidates';
+
 	import { calculateLumaHEX } from '$lib/utils/luma';
+	import type { Candidate } from '$lib/types/Candidate';
 
 	export let candidate: Candidate;
-	export let selected = false;
-	export let onSelect: (candidate: Candidate) => void;
-	export let onEdit: (candidate: Candidate) => void;
 
-	let total = 0;
-
-	let buttonStyle: string;
+	$: selected = $SelectedCandidateStore.id === candidate.id;
 	$: buttonStyle = selected ? 'btn btn-sm' : 'btn btn-xs';
 
-	$: total = candidate.margins.reduce((acc, margin) => acc + margin.count, 0);
+	function updateSelectedCandidate() {
+		SelectedCandidateStore.set(candidate);
+	}
 </script>
 
 <div class="btn-group p-0.5 pointer-events-auto">
@@ -22,11 +21,9 @@
 		style:color={calculateLumaHEX(candidate.margins[0].color) > 0.5 ? 'black' : 'white'}
 		style:transition_in={'0.15s'}
 		style="transition: all 0.15s"
-		on:click={() => onSelect(candidate)}
+		on:click={updateSelectedCandidate}
 	>
-		{candidate.name} - {total}
+		{candidate.name} - {candidate.margins.reduce((a, b) => a + b.count, 0)}
 	</button>
-	<button class={buttonStyle} style="transition: all 0.15s" on:click={() => onEdit(candidate)}
-		>Edit</button
-	>
+	<button class={buttonStyle} style="transition: all 0.15s">Edit</button>
 </div>
