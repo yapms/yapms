@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { SelectedCandidateStore } from '$lib/stores/Candidates';
+	import { CandidateCounts } from '$lib/stores/Regions';
 
 	import { calculateLumaHEX } from '$lib/utils/luma';
 	import type { Candidate } from '$lib/types/Candidate';
@@ -19,11 +20,11 @@
 		class={buttonStyle}
 		style:background-color={candidate.margins[0].color}
 		style:color={calculateLumaHEX(candidate.margins[0].color) > 0.5 ? 'black' : 'white'}
-		style:transition_in={'0.15s'}
-		style="transition: all 0.15s"
+		style:transition_in={'0.2s'}
+		style="transition: all 0.2s"
 		on:click={updateSelectedCandidate}
 	>
-		{candidate.name} - {candidate.margins.reduce((a, b) => a + b.count, 0)}
+		{candidate.name} - {$CandidateCounts.get(candidate.id) ?? 0}
 	</button>
 	<button class={buttonStyle} style="transition: all 0.15s">Edit</button>
 </div>

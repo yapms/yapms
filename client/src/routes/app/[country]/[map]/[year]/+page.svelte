@@ -286,8 +286,8 @@
 			{:else if chartbar.position === 'left'}
 				<div class="divider divider-horizontal ml-0 mr-0 w-0" />
 			{/if}
-			<CandidateBoxContainer />
 			<div class="basis-9/12 overflow-hidden">
+				<CandidateBoxContainer />
 				{#await imports[currentMap]() then module}
 					<div bind:this={mapBind} use:setupMap class="overflow-hidden h-full">
 						{@html module.default}

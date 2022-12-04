@@ -1,8 +1,8 @@
-import { RegionsStore } from "$lib/stores/Regions";
-import { TossupCandidateStore, SelectedCandidateStore } from "$lib/stores/Candidates";
 import type { Region } from '$lib/types/Region';
 import { get } from 'svelte/store';
 import { ModeStore } from "$lib/stores/Mode";
+import { RegionsStore } from "$lib/stores/Regions";
+import { TossupCandidateStore, SelectedCandidateStore } from "$lib/stores/Candidates";
 
 function fillRegion(regionID: string) {
   const regions = get(RegionsStore);
@@ -10,15 +10,8 @@ function fillRegion(regionID: string) {
   if (region) {
     const selectedCandidate = get(SelectedCandidateStore);
     region.candidates = [
-      selectedCandidate
+      { candidate: selectedCandidate, count: region.value }
     ];
-    /*
-    region.nodes.region.style.fill = selectedCandidate.margins[0].color;
-    if (region.nodes.button)
-    region.nodes.button.style.fill = selectedCandidate.margins[0].color;
-    if (region.nodes.text)
-    region.nodes.text.style.color = calculateLumaHEX(selectedCandidate.margins[0].color) > 0.5 ? 'black' : 'white';
-    */
     RegionsStore.set(regions);
   }
 }
@@ -36,13 +29,16 @@ function loadRegions(node: HTMLDivElement) {
     }
     childHTML.style.cursor = 'pointer';
 
+    const value = parseInt(childHTML.getAttribute('value') || '0');
     const newRegion: Region = {
       id: childHTML.getAttribute('class') ?? '',
       shortName: childHTML.getAttribute('short-name') ?? '',
       longName: childHTML.getAttribute('long-name') ?? '',
-      value: parseInt(childHTML.getAttribute('value') ?? '0'),
+      value,
       disabled: false,
-      candidates: [],
+      candidates: [
+        { candidate: tossupCandidate, count: value}
+      ],
       nodes: {
         region: childHTML,
         button: buttons?.querySelector(`[for="${childHTML.getAttribute('class') ?? ''}"]`) as HTMLElement,
