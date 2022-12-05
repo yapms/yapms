@@ -11,20 +11,12 @@ export const CandidatesStore = writable<Candidate[]>([
 	{
 		id: crypto.randomUUID(),
 		name: 'Joe Biden',
-		margins: [
-			{ color: '#000055' },
-			{ color: '#000099' },
-			{ color: '#0000ff' }
-		]
+		margins: [{ color: '#000055' }, { color: '#000099' }, { color: '#0000ff' }]
 	},
 	{
 		id: crypto.randomUUID(),
 		name: 'Donald Trump',
-		margins: [
-			{ color: '#550000' },
-			{ color: '#990000' },
-			{ color: '#ff0000' }
-		]
+		margins: [{ color: '#550000' }, { color: '#990000' }, { color: '#ff0000' }]
 	}
 ]);
 

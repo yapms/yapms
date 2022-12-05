@@ -1,6 +1,5 @@
 <script lang="ts">
-	export let open: boolean;
-	export let onClose: () => void;
+	import { MapModalStore } from '$lib/stores/Modals';
 
 	import usa_flag from '$lib/assets/flags/usa.svg';
 	import can_flag from '$lib/assets/flags/can.svg';
@@ -35,40 +34,45 @@
 			selectedCountry = country;
 		}
 	}
+
+	function close() {
+		MapModalStore.set({
+			...$MapModalStore,
+			open: false
+		});
+	}
 </script>
 
-{#if open}
-	<input type="checkbox" class="modal-toggle" checked={open} />
-	<div class="modal" transition:fade={{ duration: 100 }}>
-		<div class="modal-box">
-			<div class="tabs justify-evenly">
-				{#each countries as country}
-					<button
-						class="tab tab-lg tab-bordered flex-row gap-1"
-						class:tab-active={selectedCountry === country}
-						on:click={() => {
-							setSelectedCountry(country);
-						}}
-					>
-						<img src={flags[country]} alt="flag" class="w-12 rounded-sm" />
-						<span>
-							{country.toUpperCase()}
-						</span>
+<input type="checkbox" class="modal-toggle" checked={$MapModalStore.open} />
+<div class="modal" transition:fade={{ duration: 100 }}>
+	<div class="modal-box">
+		<div class="tabs justify-evenly">
+			{#each countries as country}
+				<button
+					class="tab tab-lg tab-bordered flex-row gap-1"
+					class:tab-active={selectedCountry === country}
+					on:click={() => {
+						setSelectedCountry(country);
+					}}
+				>
+					<img src={flags[country]} alt="flag" class="w-12 rounded-sm" />
+					<span>
+						{country.toUpperCase()}
+					</span>
+				</button>
+			{/each}
+		</div>
+		<div class="m-5">
+			<div class="flex gap-2">
+				{#each maps[selectedCountry] as map}
+					<button class="btn btn-secondary">
+						{map.toUpperCase()}
 					</button>
 				{/each}
 			</div>
-			<div class="m-5">
-				<div class="flex gap-2">
-					{#each maps[selectedCountry] as map}
-						<button class="btn btn-secondary">
-							{map.toUpperCase()}
-						</button>
-					{/each}
-				</div>
-			</div>
-			<div class="modal-action">
-				<button class="btn btn-primary" on:click={onClose}>Close</button>
-			</div>
+		</div>
+		<div class="modal-action">
+			<button class="btn btn-primary" on:click={close}>Close</button>
 		</div>
 	</div>
-{/if}
+</div>

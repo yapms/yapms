@@ -1,4 +1,4 @@
-import type { Candidate } from "./Candidate";
+import type { Candidate } from './Candidate';
 
 export type Region = {
 	id: string;
@@ -6,10 +6,10 @@ export type Region = {
 	longName: string;
 	value: number;
 	disabled: boolean;
-  candidates: { candidate: Candidate, count: number }[];
-  nodes: {
-    region: HTMLElement;
-    button: HTMLElement | null;
-    text: HTMLElement | null;
-  }
+	candidates: { candidate: Candidate; count: number; margin: number }[];
+	nodes: {
+		region: HTMLElement;
+		button: HTMLElement | null;
+		text: HTMLElement | null;
+	};
 };

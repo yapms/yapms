@@ -1,33 +1,44 @@
 <script lang="ts">
+	import { ClearMapModalStore, MapModalStore } from '$lib/stores/Modals';
+	import { ModeStore } from '$lib/stores/Mode';
 	import type { Mode } from '$lib/types/Mode';
 
-	export let onHome: () => void;
-	export let onClear: () => void;
-	export let onMaps: () => void;
-	export let onToggleSideBar: () => void;
-	export let onChartPosition: () => void;
-	export let onSetMode: (newMode: Mode) => void;
+	function openClearMapModal() {
+		ClearMapModalStore.set({
+			...$ClearMapModalStore,
+			open: true
+		});
+	}
 
-	export let mode: string;
+	function openMapModal() {
+		MapModalStore.set({
+			...$MapModalStore,
+			open: true
+		});
+	}
+
+	function setMode(mode: Mode) {
+		ModeStore.set(mode);
+	}
 </script>
 
 <div class="navbar bg-base-200 gap-3">
-	<button class="btn btn-sm" on:click={onHome}> home </button>
-	<button class="btn btn-sm" on:click={onClear}> clear </button>
-	<button class="btn btn-sm" on:click={onMaps}> maps </button>
-	<button class="btn btn-sm" on:click={onChartPosition}> chart position </button>
-	<button class="btn btn-sm hidden md:inline" on:click={onToggleSideBar}> close sidebar </button>
+	<button class="btn btn-sm"> home </button>
+	<button class="btn btn-sm" on:click={openClearMapModal}> clear </button>
+	<button class="btn btn-sm" on:click={openMapModal}> maps </button>
+	<button class="btn btn-sm"> chart position </button>
+	<button class="btn btn-sm hidden md:inline"> close sidebar </button>
 	<div class="dropdown">
-		<label tabindex="0" class="btn btn-sm">mode: {mode}</label>
-		<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-			<li><a on:click={onSetMode('fill')}>Fill</a></li>
-			<li><a on:click={onSetMode('edit')}>Edit</a></li>
-			<li><a on:click={onSetMode('disable')}>Disable</a></li>
+		<label tabindex="0" class="btn btn-sm">mode: {$ModeStore}</label>
+		<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 mt-4">
+			<li><a on:click={() => setMode('fill')}>Fill</a></li>
+			<li><a on:click={() => setMode('edit')}>Edit</a></li>
+			<li><a on:click={() => setMode('disable')}>Disable</a></li>
 		</ul>
 	</div>
 	<div class="dropdown">
 		<label tabindex="0" class="btn btn-sm">Theme</label>
-		<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+		<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 mt-4">
 			<li><a data-set-theme="light" data-act-class="ACTIVECLASS">Light</a></li>
 			<li><a data-set-theme="dark" data-act-class="ACTIVECLASS">Dark</a></li>
 			<li><a data-set-theme="cupcake" data-act-class="ACTIVECLASS">Cupcake</a></li>

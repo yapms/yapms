@@ -1,56 +1,28 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import ConfirmModal from '$lib/components/modals/common/ConfirmModal.svelte';
 	import NavBar from '$lib/components/navbar/NavBar.svelte';
 	import SideBar from '$lib/components/sidebar/SideBar.svelte';
-	import CandidateBox from '$lib/components/candidatebox/CandidateBox.svelte';
-	import type { Candidate } from '$lib/types/Candidate';
 	import EditCandidateModal from '$lib/components/modals/editcandidatemodal/EditCandidateModal.svelte';
 	import ChartBar from '$lib/components/chartbar/ChartBar.svelte';
-	import EditStateModal from '$lib/components/modals/editstatemodal/EditStateModal.svelte';
-	import type { Mode } from '$lib/types/Mode';
-	import type State from '$lib/types/State';
-	import { applyPanZoom, initializeMap, setupRegions, setupButtons } from './initialize';
 	import type { PanZoom } from 'panzoom';
 	import { onMount } from 'svelte';
 	import { themeChange } from 'theme-change';
 	import MapModal from '$lib/components/modals/mapmodal/MapModal.svelte';
-	import _clearRegions from './logic/ClearRegions';
-	import _refreshRegions from './logic/RefreshRegions';
-	import _toggleRegion from './logic/ToggleRegion';
-	import _fillRegion from './logic/FillRegion';
-	import _editRegion from './logic/EditRegion';
 	import CandidateBoxContainer from '$lib/components/candidatebox/CandidateBoxContainer.svelte';
 	import loadRegions from './initialize/LoadRegions';
+	import ClearMapModal from '$lib/components/modals/clearmapmodal/ClearMapModal.svelte';
+	import applyPanZoom from './initialize/ApplyPanZoom';
 
 	const imports = {
 		usa: () => import('$lib/assets/usa.svg?raw'),
 		nz: () => import('$lib/assets/nz.svg?raw')
 	};
 
-	let mode: Mode = 'fill';
 	let fillKeyPressed = false;
 
 	let currentMap = 'usa' as keyof typeof imports;
 	let mapBind: HTMLDivElement;
 	let panZoom: PanZoom | undefined;
-
-	let selectedCandidateId = 0;
-
-	let candidates: Candidate[] = [
-		{ id: -1, name: 'Tossup', margins: [{ color: '#cccccc', count: 0 }] },
-		{
-			id: 0,
-			name: 'Joe Biden',
-			margins: [
-				{ color: '#00ff00', count: 0 },
-				{ color: '#0000ff', count: 0 },
-				{ color: '#ff0000', count: 0 }
-			]
-		},
-		{ id: 1, name: 'Donald Trump', margins: [{ color: '#ff0000', count: 0 }] }
-	];
 
 	let sidebar = {
 		open: true
@@ -61,45 +33,9 @@
 		position: 'left' as 'left' | 'bottom'
 	};
 
-	let confirmModal = {
-		open: false,
-		title: '',
-		message: '',
-		onConfirm: () => {
-			console.log('default');
-		}
-	};
-
-	let editCandidateModal = {
-		open: false,
-		candidate: { id: -1, name: '', margins: [] } as Candidate,
-		onConfirm: (candidateId: number, name: string, colors: string[]) => {
-			editCandidate(candidateId, name, colors);
-			closeEditCandidateModal();
-		}
-	};
-
-	let editStateModal = {
-		open: false,
-		state: {
-			shortName: '',
-			longName: '',
-			value: 0
-		},
-		onConfirm: (values: { newValue: number }) => {}
-	};
-
-	let mapModal = {
-		open: false
-	};
-
 	onMount(() => {
 		themeChange(false);
 	});
-
-	function setSelectedCandidate(candidate: Candidate) {
-		selectedCandidateId = candidate.id;
-	}
 
 	function toggleSideBar() {
 		sidebar = {
@@ -112,113 +48,6 @@
 			open: chartbar.open,
 			position: chartbar.position === 'left' ? 'bottom' : 'left'
 		};
-	}
-
-	function openGoHomeModal() {
-		confirmModal = {
-			open: true,
-			title: 'Return Home?',
-			message: 'You will lose all your current progress.',
-			onConfirm: () => {
-				goto('/');
-			}
-		};
-	}
-
-	function openClearMapModal() {
-		confirmModal = {
-			open: true,
-			title: 'Confirm Clear',
-			message: 'You will lose all your current progress.',
-			onConfirm: () => {
-				candidates = _clearRegions(mapBind, candidates);
-				closeConfirm();
-			}
-		};
-	}
-
-	function openMapModal() {
-		mapModal = {
-			open: true
-		};
-	}
-
-	function closeMapModal() {
-		mapModal = {
-			open: false
-		};
-	}
-
-	function closeConfirm() {
-		confirmModal = {
-			...confirmModal,
-			open: false
-		};
-	}
-
-	function openEditCandidateModal(candidate: Candidate) {
-		editCandidateModal = {
-			open: true,
-			candidate,
-			onConfirm: editCandidateModal.onConfirm
-		};
-	}
-
-	function closeEditCandidateModal() {
-		editCandidateModal = {
-			...editCandidateModal,
-			open: false
-		};
-	}
-
-	export function openEditStateModal(state: State) {
-		editStateModal = {
-			open: true,
-			state: state,
-			onConfirm: (newValues) => {
-				editRegion(state.shortName, newValues);
-				closeEditStateModal();
-			}
-		};
-	}
-
-	function closeEditStateModal() {
-		editStateModal = {
-			...editStateModal,
-			open: false
-		};
-	}
-
-	function editCandidate(candidateId: number, name: string, colors: string[]) {
-		const newCandidates = [...candidates];
-		const newCandidate = newCandidates.find((candidate) => {
-			return candidate.id === candidateId;
-		});
-		if (newCandidate) {
-			newCandidate.name = name;
-			/*
-			newCandidate.margins = newCandidate.margins.map((margin, index) => {
-				margin.color = colors[index];
-				return margin;
-			});
-			*/
-			console.log(newCandidate.margins);
-			newCandidate.margins = colors.map((color, index) => {
-				return { color, count: newCandidate.margins[index]?.count ?? 0 };
-			});
-			console.log(newCandidate.margins);
-			candidates = newCandidates;
-		}
-		closeEditCandidateModal();
-		_refreshRegions(mapBind, candidates);
-	}
-
-	function getMode() {
-		return mode;
-	}
-
-	function getFillKeyPressed() {
-		return fillKeyPressed;
 	}
 
 	function handleKeyDown(e: KeyboardEvent) {
@@ -235,21 +64,6 @@
 		}
 	}
 
-	function fillRegion(region: HTMLElement, increment: boolean) {
-		candidates = _fillRegion(mapBind, region, selectedCandidateId, candidates, increment);
-	}
-
-	function toggleRegion(region: HTMLElement) {
-		candidates = _toggleRegion(mapBind, region as HTMLElement, candidates);
-	}
-
-	function editRegion(shortName: string, newValues: { newValue: number }) {
-		const region = mapBind.querySelector(`[short-name="${shortName}"]`);
-		if (region) {
-			candidates = _editRegion(mapBind, region as HTMLElement, candidates, newValues.newValue);
-		}
-	}
-
 	function setupMap(node: HTMLDivElement) {
 		panZoom = applyPanZoom(node);
 		loadRegions(node);
@@ -260,18 +74,7 @@
 <svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp} />
 
 <div class="flex flex-col h-full">
-	<NavBar
-		onHome={openGoHomeModal}
-		onClear={openClearMapModal}
-		onMaps={openMapModal}
-		onChartPosition={toggleChartPosition}
-		onToggleSideBar={toggleSideBar}
-		onSetMode={(newMode) => {
-			mode = newMode;
-		}}
-		{mode}
-	/>
-
+	<NavBar />
 	<div class="flex flex-row h-full">
 		<div
 			class="flex flex-grow basis-9/12"
@@ -279,7 +82,7 @@
 			class:flex-col-reverse={chartbar.position === 'bottom'}
 		>
 			<div class="flex basis-3/12 justify-center items-center">
-				<ChartBar {candidates} />
+				<ChartBar />
 			</div>
 			{#if chartbar.position === 'bottom'}
 				<div class="divider divider-vertical mb-0 mt-0 h-0" />
@@ -300,26 +103,8 @@
 	</div>
 </div>
 
-<ConfirmModal
-	open={confirmModal.open}
-	title={confirmModal.title}
-	message={confirmModal.message}
-	onConfirm={confirmModal.onConfirm}
-	onClose={closeConfirm}
-/>
+<ClearMapModal />
 
-<EditCandidateModal
-	open={editCandidateModal.open}
-	candidate={editCandidateModal.candidate}
-	onConfirm={editCandidateModal.onConfirm}
-	onClose={closeEditCandidateModal}
-/>
+<EditCandidateModal />
 
-<EditStateModal
-	open={editStateModal.open}
-	state={editStateModal.state}
-	onConfirm={editStateModal.onConfirm}
-	onClose={closeEditStateModal}
-/>
-
-<MapModal open={mapModal.open} onClose={closeMapModal} />
+<MapModal />
