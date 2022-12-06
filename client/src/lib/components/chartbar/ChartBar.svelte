@@ -14,9 +14,9 @@
 		const labels: string[] = [];
 
 		$CandidatesStore.forEach((candidate) => {
-			const count = $CandidateCounts.get(candidate.id);
+			let count = $CandidateCounts.get(candidate.id);
 			if (count === undefined) {
-				return;
+				count = 0;
 			}
 			counts.push(count);
 			colors.push(candidate.margins[0].color);
