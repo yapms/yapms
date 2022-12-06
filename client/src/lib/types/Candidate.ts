@@ -1,7 +1,7 @@
-interface Candidate {
-	id: number;
+type Candidate = {
+	id: string;
 	name: string;
-	margins: { color: string; count: number }[];
-}
+	margins: { color: string }[];
+};
 
 export default Candidate;

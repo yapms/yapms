@@ -1,32 +1,43 @@
 <script lang="ts">
-	import type Candidate from '$lib/types/Candidate';
+	import { SelectedCandidateStore } from '$lib/stores/Candidates';
+	import { EditCandidateModalStore } from '$lib/stores/Modals';
+	import { CandidateCounts } from '$lib/stores/Regions';
+
 	import { calculateLumaHEX } from '$lib/utils/luma';
+	import type { Candidate } from '$lib/types/Candidate';
 
 	export let candidate: Candidate;
-	export let selected = false;
-	export let onSelect: (candidate: Candidate) => void;
-	export let onEdit: (candidate: Candidate) => void;
 
-	let total = 0;
-
-	let buttonStyle: string;
+	$: selected = $SelectedCandidateStore.id === candidate.id;
 	$: buttonStyle = selected ? 'btn btn-sm' : 'btn btn-xs';
 
-	$: total = candidate.margins.reduce((acc, margin) => acc + margin.count, 0);
+	function updateSelectedCandidate() {
+		SelectedCandidateStore.set(candidate);
+	}
+
+	function openEditCandidateModal() {
+		EditCandidateModalStore.set({
+			candidate,
+			open: true
+		});
+	}
 </script>
 
 <div class="btn-group p-0.5 pointer-events-auto">
 	<button
-		class={buttonStyle}
+		class={buttonStyle + ' no-animation'}
 		style:background-color={candidate.margins[0].color}
 		style:color={calculateLumaHEX(candidate.margins[0].color) > 0.5 ? 'black' : 'white'}
-		style:transition_in={'0.15s'}
-		style="transition: all 0.15s"
-		on:click={() => onSelect(candidate)}
+		style="transition: all 0.25s"
+		on:click={updateSelectedCandidate}
 	>
-		{candidate.name} - {total}
+		{candidate.name} - {$CandidateCounts.get(candidate.id) ?? 0}
 	</button>
-	<button class={buttonStyle} style="transition: all 0.15s" on:click={() => onEdit(candidate)}
-		>Edit</button
+	<button
+		class={buttonStyle + ' no-animation'}
+		style="transition: all 0.25s"
+		on:click={openEditCandidateModal}
 	>
+		Edit
+	</button>
 </div>

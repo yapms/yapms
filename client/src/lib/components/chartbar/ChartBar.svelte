@@ -1,26 +1,35 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { Chart, registerables } from 'chart.js';
+	import { CandidatesStore, TossupCandidateStore } from '$lib/stores/Candidates';
+	import { CandidateCounts } from '$lib/stores/Regions';
 	import ChartDataLabels from 'chartjs-plugin-datalabels';
-	import type Candidate from '$lib/types/Candidate';
-
-	export let candidates: Candidate[];
 
 	let canvasBind: HTMLCanvasElement;
 	let myChart: Chart;
 
 	$: if (myChart) {
-		const counts = candidates.map((candidate) => {
-			return candidate.margins.reduce((acc, margin) => {
-				return acc + margin.count;
-			}, 0);
+		const counts: number[] = [];
+		const colors: string[] = [];
+		const labels: string[] = [];
+
+		$CandidatesStore.forEach((candidate) => {
+			const count = $CandidateCounts.get(candidate.id);
+			if (count === undefined) {
+				return;
+			}
+			counts.push(count);
+			colors.push(candidate.margins[0].color);
+			labels.push(candidate.name);
 		});
-		const colors = candidates.map((candidate) => {
-			return candidate.margins[0].color;
-		});
-		const labels = candidates.map((candidate) => {
-			return candidate.name;
-		});
+
+		const tossupCount = $CandidateCounts.get($TossupCandidateStore.id);
+		if (tossupCount !== undefined) {
+			counts.push(tossupCount);
+			colors.push($TossupCandidateStore.margins[0].color);
+			labels.push($TossupCandidateStore.name);
+		}
+
 		myChart.data.datasets[0].data = counts;
 		myChart.data.datasets[0].backgroundColor = colors;
 		myChart.data.labels = labels;
@@ -37,19 +46,24 @@
 		}
 		Chart.register(...registerables);
 		Chart.register(ChartDataLabels);
+		// todo: fix this typescript error
 		myChart = new Chart(ctx, {
 			type: 'pie',
 			data: {
-				labels: [],
+				labels: [] as string[],
 				datasets: [
 					{
 						label: '# of votes',
-						data: [],
-						backgroundColor: []
+						data: [] as number[],
+						backgroundColor: [] as string[]
 					}
 				]
 			},
 			options: {
+				animation: {
+					duration: 200,
+					easing: 'linear'
+				},
 				responsive: true,
 				plugins: {
 					legend: {
