@@ -11,6 +11,8 @@
 	import ClearMapModal from '$lib/components/modals/clearmapmodal/ClearMapModal.svelte';
 	import applyPanZoom from './initialize/ApplyPanZoom';
 	import EditRegionModal from '$lib/components/modals/editregionmodal/EditRegionModal.svelte';
+	import { get } from 'svelte/store';
+	import { InteractionStore } from '$lib/stores/Interaction';
 
 	const imports = {
 		usa: () => import('$lib/assets/usa.svg?raw'),
@@ -27,11 +29,32 @@
 		applyPanZoom(node);
 		loadRegions(node);
 	}
+
+	//Array of codes for keys used for functionality.
+	const validKeyCodes = ["KeyF"];
+
+	function handleKeyDown(e: KeyboardEvent) {
+		if (validKeyCodes.indexOf(e.code) !== -1) { //Check if key used for functionality
+			let interactions = get(InteractionStore);
+			interactions.push("KeyF");
+			InteractionStore.set(interactions);
+		}
+	}
+
+	function handleKeyUp(e: KeyboardEvent) {
+		if (validKeyCodes.indexOf(e.code) !== -1) { //Check if key used for functionality
+			let interactions = get(InteractionStore);
+			interactions = interactions.filter(code => code !== e.code); //Remove code for key released
+			InteractionStore.set(interactions);
+		}
+	}
 </script>
 
 <svelte:head>
 	<title>YAPms</title>
 </svelte:head>
+
+<svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp}></svelte:window>
 
 <div class="flex flex-col h-full">
 	<NavBar />
