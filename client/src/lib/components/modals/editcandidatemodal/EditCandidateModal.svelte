@@ -1,9 +1,10 @@
 <script lang="ts">
-	import CandidateBox from '$lib/components/candidatebox/CandidateBox.svelte';
 	import { CandidatesStore } from '$lib/stores/Candidates';
 	import { EditCandidateModalStore } from '$lib/stores/Modals';
 
-	$: name = $EditCandidateModalStore.candidate.name;
+	$: open = $EditCandidateModalStore.open;
+	$: id = open ? $EditCandidateModalStore.candidate.id : '';
+	$: name = open ? $EditCandidateModalStore.candidate.name : '';
 	$: newName = name;
 	$: newColors = $EditCandidateModalStore.candidate.margins.map((margin) => {
 		return margin.color;
@@ -21,23 +22,13 @@
 	}
 
 	function cancel() {
-		EditCandidateModalStore.set({
-			...$EditCandidateModalStore,
-			open: false
-		});
+		$EditCandidateModalStore.open = false;
 	}
 
 	function confirm() {
-		EditCandidateModalStore.set({
-			...$EditCandidateModalStore,
-			open: false
-		});
-		const newCandidates = $CandidatesStore;
-		const candidateIndex = newCandidates.findIndex(
-			(candidate) => candidate.id === $EditCandidateModalStore.candidate.id
-		);
-		newCandidates[candidateIndex] = {
-			...$EditCandidateModalStore.candidate,
+		const candidateIndex = $CandidatesStore.findIndex((candidate) => candidate.id === id);
+		$CandidatesStore[candidateIndex] = {
+			id,
 			name: newName,
 			margins: newColors.map((color) => {
 				return {
@@ -45,11 +36,11 @@
 				};
 			})
 		};
-		CandidatesStore.set(newCandidates);
+		$EditCandidateModalStore.open = false;
 	}
 </script>
 
-<input type="checkbox" class="modal-toggle" checked={$EditCandidateModalStore.open} />
+<input type="checkbox" class="modal-toggle" checked={open} />
 <div class="modal">
 	<div class="modal-box">
 		<h3 class="font-bold text-lg">{name}</h3>

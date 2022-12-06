@@ -1,4 +1,4 @@
-import type { Candidate } from '$lib/types/Candidate';
+import type Candidate from '$lib/types/Candidate';
 import { get, readable, writable } from 'svelte/store';
 
 export const TossupCandidateStore = readable<Candidate>({

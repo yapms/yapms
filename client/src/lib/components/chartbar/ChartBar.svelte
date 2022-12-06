@@ -46,6 +46,7 @@
 		}
 		Chart.register(...registerables);
 		Chart.register(ChartDataLabels);
+		// todo: fix this typescript error
 		myChart = new Chart(ctx, {
 			type: 'pie',
 			data: {
@@ -59,6 +60,10 @@
 				]
 			},
 			options: {
+				animation: {
+					duration: 200,
+					easing: 'linear'
+				},
 				responsive: true,
 				plugins: {
 					legend: {

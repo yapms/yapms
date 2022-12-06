@@ -29,6 +29,7 @@
 	<button class="btn btn-sm"> chart position </button>
 	<button class="btn btn-sm hidden md:inline"> close sidebar </button>
 	<div class="dropdown">
+		<!-- todo: Cleanup these a11y warnings -->
 		<label tabindex="0" class="btn btn-sm">mode: {$ModeStore}</label>
 		<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 mt-4">
 			<li><a on:click={() => setMode('fill')}>Fill</a></li>

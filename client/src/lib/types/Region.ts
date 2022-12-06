@@ -1,6 +1,6 @@
-import type { Candidate } from './Candidate';
+import type Candidate from './Candidate';
 
-export type Region = {
+type Region = {
 	id: string;
 	shortName: string;
 	longName: string;
@@ -13,3 +13,5 @@ export type Region = {
 		text: HTMLElement | null;
 	};
 };
+
+export default Region;

@@ -25,15 +25,19 @@
 
 <div class="btn-group p-0.5 pointer-events-auto">
 	<button
-		class={buttonStyle}
+		class={buttonStyle + ' no-animation'}
 		style:background-color={candidate.margins[0].color}
 		style:color={calculateLumaHEX(candidate.margins[0].color) > 0.5 ? 'black' : 'white'}
-		style="transition: all 0.2s"
+		style="transition: all 0.25s"
 		on:click={updateSelectedCandidate}
 	>
 		{candidate.name} - {$CandidateCounts.get(candidate.id) ?? 0}
 	</button>
-	<button class={buttonStyle} style="transition: all 0.15s" on:click={openEditCandidateModal}>
+	<button
+		class={buttonStyle + ' no-animation'}
+		style="transition: all 0.25s"
+		on:click={openEditCandidateModal}
+	>
 		Edit
 	</button>
 </div>

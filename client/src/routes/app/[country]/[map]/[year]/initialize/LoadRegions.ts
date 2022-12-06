@@ -1,8 +1,9 @@
-import type { Region } from '$lib/types/Region';
 import { get } from 'svelte/store';
 import { ModeStore } from '$lib/stores/Mode';
 import { RegionsStore } from '$lib/stores/Regions';
 import { TossupCandidateStore, SelectedCandidateStore } from '$lib/stores/Candidates';
+import { EditRegionModalStore } from '$lib/stores/Modals';
+import type Region from '$lib/types/Region';
 
 function fillRegion(regionID: string) {
 	const regions = get(RegionsStore);
@@ -24,6 +25,14 @@ function fillRegion(regionID: string) {
 		region.candidates = [newCandidate];
 		RegionsStore.set(regions);
 	}
+}
+
+function editRegion(regionID: string) {
+	const region = get(RegionsStore).find((region) => region.id === regionID);
+	EditRegionModalStore.set({
+		region: region ?? null,
+		open: region === undefined ? false : true
+	});
 }
 
 function loadRegions(node: HTMLDivElement) {
@@ -63,6 +72,9 @@ function loadRegions(node: HTMLDivElement) {
 			switch (currentMode) {
 				case 'fill':
 					fillRegion(newRegion.id);
+					break;
+				case 'edit':
+					editRegion(newRegion.id);
 					break;
 			}
 		};

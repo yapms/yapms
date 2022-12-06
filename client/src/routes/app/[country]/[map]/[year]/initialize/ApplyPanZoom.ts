@@ -1,4 +1,4 @@
-import panzoom from "panzoom";
+import panzoom from 'panzoom';
 
 function applyPanZoom(mapBind: HTMLDivElement) {
 	const svg = mapBind?.querySelector('#testing-map') as HTMLElement;
