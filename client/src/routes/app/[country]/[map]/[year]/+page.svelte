@@ -12,6 +12,7 @@
 	import applyPanZoom from './initialize/ApplyPanZoom';
 	import EditRegionModal from '$lib/components/modals/editregionmodal/EditRegionModal.svelte';
 	import { InteractionStore } from '$lib/stores/Interaction';
+	import AddCandidateModal from '$lib/components/modals/addcandidatemodal/AddCandidateModal.svelte';
 
 	const imports = {
 		usa: () => import('$lib/assets/usa.svg?raw'),
@@ -69,6 +70,8 @@
 <ClearMapModal />
 
 <EditCandidateModal />
+
+<AddCandidateModal />
 
 <EditRegionModal />
 

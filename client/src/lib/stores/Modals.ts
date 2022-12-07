@@ -27,4 +27,8 @@ const EditRegionModalStore = writable<{
 	open: false
 });
 
-export { EditCandidateModalStore, ClearMapModalStore, MapModalStore, EditRegionModalStore };
+const AddCandidateModalStore = writable({
+	open: false
+});
+
+export { EditCandidateModalStore, ClearMapModalStore, MapModalStore, EditRegionModalStore, AddCandidateModalStore };

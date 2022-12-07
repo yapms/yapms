@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ClearMapModalStore, MapModalStore } from '$lib/stores/Modals';
+	import { ClearMapModalStore, MapModalStore, AddCandidateModalStore } from '$lib/stores/Modals';
 	import { ModeStore } from '$lib/stores/Mode';
 	import type { Mode } from '$lib/types/Mode';
 
@@ -17,6 +17,13 @@
 		});
 	}
 
+	function openAddCandidateModal() {
+		AddCandidateModalStore.set({
+			...$AddCandidateModalStore,
+			open: true
+		});
+	}
+
 	function setMode(mode: Mode) {
 		ModeStore.set(mode);
 	}
@@ -26,6 +33,7 @@
 	<button class="btn btn-sm"> home </button>
 	<button class="btn btn-sm" on:click={openClearMapModal}> clear </button>
 	<button class="btn btn-sm" on:click={openMapModal}> maps </button>
+	<button class="btn btn-sm" on:click={openAddCandidateModal}>Add Candidate</button>
 	<button class="btn btn-sm"> chart position </button>
 	<button class="btn btn-sm hidden md:inline"> close sidebar </button>
 	<div class="dropdown">
