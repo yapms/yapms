@@ -11,6 +11,7 @@
 	import ClearMapModal from '$lib/components/modals/clearmapmodal/ClearMapModal.svelte';
 	import applyPanZoom from './initialize/ApplyPanZoom';
 	import EditRegionModal from '$lib/components/modals/editregionmodal/EditRegionModal.svelte';
+	import { InteractionStore } from '$lib/stores/Interaction';
 
 	const imports = {
 		usa: () => import('$lib/assets/usa.svg?raw'),
@@ -27,11 +28,22 @@
 		applyPanZoom(node);
 		loadRegions(node);
 	}
+
+	function handleKeyDown(e: KeyboardEvent) {
+		$InteractionStore = $InteractionStore.set(e.code, true); //Set the key code to "true" in the map
+	}
+
+	function handleKeyUp(e: KeyboardEvent) {
+  		$InteractionStore.delete(e.code); //Remove the key code from the map.. map.delete() returns a boolean??
+		$InteractionStore = $InteractionStore //Tell the store it updated
+	}
 </script>
 
 <svelte:head>
 	<title>YAPms</title>
 </svelte:head>
+
+<svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp}></svelte:window>
 
 <div class="flex flex-col h-full">
 	<NavBar />

@@ -4,8 +4,9 @@ import { RegionsStore } from '$lib/stores/Regions';
 import { TossupCandidateStore, SelectedCandidateStore } from '$lib/stores/Candidates';
 import { EditRegionModalStore } from '$lib/stores/Modals';
 import type Region from '$lib/types/Region';
+import { InteractionStore } from '$lib/stores/Interaction';
 
-function fillRegion(regionID: string) {
+function fillRegion(regionID: string, increment?: boolean) {
 	const regions = get(RegionsStore);
 	const region = regions.find((region) => region.id === regionID);
 	if (region) {
@@ -16,7 +17,7 @@ function fillRegion(regionID: string) {
 			count: region.value,
 			margin: 0
 		};
-		if (currentCandidate.candidate.id === selectedCandidate.id) {
+		if (currentCandidate.candidate.id === selectedCandidate.id && increment === true) {
 			newCandidate.margin =
 				currentCandidate.margin + 1 >= selectedCandidate.margins.length
 					? 0
@@ -78,6 +79,15 @@ function loadRegions(node: HTMLDivElement) {
 					break;
 			}
 		};
+
+		childHTML.onmousemove = () => {
+			const currentMode = get(ModeStore);
+			const currentInteractions = get(InteractionStore);
+
+			if(currentMode === 'fill' && currentInteractions.has("KeyF") === true) {
+				fillRegion(newRegion.id, false);
+			}
+		}
 
 		newRegion.nodes.region.style.fill = tossupCandidate.margins[0].color;
 		if (newRegion.nodes.button) {
