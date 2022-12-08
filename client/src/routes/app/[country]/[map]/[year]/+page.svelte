@@ -11,7 +11,6 @@
 	import ClearMapModal from '$lib/components/modals/clearmapmodal/ClearMapModal.svelte';
 	import applyPanZoom from './initialize/ApplyPanZoom';
 	import EditRegionModal from '$lib/components/modals/editregionmodal/EditRegionModal.svelte';
-	import { get } from 'svelte/store';
 	import { InteractionStore } from '$lib/stores/Interaction';
 
 	const imports = {
@@ -30,23 +29,13 @@
 		loadRegions(node);
 	}
 
-	//Array of codes for keys used for functionality.
-	const validKeyCodes = ["KeyF"];
-
 	function handleKeyDown(e: KeyboardEvent) {
-		if (validKeyCodes.indexOf(e.code) !== -1) { //Check if key used for functionality
-			let interactions = get(InteractionStore);
-			interactions.push("KeyF");
-			InteractionStore.set(interactions);
-		}
+		$InteractionStore = $InteractionStore.set(e.code, true); //Set the key code to "true" in the map
 	}
 
 	function handleKeyUp(e: KeyboardEvent) {
-		if (validKeyCodes.indexOf(e.code) !== -1) { //Check if key used for functionality
-			let interactions = get(InteractionStore);
-			interactions = interactions.filter(code => code !== e.code); //Remove code for key released
-			InteractionStore.set(interactions);
-		}
+  		$InteractionStore.delete(e.code); //Remove the key code from the map.. map.delete() returns a boolean??
+		$InteractionStore = $InteractionStore //Tell the store it updated
 	}
 </script>
 

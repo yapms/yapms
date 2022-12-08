@@ -84,7 +84,7 @@ function loadRegions(node: HTMLDivElement) {
 			const currentMode = get(ModeStore);
 			const currentInteractions = get(InteractionStore);
 
-			if(currentMode === 'fill' && currentInteractions.indexOf("KeyF") !== -1) {
+			if(currentMode === 'fill' && currentInteractions.has("KeyF") === true) {
 				fillRegion(newRegion.id, false);
 			}
 		}
