@@ -6,11 +6,11 @@ function hexToRGB(hex: string) {
 	return { r, g, b };
 }
 
-function calculateLumaRGB(r: number, g: number, b: number) {
+function calculateLumaRGB(r: number, g: number, b: number): number {
 	return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
 }
 
-function calculateLumaHEX(hex: string) {
+function calculateLumaHEX(hex: string): number {
 	const { r, g, b } = hexToRGB(hex);
 	const result = calculateLumaRGB(r, g, b);
 	return result;

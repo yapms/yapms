@@ -6,7 +6,7 @@ type Region = {
 	longName: string;
 	value: number;
 	disabled: boolean;
-	candidates: { candidate: Candidate; count: number; margin: number }[];
+	candidates: Array<{ candidate: Candidate; count: number; margin: number }>;
 	nodes: {
 		region: HTMLElement;
 		button: HTMLElement | null;
