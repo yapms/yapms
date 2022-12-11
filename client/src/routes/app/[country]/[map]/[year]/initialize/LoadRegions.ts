@@ -5,6 +5,7 @@ import { TossupCandidateStore, SelectedCandidateStore } from '$lib/stores/Candid
 import { EditRegionModalStore } from '$lib/stores/Modals';
 import type Region from '$lib/types/Region';
 import { InteractionStore } from '$lib/stores/Interaction';
+import { text } from 'svelte/internal';
 
 function fillRegion(regionID: string, increment?: boolean) {
 	const regions = get(RegionsStore);
@@ -42,13 +43,17 @@ function loadRegions(node: HTMLDivElement): void {
 	const buttons = node.querySelector('.region-buttons');
 	const texts = node.querySelector('.region-texts');
 	const tossupCandidate = get(TossupCandidateStore);
+
+	// set cursor & pointer styles
+	(regions as HTMLElement).style.cursor = 'pointer';
+	(buttons as HTMLElement).style.cursor = 'pointer';
+	(texts as HTMLElement).style.pointerEvents = 'none';
 	
 	regions?.childNodes.forEach((childNode) => {
 		const childHTML = childNode as HTMLElement;
 		if (childHTML.getAttribute === undefined) {
 			return;
 		}
-		childHTML.style.cursor = 'pointer';
 
 		const value = parseInt(childHTML.getAttribute('value') || '0', 10);
 		const newRegion: Region = {
@@ -95,16 +100,18 @@ function loadRegions(node: HTMLDivElement): void {
 		}
 
 		newRegion.nodes.region.style.fill = tossupCandidate.margins[0].color;
+
 		if (newRegion.nodes.button) {
 			newRegion.nodes.button.style.fill = tossupCandidate.margins[0].color;
 		}
+
 		if (newRegion.nodes.text) {
-			newRegion.nodes.text.style.pointerEvents = 'none';
 			const bottom = newRegion.nodes.text.querySelector('.bottom');
 			if (bottom) {
 				bottom.textContent = newRegion.value.toString();
 			}
 		}
+
 		regionsForStore.push(newRegion);
 	});
 
