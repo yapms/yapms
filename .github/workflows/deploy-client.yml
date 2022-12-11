@@ -1,8 +1,9 @@
 name: Deploy Client
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - github-workflow
 
 jobs:
   deploy:
