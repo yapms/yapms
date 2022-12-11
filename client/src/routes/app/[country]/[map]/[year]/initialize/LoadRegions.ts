@@ -17,7 +17,7 @@ function fillRegion(regionID: string, increment?: boolean) {
 			count: region.value,
 			margin: 0
 		};
-		if (currentCandidate.candidate.id === selectedCandidate.id && increment === true) {
+		if (currentCandidate.candidate.id === selectedCandidate.id && increment === undefined) {
 			newCandidate.margin =
 				currentCandidate.margin + 1 >= selectedCandidate.margins.length
 					? 0
