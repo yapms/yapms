@@ -42,6 +42,7 @@ function loadRegions(node: HTMLDivElement): void {
 	const buttons = node.querySelector('.region-buttons');
 	const texts = node.querySelector('.region-texts');
 	const tossupCandidate = get(TossupCandidateStore);
+	
 	regions?.childNodes.forEach((childNode) => {
 		const childHTML = childNode as HTMLElement;
 		if (childHTML.getAttribute === undefined) {
@@ -64,7 +65,7 @@ function loadRegions(node: HTMLDivElement): void {
 			}
 		};
 
-		childHTML.onclick = () => {
+		newRegion.nodes.region.onclick = () => {
 			const currentMode = get(ModeStore);
 			switch (currentMode) {
 				case 'fill':
@@ -79,7 +80,7 @@ function loadRegions(node: HTMLDivElement): void {
 			}
 		};
 
-		childHTML.onmousemove = () => {
+		newRegion.nodes.region.onmousemove = () => {
 			const currentMode = get(ModeStore);
 			const currentInteractions = get(InteractionStore);
 
@@ -87,6 +88,11 @@ function loadRegions(node: HTMLDivElement): void {
 				fillRegion(newRegion.id, false);
 			}
 		};
+
+		if(newRegion.nodes.button !== null) {
+			newRegion.nodes.button.onclick = newRegion.nodes.region.onclick;
+			newRegion.nodes.button.onmousemove = newRegion.nodes.region.onmousemove;
+		}
 
 		newRegion.nodes.region.style.fill = tossupCandidate.margins[0].color;
 		if (newRegion.nodes.button) {
