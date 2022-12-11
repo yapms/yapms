@@ -12,7 +12,7 @@
 
 		return {
 			duration: options.duration,
-			css: (t, u) => `margin-right: ${u * width * -1}px;`
+			css: (_t, u) => `margin-right: ${u * width * -1}px;`
 		};
 	}
 </script>

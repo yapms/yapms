@@ -32,11 +32,11 @@ function editRegion(regionID: string) {
 	const region = get(RegionsStore).find((region) => region.id === regionID);
 	EditRegionModalStore.set({
 		region: region ?? null,
-		open: region === undefined ? false : true
+		open: region !== undefined
 	});
 }
 
-function loadRegions(node: HTMLDivElement) {
+function loadRegions(node: HTMLDivElement): void {
 	const regionsForStore: Region[] = [];
 	const regions = node.querySelector('.regions');
 	const buttons = node.querySelector('.region-buttons');
@@ -49,7 +49,7 @@ function loadRegions(node: HTMLDivElement) {
 		}
 		childHTML.style.cursor = 'pointer';
 
-		const value = parseInt(childHTML.getAttribute('value') || '0');
+		const value = parseInt(childHTML.getAttribute('value') || '0', 10);
 		const newRegion: Region = {
 			id: childHTML.getAttribute('class') ?? '',
 			shortName: childHTML.getAttribute('short-name') ?? '',
@@ -59,12 +59,8 @@ function loadRegions(node: HTMLDivElement) {
 			candidates: [{ candidate: tossupCandidate, count: value, margin: 0 }],
 			nodes: {
 				region: childHTML,
-				button: buttons?.querySelector(
-					`[for="${childHTML.getAttribute('class') ?? ''}"]`
-				) as HTMLElement,
-				text: texts?.querySelector(
-					`[for="${childHTML.getAttribute('class') ?? ''}"]`
-				) as HTMLElement
+				button: buttons?.querySelector(`[for="${childHTML.getAttribute('class') ?? ''}"]`) ?? null,
+				text: texts?.querySelector(`[for="${childHTML.getAttribute('class') ?? ''}"]`) ?? null
 			}
 		};
 
@@ -77,6 +73,9 @@ function loadRegions(node: HTMLDivElement) {
 				case 'edit':
 					editRegion(newRegion.id);
 					break;
+				case 'disable': {
+					throw new Error('Not implemented yet: "disable" case');
+				}
 			}
 		};
 
@@ -84,10 +83,10 @@ function loadRegions(node: HTMLDivElement) {
 			const currentMode = get(ModeStore);
 			const currentInteractions = get(InteractionStore);
 
-			if(currentMode === 'fill' && currentInteractions.has("KeyF") === true) {
+			if (currentMode === 'fill' && currentInteractions.has('KeyF')) {
 				fillRegion(newRegion.id, false);
 			}
-		}
+		};
 
 		newRegion.nodes.region.style.fill = tossupCandidate.margins[0].color;
 		if (newRegion.nodes.button) {

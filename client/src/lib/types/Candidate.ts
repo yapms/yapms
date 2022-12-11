@@ -1,7 +1,7 @@
 type Candidate = {
 	id: string;
 	name: string;
-	margins: { color: string }[];
+	margins: Array<{ color: string }>;
 };
 
 export default Candidate;

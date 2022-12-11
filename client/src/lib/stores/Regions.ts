@@ -28,9 +28,9 @@ RegionsStore.subscribe((regions) => {
 			region.candidates[0].count += region.value - countSum;
 		} else if (countSum > region.value) {
 			while (countSum > region.value) {
-				for (let i = 0; i < region.candidates.length; i++) {
-					if (region.candidates[i].count > 0) {
-						region.candidates[i].count--;
+				for (const candidate of region.candidates) {
+					if (candidate.count > 0) {
+						candidate.count--;
 						countSum--;
 					}
 					if (countSum <= region.value) {
@@ -63,12 +63,9 @@ export const CandidateCounts = derived(RegionsStore, ($RegionStore) => {
 	const candidates = new Map<string, number>();
 	$RegionStore.forEach((region) => {
 		region.candidates.forEach((candidate) => {
-			if (candidates.has(candidate.candidate.id)) {
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				candidates.set(
-					candidate.candidate.id,
-					candidates.get(candidate.candidate.id)! + candidate.count
-				);
+			const currentCount = candidates.get(candidate.candidate.id);
+			if (currentCount !== undefined) {
+				candidates.set(candidate.candidate.id, currentCount + candidate.count);
 			} else {
 				candidates.set(candidate.candidate.id, candidate.count);
 			}

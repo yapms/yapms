@@ -6,7 +6,7 @@
 	import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 	let canvasBind: HTMLCanvasElement;
-	let myChart: Chart;
+	let myChart: Chart<'pie'>;
 
 	$: if (myChart) {
 		const counts: number[] = [];

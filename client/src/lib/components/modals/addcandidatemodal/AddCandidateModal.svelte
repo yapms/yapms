@@ -33,7 +33,9 @@
 			{
 				id: crypto.randomUUID(),
 				name: newName,
-				margins: newColors.map((color) => { return { color } })
+				margins: newColors.map((color) => {
+					return { color };
+				})
 			}
 		]);
 		AddCandidateModalStore.set({
@@ -49,49 +51,49 @@
 		<h3 class="font-bold text-lg">Add Candidate</h3>
 
 		<div class="flex">
-		<div class="form-control w-full max-w-xs">
-			<!-- svelte-ignore a11y-label-has-associated-control -->
-			<label class="label">
-				<span class="label-text">Name</span>
-			</label>
-			<input type="text" class="input input-bordered w-full max-w-xs" bind:value={newName} />
-		</div>
-
-		<div class="divider divider-horizontal" />
-
-		<div class="form-control w-full max-w-xs flex flex-col gap-3">
-			<!-- svelte-ignore a11y-label-has-associated-control -->
-			<label class="label">
-				<span class="label-text">Colors</span>
-			</label>
-
-			<div class="flex flex-row flex-wrap gap-2">
-			{#each newColors as color, index}
-				<input
-					type="color"
-					value={color}
-					on:change={(change) => {
-						newColors[index] = change.currentTarget.value;
-					}}
-				/>
-			{/each}
+			<div class="form-control w-full max-w-xs">
+				<!-- svelte-ignore a11y-label-has-associated-control -->
+				<label class="label">
+					<span class="label-text">Name</span>
+				</label>
+				<input type="text" class="input input-bordered w-full max-w-xs" bind:value={newName} />
 			</div>
 
-			<div class="btn-group btn-group-horizontal">
-				<input
-					type="button"
-					class="btn btn-error btn-sm grow"
-					on:click={removeColor}
-					value="Remove"
-				/>
-				<input
-					type="button"
-					class="btn btn-primary btn-sm grow"
-					on:click={addColor}
-					value="Add"
-				/>
+			<div class="divider divider-horizontal" />
+
+			<div class="form-control w-full max-w-xs flex flex-col gap-3">
+				<!-- svelte-ignore a11y-label-has-associated-control -->
+				<label class="label">
+					<span class="label-text">Colors</span>
+				</label>
+
+				<div class="flex flex-row flex-wrap gap-2">
+					{#each newColors as color, index}
+						<input
+							type="color"
+							value={color}
+							on:change={(change) => {
+								newColors[index] = change.currentTarget.value;
+							}}
+						/>
+					{/each}
+				</div>
+
+				<div class="btn-group btn-group-horizontal">
+					<input
+						type="button"
+						class="btn btn-error btn-sm grow"
+						on:click={removeColor}
+						value="Remove"
+					/>
+					<input
+						type="button"
+						class="btn btn-primary btn-sm grow"
+						on:click={addColor}
+						value="Add"
+					/>
+				</div>
 			</div>
-		</div>
 		</div>
 
 		<div class="modal-action">

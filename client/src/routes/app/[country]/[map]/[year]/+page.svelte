@@ -19,7 +19,7 @@
 		nz: () => import('$lib/assets/nz.svg?raw')
 	};
 
-	let currentMap = 'usa' as keyof typeof imports;
+	const currentMap = 'usa' as keyof typeof imports;
 
 	onMount(() => {
 		themeChange(false);
@@ -35,8 +35,8 @@
 	}
 
 	function handleKeyUp(e: KeyboardEvent) {
-  		$InteractionStore.delete(e.code); //Remove the key code from the map.. map.delete() returns a boolean??
-		$InteractionStore = $InteractionStore //Tell the store it updated
+		$InteractionStore.delete(e.code); //Remove the key code from the map.. map.delete() returns a boolean??
+		$InteractionStore = $InteractionStore; //Tell the store it updated
 	}
 </script>
 
@@ -44,7 +44,7 @@
 	<title>YAPms</title>
 </svelte:head>
 
-<svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp}></svelte:window>
+<svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp} />
 
 <div class="flex flex-col h-full">
 	<NavBar />
