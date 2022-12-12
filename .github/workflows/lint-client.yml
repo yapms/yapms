@@ -1,9 +1,9 @@
 name: Lint Client
 
 on:
-  push:
+  pull_request:
     branches:
-      - eslint-testing
+      - main
 
 jobs:
   lint:
