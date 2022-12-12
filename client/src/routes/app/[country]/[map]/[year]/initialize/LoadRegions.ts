@@ -6,7 +6,7 @@ import { EditRegionModalStore } from '$lib/stores/Modals';
 import type Region from '$lib/types/Region';
 import { InteractionStore } from '$lib/stores/Interaction';
 
-function fillRegion(regionID: string, increment?: boolean) {
+function fillRegion(regionID: string, increment: boolean) {
 	const regions = get(RegionsStore);
 	const region = regions.find((region) => region.id === regionID);
 	if (region) {
@@ -17,7 +17,7 @@ function fillRegion(regionID: string, increment?: boolean) {
 			count: region.value,
 			margin: 0
 		};
-		if (currentCandidate.candidate.id === selectedCandidate.id && increment === undefined) {
+		if (currentCandidate.candidate.id === selectedCandidate.id && increment === true) {
 			newCandidate.margin =
 				currentCandidate.margin + 1 >= selectedCandidate.margins.length
 					? 0
@@ -68,7 +68,7 @@ function loadRegions(node: HTMLDivElement): void {
 			const currentMode = get(ModeStore);
 			switch (currentMode) {
 				case 'fill':
-					fillRegion(newRegion.id);
+					fillRegion(newRegion.id, true);
 					break;
 				case 'edit':
 					editRegion(newRegion.id);
