@@ -4,8 +4,8 @@
 </script>
 
 <div class="flex flex-row flex-wrap justify-center relative pointer-events-none h-0 z-10">
-	<CandidateBox candidate={$TossupCandidateStore} editable={false}/>
+	<CandidateBox candidate={$TossupCandidateStore} editable={false} />
 	{#each $CandidatesStore as candidate}
-		<CandidateBox {candidate} editable={true}/>
+		<CandidateBox {candidate} editable={true} />
 	{/each}
 </div>

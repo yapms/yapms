@@ -48,7 +48,7 @@ function loadRegions(node: HTMLDivElement): void {
 	(regions as HTMLElement).style.cursor = 'pointer';
 	(buttons as HTMLElement).style.cursor = 'pointer';
 	(texts as HTMLElement).style.pointerEvents = 'none';
-	
+
 	regions?.childNodes.forEach((childNode) => {
 		const childHTML = childNode as HTMLElement;
 		if (childHTML.getAttribute === undefined) {
@@ -94,7 +94,7 @@ function loadRegions(node: HTMLDivElement): void {
 			}
 		};
 
-		if(newRegion.nodes.button !== null) {
+		if (newRegion.nodes.button !== null) {
 			newRegion.nodes.button.onclick = newRegion.nodes.region.onclick;
 			newRegion.nodes.button.onmousemove = newRegion.nodes.region.onmousemove;
 		}
