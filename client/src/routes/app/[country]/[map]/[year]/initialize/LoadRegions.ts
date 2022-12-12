@@ -7,7 +7,7 @@ import type Region from '$lib/types/Region';
 import { InteractionStore } from '$lib/stores/Interaction';
 import { text } from 'svelte/internal';
 
-function fillRegion(regionID: string, increment?: boolean) {
+function fillRegion(regionID: string, increment: boolean) {
 	const regions = get(RegionsStore);
 	const region = regions.find((region) => region.id === regionID);
 	if (region) {
@@ -74,7 +74,7 @@ function loadRegions(node: HTMLDivElement): void {
 			const currentMode = get(ModeStore);
 			switch (currentMode) {
 				case 'fill':
-					fillRegion(newRegion.id);
+					fillRegion(newRegion.id, true);
 					break;
 				case 'edit':
 					editRegion(newRegion.id);

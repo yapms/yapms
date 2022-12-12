@@ -1,6 +1,8 @@
 <script lang="ts">
-	import { CandidatesStore } from '$lib/stores/Candidates';
+	import { CandidatesStore, SelectedCandidateStore } from '$lib/stores/Candidates';
+	import { RegionsStore } from '$lib/stores/Regions';
 	import { EditCandidateModalStore } from '$lib/stores/Modals';
+	import { get } from 'svelte/store';
 
 	$: open = $EditCandidateModalStore.open;
 	$: id = open ? $EditCandidateModalStore.candidate.id : '';
@@ -37,6 +39,18 @@
 			})
 		};
 		$EditCandidateModalStore.open = false;
+		//Update selected candidate object
+		if ($SelectedCandidateStore.id === id) {
+			$SelectedCandidateStore = $CandidatesStore[candidateIndex];
+		}
+		//Update candidate object in region store
+		const newRegions = get(RegionsStore);
+		newRegions.forEach((region) => {
+			if (region.candidates[0].candidate.id === id) { //Limit it to objects where candidate object present
+				region.candidates[0].candidate = $CandidatesStore[candidateIndex];
+			}
+		});
+		$RegionsStore = newRegions;
 	}
 </script>
 

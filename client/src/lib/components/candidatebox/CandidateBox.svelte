@@ -7,6 +7,7 @@
 	import type Candidate from '$lib/types/Candidate';
 
 	export let candidate: Candidate;
+	export let editable: boolean;
 
 	$: selected = $SelectedCandidateStore.id === candidate.id;
 	$: buttonStyle = selected ? 'btn btn-sm' : 'btn btn-xs';
@@ -35,6 +36,7 @@
 	</button>
 	<button
 		class={buttonStyle + ' no-animation'}
+		disabled={!editable}
 		style="transition: all 0.25s"
 		on:click={openEditCandidateModal}
 	>
