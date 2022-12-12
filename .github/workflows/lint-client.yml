@@ -1,0 +1,29 @@
+name: Lint Client
+
+on:
+  push:
+    branches:
+      - eslint-testing
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: install dependencies
+        run: |
+          cd client
+          npm install ci
+
+      - name: lint
+        run: |
+          cd client
+          npm run lint
