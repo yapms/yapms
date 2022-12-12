@@ -5,7 +5,6 @@ import { TossupCandidateStore, SelectedCandidateStore } from '$lib/stores/Candid
 import { EditRegionModalStore } from '$lib/stores/Modals';
 import type Region from '$lib/types/Region';
 import { InteractionStore } from '$lib/stores/Interaction';
-import { text } from 'svelte/internal';
 
 function fillRegion(regionID: string, increment: boolean) {
 	const regions = get(RegionsStore);
@@ -18,7 +17,7 @@ function fillRegion(regionID: string, increment: boolean) {
 			count: region.value,
 			margin: 0
 		};
-		if (currentCandidate.candidate.id === selectedCandidate.id && increment === true) {
+		if (currentCandidate.candidate.id === selectedCandidate.id && increment) {
 			newCandidate.margin =
 				currentCandidate.margin + 1 >= selectedCandidate.margins.length
 					? 0
