@@ -12,6 +12,7 @@
 	import applyPanZoom from './initialize/ApplyPanZoom';
 	import EditRegionModal from '$lib/components/modals/editregionmodal/EditRegionModal.svelte';
 	import { InteractionStore } from '$lib/stores/Interaction';
+	import { ChartPositionStore } from '$lib/stores/Chart';
 	import AddCandidateModal from '$lib/components/modals/addcandidatemodal/AddCandidateModal.svelte';
 
 	const imports = {
@@ -48,13 +49,28 @@
 
 <div class="flex flex-col h-full">
 	<NavBar />
-	<div class="flex flex-row h-full">
-		<div class="flex flex-grow flex-row basis-9/12">
-			<div class="flex basis-3/12 justify-center items-center">
+	<div class="flex flex-row h-full overflow-hidden">
+		<div class="flex flex-grow basis-9/12"
+			class:flex-col-reverse={$ChartPositionStore === 'bottom'}
+			class:flex-row={$ChartPositionStore === 'left'}
+		>
+
+			<div class="flex justify-center items-center ml-3 mr-3 mt-3 mb-3">
 				<ChartBar />
 			</div>
-			<div class="divider divider-horizontal ml-0 mr-0 w-0" />
-			<div class="basis-9/12 overflow-hidden">
+
+			<div class="divider"
+				class:divider-vertical={$ChartPositionStore === 'bottom'}
+				class:h-0={$ChartPositionStore === 'bottom'}
+				class:mb-0={$ChartPositionStore === 'bottom'}
+				class:mt-0={$ChartPositionStore === 'bottom'}
+				class:divider-horizontal={$ChartPositionStore === 'left'}
+				class:w-0={$ChartPositionStore === 'left'}
+				class:mr-0={$ChartPositionStore === 'left'}
+				class:ml-0={$ChartPositionStore === 'left'}
+			/>
+
+			<div class="overflow-hidden w-full h-full">
 				<CandidateBoxContainer />
 				{#await imports[currentMap]() then module}
 					<div use:setupMap class="overflow-hidden h-full">
@@ -62,6 +78,7 @@
 					</div>
 				{/await}
 			</div>
+
 		</div>
 		<SideBar />
 	</div>

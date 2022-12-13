@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { ChartPositionStore } from '$lib/stores/Chart';
 	import { ClearMapModalStore, MapModalStore, AddCandidateModalStore } from '$lib/stores/Modals';
 	import { ModeStore } from '$lib/stores/Mode';
 	import type { Mode } from '$lib/types/Mode';
@@ -27,6 +28,13 @@
 	function setMode(mode: Mode) {
 		ModeStore.set(mode);
 	}
+
+	function toggleChartPosition() {
+		ChartPositionStore.update((chartPosition) => {
+			return chartPosition === 'left' ? 'bottom' : 'left';
+		});
+	}
+
 </script>
 
 <div class="navbar bg-base-200 gap-3">
@@ -34,7 +42,7 @@
 	<button class="btn btn-sm" on:click={openClearMapModal}> clear </button>
 	<button class="btn btn-sm" on:click={openMapModal}> maps </button>
 	<button class="btn btn-sm" on:click={openAddCandidateModal}>Add Candidate</button>
-	<button class="btn btn-sm"> chart position </button>
+	<button class="btn btn-sm" on:click={toggleChartPosition}> chart position </button>
 	<button class="btn btn-sm hidden md:inline"> close sidebar </button>
 	<div class="dropdown">
 		<!-- svelte-ignore a11y-label-has-associated-control -->
