@@ -5,7 +5,6 @@ import { TossupCandidateStore, SelectedCandidateStore } from '$lib/stores/Candid
 import { EditRegionModalStore } from '$lib/stores/Modals';
 import type Region from '$lib/types/Region';
 import { InteractionStore } from '$lib/stores/Interaction';
-import { text } from 'svelte/internal';
 
 function fillRegion(regionID: string, increment: boolean) {
 	const regions = get(RegionsStore);
@@ -18,7 +17,7 @@ function fillRegion(regionID: string, increment: boolean) {
 			count: region.value,
 			margin: 0
 		};
-		if (currentCandidate.candidate.id === selectedCandidate.id && increment === true) {
+		if (currentCandidate.candidate.id === selectedCandidate.id && increment) {
 			newCandidate.margin =
 				currentCandidate.margin + 1 >= selectedCandidate.margins.length
 					? 0
@@ -48,7 +47,7 @@ function loadRegions(node: HTMLDivElement): void {
 	(regions as HTMLElement).style.cursor = 'pointer';
 	(buttons as HTMLElement).style.cursor = 'pointer';
 	(texts as HTMLElement).style.pointerEvents = 'none';
-	
+
 	regions?.childNodes.forEach((childNode) => {
 		const childHTML = childNode as HTMLElement;
 		if (childHTML.getAttribute === undefined) {
@@ -94,7 +93,7 @@ function loadRegions(node: HTMLDivElement): void {
 			}
 		};
 
-		if(newRegion.nodes.button !== null) {
+		if (newRegion.nodes.button !== null) {
 			newRegion.nodes.button.onclick = newRegion.nodes.region.onclick;
 			newRegion.nodes.button.onmousemove = newRegion.nodes.region.onmousemove;
 		}

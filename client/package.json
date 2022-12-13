@@ -10,6 +10,7 @@
 		"start": "node ./build/index.js",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint-no-warnings": "prettier --check . && eslint --max-warnings 0 .",
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write ."
 	},
@@ -21,7 +22,7 @@
 		"@sveltejs/kit": "next",
 		"@typescript-eslint/eslint-plugin": "^5.27.0",
 		"@typescript-eslint/parser": "^5.27.0",
-		"@yapms/eslint-config": "^0.0.7",
+		"@yapms/eslint-config": "^0.0.9",
 		"autoprefixer": "^10.4.11",
 		"chart.js": "^3.9.1",
 		"chartjs-plugin-datalabels": "^2.1.0",
