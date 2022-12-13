@@ -50,16 +50,17 @@
 <div class="flex flex-col h-full">
 	<NavBar />
 	<div class="flex flex-row h-full overflow-hidden">
-		<div class="flex flex-grow basis-9/12"
+		<div
+			class="flex flex-grow basis-9/12"
 			class:flex-col-reverse={$ChartPositionStore === 'bottom'}
 			class:flex-row={$ChartPositionStore === 'left'}
 		>
-
 			<div class="flex justify-center items-center ml-3 mr-3 mt-3 mb-3">
 				<ChartBar />
 			</div>
 
-			<div class="divider"
+			<div
+				class="divider"
 				class:divider-vertical={$ChartPositionStore === 'bottom'}
 				class:h-0={$ChartPositionStore === 'bottom'}
 				class:mb-0={$ChartPositionStore === 'bottom'}
@@ -78,7 +79,6 @@
 					</div>
 				{/await}
 			</div>
-
 		</div>
 		<SideBar />
 	</div>

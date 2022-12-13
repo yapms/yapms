@@ -34,7 +34,6 @@
 			return chartPosition === 'left' ? 'bottom' : 'left';
 		});
 	}
-
 </script>
 
 <div class="navbar bg-base-200 gap-3">
