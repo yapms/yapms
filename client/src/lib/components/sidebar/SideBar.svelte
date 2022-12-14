@@ -6,6 +6,8 @@
 
 	import type { TransitionConfig } from 'svelte/transition';
 
+	import titles from '$lib/assets/other/Titles.json';
+
 	function slideX(node: Element, options: { duration: number }): TransitionConfig {
 		const style = getComputedStyle(node);
 		const width = parseFloat(style.width);
@@ -14,6 +16,18 @@
 			duration: options.duration,
 			css: (_t, u) => `margin-right: ${u * width * -1}px;`
 		};
+	}
+
+	/**
+	* Returns the title for this page as defined by page path in lib/assets/other/Titles.json.
+	* @return {string} Title of the page in Titles.json if defined, "YAPms" if title not defined.
+	*/
+	function getTitle(): string {
+		if (titles[$page.url.pathname as keyof object] !== undefined) {
+			return titles[$page.url.pathname as keyof object].title;
+		} else {
+			return "YAPms"; //If no title in Titles.json for this page, "YAPms" is the title!
+		}
 	}
 </script>
 
@@ -29,6 +43,6 @@
 			Twitter
 		</button>
 	</div>
-	<h1 class="text-xl text-center font-bold">{$page.url.pathname}</h1>
+	<h1 class="text-xl text-center font-bold">{getTitle()}</h1>
 	<div class="divider">Shortcuts</div>
 </div>
