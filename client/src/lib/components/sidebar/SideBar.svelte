@@ -19,14 +19,14 @@
 	}
 
 	/**
-	* Returns the title for this page as defined by page path in lib/assets/other/Titles.json.
-	* @return {string} Title of the page in Titles.json if defined, "YAPms" if title not defined.
-	*/
+	 * Returns the title for this page as defined by page path in lib/assets/other/Titles.json.
+	 * @return {string} Title of the page in Titles.json if defined, "YAPms" if title not defined.
+	 */
 	function getTitle(): string {
 		if (titles[$page.url.pathname as keyof object] !== undefined) {
 			return titles[$page.url.pathname as keyof object].title;
 		} else {
-			return "YAPms"; //If no title in Titles.json for this page, "YAPms" is the title!
+			return 'YAPms'; //If no title in Titles.json for this page, "YAPms" is the title!
 		}
 	}
 </script>
