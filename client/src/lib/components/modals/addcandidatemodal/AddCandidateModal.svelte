@@ -1,9 +1,9 @@
-<script type="ts">
+<script lang="ts">
 	import { CandidatesStore } from '$lib/stores/Candidates';
 	import { AddCandidateModalStore } from '$lib/stores/Modals';
 
 	let newName = '';
-	let newColors: string[] = ['#000000'];
+	let newColors = ['#000000'];
 
 	function initialize() {
 		newName = '';
