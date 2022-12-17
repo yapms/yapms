@@ -1,6 +1,7 @@
 import type Region from '$lib/types/Region';
 import { calculateLumaHEX } from '$lib/utils/luma';
-import { derived, writable } from 'svelte/store';
+import { derived, writable, get } from 'svelte/store';
+import { TossupCandidateStore } from './Candidates';
 
 /**
  * Stores the state of all regions.
@@ -13,7 +14,7 @@ export const RegionsStore = writable<Region[]>([]);
 */
 RegionsStore.subscribe((regions) => {
 	regions.forEach((region) => {
-		const winner = region.candidates.reduce(
+		let winner = region.candidates.reduce(
 			(prev, current) => (prev.count > current.count ? prev : current),
 			region.candidates[0]
 		);
@@ -39,6 +40,11 @@ RegionsStore.subscribe((regions) => {
 				}
 			}
 		}
+		if (region.disabled) {
+			//This is here in order to force a unified style for disabled states.
+			winner = { candidate: get(TossupCandidateStore), count: 0, margin: 0 };
+		}
+
 		region.nodes.region.style.fill = winner.candidate.margins[marginIndex]?.color;
 		if (region.nodes.button)
 			region.nodes.button.style.fill = winner.candidate.margins[marginIndex]?.color;

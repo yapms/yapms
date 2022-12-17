@@ -9,7 +9,7 @@ import { InteractionStore } from '$lib/stores/Interaction';
 function fillRegion(regionID: string, increment: boolean) {
 	const regions = get(RegionsStore);
 	const region = regions.find((region) => region.id === regionID);
-	if (region) {
+	if (region && !region.disabled) {
 		const selectedCandidate = get(SelectedCandidateStore);
 		const currentCandidate = region.candidates[0];
 		const newCandidate = {
@@ -36,6 +36,52 @@ function editRegion(regionID: string) {
 	});
 }
 
+/* Disables a region if currently enabled, enables if currently disabled.
+Disabled regions are resistant to filling, have a displayed value of 0, and use the tossup candidate color.
+When a region is reenabled, it will go back to the candidate who had it last.
+*/
+function disableRegion(regionID: string) {
+	const regions = get(RegionsStore);
+	const region = regions.find((region) => region.id === regionID);
+	if (region) {
+		if (region?.disabled) {
+			//Currently Disabled (Enable)
+			region.disabled = false;
+			//Set Region value back to OG value
+			region.value = region.permaVal;
+
+			//Set to disabled attributes & style
+			region.nodes.region.style.fillOpacity = '1';
+			region.nodes.region.style.strokeOpacity = '1';
+
+			//Button
+			const button = region.nodes.button;
+			if (button) {
+				button.style.fillOpacity = '1';
+				button.style.strokeOpacity = '1';
+			}
+		} else {
+			//Currently Enabled (Disable)
+			region.disabled = true;
+			//Set Region value to 0, save current val for when enabled again.
+			region.permaVal = region.value;
+			region.value = 0;
+
+			//Set to disabled attributes & style
+			region.nodes.region.style.fillOpacity = '0.25';
+			region.nodes.region.style.strokeOpacity = '0.25';
+
+			//Button
+			const button = region.nodes.button;
+			if (button) {
+				button.style.fillOpacity = '0.25';
+				button.style.strokeOpacity = '0.25';
+			}
+		}
+		RegionsStore.set(regions);
+	}
+}
+
 function loadRegions(node: HTMLDivElement): void {
 	const regionsForStore: Region[] = [];
 	const regions = node.querySelector('.regions');
@@ -60,7 +106,8 @@ function loadRegions(node: HTMLDivElement): void {
 			shortName: childHTML.getAttribute('short-name') ?? '',
 			longName: childHTML.getAttribute('long-name') ?? '',
 			value,
-			disabled: false,
+			permaVal: value,
+			disabled: childHTML.hasAttribute('disabled'),
 			candidates: [{ candidate: tossupCandidate, count: value, margin: 0 }],
 			nodes: {
 				region: childHTML,
@@ -79,7 +126,8 @@ function loadRegions(node: HTMLDivElement): void {
 					editRegion(newRegion.id);
 					break;
 				case 'disable': {
-					throw new Error('Not implemented yet: "disable" case');
+					disableRegion(newRegion.id);
+					break;
 				}
 			}
 		};

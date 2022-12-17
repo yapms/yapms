@@ -5,6 +5,7 @@ type Region = {
 	shortName: string;
 	longName: string;
 	value: number;
+	permaVal: number;
 	disabled: boolean;
 	candidates: Array<{ candidate: Candidate; count: number; margin: number }>;
 	nodes: {
