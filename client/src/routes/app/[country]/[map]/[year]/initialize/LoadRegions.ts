@@ -64,7 +64,6 @@ function disableRegion(regionID: string) {
 			//Currently Enabled (Disable)
 			region.disabled = true;
 			//Set Region value to 0, save current val for when enabled again.
-			region.permaVal = region.value;
 			region.value = 0;
 
 			//Set to disabled attributes & style
