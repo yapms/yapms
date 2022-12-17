@@ -19,18 +19,10 @@
 	}
 
 	/**
-	 * Returns the title for this page as defined by page path in lib/assets/other/Titles.json.
-	 * @return {string} Title of the page in Titles.json if defined, "YAPms" if title not defined.
+	 * The title for this page as defined by page path in lib/assets/other/Titles.json.
+	 * Updates when page.url.pathname changes. "YAPms" if title not defined.
 	 */
-	function getTitle(): string {
-		const obj = titles.find((elem) => elem.path === $page.url.pathname); //Find title object corresponding to path
-		if (obj?.title !== undefined) {
-			//Returns undefined if obj or obj.title undefined.
-			return obj.title;
-		} else {
-			return 'YAPms'; //If no title in Titles.json for this page, "YAPms" is the title!
-		}
-	}
+	$: title = titles.find((elem) => elem.path === $page.url.pathname)?.title ?? 'YAPms';
 </script>
 
 <div class="divider divider-horizontal ml-0 w-0" />
@@ -45,6 +37,6 @@
 			Twitter
 		</button>
 	</div>
-	<h1 class="text-xl text-center font-bold">{getTitle()}</h1>
+	<h1 class="text-xl text-center font-bold">{title}</h1>
 	<div class="divider">Shortcuts</div>
 </div>
