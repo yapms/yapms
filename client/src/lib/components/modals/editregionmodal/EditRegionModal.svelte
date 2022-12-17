@@ -15,7 +15,8 @@
 		const index = $RegionsStore.findIndex(
 			(region) => region.id === $EditRegionModalStore.region?.id
 		);
-		if (!$RegionsStore[index].disabled) { //Don't update value if disabled so the state stays disabled!
+		if (!$RegionsStore[index].disabled) {
+			//Don't update value if disabled so the state stays disabled!
 			$RegionsStore[index].value = newValue;
 		}
 		$RegionsStore[index].permaVal = newValue;
