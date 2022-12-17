@@ -23,8 +23,9 @@
 	 * @return {string} Title of the page in Titles.json if defined, "YAPms" if title not defined.
 	 */
 	function getTitle(): string {
-		if (titles[$page.url.pathname as keyof object] !== undefined) {
-			return titles[$page.url.pathname as keyof object].title;
+		const obj = titles.find(elem => elem.path === $page.url.pathname); //Find title object corresponding to path
+		if (obj?.title !== undefined) { //Returns undefined if obj or obj.title undefined.
+			return obj.title;
 		} else {
 			return 'YAPms'; //If no title in Titles.json for this page, "YAPms" is the title!
 		}
