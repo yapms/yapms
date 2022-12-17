@@ -14,10 +14,16 @@ export const RegionsStore = writable<Region[]>([]);
 */
 RegionsStore.subscribe((regions) => {
 	regions.forEach((region) => {
-		let winner = region.candidates.reduce(
-			(prev, current) => (prev.count > current.count ? prev : current),
-			region.candidates[0]
-		);
+		const winner = region.disabled
+			? {
+					candidate: get(TossupCandidateStore),
+					count: 0,
+					margin: 0
+			  }
+			: region.candidates.reduce(
+					(prev, current) => (prev.count > current.count ? prev : current),
+					region.candidates[0]
+			  );
 		let marginIndex = winner.margin ?? 0;
 		if (marginIndex >= winner.candidate.margins.length) {
 			marginIndex = winner.candidate.margins.length - 1;
@@ -39,10 +45,6 @@ RegionsStore.subscribe((regions) => {
 					}
 				}
 			}
-		}
-		if (region.disabled) {
-			//This is here in order to force a unified style for disabled states.
-			winner = { candidate: get(TossupCandidateStore), count: 0, margin: 0 };
 		}
 
 		region.nodes.region.style.fill = winner.candidate.margins[marginIndex]?.color;
