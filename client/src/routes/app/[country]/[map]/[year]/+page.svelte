@@ -2,7 +2,6 @@
 	import NavBar from '$lib/components/navbar/NavBar.svelte';
 	import SideBar from '$lib/components/sidebar/SideBar.svelte';
 	import EditCandidateModal from '$lib/components/modals/editcandidatemodal/EditCandidateModal.svelte';
-	import ChartBar from '$lib/components/chartbar/ChartBar.svelte';
 	import { onMount } from 'svelte';
 	import { themeChange } from 'theme-change';
 	import MapModal from '$lib/components/modals/mapmodal/MapModal.svelte';
@@ -14,6 +13,7 @@
 	import { InteractionStore } from '$lib/stores/Interaction';
 	import { ChartPositionStore } from '$lib/stores/Chart';
 	import AddCandidateModal from '$lib/components/modals/addcandidatemodal/AddCandidateModal.svelte';
+	import HorizontalBattleChart from '$lib/components/chartbar/horizontalbattlechart/BattleChart.svelte';
 
 	const imports = {
 		usa: () => import('$lib/assets/usa.svg?raw'),
@@ -56,7 +56,7 @@
 			class:flex-row={$ChartPositionStore === 'left'}
 		>
 			<div class="flex justify-center items-center ml-3 mr-3 mt-3 mb-3">
-				<ChartBar />
+				<HorizontalBattleChart />
 			</div>
 
 			<div

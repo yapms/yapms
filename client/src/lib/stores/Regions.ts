@@ -94,3 +94,26 @@ export const CandidateCounts = derived(RegionsStore, ($RegionStore) => {
 	});
 	return candidates;
 });
+
+export const CandidateCountsMargins = derived(RegionsStore, ($RegionStore) => {
+	const candidates = new Map<string, number[]>();
+	$RegionStore.forEach((region) => {
+		region.candidates.forEach((candidate) => {
+			const currentCount = candidates.get(candidate.candidate.id);
+			if (currentCount !== undefined) {
+				if (currentCount[candidate.margin] === undefined) {
+					currentCount[candidate.margin] = candidate.count;
+				} else {
+					currentCount[candidate.margin] += candidate.count;
+				}
+				candidates.set(candidate.candidate.id, currentCount);
+			} else {
+				const newCounts: number[] = [];
+				newCounts[candidate.margin] = candidate.count;
+				candidates.set(candidate.candidate.id, newCounts);
+			}
+		});
+	});
+	console.log(candidates);
+	return candidates;
+});
