@@ -1,6 +1,7 @@
 import type Region from '$lib/types/Region';
 import { calculateLumaHEX } from '$lib/utils/luma';
-import { derived, writable } from 'svelte/store';
+import { derived, writable, get } from 'svelte/store';
+import { TossupCandidateStore } from './Candidates';
 
 /**
  * Stores the state of all regions.
@@ -13,10 +14,16 @@ export const RegionsStore = writable<Region[]>([]);
 */
 RegionsStore.subscribe((regions) => {
 	regions.forEach((region) => {
-		const winner = region.candidates.reduce(
-			(prev, current) => (prev.count > current.count ? prev : current),
-			region.candidates[0]
-		);
+		const winner = region.disabled
+			? {
+					candidate: get(TossupCandidateStore),
+					count: 0,
+					margin: 0
+			  }
+			: region.candidates.reduce(
+					(prev, current) => (prev.count > current.count ? prev : current),
+					region.candidates[0]
+			  );
 		let marginIndex = winner.margin ?? 0;
 		if (marginIndex >= winner.candidate.margins.length) {
 			marginIndex = winner.candidate.margins.length - 1;
@@ -39,6 +46,7 @@ RegionsStore.subscribe((regions) => {
 				}
 			}
 		}
+
 		region.nodes.region.style.fill = winner.candidate.margins[marginIndex]?.color;
 		if (region.nodes.button)
 			region.nodes.button.style.fill = winner.candidate.margins[marginIndex]?.color;

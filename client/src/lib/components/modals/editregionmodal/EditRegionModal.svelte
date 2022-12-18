@@ -4,7 +4,7 @@
 
 	$: open = $EditRegionModalStore.open;
 	$: longName = open ? $EditRegionModalStore.region?.longName : undefined;
-	$: value = open ? $EditRegionModalStore.region?.value : undefined;
+	$: value = open ? $EditRegionModalStore.region?.permaVal : undefined;
 	$: newValue = value ?? 0;
 
 	function close() {
@@ -15,7 +15,11 @@
 		const index = $RegionsStore.findIndex(
 			(region) => region.id === $EditRegionModalStore.region?.id
 		);
-		$RegionsStore[index].value = newValue;
+		if (!$RegionsStore[index].disabled) {
+			//Don't update value if disabled so the state stays disabled!
+			$RegionsStore[index].value = newValue;
+		}
+		$RegionsStore[index].permaVal = newValue;
 		$EditRegionModalStore.open = false;
 	}
 </script>
