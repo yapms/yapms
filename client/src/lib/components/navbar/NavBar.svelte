@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { ChartPositionStore } from '$lib/stores/Chart';
+	import { ChartPositionStore, ChartTypeStore } from '$lib/stores/Chart';
 	import { ClearMapModalStore, MapModalStore, AddCandidateModalStore } from '$lib/stores/Modals';
 	import { ModeStore } from '$lib/stores/Mode';
+	import type { ChartType } from '$lib/types/ChartType';
 	import type { Mode } from '$lib/types/Mode';
 
 	function openClearMapModal() {
@@ -29,6 +30,10 @@
 		ModeStore.set(mode);
 	}
 
+	function setChartType(chartType: ChartType) {
+		ChartTypeStore.set(chartType);
+	}
+
 	function toggleChartPosition() {
 		ChartPositionStore.update((chartPosition) => {
 			return chartPosition === 'left' ? 'bottom' : 'left';
@@ -37,12 +42,23 @@
 </script>
 
 <div class="navbar bg-base-200 gap-3">
-	<button class="btn btn-sm"> home </button>
-	<button class="btn btn-sm" on:click={openClearMapModal}> clear </button>
-	<button class="btn btn-sm" on:click={openMapModal}> maps </button>
-	<button class="btn btn-sm" on:click={openAddCandidateModal}>Add Candidate</button>
-	<button class="btn btn-sm" on:click={toggleChartPosition}> chart position </button>
-	<button class="btn btn-sm hidden md:inline"> close sidebar </button>
+	<button class="btn btn-sm">home</button>
+	<button class="btn btn-sm" on:click={openClearMapModal}>clear</button>
+	<button class="btn btn-sm" on:click={openMapModal}>maps</button>
+	<button class="btn btn-sm" on:click={openAddCandidateModal}>add candidate</button>
+	<button class="btn btn-sm" on:click={toggleChartPosition}>chart position</button>
+	<div class="dropdown">
+		<!-- svelte-ignore a11y-label-has-associated-control -->
+		<label tabindex="-1" class="btn btn-sm">chart type</label>
+		<ul tabindex="-1" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 mt-4">
+			<!-- svelte-ignore a11y-missing-attribute -->
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<li><a on:click={() => setChartType('battle')}>Battle</a></li>
+			<!-- svelte-ignore a11y-missing-attribute -->
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<li><a on:click={() => setChartType('pie')}>Pie</a></li>
+		</ul>
+	</div>
 	<div class="dropdown">
 		<!-- svelte-ignore a11y-label-has-associated-control -->
 		<label tabindex="-1" class="btn btn-sm">mode: {$ModeStore}</label>
@@ -60,7 +76,7 @@
 	</div>
 	<div class="dropdown">
 		<!-- svelte-ignore a11y-label-has-associated-control -->
-		<label tabindex="-1" class="btn btn-sm">Theme</label>
+		<label tabindex="-1" class="btn btn-sm">theme</label>
 		<ul tabindex="-1" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 mt-4">
 			<!-- svelte-ignore a11y-missing-attribute -->
 			<!-- svelte-ignore a11y-click-events-have-key-events -->

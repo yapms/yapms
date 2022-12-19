@@ -11,9 +11,11 @@
 	import applyPanZoom from './initialize/ApplyPanZoom';
 	import EditRegionModal from '$lib/components/modals/editregionmodal/EditRegionModal.svelte';
 	import { InteractionStore } from '$lib/stores/Interaction';
-	import { ChartPositionStore } from '$lib/stores/Chart';
+	import { ChartPositionStore, ChartTypeStore } from '$lib/stores/Chart';
+	import { CandidatesStore } from '$lib/stores/Candidates';
 	import AddCandidateModal from '$lib/components/modals/addcandidatemodal/AddCandidateModal.svelte';
-	import HorizontalBattleChart from '$lib/components/chartbar/horizontalbattlechart/BattleChart.svelte';
+	import HorizontalBattleChart from '$lib/components/chartbar/battlechart/BattleChart.svelte';
+	import ChartBar from '$lib/components/chartbar/ChartBar.svelte';
 
 	const imports = {
 		usa: () => import('$lib/assets/usa.svg?raw'),
@@ -56,7 +58,13 @@
 			class:flex-row={$ChartPositionStore === 'left'}
 		>
 			<div class="flex justify-center items-center ml-3 mr-3 mt-3 mb-3">
-				<HorizontalBattleChart />
+				{#if $ChartTypeStore === 'battle' && $CandidatesStore.length <= 2}
+					<HorizontalBattleChart />
+				{:else if $ChartTypeStore === 'pie'}
+					<ChartBar />
+				{:else}
+					<ChartBar />
+				{/if}
 			</div>
 
 			<div
