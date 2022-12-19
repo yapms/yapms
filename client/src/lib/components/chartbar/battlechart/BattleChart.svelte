@@ -56,10 +56,7 @@
 	class:flex-col={$ChartPositionStore === 'bottom'}
 	class:flex-row-reverse={$ChartPositionStore === 'left'}
 >
-	<div
-		class="flex items-center justify-center"
-		class:rotate-90={$ChartPositionStore === 'left'}
-	>
+	<div class="flex items-center justify-center" class:rotate-90={$ChartPositionStore === 'left'}>
 		<ArrowDownCircle color={winningColor} />
 	</div>
 	<div
