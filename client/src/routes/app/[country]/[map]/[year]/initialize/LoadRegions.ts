@@ -49,33 +49,11 @@ function disableRegion(regionID: string) {
 			region.disabled = false;
 			//Set Region value back to OG value
 			region.value = region.permaVal;
-
-			//Set to disabled attributes & style
-			region.nodes.region.style.fillOpacity = '1';
-			region.nodes.region.style.strokeOpacity = '1';
-
-			//Button
-			const button = region.nodes.button;
-			if (button) {
-				button.style.fillOpacity = '1';
-				button.style.strokeOpacity = '1';
-			}
 		} else {
 			//Currently Enabled (Disable)
 			region.disabled = true;
 			//Set Region value to 0, save current val for when enabled again.
 			region.value = 0;
-
-			//Set to disabled attributes & style
-			region.nodes.region.style.fillOpacity = '0.25';
-			region.nodes.region.style.strokeOpacity = '0.25';
-
-			//Button
-			const button = region.nodes.button;
-			if (button) {
-				button.style.fillOpacity = '0.25';
-				button.style.strokeOpacity = '0.25';
-			}
 		}
 		RegionsStore.set(regions);
 	}
@@ -104,7 +82,7 @@ function loadRegions(node: HTMLDivElement): void {
 			id: childHTML.getAttribute('class') ?? '',
 			shortName: childHTML.getAttribute('short-name') ?? '',
 			longName: childHTML.getAttribute('long-name') ?? '',
-			value,
+			value: childHTML.hasAttribute('disabled') ? 0 : value,
 			permaVal: value,
 			disabled: childHTML.hasAttribute('disabled'),
 			candidates: [{ candidate: tossupCandidate, count: value, margin: 0 }],
