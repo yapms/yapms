@@ -94,3 +94,32 @@ export const CandidateCounts = derived(RegionsStore, ($RegionStore) => {
 	});
 	return candidates;
 });
+
+/**
+ * When the region store changes,
+ * create a derived store that contains the count of each candidate for each margin.
+ *
+ * Candidates will be undefined if they are not in the region store.
+ */
+export const CandidateCountsMargins = derived(RegionsStore, ($RegionStore) => {
+	const candidates = new Map<string, number[]>();
+	$RegionStore.forEach((region) => {
+		region.candidates.forEach((candidate) => {
+			const currentCount = candidates.get(candidate.candidate.id);
+			if (currentCount !== undefined) {
+				if (currentCount[candidate.margin] === undefined) {
+					currentCount[candidate.margin] = candidate.count;
+				} else {
+					currentCount[candidate.margin] += candidate.count;
+				}
+				candidates.set(candidate.candidate.id, currentCount);
+			} else {
+				const newCounts: number[] = [];
+				newCounts[candidate.margin] = candidate.count;
+				candidates.set(candidate.candidate.id, newCounts);
+			}
+		});
+	});
+	console.log(candidates);
+	return candidates;
+});
