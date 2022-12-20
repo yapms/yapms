@@ -48,8 +48,21 @@ RegionsStore.subscribe((regions) => {
 		}
 
 		region.nodes.region.style.fill = winner.candidate.margins[marginIndex]?.color;
-		if (region.nodes.button)
+		region.disabled
+			? (region.nodes.region.style.fillOpacity = '0.25')
+			: (region.nodes.region.style.fillOpacity = '1'); //Transparent if disabled
+		region.disabled
+			? (region.nodes.region.style.strokeOpacity = '0.25')
+			: (region.nodes.region.style.strokeOpacity = '1'); //Transparent if disabled
+		if (region.nodes.button) {
 			region.nodes.button.style.fill = winner.candidate.margins[marginIndex]?.color;
+			region.disabled
+				? (region.nodes.button.style.fillOpacity = '0.25')
+				: (region.nodes.button.style.fillOpacity = '1'); //Transparent if disabled
+			region.disabled
+				? (region.nodes.button.style.strokeOpacity = '0.25')
+				: (region.nodes.button.style.strokeOpacity = '1'); //Transparent if disabled
+		}
 		if (region.nodes.text) {
 			region.nodes.text.style.color =
 				calculateLumaHEX(winner.candidate.margins[marginIndex]?.color) > 0.5 ? 'black' : 'white';
