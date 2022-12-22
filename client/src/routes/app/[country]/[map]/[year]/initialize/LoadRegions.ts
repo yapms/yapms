@@ -9,7 +9,7 @@ import { InteractionStore } from '$lib/stores/Interaction';
 function fillRegion(regionID: string, increment: boolean) {
 	const regions = get(RegionsStore);
 	const region = regions.find((region) => region.id === regionID);
-	if (region && !region.disabled) {
+	if (region && !(region.disabled || region.locked)) {
 		const selectedCandidate = get(SelectedCandidateStore);
 		const currentCandidate = region.candidates[0];
 		const newCandidate = {
@@ -59,6 +59,19 @@ function disableRegion(regionID: string) {
 	}
 }
 
+/* Locks a region if currently enabled, unlocks if currently locked.
+Locked regions are resistant to filling.
+*/
+function lockRegion(regionID: string) {
+	const regions = get(RegionsStore);
+	const region = regions.find((region) => region.id === regionID);
+	if (region) {
+		//Lock if unlocked, unlock if locked
+		region.locked = !region.locked;
+		RegionsStore.set(regions);
+	}
+}
+
 function loadRegions(node: HTMLDivElement): void {
 	const regionsForStore: Region[] = [];
 	const regions = node.querySelector('.regions');
@@ -85,6 +98,7 @@ function loadRegions(node: HTMLDivElement): void {
 			value: childHTML.hasAttribute('disabled') ? 0 : value,
 			permaVal: value,
 			disabled: childHTML.hasAttribute('disabled'),
+			locked: childHTML.hasAttribute('locked'),
 			candidates: [{ candidate: tossupCandidate, count: value, margin: 0 }],
 			nodes: {
 				region: childHTML,
@@ -102,10 +116,12 @@ function loadRegions(node: HTMLDivElement): void {
 				case 'edit':
 					editRegion(newRegion.id);
 					break;
-				case 'disable': {
+				case 'disable':
 					disableRegion(newRegion.id);
 					break;
-				}
+				case 'lock':
+					lockRegion(newRegion.id);
+					break;
 			}
 		};
 

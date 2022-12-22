@@ -7,6 +7,7 @@ type Region = {
 	value: number;
 	permaVal: number;
 	disabled: boolean;
+	locked: boolean;
 	candidates: Array<{ candidate: Candidate; count: number; margin: number }>;
 	nodes: {
 		region: HTMLElement;

@@ -72,6 +72,9 @@
 			<!-- svelte-ignore a11y-missing-attribute -->
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<li><a on:click={() => setMode('disable')}>Disable</a></li>
+			<!-- svelte-ignore a11y-missing-attribute -->
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<li><a on:click={() => setMode('lock')}>Lock</a></li>
 		</ul>
 	</div>
 	<div class="dropdown">
