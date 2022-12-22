@@ -23,7 +23,7 @@
 		"@typescript-eslint/parser": "^5.27.0",
 		"@yapms/eslint-config": "^0.0.9",
 		"autoprefixer": "^10.4.11",
-		"chart.js": "^3.9.1",
+		"chart.js": "^4.1.1",
 		"chartjs-plugin-datalabels": "^2.1.0",
 		"daisyui": "^2.43.2",
 		"eslint": "^8.29.0",
