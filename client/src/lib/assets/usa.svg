@@ -11,17 +11,17 @@
    id="testing-map"
    version="1.1"
    sodipodi:docname="usa.svg"
-   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   candidates="[ 
+      {&quot;id&quot;:&quot;0&quot;, &quot;name&quot;:&quot;Joe Biden&quot;, &quot;margins&quot;: [{ &quot;color&quot;: &quot;#000055&quot; }, { &quot;color&quot;: &quot;#000099&quot; }, { &quot;color&quot;: &quot;#0000ff&quot; }]},
+      {&quot;id&quot;:&quot;1&quot;, &quot;name&quot;:&quot;Donald Trump&quot;, &quot;margins&quot;: [{ &quot;color&quot;: &quot;#550000&quot; }, { &quot;color&quot;: &quot;#990000&quot; }, { &quot;color&quot;: &quot;#ff0000&quot; }]} 
+   ]"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-  <defs>
-     <foreignObject class="region-candidates">
-         {"id":0, "name":"Joe Biden", "margins": [{ "color": "#000055" }, { "color": "#000099" }, { "color": "#0000ff" }]}
-         {"id":1, "name":"Donald Trump", "margins": [{ "color": "#550000" }, { "color": "#990000" }, { "color": "#ff0000" }]}
-     </foreignObject>
-   </defs>
+  <defs
+     id="defs220" />
   <sodipodi:namedview
      id="namedview1395"
      pagecolor="#ffffff"
@@ -31,15 +31,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      showgrid="false"
-     inkscape:zoom="4.4880084"
-     inkscape:cx="818.62592"
-     inkscape:cy="318.84967"
-     inkscape:window-width="2560"
-     inkscape:window-height="1369"
-     inkscape:window-x="2552"
+     inkscape:zoom="1.1220021"
+     inkscape:cx="503.11849"
+     inkscape:cy="298.12778"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g416145" />
+     inkscape:current-layer="areas" />
   <g
      class="regions"
      id="areas"

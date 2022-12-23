@@ -4,11 +4,11 @@ import { RegionsStore } from '$lib/stores/Regions';
 import {
 	TossupCandidateStore,
 	SelectedCandidateStore,
-	CandidatesStore
+	CandidatesStore,
+	CandidateStoreSchema
 } from '$lib/stores/Candidates';
 import { EditRegionModalStore } from '$lib/stores/Modals';
 import type Region from '$lib/types/Region';
-import type Candidate from '$lib/types/Candidate';
 import { InteractionStore } from '$lib/stores/Interaction';
 
 function fillRegion(regionID: string, increment: boolean) {
@@ -78,29 +78,20 @@ function lockRegion(regionID: string) {
 }
 
 function loadRegions(node: HTMLDivElement): void {
-	/*Load Candidates from SVG, Candidates are defined in <defs> using a <foreignObject> specifically named "region-candidates" that looks like the following:
-	See usa.svg for a map that implements this.
-	<defs
-      	<foreignObject class="region-candidates">
-      		{"id":0, "name":"Joe Biden", "margins": [{ "color": "#FFF" }, { "color": "#000" }, { "color": "#333" }]}
-      		{"id":1, "name":"Donald Trump", "margins": [{ "color": "#FFF" }, { "color": "#000" }, { "color": "#333" }]}
-      	</foreignObject>
-   	</defs>
+	/*Load Candidates from SVG, Candidates are defined in using the "candidates" property of the SVG document:
+	See usa.svg for a map that implements this. Please note that you must use &quot; instead of ". 
+	Edit the property in Inkscape to use double quotes. Inkspace will compress this to one line.
+	<svg
+	...
+   	candidates="[ 
+   		{&quot;id&quot;:&quot;0&quot;, &quot;name&quot;:&quot;Joe Custo Biden&quot;, &quot;margins&quot;: [{ &quot;color&quot;: &quot;#000055&quot; }, { &quot;color&quot;: &quot;#000099&quot; }, { &quot;color&quot;: &quot;#0000ff&quot; }]},
+   		{&quot;id&quot;:&quot;1&quot;, &quot;name&quot;:&quot;Donald Trump&quot;, &quot;margins&quot;: [{ &quot;color&quot;: &quot;#550000&quot; }, { &quot;color&quot;: &quot;#990000&quot; }, { &quot;color&quot;: &quot;#ff0000&quot; }]} 
+   	]"
 	*/
-	const candidates = node.querySelector('.region-candidates')?.innerHTML;
-	const candidateStringArray = candidates?.split('\n') || []; //Seperate candidate object strings by newline character
-	const newCandidates: Candidate[] = [];
-	for (const candidateString of candidateStringArray) {
-		if (candidateString.trim() !== '') {
-			//If string has content
-			const newCandidate: Candidate = JSON.parse(candidateString);
-			newCandidates.push(newCandidate);
-		}
-	}
-	if (newCandidates.length !== 0) {
-		//If no candidates are defined in SVG, use generics defined in stores/Candidates.ts
-		CandidatesStore.set(newCandidates);
-	}
+	const candidatesStringified = node.querySelector('svg')?.getAttribute('candidates'); //This doesn't return SVG other than the map SVG
+	const candidates = candidatesStringified != null ? JSON.parse(candidatesStringified) : null; //If candidate property not set, set candidates to null so the next check knows to use default candidates.
+	if (candidates !== null) CandidatesStore.set(CandidateStoreSchema.parse(candidates)); //If no candidates are defined in SVG, use generics defined in stores/Candidates.ts
+
 	const regionsForStore: Region[] = [];
 	const regions = node.querySelector('.regions');
 	const buttons = node.querySelector('.region-buttons');

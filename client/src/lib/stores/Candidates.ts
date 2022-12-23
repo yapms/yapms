@@ -1,5 +1,7 @@
 import type Candidate from '$lib/types/Candidate';
+import { CandidateSchema } from '$lib/types/Candidate';
 import { get, readable, writable } from 'svelte/store';
+import { z } from 'zod';
 
 export const TossupCandidateStore = readable<Candidate>({
 	id: '',
@@ -21,3 +23,6 @@ export const CandidatesStore = writable<Candidate[]>([
 ]);
 
 export const SelectedCandidateStore = writable<Candidate>(get(TossupCandidateStore));
+
+//Schema
+export const CandidateStoreSchema = z.array(CandidateSchema);

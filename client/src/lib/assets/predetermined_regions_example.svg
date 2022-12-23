@@ -15,13 +15,11 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <defs>
-     <foreignObject class="region-candidates">
-         {"id":0, "name":"Joe Custom Candidate", "margins": [{ "color": "#000055" }, { "color": "#000099" }, { "color": "#0000ff" }]}
-         {"id":1, "name":"Donald Unique", "margins": [{ "color": "#550000" }, { "color": "#990000" }, { "color": "#ff0000" }]}
-     </foreignObject>
-   </defs>
+   xmlns:svg="http://www.w3.org/2000/svg"
+   candidates="[ 
+      {&quot;id&quot;:&quot;0&quot;, &quot;name&quot;:&quot;Joe Custom Candidate Biden&quot;, &quot;margins&quot;: [{ &quot;color&quot;: &quot;#000055&quot; }, { &quot;color&quot;: &quot;#000099&quot; }, { &quot;color&quot;: &quot;#0000ff&quot; }]},
+      {&quot;id&quot;:&quot;1&quot;, &quot;name&quot;:&quot;Donald Unique&quot;, &quot;margins&quot;: [{ &quot;color&quot;: &quot;#550000&quot; }, { &quot;color&quot;: &quot;#990000&quot; }, { &quot;color&quot;: &quot;#ff0000&quot; }]} 
+   ]">
   <sodipodi:namedview
      id="namedview1395"
      pagecolor="#ffffff"
