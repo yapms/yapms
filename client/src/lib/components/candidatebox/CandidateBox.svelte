@@ -35,14 +35,13 @@
 	>
 		<div class="flex flex-col gap-0">
 			<div class="pt-1 pb-1 pl-2 pr-2">
-				{candidate.name} {$CandidateCounts.get(candidate.id) ?? 0}
+				{candidate.name}
+				{$CandidateCounts.get(candidate.id) ?? 0}
 			</div>
 			{#if candidate.margins.length > 1}
 				<div class="flex flex-row w-full">
 					{#each candidate.margins as margin}
-						<div class="w-full min-h-6"
-							style:background-color={margin.color}
-						/>
+						<div class="w-full min-h-6" style:background-color={margin.color} />
 					{/each}
 				</div>
 			{/if}
