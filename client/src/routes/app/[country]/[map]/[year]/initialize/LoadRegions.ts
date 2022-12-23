@@ -1,9 +1,14 @@
 import { get } from 'svelte/store';
 import { ModeStore } from '$lib/stores/Mode';
 import { RegionsStore } from '$lib/stores/Regions';
-import { TossupCandidateStore, SelectedCandidateStore } from '$lib/stores/Candidates';
+import {
+	TossupCandidateStore,
+	SelectedCandidateStore,
+	CandidatesStore
+} from '$lib/stores/Candidates';
 import { EditRegionModalStore } from '$lib/stores/Modals';
 import type Region from '$lib/types/Region';
+import type Candidate from '$lib/types/Candidate';
 import { InteractionStore } from '$lib/stores/Interaction';
 
 function fillRegion(regionID: string, increment: boolean) {
@@ -73,6 +78,28 @@ function lockRegion(regionID: string) {
 }
 
 function loadRegions(node: HTMLDivElement): void {
+	/*Load Candidates from SVG, Candidates are defined in <defs> using a <foreignObject> specifically named "region-candidates" that looks like the following:
+	<defs
+      	<foreignObject class="region-candidates">
+      		{"id":0, "name":"Joe Biden", "margins": [{ "color": "#FFF" }, { "color": "#000" }, { "color": "#333" }]}
+      		{"id":1, "name":"Donald Trump", "margins": [{ "color": "#FFF" }, { "color": "#000" }, { "color": "#333" }]}
+      	</foreignObject>
+   	</defs>
+	*/
+	const candidates = node.querySelector('.region-candidates')?.innerHTML;
+	const candidateStringArray = candidates?.split('\n') || []; //Seperate candidate object strings by newline character
+	const newCandidates: Candidate[] = [];
+	for (const candidateString of candidateStringArray) {
+		if (candidateString.trim() !== '') {
+			//If string has content
+			const newCandidate: Candidate = JSON.parse(candidateString);
+			newCandidates.push(newCandidate);
+		}
+	}
+	if (newCandidates.length !== 0) {
+		//If no candidates are defined in SVG, use generics defined in stores/Candidates.ts
+		CandidatesStore.set(newCandidates);
+	}
 	const regionsForStore: Region[] = [];
 	const regions = node.querySelector('.regions');
 	const buttons = node.querySelector('.region-buttons');
@@ -99,7 +126,19 @@ function loadRegions(node: HTMLDivElement): void {
 			permaVal: value,
 			disabled: childHTML.hasAttribute('disabled'),
 			locked: childHTML.hasAttribute('locked'),
-			candidates: [{ candidate: tossupCandidate, count: value, margin: 0 }],
+			candidates: childHTML.hasAttribute('candidate-id') //God bless our linting overlords.
+				? [
+						//If the region has candidate-id defined, set the candidate appropriately, if not, default to the tossup candidate at margin 0
+						{
+							candidate: get(CandidatesStore)[Number(childHTML.getAttribute('candidate-id'))],
+							count: value,
+							margin: childHTML.hasAttribute('candidate-margin')
+								? //If the region has candidate-margin defined, set the margin appropriately, if not, default to 0 (Safe)
+								  Number(childHTML.getAttribute('candidate-margin'))
+								: 0
+						}
+				  ]
+				: [{ candidate: tossupCandidate, count: value, margin: 0 }],
 			nodes: {
 				region: childHTML,
 				button: buttons?.querySelector(`[for="${childHTML.getAttribute('class') ?? ''}"]`) ?? null,
