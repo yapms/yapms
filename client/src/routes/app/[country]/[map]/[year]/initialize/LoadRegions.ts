@@ -79,6 +79,7 @@ function lockRegion(regionID: string) {
 
 function loadRegions(node: HTMLDivElement): void {
 	/*Load Candidates from SVG, Candidates are defined in <defs> using a <foreignObject> specifically named "region-candidates" that looks like the following:
+	See usa.svg for a map that implements this.
 	<defs
       	<foreignObject class="region-candidates">
       		{"id":0, "name":"Joe Biden", "margins": [{ "color": "#FFF" }, { "color": "#000" }, { "color": "#333" }]}
@@ -129,6 +130,7 @@ function loadRegions(node: HTMLDivElement): void {
 			candidates: childHTML.hasAttribute('candidate-id') //God bless our linting overlords.
 				? [
 						//If the region has candidate-id defined, set the candidate appropriately, if not, default to the tossup candidate at margin 0
+						//See predetermined_regions_example.svg for an example of how to implement candidate-id and candidate-margin attributes.
 						{
 							candidate: get(CandidatesStore)[Number(childHTML.getAttribute('candidate-id'))],
 							count: value,
