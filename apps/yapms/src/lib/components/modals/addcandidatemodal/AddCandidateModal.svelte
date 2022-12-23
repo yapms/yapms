@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { CandidatesStore } from '$lib/stores/Candidates';
 	import { AddCandidateModalStore } from '$lib/stores/Modals';
+	import { PresetColorsModalStore } from '$lib/stores/Modals';
 
 	let newName = '';
 	let newColors = ['#000000'];
@@ -27,6 +28,12 @@
 		initialize();
 	}
 
+	function selectPresetColor() {
+		PresetColorsModalStore.set({
+			open: true
+		});
+	}
+
 	function confirm() {
 		CandidatesStore.update((candidates) => [
 			...candidates,
@@ -48,25 +55,19 @@
 <input type="checkbox" class="modal-toggle" checked={$AddCandidateModalStore.open} />
 <div class="modal">
 	<div class="modal-box">
-		<h3 class="font-bold text-lg">Add Candidate</h3>
+		<h2 class="text-2xl">Add Candidate</h2>
 
-		<div class="flex">
-			<div class="form-control w-full max-w-xs">
-				<!-- svelte-ignore a11y-label-has-associated-control -->
-				<label class="label">
-					<span class="label-text">Name</span>
-				</label>
+		<div class="flex pt-2">
+			<div class="form-control w-full max-w-xs flex flex-col gap-3">
+				<h3 class="font-light text-lg">Name</h3>
 				<input type="text" class="input input-bordered w-full max-w-xs" bind:value={newName} />
+				<input type="button" class="btn btn-primary" value="Preset Colors" on:click={selectPresetColor} />
 			</div>
 
 			<div class="divider divider-horizontal" />
 
 			<div class="form-control w-full max-w-xs flex flex-col gap-3">
-				<!-- svelte-ignore a11y-label-has-associated-control -->
-				<label class="label">
-					<span class="label-text">Colors</span>
-				</label>
-
+				<h3 class="font-light text-lg">Colors</h3>
 				<div class="flex flex-row flex-wrap gap-2">
 					{#each newColors as color, index}
 						<input

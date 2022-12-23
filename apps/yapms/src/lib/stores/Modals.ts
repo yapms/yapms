@@ -31,10 +31,15 @@ const AddCandidateModalStore = writable({
 	open: false
 });
 
+const PresetColorsModalStore = writable({
+	open: false
+});
+
 export {
 	EditCandidateModalStore,
 	ClearMapModalStore,
 	MapModalStore,
 	EditRegionModalStore,
-	AddCandidateModalStore
+	AddCandidateModalStore,
+	PresetColorsModalStore
 };
