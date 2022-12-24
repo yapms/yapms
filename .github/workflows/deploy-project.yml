@@ -24,7 +24,7 @@ jobs:
           node-version: 18.x
 
       - name: install railway
-        run: npm install -g @railway/cli
+        run: pnpm install --global @railway/cli
 
       - name: deploy
         run: |
