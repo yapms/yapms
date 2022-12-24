@@ -29,6 +29,8 @@ jobs:
           pnpm install
 
       - name: lint
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
         run: |
           cd apps/client
           npm run lint-no-warnings
