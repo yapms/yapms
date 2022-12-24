@@ -4,28 +4,26 @@
 	import { PresetColorsModalStore } from '$lib/stores/Modals';
 
 	let newName = '';
-	let newColors = ['#000000'];
-
-	function initialize() {
-		newName = '';
-		newColors = ['#000000'];
-	}
 
 	function addColor() {
-		newColors = [...newColors, '#000000'];
+		$AddCandidateModalStore.newColors = [...$AddCandidateModalStore.newColors, '#000000'];
 	}
 
 	function removeColor() {
-		if (newColors.length > 1) {
-			newColors = newColors.slice(0, newColors.length - 1);
+		if ($AddCandidateModalStore.newColors.length > 1) {
+			$AddCandidateModalStore.newColors = $AddCandidateModalStore.newColors.slice(
+				0,
+				$AddCandidateModalStore.newColors.length - 1
+			);
 		}
 	}
 
 	function close() {
 		AddCandidateModalStore.set({
-			open: false
+			open: false,
+			newColors: ['#000000']
 		});
-		initialize();
+		newName = '';
 	}
 
 	function selectPresetColor() {
@@ -40,15 +38,12 @@
 			{
 				id: crypto.randomUUID(),
 				name: newName,
-				margins: newColors.map((color) => {
+				margins: $AddCandidateModalStore.newColors.map((color) => {
 					return { color };
 				})
 			}
 		]);
-		AddCandidateModalStore.set({
-			open: false
-		});
-		initialize();
+		close();
 	}
 </script>
 
@@ -69,12 +64,12 @@
 			<div class="form-control w-full max-w-xs flex flex-col gap-3">
 				<h3 class="font-light text-lg">Colors</h3>
 				<div class="flex flex-row flex-wrap gap-2">
-					{#each newColors as color, index}
+					{#each $AddCandidateModalStore.newColors as color, index}
 						<input
 							type="color"
 							value={color}
 							on:change={(change) => {
-								newColors[index] = change.currentTarget.value;
+								$AddCandidateModalStore.newColors[index] = change.currentTarget.value;
 							}}
 						/>
 					{/each}
@@ -89,7 +84,7 @@
 					/>
 					<input
 						type="button"
-						class="btn btn-primary btn-sm grow"
+						class="btn btn-success btn-sm grow"
 						on:click={addColor}
 						value="Add"
 					/>
