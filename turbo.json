@@ -7,6 +7,9 @@
     "build": {
       "dependsOn": ["^build"]
     },
+    "check": {
+      "cache": false
+    },
     "lint-no-warnings": {
       "cache": false
     },

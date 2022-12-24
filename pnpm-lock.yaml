@@ -8,7 +8,71 @@ importers:
     devDependencies:
       turbo: 1.6.3
 
-  apps/client:
+  apps/campaign:
+    specifiers:
+      '@sveltejs/adapter-auto': ^1.0.0
+      '@sveltejs/kit': ^1.0.0
+      '@typescript-eslint/eslint-plugin': ^5.45.0
+      '@typescript-eslint/parser': ^5.45.0
+      eslint: ^8.28.0
+      eslint-config-prettier: ^8.5.0
+      eslint-plugin-svelte3: ^4.0.0
+      prettier: ^2.8.0
+      prettier-plugin-svelte: ^2.8.1
+      svelte: ^3.54.0
+      svelte-check: ^2.9.2
+      tslib: ^2.4.1
+      typescript: ^4.9.3
+      vite: ^4.0.0
+    devDependencies:
+      '@sveltejs/adapter-auto': 1.0.0_@sveltejs+kit@1.0.1
+      '@sveltejs/kit': 1.0.1_svelte@3.55.0+vite@4.0.3
+      '@typescript-eslint/eslint-plugin': 5.47.0_ncmi6noazr3nzas7jxykisekym
+      '@typescript-eslint/parser': 5.47.0_lzzuuodtsqwxnvqeq4g4likcqa
+      eslint: 8.30.0
+      eslint-config-prettier: 8.5.0_eslint@8.30.0
+      eslint-plugin-svelte3: 4.0.0_khrjkzzv5v2x7orkj5o7sxbz3a
+      prettier: 2.8.1
+      prettier-plugin-svelte: 2.9.0_ajxj753sv7dbwexjherrch25ta
+      svelte: 3.55.0
+      svelte-check: 2.10.3_svelte@3.55.0
+      tslib: 2.4.1
+      typescript: 4.9.4
+      vite: 4.0.3
+
+  apps/compass:
+    specifiers:
+      '@sveltejs/adapter-auto': ^1.0.0
+      '@sveltejs/kit': ^1.0.0
+      '@typescript-eslint/eslint-plugin': ^5.45.0
+      '@typescript-eslint/parser': ^5.45.0
+      eslint: ^8.28.0
+      eslint-config-prettier: ^8.5.0
+      eslint-plugin-svelte3: ^4.0.0
+      prettier: ^2.8.0
+      prettier-plugin-svelte: ^2.8.1
+      svelte: ^3.54.0
+      svelte-check: ^2.9.2
+      tslib: ^2.4.1
+      typescript: ^4.9.3
+      vite: ^4.0.0
+    devDependencies:
+      '@sveltejs/adapter-auto': 1.0.0_@sveltejs+kit@1.0.1
+      '@sveltejs/kit': 1.0.1_svelte@3.55.0+vite@4.0.3
+      '@typescript-eslint/eslint-plugin': 5.47.0_ncmi6noazr3nzas7jxykisekym
+      '@typescript-eslint/parser': 5.47.0_lzzuuodtsqwxnvqeq4g4likcqa
+      eslint: 8.30.0
+      eslint-config-prettier: 8.5.0_eslint@8.30.0
+      eslint-plugin-svelte3: 4.0.0_khrjkzzv5v2x7orkj5o7sxbz3a
+      prettier: 2.8.1
+      prettier-plugin-svelte: 2.9.0_ajxj753sv7dbwexjherrch25ta
+      svelte: 3.55.0
+      svelte-check: 2.10.3_svelte@3.55.0
+      tslib: 2.4.1
+      typescript: 4.9.4
+      vite: 4.0.3
+
+  apps/yapms:
     specifiers:
       '@fortawesome/free-brands-svg-icons': ^6.2.0
       '@fortawesome/free-solid-svg-icons': ^6.2.0
@@ -434,6 +498,15 @@ packages:
       estree-walker: 2.0.2
       picomatch: 2.3.1
       rollup: 3.8.1
+    dev: true
+
+  /@sveltejs/adapter-auto/1.0.0_@sveltejs+kit@1.0.1:
+    resolution: {integrity: sha512-yKyPvlLVua1bJ/42FrR3X041mFGdB4GzTZOAEoHUcNBRE5Mhx94+eqHpC3hNvAOiLEDcKfVO0ObyKSu7qldU+w==}
+    peerDependencies:
+      '@sveltejs/kit': ^1.0.0
+    dependencies:
+      '@sveltejs/kit': 1.0.1_svelte@3.55.0+vite@4.0.3
+      import-meta-resolve: 2.2.0
     dev: true
 
   /@sveltejs/adapter-node/1.0.0_@sveltejs+kit@1.0.1:
@@ -1407,6 +1480,10 @@ packages:
       resolve-from: 4.0.0
     dev: true
 
+  /import-meta-resolve/2.2.0:
+    resolution: {integrity: sha512-CpPOtiCHxP9HdtDM5F45tNiAe66Cqlv3f5uHoJjt+KlaLrUh9/Wz9vepADZ78SlqEo62aDWZtj9ydMGXV+CPnw==}
+    dev: true
+
   /imurmurhash/0.1.4:
     resolution: {integrity: sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==}
     engines: {node: '>=0.8.19'}
@@ -2049,6 +2126,34 @@ packages:
       - sugarss
     dev: true
 
+  /svelte-check/2.10.3_svelte@3.55.0:
+    resolution: {integrity: sha512-Nt1aWHTOKFReBpmJ1vPug0aGysqPwJh2seM1OvICfM2oeyaA62mOiy5EvkXhltGfhCcIQcq2LoE0l1CwcWPjlw==}
+    hasBin: true
+    peerDependencies:
+      svelte: ^3.24.0
+    dependencies:
+      '@jridgewell/trace-mapping': 0.3.17
+      chokidar: 3.5.3
+      fast-glob: 3.2.12
+      import-fresh: 3.3.0
+      picocolors: 1.0.0
+      sade: 1.8.1
+      svelte: 3.55.0
+      svelte-preprocess: 4.10.7_niwyv7xychq2ag6arq5eqxbomm
+      typescript: 4.9.4
+    transitivePeerDependencies:
+      - '@babel/core'
+      - coffeescript
+      - less
+      - node-sass
+      - postcss
+      - postcss-load-config
+      - pug
+      - sass
+      - stylus
+      - sugarss
+    dev: true
+
   /svelte-fa/3.0.3:
     resolution: {integrity: sha512-GIikJjcVCD+5Y/x9hZc2R4gvuA0gVftacuWu1a+zVQWSFjFYZ+hhU825x+QNs2slsppfrgmFiUyU9Sz9gj4Rdw==}
     dev: true
@@ -2060,6 +2165,57 @@ packages:
       svelte: '>=3.19.0'
     dependencies:
       svelte: 3.55.0
+    dev: true
+
+  /svelte-preprocess/4.10.7_niwyv7xychq2ag6arq5eqxbomm:
+    resolution: {integrity: sha512-sNPBnqYD6FnmdBrUmBCaqS00RyCsCpj2BG58A1JBswNF7b0OKviwxqVrOL/CKyJrLSClrSeqQv5BXNg2RUbPOw==}
+    engines: {node: '>= 9.11.2'}
+    requiresBuild: true
+    peerDependencies:
+      '@babel/core': ^7.10.2
+      coffeescript: ^2.5.1
+      less: ^3.11.3 || ^4.0.0
+      node-sass: '*'
+      postcss: ^7 || ^8
+      postcss-load-config: ^2.1.0 || ^3.0.0 || ^4.0.0
+      pug: ^3.0.0
+      sass: ^1.26.8
+      stylus: ^0.55.0
+      sugarss: ^2.0.0
+      svelte: ^3.23.0
+      typescript: ^3.9.5 || ^4.0.0
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+      coffeescript:
+        optional: true
+      less:
+        optional: true
+      node-sass:
+        optional: true
+      postcss:
+        optional: true
+      postcss-load-config:
+        optional: true
+      pug:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      '@types/pug': 2.0.6
+      '@types/sass': 1.43.1
+      detect-indent: 6.1.0
+      magic-string: 0.25.9
+      sorcery: 0.10.0
+      strip-indent: 3.0.0
+      svelte: 3.55.0
+      typescript: 4.9.4
     dev: true
 
   /svelte-preprocess/4.10.7_uldce6htlskfyklq5y55tk7pdy:

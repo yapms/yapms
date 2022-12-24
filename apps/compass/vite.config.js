@@ -1,11 +1,11 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-import type { UserConfig } from 'vite';
 
-const config: UserConfig = {
+/** @type {import('vite').UserConfig} */
+const config = {
 	plugins: [sveltekit()],
 	server: {
 		host: '0.0.0.0',
-		port: 8080
+		port: 8083
 	}
 };
 
