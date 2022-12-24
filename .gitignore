@@ -7,10 +7,17 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Builds
 node_modules
 dist
 dist-ssr
 *.local
+
+# Turbo
+.turbo
+build/**
+dist/**
+.next/**
 
 # Editor directories and files
 .vscode/*

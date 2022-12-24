@@ -1,4 +1,4 @@
-name: Lint Client
+name: Lint
 
 on:
   pull_request:
@@ -13,6 +13,11 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
+      - name: setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
       - name: setup node
         uses: actions/setup-node@v3
         with:
@@ -20,10 +25,8 @@ jobs:
 
       - name: install dependencies
         run: |
-          cd client
-          npm install ci
+          pnpm install
 
       - name: lint
         run: |
-          cd client
-          npm run lint-no-warnings
+          npx turbo run lint-no-warnings

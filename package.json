@@ -1,0 +1,15 @@
+{
+	"engines": {
+		"pnpm": ">=7.0.0"
+	},
+	"scripts": {
+		"dev": "turbo run dev",
+		"build": "turbo run build",
+		"lint-no-warnings": "turbo run lint-no-warnings",
+		"lint": "turbo run lint",
+		"format": "turbo run format"
+	},
+	"devDependencies": {
+		"turbo": "^1.6.3"
+	}
+}
