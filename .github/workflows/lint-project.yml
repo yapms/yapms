@@ -31,4 +31,4 @@ jobs:
       - name: lint
         run: |
           cd apps/client
-          pnpm lint-no-warnings
+          npm lint-no-warnings
