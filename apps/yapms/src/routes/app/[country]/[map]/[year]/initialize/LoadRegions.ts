@@ -104,8 +104,8 @@ function loadRegions(node: HTMLDivElement): void {
 
 	// set cursor & pointer styles
 	(regions as HTMLElement).style.cursor = 'pointer';
-	(buttons as HTMLElement).style.cursor = 'pointer';
-	(texts as HTMLElement).style.pointerEvents = 'none';
+	if (buttons) (buttons as HTMLElement).style.cursor = 'pointer';
+	if (texts) (texts as HTMLElement).style.pointerEvents = 'none';
 
 	regions?.childNodes.forEach((childNode) => {
 		const childHTML = childNode as HTMLElement;
