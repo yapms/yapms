@@ -28,7 +28,7 @@ jobs:
 
       - name: deploy
         run: |
-          cd apps/client
+          cd apps/yapms
           railway up
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
