@@ -1,7 +1,12 @@
 import { get } from 'svelte/store';
 import { ModeStore } from '$lib/stores/Mode';
 import { RegionsStore } from '$lib/stores/Regions';
-import { TossupCandidateStore, SelectedCandidateStore } from '$lib/stores/Candidates';
+import {
+	TossupCandidateStore,
+	SelectedCandidateStore,
+	CandidatesStore,
+	CandidateStoreSchema
+} from '$lib/stores/Candidates';
 import { EditRegionModalStore } from '$lib/stores/Modals';
 import type Region from '$lib/types/Region';
 import { InteractionStore } from '$lib/stores/Interaction';
@@ -73,6 +78,24 @@ function lockRegion(regionID: string) {
 }
 
 function loadRegions(node: HTMLDivElement): void {
+	/*Load Candidates from SVG, Candidates are defined in using the "candidates" property of the SVG document:
+	See usa.svg for a map that implements this. Please note that you must use &quot; instead of ". 
+	Edit the property in Inkscape to use double quotes. Inkspace will compress this to one line.
+	<svg
+	...
+   	candidates="[ 
+   		{&quot;id&quot;:&quot;0&quot;, &quot;name&quot;:&quot;Joe Custo Biden&quot;, &quot;margins&quot;: [{ &quot;color&quot;: &quot;#000055&quot; }, { &quot;color&quot;: &quot;#000099&quot; }, { &quot;color&quot;: &quot;#0000ff&quot; }]},
+   		{&quot;id&quot;:&quot;1&quot;, &quot;name&quot;:&quot;Donald Trump&quot;, &quot;margins&quot;: [{ &quot;color&quot;: &quot;#550000&quot; }, { &quot;color&quot;: &quot;#990000&quot; }, { &quot;color&quot;: &quot;#ff0000&quot; }]} 
+   	]"
+	*/
+	try {
+		const candidatesStringified = node.querySelector('svg')?.getAttribute('candidates'); //This doesn't return SVG other than the map SVG
+		const candidates = candidatesStringified != null ? JSON.parse(candidatesStringified) : null; //If candidate property not set, set candidates to null so the next check knows to use default candidates.
+		if (candidates !== null) CandidatesStore.set(CandidateStoreSchema.parse(candidates)); //If no candidates are defined in SVG, use generics defined in stores/Candidates.ts
+	} catch (error) {
+		console.error('Error Parsing Candidate Data from Map:\n\n' + error);
+	}
+
 	const regionsForStore: Region[] = [];
 	const regions = node.querySelector('.regions');
 	const buttons = node.querySelector('.region-buttons');
@@ -99,7 +122,20 @@ function loadRegions(node: HTMLDivElement): void {
 			permaVal: value,
 			disabled: childHTML.hasAttribute('disabled'),
 			locked: childHTML.hasAttribute('locked'),
-			candidates: [{ candidate: tossupCandidate, count: value, margin: 0 }],
+			candidates: childHTML.hasAttribute('candidate-id') //God bless our linting overlords.
+				? [
+						//If the region has candidate-id defined, set the candidate appropriately, if not, default to the tossup candidate at margin 0
+						//See predetermined_regions_example.svg for an example of how to implement candidate-id and candidate-margin attributes.
+						{
+							candidate: get(CandidatesStore)[Number(childHTML.getAttribute('candidate-id'))],
+							count: value,
+							margin: childHTML.hasAttribute('candidate-margin')
+								? //If the region has candidate-margin defined, set the margin appropriately, if not, default to 0 (Safe)
+								  Number(childHTML.getAttribute('candidate-margin'))
+								: 0
+						}
+				  ]
+				: [{ candidate: tossupCandidate, count: value, margin: 0 }],
 			nodes: {
 				region: childHTML,
 				button: buttons?.querySelector(`[for="${childHTML.getAttribute('class') ?? ''}"]`) ?? null,
