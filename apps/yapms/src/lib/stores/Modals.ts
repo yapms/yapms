@@ -29,7 +29,7 @@ const EditRegionModalStore = writable<{
 
 const AddCandidateModalStore = writable({
 	open: false,
-	newColors: ['#000000'],
+	newColors: ['#000000']
 });
 
 const PresetColorsModalStore = writable({
