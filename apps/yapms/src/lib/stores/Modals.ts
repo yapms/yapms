@@ -28,6 +28,11 @@ const EditRegionModalStore = writable<{
 });
 
 const AddCandidateModalStore = writable({
+	open: false,
+	newColors: ['#000000']
+});
+
+const PresetColorsModalStore = writable({
 	open: false
 });
 
@@ -36,5 +41,6 @@ export {
 	ClearMapModalStore,
 	MapModalStore,
 	EditRegionModalStore,
-	AddCandidateModalStore
+	AddCandidateModalStore,
+	PresetColorsModalStore
 };
