@@ -1,0 +1,39 @@
+name: Lint
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: pnpm
+
+      - name: install dependencies
+        run: |
+          pnpm install
+
+      - name: build
+        run: |
+          pnpm build
+
+      - name: lint
+        env:
+          NODE_OPTIONS: --max-old-space-size=8192
+        run: |
+          pnpm lint-no-warnings
