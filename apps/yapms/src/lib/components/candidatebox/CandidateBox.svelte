@@ -5,6 +5,7 @@
 
 	import { calculateLumaHEX } from '$lib/utils/luma';
 	import type Candidate from '$lib/types/Candidate';
+	import Cog6Tooth from '$lib/icons/Cog6Tooth.svelte';
 
 	export let candidate: Candidate;
 	export let editable: boolean;
@@ -47,14 +48,15 @@
 			{/if}
 		</div>
 	</button>
+	{#if editable}
 	<button
 		class="btn no-animation"
 		class:btn-sm={selected}
 		class:btn-xs={!selected}
-		disabled={!editable}
 		style="transition: all 0.25s"
 		on:click={openEditCandidateModal}
 	>
-		Edit
+		<Cog6Tooth class="h-4/6"/>
 	</button>
+	{/if}
 </div>

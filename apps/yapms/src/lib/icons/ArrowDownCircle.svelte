@@ -1,13 +1,15 @@
 <script lang="ts">
-	export let color: string;
+	let className = "";
+	export { className as class };
+	export let style = "";
 </script>
 
 <svg
 	xmlns="http://www.w3.org/2000/svg"
 	viewBox="0 0 24 24"
 	fill="currentColor"
-	class="w-6 h-6"
-	style={`color: ${color}`}
+	class={className}
+	style={style}
 >
 	<path
 		fill-rule="evenodd"
