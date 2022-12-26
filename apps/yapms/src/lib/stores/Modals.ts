@@ -36,11 +36,26 @@ const PresetColorsModalStore = writable({
 	open: false
 });
 
+const ChartTypeModalStore = writable({
+	open: false
+});
+
+const ModeModalStore = writable({
+	open: false
+});
+
+const ThemeModalStore = writable({
+	open: false
+});
+
 export {
 	EditCandidateModalStore,
 	ClearMapModalStore,
 	MapModalStore,
 	EditRegionModalStore,
 	AddCandidateModalStore,
-	PresetColorsModalStore
+	PresetColorsModalStore,
+	ChartTypeModalStore,
+	ModeModalStore,
+	ThemeModalStore
 };

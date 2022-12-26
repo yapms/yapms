@@ -65,11 +65,16 @@
 		PresetColorsModalStore.set({
 			open: false
 		});
+		AddCandidateModalStore.set({
+			...$AddCandidateModalStore,
+			open: true
+		});
 	}
 
 	function confirm(margins: string[]) {
 		AddCandidateModalStore.set({
-			open: true,
+			...$AddCandidateModalStore,
+			open:true,
 			newColors: margins
 		});
 		PresetColorsModalStore.set({
@@ -79,7 +84,7 @@
 </script>
 
 <input type="checkbox" class="modal-toggle" checked={$PresetColorsModalStore.open} />
-<div class="modal modal-bottom">
+<div class="modal modal-bottom lg:modal-middle">
 	<div class="modal-box">
 		<div class="flex flex-row gap-2 pb-5 justify-between">
 			<h2 class="text-2xl">Preset Colors</h2>

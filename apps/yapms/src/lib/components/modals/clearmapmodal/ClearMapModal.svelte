@@ -35,7 +35,7 @@
 </script>
 
 <input type="checkbox" class="modal-toggle" checked={$ClearMapModalStore.open} />
-<div class="modal">
+<div class="modal modal-bottom lg:modal-middle">
 	<div class="modal-box">
 		<h3 class="font-bold text-lg">Clear The Map?</h3>
 		<p>Clearing the map will result in all your progress being cleared.</p>

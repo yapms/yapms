@@ -56,7 +56,7 @@
 </script>
 
 <input type="checkbox" class="modal-toggle" checked={open} />
-<div class="modal">
+<div class="modal modal-bottom lg:modal-middle">
 	<div class="modal-box">
 		<h3 class="font-bold text-lg">{name}</h3>
 		<div class="flex gap-3">

@@ -26,6 +26,10 @@
 	}
 
 	function selectPresetColor() {
+		AddCandidateModalStore.set({
+			...$AddCandidateModalStore,
+			open: false
+		})
 		PresetColorsModalStore.set({
 			open: true
 		});
@@ -47,7 +51,7 @@
 </script>
 
 <input type="checkbox" class="modal-toggle" checked={$AddCandidateModalStore.open} />
-<div class="modal">
+<div class="modal modal-bottom lg:modal-middle">
 	<div class="modal-box">
 		<h2 class="text-2xl">Add Candidate</h2>
 

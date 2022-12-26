@@ -26,7 +26,7 @@
 
 <input type="checkbox" class="modal-toggle" checked={open} />
 
-<div class="modal">
+<div class="modal modal-bottom lg:modal-middle">
 	<div class="modal-box">
 		<h3 class="font-bold text-lg">Edit State {longName} {value}</h3>
 		<div class="flex flex-col pt-3">
