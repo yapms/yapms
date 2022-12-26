@@ -27,7 +27,7 @@
 </script>
 
 <input type="checkbox" class="modal-toggle" checked={$MapModalStore.open} />
-<div class="modal">
+<div class="modal modal-bottom lg:modal-middle">
 	<div class="modal-box">
 		<div class="tabs justify-evenly">
 			{#each countries as country}

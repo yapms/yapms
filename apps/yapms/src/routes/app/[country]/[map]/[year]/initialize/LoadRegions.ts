@@ -143,7 +143,7 @@ function loadRegions(node: HTMLDivElement): void {
 			}
 		};
 
-		newRegion.nodes.region.onclick = () => {
+		newRegion.nodes.region.onpointerdown = () => {
 			const currentMode = get(ModeStore);
 			switch (currentMode) {
 				case 'fill':
@@ -171,7 +171,7 @@ function loadRegions(node: HTMLDivElement): void {
 		};
 
 		if (newRegion.nodes.button !== null) {
-			newRegion.nodes.button.onclick = newRegion.nodes.region.onclick;
+			newRegion.nodes.button.onpointerdown = newRegion.nodes.region.onpointerdown;
 			newRegion.nodes.button.onmousemove = newRegion.nodes.region.onmousemove;
 		}
 

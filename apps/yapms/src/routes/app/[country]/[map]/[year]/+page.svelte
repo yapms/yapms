@@ -10,6 +10,7 @@
 	import ClearMapModal from '$lib/components/modals/clearmapmodal/ClearMapModal.svelte';
 	import applyPanZoom from './initialize/ApplyPanZoom';
 	import EditRegionModal from '$lib/components/modals/editregionmodal/EditRegionModal.svelte';
+	import ModeModal from '$lib/components/modals/modemodal/ModeModal.svelte';
 	import { InteractionStore } from '$lib/stores/Interaction';
 	import { ChartPositionStore, ChartTypeStore } from '$lib/stores/Chart';
 	import { CandidatesStore } from '$lib/stores/Candidates';
@@ -17,6 +18,8 @@
 	import HorizontalBattleChart from '$lib/components/chartbar/battlechart/BattleChart.svelte';
 	import ChartBar from '$lib/components/chartbar/ChartBar.svelte';
 	import PresetColorsModal from '$lib/components/modals/presetcolorsmodal/PresetColorsModal.svelte';
+	import ChartTypeModal from '$lib/components/modals/charttypemodal/ChartTypeModal.svelte';
+	import ThemeModal from '$lib/components/modals/thememodal/ThemeModal.svelte';
 
 	const imports = {
 		usa: () => import('$lib/assets/usa.svg?raw'),
@@ -104,3 +107,9 @@
 <EditRegionModal />
 
 <MapModal />
+
+<ChartTypeModal />
+
+<ModeModal />
+
+<ThemeModal />
