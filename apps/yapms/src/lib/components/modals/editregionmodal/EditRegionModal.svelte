@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { EditRegionModalStore } from '$lib/stores/Modals';
 	import { RegionsStore } from '$lib/stores/Regions';
+	import ModalTitle from '../ModalTitle.svelte';
 
 	$: open = $EditRegionModalStore.open;
 	$: longName = open ? $EditRegionModalStore.region?.longName : undefined;
@@ -28,19 +29,17 @@
 
 <div class="modal modal-bottom lg:modal-middle">
 	<div class="modal-box">
-		<h3 class="font-bold text-lg">Edit State {longName} {value}</h3>
-		<div class="flex flex-col pt-3">
-			<input
-				type="number"
-				placeholder="Value"
-				class="input input-bordered w-full"
-				min="1"
-				bind:value={newValue}
-			/>
-		</div>
+		<ModalTitle title="Edit Region {longName} - {value}" />
+		<input
+			type="number"
+			placeholder="Value"
+			class="input input-bordered w-full"
+			min="1"
+			bind:value={newValue}
+		/>
 		<div class="modal-action">
-			<button class="btn" on:click={close}> Close </button>
-			<button class="btn" on:click={confirm}> Confirm </button>
+			<button class="btn btn-primary" on:click={close}> No </button>
+			<button class="btn btn-success" on:click={confirm}> Update </button>
 		</div>
 	</div>
 </div>

@@ -3,6 +3,7 @@
 	import { ClearMapModalStore } from '$lib/stores/Modals';
 	import { RegionsStore } from '$lib/stores/Regions';
 	import { get } from 'svelte/store';
+	import ModalTitle from '../ModalTitle.svelte';
 
 	function clearMap() {
 		const regions = get(RegionsStore);
@@ -37,12 +38,11 @@
 <input type="checkbox" class="modal-toggle" checked={$ClearMapModalStore.open} />
 <div class="modal modal-bottom lg:modal-middle">
 	<div class="modal-box">
-		<h3 class="font-bold text-lg">Clear The Map?</h3>
-		<p>Clearing the map will result in all your progress being cleared.</p>
-		<p>Are you sure?</p>
+		<ModalTitle title="Clear Map" />
+		<p>Clearing the map will result in all your progress being cleared. Are you sure?</p>
 		<div class="modal-action">
-			<button class="btn" on:click={close}> Close </button>
-			<button class="btn" on:click={confirm}> Confirm </button>
+			<button class="btn btn-primary" on:click={close}> No </button>
+			<button class="btn btn-error" on:click={confirm}> Clear </button>
 		</div>
 	</div>
 </div>

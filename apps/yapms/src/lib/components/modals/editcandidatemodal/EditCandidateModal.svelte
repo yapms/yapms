@@ -3,6 +3,7 @@
 	import { RegionsStore } from '$lib/stores/Regions';
 	import { EditCandidateModalStore } from '$lib/stores/Modals';
 	import { get } from 'svelte/store';
+	import ModalTitle from '../ModalTitle.svelte';
 
 	$: open = $EditCandidateModalStore.open;
 	$: id = open ? $EditCandidateModalStore.candidate.id : '';
@@ -78,8 +79,8 @@
 <input type="checkbox" class="modal-toggle" checked={open} />
 <div class="modal modal-bottom lg:modal-middle">
 	<div class="modal-box">
-		<h3 class="text-2xl">{name}</h3>
-		<div class="flex pt-2 gap-1">
+		<ModalTitle title="Edit {name}" />
+		<div class="flex gap-1">
 			<div class="form-control w-full max-w-xs flex flex-col gap-3">
 				<h3 class="font-light text-lg">Name</h3>
 				<input type="text" class="input input-bordered w-full max-w-xs" bind:value={newName} />
@@ -108,7 +109,7 @@
 					/>
 					<input
 						type="button"
-						class="btn btn-primary btn-sm grow"
+						class="btn btn-success btn-sm grow"
 						on:click={addColor}
 						value="Add"
 					/>
@@ -117,9 +118,9 @@
 		</div>
 		<div class="modal-action">
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<label for="my-modal" class="btn btn-primary" on:click={cancel}>Cancel</label>
+			<label for="my-modal" class="btn btn-primary" on:click={cancel}>No</label>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<label for="my-modal" class="btn btn-primary" on:click={confirm}>Confirm</label>
+			<label for="my-modal" class="btn btn-success" on:click={confirm}>Update</label>
 		</div>
 	</div>
 </div>

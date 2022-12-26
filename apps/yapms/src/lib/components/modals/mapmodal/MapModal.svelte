@@ -5,6 +5,7 @@
 	import can_flag from '$lib/assets/flags/can.svg';
 	import gbr_flag from '$lib/assets/flags/gbr.svg';
 	import aus_flag from '$lib/assets/flags/aus.svg';
+	import ModalTitle from '../ModalTitle.svelte';
 
 	let selectedCountryName = 'usa';
 
@@ -29,6 +30,7 @@
 <input type="checkbox" class="modal-toggle" checked={$MapModalStore.open} />
 <div class="modal modal-bottom lg:modal-middle">
 	<div class="modal-box">
+		<ModalTitle title="Change Map" />
 		<div class="tabs justify-evenly">
 			{#each countries as country}
 				<button
@@ -38,7 +40,7 @@
 						selectedCountryName = country.name;
 					}}
 				>
-					<img src={country.flag} alt="flag" class="w-12 rounded-sm" />
+					<img src={country.flag} alt="flag" class="w-10 rounded-sm" />
 					<span>
 						{country.name.toUpperCase()}
 					</span>
@@ -55,7 +57,7 @@
 			</div>
 		</div>
 		<div class="modal-action">
-			<button class="btn btn-primary" on:click={close}>Close</button>
+			<button class="btn btn-primary" on:click={close}>No</button>
 		</div>
 	</div>
 </div>
