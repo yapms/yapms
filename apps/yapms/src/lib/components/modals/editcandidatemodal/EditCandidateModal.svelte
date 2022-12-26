@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { CandidatesStore, SelectedCandidateStore } from '$lib/stores/Candidates';
+	import { CandidatesStore, SelectedCandidateStore, TossupCandidateStore } from '$lib/stores/Candidates';
 	import { RegionsStore } from '$lib/stores/Regions';
 	import { EditCandidateModalStore } from '$lib/stores/Modals';
 	import { get } from 'svelte/store';
@@ -25,6 +25,20 @@
 
 	function removeCandidate() {
 		$CandidatesStore = $CandidatesStore.filter((candidate) => candidate.id !== id);
+		$SelectedCandidateStore = $TossupCandidateStore;
+		$RegionsStore = $RegionsStore.map((region) => 
+			region.candidates[0].candidate.id === id ?
+			{
+				...region,
+				candidates: [
+					{
+						candidate: $TossupCandidateStore,
+						count: region.value,
+						margin: 0
+					}
+				]
+			} : region
+		);
 		$EditCandidateModalStore.open = false;
 	}
 
