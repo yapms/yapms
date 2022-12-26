@@ -25,7 +25,8 @@
 
 	function removeCandidate() {
 		$CandidatesStore = $CandidatesStore.filter((candidate) => candidate.id !== id);
-		$SelectedCandidateStore = $TossupCandidateStore;
+		$SelectedCandidateStore = $SelectedCandidateStore.id === id ?
+			$TossupCandidateStore : $SelectedCandidateStore;
 		$RegionsStore = $RegionsStore.map((region) => 
 			region.candidates[0].candidate.id === id ?
 			{
