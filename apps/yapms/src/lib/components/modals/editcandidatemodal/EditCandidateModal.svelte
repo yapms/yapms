@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { CandidatesStore, SelectedCandidateStore } from '$lib/stores/Candidates';
+	import { CandidatesStore, SelectedCandidateStore, TossupCandidateStore } from '$lib/stores/Candidates';
 	import { RegionsStore } from '$lib/stores/Regions';
 	import { EditCandidateModalStore } from '$lib/stores/Modals';
 	import { get } from 'svelte/store';
@@ -21,6 +21,26 @@
 			return;
 		}
 		newColors = newColors.slice(0, newColors.length - 1);
+	}
+
+	function removeCandidate() {
+		$CandidatesStore = $CandidatesStore.filter((candidate) => candidate.id !== id);
+		$SelectedCandidateStore = $SelectedCandidateStore.id === id ?
+			$TossupCandidateStore : $SelectedCandidateStore;
+		$RegionsStore = $RegionsStore.map((region) => 
+			region.candidates[0].candidate.id === id ?
+			{
+				...region,
+				candidates: [
+					{
+						candidate: $TossupCandidateStore,
+						count: region.value,
+						margin: 0
+					}
+				]
+			} : region
+		);
+		$EditCandidateModalStore.open = false;
 	}
 
 	function cancel() {
@@ -58,21 +78,16 @@
 <input type="checkbox" class="modal-toggle" checked={open} />
 <div class="modal modal-bottom lg:modal-middle">
 	<div class="modal-box">
-		<h3 class="font-bold text-lg">{name}</h3>
-		<div class="flex gap-3">
-			<div class="form-control w-full max-w-xs">
-				<!-- svelte-ignore a11y-label-has-associated-control -->
-				<label class="label">
-					<span class="label-text">Name</span>
-				</label>
+		<h3 class="text-2xl">{name}</h3>
+		<div class="flex pt-2 gap-1">
+			<div class="form-control w-full max-w-xs flex flex-col gap-3">
+				<h3 class="font-light text-lg">Name</h3>
 				<input type="text" class="input input-bordered w-full max-w-xs" bind:value={newName} />
+				<input type="button" class="btn btn-error" value="Remove Candidate" on:click={removeCandidate} />
 			</div>
 			<div class="divider divider-horizontal" />
 			<div class="form-control w-full max-w-xs flex flex-col gap-3">
-				<!-- svelte-ignore a11y-label-has-associated-control -->
-				<label class="label">
-					<span class="label-text">Colors</span>
-				</label>
+				<h3 class="font-light text-lg">Colors</h3>
 				<div class="flex flex-row flex-wrap gap-2">
 					{#each newColors as color, index}
 						<input
