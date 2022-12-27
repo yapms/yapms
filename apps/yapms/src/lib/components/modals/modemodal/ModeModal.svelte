@@ -2,6 +2,7 @@
 	import { ModeModalStore } from '$lib/stores/Modals';
 	import { ModeStore } from '$lib/stores/Mode';
 	import type { Mode } from '$lib/types/Mode';
+	import ModalTitle from '../ModalTitle.svelte';
 
 	const modes = ['fill','edit','disable','lock'];
 
@@ -20,8 +21,7 @@
 <input type="checkbox" class="modal-toggle" checked={$ModeModalStore.open} />
 <div class="modal modal-bottom lg:modal-middle">
 	<div class="modal-box">
-		<h2 class="text-2xl">Change Mode</h2>
-		<br>
+		<ModalTitle title="Change Mode" />
 		<div class="tabs flex-row lg:flex-col flex-end items-center space-y-2 justify-evenly">
 			{#each modes as mode}
 				<button
@@ -40,7 +40,7 @@
 			{/each}
 		</div>
 		<div class="modal-action">
-			<button class="btn btn-primary" on:click={close}>Close</button>
+			<button class="btn btn-primary" on:click={close}>No</button>
 		</div>
 	</div>
 </div>

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { CandidatesStore } from '$lib/stores/Candidates';
 	import { AddCandidateModalStore, PresetColorsModalStore } from '$lib/stores/Modals';
+	import ModalTitle from '../ModalTitle.svelte';
 
 	let newName = '';
 
@@ -53,9 +54,9 @@
 <input type="checkbox" class="modal-toggle" checked={$AddCandidateModalStore.open} />
 <div class="modal modal-bottom lg:modal-middle">
 	<div class="modal-box">
-		<h2 class="text-2xl">Add Candidate</h2>
+		<ModalTitle title="Add Candidate" />
 
-		<div class="flex pt-2">
+		<div class="flex">
 			<div class="form-control w-full max-w-xs flex flex-col gap-3">
 				<h3 class="font-light text-lg">Name</h3>
 				<input type="text" class="input input-bordered w-full max-w-xs" bind:value={newName} />
@@ -101,8 +102,8 @@
 		</div>
 
 		<div class="modal-action">
-			<button class="btn btn-primary" on:click={close}> Close </button>
-			<button class="btn btn-primary" on:click={confirm}> Confirm </button>
+			<button class="btn btn-primary" on:click={close}> No </button>
+			<button class="btn btn-success" on:click={confirm}> Add </button>
 		</div>
 	</div>
 </div>

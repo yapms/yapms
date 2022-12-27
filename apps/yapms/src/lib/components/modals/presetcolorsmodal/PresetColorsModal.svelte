@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { AddCandidateModalStore, PresetColorsModalStore } from '$lib/stores/Modals';
+	import ModalTitle from '../ModalTitle.svelte';
 
 	let tab = 0;
 
@@ -86,20 +87,17 @@
 <input type="checkbox" class="modal-toggle" checked={$PresetColorsModalStore.open} />
 <div class="modal modal-bottom lg:modal-middle">
 	<div class="modal-box">
-		<div class="flex flex-row gap-2 pb-5 justify-between">
-			<h2 class="text-2xl">Preset Colors</h2>
-			<div class="tabs">
-				{#each groups as group, index}
-					<button
-						class="tab tab-bordered tab-lg"
-						class:tab-active={index === tab}
-						on:click={() => setTab(index)}
-					>
-						{group.name}
-					</button>
-				{/each}
-			</div>
-			<input type="button" class="btn btn-error" value="Close" on:click={close} />
+		<ModalTitle title="Select Preset Colors" />
+		<div class="tabs pb-4 justify-center">
+			{#each groups as group, index}
+				<button
+					class="tab tab-bordered tab-lg"
+					class:tab-active={index === tab}
+					on:click={() => setTab(index)}
+				>
+					{group.name}
+				</button>
+			{/each}
 		</div>
 
 		<div class="flex flex-row gap-3 flex-wrap justify-center">
@@ -118,6 +116,9 @@
 					</div>
 				</button>
 			{/each}
+		</div>
+		<div class="modal-action">
+			<input type="button" class="btn btn-primary" value="No" on:click={close} />
 		</div>
 	</div>
 </div>

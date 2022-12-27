@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { ThemeModalStore } from '$lib/stores/Modals';
+	import ModalTitle from '../ModalTitle.svelte';
 
 	function close() {
 		ThemeModalStore.set({
@@ -22,8 +23,7 @@
 <input type="checkbox" class="modal-toggle" checked={$ThemeModalStore.open} />
 <div class="modal modal-bottom lg:modal-middle">
 	<div class="modal-box">
-		<h2 class="text-2xl">Change Theme</h2>
-		<br>
+		<ModalTitle title="Change Theme" />
 		<div class="flex flex-row gap-3 flex-wrap justify-center">
 			{#each themes as theme}
 				<button class="btn btn-lg" data-set-theme={theme.name} data-act-class="ACTIVECLASS">
@@ -42,7 +42,7 @@
 			{/each}
 		</div>
 		<div class="modal-action">
-			<button class="btn btn-primary" on:click={close}>Close</button>
+			<button class="btn btn-primary" on:click={close}>No</button>
 		</div>
 	</div>
 </div>
