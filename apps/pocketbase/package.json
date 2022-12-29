@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "docker-build": "docker build -t pocketbase:yapms-0.10.4 .",
-    "docker-run": "docker run -d -p 8080:8080 --name pocketbase-yapms pocketbase:yapms-0.10.4"
+    "dev": "go run main.go serve --http=0.0.0.0:8080",
+    "build": "go clean & go build",
+    "start": "./pocketbase serve --http=0.0.0.0:8080"
   }
 }

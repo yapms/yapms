@@ -20,6 +20,7 @@
 	import PresetColorsModal from '$lib/components/modals/presetcolorsmodal/PresetColorsModal.svelte';
 	import ChartTypeModal from '$lib/components/modals/charttypemodal/ChartTypeModal.svelte';
 	import ThemeModal from '$lib/components/modals/thememodal/ThemeModal.svelte';
+	import AuthModal from '$lib/components/modals/authmodal/AuthModal.svelte';
 
 	const imports = {
 		usa: () => import('$lib/assets/usa.svg?raw'),
@@ -113,3 +114,5 @@
 <ModeModal />
 
 <ThemeModal />
+
+<AuthModal />
