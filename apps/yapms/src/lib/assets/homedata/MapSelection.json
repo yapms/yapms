@@ -4,7 +4,7 @@
 		"cards": [
 			{
 				"name": "United States",
-				"bg": "./countrybackgrounds/usa.webp",
+				"bg": "usa",
 				"alt": "U.S Capitol",
 				"doubleCols": true,
 				"links": [
@@ -32,7 +32,7 @@
 			},
 			{
 				"name": "United Kingdom",
-				"bg": "./countrybackgrounds/uk.webp",
+				"bg": "uk",
 				"alt": "Palace of Westminster",
 				"doubleCols": false,
 				"links": [
@@ -50,7 +50,7 @@
 			},
 			{
 				"name": "Canada",
-				"bg": "./countrybackgrounds/canada.webp",
+				"bg": "canada",
 				"alt": "Parliament Hill",
 				"doubleCols": false,
 				"links": [
@@ -73,7 +73,7 @@
 		"cards": [
 			{
 				"name": "Australia",
-				"bg": "./countrybackgrounds/australia.webp",
+				"bg": "australia",
 				"alt": "Parliament House",
 				"doubleCols": false,
 				"links": [

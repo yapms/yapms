@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { MoreMapsModalStore } from '$lib/stores/HomeModals';
-	import mapList from '$lib/assets/other/MapList.json';
+	import mapList from '$lib/assets/homedata/MapList.json';
 
 	function close() {
 		MoreMapsModalStore.set({
