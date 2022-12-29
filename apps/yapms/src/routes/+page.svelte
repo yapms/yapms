@@ -15,7 +15,7 @@
 		<h1 class="text-2xl font-bold m-auto inline lg:hidden">YAPms</h1>
 	</div>
 	<div class="navbar-end">
-		<button class="btn px-8 btn-primary mr-2 hidden md:inline">Login</button> <!--needs to change into icon when screen small-->
+		<button class="btn px-8 btn-primary mr-2 hidden md:inline">Login</button>
 		<button class="btn btn-square mr-2 inline md:hidden"><Login class="h-8 m-auto"/></button>
 	</div>
 </div>
