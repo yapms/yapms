@@ -4,40 +4,53 @@
 	import { onMount } from "svelte";
 	import { PUBLIC_REDIRECT_URI } from "$env/static/public";
 
+  let displayError: 'none' | 'state' | 'auth' = 'none';
+  let redirect = '';
+
   onMount(async () => {
     const searchParams = $page.url.searchParams;
     const code = searchParams.get('code') ?? '';
     const codeVerifier = localStorage.getItem('codeVerifier') ?? '';
     const state = localStorage.getItem('state') ?? '';
     const provider = localStorage.getItem('provider') ?? '';
-
-    console.log(code);
-    console.log(codeVerifier);
-    console.log(state);
-    console.log(provider);
+    redirect = localStorage.getItem('redirect') ?? '/';
+      
+    localStorage.removeItem('codeVerifier');
+    localStorage.removeItem('state');
+    localStorage.removeItem('provider');
+    localStorage.removeItem('redirect');
 
     if (state !== searchParams.get('state')) {
-      throw new Error("State parameter mismatch");
+      displayError = 'state';
+      return;
     }
 
-    $PocketBaseStore.collection('users').authWithOAuth2(
-      provider,
-      code,
-      codeVerifier,
-      PUBLIC_REDIRECT_URI,
-      {
-        emailVisibility: false
-      }
-    ).then((res) => {
-      console.log(res);
-      window.location.href = "/";
-    }).catch((err) => {
-      console.log("ERROR");
-      console.log(err);
-    });
+    try {
+      await $PocketBaseStore.collection('users').authWithOAuth2(
+        provider,
+        code,
+        codeVerifier,
+        PUBLIC_REDIRECT_URI,
+        {
+          emailVisibility: false
+        }
+      );
+      window.location.href = redirect;
+    } catch (error) {
+      displayError = 'auth';
+    }
   });
 </script>
 
 <div>
-  AUTHENTICATING DATA
+  <h1>Redirecting...</h1>
+  {#if displayError === 'state'}
+    <p>State mismatch</p>
+  {/if}
+  {#if displayError === 'auth'}
+    <p>Authentication failed</p>
+  {/if}
+  {#if displayError !== 'none'}
+    <button class="btn btn-error" on:click={() => window.location.href = redirect}>Continue</button>
+  {/if}
 </div>
