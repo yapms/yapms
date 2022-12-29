@@ -1,6 +1,7 @@
 <script lang="ts">
   import { PocketBaseStore } from "$lib/stores/PocketBase";
 	import { PUBLIC_REDIRECT_URI } from "$env/static/public";
+  import { page } from '$app/stores';
 
   const authMethods = $PocketBaseStore.collection('users').listAuthMethods();
   
@@ -13,6 +14,7 @@
     localStorage.setItem('codeVerifier', codeVerifier);
     localStorage.setItem('state', state);
     localStorage.setItem('provider', provider);
+    localStorage.setItem('redirect', $page.url.href)
     window.location.href = authUrl + PUBLIC_REDIRECT_URI;
   }
 </script>
