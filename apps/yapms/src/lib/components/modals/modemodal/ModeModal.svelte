@@ -2,7 +2,7 @@
 	import { ModeModalStore } from '$lib/stores/Modals';
 	import { ModeStore } from '$lib/stores/Mode';
 	import type { Mode } from '$lib/types/Mode';
-	import ModalTitle from '../ModalTitle.svelte';
+	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
 
 	const modes = ['fill','edit','disable','lock'];
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { AddCandidateModalStore, PresetColorsModalStore } from '$lib/stores/Modals';
-	import ModalTitle from '../ModalTitle.svelte';
+	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
 
 	let tab = 0;
 

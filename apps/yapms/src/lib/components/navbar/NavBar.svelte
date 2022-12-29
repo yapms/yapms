@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { ChartPositionStore } from '$lib/stores/Chart';
-	import { ClearMapModalStore, MapModalStore, AddCandidateModalStore, ModeModalStore, ChartTypeModalStore, ThemeModalStore } from '$lib/stores/Modals';
+	import { ClearMapModalStore, MapModalStore, AddCandidateModalStore, ModeModalStore, ChartTypeModalStore, ThemeModalStore, LoginModalStore } from '$lib/stores/Modals';
 	import { ModeStore } from '$lib/stores/Mode';
 
 	function openClearMapModal() {
@@ -50,6 +50,13 @@
 			return chartPosition === 'left' ? 'bottom' : 'left';
 		});
 	}
+
+	function openLogin() {
+		LoginModalStore.set({
+			...$LoginModalStore,
+			open: true
+		});
+	}
 </script>
 
 <div class="navbar bg-base-200 gap-3 overflow-x-scroll overflow-y-clip lg:overflow-x-clip">
@@ -61,4 +68,5 @@
 	<button class="btn btn-sm" on:click={openChartType}>chart type</button>
 	<button class="btn btn-sm" on:click={openMode}>mode: {$ModeStore}</button>
 	<button class="btn btn-sm" on:click={openTheme}>theme</button>
+	<button class="btn btn-sm" on:click={openLogin}>login</button>
 </div>

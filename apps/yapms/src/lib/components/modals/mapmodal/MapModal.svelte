@@ -5,7 +5,7 @@
 	import can_flag from '$lib/assets/flags/can.svg';
 	import gbr_flag from '$lib/assets/flags/gbr.svg';
 	import aus_flag from '$lib/assets/flags/aus.svg';
-	import ModalTitle from '../ModalTitle.svelte';
+	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
 
 	let selectedCountryName = 'usa';
 

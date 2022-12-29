@@ -2,7 +2,7 @@
 	import { ChartTypeStore } from '$lib/stores/Chart';
 	import { ChartTypeModalStore } from '$lib/stores/Modals';
 	import type { ChartType } from '$lib/types/ChartType';
-	import ModalTitle from '../ModalTitle.svelte';
+	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
 
 	const types = ['pie','battle'];
 

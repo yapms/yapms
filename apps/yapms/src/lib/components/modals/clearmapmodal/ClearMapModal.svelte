@@ -3,7 +3,7 @@
 	import { ClearMapModalStore } from '$lib/stores/Modals';
 	import { RegionsStore } from '$lib/stores/Regions';
 	import { get } from 'svelte/store';
-	import ModalTitle from '../ModalTitle.svelte';
+	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
 
 	function clearMap() {
 		const regions = get(RegionsStore);

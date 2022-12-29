@@ -48,6 +48,10 @@ const ThemeModalStore = writable({
 	open: false
 });
 
+const LoginModalStore = writable({
+	open: false
+});
+
 export {
 	EditCandidateModalStore,
 	ClearMapModalStore,
@@ -57,5 +61,6 @@ export {
 	PresetColorsModalStore,
 	ChartTypeModalStore,
 	ModeModalStore,
-	ThemeModalStore
+	ThemeModalStore,
+	LoginModalStore
 };

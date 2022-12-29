@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { CandidatesStore } from '$lib/stores/Candidates';
 	import { AddCandidateModalStore, PresetColorsModalStore } from '$lib/stores/Modals';
-	import ModalTitle from '../ModalTitle.svelte';
+	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
 
 	let newName = '';
 

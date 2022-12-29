@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { EditRegionModalStore } from '$lib/stores/Modals';
 	import { RegionsStore } from '$lib/stores/Regions';
-	import ModalTitle from '../ModalTitle.svelte';
+	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
 
 	$: open = $EditRegionModalStore.open;
 	$: longName = open ? $EditRegionModalStore.region?.longName : undefined;

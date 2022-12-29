@@ -60,6 +60,7 @@ importers:
       daisyui: ^2.43.2
       eslint-config-yapms: workspace:*
       panzoom: ^9.4.3
+      pocketbase: ^0.9.1
       postcss: ^8.4.16
       svelte: ^3.44.0
       svelte-check: ^2.10.2
@@ -82,6 +83,7 @@ importers:
       daisyui: 2.46.0_r4gnkvssmvyxmi2wmat5xbx36a
       eslint-config-yapms: link:../../packages/eslint-config-yapms
       panzoom: 9.4.3
+      pocketbase: 0.9.1
       postcss: 8.4.20
       svelte: 3.55.0
       svelte-check: 2.10.3_qs7rgzvahok4cbkjoy5bgypde4
@@ -1742,6 +1744,10 @@ packages:
   /pify/2.3.0:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /pocketbase/0.9.1:
+    resolution: {integrity: sha512-a9S/WHak+mgr3WI8bD2tz3lFVFzoy6ZgKTBlUXwIH4VLTKVU3JKeAKxqIFBF7av4qblmB+52tX8sWLS08Ftm/w==}
     dev: true
 
   /postcss-import/14.1.0_postcss@8.4.20:
