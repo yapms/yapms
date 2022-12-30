@@ -2,7 +2,7 @@
   import { PocketBaseStore } from '$lib/stores/PocketBase';
   
   let loading = false;
-  let postError = false;
+  let registerError = false;
 
   let email = "";
   let username = "";
@@ -10,7 +10,7 @@
   let passwordConfirm = "";
 
   async function register() {
-    postError = false;
+    registerError = false;
     loading = true;
     try {
       await $PocketBaseStore.collection('users').create({
@@ -21,25 +21,60 @@
       });
       await $PocketBaseStore.collection('users').requestVerification(email);
     } catch (error) {
-      postError = true;
+      registerError = true;
     } finally {
       loading = false;
     }
   }
 
+  function clearError() {
+    registerError = false;
+  }
+
 </script>
 
-<form on:submit={register} class="flex flex-col gap-2">
-  {#if !loading}
-    {#if postError}
-      <p class="bg-error">There was an error registering.</p>
-    {/if}
-    <input bind:value={email} type="text" placeholder="Email" />
-    <input bind:value={username} type="text" placeholder="Username" />
-    <input bind:value={password} type="password" placeholder="Password" />
-    <input bind:value={passwordConfirm} type="password" placeholder="Confirm Password" />
-    <input class="btn btn-sm btn-success" type="submit" value="Register" />
-  {:else}
-    <p>Registering...</p>
-  {/if}
+{#if registerError}
+  <span class="text-error">
+    There was an error registering, please try again.
+  </span>
+{/if}
+
+<form on:submit={register} on:input={clearError} class="flex flex-col gap-4 p-2">
+  <input
+    type="text"
+    class="input input-bordered"
+    class:input-error={registerError}
+    disabled={loading}
+    bind:value={email}
+    placeholder="Email"
+  />
+  <input
+    type="text"
+    class="input input-bordered"
+    class:input-error={registerError}
+    bind:value={username}
+    disabled={loading}
+    placeholder="Username"
+  />
+  <input
+    type="password"
+    class="input input-bordered"
+    class:input-error={registerError}
+    bind:value={password}
+    disabled={loading}
+    placeholder="Password"
+  />
+  <input
+    type="password"
+    class="input input-bordered"
+    class:input-error={registerError}
+    bind:value={passwordConfirm}
+    disabled={loading}
+    placeholder="Confirm Password"
+  />
+  <button
+    class="btn btn-md btn-success"
+    class:loading={loading}
+    type="submit"
+  >Register</button>
 </form>

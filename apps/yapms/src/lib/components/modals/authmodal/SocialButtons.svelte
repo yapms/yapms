@@ -22,9 +22,11 @@
 {#await authMethods}
   <div>Loading...</div>
 {:then authMethods}
-  <div class="flex flex-row flex-wrap gap-3 justify-center items-center">
+  <div class="flex flex-col gap-3 p-2 items-center">
   {#each authMethods.authProviders as method}
-    <button class="btn btn-sm btn-wide btn-accent" on:click={() => {
+    <button
+    class="btn btn-md btn-wide btn-accent"
+    on:click={() => {
       authenticate(
         method.authUrl, method.name,
         method.codeVerifier, method.state
