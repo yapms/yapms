@@ -3,6 +3,7 @@
   
   let loading = false;
   let registerError = false;
+  let registerSuccess = true;
 
   let email = "";
   let username = "";
@@ -20,6 +21,11 @@
         passwordConfirm
       });
       await $PocketBaseStore.collection('users').requestVerification(email);
+      registerSuccess = true;
+      email = "";
+      username = "";
+      password = "";
+      passwordConfirm = "";
     } catch (error) {
       registerError = true;
     } finally {
@@ -36,6 +42,12 @@
 {#if registerError}
   <span class="text-error">
     There was an error registering, please try again.
+  </span>
+{/if}
+
+{#if registerSuccess}
+  <span class="text-success">
+    You have successfully registered, please check your email to verify your account.
   </span>
 {/if}
 

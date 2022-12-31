@@ -26,7 +26,7 @@
         <LogoutForm />
       {:else}
       <div class="flex flex-col gap-2">
-        <div class="tabs">
+        <div class="tabs justify-center">
           <input type="button" class="tab tab-bordered tab-lg" value="Login"
             class:tab-active={tab==="login"}
             on:click={() => {
