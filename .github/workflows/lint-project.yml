@@ -28,6 +28,10 @@ jobs:
         run: |
           pnpm install
 
+      - name: check
+        run: |
+          pnpm check
+
       - name: lint
         env:
           NODE_OPTIONS: --max-old-space-size=8192
