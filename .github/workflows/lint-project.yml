@@ -24,18 +24,9 @@ jobs:
           node-version: 18.x
           cache: pnpm
 
-      - name: setup go
-        uses: actions/setup-go@v3
-        with:
-          go-version: 1.19.x
-
       - name: install dependencies
         run: |
           pnpm install
-
-      - name: build
-        run: |
-          pnpm build
 
       - name: lint
         env:
