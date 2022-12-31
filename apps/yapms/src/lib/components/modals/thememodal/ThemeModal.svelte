@@ -9,8 +9,9 @@
 		});
 	}
 
-	const themes = [ //Hex codes can be found in node_modules/daisyui/src/colors/themes
-	//name: id for theme, margins ['base-100','primary','secondary','accent']
+	const themes = [
+		//Hex codes can be found in node_modules/daisyui/src/colors/themes
+		//name: id for theme, margins ['base-100','primary','secondary','accent']
 		{ name: 'light', margins: ['#ffffff', '#570df8', '#f000b8', '#37cdbe'] },
 		{ name: 'dark', margins: ['#2A303C', '#661AE6', '#D926AA', '#1FB2A5'] },
 		{ name: 'cupcake', margins: ['#faf7f5', '#65c3c8', '#ef9fbc', '#eeaf3a'] },

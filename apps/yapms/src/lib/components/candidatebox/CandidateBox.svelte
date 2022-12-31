@@ -49,14 +49,14 @@
 		</div>
 	</button>
 	{#if editable}
-	<button
-		class="btn no-animation"
-		class:btn-sm={selected}
-		class:btn-xs={!selected}
-		style="transition: all 0.25s"
-		on:click={openEditCandidateModal}
-	>
-		<Cog6Tooth class="h-4/6"/>
-	</button>
+		<button
+			class="btn no-animation"
+			class:btn-sm={selected}
+			class:btn-xs={!selected}
+			style="transition: all 0.25s"
+			on:click={openEditCandidateModal}
+		>
+			<Cog6Tooth class="h-4/6" />
+		</button>
 	{/if}
 </div>

@@ -30,7 +30,7 @@
 		AddCandidateModalStore.set({
 			...$AddCandidateModalStore,
 			open: false
-		})
+		});
 		PresetColorsModalStore.set({
 			open: true
 		});

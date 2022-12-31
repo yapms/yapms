@@ -1,6 +1,14 @@
 <script lang="ts">
 	import { ChartPositionStore } from '$lib/stores/Chart';
-	import { ClearMapModalStore, MapModalStore, AddCandidateModalStore, ModeModalStore, ChartTypeModalStore, ThemeModalStore, LoginModalStore } from '$lib/stores/Modals';
+	import {
+		ClearMapModalStore,
+		MapModalStore,
+		AddCandidateModalStore,
+		ModeModalStore,
+		ChartTypeModalStore,
+		ThemeModalStore,
+		LoginModalStore
+	} from '$lib/stores/Modals';
 	import { ModeStore } from '$lib/stores/Mode';
 
 	function openClearMapModal() {
