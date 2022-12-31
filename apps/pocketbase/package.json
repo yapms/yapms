@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "go run main.go serve --http=0.0.0.0:8080",
-    "build": "go clean & go build",
+    "build": "go clean & go get github.com/pocketbase/pocketbase & go build",
     "start": "./pocketbase serve --http=0.0.0.0:8080"
   }
 }
