@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+env:
+  PUBLIC_POCKETBASE_URI: dummy
+  PUBLIC_REDIRECT_URI: dummy
+
 jobs:
   lint:
     runs-on: ubuntu-latest
