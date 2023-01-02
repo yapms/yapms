@@ -13,7 +13,8 @@
 	<title>YAPms - Yet Another Political Map Simulator</title>
 </svelte:head>
 
-<div class="flex flex-col h-full">
+<div class="flex flex-col h-full overflow-hidden">
+
 	<div class="navbar bg-base-200">
 		<div class="navbar-start"></div>
 		<div class="navbar-center">
@@ -26,10 +27,10 @@
 		</div>
 	</div>
 
-	<div class="flex flex-row w-full h-full">
+	<div class="flex flex-row h-full overflow-hidden">
 		<HomePageSidebar/>
 		<div class="divider md:divider-horizontal ml-0 w-0" />
-		<div class="flex-1 md:pr-5 overflow-y-auto overflow-x-clip">
+		<div class="flex-1 md:pr-5 overflow-auto overflow-x-clip">
 			{#each mapSelectSections as section}
 				<MapSelectionTitle title={section.title}></MapSelectionTitle>
 				<MapSelectionGrid>
@@ -38,10 +39,9 @@
 					{/each}
 				</MapSelectionGrid>
 			{/each}
-			<!--This exists here to solve a problem in which you cannot properly scroll to the bottom since a card-->
-			<div class="invisible card card-bordered w-80 md:w-92 h-48 lg:h-52 bg-base-100 shadow-xl image-full"></div> 
 		</div>
 	</div>
+	
 </div>
 
 <MoreMapsModal/>
