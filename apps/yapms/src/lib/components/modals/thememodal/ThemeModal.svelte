@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { ThemeModalStore } from '$lib/stores/Modals';
-	import ModalTitle from '../ModalTitle.svelte';
+	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
 
 	function close() {
 		ThemeModalStore.set({

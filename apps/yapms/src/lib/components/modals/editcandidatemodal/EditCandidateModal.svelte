@@ -3,7 +3,7 @@
 	import { RegionsStore } from '$lib/stores/Regions';
 	import { EditCandidateModalStore } from '$lib/stores/Modals';
 	import { get } from 'svelte/store';
-	import ModalTitle from '../ModalTitle.svelte';
+	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
 
 	$: open = $EditCandidateModalStore.open;
 	$: id = open ? $EditCandidateModalStore.candidate.id : '';
