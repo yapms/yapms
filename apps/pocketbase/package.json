@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "dev": "go run main.go serve --http=0.0.0.0:8080",
-    "build": "go clean & go get github.com/pocketbase/pocketbase & go build",
-    "start": "./pocketbase serve --http=0.0.0.0:8080"
+    "server-dev": "go run main.go serve --http=0.0.0.0:8080",
+    "server-build": "go clean & go get github.com/pocketbase/pocketbase & go build",
+    "server-start": "./pocketbase serve --http=0.0.0.0:8080"
   }
 }
