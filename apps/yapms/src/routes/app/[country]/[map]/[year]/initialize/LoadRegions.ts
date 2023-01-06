@@ -115,7 +115,7 @@ function loadRegions(node: HTMLDivElement): void {
 
 		const value = parseInt(childHTML.getAttribute('value') || '0', 10);
 		const newRegion: Region = {
-			id: childHTML.getAttribute('class') ?? '',
+			id: childHTML.getAttribute('region') ?? '',
 			shortName: childHTML.getAttribute('short-name') ?? '',
 			longName: childHTML.getAttribute('long-name') ?? '',
 			value: childHTML.hasAttribute('disabled') ? 0 : value,
@@ -138,8 +138,8 @@ function loadRegions(node: HTMLDivElement): void {
 				: [{ candidate: tossupCandidate, count: value, margin: 0 }],
 			nodes: {
 				region: childHTML,
-				button: buttons?.querySelector(`[for="${childHTML.getAttribute('class') ?? ''}"]`) ?? null,
-				text: texts?.querySelector(`[for="${childHTML.getAttribute('class') ?? ''}"]`) ?? null
+				button: buttons?.querySelector(`[for="${childHTML.getAttribute('region') ?? ''}"]`) ?? null,
+				text: texts?.querySelector(`[for="${childHTML.getAttribute('region') ?? ''}"]`) ?? null
 			}
 		};
 
