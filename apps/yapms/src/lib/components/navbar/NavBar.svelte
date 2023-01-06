@@ -60,9 +60,7 @@
 </script>
 
 <div class="navbar bg-base-200 gap-3 overflow-x-scroll overflow-y-clip lg:overflow-x-clip">
-	<a href="/">
-		<button class="btn btn-sm">home</button>
-	</a>
+	<a href="/" class="btn btn-sm">home</a>
 	<button class="btn btn-sm" on:click={openClearMapModal}>clear</button>
 	<button class="btn btn-sm" on:click={openMapModal}>maps</button>
 	<button class="btn btn-sm" on:click={openAddCandidateModal}>add candidate</button>
