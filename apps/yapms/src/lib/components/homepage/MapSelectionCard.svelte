@@ -22,9 +22,7 @@
         <h2 class="card-title text-primary-content">{name}</h2>
         <div class="grid gap-4" class:grid-cols-2={doubleCols}>
             {#each links as link}
-                <a class="w-full" href={link.modal ? "" : link.route}>
-                    <button class="btn btn-sm btn-primary w-full" on:click={() => {link.modal ? openMoreModal(link.route) : undefined}}>{link.label}</button>
-                </a>
+                <a href={link.modal ? "" : link.route} class="btn btn-sm btn-primary w-full" on:click={() => {link.modal ? openMoreModal(link.route) : undefined}}>{link.label}</a>
             {/each}
         </div>
     </div>

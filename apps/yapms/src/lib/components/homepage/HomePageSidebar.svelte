@@ -10,23 +10,23 @@
 	</div>
 	<div class="mb-4">
 		<div class="divider">Social Links</div>
-		<div class="flex flex-wrap justify-evenly gap-2">
-			<button type="button" class="btn btn-sm w-[45%]">
-				<Fa icon={faReddit} class="pr-1"/>
-				<a href="https://www.reddit.com/r/YAPms/">Reddit</a>
-			</button>
-			<button type="button" class="btn btn-sm w-[45%]">
-				<Fa icon={faDiscord} class="pr-1"/>
-				<a href="https://discord.gg/Rq5bk3eDwm">Discord</a>
-			</button>
-			<button type="button" class="btn btn-sm w-[45%]">
-				<Fa icon={faTwitter} class="pr-1"/>
-				<a href="https://twitter.com/yapmsofficial">Twitter</a>
-			</button>
-			<button type="button" class="btn btn-sm w-[45%]">
-				<Fa icon={faGithub} class="pr-1"/>
-				<a href="https://github.com/yapms">GitHub</a>
-			</button>
+		<div class="grid grid-cols-2 gap-2">
+			<a class="btn btn-sm w-full flex-nowrap gap-2" href="https://www.reddit.com/r/YAPms/">
+				<Fa icon={faReddit}/>
+				<span>Reddit</span>
+			</a>
+			<a class="btn btn-sm w-full flex-nowrap gap-2" href="https://discord.gg/Rq5bk3eDwm">
+				<Fa icon={faDiscord}/>
+				<span>Discord</span>
+			</a>
+			<a class="btn btn-sm w-full flex-nowrap gap-2" href="https://twitter.com/yapmsofficial">
+				<Fa icon={faTwitter}/>
+				<span>Twitter</span>
+			</a>
+			<a class="btn btn-sm w-full flex-nowrap gap-2" href="https://github.com/yapms">
+				<Fa icon={faGithub}/>
+				<span>GitHub</span>
+			</a>
 		</div>
 	</div>
 </div>

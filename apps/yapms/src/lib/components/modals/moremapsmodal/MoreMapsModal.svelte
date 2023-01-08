@@ -20,10 +20,8 @@
 		<br>
 		<div class="tabs flex-row lg:flex-col flex-end items-center space-y-2 justify-evenly">
 			{#each maps.links as link}
-			<a class="w-2/3 lg:w-1/2"href={link.route}>
-				<button on:click={close} class="btn btn-primary gap-1 w-full">
-					{link.label.toUpperCase()}
-				</button>
+			<a class="w-2/3 lg:w-1/2 btn btn-primary gap-1"href={link.route} on:click={close}>
+				{link.label.toUpperCase()}
 			</a>
 			{/each}
 		</div>
