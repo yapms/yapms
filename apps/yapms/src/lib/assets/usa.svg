@@ -45,7 +45,7 @@
      id="areas"
      style="display:inline;fill:#bc0000;fill-opacity:1">
     <path
-       class="al"
+       region="al"
        short-name="al"
        long-name="Alabama"
        value="9"
@@ -53,7 +53,7 @@
        id="path1290"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="ak"
+       region="ak"
        short-name="ak"
        long-name="Alaska"
        value="3"
@@ -61,7 +61,7 @@
        id="path1292"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="az"
+       region="az"
        short-name="az"
        long-name="Arizona"
        value="11"
@@ -69,7 +69,7 @@
        id="path1294"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="ar"
+       region="ar"
        short-name="ar"
        long-name="Arkansas"
        value="6"
@@ -77,7 +77,7 @@
        id="path1296"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="ca"
+       region="ca"
        short-name="ca"
        long-name="California"
        value="54"
@@ -85,7 +85,7 @@
        id="path1298"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="co"
+       region="co"
        short-name="co"
        long-name="Colorado"
        value="10"
@@ -93,7 +93,7 @@
        id="path1300"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="ct"
+       region="ct"
        short-name="ct"
        long-name="Connecticut"
        value="7"
@@ -101,7 +101,7 @@
        id="path1302"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="de"
+       region="de"
        short-name="de"
        long-name="Delaware"
        value="3"
@@ -109,7 +109,7 @@
        id="path1304"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="fl"
+       region="fl"
        short-name="fl"
        long-name="Florida"
        value="30"
@@ -117,7 +117,7 @@
        id="path1306"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="ga"
+       region="ga"
        short-name="ga"
        long-name="Georgia"
        value="16"
@@ -125,7 +125,7 @@
        id="path1308"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="hi"
+       region="hi"
        short-name="hi"
        long-name="Hawaii"
        value="4"
@@ -133,7 +133,7 @@
        id="path1310"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="id"
+       region="id"
        short-name="id"
        long-name="Idaho"
        value="4"
@@ -141,7 +141,7 @@
        id="path1312"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="il"
+       region="il"
        short-name="il"
        long-name="Illinois"
        value="19"
@@ -149,7 +149,7 @@
        id="path1314"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="in"
+       region="in"
        short-name="in"
        long-name="Indiana"
        value="11"
@@ -157,7 +157,7 @@
        id="path1316"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="ia"
+       region="ia"
        short-name="ia"
        long-name="Iowa"
        value="6"
@@ -165,7 +165,7 @@
        id="path1318"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="ks"
+       region="ks"
        short-name="ks"
        long-name="Kansas"
        value="6"
@@ -173,7 +173,7 @@
        id="path1320"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="ky"
+       region="ky"
        short-name="ky"
        long-name="Kentucky"
        value="8"
@@ -181,7 +181,7 @@
        id="path1322"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="la"
+       region="la"
        short-name="la"
        long-name="Louisiana"
        value="8"
@@ -189,7 +189,7 @@
        id="path1324"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="me"
+       region="me"
        short-name="me"
        long-name="Maine"
        value="4"
@@ -197,7 +197,7 @@
        id="path1326"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="md"
+       region="md"
        short-name="md"
        long-name="Maryland"
        value="10"
@@ -205,7 +205,7 @@
        id="path1328"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="ma"
+       region="ma"
        short-name="ma"
        long-name="Massachusetts"
        value="11"
@@ -213,7 +213,7 @@
        id="path1330"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="mi"
+       region="mi"
        short-name="mi"
        long-name="Michigan"
        value="15"
@@ -221,7 +221,7 @@
        id="path1332"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="mn"
+       region="mn"
        short-name="mn"
        long-name="Minnesota"
        value="10"
@@ -229,7 +229,7 @@
        id="path1334"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="ms"
+       region="ms"
        short-name="ms"
        long-name="Mississippi"
        value="6"
@@ -237,7 +237,7 @@
        id="path1336"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="mo"
+       region="mo"
        short-name="mo"
        long-name="Missouri"
        value="10"
@@ -245,7 +245,7 @@
        id="path1338"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="mt"
+       region="mt"
        short-name="mt"
        long-name="Montana"
        value="4"
@@ -253,7 +253,7 @@
        id="path1340"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="ne"
+       region="ne"
        short-name="ne"
        long-name="Nebraska"
        value="5"
@@ -261,7 +261,7 @@
        id="path1342"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="nv"
+       region="nv"
        short-name="nv"
        long-name="Nevada"
        value="6"
@@ -269,7 +269,7 @@
        id="path1344"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="nh"
+       region="nh"
        short-name="nh"
        long-name="New Hampshire"
        value="4"
@@ -277,7 +277,7 @@
        id="path1346"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="nj"
+       region="nj"
        short-name="nj"
        long-name="New Jersey"
        value="14"
@@ -285,7 +285,7 @@
        id="path1348"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="nm"
+       region="nm"
        short-name="nm"
        long-name="New Mexico"
        value="5"
@@ -293,7 +293,7 @@
        id="path1350"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="ny"
+       region="ny"
        short-name="ny"
        long-name="New York"
        value="28"
@@ -301,7 +301,7 @@
        id="path1352"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="nc"
+       region="nc"
        short-name="nc"
        long-name="North Carolina"
        value="16"
@@ -309,7 +309,7 @@
        id="path1354"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="nd"
+       region="nd"
        short-name="nd"
        long-name="North Dakota"
        value="3"
@@ -317,7 +317,7 @@
        id="path1356"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="oh"
+       region="oh"
        short-name="oh"
        long-name="Ohio"
        value="17"
@@ -325,7 +325,7 @@
        id="path1358"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="ok"
+       region="ok"
        short-name="ok"
        long-name="Oklahoma"
        value="7"
@@ -333,7 +333,7 @@
        id="path1360"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="or"
+       region="or"
        short-name="or"
        long-name="Oregon"
        value="8"
@@ -341,7 +341,7 @@
        id="path1362"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="pa"
+       region="pa"
        short-name="pa"
        long-name="Pennsylvania"
        value="19"
@@ -349,7 +349,7 @@
        id="path1364"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="ri"
+       region="ri"
        short-name="ri"
        long-name="Rhode Island"
        value="4"
@@ -357,7 +357,7 @@
        id="path1366"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="sc"
+       region="sc"
        short-name="sc"
        long-name="South Carolina"
        value="9"
@@ -365,7 +365,7 @@
        id="path1368"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="sd"
+       region="sd"
        short-name="sd"
        long-name="South Dakota"
        value="3"
@@ -373,7 +373,7 @@
        id="path1370"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="tn"
+       region="tn"
        short-name="tn"
        long-name="Tennessee"
        value="11"
@@ -381,7 +381,7 @@
        id="path1372"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="tx"
+       region="tx"
        short-name="tx"
        long-name="Texas"
        value="40"
@@ -389,7 +389,7 @@
        id="path1374"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="ut"
+       region="ut"
        short-name="ut"
        long-name="Utah"
        value="6"
@@ -397,7 +397,7 @@
        id="path1376"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="vt"
+       region="vt"
        short-name="vt"
        long-name="Vermont"
        value="3"
@@ -405,7 +405,7 @@
        id="path1378"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="va"
+       region="va"
        short-name="va"
        long-name="Virginia"
        value="13"
@@ -413,7 +413,7 @@
        id="path1380"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="wa"
+       region="wa"
        short-name="wa"
        long-name="Washington"
        value="12"
@@ -421,7 +421,7 @@
        id="path1382"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="wv"
+       region="wv"
        short-name="wv"
        long-name="West Virginia"
        value="4"
@@ -429,7 +429,7 @@
        id="path1384"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="wi"
+       region="wi"
        short-name="wi"
        long-name="Wisconsin"
        value="10"
@@ -437,7 +437,7 @@
        id="path1386"
        style="fill:#bc0000;fill-opacity:1" />
     <path
-       class="wy"
+       region="wy"
        short-name="wy"
        long-name="Wyoming"
        value="3"
@@ -445,7 +445,7 @@
        id="path1388"
        style="fill:#bc0000;fill-opacity:1" />
     <rect
-       class="cd"
+       region="cd"
        short-name="dc"
        long-name="District of Columbia"
        value="3"
