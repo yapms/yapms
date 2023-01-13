@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { ThemeModalStore } from '$lib/stores/Modals';
+	import { ChartPositionStore } from '$lib/stores/Chart';
+	import { StyleModalStore } from '$lib/stores/Modals';
 	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
 
 	function close() {
-		ThemeModalStore.set({
-			...$ThemeModalStore,
+		StyleModalStore.set({
+			...$StyleModalStore,
 			open: false
 		});
 	}
@@ -18,12 +19,24 @@
 		{ name: 'lofi', margins: ['#ffffff', '#0D0D0D', '#1A1919', '#262626'] },
 		{ name: 'night', margins: ['#0F172A', '#38bdf8', '#818CF8', '#F471B5'] }
 	];
+
+	function sideChart() {
+		ChartPositionStore.set("left");
+	}
+
+	function bottomChart() {
+		ChartPositionStore.set("bottom");
+	}
 </script>
 
-<input type="checkbox" class="modal-toggle" checked={$ThemeModalStore.open} />
+<input type="checkbox" class="modal-toggle" checked={$StyleModalStore.open} />
 <div class="modal modal-bottom lg:modal-middle">
 	<div class="modal-box">
-		<ModalTitle title="Change Theme" />
+		<ModalTitle title="Change Style" />
+		<div class="flex flex-row lg:flex-col">
+
+		<div class="flex flex-col">
+		<h3 class="font-light text-lg pb-3">Themes</h3>
 		<div class="flex flex-row gap-3 flex-wrap justify-center">
 			{#each themes as theme}
 				<button class="btn btn-lg" data-set-theme={theme.name} data-act-class="ACTIVECLASS">
@@ -41,8 +54,28 @@
 				</button>
 			{/each}
 		</div>
-		<div class="modal-action">
-			<button class="btn btn-primary" on:click={close}>No</button>
+		</div>
+
+		<div class="divider divider-horizontal lg:divider-vertical"></div>
+
+		<div class="flex flex-col">
+		<h3 class="font-light text-lg pb-3">Chart Position</h3>
+		<div class="flex gap-3 justify-center">
+			<button class="btn btn-secondary btn-lg"
+				class:btn-outline={$ChartPositionStore === 'bottom'}
+				on:click={sideChart}>
+				Side
+			</button>
+			<button class="btn btn-secondary btn-lg"
+				class:btn-outline={$ChartPositionStore === 'left'}
+				on:click={bottomChart}>
+				Bottom
+			</button>
+		</div>
 		</div>
 	</div>
+	<div class="modal-action">
+		<button class="btn btn-primary" on:click={close}>No</button>
+	</div>
+</div>
 </div>

@@ -44,7 +44,7 @@ const ModeModalStore = writable({
 	open: false
 });
 
-const ThemeModalStore = writable({
+const StyleModalStore = writable({
 	open: false
 });
 
@@ -61,6 +61,6 @@ export {
 	PresetColorsModalStore,
 	ChartTypeModalStore,
 	ModeModalStore,
-	ThemeModalStore,
+	StyleModalStore,
 	LoginModalStore
 };
