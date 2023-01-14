@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { ChartPositionStore } from '$lib/stores/Chart';
-	import { ClearMapModalStore, MapModalStore, AddCandidateModalStore, ModeModalStore, ChartTypeModalStore, ThemeModalStore, LoginModalStore } from '$lib/stores/Modals';
+	import { ClearMapModalStore, MapModalStore, AddCandidateModalStore, ModeModalStore, ChartTypeModalStore, StyleModalStore, LoginModalStore } from '$lib/stores/Modals';
 	import { ModeStore } from '$lib/stores/Mode';
 
 	function openClearMapModal() {
@@ -38,16 +37,10 @@
 		});
 	}
 
-	function openTheme() {
-		ThemeModalStore.set({
-			...$ThemeModalStore,
+	function openStyle() {
+		StyleModalStore.set({
+			...$StyleModalStore,
 			open: true
-		});
-	}
-
-	function toggleChartPosition() {
-		ChartPositionStore.update((chartPosition) => {
-			return chartPosition === 'left' ? 'bottom' : 'left';
 		});
 	}
 
@@ -64,9 +57,8 @@
 	<button class="btn btn-sm" on:click={openClearMapModal}>clear</button>
 	<button class="btn btn-sm" on:click={openMapModal}>maps</button>
 	<button class="btn btn-sm" on:click={openAddCandidateModal}>add candidate</button>
-	<button class="btn btn-sm" on:click={toggleChartPosition}>chart position</button>
+	<button class="btn btn-sm" on:click={openStyle}>style</button>
 	<button class="btn btn-sm" on:click={openChartType}>chart type</button>
 	<button class="btn btn-sm" on:click={openMode}>mode: {$ModeStore}</button>
-	<button class="btn btn-sm" on:click={openTheme}>theme</button>
 	<button class="btn btn-sm" on:click={openLogin}>login</button>
 </div>
