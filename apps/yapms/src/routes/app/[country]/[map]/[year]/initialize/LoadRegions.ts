@@ -24,15 +24,19 @@ function fillRegion(regionID: string, increment: boolean) {
 			margin: 0
 		};
 		if (currentCandidate.candidate.id === selectedCandidate.id && increment) {
-			!currentInteractions.has('ControlLeft')
-				? (newCandidate.margin = //Increment
-						currentCandidate.margin + 1 >= selectedCandidate.margins.length
-							? 0
-							: currentCandidate.margin + 1)
-				: (newCandidate.margin = //Decrement
-						currentCandidate.margin - 1 <= -1
-							? selectedCandidate.margins.length - 1
-							: currentCandidate.margin - 1);
+			if (!currentInteractions.has('ControlLeft')) {
+				//Increment
+				newCandidate.margin =
+					currentCandidate.margin + 1 >= selectedCandidate.margins.length
+						? 0
+						: currentCandidate.margin + 1;
+			} else {
+				//Decrement
+				newCandidate.margin =
+					currentCandidate.margin - 1 <= -1
+						? selectedCandidate.margins.length - 1
+						: currentCandidate.margin - 1;
+			}
 		}
 		region.candidates = [newCandidate];
 		RegionsStore.set(regions);
