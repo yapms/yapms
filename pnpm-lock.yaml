@@ -54,11 +54,13 @@ importers:
       '@fortawesome/free-solid-svg-icons': ^6.2.0
       '@sveltejs/adapter-node': ^1.0.0
       '@sveltejs/kit': ^1.0.0
+      '@types/file-saver': ^2.0.5
       autoprefixer: ^10.4.11
       chart.js: ^4.1.1
       chartjs-plugin-datalabels: ^2.1.0
       daisyui: ^2.43.2
       eslint-config-yapms: workspace:*
+      file-saver: ^2.0.5
       panzoom: ^9.4.3
       pocketbase: ^0.9.1
       postcss: ^8.4.16
@@ -77,11 +79,13 @@ importers:
       '@fortawesome/free-solid-svg-icons': 6.2.1
       '@sveltejs/adapter-node': 1.0.0_@sveltejs+kit@1.0.1
       '@sveltejs/kit': 1.0.1_svelte@3.55.0+vite@4.0.3
+      '@types/file-saver': 2.0.5
       autoprefixer: 10.4.13_postcss@8.4.20
       chart.js: 4.1.1
       chartjs-plugin-datalabels: 2.2.0_chart.js@4.1.1
       daisyui: 2.46.0_r4gnkvssmvyxmi2wmat5xbx36a
       eslint-config-yapms: link:../../packages/eslint-config-yapms
+      file-saver: 2.0.5
       panzoom: 9.4.3
       pocketbase: 0.9.1
       postcss: 8.4.20
@@ -555,6 +559,10 @@ packages:
 
   /@types/estree/1.0.0:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
+    dev: true
+
+  /@types/file-saver/2.0.5:
+    resolution: {integrity: sha512-zv9kNf3keYegP5oThGLaPk8E081DFDuwfqjtiTzm6PoxChdJ1raSuADf2YGCVIyrSynLrgc8JWv296s7Q7pQSQ==}
     dev: true
 
   /@types/json-schema/7.0.11:
@@ -1289,6 +1297,10 @@ packages:
     dependencies:
       flat-cache: 3.0.4
     dev: false
+
+  /file-saver/2.0.5:
+    resolution: {integrity: sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA==}
+    dev: true
 
   /fill-range/7.0.1:
     resolution: {integrity: sha512-qOo9F+dMUmC2Lcb4BbVvnKJxTPjCm+RRpe4gDuGrzkL7mEVl/djYSu2OdQ2Pa302N4oqkSg9ir6jaLWJ2USVpQ==}

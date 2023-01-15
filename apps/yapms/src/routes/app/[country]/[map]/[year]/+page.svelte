@@ -21,6 +21,7 @@
 	import ChartTypeModal from '$lib/components/modals/charttypemodal/ChartTypeModal.svelte';
 	import AuthModal from '$lib/components/modals/authmodal/AuthModal.svelte';
 	import StyleModal from '$lib/components/modals/stylemodal/StyleModal.svelte';
+	import ShareModal from '$lib/components/modals/sharemodal/ShareModal.svelte';
 
 	const imports = {
 		usa: () => import('$lib/assets/usa.svg?raw'),
@@ -114,5 +115,7 @@
 <ModeModal />
 
 <StyleModal />
+
+<ShareModal />
 
 <AuthModal />
