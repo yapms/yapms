@@ -15,6 +15,7 @@ function fillRegion(regionID: string, increment: boolean) {
 	const regions = get(RegionsStore);
 	const region = regions.find((region) => region.id === regionID);
 	if (region && !(region.disabled || region.locked)) {
+		const currentInteractions = get(InteractionStore);
 		const selectedCandidate = get(SelectedCandidateStore);
 		const currentCandidate = region.candidates[0];
 		const newCandidate = {
@@ -23,10 +24,19 @@ function fillRegion(regionID: string, increment: boolean) {
 			margin: 0
 		};
 		if (currentCandidate.candidate.id === selectedCandidate.id && increment) {
-			newCandidate.margin =
-				currentCandidate.margin + 1 >= selectedCandidate.margins.length
-					? 0
-					: currentCandidate.margin + 1;
+			if (!currentInteractions.has('ControlLeft')) {
+				//Increment
+				newCandidate.margin =
+					currentCandidate.margin + 1 >= selectedCandidate.margins.length
+						? 0
+						: currentCandidate.margin + 1;
+			} else {
+				//Decrement
+				newCandidate.margin =
+					currentCandidate.margin - 1 <= -1
+						? selectedCandidate.margins.length - 1
+						: currentCandidate.margin - 1;
+			}
 		}
 		region.candidates = [newCandidate];
 		RegionsStore.set(regions);
