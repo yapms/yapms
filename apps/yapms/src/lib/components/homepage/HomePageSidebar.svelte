@@ -15,7 +15,7 @@
 		.then(data => {
 			updates = data.items
 		}).catch(error => {
-			console.log(error);
+			console.log(`Failed to fetch updates:\n${error}`);
 		});
 	});
 </script>
