@@ -10,22 +10,24 @@
 	let updates:Record[] = [];
 
 	onMount(async () => {
-		//Request the last 10 update records from pocketbase.
-		$PocketBaseStore.collection('updates').getList(1, 10, {sort: '-created'})
-		.then(data => {
-			updates = data.items
-		}).catch(error => {
+		try {
+			//Request the last 10 update records from pocketbase.
+			const records = await $PocketBaseStore.collection('updates').getList(1, 10, {sort: '-created'});
+			updates = records.items;
+		} catch(error) {
 			console.log(`Failed to fetch updates:\n${error}`);
-		});
+		}
 	});
 </script>
 
 <div class="lg:w-1/5 pl-5 hidden md:flex flex-col h-full justify-between">
 	<div class="overflow-y-auto">
 		<div class="divider">Updates</div>
-		{#each updates as update}
-			<SideBarUpdate title={update.title} description={update.description}></SideBarUpdate>
-		{/each}
+		<div class="flex flex-col gap-y-3">
+			{#each updates as update}
+				<SideBarUpdate title={update.title} description={update.description}></SideBarUpdate>
+			{/each}
+		</div>
 	</div>
 	<div class="mb-4">
 		<div class="divider">Social Links</div>
