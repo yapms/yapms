@@ -1,12 +1,33 @@
 <script lang="ts">
 	import Fa from 'svelte-fa';
 	import { faDiscord, faGithub, faReddit, faTwitter } from '@fortawesome/free-brands-svg-icons';
+
+	import { onMount } from "svelte";
+	import { PocketBaseStore } from '$lib/stores/PocketBase';
+	import SideBarUpdate from './SideBarUpdate.svelte';
+	import type { Record } from 'pocketbase';
+
+	let updates:Record[] = [];
+
+	onMount(async () => {
+		try {
+			//Request the last 10 update records from pocketbase.
+			const records = await $PocketBaseStore.collection('updates').getList(1, 10, {sort: '-created'});
+			updates = records.items;
+		} catch(error) {
+			console.log(`Failed to fetch updates:\n${error}`);
+		}
+	});
 </script>
 
 <div class="lg:w-1/5 pl-5 hidden md:flex flex-col h-full justify-between">
-	<div>
+	<div class="overflow-y-auto">
 		<div class="divider">Updates</div>
-		<p>This will eventually be updated by a server</p>
+		<div class="flex flex-col gap-y-3">
+			{#each updates as update}
+				<SideBarUpdate title={update.title} description={update.description}></SideBarUpdate>
+			{/each}
+		</div>
 	</div>
 	<div class="mb-4">
 		<div class="divider">Social Links</div>
