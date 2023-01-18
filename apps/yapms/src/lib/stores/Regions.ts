@@ -120,6 +120,5 @@ export const CandidateCountsMargins = derived(RegionsStore, ($RegionStore) => {
 			}
 		});
 	});
-	console.log(candidates);
 	return candidates;
 });

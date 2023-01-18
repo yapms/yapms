@@ -48,6 +48,10 @@ const StyleModalStore = writable({
 	open: false
 });
 
+const ShareModalStore = writable({
+	open: false
+});
+
 const LoginModalStore = writable({
 	open: false
 });
@@ -62,5 +66,6 @@ export {
 	ChartTypeModalStore,
 	ModeModalStore,
 	StyleModalStore,
+	ShareModalStore,
 	LoginModalStore
 };

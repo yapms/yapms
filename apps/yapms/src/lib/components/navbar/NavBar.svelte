@@ -1,5 +1,9 @@
 <script lang="ts">
-	import { ClearMapModalStore, MapModalStore, AddCandidateModalStore, ModeModalStore, ChartTypeModalStore, StyleModalStore, LoginModalStore } from '$lib/stores/Modals';
+	import {
+		ClearMapModalStore, MapModalStore, AddCandidateModalStore,
+		ModeModalStore, ChartTypeModalStore, StyleModalStore,
+		ShareModalStore, LoginModalStore
+	} from '$lib/stores/Modals';
 	import { ModeStore } from '$lib/stores/Mode';
 
 	function openClearMapModal() {
@@ -44,6 +48,13 @@
 		});
 	}
 
+	function openShare() {
+		ShareModalStore.set({
+			...$ShareModalStore,
+			open: true
+		});
+	}
+
 	function openLogin() {
 		LoginModalStore.set({
 			...$LoginModalStore,
@@ -60,5 +71,6 @@
 	<button class="btn btn-sm" on:click={openStyle}>style</button>
 	<button class="btn btn-sm" on:click={openChartType}>chart type</button>
 	<button class="btn btn-sm" on:click={openMode}>mode: {$ModeStore}</button>
+	<button class="btn btn-sm" on:click={openShare}>share</button>
 	<button class="btn btn-sm" on:click={openLogin}>login</button>
 </div>
