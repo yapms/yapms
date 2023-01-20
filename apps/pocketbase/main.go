@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
-	"mime/multipart"
 	"net/http"
 
 	"github.com/labstack/echo/v5"
@@ -32,6 +31,7 @@ func main() {
 				if err != nil {
 					return err
 				}
+				fmt.Println("A")
 				record := models.NewRecord(mapsCollection)
 				form := forms.NewRecordUpsert(app, record)
 
@@ -39,6 +39,7 @@ func main() {
 				if err != nil {
 					return err
 				}
+				fmt.Println("B")
 
 				var buffer bytes.Buffer
 
@@ -46,24 +47,30 @@ func main() {
 				if _, err := gzip.Write(body); err != nil {
 					return err
 				}
+				fmt.Println("C")
 
 				if err := gzip.Close(); err != nil {
 					return err
 				}
+				fmt.Println("D")
 
+			
+				myfile, nil := filesystem.NewFileFromPath("./file1.txt")
+				if err != nil {
+					fmt.Println("ERROR: ", err)
+					return err
+				}
+				fmt.Println("E")
+				myfile.Reader.Open()
+				form.AddFiles("data", myfile)
+
+				err = form.Submit()
+				if err != nil {
+					return err
+				}
+				fmt.Println("F")
 				fmt.Printf("%s\n", body)
 				fmt.Printf("%s\n", buffer.Bytes())
-
-				reader := filesystem.MultipartReader{
-					&multipart.FileHeader{
-						Filename: "data",
-						Size:     int64(buffer.Len()),
-						Header:  http.Header{
-							"Content-Type": []string{"application/gzip"},
-						},
-					},
-				}
-				form.AddFiles("data", &file)
 
 				return c.JSON(http.StatusOK, "Hello World")
 			},
