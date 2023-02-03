@@ -30,7 +30,15 @@ function generateJson() {
 		}))
 	}));
 
+	const urlData = get(page).url.pathname.split('/');
+	const map = {
+		country: urlData[2],
+		type: urlData[3],
+		year: urlData[4]
+	}
+
 	const data = {
+		map,
 		tossup: tossupStore,
 		candidates: candidateStore,
 		regions: regionStore

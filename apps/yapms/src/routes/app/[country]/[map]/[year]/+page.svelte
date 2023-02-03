@@ -31,6 +31,7 @@
 	const currentMap = 'usa' as keyof typeof imports;
 
 	onMount(() => {
+		console.log("Page Mount");
 		themeChange(false);
 	});
 
