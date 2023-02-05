@@ -10,17 +10,17 @@ import { get } from 'svelte/store';
  *
  * @returns void
  */
-function loadFromFile(files:FileList): void {
+function loadFromFile(files: FileList): void {
 	const fileReader = new FileReader();
 
-	fileReader.onload = function() {
+	fileReader.onload = function () {
 		if (typeof fileReader.result !== 'string') {
 			return;
 		}
 		const fileData = JSON.parse(fileReader.result.toString());
-		loadFromJson(fileData)
-	}
-	
+		loadFromJson(fileData);
+	};
+
 	fileReader.onerror = function () {
 		console.error(fileReader.error);
 	};
@@ -29,9 +29,9 @@ function loadFromFile(files:FileList): void {
 }
 
 /**
- * @param mapData 
+ * @param mapData
  * json data to load into the stores
- * 
+ *
  * @returns void
  */
 function loadFromJson(mapData: any): void {
@@ -69,7 +69,6 @@ function loadFromJson(mapData: any): void {
 
 	CandidatesStore.set(candidatesData);
 	RegionsStore.set(regionsStoreUpdated);
-
 }
 
 export { loadFromJson, loadFromFile };

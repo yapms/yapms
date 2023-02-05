@@ -56,8 +56,8 @@ const LoginModalStore = writable({
 	open: false
 });
 
-const MalformedSavedMapModalStore = writable({
-	open: true
+const LoadingErrorModalStore = writable({
+	open: false
 });
 
 export {
@@ -72,5 +72,5 @@ export {
 	StyleModalStore,
 	ShareModalStore,
 	LoginModalStore,
-	MalformedSavedMapModalStore
+	LoadingErrorModalStore
 };

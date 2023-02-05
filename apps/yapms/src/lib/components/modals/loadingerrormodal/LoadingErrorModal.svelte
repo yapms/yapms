@@ -1,20 +1,20 @@
 <script lang="ts">
 	import ModalTitle from "$lib/components/modalutilities/ModalTitle.svelte";
-  import { MalformedSavedMapModalStore } from "$lib/stores/Modals";
+  import { LoadingErrorModalStore } from "$lib/stores/Modals";
 
   function close() {
-    MalformedSavedMapModalStore.set({
-      ...$MalformedSavedMapModalStore,
+    LoadingErrorModalStore.set({
+      ...$LoadingErrorModalStore,
       open: false,
     });
   }
 
 </script>
 
-<input type="checkbox" class="modal-toggle" checked={$MalformedSavedMapModalStore.open} />
+<input type="checkbox" class="modal-toggle" checked={$LoadingErrorModalStore.open} />
 <div class="modal modal-bottom lg:modal-middle">
 	<div class="modal-box">
-		<ModalTitle title="Error" />
+		<ModalTitle title="Loading Error" />
 		<p>There seems to have been an issue loading your map. Sorry about that!</p>
 		<p>
 

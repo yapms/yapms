@@ -5,7 +5,7 @@
 	import { LoadedMapStore } from '$lib/stores/LoadedMap';
 	import { SavedMapSchema } from '$lib/types/SavedMap';
 	import { onMount } from 'svelte';
-	import { MalformedSavedMapModalStore } from '$lib/stores/Modals';
+	import { LoadingErrorModalStore } from '$lib/stores/Modals';
 
 	// this layout will will redirect the user to the proper map
 	// if they specify the m query parameter
@@ -25,7 +25,7 @@
 
 		// if the saved map was malformed, redirect the user to the default map
 		if (!savedFile.success) {
-			MalformedSavedMapModalStore.set({
+			LoadingErrorModalStore.set({
 				open: true,
 			});
 			await goto(`/app/usa/presidential/2022`);

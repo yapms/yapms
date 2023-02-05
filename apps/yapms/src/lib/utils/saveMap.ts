@@ -7,12 +7,10 @@ import { page } from '$app/stores';
 
 /**
  * Generates a JSON object with the current state of the map
- * 
- * @returns {Object} The current state of the map
+ *
+ * @returns The current state of the map
  */
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function generateJson() {
-
 	console.log(get(page).url.pathname);
 
 	const tossupStore = get(TossupCandidateStore);
@@ -35,7 +33,7 @@ function generateJson() {
 		country: urlData[2],
 		type: urlData[3],
 		year: urlData[4]
-	}
+	};
 
 	const data = {
 		map,
@@ -52,13 +50,12 @@ function generateJson() {
  *
  * @returns void
  */
-function downloadJson(): void {
+function downloadJson() {
 	const data = generateJson();
 	saveAs(
 		new Blob([JSON.stringify(data)], { type: 'application/json;charset=utf-8' }),
 		'YapmsMap.json'
 	);
-	return;
 }
 
-export { generateJson, downloadJson }
+export { generateJson, downloadJson };
