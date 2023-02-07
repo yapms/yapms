@@ -6,6 +6,7 @@
 	import { SavedMapSchema } from '$lib/types/SavedMap';
 	import { onMount } from 'svelte';
 	import { LoadingErrorModalStore } from '$lib/stores/Modals';
+	import { PUBLIC_POCKETBASE_URI } from '$env/static/public';
 
 	// this layout will will redirect the user to the proper map
 	// if they specify the m query parameter
@@ -18,7 +19,7 @@
 		}
 
 		// load the requested map from pocketbase
-		const data = await fetch(`http://localhost:8080/api/files/maps/${map}/data.json.gz`);
+		const data = await fetch(`${PUBLIC_POCKETBASE_URI}/api/files/maps/${map}/data.json.gz`);
 		const savedFile = SavedMapSchema.safeParse(
 			await data.json()
 		);

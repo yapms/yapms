@@ -9,6 +9,7 @@
 	import ExclamationCircle from "$lib/icons/ExclamationCircle.svelte";
   import { page } from "$app/stores";
 	import CheckCircle from "$lib/icons/CheckCircle.svelte";
+  import { PUBLIC_POCKETBASE_URI } from "$env/static/public";
 
   let files: FileList;
 
@@ -32,7 +33,7 @@
     const formData = new FormData();
     formData.append("data", blob, "data.json");
 
-    const url = new URL("http://localhost:8080/api/yapms.com/map");
+    const url = new URL(`${PUBLIC_POCKETBASE_URI}/api/yapms.com/map`);
 
     copiedLinkID = false;
     fetchingLinkID = true;
