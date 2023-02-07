@@ -6,8 +6,15 @@
 	import { downloadJson, generateJson } from "$lib/utils/saveMap";
 	import Link from "$lib/icons/Link.svelte";
 	import { loadFromFile } from "$lib/utils/loadMap";
+	import ExclamationCircle from "$lib/icons/ExclamationCircle.svelte";
+  import { page } from "$app/stores";
+	import CheckCircle from "$lib/icons/CheckCircle.svelte";
 
   let files: FileList;
+
+  let fetchingLinkID = false;
+  let copiedLinkID = false;
+  let linkID: string | null = null;
 
   function load() {
     if (files && files.length > 0) {
@@ -26,10 +33,32 @@
     formData.append("data", blob, "data.json");
 
     const url = new URL("http://localhost:8080/api/yapms.com/map");
-    await fetch(url, {
+
+    copiedLinkID = false;
+    fetchingLinkID = true;
+    const result = await fetch(url, {
       method: "POST",
       body: formData,
     });
+    const data = await result.json();
+    linkID = data.id;
+    setTimeout(() => {
+      fetchingLinkID = false;
+    }, 1200);
+  }
+
+  async function copyLink() {
+    if (fetchingLinkID) return;
+    const url = new URL($page.url.origin + "/app?m=" + linkID);
+    await navigator.clipboard.writeText(url.toString());
+    copiedLinkID = true;
+  }
+
+  function close() {
+    fetchingLinkID = false;
+    copiedLinkID = false;
+    linkID = null;
+    ShareModalStore.set({ ...$ShareModalStore, open: false });
   }
 
 </script>
@@ -46,7 +75,7 @@
         <ArrowDownTray class="w-5 h-5" />
         <span>Download</span>
       </button>
-      <button class="btn btn-secondary gap-1 flex-nowrap" on:click={generateLink}>
+      <button class="btn btn-secondary gap-1 flex-nowrap" on:click={generateLink} disabled={fetchingLinkID}>
         <Link class="w-5 h-5" />
         <span>Generate Link</span>
       </button>
@@ -63,10 +92,34 @@
         <ArrowUpTray class="w-5 h-5" />
         <span>Load</span>
     </div>
-
   </div>
+
+  <div class="alert shadow-lg mt-4 cursor-pointer transition-colors"
+    class:hidden={!linkID && !fetchingLinkID}
+    class:alert-warning={fetchingLinkID}
+    class:alert-info={!copiedLinkID && !fetchingLinkID}
+    class:alert-success={copiedLinkID && !fetchingLinkID}
+    on:click={copyLink}
+    on:keypress={copyLink}
+  >
+    <div>
+      <label class="swap swap-flip">
+        <input type="checkbox" checked={copiedLinkID} disabled />
+        <ExclamationCircle class="swap-off w-6 h-6"/>
+        <CheckCircle class="swap-on w-6 h-6"/>
+      </label>
+      <label class="swap">
+        <input type="checkbox" checked={!fetchingLinkID && linkID !== null} disabled />
+        <span class="swap-off">Generating Link...</span>
+        <span class="swap-on">
+          {$page.url.origin}/app?m={linkID}
+        </span>
+      </label>
+    </div>
+  </div>
+    
   <div class="modal-action">
-    <button class="btn btn-primary" on:click={() => ShareModalStore.set({ ...$ShareModalStore, open: false })}>
+    <button class="btn btn-primary" on:click={close}>
       Close
     </button>
   </div>

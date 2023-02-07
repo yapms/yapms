@@ -20,6 +20,10 @@ import (
 	"github.com/pocketbase/pocketbase/tools/filesystem"
 )
 
+type MapRouteReturn struct {
+	Id string `json:"id"`
+}
+
 func main() {
 	app := pocketbase.New()
 
@@ -132,13 +136,17 @@ func main() {
 						return err
 					}
 					if existingRecord != nil {
-						return c.JSON(http.StatusOK, existingRecord)
+						return c.JSON(http.StatusOK, MapRouteReturn{
+							Id: existingRecord.Id,
+						})
 					}
 					return err
 				}
 
 				// return the new record
-				return c.JSON(http.StatusOK, record)
+				return c.JSON(http.StatusOK, MapRouteReturn{
+					Id: record.Id,
+				})
 			},
 			Middlewares: []echo.MiddlewareFunc{
 				apis.ActivityLogger(app),
