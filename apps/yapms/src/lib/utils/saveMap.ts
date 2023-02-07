@@ -10,6 +10,7 @@ import { page } from '$app/stores';
  *
  * @returns The current state of the map
  */
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function generateJson() {
 	console.log(get(page).url.pathname);
 
@@ -50,6 +51,7 @@ function generateJson() {
  *
  * @returns void
  */
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function downloadJson() {
 	const data = generateJson();
 	saveAs(
