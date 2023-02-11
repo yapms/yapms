@@ -22,13 +22,23 @@
 	import AuthModal from '$lib/components/modals/authmodal/AuthModal.svelte';
 	import StyleModal from '$lib/components/modals/stylemodal/StyleModal.svelte';
 	import ShareModal from '$lib/components/modals/sharemodal/ShareModal.svelte';
+	import { loadFromJson } from '$lib/utils/loadMap';
+	import { LoadedMapStore } from '$lib/stores/LoadedMap';
+	import LoadingErrorModal from '$lib/components/modals/loadingerrormodal/LoadingErrorModal.svelte';
 
 	const imports = {
 		usa: () => import('$lib/assets/usa.svg?raw'),
 		nz: () => import('$lib/assets/nz.svg?raw')
 	};
 
+	let isLoaded = false;
 	const currentMap = 'usa' as keyof typeof imports;
+
+	// this should execute if the user enters
+	// this page with a map ID
+	$: if ($LoadedMapStore !== null && isLoaded) {
+		loadFromJson($LoadedMapStore);
+	}
 
 	onMount(() => {
 		themeChange(false);
@@ -37,6 +47,12 @@
 	function setupMap(node: HTMLDivElement) {
 		applyPanZoom(node);
 		loadRegions(node);
+		isLoaded = true;
+		// this should execute if the users enters the
+		// /app/ page with a map id
+		if ($LoadedMapStore !== null) {
+			loadFromJson($LoadedMapStore);
+		}
 	}
 
 	function handleKeyDown(e: KeyboardEvent) {
@@ -119,3 +135,5 @@
 <ShareModal />
 
 <AuthModal />
+
+<LoadingErrorModal />

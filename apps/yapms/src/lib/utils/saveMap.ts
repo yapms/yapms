@@ -3,13 +3,17 @@ import { RegionsStore } from '$lib/stores/Regions';
 import { get } from 'svelte/store';
 
 import { saveAs } from 'file-saver';
+import { page } from '$app/stores';
 
 /**
- * Downloads a JSON file with the current state of the map
+ * Generates a JSON object with the current state of the map
  *
- * @returns void
+ * @returns The current state of the map
  */
-function saveToJson(): void {
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+function generateJson() {
+	console.log(get(page).url.pathname);
+
 	const tossupStore = get(TossupCandidateStore);
 	const candidateStore = get(CandidatesStore);
 	const regionStore = get(RegionsStore).map((region) => ({
@@ -25,16 +29,35 @@ function saveToJson(): void {
 		}))
 	}));
 
+	const urlData = get(page).url.pathname.split('/');
+	const map = {
+		country: urlData[2],
+		type: urlData[3],
+		year: urlData[4]
+	};
+
 	const data = {
+		map,
 		tossup: tossupStore,
 		candidates: candidateStore,
 		regions: regionStore
 	};
 
+	return data;
+}
+
+/**
+ * Downloads a JSON file with the current state of the map
+ *
+ * @returns void
+ */
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+function downloadJson() {
+	const data = generateJson();
 	saveAs(
 		new Blob([JSON.stringify(data)], { type: 'application/json;charset=utf-8' }),
 		'YapmsMap.json'
 	);
 }
 
-export default saveToJson;
+export { generateJson, downloadJson };
