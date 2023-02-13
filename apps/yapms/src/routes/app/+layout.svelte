@@ -14,7 +14,7 @@
 		const map = encodeURIComponent($page.url.searchParams.get("m") ?? "");
 		// if the user is not loading a map, redirect them to the default map
 		if (map === "") {
-			await goto(`/app/usa/presidential/2022`);
+			await goto($page.url);
 			return;
 		}
 
@@ -29,7 +29,7 @@
 			LoadingErrorModalStore.set({
 				open: true,
 			});
-			await goto(`/app/usa/presidential/2022`);
+			await goto($page.url);
 			return;
 		}
 
