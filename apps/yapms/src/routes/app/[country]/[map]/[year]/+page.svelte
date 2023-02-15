@@ -33,10 +33,12 @@
 
 	//Glob import is necessary here. If we try to use a template literal to import only one map, we are met with an error. 
 	//The query section is there to make sure the SVG contents are imported raw, seeing as you cannot glob import with .svg?raw
-	const imports = import.meta.glob('$lib/assets/maps/*.svg', {
+	const imports = import.meta.glob<typeof import("*?raw")>('$lib/assets/maps/*.svg', {
 		query: { raw:'' },
 	});
 
+	console.log(imports)
+	
 	//Make sure that even if map requested doesn't load, something loads.
 	let currentMap = '/src/lib/assets/maps/usa-presidential-2022.svg'; 
 	//If the map defined by slugs is found, use that map
@@ -113,9 +115,10 @@
 
 			<div class="overflow-hidden w-full h-full">
 				<CandidateBoxContainer />
-				{#await imports[currentMap]() then module}
-					<div use:setupMap class="overflow-hidden h-full">
-						{@html module.default}
+				{#await imports[currentMap]()}
+					<h1>Loading Map...</h1>
+				{:then importedMap}<div use:setupMap class="overflow-hidden h-full">
+						{@html importedMap.default}
 					</div>
 				{/await}
 			</div>
