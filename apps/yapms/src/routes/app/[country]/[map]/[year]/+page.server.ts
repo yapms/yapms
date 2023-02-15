@@ -1,8 +1,8 @@
-import type { PageServerLoadEvent } from './$types';
+import type { PageServerLoad, PageServerLoadEvent } from './$types';
 
 export const prerender = true;
 
 /** @type {import('./$types').PageServerLoad} */
-export async function load({ params }: PageServerLoadEvent) {
+export const load: PageServerLoad = ({ params }: PageServerLoadEvent) => {
 	return params;
 }
