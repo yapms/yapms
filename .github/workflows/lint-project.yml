@@ -28,7 +28,7 @@ jobs:
       - name: setup node
         uses: actions/setup-node@v3
         with:
-          node-version: 19.x
+          node-version: 18.x
           cache: pnpm
 
       - name: install dependencies
