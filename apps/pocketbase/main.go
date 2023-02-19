@@ -17,7 +17,10 @@ import (
 	"github.com/pocketbase/pocketbase/core"
 	"github.com/pocketbase/pocketbase/forms"
 	"github.com/pocketbase/pocketbase/models"
+	"github.com/pocketbase/pocketbase/plugins/migratecmd"
 	"github.com/pocketbase/pocketbase/tools/filesystem"
+
+	_ "yapms/pocketbase/migrations"
 )
 
 type MapRouteReturn struct {
@@ -26,6 +29,10 @@ type MapRouteReturn struct {
 
 func main() {
 	app := pocketbase.New()
+
+	migratecmd.MustRegister(app, app.RootCmd, &migratecmd.Options{
+		Automigrate: true,
+	})
 
 	app.OnFileDownloadRequest().Add(func (e *core.FileDownloadEvent) error {
 		// if the file is the data file, set the content encoding to gzip
