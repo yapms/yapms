@@ -5,19 +5,15 @@
       "cache": false
     },
     "build": {
-      "dependsOn": ["^build"]
     },
     "start": {
       "cache": false
     },
     "check": {
-      "cache": false
     },
     "lint-no-warnings": {
-      "cache": false
     },
     "lint": {
-      "cache": false
     },
     "format": {
       "cache": false
