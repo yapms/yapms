@@ -25,14 +25,25 @@
 	import { loadFromJson } from '$lib/utils/loadMap';
 	import { LoadedMapStore } from '$lib/stores/LoadedMap';
 	import LoadingErrorModal from '$lib/components/modals/loadingerrormodal/LoadingErrorModal.svelte';
+	import { page } from "$app/stores";
 
-	const imports = {
-		usa: () => import('$lib/assets/usa.svg?raw'),
-		nz: () => import('$lib/assets/nz.svg?raw')
-	};
+	//Glob import all maps in the maps directory so that we can check if a map exists and then load it.
+	//Query section makes sure the SVG contents are imported raw.
+	const imports = import.meta.glob<typeof import("*?raw")>('$lib/assets/maps/*.svg', {
+		query: { raw:'' },
+	});
+
+	//Take the path (/app/[country]/[name]/[year]), remove /app/ & replace the remaining / with - to match map file names.
+	const mapName = $page.url.pathname.replace("/app/","").replaceAll("/","-");
+	
+	//Make sure that even if map requested doesn't load, something loads.
+	let currentMap = '/src/lib/assets/maps/usa-presidential-2022.svg'; 
+	//If the map defined by slugs is found, use that map
+	if (imports[`/src/lib/assets/maps/${mapName}.svg`] !== undefined) {
+		currentMap = `/src/lib/assets/maps/${mapName}.svg`; 
+	}
 
 	let isLoaded = false;
-	const currentMap = 'usa' as keyof typeof imports;
 
 	// this should execute if the user enters
 	// this page with a map ID
@@ -103,9 +114,11 @@
 
 			<div class="overflow-hidden w-full h-full">
 				<CandidateBoxContainer />
-				{#await imports[currentMap]() then module}
+				{#await imports[currentMap]()}
+					<h1>Loading Map...</h1>
+				{:then importedMap}
 					<div use:setupMap class="overflow-hidden h-full">
-						{@html module.default}
+						{@html importedMap.default}
 					</div>
 				{/await}
 			</div>
