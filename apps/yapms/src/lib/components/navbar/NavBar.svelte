@@ -1,8 +1,13 @@
 <script lang="ts">
 	import {
-		ClearMapModalStore, MapModalStore, AddCandidateModalStore,
-		ModeModalStore, ChartTypeModalStore, StyleModalStore,
-		ShareModalStore, LoginModalStore
+		ClearMapModalStore,
+		MapModalStore,
+		AddCandidateModalStore,
+		ModeModalStore,
+		ChartTypeModalStore,
+		StyleModalStore,
+		ShareModalStore,
+		LoginModalStore
 	} from '$lib/stores/Modals';
 	import { ModeStore } from '$lib/stores/Mode';
 

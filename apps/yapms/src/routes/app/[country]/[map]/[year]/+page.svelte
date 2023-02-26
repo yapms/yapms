@@ -25,22 +25,22 @@
 	import { loadFromJson } from '$lib/utils/loadMap';
 	import { LoadedMapStore } from '$lib/stores/LoadedMap';
 	import LoadingErrorModal from '$lib/components/modals/loadingerrormodal/LoadingErrorModal.svelte';
-	import { page } from "$app/stores";
+	import { page } from '$app/stores';
 
 	//Glob import all maps in the maps directory so that we can check if a map exists and then load it.
 	//Query section makes sure the SVG contents are imported raw.
-	const imports = import.meta.glob<typeof import("*?raw")>('$lib/assets/maps/*.svg', {
-		query: { raw:'' },
+	const imports = import.meta.glob<typeof import('*?raw')>('$lib/assets/maps/*.svg', {
+		query: { raw: '' }
 	});
 
 	//Take the path (/app/[country]/[name]/[year]), remove /app/ & replace the remaining / with - to match map file names.
-	const mapName = $page.url.pathname.replace("/app/","").replaceAll("/","-");
-	
+	const mapName = $page.url.pathname.replace('/app/', '').replaceAll('/', '-');
+
 	//Make sure that even if map requested doesn't load, something loads.
-	let currentMap = '/src/lib/assets/maps/usa-presidential-2022.svg'; 
+	let currentMap = '/src/lib/assets/maps/usa-presidential-2022.svg';
 	//If the map defined by slugs is found, use that map
 	if (imports[`/src/lib/assets/maps/${mapName}.svg`] !== undefined) {
-		currentMap = `/src/lib/assets/maps/${mapName}.svg`; 
+		currentMap = `/src/lib/assets/maps/${mapName}.svg`;
 	}
 
 	let isLoaded = false;

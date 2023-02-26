@@ -4,7 +4,7 @@
 	import type { Mode } from '$lib/types/Mode';
 	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
 
-	const modes = ['fill','edit','disable','lock'];
+	const modes = ['fill', 'edit', 'disable', 'lock'];
 
 	function close() {
 		ModeModalStore.set({
@@ -14,7 +14,7 @@
 	}
 
 	function setMode(id: string) {
-		ModeStore.set(id as Mode)
+		ModeStore.set(id as Mode);
 	}
 </script>
 

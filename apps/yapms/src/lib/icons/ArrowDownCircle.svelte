@@ -1,7 +1,7 @@
 <script lang="ts">
-	let className = "";
+	let className = '';
 	export { className as class };
-	export let style = "";
+	export let style = '';
 </script>
 
 <svg
@@ -9,7 +9,7 @@
 	viewBox="0 0 24 24"
 	fill="currentColor"
 	class={className}
-	style={style}
+	{style}
 >
 	<path
 		fill-rule="evenodd"

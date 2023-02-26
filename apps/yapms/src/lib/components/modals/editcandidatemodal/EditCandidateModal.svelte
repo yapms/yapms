@@ -1,5 +1,9 @@
 <script lang="ts">
-	import { CandidatesStore, SelectedCandidateStore, TossupCandidateStore } from '$lib/stores/Candidates';
+	import {
+		CandidatesStore,
+		SelectedCandidateStore,
+		TossupCandidateStore
+	} from '$lib/stores/Candidates';
 	import { RegionsStore } from '$lib/stores/Regions';
 	import { EditCandidateModalStore } from '$lib/stores/Modals';
 	import { get } from 'svelte/store';
@@ -26,20 +30,21 @@
 
 	function removeCandidate() {
 		$CandidatesStore = $CandidatesStore.filter((candidate) => candidate.id !== id);
-		$SelectedCandidateStore = $SelectedCandidateStore.id === id ?
-			$TossupCandidateStore : $SelectedCandidateStore;
-		$RegionsStore = $RegionsStore.map((region) => 
-			region.candidates[0].candidate.id === id ?
-			{
-				...region,
-				candidates: [
-					{
-						candidate: $TossupCandidateStore,
-						count: region.value,
-						margin: 0
-					}
-				]
-			} : region
+		$SelectedCandidateStore =
+			$SelectedCandidateStore.id === id ? $TossupCandidateStore : $SelectedCandidateStore;
+		$RegionsStore = $RegionsStore.map((region) =>
+			region.candidates[0].candidate.id === id
+				? {
+						...region,
+						candidates: [
+							{
+								candidate: $TossupCandidateStore,
+								count: region.value,
+								margin: 0
+							}
+						]
+				  }
+				: region
 		);
 		$EditCandidateModalStore.open = false;
 	}
@@ -84,7 +89,12 @@
 			<div class="form-control w-full max-w-xs flex flex-col gap-3">
 				<h3 class="font-light text-lg">Name</h3>
 				<input type="text" class="input input-bordered w-full max-w-xs" bind:value={newName} />
-				<input type="button" class="btn btn-error" value="Remove Candidate" on:click={removeCandidate} />
+				<input
+					type="button"
+					class="btn btn-error"
+					value="Remove Candidate"
+					on:click={removeCandidate}
+				/>
 			</div>
 			<div class="divider divider-horizontal" />
 			<div class="form-control w-full max-w-xs flex flex-col gap-3">
