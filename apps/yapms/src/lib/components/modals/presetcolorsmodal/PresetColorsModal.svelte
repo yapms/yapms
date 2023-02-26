@@ -75,7 +75,7 @@
 	function confirm(margins: string[]) {
 		AddCandidateModalStore.set({
 			...$AddCandidateModalStore,
-			open:true,
+			open: true,
 			newColors: margins
 		});
 		PresetColorsModalStore.set({

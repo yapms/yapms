@@ -13,6 +13,6 @@
 		"format": "turbo run format"
 	},
 	"devDependencies": {
-		"turbo": "^1.6.3"
+		"turbo": "^1.8.2"
 	}
 }
