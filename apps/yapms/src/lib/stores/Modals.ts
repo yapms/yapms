@@ -60,7 +60,7 @@ const LoadingErrorModalStore = writable({
 	open: false
 });
 
-const HomeThemeModalStore = writable({
+const ThemeModalStore = writable({
 	open: false
 });
 
@@ -77,5 +77,5 @@ export {
 	ShareModalStore,
 	LoginModalStore,
 	LoadingErrorModalStore,
-	HomeThemeModalStore
+	ThemeModalStore
 };

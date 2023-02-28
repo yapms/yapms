@@ -9,16 +9,16 @@
 	import MoreMapsModal from '$lib/components/modals/moremapsmodal/MoreMapsModal.svelte';
 	import { onMount } from 'svelte';
 	import { themeChange } from 'theme-change';
-	import HomeThemeModal from '$lib/components/modals/homethememodal/HomeThemeModal.svelte';
-	import { HomeThemeModalStore } from '$lib/stores/Modals';
+	import ThemeModal from '$lib/components/modals/thememodal/ThemeModal.svelte';
+	import { ThemeModalStore } from '$lib/stores/Modals';
 
 	onMount(() => {
 		themeChange(false);
 	});
 
-	function openHomeThemeModal() {
-		HomeThemeModalStore.set({
-			...$HomeThemeModalStore,
+	function openThemeModal() {
+		ThemeModalStore.set({
+			...$ThemeModalStore,
 			open: true
 		});
 	}
@@ -38,10 +38,10 @@
 			<h1 class="text-2xl font-bold m-auto inline lg:hidden">YAPms</h1>
 		</div>
 		<div class="navbar-end">
-			<button class="btn px-8 btn-primary mr-2 hidden md:inline" on:click={openHomeThemeModal}
+			<button class="btn px-8 btn-primary mr-2 hidden md:inline" on:click={openThemeModal}
 				>Theme</button
 			>
-			<button class="btn btn-square mr-2 inline md:hidden" on:click={openHomeThemeModal}
+			<button class="btn btn-square mr-2 inline md:hidden" on:click={openThemeModal}
 				><Swatch class="h-8 m-auto" /></button
 			>
 			<button class="btn px-8 btn-primary mr-2 hidden md:inline">Login</button>
@@ -73,4 +73,4 @@
 
 <MoreMapsModal />
 
-<HomeThemeModal />
+<ThemeModal />
