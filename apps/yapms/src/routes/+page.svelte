@@ -3,9 +3,25 @@
 	import MapSelectionGrid from '$lib/components/homepage/MapSelectionGrid.svelte';
 	import MapSelectionTitle from '$lib/components/homepage/MapSelectionTitle.svelte';
 	import Login from '$lib/icons/Login.svelte';
+	import Swatch from '$lib/icons/Swatch.svelte';
 	import mapSelectSections from '$lib/assets/homedata/MapSelection.json';
 	import MapSelectionCard from '$lib/components/homepage/MapSelectionCard.svelte';
 	import MoreMapsModal from '$lib/components/modals/moremapsmodal/MoreMapsModal.svelte';
+	import { onMount } from 'svelte';
+	import { themeChange } from 'theme-change';
+	import ThemeModal from '$lib/components/modals/thememodal/ThemeModal.svelte';
+	import { ThemeModalStore } from '$lib/stores/Modals';
+
+	onMount(() => {
+		themeChange(false);
+	});
+
+	function openThemeModal() {
+		ThemeModalStore.set({
+			...$ThemeModalStore,
+			open: true
+		});
+	}
 </script>
 
 <svelte:head>
@@ -22,6 +38,12 @@
 			<h1 class="text-2xl font-bold m-auto inline lg:hidden">YAPms</h1>
 		</div>
 		<div class="navbar-end">
+			<button class="btn px-8 btn-primary mr-2 hidden md:inline" on:click={openThemeModal}
+				>Theme</button
+			>
+			<button class="btn btn-square mr-2 inline md:hidden" on:click={openThemeModal}
+				><Swatch class="h-8 m-auto" /></button
+			>
 			<button class="btn px-8 btn-primary mr-2 hidden md:inline">Login</button>
 			<button class="btn btn-square mr-2 inline md:hidden"><Login class="h-8 m-auto" /></button>
 		</div>
@@ -50,3 +72,5 @@
 </div>
 
 <MoreMapsModal />
+
+<ThemeModal />
