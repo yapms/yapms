@@ -60,6 +60,10 @@ const LoadingErrorModalStore = writable({
 	open: false
 });
 
+const HomeThemeModalStore = writable({
+	open: false
+});
+
 export {
 	EditCandidateModalStore,
 	ClearMapModalStore,
@@ -72,5 +76,6 @@ export {
 	StyleModalStore,
 	ShareModalStore,
 	LoginModalStore,
-	LoadingErrorModalStore
+	LoadingErrorModalStore,
+	HomeThemeModalStore
 };
