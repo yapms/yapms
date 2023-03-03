@@ -22,9 +22,11 @@ const MapModalStore = writable({
 const EditRegionModalStore = writable<{
 	region: Region | null;
 	open: boolean;
+	confirmDisabled: boolean;
 }>({
 	region: null,
-	open: false
+	open: false,
+	confirmDisabled: false
 });
 
 const SplitRegionModalStore = writable<{

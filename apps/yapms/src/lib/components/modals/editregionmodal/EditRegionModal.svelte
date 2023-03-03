@@ -4,14 +4,14 @@
 	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
 
 	$: open = $EditRegionModalStore.open;
+	$: confirmDisabled = $EditRegionModalStore.confirmDisabled;
 	$: longName = open ? $EditRegionModalStore.region?.longName : undefined;
 	$: value = open ? $EditRegionModalStore.region?.permaVal : undefined;
 	$: newValue = value ?? 0;
 
-	let confirmDisabled = false;
-
 	function close() {
 		$EditRegionModalStore.open = false;
+		$EditRegionModalStore.confirmDisabled = false;
 	}
 
 	function confirm() {
@@ -39,7 +39,7 @@
 			min="0"
 			required
 			on:input={(event) => {
-				confirmDisabled = !event.currentTarget.checkValidity();
+				$EditRegionModalStore.confirmDisabled = !event.currentTarget.checkValidity();
 			}}
 			bind:value={newValue}
 		/>
