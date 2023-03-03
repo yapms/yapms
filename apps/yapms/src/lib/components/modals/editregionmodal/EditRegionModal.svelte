@@ -8,6 +8,8 @@
 	$: value = open ? $EditRegionModalStore.region?.permaVal : undefined;
 	$: newValue = value ?? 0;
 
+	let confirmDisabled = false;
+
 	function close() {
 		$EditRegionModalStore.open = false;
 	}
@@ -34,12 +36,18 @@
 			type="number"
 			placeholder="Value"
 			class="input input-bordered w-full"
-			min="1"
+			min="0"
+			required
+			on:input={(event) => {
+				confirmDisabled = !event.currentTarget.checkValidity();
+			}}
 			bind:value={newValue}
 		/>
 		<div class="modal-action">
 			<button class="btn btn-primary" on:click={close}> No </button>
-			<button class="btn btn-success" on:click={confirm}> Update </button>
+			<button class="btn btn-success" on:click={confirm} disabled={confirmDisabled}>
+				Update
+			</button>
 		</div>
 	</div>
 </div>
