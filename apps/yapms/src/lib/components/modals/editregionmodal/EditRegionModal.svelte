@@ -11,7 +11,6 @@
 
 	function close() {
 		$EditRegionModalStore.open = false;
-		$EditRegionModalStore.confirmDisabled = false;
 	}
 
 	function confirm() {
