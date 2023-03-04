@@ -26,6 +26,7 @@
 	import { LoadedMapStore } from '$lib/stores/LoadedMap';
 	import LoadingErrorModal from '$lib/components/modals/loadingerrormodal/LoadingErrorModal.svelte';
 	import { page } from '$app/stores';
+	import SplitRegionModal from '$lib/components/modals/splitregionmodal/SplitRegionModal.svelte';
 
 	//Glob import all maps in the maps directory so that we can check if a map exists and then load it.
 	//Query section makes sure the SVG contents are imported raw.
@@ -130,6 +131,8 @@
 <ClearMapModal />
 
 <EditCandidateModal />
+
+<SplitRegionModal />
 
 <AddCandidateModal />
 

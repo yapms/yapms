@@ -13,7 +13,9 @@ export const RegionsStore = writable<Region[]>([]);
   update the colors of the regions in the DOM
 */
 RegionsStore.subscribe((regions) => {
+	// reduce extra counts
 	regions.forEach((region) => {
+		// get the winner of the district
 		const winner = region.disabled
 			? {
 					candidate: get(TossupCandidateStore),
@@ -24,23 +26,32 @@ RegionsStore.subscribe((regions) => {
 					(prev, current) => (prev.count > current.count ? prev : current),
 					region.candidates[0]
 			  );
+
+		// set the margin of the new winner
 		let marginIndex = winner.margin ?? 0;
 		if (marginIndex >= winner.candidate.margins.length) {
 			marginIndex = winner.candidate.margins.length - 1;
 		} else if (marginIndex < 0) {
 			marginIndex = 0;
 		}
-		let countSum = region.candidates.reduce((prev, current) => prev + current.count, 0);
-		if (countSum < region.value) {
-			region.candidates[0].count += region.value - countSum;
-		} else if (countSum > region.value) {
-			while (countSum > region.value) {
+
+		// reduce extra counts
+		let totalVotes = region.candidates.reduce(
+			(totalVotes, candidate) => totalVotes + candidate.count,
+			0
+		);
+		const maxVotes = region.value;
+		if (totalVotes < maxVotes) {
+			// if there are less votes than the max, add the difference the tossup candidate
+			region.candidates[0].count += region.value - totalVotes;
+		} else if (totalVotes > region.value) {
+			while (totalVotes > region.value) {
 				for (const candidate of region.candidates) {
 					if (candidate.count > 0) {
 						candidate.count--;
-						countSum--;
+						totalVotes--;
 					}
-					if (countSum <= region.value) {
+					if (totalVotes <= region.value) {
 						break;
 					}
 				}

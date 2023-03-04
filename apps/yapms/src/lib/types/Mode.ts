@@ -1,1 +1,1 @@
-export type Mode = 'fill' | 'edit' | 'disable' | 'lock';
+export type Mode = 'fill' | 'split' | 'edit' | 'disable' | 'lock';

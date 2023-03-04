@@ -4,7 +4,7 @@
 	import type { Mode } from '$lib/types/Mode';
 	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
 
-	const modes = ['fill', 'edit', 'disable', 'lock'];
+	const modes = ['fill', 'split', 'edit', 'disable', 'lock'];
 
 	function close() {
 		ModeModalStore.set({
@@ -22,10 +22,10 @@
 <div class="modal modal-bottom lg:modal-middle">
 	<div class="modal-box">
 		<ModalTitle title="Change Mode" />
-		<div class="tabs flex-row lg:flex-col flex-end items-center space-y-2 justify-evenly">
+		<div class="grid grid-cols-2 grid-flow-row gap-4">
 			{#each modes as mode}
 				<button
-					class="btn gap-1 w-2/3 lg:w-1/2"
+					class="btn"
 					class:btn-primary={$ModeStore !== mode}
 					class:btn-success={$ModeStore === mode}
 					on:click={() => {

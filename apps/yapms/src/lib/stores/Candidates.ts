@@ -22,6 +22,10 @@ export const CandidatesStore = writable<Candidate[]>([
 	}
 ]);
 
+export function isTossupCandidate(candidateID: string): boolean {
+	return candidateID === get(TossupCandidateStore).id;
+}
+
 export const SelectedCandidateStore = writable<Candidate>(get(TossupCandidateStore));
 
 //Schema
