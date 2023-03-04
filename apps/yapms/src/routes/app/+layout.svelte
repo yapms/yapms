@@ -2,6 +2,7 @@
 	import '$lib/styles/global.css';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
+	import { get } from 'svelte/store';
 	import { LoadedMapStore } from '$lib/stores/LoadedMap';
 	import { SavedMapSchema } from '$lib/types/SavedMap';
 	import { onMount } from 'svelte';
@@ -11,10 +12,11 @@
 	// this layout will will redirect the user to the proper map
 	// if they specify the m query parameter
 	onMount(async () => {
-		const map = encodeURIComponent($page.url.searchParams.get('m') ?? '');
+		const url = get(page).url;
+		const map = encodeURIComponent(url.searchParams.get('m') ?? '');
 		// if the user is not loading a map, redirect them to the default map
 		if (map === '') {
-			if ($page.url.pathname === '/app') {
+			if (url.pathname === '/app') {
 				await goto('/app/usa/presidential/2022');
 			}
 			return;
