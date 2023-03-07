@@ -27,7 +27,7 @@
 
 <div class="divider divider-horizontal w-0 m-0 hidden md:flex" />
 
-<div class="basis-3/12 hidden md:inline" transition:slideX={{ duration: 300 }}>
+<div class="basis-3/12 max-w-md hidden md:inline" transition:slideX={{ duration: 300 }}>
 	<div class="flex flex-wrap justify-center gap-2 p-2">
 		<button type="button" class="btn btn-sm gap-2">
 			<Fa icon={faReddit} />
