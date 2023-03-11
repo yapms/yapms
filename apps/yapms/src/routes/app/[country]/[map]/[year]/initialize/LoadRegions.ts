@@ -55,8 +55,7 @@ function editRegion(regionID: string) {
 	const region = get(RegionsStore).find((region) => region.id === regionID);
 	EditRegionModalStore.set({
 		region: region ?? null,
-		open: region !== undefined,
-		confirmDisabled: false
+		open: region !== undefined
 	});
 }
 

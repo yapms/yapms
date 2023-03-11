@@ -4,7 +4,6 @@
 	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
 
 	$: open = $EditRegionModalStore.open;
-	$: confirmDisabled = $EditRegionModalStore.confirmDisabled;
 	$: longName = open ? $EditRegionModalStore.region?.longName : undefined;
 	$: value = open ? $EditRegionModalStore.region?.permaVal : undefined;
 	$: newValue = value ?? 0;
@@ -37,14 +36,11 @@
 			class="input input-bordered w-full"
 			min="0"
 			required
-			on:input={(event) => {
-				$EditRegionModalStore.confirmDisabled = !event.currentTarget.checkValidity();
-			}}
 			bind:value={newValue}
 		/>
 		<div class="modal-action">
 			<button class="btn btn-primary" on:click={close}> No </button>
-			<button class="btn btn-success" on:click={confirm} disabled={confirmDisabled}>
+			<button class="btn btn-success" on:click={confirm} disabled={newValue === null || newValue < 0 || newValue % 1 !== 0}>
 				Update
 			</button>
 		</div>
