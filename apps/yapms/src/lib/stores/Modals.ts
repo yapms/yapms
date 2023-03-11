@@ -27,6 +27,14 @@ const EditRegionModalStore = writable<{
 	open: false
 });
 
+const SplitRegionModalStore = writable<{
+	region: Region | null;
+	open: boolean;
+}>({
+	region: null,
+	open: false
+});
+
 const AddCandidateModalStore = writable({
 	open: false,
 	newColors: ['#000000']
@@ -69,6 +77,7 @@ export {
 	ClearMapModalStore,
 	MapModalStore,
 	EditRegionModalStore,
+	SplitRegionModalStore,
 	AddCandidateModalStore,
 	PresetColorsModalStore,
 	ChartTypeModalStore,

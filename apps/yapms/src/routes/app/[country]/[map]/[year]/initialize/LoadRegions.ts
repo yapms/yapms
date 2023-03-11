@@ -7,7 +7,7 @@ import {
 	CandidatesStore,
 	CandidateStoreSchema
 } from '$lib/stores/Candidates';
-import { EditRegionModalStore } from '$lib/stores/Modals';
+import { EditRegionModalStore, SplitRegionModalStore } from '$lib/stores/Modals';
 import type Region from '$lib/types/Region';
 import { InteractionStore } from '$lib/stores/Interaction';
 
@@ -41,6 +41,14 @@ function fillRegion(regionID: string, increment: boolean) {
 		region.candidates = [newCandidate];
 		RegionsStore.set(regions);
 	}
+}
+
+function splitRegion(regionID: string) {
+	const region = get(RegionsStore).find((region) => region.id === regionID);
+	SplitRegionModalStore.set({
+		region: region ?? null,
+		open: region !== undefined
+	});
 }
 
 function editRegion(regionID: string) {
@@ -158,6 +166,9 @@ function loadRegions(node: HTMLDivElement): void {
 			switch (currentMode) {
 				case 'fill':
 					fillRegion(newRegion.id, true);
+					break;
+				case 'split':
+					splitRegion(newRegion.id);
 					break;
 				case 'edit':
 					editRegion(newRegion.id);

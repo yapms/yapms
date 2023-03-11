@@ -5,12 +5,12 @@
 	import Login from '$lib/icons/Login.svelte';
 	import Swatch from '$lib/icons/Swatch.svelte';
 	import mapSelectSections from '$lib/assets/homedata/MapSelection.json';
+	import ThemeModal from '$lib/components/modals/thememodal/ThemeModal.svelte';
+	import { ThemeModalStore } from '$lib/stores/Modals';
 	import MapSelectionCard from '$lib/components/homepage/MapSelectionCard.svelte';
 	import MoreMapsModal from '$lib/components/modals/moremapsmodal/MoreMapsModal.svelte';
 	import { onMount } from 'svelte';
 	import { themeChange } from 'theme-change';
-	import ThemeModal from '$lib/components/modals/thememodal/ThemeModal.svelte';
-	import { ThemeModalStore } from '$lib/stores/Modals';
 
 	onMount(() => {
 		themeChange(false);

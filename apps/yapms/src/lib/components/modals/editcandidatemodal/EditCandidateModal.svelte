@@ -32,20 +32,31 @@
 		$CandidatesStore = $CandidatesStore.filter((candidate) => candidate.id !== id);
 		$SelectedCandidateStore =
 			$SelectedCandidateStore.id === id ? $TossupCandidateStore : $SelectedCandidateStore;
-		$RegionsStore = $RegionsStore.map((region) =>
-			region.candidates[0].candidate.id === id
-				? {
-						...region,
-						candidates: [
-							{
-								candidate: $TossupCandidateStore,
-								count: region.value,
-								margin: 0
-							}
-						]
-				  }
-				: region
-		);
+
+		$RegionsStore = $RegionsStore.map((region) => {
+			const candidateToRemove = region.candidates.find(
+				(candidate) => candidate.candidate.id === id
+			);
+			if (candidateToRemove === undefined) {
+				return region;
+			}
+
+			const tossupCandidate = region.candidates.find(
+				(candidate) => candidate.candidate.id === $TossupCandidateStore.id
+			);
+			if (tossupCandidate === undefined) {
+				return {
+					...region,
+					candidates: [{ candidate: $TossupCandidateStore, count: region.value, margin: 0 }]
+				};
+			}
+
+			tossupCandidate.count += candidateToRemove.count;
+			return {
+				...region,
+				candidates: region.candidates.filter((candidate) => candidate.candidate.id !== id)
+			};
+		});
 		$EditCandidateModalStore.open = false;
 	}
 
