@@ -40,7 +40,11 @@
 		/>
 		<div class="modal-action">
 			<button class="btn btn-primary" on:click={close}> No </button>
-			<button class="btn btn-success" on:click={confirm} disabled={newValue === null || newValue < 0 || newValue % 1 !== 0}>
+			<button
+				class="btn btn-success"
+				on:click={confirm}
+				disabled={newValue === null || newValue < 0 || newValue % 1 !== 0}
+			>
 				Update
 			</button>
 		</div>
