@@ -171,18 +171,14 @@
 </script>
 
 <ModalBase
-	title="Split {$SplitRegionModalStore.region?.longName}"
+	title="Split {$SplitRegionModalStore.region?.longName} - {$SplitRegionModalStore.region?.value}"
 	open={$SplitRegionModalStore.open}
 >
 	<div slot="content">
-		<div>
-			{$SplitRegionModalStore.region?.value}
-		</div>
-
 		{#each candidates as candidate}
-			<div class="flex flex-col items-center">
+			<div class="flex flex-col items-center gap-1">
 				<div class="flex-grow">
-					{candidate.candidate.name}
+					{candidate.candidate.name} - {candidate.count}
 				</div>
 				<div class="flex-grow">
 					<input
