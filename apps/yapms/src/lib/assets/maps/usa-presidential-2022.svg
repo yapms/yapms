@@ -22,9 +22,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
-     inkscape:zoom="7.2436048"
-     inkscape:cx="634.00753"
-     inkscape:cy="68.060035"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="534.7495"
+     inkscape:cy="150.26019"
      inkscape:window-width="2560"
      inkscape:window-height="1369"
      inkscape:window-x="-8"
@@ -35,20 +35,16 @@
      id="areas"
      class="regions"
      fill="#bc0000">
-    <rect
+    <path
        id="rect1337"
-       width="80"
-       height="90"
-       x="650"
-       y="8"
-       rx="4"
-       ry="4"
-       style="fill:#bc0000;fill-opacity:1;stroke-width:0.784465"
+       clip-path="none"
+       style="fill:#bc0000;fill-opacity:1;stroke-width:0.780095"
+       d="m 684,20 c -2.216,0 -4,1.763703 -4,3.955078 V 105.04492 C 680,107.2363 681.784,109 684,109 h 72 c 2.216,0 4,-1.7637 4,-3.95508 V 23.955078 C 760,21.763703 758.216,20 756,20 Z m 4,21 h 64 c 2.216,0 4,1.851154 4,4 v 56 c 0,2.14885 -1.784,4 -4,4 h -64 c -2.216,0 -4,-1.85115 -4,-4 V 45 c 0,-2.148846 1.784,-4 4,-4 z"
        region="ne-al"
        short-name="ne-al"
        long-name="Nebraska at Large"
        value="2"
-       clip-path="none" />
+       sodipodi:nodetypes="ssssssssssssssssss" />
     <path
        d="m621.6 365.44c.28931.60172.9203 1.1053.99806 1.768-.4323 22.291-.86459 44.582-1.2969 66.873 1.4394 10.861 2.8789 21.723 4.3184 32.584.57568-.49288 1.3382-.1273 2.0156-.15429.41725.46323 1.1614.51778 1.2893-.21253.50958-1.0347 1.144-2.0386 1.5759-3.0926.0526-.7686-.1021-1.623.0707-2.3418.44215-.44105.88204-.88436 1.3258-1.3238.59641.28299 1.3849.34614 1.8574.77344 1.1491 2.1627 2.2979 4.3257 3.4473 6.4883-.0981.49009.2678 1.2287-.34417 1.4429-.58645.39077-1.1729.78154-1.7593 1.1723 1.1786-.0752 2.3255-.29519 3.4246-.73483 1.3638-.5088 2.8369-.76445 4.091-1.5269.12695-2.3099.25391-4.6198.38086-6.9297-.4035-.55451-.75665-1.1741-1.4896-1.3031-.66812-.18613-1.2082-.55474-1.6022-1.1279-.67674-.75647-1.3512-1.515-2.0294-2.2702.19606-1.1301.38825-2.2608.58593-3.3906 16.204-1.693 32.408-3.3868 48.611-5.0801-.29769-.77416-.3371-1.7055-1.0872-2.2044-.53695-.50795-1.104-.99864-1.229-1.7677-.49769-.97497-.0362-2.0696-.0344-3.1067.0941-1.332.31998-2.6841.33325-4.0037-.7898-1.8755-1.5796-3.7511-2.3694-5.6266.3871-1.7439.64607-3.5054.7301-5.2907.001-.73879.11724-1.4423.5918-2.0332.55807-.96431 1.1161-1.9286 1.6742-2.8929.0702-.74672-.506-1.042-1.0891-1.3325-.62192-.22613-.96725-.61245-.79173-1.2949-.0481-.82721.0948-1.7304-.0687-2.5117-.75482-.87326-1.7546-1.5791-2.1205-2.7192-.83973-1.8564-1.8245-3.6579-2.5757-5.5478-4.2431-15.065-8.4861-30.129-12.729-45.194-14.902 1.304-29.803 2.6081-44.705 3.9121z"
        long-name="Alabama"
@@ -400,83 +396,60 @@
        short-name="wy"
        value="3"
        id="path100" />
-    <rect
+    <path
        id="rect1337-8"
-       width="80"
-       height="68"
-       x="745"
-       y="8"
-       rx="4"
-       ry="3.0222225"
        style="fill:#bc0000;fill-opacity:1;stroke-width:0.681878"
+       d="m 779,20 c -2.216,0 -4,1.784002 -4,4 v 60 c 0,2.215998 1.784,4 4,4 h 72 c 2.216,0 4,-1.784002 4,-4 V 24 c 0,-2.215998 -1.784,-4 -4,-4 z m 4,21 h 64 c 2.216,0 4,1.784002 4,4 v 35 c 0,2.215998 -1.784,4 -4,4 h -64 c -2.216,0 -4,-1.784002 -4,-4 V 45 c 0,-2.215998 1.784,-4 4,-4 z"
        region="me-al"
        short-name="me-al"
        long-name="Maine at Large"
        value="2" />
-    <rect
-       style="fill:#880000;fill-opacity:1;stroke-width:0.831478"
-       id="rect1949-1"
-       width="70"
-       height="20"
-       x="655"
-       y="74"
-       rx="4"
-       ry="4"
+    <path
+       id="rect1949-7-1"
+       style="fill:#880000;stroke-width:0.831478"
+       d="m 780,63 h 70 v 16 c 0,2.216 -1.784,4 -4,4 h -62 c -2.216,0 -4,-1.784 -4,-4 z"
+       sodipodi:nodetypes="cccsscc"
+       region="me-02"
+       short-name="me-02"
+       long-name="Maine Second"
+       value="1" />
+    <path
+       id="rect1949-9"
+       style="fill:#880000;stroke-width:0.831478"
+       d="m 784,42 h 62 c 2.216,0 4,1.784 4,4 V 62 H 780 V 46 c 0,-2.216 1.784,-4 4,-4 z"
+       sodipodi:nodetypes="ssccccs"
+       region="me-01"
+       short-name="me-01"
+       long-name="Maine First"
+       value="1" />
+    <path
+       id="path2249"
+       style="fill:#880000;stroke-width:0.831478"
+       d="m 685,84 h 70 v 16 c 0,2.216 -1.784,4 -4,4 h -62 c -2.216,0 -4,-1.784 -4,-4 z"
+       sodipodi:nodetypes="cccsscc"
        region="ne-03"
        short-name="ne-03"
        long-name="Nebraska Third"
        value="1" />
     <rect
        style="fill:#880000;fill-opacity:1;stroke-width:0.831478"
-       id="rect1949-7-1"
-       width="70"
-       height="20"
-       x="750"
-       y="52"
-       rx="4"
-       ry="4"
-       region="me-02"
-       short-name="me-02"
-       long-name="Maine Second"
-       value="1" />
-    <rect
-       style="fill:#880000;fill-opacity:1;stroke-width:0.831478"
        id="rect1949-7"
        width="70"
        height="20"
-       x="655"
-       y="52"
-       rx="4"
-       ry="4"
+       x="685"
+       y="63"
        region="ne-02"
        short-name="ne-02"
        long-name="Nebraska Second"
        value="1" />
-    <rect
-       style="fill:#880000;fill-opacity:1;stroke-width:0.831478"
-       id="rect1949-9"
-       width="70"
-       height="20"
-       x="750"
-       y="30"
-       rx="4"
-       ry="4"
-       region="me-01"
-       short-name="me-01"
-       long-name="Maine First"
-       value="1" />
-    <rect
-       style="fill:#880000;fill-opacity:1;stroke-width:0.831478"
+    <path
        id="rect1949"
-       width="70"
-       height="20"
-       x="655"
-       y="30"
-       rx="4"
-       ry="4"
+       style="fill:#880000;stroke-width:0.831478"
+       d="m 689,42 h 62 c 2.216,0 4,1.784 4,4 V 62 H 685 V 46 c 0,-2.216 1.784,-4 4,-4 z"
+       sodipodi:nodetypes="ssccccs"
        region="ne-01"
-       long-name="Nebraska First"
        short-name="ne-01"
+       long-name="Nebraska First"
        value="1" />
     <rect
        x="890.69"
@@ -1413,80 +1386,80 @@
     <text
        xml:space="preserve"
        style="font-size:14.6667px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:Roboto"
-       x="669.85022"
-       y="15.918736"
+       x="699.85022"
+       y="27.918736"
        id="text1895"
        for="ne-al"><tspan
          sodipodi:role="line"
          id="tspan1893"
-         x="669.85022"
-         y="15.918736">NE-AL 00</tspan></text>
+         x="699.85022"
+         y="27.918736">NE-AL 00</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:14.6667px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:Roboto"
-       x="764.85022"
-       y="15.918736"
+       x="794.85022"
+       y="27.918736"
        id="text1895-2"
        for="me-al"><tspan
          sodipodi:role="line"
          id="tspan1893-6"
-         x="764.85022"
-         y="15.918736">ME-AL 00</tspan></text>
+         x="794.85022"
+         y="27.918736">ME-AL 00</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:14.6667px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:Roboto"
-       x="670.04425"
-       y="37.482597"
+       x="699.85022"
+       y="48.561954"
        id="text659"
        for="ne-01"><tspan
          sodipodi:role="line"
          id="tspan657"
-         x="670.04425"
-         y="37.482597">NE-01 00</tspan></text>
+         x="699.85022"
+         y="48.561954">NE-01 00</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:14.6667px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:Roboto"
-       x="669.21588"
-       y="58.378178"
+       x="699.85022"
+       y="69.561951"
        id="text659-7"
        for="ne-02"><tspan
          sodipodi:role="line"
          id="tspan657-1"
-         x="669.21588"
-         y="58.378178">NE-01 00</tspan></text>
+         x="699.85022"
+         y="69.561951">NE-02 00</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:14.6667px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:Roboto"
-       x="668.93982"
-       y="80.654282"
+       x="699.85022"
+       y="90.561951"
        id="text659-3"
        for="ne-03"><tspan
          sodipodi:role="line"
          id="tspan657-4"
-         x="668.93982"
-         y="80.654282">NE-01 00</tspan></text>
+         x="699.85022"
+         y="90.561951">NE-03 00</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:14.6667px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:Roboto"
-       x="763.93982"
-       y="37.482597"
+       x="794.85022"
+       y="48.561954"
        id="text659-4"
        for="me-01"><tspan
          sodipodi:role="line"
          id="tspan657-5"
-         x="763.93982"
-         y="37.482597">NE-01 00</tspan></text>
+         x="794.85022"
+         y="48.561954">ME-01 00</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:14.6667px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:Roboto"
-       x="763.93982"
-       y="58.930386"
+       x="794.85022"
+       y="69.561951"
        id="text659-1"
        for="me-02"><tspan
          sodipodi:role="line"
          id="tspan657-7"
-         x="763.93982"
-         y="58.930386">NE-01 00</tspan></text>
+         x="794.85022"
+         y="69.561951">ME-02 00</tspan></text>
     <text
        x="898.25098"
        y="502.61505"
