@@ -29,3 +29,7 @@ dist/**
 *.njsproj
 *.sln
 *.sw?
+
+# .env
+.env
+.env.development

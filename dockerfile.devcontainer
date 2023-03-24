@@ -1,0 +1,17 @@
+FROM ubuntu:latest
+
+# install curl & wget
+RUN apt-get update && apt-get install -y curl wget
+
+# install node 18
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+RUN apt-get install -y nodejs
+
+# install pnpm
+RUN npm install -g pnpm
+RUN pnpm config set store-dir /pnpm-store
+
+# install golang
+RUN wget https://golang.org/dl/go1.16.3.linux-amd64.tar.gz
+RUN tar -C /usr/local -xzf go1.16.3.linux-amd64.tar.gz
+ENV PATH=$PATH:/usr/local/go/bin

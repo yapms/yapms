@@ -1,0 +1,7 @@
+version: '3.4'
+services:
+
+  browserless:
+    image: browserless/chrome:latest
+    restart: always
+    network_mode: host

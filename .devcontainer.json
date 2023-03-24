@@ -1,0 +1,8 @@
+{
+  "name": "YAPms",
+  "service": "devcontainer",
+  "shutdownAction": "none",
+  "workspaceFolder": "/workspace",
+  "updateRemoteUserUID": true,
+  "dockerComposeFile": "docker-compose.devcontainer.yml"
+}
