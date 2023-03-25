@@ -3,14 +3,18 @@ package main
 import (
 	"bytes"
 	"compress/gzip"
+	"context"
 	"crypto/md5"
 	"encoding/base64"
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"mime/multipart"
 	"net/http"
+	"os"
 
+	"github.com/chromedp/chromedp"
 	"github.com/labstack/echo/v5"
 	"github.com/pocketbase/pocketbase"
 	"github.com/pocketbase/pocketbase/apis"
@@ -28,7 +32,15 @@ type MapRouteReturn struct {
 }
 
 func main() {
+
+	browserlessURI := os.Getenv("BROWSERLESS_URI")
+	browserlessFrontendURI := os.Getenv("BROWSERLESS_FRONTEND_URI")
+	fmt.Println("BROWSERLESS_URI: ", browserlessURI)
+
 	app := pocketbase.New()
+
+	browserlessConnection := flag.String("devtools-ws-url", browserlessURI, "DevTools websocket URL")
+	flag.Parse()
 
 	migratecmd.MustRegister(app, app.RootCmd, &migratecmd.Options{
 		Automigrate: true,
@@ -44,6 +56,7 @@ func main() {
 	})
 
 	app.OnBeforeServe().Add(func(e *core.ServeEvent) error {
+
 		e.Router.AddRoute(echo.Route{
 			Method: http.MethodPost,
 			Path: "/api/yapms.com/map",
@@ -94,6 +107,14 @@ func main() {
 					"hash": hashEncoded,
 				})
 
+				// check if the hash already exists
+				existingRecord, _ := app.Dao().FindFirstRecordByData("maps", "hash", hashEncoded)
+				if existingRecord != nil {
+					return c.JSON(http.StatusOK, MapRouteReturn{
+						Id: existingRecord.Id,
+					})
+				}
+
 				// create a multipart writer to create a form
 				var newMultipartData bytes.Buffer
 				writer := multipart.NewWriter(&newMultipartData)
@@ -134,20 +155,53 @@ func main() {
 
 				// submit the form & create the record
 				err = form.Submit()
-
-				// if the submition failed, find if there is an existing record with the same hash
 				if err != nil {
-					// if the hash exists, return the existing record
-					existingRecord, err := app.Dao().FindFirstRecordByData("maps", "hash", hashEncoded)
-					if err != nil {
-						return err
-					}
-					if existingRecord != nil {
-						return c.JSON(http.StatusOK, MapRouteReturn{
-							Id: existingRecord.Id,
-						})
-					}
 					return err
+				}
+
+				// create a new browserless context
+				allocatorContext, cancel := chromedp.NewRemoteAllocator(context.Background(), *browserlessConnection)
+				defer cancel()
+				ctx, cancel := chromedp.NewContext(allocatorContext)
+				defer cancel()
+
+				// create a new browserless task
+				var screenshot []byte
+				if err := chromedp.Run(ctx,
+					chromedp.EmulateViewport(1600, 900),
+					chromedp.Navigate(browserlessFrontendURI + "/app?m=" + record.Id),
+					chromedp.WaitReady("#testing-map"),
+					chromedp.FullScreenshot(&screenshot, 100),
+				); err != nil {
+					log.Println(err)
+					// return the new record
+					return c.JSON(http.StatusOK, MapRouteReturn{
+						Id: record.Id,
+					})
+				}
+
+				// create a new file from the screenshot
+				screenshotFile, err := filesystem.NewFileFromBytes(screenshot, "screenshot.png")
+				if err != nil {
+					log.Println(err)
+					// return the new record
+					return c.JSON(http.StatusOK, MapRouteReturn{
+						Id: record.Id,
+					})
+				}
+
+				// add the screenshot to the form
+				form = forms.NewRecordUpsert(app, record)
+				form.AddFiles("screenshot", screenshotFile)
+
+				// submit the form & create the record
+				err = form.Submit()
+				if err != nil {
+					log.Println(err)
+					// return the new record
+					return c.JSON(http.StatusOK, MapRouteReturn{
+						Id: record.Id,
+					})
 				}
 
 				// return the new record

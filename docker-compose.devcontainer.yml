@@ -1,0 +1,19 @@
+version: '3.4'
+services:
+
+  devcontainer:
+    build:
+      context: .
+      dockerfile: dockerfile.devcontainer
+    volumes:
+      - .:/workspace:cached
+      - ${PNPM_STORE_PATH}:/pnpm-store:cached
+    command: /bin/sh -c "while true; do sleep 30; done"
+    network_mode: host
+
+  browserless:
+    image: browserless/chrome:latest
+    restart: always
+    ports:
+      - 3000:3000
+    network_mode: host

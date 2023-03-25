@@ -2,6 +2,7 @@
 	import { CandidatesStore } from '$lib/stores/Candidates';
 	import { AddCandidateModalStore, PresetColorsModalStore } from '$lib/stores/Modals';
 	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
+	import { v4 as uuidv4 } from 'uuid';
 
 	let newName = '';
 
@@ -40,7 +41,7 @@
 		CandidatesStore.update((candidates) => [
 			...candidates,
 			{
-				id: crypto.randomUUID(),
+				id: uuidv4(),
 				name: newName,
 				margins: $AddCandidateModalStore.newColors.map((color) => {
 					return { color };
