@@ -173,9 +173,6 @@ func main() {
 				// create a new browserless context
 				allocatorContext, cancel := chromedp.NewRemoteAllocator(context.Background(), *browserlessConnection)
 				defer cancel()
-
-				/*ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
-				defer cancel()*/
 				ctx, cancel := chromedp.NewContext(allocatorContext)
 				defer cancel()
 
