@@ -58,17 +58,6 @@ func main() {
 	app.OnBeforeServe().Add(func(e *core.ServeEvent) error {
 
 		e.Router.AddRoute(echo.Route{
-			Method: http.MethodGet,
-			Path: "/api/yapms.com/test",
-			Handler: func(c echo.Context) error {
-				return c.String(http.StatusOK, "test")
-			},
-			Middlewares: []echo.MiddlewareFunc{
-				apis.ActivityLogger(app),
-			},
-		})
-
-		e.Router.AddRoute(echo.Route{
 			Method: http.MethodPost,
 			Path: "/api/yapms.com/map",
 			Handler: func(c echo.Context) error {
@@ -184,7 +173,7 @@ func main() {
 					chromedp.WaitReady("#testing-map"),
 					chromedp.FullScreenshot(&screenshot, 100),
 				); err != nil {
-					log.Default().Println(err)
+					log.Println(err)
 					// return the new record
 					return c.JSON(http.StatusOK, MapRouteReturn{
 						Id: record.Id,
@@ -194,7 +183,7 @@ func main() {
 				// create a new file from the screenshot
 				screenshotFile, err := filesystem.NewFileFromBytes(screenshot, "screenshot.png")
 				if err != nil {
-					log.Default().Println(err)
+					log.Println(err)
 					// return the new record
 					return c.JSON(http.StatusOK, MapRouteReturn{
 						Id: record.Id,
@@ -208,7 +197,7 @@ func main() {
 				// submit the form & create the record
 				err = form.Submit()
 				if err != nil {
-					log.Default().Println(err)
+					log.Println(err)
 					// return the new record
 					return c.JSON(http.StatusOK, MapRouteReturn{
 						Id: record.Id,
