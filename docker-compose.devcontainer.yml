@@ -8,8 +8,8 @@ services:
     volumes:
       - .:/workspace:cached
       - ${PNPM_STORE_PATH}:/pnpm-store:cached
-    network_mode: host
     command: /bin/sh -c "while true; do sleep 30; done"
+    network_mode: host
 
   browserless:
     image: browserless/chrome:latest

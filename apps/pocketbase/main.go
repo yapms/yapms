@@ -33,14 +33,8 @@ type MapRouteReturn struct {
 
 func main() {
 
-	/*
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
-	*/
-
 	browserlessURI := os.Getenv("BROWSERLESS_URI")
+	browserlessFrontendURI := os.Getenv("BROWSERLESS_FRONTEND_URI")
 	fmt.Println("BROWSERLESS_URI: ", browserlessURI)
 
 	app := pocketbase.New()
@@ -189,7 +183,7 @@ func main() {
 				var screenshot []byte
 				if err := chromedp.Run(ctx,
 					chromedp.EmulateViewport(1600, 900),
-					chromedp.Navigate("http://localhost:8081/app?m=" + record.Id),
+					chromedp.Navigate(browserlessFrontendURI + "/app?m=" + record.Id),
 					chromedp.WaitReady("#testing-map"),
 					chromedp.FullScreenshot(&screenshot, 100),
 				); err != nil {

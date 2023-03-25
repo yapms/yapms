@@ -23,6 +23,7 @@
 		}
 
 		// load the requested map from pocketbase
+		console.log(`${PUBLIC_POCKETBASE_URI}/api/files/maps/${map}/data.json.gz`)
 		const data = await fetch(`${PUBLIC_POCKETBASE_URI}/api/files/maps/${map}/data.json.gz`);
 		const savedFile = SavedMapSchema.safeParse(await data.json());
 

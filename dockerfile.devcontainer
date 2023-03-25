@@ -12,6 +12,12 @@ RUN npm install -g pnpm
 RUN pnpm config set store-dir /pnpm-store
 
 # install golang
-RUN wget https://golang.org/dl/go1.16.3.linux-amd64.tar.gz
-RUN tar -C /usr/local -xzf go1.16.3.linux-amd64.tar.gz
+RUN wget https://golang.org/dl/go1.20.2.linux-amd64.tar.gz
+RUN tar -C /usr/local -xzf go1.20.2.linux-amd64.tar.gz
 ENV PATH=$PATH:/usr/local/go/bin
+
+# install git
+RUN apt-get install -y git
+
+# add user 
+RUN useradd -ms /bin/bash dev
