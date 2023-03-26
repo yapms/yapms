@@ -54,19 +54,20 @@ func main() {
 
 			file := e.UploadedFiles["data"][0]
 
+			// open the file
 			reader, err := file.Reader.Open()
 			if err != nil {
 				return err
 			}
 			defer reader.Close()
 
-			// read the file
+			// get the file data
 			data, err := ioutil.ReadAll(reader)
 			if err != nil {
 				return err
 			}
 
-			// compress the file in memory
+			// compress the data
 			var compressedData bytes.Buffer
 			gzip := gzip.NewWriter(&compressedData)
 			_, err = gzip.Write(data)
@@ -103,6 +104,7 @@ func main() {
 			ctx, cancel = chromedp.NewContext(ctx)
 			defer cancel()
 
+			// take a screenshot
 			var screenshotBuffer []byte
 			err := chromedp.Run(ctx,
 				chromedp.EmulateViewport(1600, 900),

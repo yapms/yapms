@@ -31,13 +31,13 @@
 		const form = new FormData();
 
 		const mapData = new File([JSON.stringify(generateJson())], 'data.json', {
-			type: 'application/json',
+			type: 'application/json'
 		});
 
 		form.append('data', mapData);
 
 		const pocketbaseStore = get(PocketBaseStore);
-		const record = await pocketbaseStore.collection("maps").create(form);
+		const record = await pocketbaseStore.collection('maps').create(form);
 		linkID = record.id;
 		fetchingLinkID = false;
 	}
