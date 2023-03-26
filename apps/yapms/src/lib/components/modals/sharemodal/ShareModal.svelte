@@ -9,7 +9,8 @@
 	import ExclamationCircle from '$lib/icons/ExclamationCircle.svelte';
 	import { page } from '$app/stores';
 	import CheckCircle from '$lib/icons/CheckCircle.svelte';
-	import { PUBLIC_POCKETBASE_URI } from '$env/static/public';
+	import { get } from 'svelte/store';
+	import { PocketBaseStore } from '$lib/stores/PocketBase';
 
 	let files: FileList;
 
@@ -25,24 +26,20 @@
 	}
 
 	async function generateLink() {
-		const blob = new Blob([JSON.stringify(generateJson())], { type: 'application/json' });
-
-		const formData = new FormData();
-		formData.append('data', blob, 'data.json');
-
-		const url = new URL(`${PUBLIC_POCKETBASE_URI}/api/yapms.com/map`);
-
-		copiedLinkID = false;
 		fetchingLinkID = true;
-		const result = await fetch(url, {
-			method: 'POST',
-			body: formData
+
+		const form = new FormData();
+
+		const mapData = new File([JSON.stringify(generateJson())], 'data.json', {
+			type: 'application/json',
 		});
-		const data = await result.json();
-		linkID = data.id;
-		setTimeout(() => {
-			fetchingLinkID = false;
-		}, 1200);
+
+		form.append('data', mapData);
+
+		const pocketbaseStore = get(PocketBaseStore);
+		const record = await pocketbaseStore.collection("maps").create(form);
+		linkID = record.id;
+		fetchingLinkID = false;
 	}
 
 	async function copyLink() {
