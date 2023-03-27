@@ -59,7 +59,7 @@ func main() {
 		return nil
 	})
 
-	app.OnFileDownloadRequest().Add(func (e *core.FileDownloadEvent) error {
+	app.OnFileDownloadRequest().Add(func(e *core.FileDownloadEvent) error {
 		// if the file is the data file, set the content encoding to gzip
 		if e.FileField.Name == "data" {
 			e.HttpContext.Response().Header().Set("Content-Encoding", "gzip")
