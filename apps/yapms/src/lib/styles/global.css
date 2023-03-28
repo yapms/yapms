@@ -13,7 +13,7 @@ body {
 	@apply flex-grow bg-transparent !important;
 }
 [data-svelte-search] input {
-	@apply input input-lg input-bordered border-2 px-4 rounded-md bg-base-200 text-2xl !important;
+	@apply input input-lg input-bordered border-2 pr-4 pl-2 rounded-md bg-base-200 text-2xl !important;
 }
 [data-svelte-typeahead] .svelte-typeahead-list {
 	@apply mt-2 rounded-md overflow-hidden !important;
