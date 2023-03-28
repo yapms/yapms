@@ -28,18 +28,38 @@ func main() {
 
 	browserlessURI := os.Getenv("BROWSERLESS_URI")
 	browserlessFrontendURI := os.Getenv("BROWSERLESS_FRONTEND_URI")
-	fmt.Println("BROWSERLESS_URI: ", browserlessURI)
 
-	app := pocketbase.New()
+	googleClientID := os.Getenv("GOOGLE_CLIENT_ID")
+	googleClientSecret := os.Getenv("GOOGLE_CLIENT_SECRET")
+
+	discordClientID := os.Getenv("DISCORD_CLIENT_ID")
+	discordClientSecret := os.Getenv("DISCORD_CLIENT_SECRET")
 
 	browserlessConnection := flag.String("devtools-ws-url", browserlessURI, "DevTools websocket URL")
 	flag.Parse()
+
+	app := pocketbase.New()
 
 	migratecmd.MustRegister(app, app.RootCmd, &migratecmd.Options{
 		Automigrate: true,
 	})
 
-	app.OnFileDownloadRequest().Add(func (e *core.FileDownloadEvent) error {
+	app.OnAfterBootstrap().Add(func(e *core.BootstrapEvent) error {
+		app.Settings().Meta.AppName = "YAPms"
+		app.Settings().Meta.AppUrl = "https://yapms.com"
+
+		app.Settings().GoogleAuth.Enabled = true
+		app.Settings().GoogleAuth.ClientId = googleClientID
+		app.Settings().GoogleAuth.ClientSecret = googleClientSecret
+
+		app.Settings().DiscordAuth.Enabled = true
+		app.Settings().DiscordAuth.ClientId = discordClientID
+		app.Settings().DiscordAuth.ClientSecret = discordClientSecret
+
+		return nil
+	})
+
+	app.OnFileDownloadRequest().Add(func(e *core.FileDownloadEvent) error {
 		// if the file is the data file, set the content encoding to gzip
 		if e.FileField.Name == "data" {
 			e.HttpContext.Response().Header().Set("Content-Encoding", "gzip")

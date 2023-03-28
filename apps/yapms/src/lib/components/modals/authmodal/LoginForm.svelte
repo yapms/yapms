@@ -1,47 +1,33 @@
 <script lang="ts">
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
+	import { PUBLIC_REDIRECT_URI } from '$env/static/public';
+	import { page } from '$app/stores';
 
-	let loading = false;
+	const authMethods = $PocketBaseStore.collection('users').listAuthMethods();
 
-	let username: string;
-	let password: string;
-
-	let loginFailed = false;
-
-	async function login() {
-		loading = true;
-		try {
-			await $PocketBaseStore.collection('users').authWithPassword(username, password);
-			PocketBaseStore.set($PocketBaseStore);
-		} catch (error) {
-			loginFailed = true;
-		}
-		loading = false;
-	}
-
-	function clearError() {
-		loginFailed = false;
+	function authenticate(authUrl: string, provider: string, codeVerifier: string, state: string) {
+		localStorage.setItem('codeVerifier', codeVerifier);
+		localStorage.setItem('state', state);
+		localStorage.setItem('provider', provider);
+		localStorage.setItem('redirect', $page.url.href);
+		const url = new URL(authUrl + PUBLIC_REDIRECT_URI);
+		window.location.href = url.href;
 	}
 </script>
 
-{#if loginFailed}
-	<span class="text-error">There was an error logging in, please try again.</span>
-{/if}
-
-<form class="flex flex-col gap-4 p-2" on:submit={login} on:input={clearError}>
-	<input
-		type="text"
-		class="input input-bordered"
-		class:input-error={loginFailed}
-		bind:value={username}
-		placeholder="Email or Username"
-	/>
-	<input
-		type="password"
-		class="input input-bordered"
-		class:input-error={loginFailed}
-		bind:value={password}
-		placeholder="Password"
-	/>
-	<button type="submit" class="btn btn-md btn-success" class:loading>Login</button>
-</form>
+{#await authMethods}
+	<div>Loading...</div>
+{:then authMethods}
+	<div class="grid grid-cols-2 gap-3 p-2 items-center">
+		{#each authMethods.authProviders as method}
+			<button
+				class="btn btn-accent"
+				on:click={() => {
+					authenticate(method.authUrl, method.name, method.codeVerifier, method.state);
+				}}
+			>
+				Login With {method.name}
+			</button>
+		{/each}
+	</div>
+{/await}

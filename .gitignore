@@ -33,3 +33,7 @@ dist/**
 # .env
 .env
 .env.development
+.env*
+.flaskenv*
+!.env.project
+!.env.vault

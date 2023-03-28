@@ -7,10 +7,10 @@
 		"node": "^18.0.0"
 	},
 	"scripts": {
-		"dev": "dotenv -e ../../env/yapms/.env -c development -- vite dev",
-		"build": "dotenv -e ../../env/yapms/.env -- vite build",
+		"dev": "dotenv -e ../../.env -- vite dev",
+		"build": "dotenv -e ../../.env -- vite build",
 		"preview": "vite preview",
-		"start": "node ./build/index.js",
+		"start": "dotenv -e ../../.env -- node ./build/index.js",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint-no-warnings": "prettier --plugin-search-dir . --check . && eslint --max-warnings 0 .",
