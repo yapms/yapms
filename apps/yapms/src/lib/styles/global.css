@@ -8,3 +8,20 @@ body {
 	height: 100vh;
 	overflow: hidden;
 }
+
+[data-svelte-typeahead] {
+	@apply flex-grow bg-transparent !important;
+}
+[data-svelte-search] input {
+	@apply input input-lg input-bordered border-2 pl-12 pr-4 rounded-md bg-base-200 text-2xl !important;
+}
+[data-svelte-typeahead] .svelte-typeahead-list {
+	@apply mt-2 rounded-md overflow-hidden !important;
+}
+[data-svelte-typeahead] .svelte-typeahead-list li {
+	@apply bg-base-200 text-lg;
+}
+[data-svelte-typeahead] .svelte-typeahead-list .selected,
+[data-svelte-typeahead] .svelte-typeahead-list .selected:hover {
+	@apply bg-neutral text-neutral-content font-semibold !important;
+}

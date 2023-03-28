@@ -11,6 +11,7 @@
 	import MoreMapsModal from '$lib/components/modals/moremapsmodal/MoreMapsModal.svelte';
 	import { onMount } from 'svelte';
 	import { themeChange } from 'theme-change';
+	import MapSearch from '$lib/components/homepage/MapSearch.svelte';
 
 	onMount(() => {
 		themeChange(false);
@@ -51,8 +52,9 @@
 
 	<div class="flex flex-row h-full overflow-hidden">
 		<HomePageSidebar />
-		<div class="divider md:divider-horizontal ml-0 w-0" />
-		<div class="flex-1 md:pr-5 overflow-auto overflow-x-clip">
+		<div class="divider md:divider-horizontal ml-0 w-0 !mr-0" />
+		<div class="flex-1 md:px-5 overflow-auto overflow-x-clip">
+			<MapSearch />
 			{#each mapSelectSections as section}
 				<MapSelectionTitle title={section.title} />
 				<MapSelectionGrid>
