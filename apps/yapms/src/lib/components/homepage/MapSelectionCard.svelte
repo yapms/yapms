@@ -19,7 +19,7 @@
 <div class="card card-bordered w-80 md:w-92 h-48 lg:h-52 bg-base-100 shadow-xl image-full">
 	<figure><img src={`./countrybackgrounds/${bg}.webp`} {alt} /></figure>
 	<div class="card-body items-center text-center">
-		<h2 class="card-title text-primary-content">{name}</h2>
+		<h2 class="card-title text-white">{name}</h2>
 		<div class="grid gap-4" class:grid-cols-2={doubleCols}>
 			{#each links as link}
 				<a
