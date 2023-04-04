@@ -16,7 +16,7 @@ body {
 	@apply input input-lg input-bordered border-2 -ml-12 pr-4 pl-14 rounded-md bg-base-200 text-2xl !important;
 }
 [data-svelte-typeahead] .svelte-typeahead-list {
-	@apply mt-2 rounded-md overflow-hidden -ml-12 !important;
+	@apply mt-2 rounded-md overflow-hidden -ml-12 z-50 !important;
 }
 [data-svelte-typeahead] .svelte-typeahead-list li {
 	@apply bg-base-200 text-lg;
