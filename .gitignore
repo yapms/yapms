@@ -30,6 +30,9 @@ dist/**
 *.sln
 *.sw?
 
+# Ansible
+/deployment/inventory
+
 # .env
 .env
 .env.development

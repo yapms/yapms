@@ -1,0 +1,17 @@
+---
+- name: hello world
+  hosts: all
+  become: yes
+  become_user: root
+
+  tasks:
+    - name: update & upgrade packages
+      apt:
+        update_cache: yes
+        upgrade: yes
+        autoremove: yes
+
+    - name: install docker
+      apt:
+        name: docker.io
+        state: present
