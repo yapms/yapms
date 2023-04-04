@@ -1,5 +1,6 @@
 <script>
 	import '$lib/styles/global.css';
+	import '$lib/styles/map.css';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { get } from 'svelte/store';
