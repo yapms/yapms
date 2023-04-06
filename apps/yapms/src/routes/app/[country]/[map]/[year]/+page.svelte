@@ -91,7 +91,10 @@
 			class:flex-col-reverse={$ChartPositionStore === 'bottom'}
 			class:flex-row={$ChartPositionStore === 'left'}
 		>
-			<div class="flex justify-center items-center ml-3 mr-3 mt-3 mb-3">
+			<div
+				class="flex justify-center items-center ml-3 mr-3 mt-3 mb-3"
+				class:hidden={$ChartTypeStore === 'none'}
+			>
 				{#if $ChartTypeStore === 'battle' && $CandidatesStore.length <= 2}
 					<HorizontalBattleChart />
 				{:else if $ChartTypeStore === 'pie'}

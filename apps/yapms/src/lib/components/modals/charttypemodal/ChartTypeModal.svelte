@@ -4,7 +4,7 @@
 	import type { ChartType } from '$lib/types/ChartType';
 	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
 
-	const types = ['pie', 'battle'];
+	const types = ['pie', 'battle', 'none'];
 
 	function close() {
 		ChartTypeModalStore.set({
