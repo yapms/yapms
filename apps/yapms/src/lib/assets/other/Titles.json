@@ -2,5 +2,29 @@
 	{
 		"path": "/app/usa/presidential/2022",
 		"title": "USA 2022 Presidential Election"
+	},
+	{
+		"path": "/app/usa/senate/2024",
+		"title": "USA 2024 Senate Elections"
+	},
+	{
+		"path": "/app/usa/senate/current",
+		"title": "USA Current Senate"
+	},
+	{
+		"path": "/app/usa/senate/blank",
+		"title": "USA Senate"
+	},
+	{
+		"path": "/app/usa/senate/class1",
+		"title": "USA Senate Class 1"
+	},
+	{
+		"path": "/app/usa/senate/class2",
+		"title": "USA Senate Class 2"
+	},
+	{
+		"path": "/app/usa/senate/class3",
+		"title": "USA Senate Class 3"
 	}
 ]

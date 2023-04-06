@@ -16,7 +16,7 @@
 					{
 						"label": "Senate",
 						"modal": false,
-						"route": "/app/usa/presidential/2022"
+						"route": "/app/usa/senate/2024"
 					},
 					{
 						"label": "House",
