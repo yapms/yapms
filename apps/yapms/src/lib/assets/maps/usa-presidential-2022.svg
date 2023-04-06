@@ -23,14 +23,14 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="4"
-     inkscape:cx="525.25"
-     inkscape:cy="134.25"
+     inkscape:cx="496.125"
+     inkscape:cy="134.5"
      inkscape:window-width="2560"
-     inkscape:window-height="1369"
+     inkscape:window-height="1417"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="testing-map" />
+     inkscape:current-layer="g520" />
   <g
      id="areas"
      class="regions"
@@ -776,19 +776,6 @@
          y="185.56998"
          id="tspan203">00</tspan></text>
     <text
-       x="399.1405"
-       y="220.12312"
-       font-size="14.667px"
-       text-align="center"
-       style="font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
-       for="ne-03"
-       xml:space="default"
-       id="text211"><tspan
-         class="top"
-         x="399.1405"
-         y="220.12312"
-         id="tspan207">NE</tspan></text>
-    <text
        x="399.3512"
        y="149.2113"
        font-size="14.667px"
@@ -1434,17 +1421,32 @@
          id="tspan657-1"
          x="699.85022"
          y="69.561951">NE-02 00</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:14.6667px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:Roboto"
-       x="699.85022"
-       y="90.561951"
-       id="text659-3"
-       for="ne-03"><tspan
-         sodipodi:role="line"
-         id="tspan657-4"
+    <g
+       id="g520"
+       for="ne-03">
+      <text
+         x="399.1405"
+         y="220.12312"
+         font-size="14.667px"
+         text-align="center"
+         style="font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
+         xml:space="default"
+         id="text211"><tspan
+           class="top"
+           x="399.1405"
+           y="220.12312"
+           id="tspan207">NE</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:14.6667px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:Roboto"
          x="699.85022"
-         y="90.561951">NE-03 00</tspan></text>
+         y="90.561951"
+         id="text659-3"><tspan
+           sodipodi:role="line"
+           id="tspan657-4"
+           x="699.85022"
+           y="90.561951">NE-03 00</tspan></text>
+    </g>
     <text
        xml:space="preserve"
        style="font-size:14.6667px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:Roboto"
