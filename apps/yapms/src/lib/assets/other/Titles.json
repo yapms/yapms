@@ -26,5 +26,9 @@
 	{
 		"path": "/app/usa/senate/class3",
 		"title": "USA Senate Class 3"
+	},
+	{
+		"path": "/app/de/folketing/blank",
+		"title": "Danish Folketing"
 	}
 ]
