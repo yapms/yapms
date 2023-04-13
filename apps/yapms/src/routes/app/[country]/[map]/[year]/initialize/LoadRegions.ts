@@ -126,10 +126,9 @@ function loadRegions(node: HTMLDivElement): void {
 	if (texts) {
 		texts.style.pointerEvents = 'none';
 		for (const child of texts.children) {
-			(child as HTMLElement).style.transition = 'color 0.2s ease-in-out'
+			(child as HTMLElement).style.transition = 'color 0.2s ease-in-out';
 		}
 	}
-	
 
 	regions?.childNodes.forEach((childNode) => {
 		const childHTML = childNode as HTMLElement;
