@@ -115,21 +115,28 @@ function loadRegions(node: HTMLDivElement): void {
 	}
 
 	const regionsForStore: Region[] = [];
-	const regions = node.querySelector('.regions');
-	const buttons = node.querySelector('.region-buttons');
-	const texts = node.querySelector('.region-texts');
+	const regions = node.querySelector<HTMLElement>('.regions');
+	const buttons = node.querySelector<HTMLElement>('.region-buttons');
+	const texts = node.querySelector<HTMLElement>('.region-texts');
 	const tossupCandidate = get(TossupCandidateStore);
 
 	// set cursor & pointer styles
-	(regions as HTMLElement).style.cursor = 'pointer';
-	if (buttons) (buttons as HTMLElement).style.cursor = 'pointer';
-	if (texts) (texts as HTMLElement).style.pointerEvents = 'none';
+	if (regions) regions.style.cursor = 'pointer';
+	if (buttons) buttons.style.cursor = 'pointer';
+	if (texts) {
+		texts.style.pointerEvents = 'none';
+		for (const child of texts.children) {
+			(child as HTMLElement).style.transition = 'color 0.2s ease-in-out';
+		}
+	}
 
 	regions?.childNodes.forEach((childNode) => {
 		const childHTML = childNode as HTMLElement;
 		if (childHTML.getAttribute === undefined) {
 			return;
 		}
+
+		childHTML.style.transition = 'fill 0.2s ease-in-out';
 
 		const value = parseInt(childHTML.getAttribute('value') || '0', 10);
 		const newRegion: Region = {
