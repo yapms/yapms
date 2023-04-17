@@ -10,7 +10,6 @@ import {
 import { EditRegionModalStore, SplitRegionModalStore } from '$lib/stores/Modals';
 import type Region from '$lib/types/Region';
 import { ModeSchema } from '$lib/types/Mode';
-import type { Mode } from '$lib/types/Mode';
 import { InteractionStore } from '$lib/stores/Interaction';
 
 function fillRegion(regionID: string, increment: boolean) {
