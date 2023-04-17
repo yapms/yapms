@@ -117,9 +117,12 @@ function loadRegions(node: HTMLDivElement): void {
 	}
 
 	//If map being loaded has the default-mode property set, change the mode.
-	const defaultMode = node.querySelector('svg')?.getAttribute('default-mode');
-	if (ModeSchema.parse(defaultMode)) {
-		ModeStore.set(defaultMode as Mode);
+	const defaultModeAttribute = node.querySelector('svg')?.getAttribute('default-mode');
+	const defaultMode = ModeSchema.safeParse(defaultModeAttribute);
+	if (defaultMode.success) {
+		ModeStore.set(defaultMode.data);
+	} else {
+		console.error('Error Parsing defaultMode attribute from Map:\n\n' + defaultMode.error);
 	}
 
 	const regionsForStore: Region[] = [];
