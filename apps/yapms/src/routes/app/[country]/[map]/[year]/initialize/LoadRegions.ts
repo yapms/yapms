@@ -9,6 +9,7 @@ import {
 } from '$lib/stores/Candidates';
 import { EditRegionModalStore, SplitRegionModalStore } from '$lib/stores/Modals';
 import type Region from '$lib/types/Region';
+import { ModeSchema } from '$lib/types/Mode';
 import type { Mode } from '$lib/types/Mode';
 import { InteractionStore } from '$lib/stores/Interaction';
 
@@ -117,7 +118,7 @@ function loadRegions(node: HTMLDivElement): void {
 
 	//If map being loaded has the default-mode property set, change the mode.
 	const defaultMode = node.querySelector('svg')?.getAttribute('default-mode');
-	if (defaultMode !== null) {
+	if (ModeSchema.parse(defaultMode)) {
 		ModeStore.set(defaultMode as Mode);
 	}
 
