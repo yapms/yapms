@@ -32,6 +32,10 @@
 		"title": "USA House 1992"
 	},
 	{
+		"path": "/app/usa/house/1994",
+		"title": "USA House 1994"
+	},
+	{
 		"path": "/app/usa/house/2022",
 		"title": "USA House 2022"
 	},
