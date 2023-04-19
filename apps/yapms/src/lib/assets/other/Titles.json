@@ -28,6 +28,18 @@
 		"title": "USA Senate Class 3"
 	},
 	{
+		"path": "/app/usa/house/2022",
+		"title": "USA House 2022"
+	},
+	{
+		"path": "/app/usa/house/2024",
+		"title": "USA House 2024"
+	},
+	{
+		"path": "/app/usa/house/current",
+		"title": "USA Current House"
+	},
+	{
 		"path": "/app/de/folketing/blank",
 		"title": "Danish Folketing"
 	}
