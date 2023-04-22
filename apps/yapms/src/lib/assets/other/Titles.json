@@ -48,6 +48,18 @@
 		"title": "USA House 2000"
 	},
 	{
+		"path": "/app/usa/house/2002",
+		"title": "USA House 2002"
+	},
+	{
+		"path": "/app/usa/house/2004",
+		"title": "USA House 2004"
+	},
+	{
+		"path": "/app/usa/house/2006",
+		"title": "USA House 2006"
+	},
+	{
 		"path": "/app/usa/house/2022",
 		"title": "USA House 2022"
 	},
