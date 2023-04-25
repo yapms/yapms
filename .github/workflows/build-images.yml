@@ -39,7 +39,5 @@ jobs:
           build-args: |
             DOTENV_VAULT_KEY=${{ secrets.DOTENV_VAULT_KEY }}
           push: true
-          tags: test-tags
-          labels: test-labels
-          # tags: ${{ steps.metadata.outputs.tags }}-yapms
-          # labels: ${{ steps.metadata.outputs.labels }}-yapms
+          tags: ${{ steps.metadata.outputs.tags }}
+          labels: ${{ steps.metadata.outputs.labels }}
