@@ -7,6 +7,7 @@ RUN npm install turbo --global
 RUN turbo prune --scope=yapms --docker
 
 FROM node:18 AS installer
+ARG DOTENV_VAULT_KEY
 WORKDIR /app
 RUN corepack enable && corepack prepare pnpm@latest --activate
 COPY --from=builder /app/.env.vault .
