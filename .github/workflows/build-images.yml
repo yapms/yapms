@@ -1,4 +1,4 @@
-name: Build Images
+name: Build YAPms Image
 
 on:
   push:
@@ -8,7 +8,6 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  MODE: ${{ github.ref_name }}
 
 jobs:
   build:
@@ -40,5 +39,7 @@ jobs:
           build-args: |
             DOTENV_VAULT_KEY=${{ secrets.DOTENV_VAULT_KEY }}
           push: true
-          tags: ${{ steps.metadata.outputs.tags }}-yapms
-          labels: ${{ steps.metadata.outputs.labels }}-yapms
+          tags: test-tags
+          labels: test-labels
+          # tags: ${{ steps.metadata.outputs.tags }}-yapms
+          # labels: ${{ steps.metadata.outputs.labels }}-yapms
