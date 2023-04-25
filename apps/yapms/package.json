@@ -9,6 +9,7 @@
 	"scripts": {
 		"dev": "dotenv -e ../../.env -- vite dev",
 		"build": "dotenv -e ../../.env -- vite build",
+		"build-ci": "dotenv -e ../../.env.ci -- vite build",
 		"preview": "vite preview",
 		"start": "dotenv -e ../../.env -- node ./build/index.js",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",

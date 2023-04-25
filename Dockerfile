@@ -1,0 +1,23 @@
+ARG DOTENV_VAULT_KEY
+
+FROM node:18 AS builder
+WORKDIR /app
+COPY . .
+RUN npm install turbo --global
+RUN turbo prune --scope=yapms --docker
+
+FROM node:18 AS installer
+WORKDIR /app
+RUN corepack enable && corepack prepare pnpm@latest --activate
+COPY --from=builder /app/.env.vault .
+COPY --from=builder /app/out/pnpm-lock.yaml .
+COPY --from=builder /app/out/full/ .
+RUN pnpm install
+RUN pnpm dotenv-vault decrypt ${DOTENV_VAULT_KEY} > .env
+RUN pnpm run build
+
+FROM node:18 AS runner
+WORKDIR /app
+COPY --from=installer /app/apps/yapms/package.json .
+COPY --from=installer /app/apps/yapms/build/ .
+CMD node index.js

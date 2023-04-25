@@ -6,6 +6,7 @@
 	"scripts": {
 		"dev": "turbo run dev",
 		"build": "turbo run build",
+		"build-ci": "turbo run build-ci",
 		"start": "turbo run start",
 		"check": "turbo run check",
 		"lint-no-warnings": "turbo run lint-no-warnings",
@@ -13,8 +14,8 @@
 		"format": "turbo run format"
 	},
 	"devDependencies": {
-		"dotenv-cli": "^7.1.0",
-		"dotenv-vault": "^1.18.0",
-		"turbo": "^1.8.2"
+		"dotenv-cli": "^7.2.1",
+		"dotenv-vault": "^1.19.0",
+		"turbo": "^1.9.3"
 	}
 }
