@@ -1,4 +1,4 @@
-name: Build YAPms Image
+name: Build Pocketbase Image
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}-yapms
+  IMAGE_NAME: ${{ github.repository }}-pocketbase
 
 jobs:
   build:
@@ -35,7 +35,7 @@ jobs:
       - uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./Dockerfile
+          file: ./Dockerfile.pocketbase
           build-args: |
             DOTENV_VAULT_KEY=${{ secrets.DOTENV_VAULT_KEY }}
           push: true
