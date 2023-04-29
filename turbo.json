@@ -6,8 +6,6 @@
     },
     "build": {
     },
-    "build-ci": {
-    },
     "start": {
       "cache": false
     },

@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+
+  yapms:
+    image: ghcr.io/yapms/yapms-yapms:ansible
+    restart: always
+    ports:
+      - 8081:3000
+
+  pocketbase:
+    image: ghcr.io/yapms/yapms-pocketbase:ansible
+    restart: always
+    env_file: .env
+    ports:
+      - 8080:8080
+
+  browserless:
+    image: browserless/chrome:latest
+    restart: always
+    network_mode: host
+  
