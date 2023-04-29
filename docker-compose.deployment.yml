@@ -14,9 +14,11 @@ services:
     env_file: .env
     ports:
       - 8080:8080
+    network_mode: host
 
   browserless:
     image: browserless/chrome:latest
     restart: always
+    ports:
+      - 3000:3000
     network_mode: host
-  

@@ -50,7 +50,6 @@ func main() {
 		log.Fatal(err)
 	}
 
-
 	browserlessConnection := flag.String("devtools-ws-url", browserlessURI, "DevTools websocket URL")
 	flag.Parse()
 
@@ -71,6 +70,10 @@ func main() {
 		app.Settings().DiscordAuth.Enabled = true
 		app.Settings().DiscordAuth.ClientId = discordClientID
 		app.Settings().DiscordAuth.ClientSecret = discordClientSecret
+
+		// print discord tokens
+		fmt.Println("Discord Client ID: ", discordClientID)
+		fmt.Println("Discord Client Secret: ", discordClientSecret)
 
 		return nil
 	})
