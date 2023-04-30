@@ -14,3 +14,8 @@
         repo: https://github.com/yapms/yapms
         dest: /home/core/yapms
         branch: ansible
+    
+    - name: startup yapms
+      command: docker-compose up -d
+      args:
+        chdir: /home/core/yapms
