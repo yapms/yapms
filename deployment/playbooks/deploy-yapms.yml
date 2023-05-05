@@ -1,0 +1,20 @@
+---
+- name: deploy yapms
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: remove old yapms
+      file:
+        path: /home/core/docker-compose.yml
+        state: absent
+
+    - name: download docker compose deployment
+      get_url:
+        url: https://raw.githubusercontent.com/yapms/yapms/ansible/docker-compose.deployment.yml
+        dest: /home/core/docker-compose.yml
+
+    - name: start yapms
+      command: docker-compose up -d
+      args:
+        chdir: /home/core
