@@ -60,6 +60,34 @@
 		"title": "USA House 2006"
 	},
 	{
+		"path": "/app/usa/house/2008",
+		"title": "USA House 2008"
+	},
+	{
+		"path": "/app/usa/house/2010",
+		"title": "USA House 2010"
+	},
+	{
+		"path": "/app/usa/house/2012",
+		"title": "USA House 2012"
+	},
+	{
+		"path": "/app/usa/house/2014",
+		"title": "USA House 2014"
+	},
+	{
+		"path": "/app/usa/house/2016",
+		"title": "USA House 2016"
+	},
+	{
+		"path": "/app/usa/house/2018",
+		"title": "USA House 2018"
+	},
+	{
+		"path": "/app/usa/house/2020",
+		"title": "USA House 2020"
+	},
+	{
 		"path": "/app/usa/house/2022",
 		"title": "USA House 2022"
 	},
