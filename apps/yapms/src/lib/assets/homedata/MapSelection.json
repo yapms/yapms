@@ -21,7 +21,7 @@
 					{
 						"label": "House",
 						"modal": false,
-						"route": "/app/usa/presidential/2022"
+						"route": "/app/usa/house/2024"
 					},
 					{
 						"label": "More",
