@@ -1,20 +1,46 @@
 ---
-- name: deploy yapms
+- name: deploy yapms test
   hosts: all
-  become: yes
+  become: True
 
   tasks:
-    - name: remove old yapms
-      file:
-        path: /home/core/docker-compose.yml
-        state: absent
 
-    - name: download docker compose deployment
-      get_url:
-        url: https://raw.githubusercontent.com/yapms/yapms/ansible/docker-compose.deployment.yml
-        dest: /home/core/docker-compose.yml
+    - name: copy caddy file
+      copy:
+        src: Caddyfile
+        dest: /home/core/Caddyfile
 
-    - name: start yapms
-      command: docker-compose up -d
-      args:
-        chdir: /home/core
+    - name: deploy caddy
+      community.docker.docker_container:
+        name: caddy
+        image: caddy:2.6.4-alpine
+        restart_policy: always
+        volumes:
+          - /home/core/Caddyfile:/etc/caddy/Caddyfile
+        ports:
+          - 80:80
+          - 443:443
+        network_mode: host
+
+    - name: deploy yapms
+      community.docker.docker_container:
+        name: yapms
+        image: ghcr.io/yapms/yapms-yapms:ansible
+        restart_policy: always
+        ports:
+          - 8081:3000
+
+    - name: deploy pocketbase
+      community.docker.docker_container:
+        name: pocketbase
+        image: ghcr.io/yapms/yapms-pocketbase:ansible
+        restart_policy: always
+        ports:
+          - 8080:8080
+    
+    - name: deploy browserless
+      community.docker.docker_container:
+        name: browserless
+        image: browserless/chrome:latest
+        restart_policy: always
+        network_mode: host

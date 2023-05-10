@@ -1,7 +1,7 @@
 ---
 - name: install docker python sdk
   hosts: all
-  become: yes
+  become: True
 
   tasks:
     - name: install docker python sdk
