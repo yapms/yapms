@@ -9,6 +9,7 @@ import {
 } from '$lib/stores/Candidates';
 import { EditRegionModalStore, SplitRegionModalStore } from '$lib/stores/Modals';
 import type Region from '$lib/types/Region';
+import { ModeSchema } from '$lib/types/Mode';
 import { InteractionStore } from '$lib/stores/Interaction';
 
 function fillRegion(regionID: string, increment: boolean) {
@@ -112,6 +113,15 @@ function loadRegions(node: HTMLDivElement): void {
 		if (candidates !== null) CandidatesStore.set(CandidateStoreSchema.parse(candidates)); //If no candidates are defined in SVG, use generics defined in stores/Candidates.ts
 	} catch (error) {
 		console.error('Error Parsing Candidate Data from Map:\n\n' + error);
+	}
+
+	//If map being loaded has the default-mode property set, change the mode.
+	const defaultModeAttribute = node.querySelector('svg')?.getAttribute('default-mode');
+	const defaultMode = ModeSchema.safeParse(defaultModeAttribute);
+	if (defaultMode.success) {
+		ModeStore.set(defaultMode.data);
+	} else {
+		console.error('Error Parsing defaultMode attribute from Map:\n\n' + defaultMode.error);
 	}
 
 	const regionsForStore: Region[] = [];
