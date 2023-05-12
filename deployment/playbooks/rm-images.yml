@@ -1,0 +1,26 @@
+---
+- name: prune images
+  hosts: all
+  become: True
+
+  tasks:
+
+    - name: remove yapms
+      community.docker.docker_image:
+        name: ghcr.io/yapms/yapms-yapms:ansible
+        state: absent
+
+    - name: remove pocketbase
+      community.docker.docker_image:
+        name: ghcr.io/yapms/yapms-pocketbase:ansible
+        state: absent
+
+    - name: remove browserless
+      community.docker.docker_image:
+        name: browserless/chrome:latest
+        state: absent
+
+    - name: remove caddy
+      community.docker.docker_image:
+        name: caddy:2.6.4-alpine
+        state: absent

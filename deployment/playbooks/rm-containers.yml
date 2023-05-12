@@ -1,0 +1,26 @@
+---
+- name: down yapms
+  hosts: all
+  become: True
+
+  tasks:
+
+    - name: down caddy
+      community.docker.docker_container:
+        name: caddy
+        state: absent
+
+    - name: down browserless
+      community.docker.docker_container:
+        name: browserless
+        state: absent
+
+    - name: down yapms
+      community.docker.docker_container:
+        name: yapms
+        state: absent
+
+    - name: down pocketbase
+      community.docker.docker_container:
+        name: pocketbase
+        state: absent

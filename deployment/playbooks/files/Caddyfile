@@ -1,7 +1,7 @@
 :80 {
 	encode gzip
 
-	handle_path /pocketbase {
+	handle_path /pocketbase/* {
 		reverse_proxy localhost:8080
 	}
 
