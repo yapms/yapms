@@ -1,11 +1,11 @@
-:80 {
+yapms2.com {
 	encode gzip
 
 	handle_path /pocketbase/* {
-		reverse_proxy localhost:8080
+		reverse_proxy pocketbase:8080
 	}
 
 	handle {
-		reverse_proxy localhost:8081
+		reverse_proxy yapms:3000
 	}
 }
