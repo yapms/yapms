@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: pocketbase
+  IMAGE_NAME: ${{ github.repository }}-pocketbase
 
 jobs:
   build:
