@@ -18,7 +18,7 @@
     - name: deploy caddy
       community.docker.docker_container:
         name: caddy
-        image: ghcr.io/yapms/yapms-caddy:ansible
+        image: caddy:2.6.4-alpine
         restart_policy: always
         volumes:
           - /home/core/Caddyfile:/etc/caddy/Caddyfile

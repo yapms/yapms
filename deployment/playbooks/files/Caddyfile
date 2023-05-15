@@ -1,4 +1,6 @@
 yapms2.com {
+	tls internal
+
 	encode gzip
 
 	handle_path /pocketbase/* {
