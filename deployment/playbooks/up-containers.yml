@@ -43,6 +43,8 @@
         restart_policy: always
         networks:
           - name: yapms
+        volumes:
+          - /home/core/pb_data:/app/pb_data
         env:
           BROWSERLESS_URI: "ws://browserless:3000"
           BROWSERLESS_FRONTEND_URI: "http://yapms:3000"

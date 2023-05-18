@@ -3,7 +3,7 @@ name: Build YAPms Image
 on:
   push:
     branches:
-      - ansible
+      - main
 
 env:
   REGISTRY: ghcr.io
