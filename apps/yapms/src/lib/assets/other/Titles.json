@@ -100,6 +100,42 @@
 		"title": "USA Current House"
 	},
 	{
+		"path": "/app/usa/governors/2022",
+		"title": "USA Governors 2022"
+	},
+	{
+		"path": "/app/usa/governors/2023",
+		"title": "USA Governors 2023"
+	},
+	{
+		"path": "/app/usa/governors/2024",
+		"title": "USA Governors 2024"
+	},
+	{
+		"path": "/app/usa/governors/2025",
+		"title": "USA Governors 2025"
+	},
+	{
+		"path": "/app/usa/governors/blank",
+		"title": "USA Governors"
+	},
+	{
+		"path": "/app/usa/governors/current",
+		"title": "USA Current Governors"
+	},
+	{
+		"path": "/app/usa/dem/primary",
+		"title": "USA Democratic Primary"
+	},
+	{
+		"path": "/app/usa/rep/primary",
+		"title": "USA Republican Primary"
+	},
+	{
+		"path": "/app/usa/counties/blank",
+		"title": "USA Counties"
+	},
+	{
 		"path": "/app/de/folketing/blank",
 		"title": "Danish Folketing"
 	}
