@@ -7,12 +7,12 @@
 
     - name: remove yapms
       community.docker.docker_image:
-        name: ghcr.io/yapms/yapms-yapms:ansible
+        name: ghcr.io/yapms/yapms-yapms:main
         state: absent
 
     - name: remove pocketbase
       community.docker.docker_image:
-        name: ghcr.io/yapms/yapms-pocketbase:ansible
+        name: ghcr.io/yapms/yapms-pocketbase:main
         state: absent
 
     - name: remove browserless

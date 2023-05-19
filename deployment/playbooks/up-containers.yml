@@ -31,7 +31,7 @@
     - name: deploy yapms
       community.docker.docker_container:
         name: yapms
-        image: ghcr.io/yapms/yapms-yapms:ansible
+        image: ghcr.io/yapms/yapms-yapms:main
         restart_policy: always
         networks:
           - name: yapms
@@ -39,7 +39,7 @@
     - name: deploy pocketbase
       community.docker.docker_container:
         name: pocketbase
-        image: ghcr.io/yapms/yapms-pocketbase:ansible
+        image: ghcr.io/yapms/yapms-pocketbase:main
         restart_policy: always
         networks:
           - name: yapms
