@@ -14,12 +14,22 @@ export const CandidatesStore = writable<Candidate[]>([
 	{
 		id: uuidv4(),
 		name: 'Democrat',
-		margins: [{ color: '#1C408C' }, { color: '#577CCC' }, { color: '#8AAFFF' }, { color: '#949BB3' }]
+		margins: [
+			{ color: '#1C408C' },
+			{ color: '#577CCC' },
+			{ color: '#8AAFFF' },
+			{ color: '#949BB3' }
+		]
 	},
 	{
 		id: uuidv4(),
 		name: 'Republican',
-		margins: [{ color: '#BF1D29' }, { color: '#FF5865' }, { color: '#FF8B98' }, { color: '#CF8980' }]
+		margins: [
+			{ color: '#BF1D29' },
+			{ color: '#FF5865' },
+			{ color: '#FF8B98' },
+			{ color: '#CF8980' }
+		]
 	}
 ]);
 
