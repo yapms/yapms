@@ -1,0 +1,43 @@
+name: Build Pocketbase Image
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}-pocketbase
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: docker/metadata-action@v4
+        id: metadata
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      - uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./Dockerfile.pocketbase
+          build-args: |
+            DOTENV_VAULT_KEY=${{ secrets.DOTENV_VAULT_KEY }}
+          push: true
+          tags: ${{ steps.metadata.outputs.tags }}
+          labels: ${{ steps.metadata.outputs.labels }}

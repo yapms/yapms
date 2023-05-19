@@ -1,0 +1,62 @@
+---
+- name: up yapms
+  hosts: all
+  become: True
+
+  tasks:
+
+    - name: copy caddy file
+      copy:
+        src: Caddyfile
+        dest: /home/core/Caddyfile
+
+    - name: create yapms network
+      community.docker.docker_network:
+        name: yapms
+        state: present
+
+    - name: deploy caddy
+      community.docker.docker_container:
+        name: caddy
+        image: caddy:2.6.4-alpine
+        restart_policy: always
+        volumes:
+          - /home/core/Caddyfile:/etc/caddy/Caddyfile
+        ports:
+          - 80:80
+          - 443:443
+        networks:
+          - name: yapms
+
+    - name: deploy yapms
+      community.docker.docker_container:
+        name: yapms
+        image: ghcr.io/yapms/yapms-yapms:ansible
+        restart_policy: always
+        networks:
+          - name: yapms
+
+    - name: deploy pocketbase
+      community.docker.docker_container:
+        name: pocketbase
+        image: ghcr.io/yapms/yapms-pocketbase:ansible
+        restart_policy: always
+        networks:
+          - name: yapms
+        volumes:
+          - /home/core/pb_data:/app/pb_data
+        env:
+          BROWSERLESS_URI: "ws://browserless:3000"
+          BROWSERLESS_FRONTEND_URI: "http://yapms:3000"
+          DISCORD_CLIENT_ID: "123456789X"
+          DISCORD_CLIENT_SECRET: "12345678Z"
+          GOOGLE_CLIENT_ID: "1234567890"
+          GOOGLE_CLIENT_SECRET: "1234567890"
+
+    - name: deploy browserless
+      community.docker.docker_container:
+        name: browserless
+        image: browserless/chrome:latest
+        restart_policy: always
+        networks:
+          - name: yapms

@@ -84,7 +84,11 @@
 						},
 						display: (context) => {
 							const count = context.dataset.data[context.dataIndex];
-							return count !== null && count > 0;
+							if (typeof count === 'number') {
+								return count !== null && count > 0;
+							} else {
+								return false;
+							}
 						}
 					}
 				}

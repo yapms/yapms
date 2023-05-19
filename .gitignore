@@ -12,6 +12,7 @@ node_modules
 dist
 dist-ssr
 *.local
+out/**
 
 # Turbo
 .turbo
@@ -29,6 +30,9 @@ dist/**
 *.njsproj
 *.sln
 *.sw?
+
+# Ansible
+/deployment/inventory
 
 # .env
 .env

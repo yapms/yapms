@@ -35,6 +35,21 @@ func main() {
 	discordClientID := os.Getenv("DISCORD_CLIENT_ID")
 	discordClientSecret := os.Getenv("DISCORD_CLIENT_SECRET")
 
+	// write out file with environment variables
+	err := ioutil.WriteFile("env.js", []byte(fmt.Sprintf(`
+		window.env = {
+			BROWSERLESS_URI: "%s",
+			BROWSERLESS_FRONTEND_URI: "%s",
+			GOOGLE_CLIENT_ID: "%s",
+			GOOGLE_CLIENT_SECRET: "%s",
+			DISCORD_CLIENT_ID: "%s",
+			DISCORD_CLIENT_SECRET: "%s",
+		}
+	`, browserlessURI, browserlessFrontendURI, googleClientID, googleClientSecret, discordClientID, discordClientSecret)), 0644)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	browserlessConnection := flag.String("devtools-ws-url", browserlessURI, "DevTools websocket URL")
 	flag.Parse()
 
@@ -55,6 +70,10 @@ func main() {
 		app.Settings().DiscordAuth.Enabled = true
 		app.Settings().DiscordAuth.ClientId = discordClientID
 		app.Settings().DiscordAuth.ClientSecret = discordClientSecret
+
+		// print discord tokens
+		fmt.Println("Discord Client ID: ", discordClientID)
+		fmt.Println("Discord Client Secret: ", discordClientSecret)
 
 		return nil
 	})
