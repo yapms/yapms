@@ -1,5 +1,5 @@
 import type Candidate from '$lib/types/Candidate';
-import { CandidateSchema, DefaultCountsSchema } from '$lib/types/Candidate';
+import { CandidateSchema } from '$lib/types/Candidate';
 import { get, writable } from 'svelte/store';
 import { z } from 'zod';
 import { v4 as uuidv4 } from 'uuid';
@@ -43,5 +43,3 @@ export const SelectedCandidateStore = writable<Candidate>(get(TossupCandidateSto
 
 //Schema
 export const CandidateStoreSchema = z.array(CandidateSchema);
-
-export const DefaultCountsStoreSchema = z.array(DefaultCountsSchema);

@@ -6,7 +6,6 @@ import {
 	SelectedCandidateStore,
 	CandidatesStore,
 	CandidateStoreSchema,
-	DefaultCountsStoreSchema,
 	DefaultCountsStore
 } from '$lib/stores/Candidates';
 import { EditRegionModalStore, SplitRegionModalStore } from '$lib/stores/Modals';
@@ -113,35 +112,26 @@ function loadRegions(node: HTMLDivElement): void {
 		const candidatesStringified = node.querySelector('svg')?.getAttribute('candidates'); //This doesn't return SVG other than the map SVG
 		const candidates = candidatesStringified != null ? JSON.parse(candidatesStringified) : null; //If candidate property not set, set candidates to null so the next check knows to use default candidates.
 		if (candidates !== null) CandidatesStore.set(CandidateStoreSchema.parse(candidates)); //If no candidates are defined in SVG, use generics defined in stores/Candidates.ts
+		const countsMap = new Map<string, number>(); //Create a map based on the data within count values, see Senate '24 for a map that implements this.
+		for (const candidate of candidates) {
+			if (candidate.count !== undefined) {
+				countsMap.set(candidate.id, candidate.count);
+			}
+		}
+		DefaultCountsStore.set(countsMap);
 	} catch (error) {
 		console.error('Error Parsing Candidate Data from Map:\n\n' + error);
 	}
 
-	//Load default candidate counts from SVG. These are defined in an array of key-value pair contained within the "candidate-counts" property of the SVG document:
-	//ex: candidate-counts=[{"0":12},{"1":26}]
-	//See Senate 2024 map for a map that implements this.
-	try {
-		const countsStringified = node.querySelector('svg')?.getAttribute('candidate-counts');
-		const counts = countsStringified != null ? JSON.parse(countsStringified) : null; //If candidate-counts property not set, set candidates to null so the next check knows to keep the store null.
-		if (counts !== null) {
-			DefaultCountsStoreSchema.parse(counts);
-			const countsMap = new Map<string, number>(); //Create a map based on the key value data within the candidate-counts prop
-			for (const i of counts) {
-				countsMap.set(Object.keys(i)[0], i[Object.keys(i)[0]]);
-			}
-			DefaultCountsStore.set(countsMap);
-		}
-	} catch (error) {
-		console.error('Error Parsing Candidate Counts from Map:\n\n' + error);
-	}
-
 	//If map being loaded has the default-mode property set, change the mode.
 	const defaultModeAttribute = node.querySelector('svg')?.getAttribute('default-mode');
-	const defaultMode = ModeSchema.safeParse(defaultModeAttribute);
-	if (defaultMode.success) {
-		ModeStore.set(defaultMode.data);
-	} else {
-		console.error('Error Parsing defaultMode attribute from Map:\n\n' + defaultMode.error);
+	if (defaultModeAttribute !== null) {
+		const defaultMode = ModeSchema.safeParse(defaultModeAttribute);
+		if (defaultMode.success) {
+			ModeStore.set(defaultMode.data);
+		} else {
+			console.error('Error Parsing defaultMode attribute from Map:\n\n' + defaultMode.error);
+		}
 	}
 
 	const regionsForStore: Region[] = [];
