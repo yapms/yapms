@@ -13,13 +13,23 @@ export const TossupCandidateStore = readable<Candidate>({
 export const CandidatesStore = writable<Candidate[]>([
 	{
 		id: uuidv4(),
-		name: 'Joe Biden',
-		margins: [{ color: '#000055' }, { color: '#000099' }, { color: '#0000ff' }]
+		name: 'Democrat',
+		margins: [
+			{ color: '#1C408C' },
+			{ color: '#577CCC' },
+			{ color: '#8AAFFF' },
+			{ color: '#949BB3' }
+		]
 	},
 	{
 		id: uuidv4(),
-		name: 'Donald Trump',
-		margins: [{ color: '#550000' }, { color: '#990000' }, { color: '#ff0000' }]
+		name: 'Republican',
+		margins: [
+			{ color: '#BF1D29' },
+			{ color: '#FF5865' },
+			{ color: '#FF8B98' },
+			{ color: '#CF8980' }
+		]
 	}
 ]);
 
