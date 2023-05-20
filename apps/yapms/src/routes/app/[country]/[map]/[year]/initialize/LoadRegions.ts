@@ -5,7 +5,9 @@ import {
 	TossupCandidateStore,
 	SelectedCandidateStore,
 	CandidatesStore,
-	CandidateStoreSchema
+	CandidateStoreSchema,
+	DefaultCountsStoreSchema,
+	DefaultCountsStore
 } from '$lib/stores/Candidates';
 import { EditRegionModalStore, SplitRegionModalStore } from '$lib/stores/Modals';
 import type Region from '$lib/types/Region';
@@ -113,6 +115,24 @@ function loadRegions(node: HTMLDivElement): void {
 		if (candidates !== null) CandidatesStore.set(CandidateStoreSchema.parse(candidates)); //If no candidates are defined in SVG, use generics defined in stores/Candidates.ts
 	} catch (error) {
 		console.error('Error Parsing Candidate Data from Map:\n\n' + error);
+	}
+
+	//Load default candidate counts from SVG. These are defined in a key-value pair contained within the "candidate-counts" property of the SVG document:
+	//ex: candidateCounts={"0":12,"1":26}
+	//See Senate 2024 map for a map that implements this.
+	try {
+		const countsStringified = node.querySelector('svg')?.getAttribute('candidate-counts');
+		const counts = countsStringified != null ? JSON.parse(countsStringified) : null; //If candidate-counts property not set, set candidates to null so the next check knows to keep the store null.
+		if (counts !== null) {
+			DefaultCountsStoreSchema.parse(counts);
+			const countsMap = new Map<string, number>(); //Create a map based on the key value data within the candidate-counts prop
+			for (const i of counts) {
+				countsMap.set(Object.keys(i)[0], i[Object.keys(i)[0]]);
+			}
+			DefaultCountsStore.set(countsMap);
+		}
+	} catch (error) {
+		console.error('Error Parsing Candidate Counts from Map:\n\n' + error);
 	}
 
 	//If map being loaded has the default-mode property set, change the mode.

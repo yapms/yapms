@@ -10,6 +10,8 @@ export const CandidateSchema = z.object({
 	)
 });
 
+export const DefaultCountsSchema = z.record(z.string().min(1), z.number().min(1));
+
 //See https://github.com/colinhacks/zod#basic-usage for more on .infer
 type Candidate = z.infer<typeof CandidateSchema>;
 

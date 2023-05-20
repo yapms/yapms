@@ -1,7 +1,7 @@
 import type Region from '$lib/types/Region';
 import { calculateLumaHEX } from '$lib/utils/luma';
 import { derived, writable, get } from 'svelte/store';
-import { TossupCandidateStore } from './Candidates';
+import { TossupCandidateStore, DefaultCountsStore } from './Candidates';
 
 /**
  * Stores the state of all regions.
@@ -92,7 +92,7 @@ RegionsStore.subscribe((regions) => {
   Candidates will be undefined if they are not in the region store
  */
 export const CandidateCounts = derived(RegionsStore, ($RegionStore) => {
-	const candidates = new Map<string, number>();
+	const candidates = new Map<string, number>(get(DefaultCountsStore)); //Use default counts if included in map
 	$RegionStore.forEach((region) => {
 		region.candidates.forEach((candidate) => {
 			const currentCount = candidates.get(candidate.candidate.id);
@@ -114,6 +114,10 @@ export const CandidateCounts = derived(RegionsStore, ($RegionStore) => {
  */
 export const CandidateCountsMargins = derived(RegionsStore, ($RegionStore) => {
 	const candidates = new Map<string, number[]>();
+	for (const [key, value] of get(DefaultCountsStore).entries()) {
+		//Account for default counts
+		candidates.set(key, [value]);
+	}
 	$RegionStore.forEach((region) => {
 		region.candidates.forEach((candidate) => {
 			const currentCount = candidates.get(candidate.candidate.id);
@@ -131,5 +135,6 @@ export const CandidateCountsMargins = derived(RegionsStore, ($RegionStore) => {
 			}
 		});
 	});
+	console.log(candidates);
 	return candidates;
 });
