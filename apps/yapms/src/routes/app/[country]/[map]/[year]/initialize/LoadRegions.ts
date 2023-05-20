@@ -118,7 +118,7 @@ function loadRegions(node: HTMLDivElement): void {
 	}
 
 	//Load default candidate counts from SVG. These are defined in an array of key-value pair contained within the "candidate-counts" property of the SVG document:
-	//ex: candidateCounts=[{"0":12},{"1":26}]
+	//ex: candidate-counts=[{"0":12},{"1":26}]
 	//See Senate 2024 map for a map that implements this.
 	try {
 		const countsStringified = node.querySelector('svg')?.getAttribute('candidate-counts');
