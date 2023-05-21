@@ -26,7 +26,7 @@
 	function openEditTossupModal() {
 		EditTossupModalStore.set({
 			open: true
-		})
+		});
 	}
 
 	function openEditModal() {

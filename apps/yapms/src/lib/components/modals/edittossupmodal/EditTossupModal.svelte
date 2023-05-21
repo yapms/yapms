@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { SelectedCandidateStore, TossupCandidateStore } from "$lib/stores/Candidates";
-	import { EditTossupModalStore } from "$lib/stores/Modals";
-	import { RegionsStore } from "$lib/stores/Regions";
-	import { get } from "svelte/store";
-	import ModalBase from "../ModalBase.svelte";
+	import { SelectedCandidateStore, TossupCandidateStore } from '$lib/stores/Candidates';
+	import { EditTossupModalStore } from '$lib/stores/Modals';
+	import { RegionsStore } from '$lib/stores/Regions';
+	import { get } from 'svelte/store';
+	import ModalBase from '../ModalBase.svelte';
 
 	$: open = $EditTossupModalStore.open;
 	$: name = open ? $TossupCandidateStore.name : '';
@@ -21,7 +21,7 @@
 			...$TossupCandidateStore,
 			name: newName,
 			margins: [{ color: newColor }]
-		}
+		};
 		if ($SelectedCandidateStore.id === $TossupCandidateStore.id) {
 			$SelectedCandidateStore = $TossupCandidateStore;
 		}
@@ -36,10 +36,7 @@
 	}
 </script>
 
-<ModalBase
-	title="Edit {name}"
-	open={$EditTossupModalStore.open}
->
+<ModalBase title="Edit {name}" open={$EditTossupModalStore.open}>
 	<div slot="content">
 		<div class="flex gap-1">
 			<div class="form-control w-full max-w-xs flex flex-col gap-3">

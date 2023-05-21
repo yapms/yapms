@@ -56,8 +56,7 @@ function loadFromJson(mapData: any): void {
 			locked: loadedRegion.locked,
 			candidates: loadedRegion.candidates.map((c) => {
 				// if candidate is not in candidates store, use tossup candidate
-				const candidate =
-					candidatesData.find((cand) => cand.id === c.id) ?? tossupData;
+				const candidate = candidatesData.find((cand) => cand.id === c.id) ?? tossupData;
 				// return the found candidate with the count and margin from the loaded data
 				return {
 					candidate,
