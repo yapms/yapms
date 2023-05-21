@@ -11,6 +11,12 @@ const EditCandidateModalStore = writable<{
 	open: false
 });
 
+const EditTossupModalStore = writable<{
+	open: boolean;
+}>({
+	open: false
+});
+
 const ClearMapModalStore = writable({
 	open: false
 });
@@ -74,6 +80,7 @@ const ThemeModalStore = writable({
 
 export {
 	EditCandidateModalStore,
+	EditTossupModalStore,
 	ClearMapModalStore,
 	MapModalStore,
 	EditRegionModalStore,

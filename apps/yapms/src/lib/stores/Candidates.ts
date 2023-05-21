@@ -1,10 +1,10 @@
 import type Candidate from '$lib/types/Candidate';
 import { CandidateSchema } from '$lib/types/Candidate';
-import { get, readable, writable } from 'svelte/store';
+import { get, writable } from 'svelte/store';
 import { z } from 'zod';
 import { v4 as uuidv4 } from 'uuid';
 
-export const TossupCandidateStore = readable<Candidate>({
+export const TossupCandidateStore = writable<Candidate>({
 	id: '',
 	name: 'Tossup',
 	margins: [{ color: '#cccccc' }]

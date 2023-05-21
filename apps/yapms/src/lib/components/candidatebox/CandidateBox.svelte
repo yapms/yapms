@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { SelectedCandidateStore } from '$lib/stores/Candidates';
-	import { EditCandidateModalStore } from '$lib/stores/Modals';
+	import { SelectedCandidateStore, isTossupCandidate } from '$lib/stores/Candidates';
+	import { EditCandidateModalStore, EditTossupModalStore } from '$lib/stores/Modals';
 	import { CandidateCounts } from '$lib/stores/Regions';
 
 	import { calculateLumaHEX } from '$lib/utils/luma';
@@ -21,6 +21,20 @@
 			candidate,
 			open: true
 		});
+	}
+
+	function openEditTossupModal() {
+		EditTossupModalStore.set({
+			open: true
+		})
+	}
+
+	function openEditModal() {
+		if (isTossupCandidate(candidate.id)) {
+			openEditTossupModal();
+		} else {
+			openEditCandidateModal();
+		}
 	}
 </script>
 
@@ -54,7 +68,7 @@
 			class:btn-sm={selected}
 			class:btn-xs={!selected}
 			style="transition: all 0.25s"
-			on:click={openEditCandidateModal}
+			on:click={openEditModal}
 		>
 			<Cog6Tooth class="h-4/6" />
 		</button>
