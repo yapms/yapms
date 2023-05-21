@@ -75,9 +75,6 @@ RegionsStore.subscribe((regions) => {
 				: (region.nodes.button.style.strokeOpacity = '1'); //Transparent if disabled
 		}
 		if (region.nodes.text) {
-			region.locked
-				? (region.nodes.text.style.opacity = '0.1')
-				: (region.nodes.text.style.opacity = '1'); //Transparent if disabled
 			region.nodes.text.style.color =
 				calculateLumaHEX(winner.candidate.margins[marginIndex]?.color) > 0.5 ? 'black' : 'white';
 			const bottomText = region.nodes.text.querySelector('.bottom');
