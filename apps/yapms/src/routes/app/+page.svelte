@@ -4,8 +4,7 @@
 
 	const url = $page.url;
 	const m = url.searchParams.get('m');
-	const imageURI =
-		m !== null ? `${PUBLIC_POCKETBASE_URI}/api/files/maps/${m}/screenshot.png` : '';
+	const imageURI = m !== null ? `${PUBLIC_POCKETBASE_URI}/api/files/maps/${m}/screenshot.png` : '';
 </script>
 
 <svelte:head>
