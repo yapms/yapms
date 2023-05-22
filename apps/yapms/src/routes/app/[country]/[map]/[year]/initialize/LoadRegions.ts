@@ -167,6 +167,7 @@ function loadRegions(node: HTMLDivElement): void {
 			permaVal: value,
 			disabled: childHTML.hasAttribute('disabled'),
 			locked: childHTML.hasAttribute('locked'),
+			permalocked: childHTML.hasAttribute('permalocked'),
 			candidates: childHTML.hasAttribute('candidate-id') //God bless our linting overlords.
 				? [
 						//If the region has candidate-id defined, set the candidate appropriately, if not, default to the tossup candidate at margin 0
@@ -188,39 +189,42 @@ function loadRegions(node: HTMLDivElement): void {
 			}
 		};
 
-		newRegion.nodes.region.onpointerdown = () => {
-			const currentMode = get(ModeStore);
-			switch (currentMode) {
-				case 'fill':
-					fillRegion(newRegion.id, true);
-					break;
-				case 'split':
-					splitRegion(newRegion.id);
-					break;
-				case 'edit':
-					editRegion(newRegion.id);
-					break;
-				case 'disable':
-					disableRegion(newRegion.id);
-					break;
-				case 'lock':
-					lockRegion(newRegion.id);
-					break;
+		if (!newRegion.permalocked) {
+			//If the region is marked as permalocked, skip adding functionality
+			newRegion.nodes.region.onpointerdown = () => {
+				const currentMode = get(ModeStore);
+				switch (currentMode) {
+					case 'fill':
+						fillRegion(newRegion.id, true);
+						break;
+					case 'split':
+						splitRegion(newRegion.id);
+						break;
+					case 'edit':
+						editRegion(newRegion.id);
+						break;
+					case 'disable':
+						disableRegion(newRegion.id);
+						break;
+					case 'lock':
+						lockRegion(newRegion.id);
+						break;
+				}
+			};
+
+			newRegion.nodes.region.onmousemove = () => {
+				const currentMode = get(ModeStore);
+				const currentInteractions = get(InteractionStore);
+
+				if (currentMode === 'fill' && currentInteractions.has('KeyF')) {
+					fillRegion(newRegion.id, false);
+				}
+			};
+
+			if (newRegion.nodes.button !== null) {
+				newRegion.nodes.button.onpointerdown = newRegion.nodes.region.onpointerdown;
+				newRegion.nodes.button.onmousemove = newRegion.nodes.region.onmousemove;
 			}
-		};
-
-		newRegion.nodes.region.onmousemove = () => {
-			const currentMode = get(ModeStore);
-			const currentInteractions = get(InteractionStore);
-
-			if (currentMode === 'fill' && currentInteractions.has('KeyF')) {
-				fillRegion(newRegion.id, false);
-			}
-		};
-
-		if (newRegion.nodes.button !== null) {
-			newRegion.nodes.button.onpointerdown = newRegion.nodes.region.onpointerdown;
-			newRegion.nodes.button.onmousemove = newRegion.nodes.region.onmousemove;
 		}
 
 		newRegion.nodes.region.style.fill = tossupCandidate.margins[0].color;

@@ -21,6 +21,7 @@ function generateJson() {
 		value: region.value,
 		permaVal: region.permaVal,
 		locked: region.locked,
+		permalocked: region.permalocked,
 		disabled: region.disabled,
 		candidates: region.candidates.map((candidate) => ({
 			id: candidate.candidate.id,
