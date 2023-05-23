@@ -5,8 +5,7 @@ import {
 	TossupCandidateStore,
 	SelectedCandidateStore,
 	CandidatesStore,
-	CandidateStoreSchema,
-	DefaultCountsStore
+	CandidateStoreSchema
 } from '$lib/stores/Candidates';
 import { EditRegionModalStore, SplitRegionModalStore } from '$lib/stores/Modals';
 import type Region from '$lib/types/Region';
@@ -112,26 +111,17 @@ function loadRegions(node: HTMLDivElement): void {
 		const candidatesStringified = node.querySelector('svg')?.getAttribute('candidates'); //This doesn't return SVG other than the map SVG
 		const candidates = candidatesStringified != null ? JSON.parse(candidatesStringified) : null; //If candidate property not set, set candidates to null so the next check knows to use default candidates.
 		if (candidates !== null) CandidatesStore.set(CandidateStoreSchema.parse(candidates)); //If no candidates are defined in SVG, use generics defined in stores/Candidates.ts
-		const countsMap = new Map<string, number>(); //Create a map based on the data within count values, see Senate '24 for a map that implements this.
-		for (const candidate of candidates) {
-			if (candidate.count !== undefined) {
-				countsMap.set(candidate.id, candidate.count);
-			}
-		}
-		DefaultCountsStore.set(countsMap);
 	} catch (error) {
 		console.error('Error Parsing Candidate Data from Map:\n\n' + error);
 	}
 
 	//If map being loaded has the default-mode property set, change the mode.
 	const defaultModeAttribute = node.querySelector('svg')?.getAttribute('default-mode');
-	if (defaultModeAttribute !== null) {
-		const defaultMode = ModeSchema.safeParse(defaultModeAttribute);
-		if (defaultMode.success) {
-			ModeStore.set(defaultMode.data);
-		} else {
-			console.error('Error Parsing defaultMode attribute from Map:\n\n' + defaultMode.error);
-		}
+	const defaultMode = ModeSchema.safeParse(defaultModeAttribute);
+	if (defaultMode.success) {
+		ModeStore.set(defaultMode.data);
+	} else {
+		console.error('Error Parsing defaultMode attribute from Map:\n\n' + defaultMode.error);
 	}
 
 	const regionsForStore: Region[] = [];
@@ -167,7 +157,7 @@ function loadRegions(node: HTMLDivElement): void {
 			permaVal: value,
 			disabled: childHTML.hasAttribute('disabled'),
 			locked: childHTML.hasAttribute('locked'),
-			permalocked: childHTML.hasAttribute('permalocked'),
+			permaLocked: childHTML.hasAttribute('permalocked'),
 			candidates: childHTML.hasAttribute('candidate-id') //God bless our linting overlords.
 				? [
 						//If the region has candidate-id defined, set the candidate appropriately, if not, default to the tossup candidate at margin 0
@@ -189,8 +179,8 @@ function loadRegions(node: HTMLDivElement): void {
 			}
 		};
 
-		if (!newRegion.permalocked) {
-			//If the region is marked as permalocked, skip adding functionality
+		if (!newRegion.permaLocked) {
+			//If the region is marked as permaLocked, skip adding functionality
 			newRegion.nodes.region.onpointerdown = () => {
 				const currentMode = get(ModeStore);
 				switch (currentMode) {
