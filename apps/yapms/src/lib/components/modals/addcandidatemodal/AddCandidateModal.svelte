@@ -42,6 +42,7 @@
 			...candidates,
 			{
 				id: uuidv4(),
+				defaultCount: 0,
 				name: newName,
 				margins: $AddCandidateModalStore.newColors.map((color) => {
 					return { color };
