@@ -9,6 +9,7 @@ export const RegionSchema = z.object({
 	permaVal: z.number(),
 	disabled: z.boolean(),
 	locked: z.boolean(),
+	permaLocked: z.boolean(),
 	candidates: z
 		.object({
 			candidate: CandidateSchema,

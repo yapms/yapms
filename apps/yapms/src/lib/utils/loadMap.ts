@@ -54,6 +54,7 @@ function loadFromJson(mapData: any): void {
 			value: loadedRegion.value,
 			disabled: loadedRegion.disabled,
 			locked: loadedRegion.locked,
+			permaLocked: loadedRegion.permaLocked,
 			candidates: loadedRegion.candidates.map((c) => {
 				// if candidate is not in candidates store, use tossup candidate
 				const candidate = candidatesData.find((cand) => cand.id === c.id) ?? tossupData;

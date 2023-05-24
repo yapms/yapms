@@ -67,6 +67,7 @@
 	function confirm() {
 		const candidateIndex = $CandidatesStore.findIndex((candidate) => candidate.id === id);
 		$CandidatesStore[candidateIndex] = {
+			...$CandidatesStore[candidateIndex],
 			id,
 			name: newName,
 			margins: newColors.map((color) => {

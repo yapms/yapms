@@ -1,7 +1,7 @@
 import type Region from '$lib/types/Region';
 import { calculateLumaHEX } from '$lib/utils/luma';
 import { derived, writable, get } from 'svelte/store';
-import { TossupCandidateStore } from './Candidates';
+import { TossupCandidateStore, CandidatesStore } from './Candidates';
 
 /**
  * Stores the state of all regions.
@@ -59,18 +59,18 @@ RegionsStore.subscribe((regions) => {
 		}
 
 		region.nodes.region.style.fill = winner.candidate.margins[marginIndex]?.color;
-		region.disabled || region.locked
+		region.disabled || region.locked || region.permaLocked
 			? (region.nodes.region.style.fillOpacity = '0.25')
 			: (region.nodes.region.style.fillOpacity = '1'); //Transparent if disabled
-		region.disabled || region.locked
+		region.disabled || region.locked || region.permaLocked
 			? (region.nodes.region.style.strokeOpacity = '0.25')
 			: (region.nodes.region.style.strokeOpacity = '1'); //Transparent if disabled
 		if (region.nodes.button) {
 			region.nodes.button.style.fill = winner.candidate.margins[marginIndex]?.color;
-			region.disabled || region.locked
+			region.disabled || region.locked || region.permaLocked
 				? (region.nodes.button.style.fillOpacity = '0.25')
 				: (region.nodes.button.style.fillOpacity = '1'); //Transparent if disabled
-			region.disabled || region.locked
+			region.disabled || region.locked || region.permaLocked
 				? (region.nodes.button.style.strokeOpacity = '0.25')
 				: (region.nodes.button.style.strokeOpacity = '1'); //Transparent if disabled
 		}
@@ -81,6 +81,9 @@ RegionsStore.subscribe((regions) => {
 			if (bottomText) {
 				bottomText.innerHTML = region.value.toString();
 			}
+			region.permaLocked
+				? (region.nodes.text.style.opacity = '0')
+				: (region.nodes.text.style.opacity = '1');
 		}
 	});
 });
@@ -92,7 +95,10 @@ RegionsStore.subscribe((regions) => {
   Candidates will be undefined if they are not in the region store
  */
 export const CandidateCounts = derived(RegionsStore, ($RegionStore) => {
-	const candidates = new Map<string, number>();
+	const candidates = new Map<string, number>(); //Use default counts if included in map
+	for (const candidate of get(CandidatesStore)) {
+		candidates.set(candidate.id, candidate.defaultCount);
+	}
 	$RegionStore.forEach((region) => {
 		region.candidates.forEach((candidate) => {
 			const currentCount = candidates.get(candidate.candidate.id);
@@ -114,6 +120,10 @@ export const CandidateCounts = derived(RegionsStore, ($RegionStore) => {
  */
 export const CandidateCountsMargins = derived(RegionsStore, ($RegionStore) => {
 	const candidates = new Map<string, number[]>();
+	for (const candidate of get(CandidatesStore)) {
+		//Account for default counts
+		candidates.set(candidate.id, [candidate.defaultCount]);
+	}
 	$RegionStore.forEach((region) => {
 		region.candidates.forEach((candidate) => {
 			const currentCount = candidates.get(candidate.candidate.id);

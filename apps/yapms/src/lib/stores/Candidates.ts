@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 export const TossupCandidateStore = writable<Candidate>({
 	id: '',
 	name: 'Tossup',
+	defaultCount: 0,
 	margins: [{ color: '#cccccc' }]
 });
 
@@ -14,6 +15,7 @@ export const CandidatesStore = writable<Candidate[]>([
 	{
 		id: uuidv4(),
 		name: 'Democrat',
+		defaultCount: 0,
 		margins: [
 			{ color: '#1C408C' },
 			{ color: '#577CCC' },
@@ -24,6 +26,7 @@ export const CandidatesStore = writable<Candidate[]>([
 	{
 		id: uuidv4(),
 		name: 'Republican',
+		defaultCount: 0,
 		margins: [
 			{ color: '#BF1D29' },
 			{ color: '#FF5865' },
