@@ -1,9 +1,29 @@
 ---
-- name: up yapms
+- name: deploy
   hosts: all
   become: True
 
   tasks:
+
+    - name: pull images
+      community.docker.docker_image:
+        name: "{{ item }}"
+        source: pull
+      with_items:
+        - caddy:2.6.4-alpine
+        - browserless/chrome:latest
+        - ghcr.io/yapms/yapms-yapms:main
+        - ghcr.io/yapms/yapms-pocketbase:main
+    
+    - name: remove containers
+      community.docker.docker_container:
+        name: "{{ item }}"
+        state: absent
+      with_items:
+        - caddy
+        - browserless
+        - yapms
+        - pocketbase
 
     - name: copy caddy file
       copy:
@@ -14,19 +34,6 @@
       community.docker.docker_network:
         name: yapms
         state: present
-
-    - name: deploy caddy
-      community.docker.docker_container:
-        name: caddy
-        image: caddy:2.6.4-alpine
-        restart_policy: always
-        volumes:
-          - /home/core/Caddyfile:/etc/caddy/Caddyfile
-        ports:
-          - 80:80
-          - 443:443
-        networks:
-          - name: yapms
 
     - name: deploy yapms
       community.docker.docker_container:
@@ -52,11 +59,24 @@
           DISCORD_CLIENT_SECRET: "12345678Z"
           GOOGLE_CLIENT_ID: "1234567890"
           GOOGLE_CLIENT_SECRET: "1234567890"
-
+    
     - name: deploy browserless
       community.docker.docker_container:
         name: browserless
         image: browserless/chrome:latest
         restart_policy: always
+        networks:
+          - name: yapms
+    
+    - name: deploy caddy
+      community.docker.docker_container:
+        name: caddy
+        image: caddy:2.6.4-alpine
+        restart_policy: always
+        volumes:
+          - /home/core/Caddyfile:/etc/caddy/Caddyfile
+        ports:
+          - 80:80
+          - 443:443
         networks:
           - name: yapms
