@@ -6,7 +6,6 @@
 	import { themeChange } from 'theme-change';
 	import MapModal from '$lib/components/modals/mapmodal/MapModal.svelte';
 	import CandidateBoxContainer from '$lib/components/candidatebox/CandidateBoxContainer.svelte';
-	import loadRegions from './initialize/LoadRegions';
 	import ClearMapModal from '$lib/components/modals/clearmapmodal/ClearMapModal.svelte';
 	import applyPanZoom from './initialize/ApplyPanZoom';
 	import EditRegionModal from '$lib/components/modals/editregionmodal/EditRegionModal.svelte';
@@ -28,6 +27,7 @@
 	import { page } from '$app/stores';
 	import SplitRegionModal from '$lib/components/modals/splitregionmodal/SplitRegionModal.svelte';
 	import EditTossupModal from '$lib/components/modals/edittossupmodal/EditTossupModal.svelte';
+	import { loadRegionsForApp } from './initialize/LoadRegions';
 
 	//Glob import all maps in the maps directory so that we can check if a map exists and then load it.
 	//Query section makes sure the SVG contents are imported raw.
@@ -59,7 +59,7 @@
 
 	function setupMap(node: HTMLDivElement) {
 		applyPanZoom(node);
-		loadRegions(node);
+		loadRegionsForApp(node);
 		isLoaded = true;
 		// this should execute if the users enters the
 		// /app/ page with a map id

@@ -4,7 +4,7 @@
 		SelectedCandidateStore,
 		TossupCandidateStore
 	} from '$lib/stores/Candidates';
-	import { RegionsStore } from '$lib/stores/Regions';
+	import { RegionsStore } from '$lib/stores/regions/Regions';
 	import { EditCandidateModalStore } from '$lib/stores/Modals';
 	import { get } from 'svelte/store';
 	import ModalTitle from '../../modalutilities/ModalTitle.svelte';

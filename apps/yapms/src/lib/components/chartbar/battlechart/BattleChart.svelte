@@ -2,7 +2,7 @@
 	import ArrowDownCircle from '$lib/icons/ArrowDownCircle.svelte';
 	import { CandidatesStore, TossupCandidateStore } from '$lib/stores/Candidates';
 	import { ChartPositionStore } from '$lib/stores/Chart';
-	import { CandidateCounts, CandidateCountsMargins } from '$lib/stores/Regions';
+	import { CandidateCounts, CandidateCountsMargins } from '$lib/stores/regions/Regions';
 	import BattleChartLabel from './BattleChartLabel.svelte';
 
 	/**

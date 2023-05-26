@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { SelectedCandidateStore, isTossupCandidate } from '$lib/stores/Candidates';
 	import { EditCandidateModalStore, EditTossupModalStore } from '$lib/stores/Modals';
-	import { CandidateCounts } from '$lib/stores/Regions';
+	import { CandidateCounts } from '$lib/stores/regions/Regions';
 
 	import { calculateLumaHEX } from '$lib/utils/luma';
 	import type Candidate from '$lib/types/Candidate';

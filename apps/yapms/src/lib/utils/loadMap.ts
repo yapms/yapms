@@ -1,5 +1,5 @@
 import { CandidatesStore, TossupCandidateStore } from '$lib/stores/Candidates';
-import { RegionsStore } from '$lib/stores/Regions';
+import { RegionsStore } from '$lib/stores/regions/Regions';
 import { CandidateSchema } from '$lib/types/Candidate';
 import { SavedRegionSchema } from '$lib/types/Region';
 import { get } from 'svelte/store';

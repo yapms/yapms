@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { CandidatesStore, isTossupCandidate, TossupCandidateStore } from '$lib/stores/Candidates';
 	import { SplitRegionModalStore } from '$lib/stores/Modals';
-	import { RegionsStore } from '$lib/stores/Regions';
+	import { RegionsStore } from '$lib/stores/regions/Regions';
 	import type Candidate from '$lib/types/Candidate';
 	import ModalBase from '../ModalBase.svelte';
 

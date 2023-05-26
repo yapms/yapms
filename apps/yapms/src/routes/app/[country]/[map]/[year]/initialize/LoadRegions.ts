@@ -1,121 +1,47 @@
 import { get } from 'svelte/store';
 import { ModeStore } from '$lib/stores/Mode';
-import { RegionsStore } from '$lib/stores/Regions';
+import { RegionsStore, setPointerEvents } from '$lib/stores/regions/Regions';
 import {
 	TossupCandidateStore,
-	SelectedCandidateStore,
 	CandidatesStore,
 	CandidateStoreSchema
 } from '$lib/stores/Candidates';
-import { EditRegionModalStore, SplitRegionModalStore } from '$lib/stores/Modals';
 import type Region from '$lib/types/Region';
 import { ModeSchema } from '$lib/types/Mode';
-import { InteractionStore } from '$lib/stores/Interaction';
 
-function fillRegion(regionID: string, increment: boolean) {
-	const regions = get(RegionsStore);
-	const region = regions.find((region) => region.id === regionID);
-	if (region && !(region.disabled || region.locked)) {
-		const currentInteractions = get(InteractionStore);
-		const selectedCandidate = get(SelectedCandidateStore);
-		const currentCandidate = region.candidates[0];
-		const newCandidate = {
-			candidate: selectedCandidate,
-			count: region.value,
-			margin: 0
-		};
-		if (currentCandidate.candidate.id === selectedCandidate.id && increment) {
-			if (!currentInteractions.has('ControlLeft')) {
-				//Increment
-				newCandidate.margin =
-					currentCandidate.margin + 1 >= selectedCandidate.margins.length
-						? 0
-						: currentCandidate.margin + 1;
-			} else {
-				//Decrement
-				newCandidate.margin =
-					currentCandidate.margin - 1 <= -1
-						? selectedCandidate.margins.length - 1
-						: currentCandidate.margin - 1;
-			}
+function setCursorStyle(node: HTMLDivElement) {
+	const regions = node.querySelector<HTMLElement>('.regions');
+	const buttons = node.querySelector<HTMLElement>('.region-buttons');
+	const texts = node.querySelector<HTMLElement>('.region-texts');
+
+	// set cursor & pointer styles
+	if (regions) {
+		regions.style.cursor = 'pointer';
+	}
+	if (buttons) {
+		buttons.style.cursor = 'pointer';
+	}
+	if (texts) {
+		texts.style.pointerEvents = 'none';
+		for (const child of texts.children) {
+			(child as HTMLElement).style.transition = 'color 0.2s ease-in-out';
 		}
-		region.candidates = [newCandidate];
-		RegionsStore.set(regions);
 	}
 }
 
-function splitRegion(regionID: string) {
-	const region = get(RegionsStore).find((region) => region.id === regionID);
-	SplitRegionModalStore.set({
-		region: region ?? null,
-		open: region !== undefined
-	});
-}
-
-function editRegion(regionID: string) {
-	const region = get(RegionsStore).find((region) => region.id === regionID);
-	EditRegionModalStore.set({
-		region: region ?? null,
-		open: region !== undefined
-	});
-}
-
-/* Disables a region if currently enabled, enables if currently disabled.
-Disabled regions are resistant to filling, have a displayed value of 0, and use the tossup candidate color.
-When a region is reenabled, it will go back to the candidate who had it last.
-*/
-function disableRegion(regionID: string) {
-	const regions = get(RegionsStore);
-	const region = regions.find((region) => region.id === regionID);
-	if (region) {
-		if (region?.disabled) {
-			//Currently Disabled (Enable)
-			region.disabled = false;
-			//Set Region value back to OG value
-			region.value = region.permaVal;
-		} else {
-			//Currently Enabled (Disable)
-			region.disabled = true;
-			//Set Region value to 0, save current val for when enabled again.
-			region.value = 0;
+function setTransitionStyle(node: HTMLDivElement) {
+	const regions = node.querySelector<HTMLElement>('.regions');
+	if (regions === null) return;
+	for (const child of regions.childNodes) {
+		const childHTML = child as HTMLElement;
+		if (childHTML.getAttribute === undefined) {
+			continue;
 		}
-		RegionsStore.set(regions);
+		childHTML.style.transition = 'fill 0.2s ease-in-out';
 	}
 }
 
-/* Locks a region if currently enabled, unlocks if currently locked.
-Locked regions are resistant to filling.
-*/
-function lockRegion(regionID: string) {
-	const regions = get(RegionsStore);
-	const region = regions.find((region) => region.id === regionID);
-	if (region) {
-		//Lock if unlocked, unlock if locked
-		region.locked = !region.locked;
-		RegionsStore.set(regions);
-	}
-}
-
-function loadRegions(node: HTMLDivElement): void {
-	/*Load Candidates from SVG, Candidates are defined in using the "candidates" property of the SVG document:
-	See usa.svg for a map that implements this. Please note that you must use &quot; instead of ". 
-	Edit the property in Inkscape to use double quotes. Inkspace will compress this to one line.
-	<svg
-	...
-   	candidates="[ 
-   		{&quot;id&quot;:&quot;0&quot;, &quot;name&quot;:&quot;Joe Custo Biden&quot;, &quot;margins&quot;: [{ &quot;color&quot;: &quot;#000055&quot; }, { &quot;color&quot;: &quot;#000099&quot; }, { &quot;color&quot;: &quot;#0000ff&quot; }]},
-   		{&quot;id&quot;:&quot;1&quot;, &quot;name&quot;:&quot;Donald Trump&quot;, &quot;margins&quot;: [{ &quot;color&quot;: &quot;#550000&quot; }, { &quot;color&quot;: &quot;#990000&quot; }, { &quot;color&quot;: &quot;#ff0000&quot; }]} 
-   	]"
-	*/
-	try {
-		const candidatesStringified = node.querySelector('svg')?.getAttribute('candidates'); //This doesn't return SVG other than the map SVG
-		const candidates = candidatesStringified != null ? JSON.parse(candidatesStringified) : null; //If candidate property not set, set candidates to null so the next check knows to use default candidates.
-		if (candidates !== null) CandidatesStore.set(CandidateStoreSchema.parse(candidates)); //If no candidates are defined in SVG, use generics defined in stores/Candidates.ts
-	} catch (error) {
-		console.error('Error Parsing Candidate Data from Map:\n\n' + error);
-	}
-
-	//If map being loaded has the default-mode property set, change the mode.
+function setDefaultMode(node: HTMLDivElement) {
 	const defaultModeAttribute = node.querySelector('svg')?.getAttribute('default-mode');
 	const defaultMode = ModeSchema.safeParse(defaultModeAttribute);
 	if (defaultMode.success) {
@@ -123,32 +49,33 @@ function loadRegions(node: HTMLDivElement): void {
 	} else {
 		console.error('Error Parsing defaultMode attribute from Map:\n\n' + defaultMode.error);
 	}
+}
 
-	const regionsForStore: Region[] = [];
+function loadCandidateData(node: HTMLDivElement) {
+	try {
+		const candidatesStringified = node.querySelector('svg')?.getAttribute('candidates'); //This doesn't return SVG other than the map SVG
+		const candidates = candidatesStringified != null ? JSON.parse(candidatesStringified) : null; //If candidate property not set, set candidates to null so the next check knows to use default candidates.
+		if (candidates !== null) CandidatesStore.set(CandidateStoreSchema.parse(candidates)); //If no candidates are defined in SVG, use generics defined in stores/Candidates.ts
+	} catch (error) {
+		console.error('Error Parsing Candidate Data from Map:\n\n' + error);
+	}
+}
+
+function createRegionStore(node: HTMLDivElement) {
+	const regionsForStore = Array<Region>();
 	const regions = node.querySelector<HTMLElement>('.regions');
 	const buttons = node.querySelector<HTMLElement>('.region-buttons');
 	const texts = node.querySelector<HTMLElement>('.region-texts');
 	const tossupCandidate = get(TossupCandidateStore);
 
-	// set cursor & pointer styles
-	if (regions) regions.style.cursor = 'pointer';
-	if (buttons) buttons.style.cursor = 'pointer';
-	if (texts) {
-		texts.style.pointerEvents = 'none';
-		for (const child of texts.children) {
-			(child as HTMLElement).style.transition = 'color 0.2s ease-in-out';
-		}
-	}
-
-	regions?.childNodes.forEach((childNode) => {
-		const childHTML = childNode as HTMLElement;
+	if (regions === null) return;
+	for (const child of regions.childNodes) {
+		const childHTML = child as HTMLElement;
 		if (childHTML.getAttribute === undefined) {
-			return;
+			continue;
 		}
 
-		childHTML.style.transition = 'fill 0.2s ease-in-out';
-
-		const value = parseInt(childHTML.getAttribute('value') || '0', 10);
+		const value = Number(childHTML.getAttribute('value'));
 		const newRegion: Region = {
 			id: childHTML.getAttribute('region') ?? '',
 			shortName: childHTML.getAttribute('short-name') ?? '',
@@ -177,63 +104,38 @@ function loadRegions(node: HTMLDivElement): void {
 				button: buttons?.querySelector(`[for="${childHTML.getAttribute('region') ?? ''}"]`) ?? null,
 				text: texts?.querySelector(`[for="${childHTML.getAttribute('region') ?? ''}"]`) ?? null
 			}
-		};
-
-		if (!newRegion.permaLocked) {
-			//If the region is marked as permaLocked, skip adding functionality
-			newRegion.nodes.region.onpointerdown = () => {
-				const currentMode = get(ModeStore);
-				switch (currentMode) {
-					case 'fill':
-						fillRegion(newRegion.id, true);
-						break;
-					case 'split':
-						splitRegion(newRegion.id);
-						break;
-					case 'edit':
-						editRegion(newRegion.id);
-						break;
-					case 'disable':
-						disableRegion(newRegion.id);
-						break;
-					case 'lock':
-						lockRegion(newRegion.id);
-						break;
-				}
-			};
-
-			newRegion.nodes.region.onmousemove = () => {
-				const currentMode = get(ModeStore);
-				const currentInteractions = get(InteractionStore);
-
-				if (currentMode === 'fill' && currentInteractions.has('KeyF')) {
-					fillRegion(newRegion.id, false);
-				}
-			};
-
-			if (newRegion.nodes.button !== null) {
-				newRegion.nodes.button.onpointerdown = newRegion.nodes.region.onpointerdown;
-				newRegion.nodes.button.onmousemove = newRegion.nodes.region.onmousemove;
-			}
 		}
 
 		newRegion.nodes.region.style.fill = tossupCandidate.margins[0].color;
 
-		if (newRegion.nodes.button) {
+		if (newRegion.nodes.button !== null) {
 			newRegion.nodes.button.style.fill = tossupCandidate.margins[0].color;
 		}
 
-		if (newRegion.nodes.text) {
+		if (newRegion.nodes.text !== null) {
 			const bottom = newRegion.nodes.text.querySelector('.bottom');
-			if (bottom) {
+			if (bottom !== null) {
 				bottom.textContent = newRegion.value.toString();
 			}
 		}
 
 		regionsForStore.push(newRegion);
-	});
+	}
 
 	RegionsStore.set(regionsForStore);
 }
 
-export default loadRegions;
+export function loadRegionsForApp(node: HTMLDivElement): void {
+	loadCandidateData(node);
+	setDefaultMode(node);
+	setCursorStyle(node);
+	createRegionStore(node);
+	setTransitionStyle(node);
+	setPointerEvents();
+}
+
+export function loadRegionsForView(node: HTMLDivElement): void {
+	loadCandidateData(node);
+	setDefaultMode(node);
+	createRegionStore(node);
+}

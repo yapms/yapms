@@ -1,9 +1,8 @@
 import { TossupCandidateStore, CandidatesStore } from '$lib/stores/Candidates';
-import { RegionsStore } from '$lib/stores/Regions';
 import { get } from 'svelte/store';
-
 import { saveAs } from 'file-saver';
 import { page } from '$app/stores';
+import { RegionsStore } from '$lib/stores/regions/Regions';
 
 /**
  * Generates a JSON object with the current state of the map

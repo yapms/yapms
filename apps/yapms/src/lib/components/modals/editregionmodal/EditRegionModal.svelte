@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { EditRegionModalStore } from '$lib/stores/Modals';
-	import { RegionsStore } from '$lib/stores/Regions';
+	import { RegionsStore } from '$lib/stores/regions/Regions';
 	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
 
 	$: open = $EditRegionModalStore.open;
