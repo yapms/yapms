@@ -1,8 +1,8 @@
-import { get } from "svelte/store";
-import { RegionsStore } from "./Regions";
-import { SelectedCandidateStore } from "../Candidates";
-import { InteractionStore } from "../Interaction";
-import { EditRegionModalStore, SplitRegionModalStore } from "../Modals";
+import { get } from 'svelte/store';
+import { RegionsStore } from './Regions';
+import { SelectedCandidateStore } from '../Candidates';
+import { InteractionStore } from '../Interaction';
+import { EditRegionModalStore, SplitRegionModalStore } from '../Modals';
 
 export function fillRegion(regionID: string, increment: boolean): void {
 	const regions = get(RegionsStore);

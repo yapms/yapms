@@ -104,7 +104,7 @@ function createRegionStore(node: HTMLDivElement) {
 				button: buttons?.querySelector(`[for="${childHTML.getAttribute('region') ?? ''}"]`) ?? null,
 				text: texts?.querySelector(`[for="${childHTML.getAttribute('region') ?? ''}"]`) ?? null
 			}
-		}
+		};
 
 		newRegion.nodes.region.style.fill = tossupCandidate.margins[0].color;
 

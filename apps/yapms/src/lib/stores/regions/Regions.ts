@@ -173,7 +173,7 @@ export const setPointerEvents = (): void => {
 					lockRegion(region.id);
 					break;
 			}
-		}
+		};
 
 		region.nodes.region.onmousemove = () => {
 			const currentMode = get(ModeStore);
@@ -181,11 +181,11 @@ export const setPointerEvents = (): void => {
 			if (currentMode === 'fill' && currentInteractions.has('KeyF')) {
 				fillRegion(region.id, false);
 			}
-		}
+		};
 
 		if (region.nodes.button !== null) {
 			region.nodes.button.onpointerdown = region.nodes.region.onpointerdown;
 			region.nodes.button.onmousedown = region.nodes.region.onmousedown;
 		}
 	}
-}
+};
