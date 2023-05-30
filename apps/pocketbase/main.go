@@ -30,14 +30,14 @@ func main() {
 		return nil
 	})
 
-	app.OnRecordBeforeCreateRequest().Add(func (e *core.RecordCreateEvent) error {
+	app.OnRecordBeforeCreateRequest().Add(func(e *core.RecordCreateEvent) error {
 		if e.Record.Collection().Name == "maps" {
 			support.CompressMapData(e)
 		}
 		return nil
 	})
 
-	app.OnRecordAfterCreateRequest().Add(func (e *core.RecordCreateEvent) error {
+	app.OnRecordAfterCreateRequest().Add(func(e *core.RecordCreateEvent) error {
 		if e.Record.Collection().Name == "maps" {
 			support.TakeScreenshot(e, app, &browserlessURI, &browserlessFrontendURI)
 		}

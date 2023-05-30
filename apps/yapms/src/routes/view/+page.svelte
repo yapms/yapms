@@ -46,12 +46,16 @@
 
 {#if mapPromise !== null}
 	{#await mapPromise then map}
-		<div class="p-3">
+		<div class="flex flex-col h-full p-3">
 			<CandidateBoxContainer />
+			<div class="grow" />
 			<div use:setupMap>
 				{@html map.default}
 			</div>
-			<HorizontalBattleChart />
+			<div class="grow" />
+			<div>
+				<HorizontalBattleChart />
+			</div>
 		</div>
 	{/await}
 {/if}

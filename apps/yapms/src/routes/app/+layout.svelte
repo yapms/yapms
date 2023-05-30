@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import '$lib/styles/global.css';
 	import '$lib/styles/map.css';
 	import { goto } from '$app/navigation';
