@@ -9,8 +9,9 @@
 
 	export let candidate: Candidate;
 	export let editable: boolean;
+	export let selectable: boolean;
 
-	$: selected = $SelectedCandidateStore.id === candidate.id;
+	$: selected = selectable && $SelectedCandidateStore.id === candidate.id;
 
 	function updateSelectedCandidate() {
 		SelectedCandidateStore.set(candidate);

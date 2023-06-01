@@ -47,9 +47,9 @@
 {#if mapPromise !== null}
 	{#await mapPromise then map}
 		<div class="flex flex-col h-full p-3">
-			<CandidateBoxContainer />
+			<CandidateBoxContainer editable={false} selectable={false} />
 			<div class="grow" />
-			<div use:setupMap>
+			<div use:setupMap class="overflow-hidden">
 				{@html map.default}
 			</div>
 			<div class="grow" />
