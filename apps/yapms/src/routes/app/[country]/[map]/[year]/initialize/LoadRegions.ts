@@ -1,6 +1,11 @@
 import { get } from 'svelte/store';
 import { ModeStore } from '$lib/stores/Mode';
-import { RegionsStore, setPointerEvents } from '$lib/stores/regions/Regions';
+import {
+	RegionsStore,
+	setPointerEvents,
+	setTransitionStyle,
+	setCursorStyle
+} from '$lib/stores/regions/Regions';
 import {
 	TossupCandidateStore,
 	CandidatesStore,
@@ -9,39 +14,7 @@ import {
 import type Region from '$lib/types/Region';
 import { ModeSchema } from '$lib/types/Mode';
 
-function setCursorStyle(node: HTMLDivElement) {
-	const regions = node.querySelector<HTMLElement>('.regions');
-	const buttons = node.querySelector<HTMLElement>('.region-buttons');
-	const texts = node.querySelector<HTMLElement>('.region-texts');
-
-	// set cursor & pointer styles
-	if (regions) {
-		regions.style.cursor = 'pointer';
-	}
-	if (buttons) {
-		buttons.style.cursor = 'pointer';
-	}
-	if (texts) {
-		texts.style.pointerEvents = 'none';
-		for (const child of texts.children) {
-			(child as HTMLElement).style.transition = 'color 0.2s ease-in-out';
-		}
-	}
-}
-
-function setTransitionStyle(node: HTMLDivElement) {
-	const regions = node.querySelector<HTMLElement>('.regions');
-	if (regions === null) return;
-	for (const child of regions.childNodes) {
-		const childHTML = child as HTMLElement;
-		if (childHTML.getAttribute === undefined) {
-			continue;
-		}
-		childHTML.style.transition = 'fill 0.2s ease-in-out';
-	}
-}
-
-function setDefaultMode(node: HTMLDivElement) {
+function createDefaultModeStore(node: HTMLDivElement) {
 	const defaultModeAttribute = node.querySelector('svg')?.getAttribute('default-mode');
 	const defaultMode = ModeSchema.safeParse(defaultModeAttribute);
 	if (defaultMode.success) {
@@ -51,7 +24,7 @@ function setDefaultMode(node: HTMLDivElement) {
 	}
 }
 
-function loadCandidateData(node: HTMLDivElement) {
+function createCandidateStore(node: HTMLDivElement) {
 	try {
 		const candidatesStringified = node.querySelector('svg')?.getAttribute('candidates'); //This doesn't return SVG other than the map SVG
 		const candidates = candidatesStringified != null ? JSON.parse(candidatesStringified) : null; //If candidate property not set, set candidates to null so the next check knows to use default candidates.
@@ -126,16 +99,15 @@ function createRegionStore(node: HTMLDivElement) {
 }
 
 export function loadRegionsForApp(node: HTMLDivElement): void {
-	loadCandidateData(node);
-	setDefaultMode(node);
-	setCursorStyle(node);
+	createCandidateStore(node);
+	createDefaultModeStore(node);
 	createRegionStore(node);
-	setTransitionStyle(node);
+	setCursorStyle();
+	setTransitionStyle();
 	setPointerEvents();
 }
 
 export function loadRegionsForView(node: HTMLDivElement): void {
-	loadCandidateData(node);
-	setDefaultMode(node);
+	createCandidateStore(node);
 	createRegionStore(node);
 }

@@ -189,3 +189,32 @@ export const setPointerEvents = (): void => {
 		}
 	}
 };
+
+export const setTransitionStyle = (): void => {
+	const regions = get(RegionsStore);
+	for (const region of regions) {
+		region.nodes.region.style.transition = 'fill 0.2s ease-in-out';
+		if (region.nodes.text !== null) {
+			for (const child of region.nodes.text.children) {
+				(child as HTMLElement).style.transition = 'color 0.2s ease-in-out';
+			}
+			region.nodes.text.style.transition = 'fill 0.2s ease-in-out';
+		}
+		if (region.nodes.button !== null) {
+			region.nodes.button.style.transition = 'fill 0.2s ease-in-out';
+		}
+	}
+};
+
+export const setCursorStyle = (): void => {
+	const regions = get(RegionsStore);
+	for (const region of regions) {
+		region.nodes.region.style.cursor = 'pointer';
+		if (region.nodes.text !== null) {
+			region.nodes.text.style.pointerEvents = 'none';
+		}
+		if (region.nodes.button !== null) {
+			region.nodes.button.style.cursor = 'pointer';
+		}
+	}
+};

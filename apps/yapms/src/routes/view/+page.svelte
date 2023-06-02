@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { PUBLIC_POCKETBASE_URI } from '$env/static/public';
+	import '$lib/styles/global.css';
+	import '$lib/styles/roboto-block.css';
 	import { SavedMapSchema } from '$lib/types/SavedMap';
 	import { onMount } from 'svelte';
 	import { loadFromJson } from '$lib/utils/loadMap';
