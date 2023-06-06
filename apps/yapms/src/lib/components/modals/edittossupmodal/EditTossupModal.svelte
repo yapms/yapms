@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { SelectedCandidateStore, TossupCandidateStore } from '$lib/stores/Candidates';
 	import { EditTossupModalStore } from '$lib/stores/Modals';
-	import { RegionsStore } from '$lib/stores/Regions';
+	import { RegionsStore } from '$lib/stores/regions/Regions';
 	import { get } from 'svelte/store';
 	import ModalBase from '../ModalBase.svelte';
 

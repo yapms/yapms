@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { TossupCandidateStore } from '$lib/stores/Candidates';
 	import { ClearMapModalStore } from '$lib/stores/Modals';
-	import { RegionsStore } from '$lib/stores/Regions';
+	import { RegionsStore } from '$lib/stores/regions/Regions';
 	import { get } from 'svelte/store';
 	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
 

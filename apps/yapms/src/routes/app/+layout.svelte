@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
 	import '$lib/styles/global.css';
-	import '$lib/styles/map.css';
+	import '$lib/styles/roboto-swap.css';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { get } from 'svelte/store';

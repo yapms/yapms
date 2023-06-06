@@ -21,8 +21,8 @@ func TakeScreenshot(e *core.RecordCreateEvent, app *pocketbase.PocketBase, brows
 	// take a screenshot
 	var screenshotBuffer []byte
 	err := chromedp.Run(ctx,
-		chromedp.EmulateViewport(1600, 900),
-		chromedp.Navigate(*browserlessFrontendURI + "/app?m=" + e.Record.Id),
+		chromedp.EmulateViewport(1200, 900),
+		chromedp.Navigate(*browserlessFrontendURI+"/view?m="+e.Record.Id),
 		chromedp.WaitReady("#testing-map"),
 		chromedp.FullScreenshot(&screenshotBuffer, 100),
 	)

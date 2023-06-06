@@ -1,7 +1,10 @@
 import type Region from '$lib/types/Region';
 import { calculateLumaHEX } from '$lib/utils/luma';
 import { derived, writable, get } from 'svelte/store';
-import { TossupCandidateStore, CandidatesStore } from './Candidates';
+import { TossupCandidateStore, CandidatesStore } from '../Candidates';
+import { ModeStore } from '../Mode';
+import { disableRegion, editRegion, fillRegion, lockRegion, splitRegion } from './regionActions';
+import { InteractionStore } from '../Interaction';
 
 /**
  * Stores the state of all regions.
@@ -143,3 +146,75 @@ export const CandidateCountsMargins = derived(RegionsStore, ($RegionStore) => {
 	});
 	return candidates;
 });
+
+export const setPointerEvents = (): void => {
+	const regions = get(RegionsStore);
+	for (const region of regions) {
+		if (region.permaLocked) {
+			continue;
+		}
+
+		region.nodes.region.onpointerdown = () => {
+			const currentMode = get(ModeStore);
+			switch (currentMode) {
+				case 'fill':
+					fillRegion(region.id, true);
+					break;
+				case 'split':
+					splitRegion(region.id);
+					break;
+				case 'edit':
+					editRegion(region.id);
+					break;
+				case 'disable':
+					disableRegion(region.id);
+					break;
+				case 'lock':
+					lockRegion(region.id);
+					break;
+			}
+		};
+
+		region.nodes.region.onmousemove = () => {
+			const currentMode = get(ModeStore);
+			const currentInteractions = get(InteractionStore);
+			if (currentMode === 'fill' && currentInteractions.has('KeyF')) {
+				fillRegion(region.id, false);
+			}
+		};
+
+		if (region.nodes.button !== null) {
+			region.nodes.button.onpointerdown = region.nodes.region.onpointerdown;
+			region.nodes.button.onmousedown = region.nodes.region.onmousedown;
+		}
+	}
+};
+
+export const setTransitionStyle = (): void => {
+	const regions = get(RegionsStore);
+	for (const region of regions) {
+		region.nodes.region.style.transition = 'fill 0.2s ease-in-out';
+		if (region.nodes.text !== null) {
+			for (const child of region.nodes.text.children) {
+				(child as HTMLElement).style.transition = 'color 0.2s ease-in-out';
+			}
+			region.nodes.text.style.transition = 'fill 0.2s ease-in-out';
+		}
+		if (region.nodes.button !== null) {
+			region.nodes.button.style.transition = 'fill 0.2s ease-in-out';
+		}
+	}
+};
+
+export const setCursorStyle = (): void => {
+	const regions = get(RegionsStore);
+	for (const region of regions) {
+		region.nodes.region.style.cursor = 'pointer';
+		if (region.nodes.text !== null) {
+			region.nodes.text.style.pointerEvents = 'none';
+		}
+		if (region.nodes.button !== null) {
+			region.nodes.button.style.cursor = 'pointer';
+		}
+	}
+};

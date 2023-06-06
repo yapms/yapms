@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { SelectedCandidateStore, isTossupCandidate } from '$lib/stores/Candidates';
 	import { EditCandidateModalStore, EditTossupModalStore } from '$lib/stores/Modals';
-	import { CandidateCounts } from '$lib/stores/Regions';
+	import { CandidateCounts } from '$lib/stores/regions/Regions';
 
 	import { calculateLumaHEX } from '$lib/utils/luma';
 	import type Candidate from '$lib/types/Candidate';
@@ -9,8 +9,9 @@
 
 	export let candidate: Candidate;
 	export let editable: boolean;
+	export let selectable: boolean;
 
-	$: selected = $SelectedCandidateStore.id === candidate.id;
+	$: selected = selectable && $SelectedCandidateStore.id === candidate.id;
 
 	function updateSelectedCandidate() {
 		SelectedCandidateStore.set(candidate);

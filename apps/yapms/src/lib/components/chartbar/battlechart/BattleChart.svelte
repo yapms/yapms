@@ -2,7 +2,7 @@
 	import ArrowDownCircle from '$lib/icons/ArrowDownCircle.svelte';
 	import { CandidatesStore, TossupCandidateStore } from '$lib/stores/Candidates';
 	import { ChartPositionStore } from '$lib/stores/Chart';
-	import { CandidateCounts, CandidateCountsMargins } from '$lib/stores/Regions';
+	import { CandidateCounts, CandidateCountsMargins } from '$lib/stores/regions/Regions';
 	import BattleChartLabel from './BattleChartLabel.svelte';
 
 	/**
@@ -10,23 +10,41 @@
 	 * 2. Store the tossup candidate name, count and color
 	 * 3. Store the second candidate name, count and color
 	 */
-	$: counts = [
-		...($CandidatesStore.at(0)?.margins.map((_margin, index) => ({
-			name: $CandidatesStore.at(0)?.name ?? '',
-			count: $CandidateCountsMargins.get($CandidatesStore.at(0)?.id ?? '')?.at(index) ?? 0,
-			color: $CandidatesStore.at(0)?.margins.at(index)?.color ?? '#000000'
-		})) ?? []),
-		{
-			name: $TossupCandidateStore.name,
-			count: $CandidateCounts.get($TossupCandidateStore.id) ?? 0,
-			color: $TossupCandidateStore.margins.at(0)?.color ?? '#000000'
-		},
-		...($CandidatesStore.at(1)?.margins.map((_margin, index) => ({
-			name: $CandidatesStore.at(1)?.name ?? '',
-			count: $CandidateCountsMargins.get($CandidatesStore.at(1)?.id ?? '')?.at(index) ?? 0,
-			color: $CandidatesStore.at(1)?.margins.at(index)?.color ?? '#000000'
-		})) ?? [])
-	];
+	$: counts =
+		$CandidatesStore.length === 2
+			? [
+					...($CandidatesStore.at(0)?.margins.map((_margin, index) => ({
+						name: $CandidatesStore.at(0)?.name ?? '',
+						count: $CandidateCountsMargins.get($CandidatesStore.at(0)?.id ?? '')?.at(index) ?? 0,
+						color: $CandidatesStore.at(0)?.margins.at(index)?.color ?? '#000000'
+					})) ?? []),
+					{
+						name: $TossupCandidateStore.name,
+						count: $CandidateCounts.get($TossupCandidateStore.id) ?? 0,
+						color: $TossupCandidateStore.margins.at(0)?.color ?? '#000000'
+					},
+					...($CandidatesStore.at(1)?.margins.map((_margin, index) => ({
+						name: $CandidatesStore.at(1)?.name ?? '',
+						count: $CandidateCountsMargins.get($CandidatesStore.at(1)?.id ?? '')?.at(index) ?? 0,
+						color: $CandidatesStore.at(1)?.margins.at(index)?.color ?? '#000000'
+					})) ?? [])
+			  ]
+			: [
+					{
+						name: $TossupCandidateStore.name,
+						count: $CandidateCounts.get($TossupCandidateStore.id) ?? 0,
+						color: $TossupCandidateStore.margins.at(0)?.color ?? '#000000'
+					},
+					...$CandidatesStore
+						.map((candidate) => {
+							return candidate.margins.map((margin, index) => ({
+								name: candidate.name ?? '',
+								count: $CandidateCountsMargins.get(candidate.id ?? '')?.at(index) ?? 0,
+								color: margin.color
+							}));
+						})
+						.flat()
+			  ];
 
 	/**
 	 * Sum the total number of votes
@@ -56,9 +74,11 @@
 	class:flex-col={$ChartPositionStore === 'bottom'}
 	class:flex-row-reverse={$ChartPositionStore === 'left'}
 >
-	<div class="flex items-center justify-center" class:rotate-90={$ChartPositionStore === 'left'}>
-		<ArrowDownCircle class="w-6 h-6" style="color: {winningColor};" />
-	</div>
+	{#if $CandidatesStore.length === 2}
+		<div class="flex items-center justify-center" class:rotate-90={$ChartPositionStore === 'left'}>
+			<ArrowDownCircle class="w-6 h-6" style="color: {winningColor};" />
+		</div>
+	{/if}
 	<div
 		class="flex rounded-md overflow-hidden min-w-fit min-h-fit"
 		class:flex-col={$ChartPositionStore === 'left'}
