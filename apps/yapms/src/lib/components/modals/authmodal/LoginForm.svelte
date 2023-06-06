@@ -1,17 +1,14 @@
 <script lang="ts">
+	import { LoginModalStore } from '$lib/stores/Modals';
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
-	import { PUBLIC_REDIRECT_URI } from '$env/static/public';
-	import { page } from '$app/stores';
 
 	const authMethods = $PocketBaseStore.collection('users').listAuthMethods();
 
-	function authenticate(authUrl: string, provider: string, codeVerifier: string, state: string) {
-		localStorage.setItem('codeVerifier', codeVerifier);
-		localStorage.setItem('state', state);
-		localStorage.setItem('provider', provider);
-		localStorage.setItem('redirect', $page.url.href);
-		const url = new URL(authUrl + PUBLIC_REDIRECT_URI);
-		window.location.href = url.href;
+	async function authenticate(provider: string) {
+		await $PocketBaseStore.collection('users').authWithOAuth2({
+			provider: provider
+		});
+		PocketBaseStore.set($PocketBaseStore);
 	}
 </script>
 
@@ -23,7 +20,7 @@
 			<button
 				class="btn btn-accent"
 				on:click={() => {
-					authenticate(method.authUrl, method.name, method.codeVerifier, method.state);
+					authenticate(method.name);
 				}}
 			>
 				Login With {method.name}
