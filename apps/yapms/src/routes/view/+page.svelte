@@ -20,7 +20,7 @@
 
 	//Strip directory information from import keys ("/src/lib/assets/maps/usa/usa-governors-2025.svg" to "usa-governors-2025.svg")
 	for (const path in imports) {
-		imports[path.replace(/^(.*[\\\/])/, '')] = imports[path];
+		imports[path.replace(/^(.*[/])/u, '')] = imports[path];
 		delete imports[path];
 	}
 
