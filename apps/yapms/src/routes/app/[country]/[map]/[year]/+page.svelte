@@ -31,18 +31,25 @@
 
 	//Glob import all maps in the maps directory so that we can check if a map exists and then load it.
 	//Query section makes sure the SVG contents are imported raw.
-	const imports = import.meta.glob<typeof import('*?raw')>('$lib/assets/maps/*.svg', {
+	const imports = import.meta.glob<typeof import('*?raw')>('$lib/assets/maps/*/*.svg', {
+		//Import from subdirectories
 		query: { raw: '' }
 	});
+
+	//Strip directory information from import keys ("/src/lib/assets/maps/usa/usa-governors-2025.svg" to "usa-governors-2025.svg")
+	for (const path in imports) {
+		imports[path.replace(/^(.*[\\\/])/, '')] = imports[path];
+		delete imports[path];
+	}
 
 	//Take the path (/app/[country]/[name]/[year]), remove /app/ & replace the remaining / with - to match map file names.
 	const mapName = $page.url.pathname.replace('/app/', '').replaceAll('/', '-');
 
 	//Make sure that even if map requested doesn't load, something loads.
-	let currentMap = '/src/lib/assets/maps/usa-presidential-2022.svg';
+	let currentMap = 'usa-presidential-2022.svg';
 	//If the map defined by slugs is found, use that map
-	if (imports[`/src/lib/assets/maps/${mapName}.svg`] !== undefined) {
-		currentMap = `/src/lib/assets/maps/${mapName}.svg`;
+	if (imports[`${mapName}.svg`] !== undefined) {
+		currentMap = `${mapName}.svg`;
 	}
 
 	let isLoaded = false;
