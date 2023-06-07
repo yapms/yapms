@@ -1,12 +1,11 @@
 <script lang="ts">
-	import { LoginModalStore } from '$lib/stores/Modals';
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
 
 	const authMethods = $PocketBaseStore.collection('users').listAuthMethods();
 
 	async function authenticate(provider: string) {
 		await $PocketBaseStore.collection('users').authWithOAuth2({
-			provider: provider
+			provider
 		});
 		PocketBaseStore.set($PocketBaseStore);
 	}
@@ -19,8 +18,8 @@
 		{#each authMethods.authProviders as method}
 			<button
 				class="btn btn-accent"
-				on:click={() => {
-					authenticate(method.name);
+				on:click={async () => {
+					await authenticate(method.name);
 				}}
 			>
 				Login With {method.name}
