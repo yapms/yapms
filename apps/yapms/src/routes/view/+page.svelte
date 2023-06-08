@@ -11,9 +11,21 @@
 	import CandidateBoxContainer from '$lib/components/candidatebox/CandidateBoxContainer.svelte';
 	import { loadRegionsForView } from '../app/[country]/[map]/[year]/initialize/LoadRegions';
 
-	const imports = import.meta.glob<typeof import('*?raw')>('$lib/assets/maps/*.svg', {
+	//Glob import all maps in the maps directory so that we can check if a map exists and then load it.
+	//Query section makes sure the SVG contents are imported raw.
+	const imports = import.meta.glob<typeof import('*?raw')>('$lib/assets/maps/*/*.svg', {
+		//Import from subdirectories
 		query: { raw: '' }
 	});
+
+	//Strip directory information from import keys ("/src/lib/assets/maps/usa/usa-governors-2025.svg" to "usa-governors-2025.svg")
+	for (const path in imports) {
+		const fileName = path.split('/').pop();
+		if (fileName !== undefined) {
+			imports[fileName] = imports[path];
+		}
+		delete imports[path];
+	}
 
 	let mapName: null | string = null;
 	$: mapPromise = mapName !== null ? imports[mapName]() : null;
@@ -29,7 +41,7 @@
 
 		mapName =
 			savedFile.data.map.country + '-' + savedFile.data.map.type + '-' + savedFile.data.map.year;
-		mapName = `/src/lib/assets/maps/${mapName}.svg`;
+		mapName = `${mapName}.svg`;
 
 		LoadedMapStore.set(savedFile.data);
 	});
