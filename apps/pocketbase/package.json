@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "server-dev": "dotenv -e ../../.env -- go run main.go serve --http=0.0.0.0:8080",
-    "server-build": "go clean & go get github.com/pocketbase/pocketbase & go build",
-    "server-start": "dotenv -e ../../.env -- ./pocketbase serve --http=0.0.0.0:8080"
+    "dev": "dotenv -e ../../.env -- go run main.go serve --http=0.0.0.0:8080",
+    "build": "go clean & go get github.com/pocketbase/pocketbase & go build",
+    "start": "dotenv -e ../../.env -- ./pocketbase serve --http=0.0.0.0:8080"
   },
   "devDependencies": {
     "dotenv-cli": "^7.1.0"
