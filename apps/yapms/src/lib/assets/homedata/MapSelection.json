@@ -1,6 +1,6 @@
 [
 	{
-		"title": "Popular Maps",
+		"title": "Current Maps",
 		"cards": [
 			{
 				"name": "United States",
@@ -27,65 +27,6 @@
 						"label": "More",
 						"modal": true,
 						"route": "usa"
-					}
-				]
-			},
-			{
-				"name": "United Kingdom",
-				"bg": "uk",
-				"alt": "Palace of Westminster",
-				"doubleCols": false,
-				"links": [
-					{
-						"label": "House of Commons",
-						"modal": false,
-						"route": "/app/usa/presidential/2022"
-					},
-					{
-						"label": "Historic Counties",
-						"modal": false,
-						"route": "/app/usa/presidential/2022"
-					}
-				]
-			},
-			{
-				"name": "Canada",
-				"bg": "canada",
-				"alt": "Parliament Hill",
-				"doubleCols": false,
-				"links": [
-					{
-						"label": "House of Commons",
-						"modal": false,
-						"route": "/app/usa/presidential/2022"
-					},
-					{
-						"label": "Provinces",
-						"modal": false,
-						"route": "/app/usa/presidential/2022"
-					}
-				]
-			}
-		]
-	},
-	{
-		"title": "Additional Maps",
-		"cards": [
-			{
-				"name": "Australia",
-				"bg": "australia",
-				"alt": "Parliament House",
-				"doubleCols": false,
-				"links": [
-					{
-						"label": "House of Representatives",
-						"modal": false,
-						"route": "/app/usa/presidential/2022"
-					},
-					{
-						"label": "States",
-						"modal": false,
-						"route": "/app/usa/presidential/2022"
 					}
 				]
 			}

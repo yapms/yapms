@@ -12,6 +12,7 @@
 	import { onMount } from 'svelte';
 	import { themeChange } from 'theme-change';
 	import MapSearch from '$lib/components/homepage/MapSearch.svelte';
+	import BetaModal from '$lib/components/modals/betamodal/BetaModal.svelte';
 
 	onMount(() => {
 		themeChange(false);
@@ -76,3 +77,5 @@
 <MoreMapsModal />
 
 <ThemeModal />
+
+<BetaModal />
