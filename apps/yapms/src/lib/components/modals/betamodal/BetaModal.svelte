@@ -1,5 +1,4 @@
 <script lang="ts">
-	import ModalTitle from '$lib/components/modalutilities/ModalTitle.svelte';
 	import { BetaModalStore } from '$lib/stores/Modals';
 	import { dev } from '$app/environment';
 	import ExclamationCircle from '$lib/icons/ExclamationCircle.svelte';
