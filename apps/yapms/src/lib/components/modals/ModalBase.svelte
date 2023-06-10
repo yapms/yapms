@@ -7,9 +7,12 @@
 
 <div class="modal modal-bottom lg:modal-middle">
 	<div class="modal-box">
-		<h3 class="text-2xl pb-3">
-			{title}
-		</h3>
+		<div class="flex gap-x-2">
+			<slot name="icon" />
+			<h3 class="text-2xl pb-3">
+				{title}
+			</h3>
+		</div>
 
 		<slot name="content" />
 
