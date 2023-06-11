@@ -78,6 +78,10 @@ const ThemeModalStore = writable({
 	open: false
 });
 
+const BetaModalStore = writable({
+	open: true
+});
+
 export {
 	EditCandidateModalStore,
 	EditTossupModalStore,
@@ -93,5 +97,6 @@ export {
 	ShareModalStore,
 	LoginModalStore,
 	LoadingErrorModalStore,
-	ThemeModalStore
+	ThemeModalStore,
+	BetaModalStore
 };
