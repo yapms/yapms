@@ -82,6 +82,14 @@ const BetaModalStore = writable({
 	open: true
 });
 
+const ImportModalStore = writable({
+	open: false
+});
+
+const ShareDisabledModalStore = writable({
+	open: false
+});
+
 export {
 	EditCandidateModalStore,
 	EditTossupModalStore,
@@ -98,5 +106,7 @@ export {
 	LoginModalStore,
 	LoadingErrorModalStore,
 	ThemeModalStore,
-	BetaModalStore
+	BetaModalStore,
+	ImportModalStore,
+	ShareDisabledModalStore
 };

@@ -1,0 +1,8 @@
+#importedSVG {
+	--imported-stroke-width: 0.5px;
+}
+
+#importedSVG > .regions > path {
+	stroke-width: var(--imported-stroke-width);
+	stroke: hsla(var(--b1) / var(--tw-bg-opacity, 1));
+}

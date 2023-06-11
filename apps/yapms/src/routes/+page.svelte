@@ -13,6 +13,7 @@
 	import { themeChange } from 'theme-change';
 	import MapSearch from '$lib/components/homepage/MapSearch.svelte';
 	import BetaModal from '$lib/components/modals/betamodal/BetaModal.svelte';
+	import ArrowUpTray from '$lib/icons/ArrowUpTray.svelte';
 
 	onMount(() => {
 		themeChange(false);
@@ -32,7 +33,14 @@
 
 <div class="flex flex-col h-full overflow-hidden">
 	<div class="navbar bg-base-200">
-		<div class="navbar-start" />
+		<div class="navbar-start">
+			<a href="/app/imported">
+				<button class="btn px-8 btn-primary mr-2 hidden md:inline">Open</button>
+				<button class="btn btn-square mr-2 inline md:hidden"
+					><ArrowUpTray class="h-8 m-auto" /></button
+				>
+			</a>
+		</div>
 		<div class="navbar-center">
 			<h1 class="text-2xl font-bold m-auto hidden lg:inline">
 				Yet Another Political Map Simulator
