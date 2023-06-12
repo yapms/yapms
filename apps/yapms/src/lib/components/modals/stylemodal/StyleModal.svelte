@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { ChartPositionStore } from '$lib/stores/Chart';
 	import { StyleModalStore } from '$lib/stores/Modals';
 	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
 	import ThemeGrid from '../../modalutilities/ThemeGrid.svelte';
