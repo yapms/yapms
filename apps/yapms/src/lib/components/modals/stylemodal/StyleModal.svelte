@@ -29,30 +29,6 @@
 				<h3 class="font-light text-lg pb-3">Themes</h3>
 				<ThemeGrid />
 			</div>
-
-			<div class="divider divider-horizontal lg:divider-vertical" />
-
-			<div class="flex flex-col">
-				<h3 class="font-light text-lg pb-3">Chart Position</h3>
-				<div class="flex gap-3 justify-center">
-					<button
-						class="btn btn-lg"
-						class:btn-primary={$ChartPositionStore === 'bottom'}
-						class:btn-success={$ChartPositionStore === 'left'}
-						on:click={sideChart}
-					>
-						Side
-					</button>
-					<button
-						class="btn btn-lg"
-						class:btn-primary={$ChartPositionStore === 'left'}
-						class:btn-success={$ChartPositionStore === 'bottom'}
-						on:click={bottomChart}
-					>
-						Bottom
-					</button>
-				</div>
-			</div>
 		</div>
 		<div class="modal-action">
 			<button class="btn btn-primary" on:click={close}>No</button>

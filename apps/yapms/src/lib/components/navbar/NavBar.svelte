@@ -4,7 +4,7 @@
 		MapModalStore,
 		AddCandidateModalStore,
 		ModeModalStore,
-		ChartTypeModalStore,
+		ChartOptionsModalStore,
 		StyleModalStore,
 		ShareModalStore,
 		LoginModalStore
@@ -32,9 +32,9 @@
 		});
 	}
 
-	function openChartType() {
-		ChartTypeModalStore.set({
-			...$ChartTypeModalStore,
+	function openChartOptions() {
+		ChartOptionsModalStore.set({
+			...$ChartOptionsModalStore,
 			open: true
 		});
 	}
@@ -74,7 +74,7 @@
 	<button class="btn btn-sm" on:click={openMapModal}>maps</button>
 	<button class="btn btn-sm" on:click={openAddCandidateModal}>add candidate</button>
 	<button class="btn btn-sm" on:click={openStyle}>style</button>
-	<button class="btn btn-sm" on:click={openChartType}>chart type</button>
+	<button class="btn btn-sm" on:click={openChartOptions}>chart options</button>
 	<button class="btn btn-sm" on:click={openMode}>mode: {$ModeStore}</button>
 	<button class="btn btn-sm" on:click={openShare}>share</button>
 	<button class="btn btn-sm" on:click={openLogin}>login</button>
