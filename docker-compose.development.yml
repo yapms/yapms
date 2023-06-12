@@ -1,7 +1,21 @@
-version: '3.4'
+version: "3.4"
 services:
-
   browserless:
     image: browserless/chrome:latest
     restart: always
     network_mode: host
+
+  umami:
+    image: docker.umami.dev/umami-software/umami:mysql-latest
+    restart: always
+    ports:
+      - 8079:3000
+    environment:
+      DATABASE_URL: mysql://root:password@mariadb:3306/umami
+
+  mariadb:
+    image: mariadb:latest
+    restart: always
+    environment:
+      MARIADB_DATABASE: umami
+      MARIADB_ROOT_PASSWORD: password
