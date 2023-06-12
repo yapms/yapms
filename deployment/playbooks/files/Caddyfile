@@ -1,13 +1,23 @@
 yapms2.com {
-	tls internal
+  tls internal
 
-	encode gzip
+  encode gzip
 
-	handle_path /pocketbase/* {
-		reverse_proxy pocketbase:8080
-	}
+  handle_path /pocketbase/* {
+    reverse_proxy pocketbase:8080
+  }
 
-	handle {
-		reverse_proxy yapms:3000
-	}
+  handle {
+    reverse_proxy yapms:3000
+  }
+}
+
+analytics.yapms2.com {
+  tls internal
+
+  encode gzip
+
+  handle {
+    reverse_proxy umami:3000
+  }
 }

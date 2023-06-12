@@ -4,17 +4,19 @@
   become: True
 
   tasks:
-
     - name: pull images
       community.docker.docker_image:
         name: "{{ item }}"
         source: pull
+        force_source: true
       with_items:
         - caddy:2.6.4-alpine
         - browserless/chrome:latest
         - ghcr.io/yapms/yapms-yapms:main
         - ghcr.io/yapms/yapms-pocketbase:main
-    
+        - mariadb:latest
+        - docker.umami.dev/umami-software/umami:mysql-latest
+
     - name: remove containers
       community.docker.docker_container:
         name: "{{ item }}"
@@ -24,6 +26,12 @@
         - browserless
         - yapms
         - pocketbase
+        - mariadb
+        - umami
+
+    - name: prune images
+      community.docker.docker_prune:
+        images: true
 
     - name: copy caddy file
       copy:
@@ -55,11 +63,7 @@
         env:
           BROWSERLESS_URI: "ws://browserless:3000"
           BROWSERLESS_FRONTEND_URI: "http://yapms:3000"
-          DISCORD_CLIENT_ID: "123456789X"
-          DISCORD_CLIENT_SECRET: "12345678Z"
-          GOOGLE_CLIENT_ID: "1234567890"
-          GOOGLE_CLIENT_SECRET: "1234567890"
-    
+
     - name: deploy browserless
       community.docker.docker_container:
         name: browserless
@@ -67,7 +71,30 @@
         restart_policy: always
         networks:
           - name: yapms
-    
+
+    - name: deploy mariadb
+      community.docker.docker_container:
+        name: mariadb
+        image: mariadb:latest
+        restart_policy: always
+        networks:
+          - name: yapms
+        volumes:
+          - /home/core/mariadb_data:/var/lib/mysql
+        env:
+          MARIADB_DATABASE: umami
+          MARIADB_ROOT_PASSWORD: password
+
+    - name: deploy umami
+      community.docker.docker_container:
+        name: umami
+        image: docker.umami.dev/umami-software/umami:mysql-latest
+        restart_policy: always
+        networks:
+          - name: yapms
+        env:
+          DATABASE_URL: mysql://root:password@mariadb:3306/umami
+
     - name: deploy caddy
       community.docker.docker_container:
         name: caddy
