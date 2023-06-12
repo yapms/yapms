@@ -10,14 +10,6 @@
 			open: false
 		});
 	}
-
-	function sideChart() {
-		ChartPositionStore.set('left');
-	}
-
-	function bottomChart() {
-		ChartPositionStore.set('bottom');
-	}
 </script>
 
 <input type="checkbox" class="modal-toggle" checked={$StyleModalStore.open} />
