@@ -10,6 +10,8 @@
 		LoginModalStore
 	} from '$lib/stores/Modals';
 	import { ModeStore } from '$lib/stores/Mode';
+	import ChevronDoubleRight from '$lib/icons/ChevronDoubleRight.svelte';
+	import ChevronDoubleLeft from '$lib/icons/ChevronDoubleLeft.svelte';
 	import { SideBarStore } from '$lib/stores/SideBar';
 
 	function openClearMapModal() {
@@ -88,9 +90,9 @@
 	<div class="grow" />
 	<button class="btn btn-sm" on:click={toggleSidebar}>
 		{#if $SideBarStore}
-			close sidebar
+			<ChevronDoubleRight class="w-6 h-6" />
 		{:else}
-			open sidebar
+			<ChevronDoubleLeft class="w-6 h-6" />
 		{/if}
 	</button>
 </div>
