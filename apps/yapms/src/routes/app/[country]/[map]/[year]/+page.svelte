@@ -17,7 +17,7 @@
 	import HorizontalBattleChart from '$lib/components/chartbar/battlechart/BattleChart.svelte';
 	import ChartBar from '$lib/components/chartbar/ChartBar.svelte';
 	import PresetColorsModal from '$lib/components/modals/presetcolorsmodal/PresetColorsModal.svelte';
-	import ChartTypeModal from '$lib/components/modals/charttypemodal/ChartTypeModal.svelte';
+	import ChartOptionsModal from '$lib/components/modals/chartoptionsmodal/ChartOptionsModal.svelte';
 	import AuthModal from '$lib/components/modals/authmodal/AuthModal.svelte';
 	import StyleModal from '$lib/components/modals/stylemodal/StyleModal.svelte';
 	import ShareModal from '$lib/components/modals/sharemodal/ShareModal.svelte';
@@ -158,7 +158,7 @@
 
 <MapModal />
 
-<ChartTypeModal />
+<ChartOptionsModal />
 
 <ModeModal />
 

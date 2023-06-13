@@ -50,7 +50,7 @@ const PresetColorsModalStore = writable({
 	open: false
 });
 
-const ChartTypeModalStore = writable({
+const ChartOptionsModalStore = writable({
 	open: false
 });
 
@@ -99,7 +99,7 @@ export {
 	SplitRegionModalStore,
 	AddCandidateModalStore,
 	PresetColorsModalStore,
-	ChartTypeModalStore,
+	ChartOptionsModalStore,
 	ModeModalStore,
 	StyleModalStore,
 	ShareModalStore,
