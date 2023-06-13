@@ -4,6 +4,7 @@
 	import { CandidatesStore, TossupCandidateStore } from '$lib/stores/Candidates';
 	import { CandidateCounts } from '$lib/stores/regions/Regions';
 	import ChartDataLabels from 'chartjs-plugin-datalabels';
+	import { ChartPositionStore } from '$lib/stores/Chart';
 
 	let canvasBind: HTMLCanvasElement;
 	let myChart: Chart<'pie'>;
@@ -97,6 +98,10 @@
 	});
 </script>
 
-<div class="w-min h-min">
+<div
+	class="w-min h-min"
+	class:max-h-56={$ChartPositionStore === 'bottom'}
+	class:max-h-84={$ChartPositionStore === 'left'}
+>
 	<canvas bind:this={canvasBind} />
 </div>
