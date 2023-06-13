@@ -39,7 +39,7 @@
 						}}
 					>
 						<span>
-							{type.toUpperCase()}
+							{type}
 						</span>
 					</button>
 				{/each}
@@ -56,7 +56,7 @@
 						}}
 					>
 						<span>
-							{type.toUpperCase()}
+							{type}
 						</span>
 					</button>
 				{/each}
