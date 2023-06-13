@@ -88,7 +88,7 @@
 	<button class="btn btn-sm" on:click={openShare}>share</button>
 	<button class="btn btn-sm" on:click={openLogin}>login</button>
 	<div class="grow" />
-	<button class="btn btn-sm" on:click={toggleSidebar}>
+	<button class="btn btn-sm hidden md:flex" on:click={toggleSidebar}>
 		{#if $SideBarStore}
 			<ChevronDoubleRight class="w-6 h-6" />
 		{:else}
