@@ -11,8 +11,10 @@
 	let svgFiles: FileList;
 
 	let loadError = false;
+	let loading = false;
 
 	async function loadGeoJson() {
+		loading = true;
 		try {
 			await importFromGeoJson(geoJsonFiles);
 			close();
@@ -20,9 +22,11 @@
 			console.error(error);
 			loadError = true;
 		}
+		loading = false;
 	}
 
 	async function loadShapeFiles() {
+		loading = true;
 		try {
 			await importFromShapefiles(shapeFiles);
 			close();
@@ -30,9 +34,11 @@
 			console.error(error);
 			loadError = true;
 		}
+		loading = false;
 	}
 
 	async function loadSVG() {
+		loading = true;
 		try {
 			ImportedSVGStore.set({ loaded: true, content: await svgFiles[0].text() });
 			close();
@@ -40,6 +46,7 @@
 			console.error(error);
 			loadError = true;
 		}
+		loading = false;
 	}
 
 	function close() {
@@ -57,6 +64,9 @@
 				<ExclamationCircle class="w-6 h-6" />
 				<span>There was an error loading your map, please try again.</span>
 			</div>
+			<div class="alert alert-info justify-start" class:hidden={!loading}>
+				<span><ArrowUpTray class="w-6 h-6" />Loading Map...</span>
+			</div>
 			<div class="flex flex-col gap-y-2">
 				<div class="flex flex-col gap-2">
 					<h3 class="font-light text-lg">Open from GeoJson</h3>
@@ -71,7 +81,7 @@
 						<button
 							class="btn btn-secondary gap-1 flex-nowrap"
 							on:click={loadGeoJson}
-							disabled={!geoJsonFiles || geoJsonFiles.length < 1}
+							disabled={!geoJsonFiles || geoJsonFiles.length < 1 || loading}
 						>
 							<ArrowUpTray class="w-5 h-5" />
 							<span>Load</span>
@@ -94,7 +104,7 @@
 						<button
 							class="btn btn-secondary gap-1 flex-nowrap"
 							on:click={loadShapeFiles}
-							disabled={!shapeFiles || shapeFiles.length < 1}
+							disabled={!shapeFiles || shapeFiles.length < 1 || loading}
 						>
 							<ArrowUpTray class="w-5 h-5" />
 							<span>Load</span>
@@ -123,7 +133,7 @@
 						<button
 							class="btn btn-secondary gap-1 flex-nowrap"
 							on:click={loadSVG}
-							disabled={!svgFiles || svgFiles.length < 1}
+							disabled={!svgFiles || svgFiles.length < 1 || loading}
 						>
 							<ArrowUpTray class="w-5 h-5" />
 							<span>Load</span>

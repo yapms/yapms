@@ -40,6 +40,8 @@ function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
 	const width = 1000,
 		height = 1000;
 
+	districtShapes.features = districtShapes.features.filter((feature) => feature.geometry != null);
+
 	districtShapes.features = districtShapes.features.map(
 		(feature: GeoJSON.Feature) =>
 			rewind(feature as AllGeoJSON, { reverse: true }) as GeoJSON.Feature
