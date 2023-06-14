@@ -4,6 +4,10 @@ import rewind from '@turf/rewind';
 import { geoMercator, geoPath } from 'd3';
 import * as shapefile from 'shapefile';
 import type { AllGeoJSON } from '@turf/helpers';
+import { get } from 'svelte/store';
+import { CandidatesStore } from '$lib/stores/Candidates';
+import { RegionsStore } from '$lib/stores/regions/Regions';
+import { saveAs } from 'file-saver';
 
 async function importFromShapefiles(files: FileList): Promise<void> {
 	let districtShapes = await shapefile.read(files[0].stream());
@@ -65,4 +69,16 @@ function newImportedMap() {
 	ImportModalStore.set({ open: true });
 }
 
-export { importFromGeoJson, importFromShapefiles, newImportedMap };
+function exportImportAsSVG() {
+	const svg = document.getElementById('importedSVG');
+	if (svg) {
+		const regions = get(RegionsStore);
+		svg.setAttribute('candidates', JSON.stringify(get(CandidatesStore)));
+		for (const region of regions) {
+			region.nodes.region.setAttribute('candidate-id', region.candidates[0].candidate.id);
+		}
+		saveAs(new Blob([svg.outerHTML], { type: 'text/svg' }), 'YapmsMap.svg');
+	}
+}
+
+export { importFromGeoJson, importFromShapefiles, newImportedMap, exportImportAsSVG };

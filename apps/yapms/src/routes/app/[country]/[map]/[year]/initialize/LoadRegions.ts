@@ -63,7 +63,9 @@ function createRegionStore(node: HTMLDivElement) {
 						//If the region has candidate-id defined, set the candidate appropriately, if not, default to the tossup candidate at margin 0
 						//See predetermined_regions_example.svg for an example of how to implement candidate-id and candidate-margin attributes.
 						{
-							candidate: get(CandidatesStore)[Number(childHTML.getAttribute('candidate-id'))],
+							candidate: get(CandidatesStore).filter(
+								(candidate) => candidate.id == childHTML.getAttribute('candidate-id')
+							)[0],
 							count: value,
 							margin: childHTML.hasAttribute('candidate-margin')
 								? //If the region has candidate-margin defined, set the margin appropriately, if not, default to 0 (Safe)

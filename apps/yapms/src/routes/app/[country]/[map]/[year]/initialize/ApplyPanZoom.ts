@@ -14,7 +14,7 @@ function applyPanZoom(mapBind: HTMLDivElement): PanZoom | undefined {
 			const scale = e.getTransform().scale;
 			svg?.style.setProperty('--imported-stroke-width', `${0.5 / scale}px`);
 		});
-		return panzoomInstance
+		return panzoomInstance;
 	}
 }
 
