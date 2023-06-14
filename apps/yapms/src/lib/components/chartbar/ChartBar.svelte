@@ -98,10 +98,6 @@
 	});
 </script>
 
-<div
-	class="w-min h-min"
-	class:max-h-56={$ChartPositionStore === 'bottom'}
-	class:max-h-84={$ChartPositionStore === 'left'}
->
+<div class:h-full={$ChartPositionStore === 'bottom'} class:w-full={$ChartPositionStore === 'left'}>
 	<canvas bind:this={canvasBind} />
 </div>

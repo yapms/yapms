@@ -14,7 +14,7 @@
 	import { ChartPositionStore, ChartTypeStore } from '$lib/stores/Chart';
 	import { CandidatesStore } from '$lib/stores/Candidates';
 	import AddCandidateModal from '$lib/components/modals/addcandidatemodal/AddCandidateModal.svelte';
-	import HorizontalBattleChart from '$lib/components/chartbar/battlechart/BattleChart.svelte';
+	import BattleChart from '$lib/components/chartbar/battlechart/BattleChart.svelte';
 	import ChartBar from '$lib/components/chartbar/ChartBar.svelte';
 	import PresetColorsModal from '$lib/components/modals/presetcolorsmodal/PresetColorsModal.svelte';
 	import ChartOptionsModal from '$lib/components/modals/chartoptionsmodal/ChartOptionsModal.svelte';
@@ -28,6 +28,7 @@
 	import SplitRegionModal from '$lib/components/modals/splitregionmodal/SplitRegionModal.svelte';
 	import EditTossupModal from '$lib/components/modals/edittossupmodal/EditTossupModal.svelte';
 	import { loadRegionsForApp } from './initialize/LoadRegions';
+	import REP from '$lib/assets/logos/rep.png';
 
 	//Glob import all maps in the maps directory so that we can check if a map exists and then load it.
 	//Query section makes sure the SVG contents are imported raw.
@@ -103,16 +104,25 @@
 			class:flex-row={$ChartPositionStore === 'left'}
 		>
 			<div
-				class="flex justify-center items-center ml-3 mr-3 mt-3 mb-3"
+				class="flex justify-center items-center m-3 gap-4 overflow-hidden"
 				class:hidden={$ChartTypeStore === 'none'}
+				class:h-32={$ChartPositionStore === 'bottom'}
+				class:w-32={$ChartPositionStore === 'left'}
+				class:flex-row={$ChartPositionStore === 'bottom'}
+				class:flex-col={$ChartPositionStore === 'left'}
 			>
 				{#if $ChartTypeStore === 'battle' && $CandidatesStore.length <= 2}
-					<HorizontalBattleChart />
-				{:else if $ChartTypeStore === 'pie'}
-					<ChartBar />
+					<BattleChart />
 				{:else}
 					<ChartBar />
 				{/if}
+				<div
+					class="flex justify-center overflow-hidden"
+					class:h-full={$ChartPositionStore === 'bottom'}
+					class:w-full={$ChartPositionStore === 'left'}
+				>
+					<img class="h-full" alt="logo" src={REP} />
+				</div>
 			</div>
 
 			<div
