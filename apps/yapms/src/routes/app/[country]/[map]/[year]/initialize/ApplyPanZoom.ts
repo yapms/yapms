@@ -12,7 +12,7 @@ function applyPanZoom(mapBind: HTMLDivElement): PanZoom | undefined {
 		});
 		if (svg.classList.contains('autoBorders')) {
 			adjustStroke(svg, panzoomInstance.getTransform().scale);
-			panzoomInstance.on('zoom', function (e: PanZoom) {
+			panzoomInstance.on('zoom', (e: PanZoom) => {
 				adjustStroke(svg, e.getTransform().scale);
 			});
 		}
