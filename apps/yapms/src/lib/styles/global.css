@@ -27,10 +27,10 @@ body {
 }
 
 .autoBorders {
-	--imported-stroke-width: 0.5px;
+	--auto-stroke-width: 0.5px;
 }
 
 .autoBorders > .regions > path {
-	stroke-width: var(--imported-stroke-width);
+	stroke-width: var(--auto-stroke-width);
 	stroke: hsla(var(--b1) / var(--tw-bg-opacity, 1));
 }

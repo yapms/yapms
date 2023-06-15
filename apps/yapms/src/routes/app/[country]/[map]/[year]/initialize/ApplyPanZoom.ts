@@ -27,9 +27,9 @@ function adjustStroke(svg: SVGElement, scale: number) {
 	const strokeUpper = Number(svg.getAttribute('auto-border-upper'));
 	const newStroke = initStroke / scale;
 	if (strokeUpper && newStroke > strokeUpper) {
-		svg.style.setProperty('--imported-stroke-width', `${strokeUpper}px`);
+		svg.style.setProperty('--auto-stroke-width', `${strokeUpper}px`);
 	} else {
-		svg.style.setProperty('--imported-stroke-width', `${newStroke}px`);
+		svg.style.setProperty('--auto-stroke-width', `${newStroke}px`);
 	}
 }
 
