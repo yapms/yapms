@@ -25,3 +25,12 @@ body {
 [data-svelte-typeahead] .svelte-typeahead-list .selected:hover {
 	@apply bg-neutral text-neutral-content font-semibold !important;
 }
+
+.autoBorders {
+	--imported-stroke-width: 0.5px;
+}
+
+.autoBorders > .regions > path {
+	stroke-width: var(--imported-stroke-width);
+	stroke: hsla(var(--b1) / var(--tw-bg-opacity, 1));
+}
