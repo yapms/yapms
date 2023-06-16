@@ -98,6 +98,10 @@
 	});
 </script>
 
-<div class:h-full={$ChartPositionStore === 'bottom'} class:w-full={$ChartPositionStore === 'left'}>
+<div
+	class="flex justify-center"
+	class:h-full={$ChartPositionStore === 'bottom'}
+	class:w-full={$ChartPositionStore === 'left'}
+>
 	<canvas bind:this={canvasBind} />
 </div>

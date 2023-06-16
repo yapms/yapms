@@ -13,6 +13,7 @@
 	import { InteractionStore } from '$lib/stores/Interaction';
 	import { ChartPositionStore, ChartTypeStore } from '$lib/stores/Chart';
 	import { CandidatesStore } from '$lib/stores/Candidates';
+	import { LogoStore } from '$lib/stores/Logo';
 	import AddCandidateModal from '$lib/components/modals/addcandidatemodal/AddCandidateModal.svelte';
 	import BattleChart from '$lib/components/chartbar/battlechart/BattleChart.svelte';
 	import ChartBar from '$lib/components/chartbar/ChartBar.svelte';
@@ -28,7 +29,6 @@
 	import SplitRegionModal from '$lib/components/modals/splitregionmodal/SplitRegionModal.svelte';
 	import EditTossupModal from '$lib/components/modals/edittossupmodal/EditTossupModal.svelte';
 	import { loadRegionsForApp } from './initialize/LoadRegions';
-	import REP from '$lib/assets/logos/rep.png';
 
 	//Glob import all maps in the maps directory so that we can check if a map exists and then load it.
 	//Query section makes sure the SVG contents are imported raw.
@@ -62,6 +62,21 @@
 	// this page with a map ID
 	$: if ($LoadedMapStore !== null && isLoaded) {
 		loadFromJson($LoadedMapStore);
+	}
+
+	let logoSize: { width: string | undefined; height: string | undefined } = {
+		width: '100%',
+		height: '100%'
+	};
+
+	$: if ($ChartPositionStore === 'bottom' && $ChartTypeStore !== 'battle') {
+		logoSize = { width: undefined, height: '50%' };
+	} else if ($ChartPositionStore === 'bottom' && $ChartTypeStore === 'battle') {
+		logoSize = { width: undefined, height: '100%' };
+	} else if ($ChartPositionStore === 'left' && $ChartTypeStore !== 'battle') {
+		logoSize = { width: '50%', height: undefined };
+	} else if ($ChartPositionStore === 'left' && $ChartTypeStore === 'battle') {
+		logoSize = { width: '100%', height: undefined };
 	}
 
 	onMount(() => {
@@ -106,23 +121,27 @@
 			<div
 				class="flex justify-center items-center m-3 gap-4 overflow-hidden"
 				class:hidden={$ChartTypeStore === 'none'}
-				class:h-32={$ChartPositionStore === 'bottom'}
-				class:w-32={$ChartPositionStore === 'left'}
 				class:flex-row={$ChartPositionStore === 'bottom'}
 				class:flex-col={$ChartPositionStore === 'left'}
+				class:w-32={$ChartPositionStore === 'left' && $ChartTypeStore === 'battle'}
+				class:h-32={$ChartPositionStore === 'bottom' && $ChartTypeStore === 'battle'}
+				class:w-96={$ChartPositionStore === 'left' && $ChartTypeStore !== 'battle'}
+				class:h-80={$ChartPositionStore === 'bottom' && $ChartTypeStore !== 'battle'}
 			>
 				{#if $ChartTypeStore === 'battle' && $CandidatesStore.length <= 2}
 					<BattleChart />
 				{:else}
 					<ChartBar />
 				{/if}
-				<div
-					class="flex justify-center overflow-hidden"
-					class:h-full={$ChartPositionStore === 'bottom'}
-					class:w-full={$ChartPositionStore === 'left'}
-				>
-					<img class="h-full" alt="logo" src={REP} />
-				</div>
+				{#if $LogoStore !== null}
+					<img
+						class="aspect-square"
+						style:width={logoSize.width}
+						style:height={logoSize.height}
+						alt=""
+						src={$LogoStore}
+					/>
+				{/if}
 			</div>
 
 			<div
