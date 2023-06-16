@@ -132,7 +132,7 @@
 				{#await imports[currentMap]()}
 					<h1>Loading Map...</h1>
 				{:then importedMap}
-					<div use:setupMap class="overflow-hidden h-full">
+					<div use:setupMap id="map-div" class="overflow-hidden h-full">
 						{@html importedMap.default}
 					</div>
 				{/await}

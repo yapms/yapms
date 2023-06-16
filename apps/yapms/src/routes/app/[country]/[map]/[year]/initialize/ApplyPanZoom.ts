@@ -10,26 +10,26 @@ function applyPanZoom(mapBind: HTMLDivElement): PanZoom | undefined {
 			autocenter: true,
 			zoomDoubleClickSpeed: 1
 		});
-		if (svg.classList.contains('autoBorders')) {
-			adjustStroke(svg, panzoomInstance.getTransform().scale);
+		if (svg.hasAttribute('auto-border-stroke-width')) {
+			const initStroke = Number(svg.getAttribute('auto-border-stroke-width'))
+			const strokeUpper = Number(svg.getAttribute('auto-border-stroke-width-limit'));
+			adjustStroke(svg, initStroke, strokeUpper, panzoomInstance.getTransform().scale);
 			panzoomInstance.on('zoom', (e: PanZoom) => {
-				adjustStroke(svg, e.getTransform().scale);
+				const initStroke = Number(svg.getAttribute('auto-border-stroke-width'))
+				const strokeUpper = Number(svg.getAttribute('auto-border-stroke-width-limit'));
+				adjustStroke(svg, initStroke, strokeUpper, e.getTransform().scale);
 			});
 		}
 		return panzoomInstance;
 	}
 }
 
-function adjustStroke(svg: SVGElement, scale: number) {
-	const initStroke = svg.hasAttribute('auto-border-stroke')
-		? Number(svg.getAttribute('auto-border-stroke'))
-		: 0.5;
-	const strokeUpper = Number(svg.getAttribute('auto-border-upper'));
+function adjustStroke(svg: SVGElement, initStroke:number, strokeUpper:number, scale: number) {
 	const newStroke = initStroke / scale;
 	if (strokeUpper && newStroke > strokeUpper) {
-		svg.style.setProperty('--auto-stroke-width', `${strokeUpper}px`);
+		svg.style.setProperty('--auto-border-stroke-width', `${strokeUpper}px`);
 	} else {
-		svg.style.setProperty('--auto-stroke-width', `${newStroke}px`);
+		svg.style.setProperty('--auto-border-stroke-width', `${newStroke}px`);
 	}
 }
 
