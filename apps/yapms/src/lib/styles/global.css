@@ -30,7 +30,7 @@ body {
 	--auto-border-stroke-width: 0px;
 }
 
-svg > .regions > path {
+#map-div > svg > .regions > path {
 	stroke-width: var(--auto-border-stroke-width);
 	stroke: hsla(var(--b1) / var(--tw-bg-opacity, 1));
 }

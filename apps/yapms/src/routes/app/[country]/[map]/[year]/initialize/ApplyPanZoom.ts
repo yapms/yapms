@@ -12,7 +12,9 @@ function applyPanZoom(mapBind: HTMLDivElement): PanZoom | undefined {
 		});
 		if (svg.hasAttribute('auto-border-stroke-width')) {
 			const initStroke = Number(svg.getAttribute('auto-border-stroke-width'));
-			const strokeUpper = Number(svg.getAttribute('auto-border-stroke-width-limit'));
+			const strokeUpper = svg.hasAttribute('auto-border-stroke-width-limit')
+				? Number(svg.getAttribute('auto-border-stroke-width-limit'))
+				: NaN;
 			adjustStroke(svg, initStroke, strokeUpper, panzoomInstance.getTransform().scale);
 			panzoomInstance.on('zoom', (e: PanZoom) => {
 				const initStroke = Number(svg.getAttribute('auto-border-stroke-width'));
@@ -25,8 +27,9 @@ function applyPanZoom(mapBind: HTMLDivElement): PanZoom | undefined {
 }
 
 function adjustStroke(svg: SVGElement, initStroke: number, strokeUpper: number, scale: number) {
+	console.log(strokeUpper);
 	const newStroke = initStroke / scale;
-	if (strokeUpper && newStroke > strokeUpper) {
+	if (!Number.isNaN(strokeUpper) && newStroke > strokeUpper) {
 		svg.style.setProperty('--auto-border-stroke-width', `${strokeUpper}px`);
 	} else {
 		svg.style.setProperty('--auto-border-stroke-width', `${newStroke}px`);
