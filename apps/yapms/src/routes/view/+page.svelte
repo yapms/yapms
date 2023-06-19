@@ -63,7 +63,7 @@
 		<div class="flex flex-col h-full p-3">
 			<CandidateBoxContainer editable={false} selectable={false} />
 			<div class="grow" />
-			<div use:setupMap class="overflow-hidden">
+			<div use:setupMap id="map-div" class="overflow-hidden">
 				{@html map.default}
 			</div>
 			<div class="grow" />
