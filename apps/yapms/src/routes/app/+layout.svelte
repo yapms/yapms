@@ -10,25 +10,13 @@
 	import { LoadingErrorModalStore } from '$lib/stores/Modals';
 	import { PUBLIC_POCKETBASE_URI } from '$env/static/public';
 
-	// this layout will will redirect the user to the proper map
-	// if they specify the m query parameter
-	onMount(async () => {
-		const url = get(page).url;
-		const map = encodeURIComponent(url.searchParams.get('m') ?? '');
-		// if the user is not loading a map, redirect them to the default map
-		if (map === '') {
-			if (url.pathname === '/app') {
-				await goto('/app/usa/presidential/2022');
-			}
-			return;
-		}
+	async function loadMap(collection: 'maps' | 'account_maps', key: string, value: string) {
+		const data = await fetch(
+			`${PUBLIC_POCKETBASE_URI}/api/files/${collection}/${value}/data.json.gz`
+		);
+		const jsonData = await data.json();
+		const savedFile = SavedMapSchema.safeParse(jsonData);
 
-		// load the requested map from pocketbase
-		console.log(`${PUBLIC_POCKETBASE_URI}/api/files/maps/${map}/data.json.gz`);
-		const data = await fetch(`${PUBLIC_POCKETBASE_URI}/api/files/maps/${map}/data.json.gz`);
-		const savedFile = SavedMapSchema.safeParse(await data.json());
-
-		// if the saved map was malformed, redirect the user to the default map
 		if (!savedFile.success) {
 			LoadingErrorModalStore.set({
 				open: true
@@ -37,14 +25,27 @@
 			return;
 		}
 
-		// set the loaded map store
 		LoadedMapStore.set(savedFile.data);
 
-		// redirect the user to the map
 		const country = encodeURIComponent(savedFile.data.map.country);
 		const type = encodeURIComponent(savedFile.data.map.type);
 		const year = encodeURIComponent(savedFile.data.map.year);
-		await goto(`/app/${country}/${type}/${year}?m=${map}`);
+
+		await goto(`/app/${country}/${type}/${year}?${key}=${value}`);
+	}
+
+	onMount(async () => {
+		const url = get(page).url;
+
+		if (url.searchParams.has('m')) {
+			const map = encodeURIComponent(url.searchParams.get('m') ?? '');
+			await loadMap('maps', 'm', map);
+		} else if (url.searchParams.has('am')) {
+			const map = encodeURIComponent(url.searchParams.get('am') ?? '');
+			await loadMap('account_maps', 'am', map);
+		} else {
+			await goto('/app/usa/presidential/2022');
+		}
 	});
 </script>
 

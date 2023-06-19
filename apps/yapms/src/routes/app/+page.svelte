@@ -4,6 +4,7 @@
 
 	const url = $page.url;
 	const m = url.searchParams.get('m');
+	const am = url.searchParams.get('ma');
 	const imageURI = m !== null ? `${PUBLIC_POCKETBASE_URI}/api/files/maps/${m}/screenshot.png` : '';
 </script>
 

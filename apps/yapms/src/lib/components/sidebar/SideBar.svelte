@@ -14,7 +14,6 @@
 		<SocialMedia />
 		<h1 class="text-xl text-center font-bold">{title}</h1>
 		<div class="divider">Shortcuts</div>
-		<div class="divider">Saved Maps</div>
 		<SavedMaps />
 	</div>
 {/if}
