@@ -78,6 +78,7 @@ function exportImportAsSVG() {
 		svg.setAttribute('candidates', JSON.stringify(get(CandidatesStore)));
 		for (const region of regions) {
 			region.nodes.region.setAttribute('candidate-id', region.candidates[0].candidate.id);
+			region.nodes.region.setAttribute('candidate-margin', region.candidates[0].margin.toString())
 		}
 		saveAs(new Blob([svg.outerHTML], { type: 'text/svg' }), 'YapmsMap.svg');
 	}
