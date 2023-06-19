@@ -9,10 +9,13 @@ import {
 import {
 	TossupCandidateStore,
 	CandidatesStore,
-	CandidateStoreSchema
+	CandidateStoreSchema,
+	CandidatesStoreDefault,
+	TossupCandidateStoreDefault
 } from '$lib/stores/Candidates';
 import type Region from '$lib/types/Region';
 import { ModeSchema } from '$lib/types/Mode';
+import { CandidateSchema } from '$lib/types/Candidate';
 
 function createDefaultModeStore(node: HTMLDivElement) {
 	const defaultModeAttribute = node.querySelector('svg')?.getAttribute('default-mode');
@@ -28,9 +31,27 @@ function createCandidateStore(node: HTMLDivElement) {
 	try {
 		const candidatesStringified = node.querySelector('svg')?.getAttribute('candidates'); //This doesn't return SVG other than the map SVG
 		const candidates = candidatesStringified != null ? JSON.parse(candidatesStringified) : null; //If candidate property not set, set candidates to null so the next check knows to use default candidates.
-		if (candidates !== null) CandidatesStore.set(CandidateStoreSchema.parse(candidates)); //If no candidates are defined in SVG, use generics defined in stores/Candidates.ts
+		if (candidates !== null) { ////If no candidates are defined in SVG, use generics defined in stores/Candidates.ts
+			CandidatesStore.set(CandidateStoreSchema.parse(candidates));
+		} else {
+			CandidatesStore.set(CandidatesStoreDefault)
+		}
 	} catch (error) {
 		console.error('Error Parsing Candidate Data from Map:\n\n' + error);
+	}
+}
+
+function createTossupCandidateStore(node: HTMLDivElement) {
+	try {
+		const tossupStringified = node.querySelector('svg')?.getAttribute('tossup-candidate');
+		const tossup = tossupStringified != null ? JSON.parse(tossupStringified) : null; 
+		if (tossup !== null) {
+			TossupCandidateStore.set(CandidateSchema.parse(tossup));
+		} else {
+			TossupCandidateStore.set(TossupCandidateStoreDefault);
+		}
+	} catch (error) {
+		console.error('Error Parsing Tossup Candidate Data from Map:\n\n' + error);
 	}
 }
 
@@ -102,6 +123,7 @@ function createRegionStore(node: HTMLDivElement) {
 
 export function loadRegionsForApp(node: HTMLDivElement): void {
 	createCandidateStore(node);
+	createTossupCandidateStore(node);
 	createDefaultModeStore(node);
 	createRegionStore(node);
 	setCursorStyle();
@@ -111,5 +133,6 @@ export function loadRegionsForApp(node: HTMLDivElement): void {
 
 export function loadRegionsForView(node: HTMLDivElement): void {
 	createCandidateStore(node);
+	createTossupCandidateStore(node);
 	createRegionStore(node);
 }
