@@ -16,10 +16,8 @@
 	import HorizontalBattleChart from '$lib/components/chartbar/battlechart/BattleChart.svelte';
 	import ChartBar from '$lib/components/chartbar/ChartBar.svelte';
 	import PresetColorsModal from '$lib/components/modals/presetcolorsmodal/PresetColorsModal.svelte';
-	import ChartTypeModal from '$lib/components/modals/charttypemodal/ChartTypeModal.svelte';
 	import AuthModal from '$lib/components/modals/authmodal/AuthModal.svelte';
 	import StyleModal from '$lib/components/modals/stylemodal/StyleModal.svelte';
-	import ShareModal from '$lib/components/modals/sharemodal/ShareModal.svelte';
 	import LoadingErrorModal from '$lib/components/modals/loadingerrormodal/LoadingErrorModal.svelte';
 	import SplitRegionModal from '$lib/components/modals/splitregionmodal/SplitRegionModal.svelte';
 	import EditTossupModal from '$lib/components/modals/edittossupmodal/EditTossupModal.svelte';
@@ -30,6 +28,7 @@
 	import { get } from 'svelte/store';
 	import ImportModal from '$lib/components/modals/importmodal/ImportModal.svelte';
 	import ShareDisabledModal from '$lib/components/modals/sharedisabledmodal/ShareDisabledModal.svelte';
+	import ChartOptionsModal from '$lib/components/modals/chartoptionsmodal/ChartOptionsModal.svelte';
 
 	const svg = get(ImportedSVGStore);
 	if (!svg.loaded) {
@@ -97,7 +96,7 @@
 
 				<div class="overflow-hidden w-full h-full">
 					<CandidateBoxContainer />
-					<div use:setupMap class="overflow-hidden h-full">
+					<div use:setupMap id="map-div" class="overflow-hidden h-full">
 						{@html $ImportedSVGStore.content}
 					</div>
 				</div>
@@ -123,13 +122,11 @@
 
 <MapModal />
 
-<ChartTypeModal />
+<ChartOptionsModal />
 
 <ModeModal />
 
 <StyleModal />
-
-<ShareModal />
 
 <AuthModal />
 

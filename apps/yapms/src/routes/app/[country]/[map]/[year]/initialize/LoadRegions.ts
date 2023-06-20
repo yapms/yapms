@@ -86,7 +86,7 @@ function createRegionStore(node: HTMLDivElement) {
 						//See predetermined_regions_example.svg for an example of how to implement candidate-id and candidate-margin attributes.
 						{
 							candidate: get(CandidatesStore).filter(
-								(candidate) => candidate.id == childHTML.getAttribute('candidate-id')
+								(candidate) => candidate.id === childHTML.getAttribute('candidate-id')
 							)[0],
 							count: value,
 							margin: childHTML.hasAttribute('candidate-margin')

@@ -10,15 +10,19 @@ import { RegionsStore } from '$lib/stores/regions/Regions';
 import { saveAs } from 'file-saver';
 
 async function importFromShapefiles(files: FileList): Promise<void> {
-	let districtShapes = await shapefile.read(files[0].stream());
+	const districtShapes = await shapefile.read(files[0].stream());
 	districtShapes.features = [];
 
+	const unresolvedFeatures = [];
 	for (const file of files) {
-		districtShapes.features = districtShapes.features.concat(
-			(await shapefile.read(file.stream())).features
-		);
+		unresolvedFeatures.push(shapefile.read(file.stream()));
 	}
-	console.log(districtShapes);
+
+	const resolvedFeatures = await Promise.all(unresolvedFeatures);
+
+	for (const collection of resolvedFeatures) {
+		districtShapes.features = districtShapes.features.concat(collection.features);
+	}
 	geoJsonToSVG(districtShapes);
 }
 
@@ -26,17 +30,20 @@ async function importFromGeoJson(files: FileList): Promise<void> {
 	const districtShapes = JSON.parse(await files[0].text());
 	districtShapes.features = [];
 
+	const unresolvedTexts = [];
 	for (const file of files) {
-		districtShapes.features = districtShapes.features.concat(
-			JSON.parse(await file.text()).features
-		);
+		unresolvedTexts.push(file.text());
+	}
+	const resolvedTexts = await Promise.all(unresolvedTexts);
+
+	for (const text of resolvedTexts) {
+		districtShapes.features = districtShapes.features.concat(JSON.parse(text).features);
 	}
 
 	geoJsonToSVG(districtShapes);
 }
 
 function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
-	console.log(districtShapes);
 	const width = 1000,
 		height = 1000;
 
@@ -58,7 +65,7 @@ function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
 			)}"/>`
 	);
 
-	const output = `<svg id="importedSVG" width="${width}" height="${height}">
+	const output = `<svg id="importedSVG" width="${width}" height="${height}" auto-border-stroke-width="1" auto-border-stroke-width-limit=".1">
     <g class="regions">
     ${paths.join('\n')}
     </g>
@@ -66,12 +73,12 @@ function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
 	ImportedSVGStore.set({ loaded: true, content: output });
 }
 
-function newImportedMap() {
+function newImportedMap(): void {
 	ImportedSVGStore.set({ loaded: false, content: '' });
 	ImportModalStore.set({ open: true });
 }
 
-function exportImportAsSVG() {
+function exportImportAsSVG(): void {
 	const svg = document.getElementById('importedSVG');
 	if (svg) {
 		const regions = get(RegionsStore);
@@ -79,8 +86,8 @@ function exportImportAsSVG() {
 		svg.setAttribute('tossup-candidate', JSON.stringify(get(TossupCandidateStore)));
 		for (const region of regions) {
 			if (region.candidates[0].candidate.id !== '') {
+				//If not Tossup
 				region.nodes.region.setAttribute('candidate-id', region.candidates[0].candidate.id);
-				console.log(region.candidates[0]);
 				if (region.candidates[0].margin !== undefined) {
 					region.nodes.region.setAttribute(
 						'candidate-margin',

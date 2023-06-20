@@ -5,6 +5,7 @@
 	import { ImportedSVGStore } from '$lib/stores/ImportedSVG';
 	import ExclamationCircle from '$lib/icons/ExclamationCircle.svelte';
 	import ModalBase from '../ModalBase.svelte';
+	import DocumentDuplicate from '$lib/icons/DocumentDuplicate.svelte';
 
 	let geoJsonFiles: FileList;
 	let shapeFiles: FileList;
@@ -12,6 +13,9 @@
 
 	let loadError = false;
 	let loading = false;
+
+	const multipleFilesTooltip =
+		'Select multiple files to upload and they will be automatically merged.';
 
 	async function loadGeoJson() {
 		loading = true;
@@ -58,18 +62,27 @@
 	<div slot="content">
 		<div class="flex flex-col gap-y-2">
 			<div class="alert alert-warning justify-start">
-				<span><ExclamationCircle class="w-6 h-6" />Only import files from people you trust!</span>
+				<span class="flex gap-x-2"
+					><ExclamationCircle class="w-6 h-6" />Only import files from people you trust!</span
+				>
 			</div>
 			<div class="alert alert-error justify-start" class:hidden={!loadError}>
-				<ExclamationCircle class="w-6 h-6" />
-				<span>There was an error loading your map, please try again.</span>
+				<span class="flex gap-x-2"
+					><ExclamationCircle class="w-6 h-6" />There was an error loading your map, please try
+					again.</span
+				>
 			</div>
 			<div class="alert alert-info justify-start" class:hidden={!loading}>
-				<span><ArrowUpTray class="w-6 h-6" />Loading Map...</span>
+				<span class="flex gap-x-2"><ArrowUpTray class="w-6 h-6" />Loading Map...</span>
 			</div>
 			<div class="flex flex-col gap-y-2">
 				<div class="flex flex-col gap-2">
-					<h3 class="font-light text-lg">Open from GeoJson</h3>
+					<div class="flex gap-x-1">
+						<h3 class="font-light text-lg">Open from GeoJson</h3>
+						<div class="tooltip" data-tip={multipleFilesTooltip}>
+							<DocumentDuplicate class="w-6" />
+						</div>
+					</div>
 					<div class="flex flex-row gap-x-2">
 						<input
 							multiple
@@ -92,7 +105,12 @@
 				<div class="divider divider-vertical mt-1 -mb-1" />
 
 				<div class="flex flex-col gap-2">
-					<h3 class="font-light text-lg">Open from Shapefiles</h3>
+					<div class="flex gap-x-1">
+						<h3 class="font-light text-lg">Open from Shapefiles</h3>
+						<div class="tooltip" data-tip={multipleFilesTooltip}>
+							<DocumentDuplicate class="w-6" />
+						</div>
+					</div>
 					<div class="flex flex-row gap-x-2">
 						<input
 							multiple
