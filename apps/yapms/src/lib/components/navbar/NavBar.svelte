@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { newImportedMap } from '$lib/utils/importMap';
-	const importPage = $page.url.pathname == '/app/imported';
+	const importPage = $page.url.pathname === '/app/imported';
 	import {
 		ClearMapModalStore,
 		MapModalStore,

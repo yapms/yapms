@@ -3,7 +3,6 @@
 	import ExclamationCircle from '$lib/icons/ExclamationCircle.svelte';
 	import ModalBase from '../ModalBase.svelte';
 	import { exportImportAsSVG } from '$lib/utils/importMap';
-	import ArrowDownTray from '$lib/icons/ArrowDownTray.svelte';
 
 	function close() {
 		ShareDisabledModalStore.set({
