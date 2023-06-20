@@ -76,17 +76,21 @@ function exportImportAsSVG() {
 	if (svg) {
 		const regions = get(RegionsStore);
 		svg.setAttribute('candidates', JSON.stringify(get(CandidatesStore)));
-		svg.setAttribute('tossup-candidate',JSON.stringify(get(TossupCandidateStore)));
+		svg.setAttribute('tossup-candidate', JSON.stringify(get(TossupCandidateStore)));
 		for (const region of regions) {
-			if (region.candidates[0].candidate.id !== "") {
+			if (region.candidates[0].candidate.id !== '') {
 				region.nodes.region.setAttribute('candidate-id', region.candidates[0].candidate.id);
-				console.log(region.candidates[0])
+				console.log(region.candidates[0]);
 				if (region.candidates[0].margin !== undefined) {
-					region.nodes.region.setAttribute('candidate-margin', region.candidates[0].margin.toString());
+					region.nodes.region.setAttribute(
+						'candidate-margin',
+						region.candidates[0].margin.toString()
+					);
 				}
-			} else { //Remove attributes if imported map had them
-				region.nodes.region.removeAttribute("candidate-id");
-				region.nodes.region.removeAttribute("candidate-margin");
+			} else {
+				//Remove attributes if imported map had them
+				region.nodes.region.removeAttribute('candidate-id');
+				region.nodes.region.removeAttribute('candidate-margin');
 			}
 		}
 		saveAs(new Blob([svg.outerHTML], { type: 'text/svg' }), 'YapmsMap.svg');

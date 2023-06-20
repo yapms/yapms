@@ -9,7 +9,7 @@ export const TossupCandidateStoreDefault: Candidate = {
 	name: 'Tossup',
 	defaultCount: 0,
 	margins: [{ color: '#cccccc' }]
-}
+};
 
 export const TossupCandidateStore = writable<Candidate>(TossupCandidateStoreDefault);
 
@@ -36,7 +36,7 @@ export const CandidatesStoreDefault: Candidate[] = [
 			{ color: '#CF8980' }
 		]
 	}
-]
+];
 
 export const CandidatesStore = writable<Candidate[]>(CandidatesStoreDefault);
 
