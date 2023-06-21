@@ -13,8 +13,9 @@
 	import { InteractionStore } from '$lib/stores/Interaction';
 	import { ChartPositionStore, ChartTypeStore } from '$lib/stores/Chart';
 	import { CandidatesStore } from '$lib/stores/Candidates';
+	import { LogoStore } from '$lib/stores/Logo';
 	import AddCandidateModal from '$lib/components/modals/addcandidatemodal/AddCandidateModal.svelte';
-	import HorizontalBattleChart from '$lib/components/chartbar/battlechart/BattleChart.svelte';
+	import BattleChart from '$lib/components/chartbar/battlechart/BattleChart.svelte';
 	import ChartBar from '$lib/components/chartbar/ChartBar.svelte';
 	import PresetColorsModal from '$lib/components/modals/presetcolorsmodal/PresetColorsModal.svelte';
 	import ChartOptionsModal from '$lib/components/modals/chartoptionsmodal/ChartOptionsModal.svelte';
@@ -63,6 +64,21 @@
 		loadFromJson($LoadedMapStore);
 	}
 
+	let logoSize: { width: string | undefined; height: string | undefined } = {
+		width: '100%',
+		height: '100%'
+	};
+
+	$: if ($ChartPositionStore === 'bottom' && $ChartTypeStore !== 'battle') {
+		logoSize = { width: 'auto', height: '50%' };
+	} else if ($ChartPositionStore === 'bottom' && $ChartTypeStore === 'battle') {
+		logoSize = { width: 'auto', height: '100%' };
+	} else if ($ChartPositionStore === 'left' && $ChartTypeStore !== 'battle') {
+		logoSize = { width: '50%', height: 'auto' };
+	} else if ($ChartPositionStore === 'left' && $ChartTypeStore === 'battle') {
+		logoSize = { width: '100%', height: 'auto' };
+	}
+
 	onMount(() => {
 		themeChange(false);
 	});
@@ -103,15 +119,28 @@
 			class:flex-row={$ChartPositionStore === 'left'}
 		>
 			<div
-				class="flex justify-center items-center ml-3 mr-3 mt-3 mb-3"
+				class="flex justify-center items-center m-3 gap-4 overflow-hidden"
 				class:hidden={$ChartTypeStore === 'none'}
+				class:flex-row={$ChartPositionStore === 'bottom'}
+				class:flex-col={$ChartPositionStore === 'left'}
+				class:w-32={$ChartPositionStore === 'left' && $ChartTypeStore === 'battle'}
+				class:h-32={$ChartPositionStore === 'bottom' && $ChartTypeStore === 'battle'}
+				class:w-96={$ChartPositionStore === 'left' && $ChartTypeStore !== 'battle'}
+				class:h-80={$ChartPositionStore === 'bottom' && $ChartTypeStore !== 'battle'}
 			>
 				{#if $ChartTypeStore === 'battle' && $CandidatesStore.length <= 2}
-					<HorizontalBattleChart />
-				{:else if $ChartTypeStore === 'pie'}
-					<ChartBar />
+					<BattleChart />
 				{:else}
 					<ChartBar />
+				{/if}
+				{#if $LogoStore !== null}
+					<img
+						class="aspect-square"
+						style:width={logoSize.width}
+						style:height={logoSize.height}
+						alt=""
+						src={$LogoStore}
+					/>
 				{/if}
 			</div>
 
