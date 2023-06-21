@@ -70,13 +70,13 @@
 	};
 
 	$: if ($ChartPositionStore === 'bottom' && $ChartTypeStore !== 'battle') {
-		logoSize = { width: undefined, height: '50%' };
+		logoSize = { width: 'auto', height: '50%' };
 	} else if ($ChartPositionStore === 'bottom' && $ChartTypeStore === 'battle') {
-		logoSize = { width: undefined, height: '100%' };
+		logoSize = { width: 'auto', height: '100%' };
 	} else if ($ChartPositionStore === 'left' && $ChartTypeStore !== 'battle') {
-		logoSize = { width: '50%', height: undefined };
+		logoSize = { width: '50%', height: 'auto' };
 	} else if ($ChartPositionStore === 'left' && $ChartTypeStore === 'battle') {
-		logoSize = { width: '100%', height: undefined };
+		logoSize = { width: '100%', height: 'auto' };
 	}
 
 	onMount(() => {
