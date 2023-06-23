@@ -10,7 +10,7 @@
 </script>
 
 <div class="pt-6">
-	<div class="px-6 md:px-0 w-full lg:w-4/6 flex">
+	<div class="px-6 md:px-0 w-full lg:w-4/6 flex b">
 		<MagnifyingGlass class={`pointer-events-none stroke-current my-3 pt-1 w-9 z-10 ml-2`} />
 		<Typeahead
 			placeholder={'Search Maps'}

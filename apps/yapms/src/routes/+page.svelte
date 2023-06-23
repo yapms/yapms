@@ -81,6 +81,7 @@
 							bg={card.bg}
 							alt={card.alt}
 							doubleCols={card.doubleCols}
+							attribution={card.attribution}
 							links={card.links}
 						/>
 					{/each}
