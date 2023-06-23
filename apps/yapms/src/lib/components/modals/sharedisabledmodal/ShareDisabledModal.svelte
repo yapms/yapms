@@ -17,12 +17,8 @@
 	<div slot="content">
 		<div class="flex flex-col gap-y-2">
 			<p>
-				Due to <a
-					class="link link-primary"
-					href="https://rietta.com/blog/svg-xss-injection-attacks/">security concerns</a
-				> pertaining to storing and serving user generated SVG, sharing imported maps via link is not
-				supported. You can, however, export this map as a YAPms formatted SVG, which can be opened by
-				others. Only open or import files from people you trust!
+				Due to storage space requirements, sharing imported maps via link is not supported. Instead,
+				you can export this map as a YAPms formatted SVG to share with others.
 			</p>
 		</div>
 	</div>

@@ -90,9 +90,7 @@
 	class="navbar flex-row bg-base-200 gap-3 overflow-x-scroll overflow-y-clip lg:overflow-x-clip min-h-0"
 >
 	<a href="/" class="btn btn-sm">home</a>
-	{#if importPage}
-		<button class="btn btn-sm" on:click={newImportedMap}>new map</button>
-	{/if}
+	<button class="btn btn-sm" on:click={newImportedMap}>Import Map</button>
 	<button class="btn btn-sm" on:click={openClearMapModal}>clear</button>
 	<button class="btn btn-sm" on:click={openMapModal}>maps</button>
 	<button class="btn btn-sm" on:click={openAddCandidateModal}>add candidate</button>

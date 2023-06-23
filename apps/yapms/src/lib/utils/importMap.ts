@@ -8,6 +8,29 @@ import { get } from 'svelte/store';
 import { CandidatesStore, TossupCandidateStore } from '$lib/stores/Candidates';
 import { RegionsStore } from '$lib/stores/regions/Regions';
 import { saveAs } from 'file-saver';
+import DOMPurify from 'dompurify';
+
+//This config allows all attributes used by the app to pass through DOMPurify without change.
+//If you are adding an attribute imported maps might need, add it here.
+export const DOMPurifyConfig = {
+	ADD_ATTR: [
+		'region',
+		'short-name',
+		'long-name',
+		'value',
+		'locked',
+		'permalocked',
+		'disabled',
+		'candidate-id',
+		'candidate-margin',
+		'for',
+		'candidates',
+		'tossup-candidate',
+		'default-mode',
+		'auto-border-stroke-width',
+		'auto-border-stroke-width-limit'
+	]
+};
 
 async function importFromShapefiles(files: FileList): Promise<void> {
 	const districtShapes = await shapefile.read(files[0].stream());
@@ -47,7 +70,7 @@ function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
 	const width = 1000,
 		height = 1000;
 
-	districtShapes.features = districtShapes.features.filter((feature) => feature.geometry != null);
+	districtShapes.features = districtShapes.features.filter((feature) => feature.geometry !== null);
 
 	districtShapes.features = districtShapes.features.map(
 		(feature: GeoJSON.Feature) =>
@@ -70,11 +93,10 @@ function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
     ${paths.join('\n')}
     </g>
     </svg>`;
-	ImportedSVGStore.set({ loaded: true, content: output });
+	ImportedSVGStore.set({ loaded: true, content: DOMPurify.sanitize(output, DOMPurifyConfig) });
 }
 
 function newImportedMap(): void {
-	ImportedSVGStore.set({ loaded: false, content: '' });
 	ImportModalStore.set({ open: true });
 }
 
@@ -100,7 +122,10 @@ function exportImportAsSVG(): void {
 				region.nodes.region.removeAttribute('candidate-margin');
 			}
 		}
-		saveAs(new Blob([svg.outerHTML], { type: 'text/svg' }), 'YapmsMap.svg');
+		saveAs(
+			new Blob([DOMPurify.sanitize(svg.outerHTML, DOMPurifyConfig)], { type: 'text/svg' }),
+			'YapmsMap.svg'
+		);
 	}
 }
 

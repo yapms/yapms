@@ -67,6 +67,7 @@ importers:
       '@turf/helpers': ^6.5.0
       '@turf/rewind': ^6.5.0
       '@types/d3': ^7.4.0
+      '@types/dompurify': ^3.0.2
       '@types/file-saver': ^2.0.5
       '@types/shapefile': ^0.6.1
       '@types/uuid': ^9.0.2
@@ -75,6 +76,7 @@ importers:
       chartjs-plugin-datalabels: ^2.2.0
       d3: ^7.8.5
       daisyui: ^3.1.1
+      dompurify: ^3.0.3
       eslint-config-yapms: workspace:*
       file-saver: ^2.0.5
       panzoom: ^9.4.3
@@ -103,6 +105,7 @@ importers:
       '@turf/helpers': 6.5.0
       '@turf/rewind': 6.5.0
       '@types/d3': 7.4.0
+      '@types/dompurify': 3.0.2
       '@types/file-saver': 2.0.5
       '@types/shapefile': 0.6.1
       '@types/uuid': 9.0.2
@@ -111,6 +114,7 @@ importers:
       chartjs-plugin-datalabels: 2.2.0_chart.js@4.3.0
       d3: 7.8.5
       daisyui: 3.1.1_postcss@8.4.24
+      dompurify: 3.0.3
       eslint-config-yapms: link:../../packages/eslint-config-yapms
       file-saver: 2.0.5
       panzoom: 9.4.3
@@ -1320,6 +1324,12 @@ packages:
       '@types/d3-zoom': 3.0.3
     dev: true
 
+  /@types/dompurify/3.0.2:
+    resolution: {integrity: sha512-YBL4ziFebbbfQfH5mlC+QTJsvh0oJUrWbmxKMyEdL7emlHJqGR2Qb34TEFKj+VCayBvjKy3xczMFNhugThUsfQ==}
+    dependencies:
+      '@types/trusted-types': 2.0.3
+    dev: true
+
   /@types/estree/1.0.1:
     resolution: {integrity: sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==}
     dev: true
@@ -1367,6 +1377,10 @@ packages:
     dependencies:
       '@types/geojson': 7946.0.10
       '@types/node': 18.15.13
+    dev: true
+
+  /@types/trusted-types/2.0.3:
+    resolution: {integrity: sha512-NfQ4gyz38SL8sDNrSixxU2Os1a5xcdFxipAFxYEuLUlvU2uDwS4NUpsImcf1//SlWItCVMMLiylsxbmNMToV/g==}
     dev: true
 
   /@types/uuid/9.0.2:
@@ -2268,6 +2282,10 @@ packages:
     dependencies:
       esutils: 2.0.3
     dev: false
+
+  /dompurify/3.0.3:
+    resolution: {integrity: sha512-axQ9zieHLnAnHh0sfAamKYiqXMJAVwu+LM/alQ7WDagoWessyWvMSFyW65CqF3owufNu8HBcE4cM2Vflu7YWcQ==}
+    dev: true
 
   /dotenv-cli/7.1.0:
     resolution: {integrity: sha512-motytjZFQB3ZtGTIN4c0vnFgv4kuNZ2WxVnGY6PVFiygCzkm3IFBBguDUzezd9HgNA0OYYd6vNCWlozs0Q1Zxg==}

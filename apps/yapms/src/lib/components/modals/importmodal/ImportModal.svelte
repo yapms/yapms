@@ -1,11 +1,14 @@
 <script lang="ts">
 	import ArrowUpTray from '$lib/icons/ArrowUpTray.svelte';
 	import { ImportModalStore } from '$lib/stores/Modals';
-	import { importFromGeoJson, importFromShapefiles } from '$lib/utils/importMap';
+	import { DOMPurifyConfig, importFromGeoJson, importFromShapefiles } from '$lib/utils/importMap';
 	import { ImportedSVGStore } from '$lib/stores/ImportedSVG';
 	import ExclamationCircle from '$lib/icons/ExclamationCircle.svelte';
 	import ModalBase from '../ModalBase.svelte';
 	import DocumentDuplicate from '$lib/icons/DocumentDuplicate.svelte';
+	import DOMPurify from 'dompurify';
+	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 
 	let geoJsonFiles: FileList;
 	let shapeFiles: FileList;
@@ -20,8 +23,12 @@
 	async function loadGeoJson() {
 		loading = true;
 		try {
+			ImportedSVGStore.set({ loaded: false, content: '' });
 			await importFromGeoJson(geoJsonFiles);
 			close();
+			if ($page.url.pathname !== '/app/imported') {
+				await goto('/app/imported');
+			}
 		} catch (error) {
 			console.error(error);
 			loadError = true;
@@ -32,8 +39,12 @@
 	async function loadShapeFiles() {
 		loading = true;
 		try {
+			ImportedSVGStore.set({ loaded: false, content: '' });
 			await importFromShapefiles(shapeFiles);
 			close();
+			if ($page.url.pathname !== '/app/imported') {
+				await goto('/app/imported');
+			}
 		} catch (error) {
 			console.error(error);
 			loadError = true;
@@ -44,8 +55,15 @@
 	async function loadSVG() {
 		loading = true;
 		try {
-			ImportedSVGStore.set({ loaded: true, content: await svgFiles[0].text() });
+			ImportedSVGStore.set({ loaded: false, content: '' });
+			ImportedSVGStore.set({
+				loaded: true,
+				content: DOMPurify.sanitize(await svgFiles[0].text(), DOMPurifyConfig)
+			});
 			close();
+			if ($page.url.pathname !== '/app/imported') {
+				await goto('/app/imported');
+			}
 		} catch (error) {
 			console.error(error);
 			loadError = true;
@@ -162,6 +180,16 @@
 		</div>
 	</div>
 	<div slot="action">
-		<a href="/" class="btn btn-primary"> Home </a>
+		<a
+			href="/"
+			on:click={close}
+			class:hidden={$page.url.pathname !== '/app/imported' || $ImportedSVGStore.loaded}
+			class="btn btn-primary">Home</a
+		>
+		<button
+			on:click={close}
+			class="btn btn-primary"
+			disabled={$page.url.pathname === '/app/imported' && !$ImportedSVGStore.loaded}>Close</button
+		>
 	</div>
 </ModalBase>
