@@ -79,6 +79,7 @@ importers:
       d3: ^7.8.5
       daisyui: ^3.1.1
       dompurify: ^3.0.3
+      eslint-config-prettier: ^8.8.0
       eslint-config-yapms: workspace:*
       eslint-plugin-svelte: ^2.31.0
       file-saver: ^2.0.5
@@ -121,6 +122,7 @@ importers:
       d3: 7.8.5
       daisyui: 3.1.1_postcss@8.4.24
       dompurify: 3.0.3
+      eslint-config-prettier: 8.8.0
       eslint-config-yapms: link:../../packages/eslint-config-yapms
       eslint-plugin-svelte: 2.31.0_svelte@3.59.1
       file-saver: 2.0.5
@@ -2546,6 +2548,13 @@ packages:
   /escape-string-regexp/4.0.0:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
+
+  /eslint-config-prettier/8.8.0:
+    resolution: {integrity: sha512-wLbQiFre3tdGgpDv67NQKnJuTlcUVYHas3k+DZCc2U2BadthoEY4B7hLPvAxaqdyOGCzuLfii2fqGph10va7oA==}
+    hasBin: true
+    peerDependencies:
+      eslint: '>=7.0.0'
+    dev: true
 
   /eslint-config-prettier/8.8.0_eslint@8.42.0:
     resolution: {integrity: sha512-wLbQiFre3tdGgpDv67NQKnJuTlcUVYHas3k+DZCc2U2BadthoEY4B7hLPvAxaqdyOGCzuLfii2fqGph10va7oA==}

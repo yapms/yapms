@@ -1,6 +1,15 @@
 {
 	"root": true,
-	"extends": ["plugin:svelte/recommended", "plugin:svelte/prettier"],
+	"env": {
+		"browser": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:svelte/recommended",
+		"plugin:svelte/prettier",
+		"prettier"
+	],
 	"rules": {
 		"svelte/no-at-html-tags": "off"
 	},

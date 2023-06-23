@@ -3,6 +3,7 @@ import { RegionsStore } from '$lib/stores/regions/Regions';
 import { CandidateSchema } from '$lib/types/Candidate';
 import { SavedRegionSchema } from '$lib/types/Region';
 import { get } from 'svelte/store';
+import { z } from 'zod';
 
 /**
  * @param files
@@ -34,11 +35,17 @@ function loadFromFile(files: FileList): void {
  *
  * @returns void
  */
-function loadFromJson(mapData: any): void {
-	// parse data from file
-	const tossupData = CandidateSchema.parse(mapData.tossup);
-	const candidatesData = CandidateSchema.array().parse(mapData.candidates);
-	const regionsData = SavedRegionSchema.array().parse(mapData.regions);
+function loadFromJson(mapData: unknown): void {
+	const parser = z.object({
+		tossup: CandidateSchema,
+		candidates: CandidateSchema.array(),
+		regions: SavedRegionSchema.array()
+	});
+	const parsedMapData = parser.parse(mapData);
+
+	const tossupData = parsedMapData.tossup;
+	const candidatesData = parsedMapData.candidates;
+	const regionsData = parsedMapData.regions;
 
 	const regionsStoreCurrent = get(RegionsStore);
 
