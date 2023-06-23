@@ -1,6 +1,9 @@
 {
 	"root": true,
 	"extends": ["plugin:svelte/recommended", "plugin:svelte/prettier"],
+	"rules": {
+		"svelte/no-at-html-tags": "off"
+	},
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
 		"project": "./tsconfig.json",
