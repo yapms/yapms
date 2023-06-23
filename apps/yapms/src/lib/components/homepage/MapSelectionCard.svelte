@@ -20,7 +20,7 @@
 
 <div class="card card-bordered w-80 md:w-92 h-48 lg:h-52 bg-base-100 shadow-xl image-full">
 	<figure><img src={`./countrybackgrounds/${bg}.webp`} {alt} /></figure>
-	<div class="card-body items-center text-center w-full">
+	<div class="card-body items-center text-center">
 		<h2 class="card-title text-white">{name}</h2>
 		<div class="grid gap-4" class:grid-cols-2={doubleCols}>
 			{#each links as link}
@@ -35,7 +35,6 @@
 		</div>
 		<div
 			class="tooltip tooltip-left absolute top-0 right-0 w-6 m-2 before:w-64 before:max-w-max"
-			style="::before:max-width:12rem;"
 			data-tip={attribution}
 		>
 			<InformationCircle />
