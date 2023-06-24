@@ -4,14 +4,16 @@ import { get, writable } from 'svelte/store';
 import { z } from 'zod';
 import { v4 as uuidv4 } from 'uuid';
 
-export const TossupCandidateStore = writable<Candidate>({
+export const TossupCandidateStoreDefault: Candidate = {
 	id: '',
 	name: 'Tossup',
 	defaultCount: 0,
 	margins: [{ color: '#cccccc' }]
-});
+};
 
-export const CandidatesStore = writable<Candidate[]>([
+export const TossupCandidateStore = writable<Candidate>(TossupCandidateStoreDefault);
+
+export const CandidatesStoreDefault: Candidate[] = [
 	{
 		id: uuidv4(),
 		name: 'Democrat',
@@ -34,7 +36,9 @@ export const CandidatesStore = writable<Candidate[]>([
 			{ color: '#CF8980' }
 		]
 	}
-]);
+];
+
+export const CandidatesStore = writable<Candidate[]>(CandidatesStoreDefault);
 
 export function isTossupCandidate(candidateID: string): boolean {
 	return candidateID === get(TossupCandidateStore).id;

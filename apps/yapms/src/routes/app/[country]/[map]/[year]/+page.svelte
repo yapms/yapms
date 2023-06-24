@@ -29,6 +29,7 @@
 	import SplitRegionModal from '$lib/components/modals/splitregionmodal/SplitRegionModal.svelte';
 	import EditTossupModal from '$lib/components/modals/edittossupmodal/EditTossupModal.svelte';
 	import { loadRegionsForApp } from './initialize/LoadRegions';
+	import ImportModal from '$lib/components/modals/importmodal/ImportModal.svelte';
 
 	//Glob import all maps in the maps directory so that we can check if a map exists and then load it.
 	//Query section makes sure the SVG contents are imported raw.
@@ -198,3 +199,5 @@
 <AuthModal />
 
 <LoadingErrorModal />
+
+<ImportModal />
