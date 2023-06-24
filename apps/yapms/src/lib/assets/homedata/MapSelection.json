@@ -27,7 +27,7 @@
 					{
 						"label": "More",
 						"modal": true,
-						"route": "usa/"
+						"route": "usa"
 					}
 				]
 			}
@@ -61,7 +61,7 @@
 					{
 						"label": "More",
 						"modal": true,
-						"route": "usahistorical/house/"
+						"route": "usa"
 					}
 				]
 			}
