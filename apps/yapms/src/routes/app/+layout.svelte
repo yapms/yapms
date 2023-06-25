@@ -10,7 +10,7 @@
 	import { LoadingErrorModalStore } from '$lib/stores/Modals';
 	import { PUBLIC_POCKETBASE_URI } from '$env/static/public';
 
-	async function loadMap(collection: 'maps' | 'account_maps', key: string, value: string) {
+	async function loadMap(collection: 'maps' | 'user_maps', key: string, value: string) {
 		const data = await fetch(
 			`${PUBLIC_POCKETBASE_URI}/api/files/${collection}/${value}/data.json.gz`
 		);
@@ -40,9 +40,9 @@
 		if (url.searchParams.has('m')) {
 			const map = encodeURIComponent(url.searchParams.get('m') ?? '');
 			await loadMap('maps', 'm', map);
-		} else if (url.searchParams.has('am')) {
-			const map = encodeURIComponent(url.searchParams.get('am') ?? '');
-			await loadMap('account_maps', 'am', map);
+		} else if (url.searchParams.has('um')) {
+			const map = encodeURIComponent(url.searchParams.get('um') ?? '');
+			await loadMap('user_maps', 'um', map);
 		} else {
 			await goto('/app/usa/presidential/2022');
 		}

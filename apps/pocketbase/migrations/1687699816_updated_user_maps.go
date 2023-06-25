@@ -11,23 +11,35 @@ func init() {
 	m.Register(func(db dbx.Builder) error {
 		dao := daos.New(db);
 
-		collection, err := dao.FindCollectionByNameOrId("t97j5i9c5cv8q2a")
+		collection, err := dao.FindCollectionByNameOrId("et0wg1x7mdn55wc")
 		if err != nil {
 			return err
 		}
 
-		collection.ListRule = types.Pointer("user.id = @request.auth.id")
+		collection.ViewRule = types.Pointer("")
+
+		collection.CreateRule = types.Pointer("")
+
+		collection.UpdateRule = types.Pointer("")
+
+		collection.DeleteRule = types.Pointer("")
 
 		return dao.SaveCollection(collection)
 	}, func(db dbx.Builder) error {
 		dao := daos.New(db);
 
-		collection, err := dao.FindCollectionByNameOrId("t97j5i9c5cv8q2a")
+		collection, err := dao.FindCollectionByNameOrId("et0wg1x7mdn55wc")
 		if err != nil {
 			return err
 		}
 
-		collection.ListRule = nil
+		collection.ViewRule = nil
+
+		collection.CreateRule = nil
+
+		collection.UpdateRule = nil
+
+		collection.DeleteRule = nil
 
 		return dao.SaveCollection(collection)
 	})

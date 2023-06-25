@@ -13,57 +13,62 @@ func init() {
 	m.Register(func(db dbx.Builder) error {
 		dao := daos.New(db);
 
-		collection, err := dao.FindCollectionByNameOrId("tgcm0cd7l7jj0ze")
+		collection, err := dao.FindCollectionByNameOrId("et0wg1x7mdn55wc")
 		if err != nil {
 			return err
 		}
 
 		// update
-		edit_owner := &schema.SchemaField{}
+		edit_data := &schema.SchemaField{}
 		json.Unmarshal([]byte(`{
 			"system": false,
-			"id": "omovlllo",
-			"name": "owner",
-			"type": "relation",
-			"required": false,
+			"id": "c4cbfhux",
+			"name": "data",
+			"type": "file",
+			"required": true,
 			"unique": false,
 			"options": {
-				"collectionId": "_pb_users_auth_",
-				"cascadeDelete": false,
-				"minSelect": null,
 				"maxSelect": 1,
-				"displayFields": []
+				"maxSize": 250000,
+				"mimeTypes": [
+					"application/gzip",
+					"application/json"
+				],
+				"thumbs": [],
+				"protected": false
 			}
-		}`), edit_owner)
-		collection.Schema.AddField(edit_owner)
+		}`), edit_data)
+		collection.Schema.AddField(edit_data)
 
 		return dao.SaveCollection(collection)
 	}, func(db dbx.Builder) error {
 		dao := daos.New(db);
 
-		collection, err := dao.FindCollectionByNameOrId("tgcm0cd7l7jj0ze")
+		collection, err := dao.FindCollectionByNameOrId("et0wg1x7mdn55wc")
 		if err != nil {
 			return err
 		}
 
 		// update
-		edit_owner := &schema.SchemaField{}
+		edit_data := &schema.SchemaField{}
 		json.Unmarshal([]byte(`{
 			"system": false,
-			"id": "omovlllo",
-			"name": "field",
-			"type": "relation",
-			"required": false,
+			"id": "c4cbfhux",
+			"name": "data",
+			"type": "file",
+			"required": true,
 			"unique": false,
 			"options": {
-				"collectionId": "_pb_users_auth_",
-				"cascadeDelete": false,
-				"minSelect": null,
 				"maxSelect": 1,
-				"displayFields": []
+				"maxSize": 250000,
+				"mimeTypes": [
+					"application/gzip"
+				],
+				"thumbs": [],
+				"protected": false
 			}
-		}`), edit_owner)
-		collection.Schema.AddField(edit_owner)
+		}`), edit_data)
+		collection.Schema.AddField(edit_data)
 
 		return dao.SaveCollection(collection)
 	})

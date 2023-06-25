@@ -10,7 +10,7 @@
 	let maps: Array<Record<any, any>> = [];
 
 	async function getMaps() {
-		return $PocketBaseStore.collection('account_maps').getFullList();
+		return $PocketBaseStore.collection('user_maps').getFullList();
 	}
 
 	async function createMap() {
@@ -21,18 +21,18 @@
 		form.append('data', newMapData);
 		form.append('name', newMapName);
 		form.append('user', $PocketBaseStore.authStore.model?.id || '');
-		await $PocketBaseStore.collection('account_maps').create(form);
+		await $PocketBaseStore.collection('user_maps').create(form);
 		maps = await getMaps();
 		newMapName = '';
 	}
 
 	async function deleteMap(id: string) {
-		await $PocketBaseStore.collection('account_maps').delete(id);
+		await $PocketBaseStore.collection('user_maps').delete(id);
 		maps = await getMaps();
 	}
 
 	async function openMap(id: string) {
-		await goto(`/app?am=${id}`, { replaceState: true });
+		await goto(`/app?um=${id}`, { replaceState: true });
 	}
 
 	onMount(async () => {
