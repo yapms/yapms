@@ -31,7 +31,7 @@ func main() {
 	})
 
 	app.OnRecordBeforeCreateRequest().Add(func(e *core.RecordCreateEvent) error {
-		if e.Record.Collection().Name == "maps" {
+		if e.Record.Collection().Name == "maps" || e.Record.Collection().Name == "named_maps" {
 			support.CompressMapData(e)
 		}
 		return nil
