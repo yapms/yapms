@@ -1,4 +1,5 @@
 <script lang="ts">
+	import InformationCircle from '$lib/icons/InformationCircle.svelte';
 	import { MoreMapsModalStore } from '$lib/stores/HomeModals';
 	import type HomeLinkData from '$lib/types/HomeLinkData';
 
@@ -6,6 +7,7 @@
 	export let bg: string;
 	export let alt: string;
 	export let doubleCols: boolean;
+	export let attribution: string;
 	export let links: HomeLinkData[];
 
 	function openMoreModal(key: string) {
@@ -30,6 +32,12 @@
 					}}>{link.label}</a
 				>
 			{/each}
+		</div>
+		<div
+			class="tooltip tooltip-left absolute top-0 right-0 w-6 m-2 before:w-64 before:max-w-max"
+			data-tip={attribution}
+		>
+			<InformationCircle />
 		</div>
 	</div>
 </div>

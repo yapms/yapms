@@ -1,14 +1,12 @@
 <script lang="ts">
 	import { MoreMapsModalStore } from '$lib/stores/HomeModals';
 	import mapList from '$lib/assets/homedata/MapList.json';
-
 	function close() {
 		MoreMapsModalStore.set({
 			...$MoreMapsModalStore,
 			open: false
 		});
 	}
-
 	//When the key updates, get the map data corresponding to that new key as defined in MapList.json. If none exists, empty data.
 	$: maps = mapList.find((elem) => elem.key === $MoreMapsModalStore.key) || {
 		label: '',

@@ -7,6 +7,7 @@
 				"bg": "usa",
 				"alt": "U.S Capitol",
 				"doubleCols": true,
+				"attribution": "Photo by Andy Feliciotti",
 				"links": [
 					{
 						"label": "President",
@@ -22,6 +23,40 @@
 						"label": "House",
 						"modal": false,
 						"route": "/app/usa/house/2024"
+					},
+					{
+						"label": "More",
+						"modal": true,
+						"route": "usa"
+					}
+				]
+			}
+		]
+	},
+	{
+		"title": "Historical Maps",
+		"cards": [
+			{
+				"name": "U.S House",
+				"bg": "usahouse",
+				"alt": "U.S Capitol",
+				"doubleCols": true,
+				"attribution": "Photo by Lawrence Jackson",
+				"links": [
+					{
+						"label": "2022",
+						"modal": false,
+						"route": "/app/usa/house/2022"
+					},
+					{
+						"label": "2020",
+						"modal": false,
+						"route": "/app/usa/house/2020"
+					},
+					{
+						"label": "2018",
+						"modal": false,
+						"route": "/app/usa/house/2018"
 					},
 					{
 						"label": "More",
