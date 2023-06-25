@@ -80,7 +80,6 @@ importers:
       daisyui: ^3.1.1
       dompurify: ^3.0.3
       eslint-config-prettier: ^8.8.0
-      eslint-config-yapms: workspace:*
       eslint-plugin-svelte: ^2.31.0
       file-saver: ^2.0.5
       panzoom: ^9.4.3
@@ -123,7 +122,6 @@ importers:
       daisyui: 3.1.1_postcss@8.4.24
       dompurify: 3.0.3
       eslint-config-prettier: 8.8.0
-      eslint-config-yapms: link:../../packages/eslint-config-yapms
       eslint-plugin-svelte: 2.31.0_svelte@3.59.1
       file-saver: 2.0.5
       panzoom: 9.4.3
