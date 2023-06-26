@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import titles from '$lib/assets/other/Titles.json';
 	import { SideBarStore } from '$lib/stores/SideBar';
-	import SavedMaps from './sections/SavedMaps.svelte';
+	import SavedMaps from './sections/savedmaps/SavedMaps.svelte';
 	import SocialMedia from './sections/SocialMedia.svelte';
 
 	$: title = titles.find((elem) => elem.path === $page.url.pathname)?.title ?? 'YAPms';
