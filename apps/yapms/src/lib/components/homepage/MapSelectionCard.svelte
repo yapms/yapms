@@ -10,11 +10,13 @@
 	export let attribution: string;
 	export let links: HomeLinkData[];
 
-	function openMoreModal(key: string) {
+	function openMoreModal(keys: string[]) {
 		MoreMapsModalStore.set({
-			key,
+			keys,
+			title: name,
 			open: true
 		});
+		console.log(keys);
 	}
 </script>
 
@@ -28,7 +30,7 @@
 					href={link.modal ? '' : link.route}
 					class="btn btn-sm btn-primary w-full"
 					on:click={() => {
-						link.modal ? openMoreModal(link.route) : undefined;
+						link.modal && link.routes !== undefined ? openMoreModal(link.routes) : undefined;
 					}}>{link.label}</a
 				>
 			{/each}

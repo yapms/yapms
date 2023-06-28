@@ -27,7 +27,27 @@
 					{
 						"label": "More",
 						"modal": true,
-						"route": "usa"
+						"routes": [
+							"/app/usa/presidential/2022",
+							"/app/usa/senate/2024",
+							"/app/usa/house/2024",
+							"/app/usa/governors/2024",
+							"/app/usa/senate/current",
+							"/app/usa/house/current",
+							"/app/usa/governors/current",
+							"/app/usa/dem/primary",
+							"/app/usa/dem/primary",
+							"/app/usa/counties/blank",
+							"/app/usa/senate/blank",
+							"/app/usa/senate/class1",
+							"/app/usa/senate/class2",
+							"/app/usa/senate/class3",
+							"/app/usa/governors/blank",
+							"/app/usa/governors/2022",
+							"/app/usa/governors/2023",
+							"/app/usa/governors/2024",
+							"/app/usa/governors/2025"
+						]
 					}
 				]
 			}
@@ -61,7 +81,24 @@
 					{
 						"label": "More",
 						"modal": true,
-						"route": "usa"
+						"routes": [
+							"/app/usa/house/2022",
+							"/app/usa/house/2020",
+							"/app/usa/house/2018",
+							"/app/usa/house/2016",
+							"/app/usa/house/2014",
+							"/app/usa/house/2012",
+							"/app/usa/house/2010",
+							"/app/usa/house/2008",
+							"/app/usa/house/2006",
+							"/app/usa/house/2004",
+							"/app/usa/house/2002",
+							"/app/usa/house/2000",
+							"/app/usa/house/1998",
+							"/app/usa/house/1996",
+							"/app/usa/house/1994",
+							"/app/usa/house/1992"
+						]
 					}
 				]
 			}

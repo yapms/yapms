@@ -1,7 +1,8 @@
 type HomeLinkData = {
 	label: string;
 	modal: boolean;
-	route: string;
+	route?: string;
+	routes?: Array<string>;
 };
 
 export default HomeLinkData;
