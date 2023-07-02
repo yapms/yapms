@@ -83,6 +83,7 @@
 							doubleCols={card.doubleCols}
 							attribution={card.attribution}
 							links={card.links}
+							modals={card.modals}
 						/>
 					{/each}
 				</MapSelectionGrid>

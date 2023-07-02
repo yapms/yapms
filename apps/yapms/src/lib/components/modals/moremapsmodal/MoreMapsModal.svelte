@@ -9,10 +9,7 @@
 		});
 	}
 
-	$: maps = titles.filter((title) => $MoreMapsModalStore.keys.indexOf(title.path) !== -1) || {
-		path: '',
-		title: ''
-	};
+	$: maps = titles.filter((title) => $MoreMapsModalStore.keys.indexOf(title.path) !== -1);
 </script>
 
 <ModalBase title="{$MoreMapsModalStore.title} Maps" open={$MoreMapsModalStore.open}>

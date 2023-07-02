@@ -1,7 +1,7 @@
 <script lang="ts">
 	import InformationCircle from '$lib/icons/InformationCircle.svelte';
 	import { MoreMapsModalStore } from '$lib/stores/HomeModals';
-	import type HomeLinkData from '$lib/types/HomeLinkData';
+	import type { HomeLinkData, HomeModalData } from '$lib/types/HomeData';
 
 	export let name: string;
 	export let bg: string;
@@ -9,6 +9,7 @@
 	export let doubleCols: boolean;
 	export let attribution: string;
 	export let links: HomeLinkData[];
+	export let modals: HomeModalData[];
 
 	function openMoreModal(keys: string[]) {
 		MoreMapsModalStore.set({
@@ -16,7 +17,6 @@
 			title: name,
 			open: true
 		});
-		console.log(keys);
 	}
 </script>
 
@@ -26,13 +26,16 @@
 		<h2 class="card-title text-white">{name}</h2>
 		<div class="grid gap-4" class:grid-cols-2={doubleCols}>
 			{#each links as link}
-				<a
-					href={link.modal ? '' : link.route}
+				<a href={link.route} class="btn btn-sm btn-primary w-full">{link.label}</a>
+			{/each}
+			{#each modals as modal}
+				<button
 					class="btn btn-sm btn-primary w-full"
 					on:click={() => {
-						link.modal && link.routes !== undefined ? openMoreModal(link.routes) : undefined;
-					}}>{link.label}</a
-				>
+						openMoreModal(modal.routes);
+					}}
+					>{modal.label}
+				</button>
 			{/each}
 		</div>
 		<div

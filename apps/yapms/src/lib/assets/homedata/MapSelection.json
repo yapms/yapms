@@ -11,22 +11,20 @@
 				"links": [
 					{
 						"label": "President",
-						"modal": false,
 						"route": "/app/usa/presidential/2022"
 					},
 					{
 						"label": "Senate",
-						"modal": false,
 						"route": "/app/usa/senate/2024"
 					},
 					{
 						"label": "House",
-						"modal": false,
 						"route": "/app/usa/house/2024"
-					},
+					}
+				],
+				"modals": [
 					{
 						"label": "More",
-						"modal": true,
 						"routes": [
 							"/app/usa/presidential/2022",
 							"/app/usa/senate/2024",
@@ -65,22 +63,20 @@
 				"links": [
 					{
 						"label": "2022",
-						"modal": false,
 						"route": "/app/usa/house/2022"
 					},
 					{
 						"label": "2020",
-						"modal": false,
 						"route": "/app/usa/house/2020"
 					},
 					{
 						"label": "2018",
-						"modal": false,
 						"route": "/app/usa/house/2018"
-					},
+					}
+				],
+				"modals": [
 					{
 						"label": "More",
-						"modal": true,
 						"routes": [
 							"/app/usa/house/2022",
 							"/app/usa/house/2020",
