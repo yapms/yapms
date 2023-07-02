@@ -2,7 +2,8 @@ import { writable } from 'svelte/store';
 
 const MoreMapsModalStore = writable({
 	open: false,
-	key: '' //Used to search MapList.json
+	title: '',
+	keys: [''] //Used to match Titles.json
 });
 
 export { MoreMapsModalStore };

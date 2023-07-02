@@ -1,9 +1,5 @@
 [
 	{
-		"path": "usa/",
-		"title": "United States"
-	},
-	{
 		"path": "/app/usa/presidential/2022",
 		"title": "USA 2022 Presidential Election"
 	},
@@ -76,71 +72,67 @@
 		"title": "USA Governors 2025"
 	},
 	{
-		"path": "usahistorical/house/",
-		"title": "Historic U.S House"
-	},
-	{
-		"path": "/app/usahistorical/house/2022",
+		"path": "/app/usa/house/2022",
 		"title": "USA House 2022"
 	},
 	{
-		"path": "/app/usahistorical/house/2020",
+		"path": "/app/usa/house/2020",
 		"title": "USA House 2020"
 	},
 	{
-		"path": "/app/usahistorical/house/2018",
+		"path": "/app/usa/house/2018",
 		"title": "USA House 2018"
 	},
 	{
-		"path": "/app/usahistorical/house/2016",
+		"path": "/app/usa/house/2016",
 		"title": "USA House 2016"
 	},
 	{
-		"path": "/app/usahistorical/house/2014",
+		"path": "/app/usa/house/2014",
 		"title": "USA House 2014"
 	},
 	{
-		"path": "/app/usahistorical/house/2012",
+		"path": "/app/usa/house/2012",
 		"title": "USA House 2012"
 	},
 	{
-		"path": "/app/usahistorical/house/2010",
+		"path": "/app/usa/house/2010",
 		"title": "USA House 2010"
 	},
 	{
-		"path": "/app/usahistorical/house/2008",
+		"path": "/app/usa/house/2008",
 		"title": "USA House 2008"
 	},
 	{
-		"path": "/app/usahistorical/house/2006",
+		"path": "/app/usa/house/2006",
 		"title": "USA House 2006"
 	},
 	{
-		"path": "/app/usahistorical/house/2004",
+		"path": "/app/usa/house/2004",
 		"title": "USA House 2004"
 	},
 	{
-		"path": "/app/usahistorical/house/2002",
+		"path": "/app/usa/house/2002",
 		"title": "USA House 2002"
 	},
 	{
-		"path": "/app/usahistorical/house/2000",
+		"path": "/app/usa/house/2000",
 		"title": "USA House 2000"
 	},
 	{
-		"path": "/app/usahistorical/house/1998",
+		"path": "/app/usa/house/1998",
 		"title": "USA House 1998"
 	},
 	{
-		"path": "/app/usahistorical/house/1996",
+		"path": "/app/usa/house/1996",
 		"title": "USA House 1996"
 	},
 	{
-		"path": "/app/usahistorical/house/1994",
+		"path": "/app/usa/house/1994",
 		"title": "USA House 1994"
 	},
 	{
-		"path": "/app/usahistorical/house/1992",
+		"path": "/app/usa/house/1992",
 		"title": "USA House 1992"
 	},
 	{
