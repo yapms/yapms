@@ -101,7 +101,7 @@ function newImportedMap(): void {
 }
 
 function exportImportAsSVG(): void {
-	const svg = document.getElementById('importedSVG');
+	const svg = document.getElementById('map-div')?.querySelector<SVGElement>('svg');
 	if (svg) {
 		const regions = get(RegionsStore);
 		svg.setAttribute('candidates', JSON.stringify(get(CandidatesStore)));
