@@ -34,3 +34,24 @@ body {
 	stroke-width: var(--auto-border-stroke-width);
 	stroke: hsla(var(--b1) / var(--tw-bg-opacity, 1));
 }
+
+#map-div > svg > .regions > g > path {
+	stroke-width: var(--auto-border-stroke-width);
+	stroke: hsla(var(--b1) / var(--tw-bg-opacity, 1));
+}
+
+.inset-texts {
+	fill: hsla(var(--bc) / var(--tw-text-opacity, 1));
+}
+
+.inset-lines {
+	fill: hsla(var(--bc) / var(--tw-text-opacity, 0.5));
+}
+
+.insetsHidden > .insets {
+	display: none;
+}
+
+.insetsHidden > .regions > g > .inset {
+	display: none;
+}
