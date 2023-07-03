@@ -52,6 +52,6 @@ body {
 	display: none;
 }
 
-.insetsHidden > .regions > g > .inset {
+.insetsHidden > .regions > g > .inset-region {
 	display: none;
 }
