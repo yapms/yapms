@@ -2,17 +2,11 @@ import { z } from 'zod';
 import { CandidateSchema } from './Candidate';
 import { SavedRegionSchema } from './Region';
 
-const countries = ['usa'] as const;
-
-const types = ['presidential'] as const;
-
-const years = ['2022'] as const;
-
 export const SavedMapSchema = z.object({
 	map: z.object({
-		country: z.enum(countries),
-		type: z.enum(types),
-		year: z.enum(years)
+		country: z.string().regex(/^[a-z]+$/),
+		type: z.string().regex(/^[a-z]+$/),
+		year: z.string().regex(/^\d{4}$/)
 	}),
 	tossup: CandidateSchema,
 	candidates: CandidateSchema.array(),
