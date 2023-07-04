@@ -4,9 +4,9 @@ import { SavedRegionSchema } from './Region';
 
 export const SavedMapSchema = z.object({
 	map: z.object({
-		country: z.string().regex(/^[a-z]+$/),
-		type: z.string().regex(/^[a-z]+$/),
-		year: z.string().regex(/^\d{4}$/)
+		country: z.string().regex(/^\w+$/),
+		type: z.string().regex(/^\w+$/),
+		year: z.string().regex(/^\w+$/)
 	}),
 	tossup: CandidateSchema,
 	candidates: CandidateSchema.array(),
