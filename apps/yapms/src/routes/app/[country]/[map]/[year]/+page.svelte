@@ -86,8 +86,8 @@
 	});
 
 	function setupMap(node: HTMLDivElement) {
-		loadRegionsForApp(node);
 		applyPanZoom(node);
+		loadRegionsForApp(node);
 		isLoaded = true;
 		// this should execute if the users enters the
 		// /app/ page with a map id

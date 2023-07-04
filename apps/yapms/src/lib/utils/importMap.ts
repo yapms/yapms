@@ -28,8 +28,7 @@ export const DOMPurifyConfig = {
 		'tossup-candidate',
 		'default-mode',
 		'auto-border-stroke-width',
-		'auto-border-stroke-width-limit',
-		'insets-hidden'
+		'auto-border-stroke-width-limit'
 	]
 };
 
