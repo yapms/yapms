@@ -66,7 +66,7 @@
 					},
 					{
 						"label": "2021 Results",
-						"route": "/app/can/commons/2021"
+						"route": "/app/can/commons/2021-results"
 					}
 				],
 				"modals": [
@@ -76,9 +76,9 @@
 							"/app/can/provinces/blank",
 							"/app/can/commons/blank",
 							"/app/can/senate/blank",
-							"/app/can/commons/2021",
-							"/app/can/commons/2019",
-							"/app/can/commons/2015"
+							"/app/can/commons/2021-results",
+							"/app/can/commons/2019-results",
+							"/app/can/commons/2015-results"
 						]
 					}
 				]
