@@ -1,8 +1,8 @@
 <script lang="ts">
 	import MinusCircle from '$lib/icons/MinusCircle.svelte';
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
-	import { goto } from '$app/navigation';
 	import { createEventDispatcher } from 'svelte';
+	import { loadMap } from '$lib/stores/LoadedMap';
 
 	export let mapName: string;
 	export let mapId: string;
@@ -13,31 +13,29 @@
 
 	let submitting = false;
 
-	async function deleteMap(id: string) {
+	async function deleteMap() {
 		submitting = true;
-		await $PocketBaseStore.collection('user_maps').delete(id);
+		await $PocketBaseStore.collection('user_maps').delete(mapId);
 		submitting = false;
 		submitted();
 	}
 
-	async function openMap(id: string) {
-		await goto(`/app?um${id}`);
+	async function openMap() {
+		await loadMap('user_maps', 'um', mapId);
 	}
 </script>
 
 <div class="join">
 	<button
 		class="btn btn-sm flex-shrink flex-grow join-item overflow-hidden"
-		on:click={() => openMap(mapId)}
+		on:click={openMap}
 		disabled={submitting}
 	>
 		{mapName}
 	</button>
 	<button
 		class="btn btn-sm btn-error flex-shrink join-item"
-		on:click={async () => {
-			await deleteMap(mapId);
-		}}
+		on:click={deleteMap}
 		disabled={submitting}
 	>
 		<MinusCircle class="w-6 h-6" />
