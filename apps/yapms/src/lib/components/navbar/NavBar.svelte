@@ -54,11 +54,8 @@
 	}
 
 	function openStyle() {
-		const svg = document.getElementById('map-div')?.querySelector<SVGElement>('svg');
-		const insets = svg ? svg.classList.contains('insetsHidden') : false;
 		StyleModalStore.set({
 			...$StyleModalStore,
-			insetsHidden: insets,
 			open: true
 		});
 	}

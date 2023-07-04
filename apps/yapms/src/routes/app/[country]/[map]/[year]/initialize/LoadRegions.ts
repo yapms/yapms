@@ -16,6 +16,8 @@ import {
 import type Region from '$lib/types/Region';
 import { ModeSchema } from '$lib/types/Mode';
 import { CandidateSchema } from '$lib/types/Candidate';
+import { z } from 'zod';
+import { MapInsetsStore } from '$lib/stores/MapInsetsStore';
 
 function createDefaultModeStore(node: HTMLDivElement) {
 	const defaultModeAttribute = node.querySelector('svg')?.getAttribute('default-mode');
@@ -53,6 +55,18 @@ function createTossupCandidateStore(node: HTMLDivElement) {
 		}
 	} catch (error) {
 		console.error('Error Parsing Tossup Candidate Data from Map:\n\n' + error);
+	}
+}
+
+function createInsetsStore(node: HTMLDivElement) {
+	const insetsHiddenAttribute = node.querySelector('svg')?.getAttribute('insets-hidden');
+	const insetsHidden = z.enum(['true', 'false']).safeParse(insetsHiddenAttribute);
+	if (insetsHidden.success) {
+		MapInsetsStore.set({
+			hidden: insetsHidden.data === 'true'
+		});
+	} else {
+		console.error('Error Parsing insets-hidden attribute from Map:\n\n' + insetsHidden.error);
 	}
 }
 
@@ -133,6 +147,7 @@ export function loadRegionsForApp(node: HTMLDivElement): void {
 	createCandidateStore(node);
 	createTossupCandidateStore(node);
 	createDefaultModeStore(node);
+	createInsetsStore(node);
 	createRegionStore(node);
 	setCursorStyle();
 	setTransitionStyle();

@@ -59,8 +59,7 @@ const ModeModalStore = writable({
 });
 
 const StyleModalStore = writable({
-	open: false,
-	insetsHidden: true
+	open: false
 });
 
 const ShareModalStore = writable({

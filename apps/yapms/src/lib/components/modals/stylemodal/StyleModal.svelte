@@ -1,5 +1,6 @@
 <script lang="ts">
 	import LogoGrid from '$lib/components/modalutilities/LogoGrid.svelte';
+	import { MapInsetsStore } from '$lib/stores/MapInsetsStore';
 	import { StyleModalStore } from '$lib/stores/Modals';
 	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
 	import ThemeGrid from '../../modalutilities/ThemeGrid.svelte';
@@ -12,10 +13,10 @@
 	}
 
 	function toggleInsets() {
-		const svg = document.getElementById('map-div')?.querySelector<SVGElement>('svg');
-		if (svg) {
-			svg.classList.toggle('insetsHidden');
-		}
+		MapInsetsStore.set({
+			...MapInsetsStore,
+			hidden: !$MapInsetsStore.hidden
+		});
 	}
 </script>
 
@@ -33,14 +34,11 @@
 				<LogoGrid />
 			</div>
 			<h3 class="font-light text-lg">Other</h3>
-			<div class="flex flex-row gap-x-2 items-center">
-				<input
-					type="checkbox"
-					checked={$StyleModalStore.insetsHidden}
-					on:change={toggleInsets}
-					class="checkbox"
-				/>
-				<h3 class="font-light text-lg pb">Hide Insets</h3>
+			<div class="form-control">
+				<label class="label cursor-pointer justify-start space-x-2">
+					<span class="label-text">Hide Insets</span>
+					<input type="checkbox" checked={$MapInsetsStore.hidden} class="checkbox" />
+				</label>
 			</div>
 		</div>
 		<div class="modal-action">
