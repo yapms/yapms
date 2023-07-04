@@ -37,7 +37,12 @@
 			<div class="form-control">
 				<label class="label cursor-pointer justify-start space-x-2">
 					<span class="label-text">Hide Insets</span>
-					<input type="checkbox" checked={$MapInsetsStore.hidden} class="checkbox" />
+					<input
+						type="checkbox"
+						on:change={toggleInsets}
+						checked={$MapInsetsStore.hidden}
+						class="checkbox"
+					/>
 				</label>
 			</div>
 		</div>
