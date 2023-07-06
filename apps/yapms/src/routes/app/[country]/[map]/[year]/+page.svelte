@@ -30,6 +30,7 @@
 	import EditTossupModal from '$lib/components/modals/edittossupmodal/EditTossupModal.svelte';
 	import { loadRegionsForApp } from './initialize/LoadRegions';
 	import ImportModal from '$lib/components/modals/importmodal/ImportModal.svelte';
+	import { MapInsetsStore } from '$lib/stores/MapInsetsStore';
 
 	//Glob import all maps in the maps directory so that we can check if a map exists and then load it.
 	//Query section makes sure the SVG contents are imported raw.
@@ -162,7 +163,12 @@
 				{#await imports[currentMap]()}
 					<h1>Loading Map...</h1>
 				{:then importedMap}
-					<div use:setupMap id="map-div" class="overflow-hidden h-full">
+					<div
+						use:setupMap
+						id="map-div"
+						class="overflow-hidden h-full"
+						class:insets-hidden={$MapInsetsStore.hidden}
+					>
 						{@html importedMap.default}
 					</div>
 				{/await}

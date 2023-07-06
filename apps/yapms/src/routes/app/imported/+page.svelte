@@ -29,6 +29,7 @@
 	import ImportModal from '$lib/components/modals/importmodal/ImportModal.svelte';
 	import ShareDisabledModal from '$lib/components/modals/sharedisabledmodal/ShareDisabledModal.svelte';
 	import ChartOptionsModal from '$lib/components/modals/chartoptionsmodal/ChartOptionsModal.svelte';
+	import { MapInsetsStore } from '$lib/stores/MapInsetsStore';
 
 	const svg = get(ImportedSVGStore);
 	if (!svg.loaded) {
@@ -96,7 +97,12 @@
 
 				<div class="overflow-hidden w-full h-full">
 					<CandidateBoxContainer />
-					<div use:setupMap id="map-div" class="overflow-hidden h-full">
+					<div
+						use:setupMap
+						id="map-div"
+						class="overflow-hidden h-full"
+						class:insetsHidden={$MapInsetsStore.hidden}
+					>
 						{@html $ImportedSVGStore.content}
 					</div>
 				</div>
