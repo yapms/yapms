@@ -167,7 +167,7 @@
 						use:setupMap
 						id="map-div"
 						class="overflow-hidden h-full"
-						class:insetsHidden={$MapInsetsStore.hidden}
+						class:insets-hidden={$MapInsetsStore.hidden}
 					>
 						{@html importedMap.default}
 					</div>

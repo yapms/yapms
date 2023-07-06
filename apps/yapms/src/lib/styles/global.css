@@ -48,10 +48,10 @@ body {
 	fill: hsla(var(--bc) / var(--tw-text-opacity, 0.5));
 }
 
-.insetsHidden > svg > .insets {
+.insets-hidden > svg > .insets {
 	display: none;
 }
 
-.insetsHidden > svg > .regions > g > .inset-region {
+.insets-hidden > svg > .regions > g > .inset-region {
 	display: none;
 }
