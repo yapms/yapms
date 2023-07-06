@@ -48,6 +48,40 @@
 						]
 					}
 				]
+			},
+			{
+				"name": "Canada",
+				"bg": "can",
+				"alt": "Canadian Parliament Hill",
+				"doubleCols": true,
+				"attribution": "Photo by Tetyana Kovyrina",
+				"links": [
+					{
+						"label": "Provinces",
+						"route": "/app/can/provinces/blank"
+					},
+					{
+						"label": "House of Commons",
+						"route": "/app/can/commons/blank"
+					},
+					{
+						"label": "2021 Results",
+						"route": "/app/can/commons/2021-results"
+					}
+				],
+				"modals": [
+					{
+						"label": "More",
+						"routes": [
+							"/app/can/provinces/blank",
+							"/app/can/commons/blank",
+							"/app/can/senate/blank",
+							"/app/can/commons/2021-results",
+							"/app/can/commons/2019-results",
+							"/app/can/commons/2015-results"
+						]
+					}
+				]
 			}
 		]
 	},

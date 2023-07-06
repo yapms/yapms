@@ -136,6 +136,30 @@
 		"title": "USA House 1992"
 	},
 	{
+		"path": "/app/can/provinces/blank",
+		"title": "Canadian Provinces"
+	},
+	{
+		"path": "/app/can/commons/blank",
+		"title": "Canadian House of Commons"
+	},
+	{
+		"path": "/app/can/senate/blank",
+		"title": "Canadian Senate"
+	},
+	{
+		"path": "/app/can/commons/2021-results",
+		"title": "Canadian 2021 House of Commons Results"
+	},
+	{
+		"path": "/app/can/commons/2019-results",
+		"title": "Canadian 2019 House of Commons Results"
+	},
+	{
+		"path": "/app/can/commons/2015-results",
+		"title": "Canadian 2015 House of Commons Results"
+	},
+	{
 		"path": "/app/de/folketing/blank",
 		"title": "Danish Folketing"
 	}
