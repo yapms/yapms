@@ -70,7 +70,7 @@
 	<div class="flex flex-row h-full overflow-hidden">
 		<HomePageSidebar />
 		<div class="divider md:divider-horizontal ml-0 w-0 !mr-0" />
-		<div class="flex-1 md:px-5 overflow-auto overflow-x-clip">
+		<div class="flex-1 md:px-5 overflow-auto overflow-x-clip pb-4">
 			<MapSearch />
 			{#each mapSelectSections as section}
 				<MapSelectionTitle title={section.title} />
