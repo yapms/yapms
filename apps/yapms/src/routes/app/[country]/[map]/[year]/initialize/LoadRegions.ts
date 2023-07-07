@@ -66,28 +66,31 @@ function findCandidate(id: string) {
 	}
 }
 
-function getCandidatesForRegion(candidateStr: string | null, value: number) {
-	if (candidateStr === null) {
-		return [{ candidate: get(TossupCandidateStore), count: value, margin: 0 }];
-	}
+function getCandidatesForRegion(candidateStr: string, value: number) {
 	try {
-		const parsedArr: RegionCandidates = JSON.parse(candidateStr);
-		RegionCandidatesSchema.parse(parsedArr);
+		const RegionCandidates = RegionCandidatesSchema.parse(JSON.parse(candidateStr));
 		let totCount = 0;
 		const candidateArr = [];
-		parsedArr.forEach((elem) => {
-			totCount += elem.count;
+		RegionCandidates.forEach((candidate) => {
+			totCount += candidate.count;
 			candidateArr.push({
-				...elem,
-				candidate: findCandidate(elem.candidate)
+				...candidate,
+				candidate: findCandidate(candidate.candidate)
 			});
 		});
 		if (totCount !== value) {
-			candidateArr.push({
-				candidate: get(TossupCandidateStore),
-				count: value - totCount,
-				margin: 0
-			});
+			if (totCount < value) {
+				candidateArr.push({
+					candidate: get(TossupCandidateStore),
+					count: value - totCount,
+					margin: 0
+				});
+			} else if (totCount > value) {
+				console.error(
+					`Error parsing candidates attribute from region. Candidate counts within region with value ${value} add to ${totCount}. Region wil be marked as a Tossup.`
+				);
+				return [{ candidate: get(TossupCandidateStore), count: value, margin: 0 }];
+			}
 		}
 		return candidateArr;
 	} catch (err) {
@@ -111,6 +114,7 @@ function createRegionStore(node: HTMLDivElement) {
 		}
 
 		const value = Number(childHTML.getAttribute('value'));
+		const candidateString = childHTML.getAttribute('candidates');
 		const newRegion: Region = {
 			id: childHTML.getAttribute('region') ?? '',
 			shortName: childHTML.getAttribute('short-name') ?? '',
@@ -120,9 +124,10 @@ function createRegionStore(node: HTMLDivElement) {
 			disabled: childHTML.hasAttribute('disabled'),
 			locked: childHTML.hasAttribute('locked'),
 			permaLocked: childHTML.hasAttribute('permalocked'),
-			candidates: childHTML.getAttribute('candidates') //God bless our linting overlords.
-				? getCandidatesForRegion(childHTML.getAttribute('candidates'), value)
-				: [{ candidate: tossupCandidate, count: value, margin: 0 }],
+			candidates:
+				candidateString !== null //God bless our linting overlords.
+					? getCandidatesForRegion(candidateString, value)
+					: [{ candidate: tossupCandidate, count: value, margin: 0 }],
 			nodes: {
 				region: childHTML,
 				button: buttons?.querySelector(`[for="${childHTML.getAttribute('region') ?? ''}"]`) ?? null,
