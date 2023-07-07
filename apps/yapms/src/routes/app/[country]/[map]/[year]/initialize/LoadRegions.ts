@@ -16,6 +16,7 @@ import {
 import type Region from '$lib/types/Region';
 import { ModeSchema } from '$lib/types/Mode';
 import { CandidateSchema } from '$lib/types/Candidate';
+import { RegionCandidatesSchema } from '$lib/types/Region';
 
 function createDefaultModeStore(node: HTMLDivElement) {
 	const defaultModeAttribute = node.querySelector('svg')?.getAttribute('default-mode');
@@ -56,12 +57,45 @@ function createTossupCandidateStore(node: HTMLDivElement) {
 	}
 }
 
-function findCandidate(id: string | null) {
+function findCandidate(id: string) {
 	const candidate = get(CandidatesStore).find((candidate) => candidate.id === id);
 	if (candidate === undefined) {
 		return get(TossupCandidateStore);
 	} else {
 		return candidate;
+	}
+}
+
+function getCandidatesForRegion(candidateStr: string, value: number) {
+	try {
+		const RegionCandidates = RegionCandidatesSchema.parse(JSON.parse(candidateStr));
+		let totCount = 0;
+		const candidateArr = [];
+		RegionCandidates.forEach((candidate) => {
+			totCount += candidate.count;
+			candidateArr.push({
+				...candidate,
+				candidate: findCandidate(candidate.candidate)
+			});
+		});
+		if (totCount !== value) {
+			if (totCount < value) {
+				candidateArr.push({
+					candidate: get(TossupCandidateStore),
+					count: value - totCount,
+					margin: 0
+				});
+			} else if (totCount > value) {
+				console.error(
+					`Error parsing candidates attribute from region. Candidate counts within region with value ${value} add to ${totCount}. Region wil be marked as a Tossup.`
+				);
+				return [{ candidate: get(TossupCandidateStore), count: value, margin: 0 }];
+			}
+		}
+		return candidateArr;
+	} catch (err) {
+		console.error('Error Parsing candidates attribute from region:\n\n' + err);
+		return [{ candidate: get(TossupCandidateStore), count: value, margin: 0 }];
 	}
 }
 
@@ -80,6 +114,7 @@ function createRegionStore(node: HTMLDivElement) {
 		}
 
 		const value = Number(childHTML.getAttribute('value'));
+		const candidateString = childHTML.getAttribute('candidates');
 		const newRegion: Region = {
 			id: childHTML.getAttribute('region') ?? '',
 			shortName: childHTML.getAttribute('short-name') ?? '',
@@ -89,20 +124,10 @@ function createRegionStore(node: HTMLDivElement) {
 			disabled: childHTML.hasAttribute('disabled'),
 			locked: childHTML.hasAttribute('locked'),
 			permaLocked: childHTML.hasAttribute('permalocked'),
-			candidates: childHTML.hasAttribute('candidate-id') //God bless our linting overlords.
-				? [
-						//If the region has candidate-id defined, set the candidate appropriately, if not, default to the tossup candidate at margin 0
-						//See predetermined_regions_example.svg for an example of how to implement candidate-id and candidate-margin attributes.
-						{
-							candidate: findCandidate(childHTML.getAttribute('candidate-id')),
-							count: value,
-							margin: childHTML.hasAttribute('candidate-margin')
-								? //If the region has candidate-margin defined, set the margin appropriately, if not, default to 0 (Safe)
-								  Number(childHTML.getAttribute('candidate-margin'))
-								: 0
-						}
-				  ]
-				: [{ candidate: tossupCandidate, count: value, margin: 0 }],
+			candidates:
+				candidateString !== null //God bless our linting overlords.
+					? getCandidatesForRegion(candidateString, value)
+					: [{ candidate: tossupCandidate, count: value, margin: 0 }],
 			nodes: {
 				region: childHTML,
 				button: buttons?.querySelector(`[for="${childHTML.getAttribute('region') ?? ''}"]`) ?? null,
