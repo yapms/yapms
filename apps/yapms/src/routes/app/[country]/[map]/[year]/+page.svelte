@@ -31,7 +31,6 @@
 	import { loadRegionsForApp } from './initialize/LoadRegions';
 	import ImportModal from '$lib/components/modals/importmodal/ImportModal.svelte';
 	import { MapInsetsStore } from '$lib/stores/MapInsetsStore';
-	import SaveMapModal from '$lib/components/modals/savemapmodal/SaveMapModal.svelte';
 
 	//Glob import all maps in the maps directory so that we can check if a map exists and then load it.
 	//Query section makes sure the SVG contents are imported raw.
@@ -208,5 +207,3 @@
 <LoadingErrorModal />
 
 <ImportModal />
-
-<SaveMapModal />
