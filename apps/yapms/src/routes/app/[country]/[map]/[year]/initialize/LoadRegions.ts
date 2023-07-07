@@ -16,7 +16,7 @@ import {
 import type Region from '$lib/types/Region';
 import { ModeSchema } from '$lib/types/Mode';
 import { CandidateSchema } from '$lib/types/Candidate';
-import { RegionCandidatesSchema, type RegionCandidates } from '$lib/types/Region';
+import { RegionCandidatesSchema } from '$lib/types/Region';
 
 function createDefaultModeStore(node: HTMLDivElement) {
 	const defaultModeAttribute = node.querySelector('svg')?.getAttribute('default-mode');
