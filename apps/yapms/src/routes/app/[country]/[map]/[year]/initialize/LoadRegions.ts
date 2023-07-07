@@ -16,6 +16,7 @@ import {
 import type Region from '$lib/types/Region';
 import { ModeSchema } from '$lib/types/Mode';
 import { CandidateSchema } from '$lib/types/Candidate';
+import { RegionCandidatesSchema, type RegionCandidates } from '$lib/types/Region';
 
 function createDefaultModeStore(node: HTMLDivElement) {
 	const defaultModeAttribute = node.querySelector('svg')?.getAttribute('default-mode');
@@ -56,12 +57,42 @@ function createTossupCandidateStore(node: HTMLDivElement) {
 	}
 }
 
-function findCandidate(id: string | null) {
+function findCandidate(id: string) {
 	const candidate = get(CandidatesStore).find((candidate) => candidate.id === id);
 	if (candidate === undefined) {
 		return get(TossupCandidateStore);
 	} else {
 		return candidate;
+	}
+}
+
+function getCandidatesForRegion(candidateStr: string | null, value: number) {
+	if (candidateStr === null) {
+		return [{ candidate: get(TossupCandidateStore), count: value, margin: 0 }];
+	}
+	try {
+		const parsedArr: RegionCandidates = JSON.parse(candidateStr);
+		RegionCandidatesSchema.parse(parsedArr);
+		let totCount = 0;
+		const candidateArr = [];
+		parsedArr.forEach((elem) => {
+			totCount += elem.count;
+			candidateArr.push({
+				...elem,
+				candidate: findCandidate(elem.candidate)
+			});
+		});
+		if (totCount !== value) {
+			candidateArr.push({
+				candidate: get(TossupCandidateStore),
+				count: value - totCount,
+				margin: 0
+			});
+		}
+		return candidateArr;
+	} catch (err) {
+		console.error('Error Parsing candidates attribute from region:\n\n' + err);
+		return [{ candidate: get(TossupCandidateStore), count: value, margin: 0 }];
 	}
 }
 
@@ -89,19 +120,8 @@ function createRegionStore(node: HTMLDivElement) {
 			disabled: childHTML.hasAttribute('disabled'),
 			locked: childHTML.hasAttribute('locked'),
 			permaLocked: childHTML.hasAttribute('permalocked'),
-			candidates: childHTML.hasAttribute('candidate-id') //God bless our linting overlords.
-				? [
-						//If the region has candidate-id defined, set the candidate appropriately, if not, default to the tossup candidate at margin 0
-						//See predetermined_regions_example.svg for an example of how to implement candidate-id and candidate-margin attributes.
-						{
-							candidate: findCandidate(childHTML.getAttribute('candidate-id')),
-							count: value,
-							margin: childHTML.hasAttribute('candidate-margin')
-								? //If the region has candidate-margin defined, set the margin appropriately, if not, default to 0 (Safe)
-								  Number(childHTML.getAttribute('candidate-margin'))
-								: 0
-						}
-				  ]
+			candidates: childHTML.getAttribute('candidates') //God bless our linting overlords.
+				? getCandidatesForRegion(childHTML.getAttribute('candidates'), value)
 				: [{ candidate: tossupCandidate, count: value, margin: 0 }],
 			nodes: {
 				region: childHTML,

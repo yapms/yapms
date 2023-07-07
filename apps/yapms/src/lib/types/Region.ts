@@ -39,6 +39,16 @@ export const SavedRegionSchema = RegionSchema.omit({
 		.array()
 });
 
+export const RegionCandidatesSchema = z
+	.object({
+		candidate: z.string(),
+		count: z.number(),
+		margin: z.number()
+	})
+	.array();
+
 type Region = z.infer<typeof RegionSchema>;
+
+export type RegionCandidates = z.infer<typeof RegionCandidatesSchema>;
 
 export default Region;
