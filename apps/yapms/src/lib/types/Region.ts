@@ -42,8 +42,8 @@ export const SavedRegionSchema = RegionSchema.omit({
 export const RegionCandidatesSchema = z
 	.object({
 		candidate: z.string(),
-		count: z.number(),
-		margin: z.number()
+		count: z.number().nonnegative(),
+		margin: z.number().nonnegative()
 	})
 	.array();
 
