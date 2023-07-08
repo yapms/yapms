@@ -10,6 +10,8 @@
 	onMount(async () => {
 		const url = get(page).url;
 
+		const isInAppRoot = url.pathname.split('/').length === 2;
+
 		const publicMapKey = url.searchParams.get('m');
 		const userMapKey = url.searchParams.get('um');
 
@@ -17,7 +19,7 @@
 			await loadPublicMap(publicMapKey);
 		} else if (userMapKey !== null) {
 			await loadUserMap(userMapKey);
-		} else {
+		} else if (isInAppRoot) {
 			goto('/app/usa/presidential/2024');
 		}
 	});
