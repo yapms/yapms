@@ -25,8 +25,6 @@ async function loadMap(collection: 'maps' | 'user_maps', key: string, value: str
 
 	LoadedMapStore.set(savedFile.data);
 
-	console.log(savedFile.data);
-
 	const country = encodeURIComponent(savedFile.data.map.country);
 	const type = encodeURIComponent(savedFile.data.map.type);
 	const year = encodeURIComponent(savedFile.data.map.year);
