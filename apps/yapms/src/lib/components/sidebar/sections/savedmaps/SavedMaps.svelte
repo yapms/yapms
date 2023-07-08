@@ -3,15 +3,15 @@
 	import SavedMap from './SavedMap.svelte';
 	import SaveMap from './SaveMap.svelte';
 
-	let maps = getMaps();
-
-	function getMaps() {
-		return $PocketBaseStore.collection('user_maps').getFullList();
-	}
+	$: maps = $PocketBaseStore.collection('user_maps').getFullList();
 
 	function refreshMaps() {
-		maps = getMaps();
+		maps = $PocketBaseStore.collection('user_maps').getFullList();
 	}
+
+	$PocketBaseStore.authStore.onChange(() => {
+		refreshMaps();
+	});
 </script>
 
 <div class="divider">Saved Maps</div>

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import titles from '$lib/assets/other/Titles.json';
+	import { PocketBaseStore } from '$lib/stores/PocketBase';
 	import { SideBarStore } from '$lib/stores/SideBar';
 	import SavedMaps from './sections/savedmaps/SavedMaps.svelte';
 	import { faReddit, faTwitter } from '@fortawesome/free-brands-svg-icons';
@@ -24,6 +25,8 @@
 		</div>
 		<h1 class="text-xl text-center font-bold">{title}</h1>
 		<div class="divider">Shortcuts</div>
-		<SavedMaps />
+		{#if $PocketBaseStore.authStore.isValid}
+			<SavedMaps />
+		{/if}
 	</div>
 {/if}

@@ -20,7 +20,7 @@
 		});
 		form.append('data', newMapData);
 		form.append('name', newMapName);
-		form.append('user', $PocketBaseStore.authStore.model?.id || '');
+		form.append('user', $PocketBaseStore.authStore.model?.id ?? '');
 		await $PocketBaseStore.collection('user_maps').create(form);
 		submitting = false;
 		submitted();
