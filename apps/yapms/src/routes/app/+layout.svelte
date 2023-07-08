@@ -10,7 +10,7 @@
 	onMount(async () => {
 		const url = get(page).url;
 
-		const isInAppRoot = url.pathname.split('/').length === 2;
+		const isInAppRoot = url.pathname === '/app';
 
 		const publicMapKey = url.searchParams.get('m');
 		const userMapKey = url.searchParams.get('um');
