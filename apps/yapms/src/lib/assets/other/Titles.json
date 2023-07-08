@@ -160,6 +160,26 @@
 		"title": "Canadian 2015 House of Commons Results"
 	},
 	{
+		"path": "/app/nl/provinces/blank",
+		"title": "Dutch Provinces"
+	},
+	{
+		"path": "/app/nl/house/2023-blank",
+		"title": "Dutch 2023 House Elections"
+	},
+	{
+		"path": "/app/nl/provincial/2023-blank",
+		"title": "Dutch Provincial Councils"
+	},
+	{
+		"path": "/app/nl/provincial/2023-results",
+		"title": "Dutch 2023 Provincial Councils Results"
+	},
+	{
+		"path": "/app/nl/gemeente/2023-blank",
+		"title": "Dutch 2023 Gemeente"
+	},
+	{
 		"path": "/app/de/folketing/blank",
 		"title": "Danish Folketing"
 	}
