@@ -12,7 +12,7 @@
 
 {#if $SideBarStore}
 	<div class="divider divider-horizontal w-0 m-0 hidden md:flex" />
-	<div class="basis-3/12 max-w-md hidden md:inline overflow-hidden">
+	<div class="basis-3/12 max-w-md hidden md:inline overflow-y-auto">
 		<div class="flex flex-wrap justify-center gap-2 p-2">
 			<button type="button" class="btn btn-sm gap-2">
 				<Fa icon={faReddit} />

@@ -13,6 +13,9 @@
 	let newMapName = '';
 
 	async function createMap() {
+		if ($PocketBaseStore.authStore.model === null) {
+			return;
+		}
 		submitting = true;
 		const form = new FormData();
 		const newMapData = new File([JSON.stringify(generateJson())], 'data.json', {
@@ -20,7 +23,7 @@
 		});
 		form.append('data', newMapData);
 		form.append('name', newMapName);
-		form.append('user', $PocketBaseStore.authStore.model?.id ?? '');
+		form.append('user', $PocketBaseStore.authStore.model.id);
 		await $PocketBaseStore.collection('user_maps').create(form);
 		submitting = false;
 		submitted();

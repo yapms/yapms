@@ -11,8 +11,6 @@ import { RegionsStore } from '$lib/stores/regions/Regions';
  */
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function generateJson() {
-	console.log(get(page).url.pathname);
-
 	const tossupStore = get(TossupCandidateStore);
 	const candidateStore = get(CandidatesStore);
 	const regionStore = get(RegionsStore).map((region) => ({
