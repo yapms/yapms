@@ -1,8 +1,8 @@
 <script lang="ts">
 	import MinusCircle from '$lib/icons/MinusCircle.svelte';
+	import { loadUserMap } from '$lib/stores/LoadedMap';
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
 	import { createEventDispatcher } from 'svelte';
-	import { loadMap } from '$lib/stores/LoadedMap';
 
 	export let mapName: string;
 	export let mapId: string;
@@ -21,7 +21,7 @@
 	}
 
 	async function openMap() {
-		await loadMap('user_maps', 'um', mapId);
+		await loadUserMap(mapId);
 	}
 </script>
 

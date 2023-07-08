@@ -7,7 +7,21 @@ import { LoadingErrorModalStore } from './Modals';
 
 export const LoadedMapStore = writable<SavedMap | null>(null);
 
-async function loadMap(collection: 'maps' | 'user_maps', key: string, value: string) {
+export enum SavedMapType {
+	UserMap = 'um',
+	Map = 'm'
+}
+
+export async function loadUserMap(key: string) {
+	await loadMap(SavedMapType.UserMap, key);
+}
+
+export async function loadPublicMap(key: string) {
+	await loadMap(SavedMapType.Map, key);
+}
+
+async function loadMap(mapType: SavedMapType, value: string) {
+	const collection = mapType === SavedMapType.Map ? 'maps' : 'user_maps';
 	const data = await fetch(
 		`${PUBLIC_POCKETBASE_URI}/api/files/${collection}/${value}/data.json.gz`
 	);
@@ -15,7 +29,6 @@ async function loadMap(collection: 'maps' | 'user_maps', key: string, value: str
 	const savedFile = SavedMapSchema.safeParse(jsonData);
 
 	if (!savedFile.success) {
-		console.log(savedFile.error);
 		LoadingErrorModalStore.set({
 			open: true
 		});
@@ -29,7 +42,5 @@ async function loadMap(collection: 'maps' | 'user_maps', key: string, value: str
 	const type = encodeURIComponent(savedFile.data.map.type);
 	const year = encodeURIComponent(savedFile.data.map.year);
 
-	await goto(`/app/${country}/${type}/${year}?${key}=${value}`);
+	await goto(`/app/${country}/${type}/${year}?${mapType}=${value}`);
 }
-
-export { loadMap };
