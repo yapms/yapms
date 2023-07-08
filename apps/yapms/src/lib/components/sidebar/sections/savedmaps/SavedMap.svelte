@@ -33,11 +33,13 @@
 	>
 		{mapName}
 	</button>
-	<button
-		class="btn btn-sm btn-error flex-shrink join-item"
-		on:click={deleteMap}
-		disabled={submitting}
-	>
-		<MinusCircle class="w-6 h-6" />
-	</button>
+	<div class="tooltip" data-tip="Delete">
+		<button
+			class="btn btn-sm btn-error flex-shrink join-item"
+			on:click={deleteMap}
+			disabled={submitting}
+		>
+			<MinusCircle class="w-6 h-6" />
+		</button>
+	</div>
 </div>

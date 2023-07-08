@@ -33,20 +33,22 @@
 <div class="join">
 	<input
 		type="text"
-		class="input input-sm flex-grow overflow-hidden join-item"
+		class="input input-bordered input-sm flex-grow overflow-hidden join-item"
 		bind:value={newMapName}
-		placeholder="map name"
+		placeholder="Map Name"
 		disabled={disabled || submitting}
 	/>
-	<button
-		class="btn btn-sm btn-primary join-item"
-		on:click={createMap}
-		disabled={disabled || submitting}
-	>
-		{#if submitting}
-			<span class="loading loading-dots loading-sm" />
-		{:else}
-			<PlusCircle class="w-6 h-6" />
-		{/if}
-	</button>
+	<div class="tooltip" data-tip="Create">
+		<button
+			class="btn btn-sm btn-primary join-item"
+			on:click={createMap}
+			disabled={disabled || submitting}
+		>
+			{#if submitting}
+				<span class="loading loading-dots loading-sm" />
+			{:else}
+				<PlusCircle class="w-6 h-6" />
+			{/if}
+		</button>
+	</div>
 </div>
