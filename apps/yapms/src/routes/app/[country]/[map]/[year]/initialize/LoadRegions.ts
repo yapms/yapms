@@ -11,7 +11,8 @@ import {
 	CandidatesStore,
 	CandidateStoreSchema,
 	CandidatesStoreDefault,
-	TossupCandidateStoreDefault
+	TossupCandidateStoreDefault,
+	SelectedCandidateStore
 } from '$lib/stores/Candidates';
 import type Region from '$lib/types/Region';
 import { ModeSchema } from '$lib/types/Mode';
@@ -55,6 +56,10 @@ function createTossupCandidateStore(node: HTMLDivElement) {
 	} catch (error) {
 		console.error('Error Parsing Tossup Candidate Data from Map:\n\n' + error);
 	}
+}
+
+function createSelectedCandidateStore() {
+	SelectedCandidateStore.set(get(TossupCandidateStore));
 }
 
 function findCandidate(id: string) {
@@ -157,6 +162,7 @@ function createRegionStore(node: HTMLDivElement) {
 export function loadRegionsForApp(node: HTMLDivElement): void {
 	createCandidateStore(node);
 	createTossupCandidateStore(node);
+	createSelectedCandidateStore();
 	createDefaultModeStore(node);
 	createRegionStore(node);
 	setCursorStyle();
