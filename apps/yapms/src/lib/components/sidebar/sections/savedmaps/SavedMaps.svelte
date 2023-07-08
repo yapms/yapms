@@ -8,10 +8,6 @@
 	function refreshMaps() {
 		maps = $PocketBaseStore.collection('user_maps').getFullList();
 	}
-
-	$PocketBaseStore.authStore.onChange(() => {
-		refreshMaps();
-	});
 </script>
 
 <div class="divider">Saved Maps</div>
