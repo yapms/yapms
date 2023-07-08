@@ -15,8 +15,6 @@
 	async function createMap() {
 		submitting = true;
 		const form = new FormData();
-		const json = generateJson();
-		console.log(json);
 		const newMapData = new File([JSON.stringify(generateJson())], 'data.json', {
 			type: 'application/json'
 		});
