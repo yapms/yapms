@@ -13,6 +13,9 @@
 	let newMapName = '';
 
 	async function createMap() {
+		if (newMapName === "") {
+			return;
+		}
 		if ($PocketBaseStore.authStore.model === null) {
 			return;
 		}
