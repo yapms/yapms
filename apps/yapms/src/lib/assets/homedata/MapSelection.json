@@ -85,33 +85,33 @@
 			},
 			{
 				"name": "The Netherlands",
-				"bg": "nl",
+				"bg": "nld",
 				"alt": "Dutch Binnenhof",
 				"doubleCols": true,
 				"attribution": "Photo by Nikodi on Pixabay",
 				"links": [
 					{
 						"label": "Provinces",
-						"route": "/app/nl/provinces/blank"
+						"route": "/app/nld/provinces/blank"
 					},
 					{
 						"label": "House",
-						"route": "/app/nl/house/2023-blank"
+						"route": "/app/nld/house/2023-blank"
 					},
 					{
 						"label": "Provincial Councils",
-						"route": "/app/nl/provincial/2023-blank"
+						"route": "/app/nld/provincial/2023-blank"
 					}
 				],
 				"modals": [
 					{
 						"label": "More",
 						"routes": [
-							"/app/nl/provinces/blank",
-							"/app/nl/house/2023-blank",
-							"/app/nl/provincial/2023-blank",
-							"/app/nl/provincial/2023-results",
-							"/app/nl/gemeente/2023-blank"
+							"/app/nld/provinces/blank",
+							"/app/nld/house/2023-blank",
+							"/app/nld/provincial/2023-blank",
+							"/app/nld/provincial/2023-results",
+							"/app/nld/gemeente/2023-blank"
 						]
 					}
 				]
