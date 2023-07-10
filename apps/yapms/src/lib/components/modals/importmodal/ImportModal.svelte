@@ -79,11 +79,6 @@
 <ModalBase title="Import Map" open={$ImportModalStore.open}>
 	<div slot="content">
 		<div class="flex flex-col gap-y-2">
-			<div class="alert alert-warning justify-start">
-				<span class="flex gap-x-2"
-					><ExclamationCircle class="w-6 h-6" />Only import files from people you trust!</span
-				>
-			</div>
 			<div class="alert alert-error justify-start" class:hidden={!loadError}>
 				<span class="flex gap-x-2"
 					><ExclamationCircle class="w-6 h-6" />There was an error loading your map, please try
