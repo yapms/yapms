@@ -52,55 +52,55 @@
 <path d="m247.32 130.95-1.93 10.31c-3.13 20.35-6.34 40.68-9.43 61.03l-2.3 15.27c10.93 1.62 21.85 3.3 32.79 4.88 14.77 1.87 29.53 3.78 44.3 5.6l36.58 3.33c1.76-20.85 3.44-41.7 5.33-62.53l2.2-24.78c-17.03-1.78-34.08-3.52-51.11-5.33l-56.43-7.78z" long-name="Wyoming" region="WY" short-name="WY" value="1" disabled="true"/>
 </g>
 <g data-region-texts font-family="Roboto" font-size="14" fill="currentColor">
-<text x="644" y="412" for="AL">AL</text>
-<text x="114" y="495" for="AK">AK</text>
-<text x="189" y="367" for="AZ">AZ</text>
-<text x="536" y="379" for="AR">AR</text>
-<text x="59" y="276" for="CA">CA</text>
-<text x="308" y="277" for="CO">CO</text>
-<text x="900" y="333" text-anchor="middle" for="CT">CT</text>
-<text x="900" y="394" text-anchor="middle" for="DE">DE</text>
-<text x="754" y="504" for="FL">FL</text>
-<text x="703" y="411" for="GA">GA</text>
-<text x="237" y="558" for="HI">HI</text>
-<text x="182" y="146" for="ID">ID</text>
-<text x="589" y="258" for="IL">IL</text>
-<text x="638" y="254" for="IN">IN</text>
-<text x="515" y="219" for="IA">IA</text>
-<text x="432" y="295" for="KS">KS</text>
-<text x="658" y="309" for="KY">KY</text>
-<text x="538" y="457" for="LA">LA</text>
-<text x="880" y="89" for="ME">ME</text>
-<text x="900" y="424.5" text-anchor="middle" for="MD">MD</text>
-<text x="900" y="273" text-anchor="middle" for="MA">MA</text>
-<text x="653.02" y="180.64" for="MI">MI</text>
-<text x="493" y="130" for="MN">MN</text>
-<text x="586" y="425" for="MS">MS</text>
-<text x="530" y="297" for="MO">MO</text>
-<text x="276" y="94" for="MT">MT</text>
-<text x="416" y="229" for="NE">NE</text>
-<text x="124" y="239" for="NV">NV</text>
-<text x="900" y="212" text-anchor="middle" for="NH">NH</text>
-<text y="364" text-anchor="middle" for="NJ" x="900">NJ</text>
-<text x="288" y="378" for="NM">NM</text>
-<text x="808" y="161" for="NY">NY</text>
-<text x="766" y="337" for="NC">NC</text>
-<text x="407" y="98" for="ND">ND</text>
-<text x="690.84" y="244.81" for="OH">OH</text>
-<text x="449" y="363" for="OK">OK</text>
-<text x="84" y="127" for="OR">OR</text>
-<text x="772" y="216" for="PA">PA</text>
-<text x="900" y="303" text-anchor="middle" for="RI">RI</text>
-<text x="747.13" y="378.36" for="SC">SC</text>
-<text x="409" y="162" for="SD">SD</text>
-<text x="641" y="349" for="TN">TN</text>
-<text x="422" y="453" for="TX">TX</text>
-<text x="207" y="260" for="UT">UT</text>
-<text x="900" y="242" text-anchor="middle" for="VT">VT</text>
-<text x="774.84" y="288.07" for="VA">VA</text>
-<text x="110" y="54" for="WA">WA</text>
-<text x="727.35" y="274.13" for="WV">WV</text>
-<text x="572" y="165" for="WI">WI</text>
-<text x="286" y="185" for="WY">WY</text>
+<text x="644" y="412" data-for-region="AL">AL</text>
+<text x="114" y="495" data-for-region="AK">AK</text>
+<text x="189" y="367" data-for-region="AZ">AZ</text>
+<text x="536" y="379" data-for-region="AR">AR</text>
+<text x="59" y="276" data-for-region="CA">CA</text>
+<text x="308" y="277" data-for-region="CO">CO</text>
+<text x="900" y="333" text-anchor="middle" data-for-region="CT">CT</text>
+<text x="900" y="394" text-anchor="middle" data-for-region="DE">DE</text>
+<text x="754" y="504" data-for-region="FL">FL</text>
+<text x="703" y="411" data-for-region="GA">GA</text>
+<text x="237" y="558" data-for-region="HI">HI</text>
+<text x="182" y="146" data-for-region="ID">ID</text>
+<text x="589" y="258" data-for-region="IL">IL</text>
+<text x="638" y="254" data-for-region="IN">IN</text>
+<text x="515" y="219" data-for-region="IA">IA</text>
+<text x="432" y="295" data-for-region="KS">KS</text>
+<text x="658" y="309" data-for-region="KY">KY</text>
+<text x="538" y="457" data-for-region="LA">LA</text>
+<text x="880" y="89" data-for-region="ME">ME</text>
+<text x="900" y="424.5" text-anchor="middle" data-for-region="MD">MD</text>
+<text x="900" y="273" text-anchor="middle" data-for-region="MA">MA</text>
+<text x="653.02" y="180.64" data-for-region="MI">MI</text>
+<text x="493" y="130" data-for-region="MN">MN</text>
+<text x="586" y="425" data-for-region="MS">MS</text>
+<text x="530" y="297" data-for-region="MO">MO</text>
+<text x="276" y="94" data-for-region="MT">MT</text>
+<text x="416" y="229" data-for-region="NE">NE</text>
+<text x="124" y="239" data-for-region="NV">NV</text>
+<text x="900" y="212" text-anchor="middle" data-for-region="NH">NH</text>
+<text y="364" text-anchor="middle" data-for-region="NJ" x="900">NJ</text>
+<text x="288" y="378" data-for-region="NM">NM</text>
+<text x="808" y="161" data-for-region="NY">NY</text>
+<text x="766" y="337" data-for-region="NC">NC</text>
+<text x="407" y="98" data-for-region="ND">ND</text>
+<text x="690.84" y="244.81" data-for-region="OH">OH</text>
+<text x="449" y="363" data-for-region="OK">OK</text>
+<text x="84" y="127" data-for-region="OR">OR</text>
+<text x="772" y="216" data-for-region="PA">PA</text>
+<text x="900" y="303" text-anchor="middle" data-for-region="RI">RI</text>
+<text x="747.13" y="378.36" data-for-region="SC">SC</text>
+<text x="409" y="162" data-for-region="SD">SD</text>
+<text x="641" y="349" data-for-region="TN">TN</text>
+<text x="422" y="453" data-for-region="TX">TX</text>
+<text x="207" y="260" data-for-region="UT">UT</text>
+<text x="900" y="242" text-anchor="middle" data-for-region="VT">VT</text>
+<text x="774.84" y="288.07" data-for-region="VA">VA</text>
+<text x="110" y="54" data-for-region="WA">WA</text>
+<text x="727.35" y="274.13" data-for-region="WV">WV</text>
+<text x="572" y="165" data-for-region="WI">WI</text>
+<text x="286" y="185" data-for-region="WY">WY</text>
 </g>
 </svg>
