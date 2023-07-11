@@ -80,9 +80,9 @@ RegionsStore.subscribe((regions) => {
 		if (region.nodes.text) {
 			region.nodes.text.style.color =
 				calculateLumaHEX(winner.candidate.margins[marginIndex]?.color) > 0.5 ? 'black' : 'white';
-			const bottomText = region.nodes.text.querySelector('.bottom');
-			if (bottomText) {
-				bottomText.innerHTML = region.value.toString();
+			const valueText = region.nodes.text.querySelector('[data-value-text]');
+			if (valueText) {
+				valueText.innerHTML = region.value.toString();
 			}
 			region.permaLocked
 				? (region.nodes.text.style.opacity = '0')
