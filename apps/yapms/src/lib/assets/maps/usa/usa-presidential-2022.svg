@@ -413,8 +413,7 @@
             <tspan class="top" x="688.55969" y="48.561954">NE-00</tspan>
             <tspan class="bottom" x="722.55969" y="48.561954">00</tspan>
         </text>
-        <text x="788.55969" y="69.561951" font-family="Roboto" for="ne-02"
-            >
+        <text x="788.55969" y="69.561951" font-family="Roboto" for="ne-02">
             <tspan class="top" x="688.55969" y="69.561951">NE-02</tspan>
             <tspan class="bottom" x="722.55969" y="69.561951">00</tspan>
         </text>
