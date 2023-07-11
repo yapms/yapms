@@ -48,15 +48,9 @@
 		delete imports[path];
 	}
 
-	//Take the path (/app/[country]/[name]/[year]), remove /app/ & replace the remaining / with - to match map file names.
-	const mapName = $page.url.pathname.replace('/app/', '').replaceAll('/', '-');
+	$: requestedMap = $page.url.pathname.replace('/app/', '').replaceAll('/', '-').concat('.svg');
 
-	//Make sure that even if map requested doesn't load, something loads.
-	let currentMap = 'usa-presidential-2022.svg';
-	//If the map defined by slugs is found, use that map
-	if (imports[`${mapName}.svg`] !== undefined) {
-		currentMap = `${mapName}.svg`;
-	}
+	$: currentMap = imports[requestedMap] !== undefined ? requestedMap : 'usa-presidential-2022.svg';
 
 	let isLoaded = false;
 
