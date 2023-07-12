@@ -17,7 +17,7 @@
 		<div class="tabs flex-row lg:flex-col flex-end items-center space-y-2 justify-evenly">
 			{#each maps as link}
 				<a class="w-2/3 lg:w-1/2 btn btn-primary gap-1" href={link.path} on:click={close}>
-					{link.title.toUpperCase()}
+					{link.title.replace($MoreMapsModalStore.prefix,'').toUpperCase()}
 				</a>
 			{/each}
 		</div>

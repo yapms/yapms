@@ -8,12 +8,14 @@
 	export let alt: string;
 	export let doubleCols: boolean;
 	export let attribution: string;
+	export let prefix: string;
 	export let links: HomeLinkData[];
 	export let modals: HomeModalData[];
 
 	function openMoreModal(keys: string[]) {
 		MoreMapsModalStore.set({
 			keys,
+			prefix: prefix,
 			title: name,
 			open: true
 		});
