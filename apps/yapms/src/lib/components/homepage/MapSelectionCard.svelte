@@ -8,14 +8,12 @@
 	export let alt: string;
 	export let doubleCols: boolean;
 	export let attribution: string;
-	export let prefix: string;
 	export let links: HomeLinkData[];
 	export let modals: HomeModalData[];
 
-	function openMoreModal(keys: string[]) {
+	function openMoreModal(buttons: HomeLinkData[]) {
 		MoreMapsModalStore.set({
-			keys,
-			prefix: prefix,
+			buttons,
 			title: name,
 			open: true
 		});
@@ -34,7 +32,7 @@
 				<button
 					class="btn btn-sm btn-primary w-full"
 					on:click={() => {
-						openMoreModal(modal.routes);
+						openMoreModal(modal.buttons);
 					}}
 					>{modal.label}
 				</button>

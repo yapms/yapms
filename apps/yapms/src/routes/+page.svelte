@@ -82,7 +82,6 @@
 							alt={card.alt}
 							doubleCols={card.doubleCols}
 							attribution={card.attribution}
-							prefix={card.prefix}
 							links={card.links}
 							modals={card.modals}
 						/>
