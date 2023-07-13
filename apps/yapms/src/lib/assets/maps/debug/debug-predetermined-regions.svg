@@ -511,7 +511,7 @@
      class="region-buttons"
      id="g63">
     <rect
-       for="ma"
+       data-for-region="ma"
        style="fill:#bc0000;fill-opacity:1"
        id="rect315976"
        width="40"
@@ -521,7 +521,7 @@
        rx="3"
        ry="3" />
     <rect
-       for="ri"
+       data-for-region="ri"
        style="fill:#bc0000;fill-opacity:1"
        id="rect315976-7"
        width="40"
@@ -531,7 +531,7 @@
        rx="3"
        ry="3" />
     <rect
-       for="ct"
+       data-for-region="ct"
        style="fill:#bc0000;fill-opacity:1"
        id="rect315976-7-7"
        width="40"
@@ -541,7 +541,7 @@
        rx="3"
        ry="3" />
     <rect
-       for="vt"
+       data-for-region="vt"
        style="fill:#bc0000;fill-opacity:1"
        id="rect315976-7-7-32"
        width="40"
@@ -551,7 +551,7 @@
        rx="3"
        ry="3" />
     <rect
-       for="nh"
+       data-for-region="nh"
        id="rect315976-7-7-34"
        width="40"
        height="40"
@@ -561,7 +561,7 @@
        ry="3"
        style="fill:#bc0000;fill-opacity:1" />
     <rect
-       for="nj"
+       data-for-region="nj"
        style="fill:#bc0000;fill-opacity:1"
        id="rect315976-7-7-4"
        width="40"
@@ -571,7 +571,7 @@
        rx="3"
        ry="3" />
     <rect
-       for="de"
+       data-for-region="de"
        style="fill:#bc0000;fill-opacity:1"
        id="rect315976-7-7-1"
        width="40"
@@ -581,7 +581,7 @@
        rx="3"
        ry="3" />
     <rect
-       for="md"
+       data-for-region="md"
        style="fill:#bc0000;fill-opacity:1"
        id="rect315976-7-7-3"
        width="40"
@@ -591,7 +591,7 @@
        rx="3"
        ry="3" />
     <rect
-       for="hi"
+       data-for-region="hi"
        style="fill:#bc0000;fill-opacity:1"
        id="rect315976-7-7-3-9"
        width="40"
@@ -602,13 +602,13 @@
        ry="3" />
   </g>
   <g
-     class="region-texts"
+     data-region-texts
      transform="translate(19.96002,8.6515941)"
      id="g416145">
     <text
        x="680.19812"
        y="229.68506"
-       for="oh"
+       data-for-region="oh"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text415945"><tspan
@@ -616,18 +616,18 @@
          fill="currentColor"
          x="680.19812"
          y="229.68506"
-         class="top"
+         
          id="tspan72945">OH</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="680.19812"
          y="244.68506"
          id="tspan3490-47"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="624.61932"
        y="238.55396"
-       for="in"
+       data-for-region="in"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text415949"><tspan
@@ -635,18 +635,18 @@
          fill="currentColor"
          x="624.61932"
          y="238.55396"
-         class="top"
+         
          id="tspan108055">IN</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="624.61932"
          y="253.55396"
          id="tspan3490-47-0"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="641.48584"
        y="171.70917"
-       for="mi"
+       data-for-region="mi"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text415953"><tspan
@@ -654,18 +654,18 @@
          fill="currentColor"
          x="641.48584"
          y="171.70917"
-         class="top"
+         
          id="tspan77985">MI</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="641.48584"
          y="186.70917"
          id="tspan3490-47-6"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="560.28925"
        y="149.8732"
-       for="wi"
+       data-for-region="wi"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text415957"><tspan
@@ -673,18 +673,18 @@
          fill="currentColor"
          x="560.28925"
          y="149.8732"
-         class="top"
+         
          id="tspan90805">WI</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="560.28925"
          y="164.8732"
          id="tspan3490-47-3"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="484.16116"
        y="115.55952"
-       for="mn"
+       data-for-region="mn"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text415961"><tspan
@@ -692,18 +692,18 @@
          fill="currentColor"
          x="484.16116"
          y="115.55952"
-         class="top"
+         
          id="tspan98518">MN</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="484.16116"
          y="130.55951"
          id="tspan3490-47-03"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="396.5882"
        y="85.14843"
-       for="nd"
+       data-for-region="nd"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text415965"><tspan
@@ -711,18 +711,18 @@
          fill="currentColor"
          x="396.5882"
          y="85.14843"
-         class="top"
+         
          id="tspan282672">ND</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="396.5882"
          y="100.14843"
          id="tspan3490-47-00"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="268.5202"
        y="78.572083"
-       for="mt"
+       data-for-region="mt"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text415969"><tspan
@@ -731,17 +731,17 @@
          fill="currentColor"
          x="268.5202"
          y="78.572083"
-         class="top">MT</tspan><tspan
+         >MT</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="268.5202"
          y="93.572083"
          id="tspan3490-47-8"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="103.93455"
        y="39.579285"
-       for="wa"
+       data-for-region="wa"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text415973"><tspan
@@ -750,17 +750,17 @@
          fill="currentColor"
          x="103.93455"
          y="39.579285"
-         class="top">WA</tspan><tspan
+         >WA</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="103.93455"
          y="54.579285"
          id="tspan3490-47-2"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="78.241028"
        y="113.10854"
-       for="or"
+       data-for-region="or"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text415977"><tspan
@@ -769,17 +769,17 @@
          fill="currentColor"
          x="78.241028"
          y="113.10854"
-         class="top">OR</tspan><tspan
+         >OR</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="78.241028"
          y="128.10855"
          id="tspan3490-47-64"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="168.99809"
        y="137.39551"
-       for="id"
+       data-for-region="id"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text415981"><tspan
@@ -787,18 +787,18 @@
          fill="currentColor"
          x="168.99809"
          y="137.39551"
-         class="top"
+         
          id="tspan145547">ID</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="168.99809"
          y="152.39551"
          id="tspan3490-47-9"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="50.237171"
        y="262.39526"
-       for="ca"
+       data-for-region="ca"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text415985"><tspan
@@ -807,17 +807,17 @@
          fill="currentColor"
          x="50.237171"
          y="262.39526"
-         class="top">CA</tspan><tspan
+         >CA</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="50.237171"
          y="277.39526"
          id="tspan3490-47-67"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="116.68204"
        y="222.23318"
-       for="nv"
+       data-for-region="nv"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text415989"><tspan
@@ -825,18 +825,18 @@
          fill="currentColor"
          x="116.68204"
          y="222.23318"
-         class="top"
+         
          id="tspan172456">NV</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="116.68204"
          y="237.23318"
          id="tspan3490-47-94"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="199.41576"
        y="247.63263"
-       for="ut"
+       data-for-region="ut"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text415993"><tspan
@@ -845,17 +845,17 @@
          fill="currentColor"
          x="199.41576"
          y="247.63263"
-         class="top">UT</tspan><tspan
+         >UT</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="199.41576"
          y="262.63263"
          id="tspan3490-47-92"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="180.96666"
        y="353.69467"
-       for="az"
+       data-for-region="az"
        style="text-align:center;text-anchor:middle"
        xml:space="default"
        id="text415997"><tspan
@@ -864,17 +864,17 @@
          fill="currentColor"
          x="180.96666"
          y="353.69467"
-         class="top">AZ</tspan><tspan
+         >AZ</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="180.96666"
          y="368.69467"
          id="tspan3490-47-7"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="281.53775"
        y="362.21954"
-       for="nm"
+       data-for-region="nm"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416001"><tspan
@@ -882,18 +882,18 @@
          fill="currentColor"
          x="281.53775"
          y="362.21954"
-         class="top"
+         
          id="tspan210453">NM</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="281.53775"
          y="377.21954"
          id="tspan3490-47-32"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="301.39218"
        y="263.97192"
-       for="co"
+       data-for-region="co"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416005"><tspan
@@ -902,17 +902,17 @@
          fill="currentColor"
          x="301.39218"
          y="263.97192"
-         class="top">CO</tspan><tspan
+         >CO</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="301.39218"
          y="278.97192"
          id="tspan3490-47-86"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="277.91479"
        y="170.56998"
-       for="wy"
+       data-for-region="wy"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416009"><tspan
@@ -921,17 +921,17 @@
          fill="currentColor"
          x="277.91479"
          y="170.56998"
-         class="top">WY</tspan><tspan
+         >WY</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="277.91479"
          y="185.56998"
          id="tspan3490-47-02"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="405.20126"
        y="215.89391"
-       for="ne"
+       data-for-region="ne"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416013"><tspan
@@ -940,17 +940,17 @@
          fill="currentColor"
          x="405.20126"
          y="215.89391"
-         class="top">NE</tspan><tspan
+         >NE</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="405.20126"
          y="230.89391"
          id="tspan3490-47-70"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="399.3512"
        y="149.2113"
-       for="sd"
+       data-for-region="sd"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416017"><tspan
@@ -959,17 +959,17 @@
          fill="currentColor"
          x="399.3512"
          y="149.2113"
-         class="top">SD</tspan><tspan
+         >SD</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="399.3512"
          y="164.2113"
          id="tspan3490-47-30"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="421.15475"
        y="281.13147"
-       for="ks"
+       data-for-region="ks"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416021"><tspan
@@ -978,17 +978,17 @@
          fill="currentColor"
          x="421.15475"
          y="281.13147"
-         class="top">KS</tspan><tspan
+         >KS</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="421.15475"
          y="296.13147"
          id="tspan3490-47-06"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="442.11713"
        y="348.60266"
-       for="ok"
+       data-for-region="ok"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416025"><tspan
@@ -997,17 +997,17 @@
          fill="currentColor"
          x="442.11713"
          y="348.60266"
-         class="top">OK</tspan><tspan
+         >OK</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="442.11713"
          y="363.60266"
          id="tspan3490-47-91"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="412.4646"
        y="444.03665"
-       for="tx"
+       data-for-region="tx"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416029"><tspan
@@ -1016,17 +1016,17 @@
          fill="currentColor"
          x="412.4646"
          y="444.03665"
-         class="top">TX</tspan><tspan
+         >TX</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="412.4646"
          y="459.03665"
          id="tspan3490-47-928"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="102.39604"
        y="480.73907"
-       for="ak"
+       data-for-region="ak"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416033"><tspan
@@ -1035,17 +1035,17 @@
          fill="currentColor"
          x="102.39604"
          y="480.73907"
-         class="top">AK</tspan><tspan
+         >AK</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="102.39604"
          y="495.73907"
          id="tspan3490-47-5"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="243.51402"
        y="553.51544"
-       for="hi"
+       data-for-region="hi"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416037"><tspan
@@ -1054,17 +1054,17 @@
          fill="currentColor"
          x="243.51402"
          y="553.51544"
-         class="top">HI</tspan><tspan
+         >HI</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="243.51402"
          y="568.51544"
          id="tspan3490-47-5-5"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="525.87103"
        y="436.81537"
-       for="la"
+       data-for-region="la"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416041"><tspan
@@ -1073,17 +1073,17 @@
          fill="currentColor"
          x="525.87103"
          y="436.81537"
-         class="top">LA</tspan><tspan
+         >LA</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="525.87103"
          y="451.81537"
          id="tspan3490-47-97"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="523.59845"
        y="364.70877"
-       for="ar"
+       data-for-region="ar"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416045"><tspan
@@ -1092,17 +1092,17 @@
          fill="currentColor"
          x="523.59845"
          y="364.70877"
-         class="top">AR</tspan><tspan
+         >AR</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="523.59845"
          y="379.70877"
          id="tspan3490-47-63"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="520.51904"
        y="286.36325"
-       for="mo"
+       data-for-region="mo"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416049"><tspan
@@ -1111,17 +1111,17 @@
          fill="currentColor"
          x="520.51904"
          y="286.36325"
-         class="top">MO</tspan><tspan
+         >MO</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="520.51904"
          y="301.36325"
          id="tspan3490-47-4"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="503.74109"
        y="203.21851"
-       for="ia"
+       data-for-region="ia"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416053"><tspan
@@ -1130,17 +1130,17 @@
          fill="currentColor"
          x="503.74109"
          y="203.21851"
-         class="top">IA</tspan><tspan
+         >IA</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="503.74109"
          y="218.21851"
          id="tspan3490-47-04"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="576.26825"
        y="243.45589"
-       for="il"
+       data-for-region="il"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416057"><tspan
@@ -1149,17 +1149,17 @@
          fill="currentColor"
          x="576.26825"
          y="243.45589"
-         class="top">IL</tspan><tspan
+         >IL</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="576.26825"
          y="258.45587"
          id="tspan3490-47-80"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="578.26404"
        y="405.98105"
-       for="ms"
+       data-for-region="ms"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416061"><tspan
@@ -1168,17 +1168,17 @@
          fill="currentColor"
          x="578.26404"
          y="405.98105"
-         class="top">MS</tspan><tspan
+         >MS</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="578.26404"
          y="420.98105"
          id="tspan3490-47-47"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="631.97339"
        y="399.68814"
-       for="al"
+       data-for-region="al"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416065"><tspan
@@ -1187,17 +1187,17 @@
          fill="currentColor"
          x="631.97339"
          y="399.68814"
-         class="top">AL</tspan><tspan
+         >AL</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="631.97339"
          y="414.68814"
          id="tspan3490-47-44"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="692.25311"
        y="398.69803"
-       for="ga"
+       data-for-region="ga"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416069"><tspan
@@ -1206,17 +1206,17 @@
          fill="currentColor"
          x="692.25311"
          y="398.69803"
-         class="top">GA</tspan><tspan
+         >GA</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="692.25311"
          y="413.69803"
          id="tspan3490-47-37"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="742.7937"
        y="489.52667"
-       for="fl"
+       data-for-region="fl"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416073"><tspan
@@ -1225,17 +1225,17 @@
          fill="currentColor"
          x="742.7937"
          y="489.52667"
-         class="top">FL</tspan><tspan
+         >FL</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="742.7937"
          y="504.52667"
          id="tspan3490-47-914"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="739.95636"
        y="366.61255"
-       for="sc"
+       data-for-region="sc"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416077"><tspan
@@ -1244,36 +1244,36 @@
          fill="currentColor"
          x="739.95636"
          y="366.61255"
-         class="top">SC</tspan><tspan
+         >SC</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="739.95636"
          y="381.61255"
          id="tspan3490-47-90"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="777.12134"
        y="321.88712"
-       for="nc"
+       data-for-region="nc"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416083"><tspan
          fill="currentColor"
          x="769.07935"
          y="321.88712"
-         class="top"
+         
          style="text-align:center;text-anchor:middle"
          id="tspan416079">NC</tspan><tspan
          fill="currentColor"
          x="769.07935"
          y="336.88712"
-         class="bottom"
+         data-value-text
          style="text-align:center;text-anchor:middle"
          id="tspan416081">00</tspan></text>
     <text
        x="636.40894"
        y="333.00555"
-       for="tn"
+       data-for-region="tn"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416087"><tspan
@@ -1281,18 +1281,18 @@
          fill="currentColor"
          x="636.40894"
          y="333.00555"
-         class="top"
+         
          id="tspan248558">TN</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="636.40894"
          y="348.00555"
          id="tspan3490-47-85"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="659.77856"
        y="290.22488"
-       for="ky"
+       data-for-region="ky"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416091"><tspan
@@ -1301,24 +1301,24 @@
          fill="currentColor"
          x="659.77856"
          y="290.22488"
-         class="top">KY</tspan><tspan
+         >KY</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="659.77856"
          y="305.22488"
          id="tspan3490-47-09"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="772.27527"
        y="272.64478"
-       for="va"
+       data-for-region="va"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416096"><tspan
          fill="currentColor"
          x="764.40027"
          y="272.64478"
-         class="top"
+         
          style="text-align:center;text-anchor:middle"
          id="tspan416093">VA</tspan><tspan
          sodipodi:role="line"
@@ -1326,18 +1326,18 @@
          x="764.40027"
          y="287.64478"
          id="tspan3490-47-39"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="849.91046"
        y="404.58487"
-       for="ma"
+       data-for-region="ma"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416100"><tspan
          fill="currentColor"
          x="842.03546"
          y="404.58487"
-         class="top"
+         
          style="text-align:center;text-anchor:middle"
          id="tspan358582">MA</tspan><tspan
          sodipodi:role="line"
@@ -1345,18 +1345,18 @@
          x="842.03546"
          y="419.58487"
          id="tspan3490-47-39-1"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="850.41437"
        y="453.68127"
-       for="ri"
+       data-for-region="ri"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416104"><tspan
          fill="currentColor"
          x="842.53937"
          y="453.68127"
-         class="top"
+         
          style="text-align:center;text-anchor:middle"
          id="tspan358582-0">RI</tspan><tspan
          sodipodi:role="line"
@@ -1364,18 +1364,18 @@
          x="842.53937"
          y="468.68127"
          id="tspan3490-47-39-1-4"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="898.59668"
        y="355.99564"
-       for="nj"
+       data-for-region="nj"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416108"><tspan
          fill="currentColor"
          x="890.72168"
          y="355.99564"
-         class="top"
+         
          style="text-align:center;text-anchor:middle"
          id="tspan346901">NJ</tspan><tspan
          sodipodi:role="line"
@@ -1383,18 +1383,18 @@
          x="890.72168"
          y="370.99564"
          id="tspan3490-47-39-59"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="898.35059"
        y="404.84241"
-       for="de"
+       data-for-region="de"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416112"><tspan
          fill="currentColor"
          x="890.47559"
          y="404.84241"
-         class="top"
+         
          style="text-align:center;text-anchor:middle"
          id="tspan346901-4">DE</tspan><tspan
          sodipodi:role="line"
@@ -1402,18 +1402,18 @@
          x="890.47559"
          y="419.84241"
          id="tspan3490-47-39-59-9"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="898.26562"
        y="307.22794"
-       for="ct"
+       data-for-region="ct"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416116"><tspan
          fill="currentColor"
          x="890.39062"
          y="307.22794"
-         class="top"
+         
          style="text-align:center;text-anchor:middle"
          id="tspan346901-8">CT</tspan><tspan
          sodipodi:role="line"
@@ -1421,18 +1421,18 @@
          x="890.39062"
          y="322.22794"
          id="tspan3490-47-39-59-0"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="898.60254"
        y="209.45526"
-       for="nh"
+       data-for-region="nh"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416116-1"><tspan
          fill="currentColor"
          x="890.72754"
          y="209.45526"
-         class="top"
+         
          style="text-align:center;text-anchor:middle"
          id="tspan346901-8-5">NH</tspan><tspan
          sodipodi:role="line"
@@ -1440,18 +1440,18 @@
          x="890.72754"
          y="224.45526"
          id="tspan3490-47-39-59-0-5"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="898.52637"
        y="258.30206"
-       for="vt"
+       data-for-region="vt"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416116-3"><tspan
          fill="currentColor"
          x="890.65137"
          y="258.30206"
-         class="top"
+         
          style="text-align:center;text-anchor:middle"
          id="tspan346901-8-52">VT</tspan><tspan
          sodipodi:role="line"
@@ -1459,18 +1459,18 @@
          x="890.65137"
          y="273.30206"
          id="tspan3490-47-39-59-0-7"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="727.21838"
        y="260.84665"
-       for="wv"
+       data-for-region="wv"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416120"><tspan
          fill="currentColor"
          x="719.34338"
          y="260.84665"
-         class="top"
+         
          style="text-align:center;text-anchor:middle"
          id="tspan312024">WV</tspan><tspan
          sodipodi:role="line"
@@ -1478,11 +1478,11 @@
          x="719.34338"
          y="275.84665"
          id="tspan3490-47-39-5"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="866.71527"
        y="73.638458"
-       for="me"
+       data-for-region="me"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416124"><tspan
@@ -1491,62 +1491,62 @@
          fill="currentColor"
          x="866.71527"
          y="73.638458"
-         class="top">ME</tspan><tspan
+         >ME</tspan><tspan
          sodipodi:role="line"
          fill="currentColor"
          x="866.71527"
          y="88.638458"
          id="tspan3490-47-89"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="771.57733"
        y="200.53438"
-       for="pa"
+       data-for-region="pa"
        style="text-align:center;text-anchor:middle"
        xml:space="default"
        id="text416130"><tspan
          fill="currentColor"
          x="764.48163"
          y="200.53438"
-         class="top"
+         
          style="text-align:center;text-anchor:middle"
          id="tspan416126">PA</tspan><tspan
          x="764.48163"
          y="215.53438"
-         class="bottom"
+         data-value-text
          fill="currentColor"
          style="text-align:center;text-anchor:middle"
          id="tspan416128">00</tspan></text>
     <text
        x="803.8822"
        y="142.60222"
-       for="ny"
+       data-for-region="ny"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416136"><tspan
          fill="currentColor"
          x="796.12146"
          y="142.60222"
-         class="top"
+         
          style="text-align:center;text-anchor:middle"
          id="tspan416132">NY</tspan><tspan
          fill="currentColor"
          x="796.12146"
          y="157.60222"
-         class="bottom"
+         data-value-text
          style="text-align:center;text-anchor:middle"
          id="tspan416134">00</tspan></text>
     <text
        x="898.36816"
        y="453.68918"
-       for="md"
+       data-for-region="md"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text416140"><tspan
          fill="currentColor"
          x="890.49316"
          y="453.68918"
-         class="top"
+         
          style="text-align:center;text-anchor:middle"
          id="tspan346901-2">MD</tspan><tspan
          sodipodi:role="line"
@@ -1554,18 +1554,18 @@
          x="890.49316"
          y="468.68918"
          id="tspan3490-47-39-59-4"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
     <text
        x="898.25098"
        y="502.61505"
-       for="dc"
+       data-for-region="dc"
        xml:space="default"
        style="text-align:center;text-anchor:middle"
        id="text380691"><tspan
          fill="currentColor"
          x="890.37598"
          y="502.61505"
-         class="top"
+         
          style="text-align:center;text-anchor:middle"
          id="tspan346901-3">DC</tspan><tspan
          sodipodi:role="line"
@@ -1573,6 +1573,6 @@
          x="890.37598"
          y="517.61505"
          id="tspan3490-47-39-59-92"
-         class="bottom">00</tspan></text>
+         data-value-text>00</tspan></text>
   </g>
 </svg>
