@@ -15,8 +15,7 @@
 <ModalBase
 	title="{$MoreMapsModalStore.title} Maps"
 	open={$MoreMapsModalStore.open}
-	stickyTitle={true}
-	stickyAction={true}
+	sticky
 >
 	<div slot="content">
 		<div class="tabs flex-row lg:flex-col flex-end items-center space-y-2 justify-evenly my-3">

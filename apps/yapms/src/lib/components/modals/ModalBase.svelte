@@ -2,8 +2,7 @@
 	export let open: boolean;
 	export let title: string;
 
-	export let stickyTitle = false;
-	export let stickyAction = false;
+	export let sticky = false;
 </script>
 
 <input type="checkbox" class="modal-toggle" checked={open} />
@@ -12,8 +11,8 @@
 	<div class="modal-box p-0 flex flex-col">
 		<div
 			class="bg-base-100 pt-6"
-			class:border-b={stickyTitle}
-			class:border-base-content={stickyAction}
+			class:border-b={sticky}
+			class:border-base-content={sticky}
 		>
 			<div class="flex gap-x-2 ml-6">
 				<slot name="icon" />
@@ -23,16 +22,16 @@
 			</div>
 		</div>
 
-		<div class="px-6 flex-1" class:overflow-y-auto={stickyAction || stickyTitle}>
+		<div class="px-6 flex-1" class:overflow-y-auto={sticky}>
 			<slot name="content" />
 		</div>
 
 		<div
 			class="modal-action bg-base-100 pb-6"
-			class:mt-0={stickyAction}
-			class:pt-3={stickyAction}
-			class:border-t={stickyAction}
-			class:border-base-content={stickyAction}
+			class:mt-0={sticky}
+			class:pt-3={sticky}
+			class:border-t={sticky}
+			class:border-base-content={sticky}
 		>
 			<div class="mr-6">
 				<slot name="action" />
