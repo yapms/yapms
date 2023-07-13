@@ -12,11 +12,7 @@
 	$: maps = titles.filter((title) => $MoreMapsModalStore.keys.indexOf(title.path) !== -1);
 </script>
 
-<ModalBase
-	title="{$MoreMapsModalStore.title} Maps"
-	open={$MoreMapsModalStore.open}
-	sticky
->
+<ModalBase title="{$MoreMapsModalStore.title} Maps" open={$MoreMapsModalStore.open} sticky>
 	<div slot="content">
 		<div class="tabs flex-row lg:flex-col flex-end items-center space-y-2 justify-evenly my-3">
 			{#each maps as link}

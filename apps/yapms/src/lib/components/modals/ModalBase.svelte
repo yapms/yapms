@@ -9,11 +9,7 @@
 
 <div class="modal modal-bottom lg:modal-middle">
 	<div class="modal-box p-0 flex flex-col">
-		<div
-			class="bg-base-100 pt-6"
-			class:border-b={sticky}
-			class:border-base-content={sticky}
-		>
+		<div class="bg-base-100 pt-6" class:border-b={sticky} class:border-base-content={sticky}>
 			<div class="flex gap-x-2 ml-6">
 				<slot name="icon" />
 				<h3 class="text-2xl pb-3">
