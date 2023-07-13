@@ -102,7 +102,7 @@
 <circle cx="596" cy="184.6" r="9" long-name="WI-3" region="WI-3" short-name="WI" value="1"/>
 <circle cx="335.75" cy="217" r="9" long-name="WY-2" region="WY-2" short-name="WY" value="1"/>
 </g>
-<g data-region-texts font-family="Roboto" font-size="14px"  fill="currentColor">
+<g data-region-texts font-family="Roboto" font-size="14px" fill="currentColor">
 <text x="644" y="412" data-for-region="AL-2">AL</text>
 <text x="114" y="495" data-for-region="AK-2">AK</text>
 <text x="189" y="367" data-for-region="AZ-1">AZ</text>
