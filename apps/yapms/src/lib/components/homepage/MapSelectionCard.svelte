@@ -11,9 +11,9 @@
 	export let links: HomeLinkData[];
 	export let modals: HomeModalData[];
 
-	function openMoreModal(keys: string[]) {
+	function openMoreModal(buttons: HomeLinkData[]) {
 		MoreMapsModalStore.set({
-			keys,
+			buttons,
 			title: name,
 			open: true
 		});
@@ -32,7 +32,7 @@
 				<button
 					class="btn btn-sm btn-primary w-full"
 					on:click={() => {
-						openMoreModal(modal.routes);
+						openMoreModal(modal.buttons);
 					}}
 					>{modal.label}
 				</button>

@@ -25,26 +25,83 @@
 				"modals": [
 					{
 						"label": "More",
-						"routes": [
-							"/app/usa/presidential/2022",
-							"/app/usa/senate/2024",
-							"/app/usa/house/2024",
-							"/app/usa/governors/2024",
-							"/app/usa/senate/current",
-							"/app/usa/house/current",
-							"/app/usa/governors/current",
-							"/app/usa/dem/primary",
-							"/app/usa/dem/primary",
-							"/app/usa/counties/blank",
-							"/app/usa/senate/blank",
-							"/app/usa/senate/class1",
-							"/app/usa/senate/class2",
-							"/app/usa/senate/class3",
-							"/app/usa/governors/blank",
-							"/app/usa/governors/2022",
-							"/app/usa/governors/2023",
-							"/app/usa/governors/2024",
-							"/app/usa/governors/2025"
+						"buttons": [
+							{
+								"label": "2022 Presidential Election",
+								"route": "/app/usa/presidential/2022"
+							},
+							{
+								"label": "2024 Senate Elections",
+								"route": "/app/usa/senate/2024"
+							},
+							{
+								"label": "House 2024",
+								"route": "/app/usa/house/2024"
+							},
+							{
+								"label": "Governors 2024",
+								"route": "/app/usa/governors/2024"
+							},
+							{
+								"label": "Current Senate",
+								"route": "/app/usa/senate/current"
+							},
+							{
+								"label": "Current House",
+								"route": "/app/usa/house/current"
+							},
+							{
+								"label": "Current Governors",
+								"route": "/app/usa/governors/current"
+							},
+							{
+								"label": "Democratic Primary",
+								"route": "/app/usa/dem/primary"
+							},
+							{
+								"label": "Republican Primary",
+								"route": "/app/usa/rep/primary"
+							},
+							{
+								"label": "Counties",
+								"route": "/app/usa/counties/blank"
+							},
+							{
+								"label": "Senate",
+								"route": "/app/usa/senate/blank"
+							},
+							{
+								"label": "Senate Class 1",
+								"route": "/app/usa/senate/class1"
+							},
+							{
+								"label": "Senate Class 2",
+								"route": "/app/usa/senate/class2"
+							},
+							{
+								"label": "Senate Class 3",
+								"route": "/app/usa/senate/class3"
+							},
+							{
+								"label": "Governors",
+								"route": "/app/usa/governors/blank"
+							},
+							{
+								"label": "Governors 2022",
+								"route": "/app/usa/governors/2022"
+							},
+							{
+								"label": "Governors 2023",
+								"route": "/app/usa/governors/2023"
+							},
+							{
+								"label": "Governors 2024",
+								"route": "/app/usa/governors/2024"
+							},
+							{
+								"label": "Governors 2025",
+								"route": "/app/usa/governors/2025"
+							}
 						]
 					}
 				]
@@ -72,13 +129,31 @@
 				"modals": [
 					{
 						"label": "More",
-						"routes": [
-							"/app/can/provinces/blank",
-							"/app/can/commons/blank",
-							"/app/can/senate/blank",
-							"/app/can/commons/2021-results",
-							"/app/can/commons/2019-results",
-							"/app/can/commons/2015-results"
+						"buttons": [
+							{
+								"label": "Provinces",
+								"route": "/app/can/provinces/blank"
+							},
+							{
+								"label": "House of Commons",
+								"route": "/app/can/commons/blank"
+							},
+							{
+								"label": "Senate",
+								"route": "/app/can/senate/blank"
+							},
+							{
+								"label": "2021 House of Commons Results",
+								"route": "/app/can/commons/2021-results"
+							},
+							{
+								"label": "2019 House of Commons Results",
+								"route": "/app/can/commons/2019-results"
+							},
+							{
+								"label": "2015 House of Commons Results",
+								"route": "/app/can/commons/2015-results"
+							}
 						]
 					}
 				]
@@ -106,12 +181,27 @@
 				"modals": [
 					{
 						"label": "More",
-						"routes": [
-							"/app/nld/provinces/blank",
-							"/app/nld/house/2023-blank",
-							"/app/nld/provincial/2023-blank",
-							"/app/nld/provincial/2023-results",
-							"/app/nld/gemeente/2023-blank"
+						"buttons": [
+							{
+								"label": "Provinces",
+								"route": "/app/nld/provinces/blank"
+							},
+							{
+								"label": "2023 House Elections",
+								"route": "/app/nld/house/2023-blank"
+							},
+							{
+								"label": "Provincial Councils",
+								"route": "/app/nld/provincial/2023-blank"
+							},
+							{
+								"label": "2023 Provincial Councils Results",
+								"route": "/app/nld/provincial/2023-results"
+							},
+							{
+								"label": "2023 Gemeente",
+								"route": "/app/nld/gemeente/2023-blank"
+							}
 						]
 					}
 				]
@@ -144,23 +234,71 @@
 				"modals": [
 					{
 						"label": "More",
-						"routes": [
-							"/app/usa/house/2022",
-							"/app/usa/house/2020",
-							"/app/usa/house/2018",
-							"/app/usa/house/2016",
-							"/app/usa/house/2014",
-							"/app/usa/house/2012",
-							"/app/usa/house/2010",
-							"/app/usa/house/2008",
-							"/app/usa/house/2006",
-							"/app/usa/house/2004",
-							"/app/usa/house/2002",
-							"/app/usa/house/2000",
-							"/app/usa/house/1998",
-							"/app/usa/house/1996",
-							"/app/usa/house/1994",
-							"/app/usa/house/1992"
+						"buttons": [
+							{
+								"label": "House 2022",
+								"route": "/app/usa/house/2022"
+							},
+							{
+								"label": "House 2020",
+								"route": "/app/usa/house/2020"
+							},
+							{
+								"label": "House 2018",
+								"route": "/app/usa/house/2018"
+							},
+							{
+								"label": "House 2016",
+								"route": "/app/usa/house/2016"
+							},
+							{
+								"label": "House 2014",
+								"route": "/app/usa/house/2014"
+							},
+							{
+								"label": "House 2012",
+								"route": "/app/usa/house/2012"
+							},
+							{
+								"label": "House 2010",
+								"route": "/app/usa/house/2010"
+							},
+							{
+								"label": "House 2008",
+								"route": "/app/usa/house/2008"
+							},
+							{
+								"label": "House 2006",
+								"route": "/app/usa/house/2006"
+							},
+							{
+								"label": "House 2004",
+								"route": "/app/usa/house/2004"
+							},
+							{
+								"label": "House 2002",
+								"route": "/app/usa/house/2002"
+							},
+							{
+								"label": "House 2000",
+								"route": "/app/usa/house/2000"
+							},
+							{
+								"label": "House 1998",
+								"route": "/app/usa/house/1998"
+							},
+							{
+								"label": "House 1996",
+								"route": "/app/usa/house/1996"
+							},
+							{
+								"label": "House 1994",
+								"route": "/app/usa/house/1994"
+							},
+							{
+								"label": "House 1992",
+								"route": "/app/usa/house/1992"
+							}
 						]
 					}
 				]

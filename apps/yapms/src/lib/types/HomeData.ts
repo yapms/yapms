@@ -5,7 +5,7 @@ type HomeLinkData = {
 
 type HomeModalData = {
 	label: string;
-	routes: string[];
+	buttons: HomeLinkData[];
 };
 
 export type { HomeLinkData, HomeModalData };
