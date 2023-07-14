@@ -108,7 +108,7 @@ function createRegionStore(node: HTMLDivElement) {
 	const regionsForStore = Array<Region>();
 	const regions = node.querySelector<HTMLElement>('.regions');
 	const buttons = node.querySelector<HTMLElement>('.region-buttons');
-	const texts = node.querySelector<HTMLElement>('.region-texts');
+	const texts = node.querySelector<HTMLElement>('[data-region-texts]');
 	const tossupCandidate = get(TossupCandidateStore);
 
 	if (regions === null) return;
@@ -135,24 +135,14 @@ function createRegionStore(node: HTMLDivElement) {
 					: [{ candidate: tossupCandidate, count: value, margin: 0 }],
 			nodes: {
 				region: childHTML,
-				button: buttons?.querySelector(`[for="${childHTML.getAttribute('region') ?? ''}"]`) ?? null,
-				text: texts?.querySelector(`[for="${childHTML.getAttribute('region') ?? ''}"]`) ?? null
+				button:
+					buttons?.querySelector(`[data-for-region="${childHTML.getAttribute('region') ?? ''}"]`) ??
+					null,
+				text:
+					texts?.querySelector(`[data-for-region="${childHTML.getAttribute('region') ?? ''}"]`) ??
+					null
 			}
 		};
-
-		newRegion.nodes.region.style.fill = tossupCandidate.margins[0].color;
-
-		if (newRegion.nodes.button !== null) {
-			newRegion.nodes.button.style.fill = tossupCandidate.margins[0].color;
-		}
-
-		if (newRegion.nodes.text !== null) {
-			const bottom = newRegion.nodes.text.querySelector('.bottom');
-			if (bottom !== null) {
-				bottom.textContent = newRegion.value.toString();
-			}
-		}
-
 		regionsForStore.push(newRegion);
 	}
 

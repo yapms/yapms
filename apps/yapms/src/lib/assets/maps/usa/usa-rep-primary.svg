@@ -57,62 +57,62 @@
     <path d="M13.5 315.78c-1.93 0-3.5 1.35-3.5 3v18c0 1.67 1.57 3 3.5 3h33c1.95 0 3.5-1.33 3.5-3v-18c0-1.65-1.55-3-3.5-3z" long-name="Puerto Rico" region="PR" short-name="PR" value="23"/>
     <path d="M934.44 437.39c-1.93 0-3.5 1.35-3.5 3v18c0 1.67 1.57 3 3.5 3h33c1.95 0 3.5-1.33 3.5-3v-18c0-1.65-1.55-3-3.5-3z" long-name="District of Columbia" region="DC" short-name="DC" value="19"/>
   </g>
-  <g class="region-texts" font-family="Roboto" font-size="14" fill="currentColor">
-    <text x="900.24" y="454.25" text-anchor="middle" for="DC" transform="translate(50)">DC</text>
-    <text x="-20.7" y="211" text-anchor="middle" for="AS" transform="translate(50)">AS</text>
-    <text x="-20.7" y="271.18" text-anchor="middle" for="NI" transform="translate(50)">NI</text>
-    <text x="-20.7" y="241.18" text-anchor="middle" for="GU" transform="translate(50)">GU</text>
-    <text x="644" y="412" for="AL" transform="translate(50)">AL</text>
-    <text x="114" y="495" for="AK" transform="translate(50)">AK</text>
-    <text x="189" y="367" for="AZ" transform="translate(50)">AZ</text>
-    <text x="536" y="379" for="AR" transform="translate(50)">AR</text>
-    <text x="59" y="276" for="CA" transform="translate(50)">CA</text>
-    <text x="308" y="277" for="CO" transform="translate(50)">CO</text>
-    <text x="900" y="333" text-anchor="middle" for="CT" transform="translate(50)">CT</text>
-    <text x="900" y="394" text-anchor="middle" for="DE" transform="translate(50)">DE</text>
-    <text x="754" y="504" for="FL" transform="translate(50)">FL</text>
-    <text x="703" y="411" for="GA" transform="translate(50)">GA</text>
-    <text x="237" y="558" for="HI" transform="translate(50)">HI</text>
-    <text x="182" y="146" for="ID" transform="translate(50)">ID</text>
-    <text x="589" y="258" for="IL" transform="translate(50)">IL</text>
-    <text x="638" y="254" for="IN" transform="translate(50)">IN</text>
-    <text x="515" y="219" for="IA" transform="translate(50)">IA</text>
-    <text x="432" y="295" for="KS" transform="translate(50)">KS</text>
-    <text x="658" y="309" for="KY" transform="translate(50)">KY</text>
-    <text x="538" y="457" for="LA" transform="translate(50)">LA</text>
-    <text x="880" y="89" for="ME" transform="translate(50)">ME</text>
-    <text x="900" y="424.5" text-anchor="middle" for="MD" transform="translate(50)">MD</text>
-    <text x="900" y="273" text-anchor="middle" for="MA" transform="translate(50)">MA</text>
-    <text x="653.02" y="180.64" for="MI" transform="translate(50)">MI</text>
-    <text x="493" y="130" for="MN" transform="translate(50)">MN</text>
-    <text x="586" y="425" for="MS" transform="translate(50)">MS</text>
-    <text x="530" y="297" for="MO" transform="translate(50)">MO</text>
-    <text x="276" y="94" for="MT" transform="translate(50)">MT</text>
-    <text x="416" y="229" for="NE" transform="translate(50)">NE</text>
-    <text x="124" y="239" for="NV" transform="translate(50)">NV</text>
-    <text x="900" y="212" text-anchor="middle" for="NH" transform="translate(50)">NH</text>
-    <text y="364" text-anchor="middle" for="NJ" x="900" transform="translate(50)">NJ</text>
-    <text x="288" y="378" for="NM" transform="translate(50)">NM</text>
-    <text x="808" y="161" for="NY" transform="translate(50)">NY</text>
-    <text x="766" y="337" for="NC" transform="translate(50)">NC</text>
-    <text x="407" y="98" for="ND" transform="translate(50)">ND</text>
-    <text x="690.84" y="244.81" for="OH" transform="translate(50)">OH</text>
-    <text x="449" y="363" for="OK" transform="translate(50)">OK</text>
-    <text x="84" y="127" for="OR" transform="translate(50)">OR</text>
-    <text x="772" y="216" for="PA" transform="translate(50)">PA</text>
-    <text x="900" y="303" text-anchor="middle" for="RI" transform="translate(50)">RI</text>
-    <text x="747.13" y="378.36" for="SC" transform="translate(50)">SC</text>
-    <text x="409" y="162" for="SD" transform="translate(50)">SD</text>
-    <text x="641" y="349" for="TN" transform="translate(50)">TN</text>
-    <text x="422" y="453" for="TX" transform="translate(50)">TX</text>
-    <text x="207" y="260" for="UT" transform="translate(50)">UT</text>
-    <text x="900" y="242" text-anchor="middle" for="VT" transform="translate(50)">VT</text>
-    <text x="774.84" y="288.07" for="VA" transform="translate(50)">VA</text>
-    <text x="110" y="54" for="WA" transform="translate(50)">WA</text>
-    <text x="727.35" y="274.13" for="WV" transform="translate(50)">WV</text>
-    <text x="572" y="165" for="WI" transform="translate(50)">WI</text>
-    <text x="286" y="185" for="WY" transform="translate(50)">WY</text>
-    <text x="-20.7" y="302.18" text-anchor="middle" for="VI" transform="translate(50)">VI</text>
-    <text x="-20.7" y="333.18" text-anchor="middle" for="PR" transform="translate(50)">PR</text>
+  <g data-region-texts font-family="Roboto" font-size="14" fill="currentColor">
+    <text x="900.24" y="454.25" text-anchor="middle" data-for-region="DC" transform="translate(50)">DC</text>
+    <text x="-20.7" y="211" text-anchor="middle" data-for-region="AS" transform="translate(50)">AS</text>
+    <text x="-20.7" y="271.18" text-anchor="middle" data-for-region="NI" transform="translate(50)">NI</text>
+    <text x="-20.7" y="241.18" text-anchor="middle" data-for-region="GU" transform="translate(50)">GU</text>
+    <text x="644" y="412" data-for-region="AL" transform="translate(50)">AL</text>
+    <text x="114" y="495" data-for-region="AK" transform="translate(50)">AK</text>
+    <text x="189" y="367" data-for-region="AZ" transform="translate(50)">AZ</text>
+    <text x="536" y="379" data-for-region="AR" transform="translate(50)">AR</text>
+    <text x="59" y="276" data-for-region="CA" transform="translate(50)">CA</text>
+    <text x="308" y="277" data-for-region="CO" transform="translate(50)">CO</text>
+    <text x="900" y="333" text-anchor="middle" data-for-region="CT" transform="translate(50)">CT</text>
+    <text x="900" y="394" text-anchor="middle" data-for-region="DE" transform="translate(50)">DE</text>
+    <text x="754" y="504" data-for-region="FL" transform="translate(50)">FL</text>
+    <text x="703" y="411" data-for-region="GA" transform="translate(50)">GA</text>
+    <text x="237" y="558" data-for-region="HI" transform="translate(50)">HI</text>
+    <text x="182" y="146" data-for-region="ID" transform="translate(50)">ID</text>
+    <text x="589" y="258" data-for-region="IL" transform="translate(50)">IL</text>
+    <text x="638" y="254" data-for-region="IN" transform="translate(50)">IN</text>
+    <text x="515" y="219" data-for-region="IA" transform="translate(50)">IA</text>
+    <text x="432" y="295" data-for-region="KS" transform="translate(50)">KS</text>
+    <text x="658" y="309" data-for-region="KY" transform="translate(50)">KY</text>
+    <text x="538" y="457" data-for-region="LA" transform="translate(50)">LA</text>
+    <text x="880" y="89" data-for-region="ME" transform="translate(50)">ME</text>
+    <text x="900" y="424.5" text-anchor="middle" data-for-region="MD" transform="translate(50)">MD</text>
+    <text x="900" y="273" text-anchor="middle" data-for-region="MA" transform="translate(50)">MA</text>
+    <text x="653.02" y="180.64" data-for-region="MI" transform="translate(50)">MI</text>
+    <text x="493" y="130" data-for-region="MN" transform="translate(50)">MN</text>
+    <text x="586" y="425" data-for-region="MS" transform="translate(50)">MS</text>
+    <text x="530" y="297" data-for-region="MO" transform="translate(50)">MO</text>
+    <text x="276" y="94" data-for-region="MT" transform="translate(50)">MT</text>
+    <text x="416" y="229" data-for-region="NE" transform="translate(50)">NE</text>
+    <text x="124" y="239" data-for-region="NV" transform="translate(50)">NV</text>
+    <text x="900" y="212" text-anchor="middle" data-for-region="NH" transform="translate(50)">NH</text>
+    <text y="364" text-anchor="middle" data-for-region="NJ" x="900" transform="translate(50)">NJ</text>
+    <text x="288" y="378" data-for-region="NM" transform="translate(50)">NM</text>
+    <text x="808" y="161" data-for-region="NY" transform="translate(50)">NY</text>
+    <text x="766" y="337" data-for-region="NC" transform="translate(50)">NC</text>
+    <text x="407" y="98" data-for-region="ND" transform="translate(50)">ND</text>
+    <text x="690.84" y="244.81" data-for-region="OH" transform="translate(50)">OH</text>
+    <text x="449" y="363" data-for-region="OK" transform="translate(50)">OK</text>
+    <text x="84" y="127" data-for-region="OR" transform="translate(50)">OR</text>
+    <text x="772" y="216" data-for-region="PA" transform="translate(50)">PA</text>
+    <text x="900" y="303" text-anchor="middle" data-for-region="RI" transform="translate(50)">RI</text>
+    <text x="747.13" y="378.36" data-for-region="SC" transform="translate(50)">SC</text>
+    <text x="409" y="162" data-for-region="SD" transform="translate(50)">SD</text>
+    <text x="641" y="349" data-for-region="TN" transform="translate(50)">TN</text>
+    <text x="422" y="453" data-for-region="TX" transform="translate(50)">TX</text>
+    <text x="207" y="260" data-for-region="UT" transform="translate(50)">UT</text>
+    <text x="900" y="242" text-anchor="middle" data-for-region="VT" transform="translate(50)">VT</text>
+    <text x="774.84" y="288.07" data-for-region="VA" transform="translate(50)">VA</text>
+    <text x="110" y="54" data-for-region="WA" transform="translate(50)">WA</text>
+    <text x="727.35" y="274.13" data-for-region="WV" transform="translate(50)">WV</text>
+    <text x="572" y="165" data-for-region="WI" transform="translate(50)">WI</text>
+    <text x="286" y="185" data-for-region="WY" transform="translate(50)">WY</text>
+    <text x="-20.7" y="302.18" text-anchor="middle" data-for-region="VI" transform="translate(50)">VI</text>
+    <text x="-20.7" y="333.18" text-anchor="middle" data-for-region="PR" transform="translate(50)">PR</text>
   </g>
 </svg>
