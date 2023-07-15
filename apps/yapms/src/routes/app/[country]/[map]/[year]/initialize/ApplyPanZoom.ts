@@ -9,7 +9,10 @@ function applyPanZoom(mapBind: HTMLDivElement): PanZoom | undefined {
 			maxZoom: 100,
 			smoothScroll: false,
 			autocenter: true,
-			zoomDoubleClickSpeed: 1
+			zoomDoubleClickSpeed: 1,
+			onTouch: function () {
+				return false;
+			}
 		});
 		if (svg.hasAttribute('auto-border-stroke-width')) {
 			const inputParser = z.number().positive().finite();
