@@ -11,7 +11,7 @@ function applyPanZoom(mapBind: HTMLDivElement): PanZoom | undefined {
 			autocenter: true,
 			zoomDoubleClickSpeed: 1,
 			onTouch: function() {
-				return !1
+				return false;
 			}
 		});
 		if (svg.hasAttribute('auto-border-stroke-width')) {
