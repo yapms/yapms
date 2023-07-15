@@ -1,34 +1,19 @@
 <script lang="ts">
 	import NavBar from '$lib/components/navbar/NavBar.svelte';
 	import SideBar from '$lib/components/sidebar/SideBar.svelte';
-	import EditCandidateModal from '$lib/components/modals/editcandidatemodal/EditCandidateModal.svelte';
 	import { onMount } from 'svelte';
 	import { themeChange } from 'theme-change';
-	import MapModal from '$lib/components/modals/mapmodal/MapModal.svelte';
 	import CandidateBoxContainer from '$lib/components/candidatebox/CandidateBoxContainer.svelte';
-	import ClearMapModal from '$lib/components/modals/clearmapmodal/ClearMapModal.svelte';
-	import EditRegionModal from '$lib/components/modals/editregionmodal/EditRegionModal.svelte';
-	import ModeModal from '$lib/components/modals/modemodal/ModeModal.svelte';
 	import { InteractionStore } from '$lib/stores/Interaction';
 	import { ChartPositionStore, ChartTypeStore } from '$lib/stores/Chart';
 	import { CandidatesStore } from '$lib/stores/Candidates';
-	import AddCandidateModal from '$lib/components/modals/addcandidatemodal/AddCandidateModal.svelte';
 	import HorizontalBattleChart from '$lib/components/chartbar/battlechart/BattleChart.svelte';
 	import ChartBar from '$lib/components/chartbar/ChartBar.svelte';
-	import PresetColorsModal from '$lib/components/modals/presetcolorsmodal/PresetColorsModal.svelte';
-	import AuthModal from '$lib/components/modals/authmodal/AuthModal.svelte';
-	import StyleModal from '$lib/components/modals/stylemodal/StyleModal.svelte';
-	import LoadingErrorModal from '$lib/components/modals/loadingerrormodal/LoadingErrorModal.svelte';
-	import SplitRegionModal from '$lib/components/modals/splitregionmodal/SplitRegionModal.svelte';
-	import EditTossupModal from '$lib/components/modals/edittossupmodal/EditTossupModal.svelte';
 	import { loadRegionsForApp } from '../[country]/[map]/[year]/initialize/LoadRegions';
 	import applyPanZoom from '../[country]/[map]/[year]/initialize/ApplyPanZoom';
 	import { ImportModalStore } from '$lib/stores/Modals';
 	import { ImportedSVGStore } from '$lib/stores/ImportedSVG';
 	import { get } from 'svelte/store';
-	import ImportModal from '$lib/components/modals/importmodal/ImportModal.svelte';
-	import ShareDisabledModal from '$lib/components/modals/sharedisabledmodal/ShareDisabledModal.svelte';
-	import ChartOptionsModal from '$lib/components/modals/chartoptionsmodal/ChartOptionsModal.svelte';
 	import { MapInsetsStore } from '$lib/stores/MapInsetsStore';
 
 	const svg = get(ImportedSVGStore);
@@ -111,33 +96,3 @@
 		</div>
 	{/if}
 </div>
-
-<ClearMapModal />
-
-<EditCandidateModal />
-
-<EditTossupModal />
-
-<SplitRegionModal />
-
-<AddCandidateModal />
-
-<PresetColorsModal />
-
-<EditRegionModal />
-
-<MapModal />
-
-<ChartOptionsModal />
-
-<ModeModal />
-
-<StyleModal />
-
-<AuthModal />
-
-<LoadingErrorModal />
-
-<ImportModal />
-
-<ShareDisabledModal />
