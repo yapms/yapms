@@ -22,6 +22,7 @@
 	import ShareModal from '$lib/components/modals/sharemodal/ShareModal.svelte';
 	import ShareDisabledModal from '$lib/components/modals/sharedisabledmodal/ShareDisabledModal.svelte';
 	import ImportModal from '$lib/components/modals/importmodal/ImportModal.svelte';
+	import { InteractionStore } from '$lib/stores/Interaction';
 
 	onMount(async () => {
 		const url = get(page).url;
@@ -39,7 +40,21 @@
 			goto('/app/usa/presidential/2024');
 		}
 	});
+
+	function handleKeyDown(event: KeyboardEvent) {
+		$InteractionStore.set(event.code, true);
+	}
+
+	function handleKeyUp(event: KeyboardEvent) {
+		$InteractionStore.delete(event.code);
+	}
 </script>
+
+<svelte:head>
+	<title>YAPms</title>
+</svelte:head>
+
+<svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp} />
 
 <slot />
 

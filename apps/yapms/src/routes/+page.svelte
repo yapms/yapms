@@ -9,16 +9,10 @@
 	import { ImportModalStore, ThemeModalStore } from '$lib/stores/Modals';
 	import MapSelectionCard from '$lib/components/homepage/MapSelectionCard.svelte';
 	import MoreMapsModal from '$lib/components/modals/moremapsmodal/MoreMapsModal.svelte';
-	import { onMount } from 'svelte';
-	import { themeChange } from 'theme-change';
 	import MapSearch from '$lib/components/homepage/MapSearch.svelte';
 	import BetaModal from '$lib/components/modals/betamodal/BetaModal.svelte';
 	import ArrowUpTray from '$lib/icons/ArrowUpTray.svelte';
 	import ImportModal from '$lib/components/modals/importmodal/ImportModal.svelte';
-
-	onMount(() => {
-		themeChange(false);
-	});
 
 	function openThemeModal() {
 		ThemeModalStore.set({
