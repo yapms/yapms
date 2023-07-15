@@ -10,7 +10,7 @@ function applyPanZoom(mapBind: HTMLDivElement): PanZoom | undefined {
 			smoothScroll: false,
 			autocenter: true,
 			zoomDoubleClickSpeed: 1,
-			onTouch: function() {
+			onTouch: function () {
 				return false;
 			}
 		});
