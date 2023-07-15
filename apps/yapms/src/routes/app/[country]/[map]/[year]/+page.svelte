@@ -1,35 +1,20 @@
 <script lang="ts">
 	import NavBar from '$lib/components/navbar/NavBar.svelte';
 	import SideBar from '$lib/components/sidebar/SideBar.svelte';
-	import EditCandidateModal from '$lib/components/modals/editcandidatemodal/EditCandidateModal.svelte';
 	import { onMount } from 'svelte';
 	import { themeChange } from 'theme-change';
-	import MapModal from '$lib/components/modals/mapmodal/MapModal.svelte';
 	import CandidateBoxContainer from '$lib/components/candidatebox/CandidateBoxContainer.svelte';
-	import ClearMapModal from '$lib/components/modals/clearmapmodal/ClearMapModal.svelte';
 	import applyPanZoom from './initialize/ApplyPanZoom';
-	import EditRegionModal from '$lib/components/modals/editregionmodal/EditRegionModal.svelte';
-	import ModeModal from '$lib/components/modals/modemodal/ModeModal.svelte';
 	import { InteractionStore } from '$lib/stores/Interaction';
 	import { ChartPositionStore, ChartTypeStore } from '$lib/stores/Chart';
 	import { CandidatesStore } from '$lib/stores/Candidates';
 	import { LogoStore } from '$lib/stores/Logo';
-	import AddCandidateModal from '$lib/components/modals/addcandidatemodal/AddCandidateModal.svelte';
 	import BattleChart from '$lib/components/chartbar/battlechart/BattleChart.svelte';
 	import ChartBar from '$lib/components/chartbar/ChartBar.svelte';
-	import PresetColorsModal from '$lib/components/modals/presetcolorsmodal/PresetColorsModal.svelte';
-	import ChartOptionsModal from '$lib/components/modals/chartoptionsmodal/ChartOptionsModal.svelte';
-	import AuthModal from '$lib/components/modals/authmodal/AuthModal.svelte';
-	import StyleModal from '$lib/components/modals/stylemodal/StyleModal.svelte';
-	import ShareModal from '$lib/components/modals/sharemodal/ShareModal.svelte';
 	import { loadFromJson } from '$lib/utils/loadMap';
 	import { LoadedMapStore } from '$lib/stores/LoadedMap';
-	import LoadingErrorModal from '$lib/components/modals/loadingerrormodal/LoadingErrorModal.svelte';
 	import { page } from '$app/stores';
-	import SplitRegionModal from '$lib/components/modals/splitregionmodal/SplitRegionModal.svelte';
-	import EditTossupModal from '$lib/components/modals/edittossupmodal/EditTossupModal.svelte';
 	import { loadRegionsForApp } from './initialize/LoadRegions';
-	import ImportModal from '$lib/components/modals/importmodal/ImportModal.svelte';
 	import { MapInsetsStore } from '$lib/stores/MapInsetsStore';
 
 	//Glob import all maps in the maps directory so that we can check if a map exists and then load it.
@@ -171,33 +156,3 @@
 		<SideBar />
 	</div>
 </div>
-
-<ClearMapModal />
-
-<EditCandidateModal />
-
-<EditTossupModal />
-
-<SplitRegionModal />
-
-<AddCandidateModal />
-
-<PresetColorsModal />
-
-<EditRegionModal />
-
-<MapModal />
-
-<ChartOptionsModal />
-
-<ModeModal />
-
-<StyleModal />
-
-<ShareModal />
-
-<AuthModal />
-
-<LoadingErrorModal />
-
-<ImportModal />
