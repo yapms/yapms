@@ -25,6 +25,9 @@
 	import { browser } from '$app/environment';
 	import NavBar from '$lib/components/navbar/NavBar.svelte';
 	import SideBar from '$lib/components/sidebar/SideBar.svelte';
+	import { ChartPositionStore } from '$lib/stores/Chart';
+	import CandidateBoxContainer from '$lib/components/candidatebox/CandidateBoxContainer.svelte';
+	import ChartArea from '$lib/components/chartarea/ChartArea.svelte';
 
 	if (browser) {
 		const url = get(page).url;
@@ -61,7 +64,17 @@
 <div class="flex flex-col h-full">
 	<NavBar />
 	<div class="flex flex-row h-full overflow-hidden">
-		<slot />
+		<div
+			class="flex flex-grow basis-9/12"
+			class:flex-col-reverse={$ChartPositionStore === 'bottom'}
+			class:flex-row={$ChartPositionStore === 'left'}
+		>
+			<ChartArea />
+			<div class="overflow-hidden w-full h-full">
+				<CandidateBoxContainer />
+				<slot />
+			</div>
+		</div>
 		<SideBar />
 	</div>
 </div>
