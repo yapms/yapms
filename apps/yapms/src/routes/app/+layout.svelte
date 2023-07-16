@@ -23,8 +23,11 @@
 	import ShareDisabledModal from '$lib/components/modals/sharedisabledmodal/ShareDisabledModal.svelte';
 	import ImportModal from '$lib/components/modals/importmodal/ImportModal.svelte';
 	import { InteractionStore } from '$lib/stores/Interaction';
+	import { browser } from '$app/environment';
+	import NavBar from '$lib/components/navbar/NavBar.svelte';
+	import SideBar from '$lib/components/sidebar/SideBar.svelte';
 
-	onMount(async () => {
+	if (browser) {
 		const url = get(page).url;
 
 		const isInAppRoot = url.pathname === '/app';
@@ -33,13 +36,13 @@
 		const userMapKey = url.searchParams.get('um');
 
 		if (publicMapKey !== null) {
-			await loadPublicMap(publicMapKey);
+			loadPublicMap(publicMapKey);
 		} else if (userMapKey !== null) {
-			await loadUserMap(userMapKey);
+			loadUserMap(userMapKey);
 		} else if (isInAppRoot) {
 			goto('/app/usa/presidential/2024');
 		}
-	});
+	}
 
 	function handleKeyDown(event: KeyboardEvent) {
 		$InteractionStore.set(event.code, true);
@@ -56,7 +59,13 @@
 
 <svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp} />
 
-<slot />
+<div class="flex flex-col h-full">
+	<NavBar />
+	<div class="flex flex-row h-full overflow-hidden">
+		<slot />
+		<SideBar />
+	</div>
+</div>
 
 <MapModal />
 
