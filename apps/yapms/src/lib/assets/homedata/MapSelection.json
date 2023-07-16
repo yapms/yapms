@@ -302,6 +302,270 @@
 						]
 					}
 				]
+			},
+			{
+				"name": "U.S President",
+				"bg": "usapres",
+				"alt": "The White House",
+				"doubleCols": true,
+				"attribution": "Photo by Tom Fisk",
+				"links": [
+					{
+						"label": "2020",
+						"route": "/app/usa/presidential/2020"
+					},
+					{
+						"label": "2016",
+						"route": "/app/usa/presidential/2016"
+					},
+					{
+						"label": "2012",
+						"route": "/app/usa/presidential/2012"
+					}
+				],
+				"modals": [
+					{
+						"label": "More",
+						"buttons": [
+							{
+								"label": "2020 Presidential Election",
+								"route": "/app/usa/presidential/2020"
+							},
+							{
+								"label": "2016 Presidential Election",
+								"route": "/app/usa/presidential/2016"
+							},
+							{
+								"label": "2012 Presidential Election",
+								"route": "/app/usa/presidential/2012"
+							},
+							{
+								"label": "2008 Presidential Election",
+								"route": "/app/usa/presidential/2008"
+							},
+							{
+								"label": "2004 Presidential Election",
+								"route": "/app/usa/presidential/2004"
+							},
+							{
+								"label": "2000 Presidential Election",
+								"route": "/app/usa/presidential/2000"
+							},
+							{
+								"label": "1996 Presidential Election",
+								"route": "/app/usa/presidential/1996"
+							},
+							{
+								"label": "1992 Presidential Election",
+								"route": "/app/usa/presidential/1992"
+							},
+							{
+								"label": "1988 Presidential Election",
+								"route": "/app/usa/presidential/1988"
+							},
+							{
+								"label": "1984 Presidential Election",
+								"route": "/app/usa/presidential/1984"
+							},
+							{
+								"label": "1980 Presidential Election",
+								"route": "/app/usa/presidential/1980"
+							},
+							{
+								"label": "1976 Presidential Election",
+								"route": "/app/usa/presidential/1976"
+							},
+							{
+								"label": "1972 Presidential Election",
+								"route": "/app/usa/presidential/1972"
+							},
+							{
+								"label": "1968 Presidential Election",
+								"route": "/app/usa/presidential/1968"
+							},
+							{
+								"label": "1964 Presidential Election",
+								"route": "/app/usa/presidential/1964"
+							},
+							{
+								"label": "1960 Presidential Election",
+								"route": "/app/usa/presidential/1960"
+							},
+							{
+								"label": "1956 Presidential Election",
+								"route": "/app/usa/presidential/1956"
+							},
+							{
+								"label": "1952 Presidential Election",
+								"route": "/app/usa/presidential/1952"
+							},
+							{
+								"label": "1948 Presidential Election",
+								"route": "/app/usa/presidential/1948"
+							},
+							{
+								"label": "1944 Presidential Election",
+								"route": "/app/usa/presidential/1944"
+							},
+							{
+								"label": "1940 Presidential Election",
+								"route": "/app/usa/presidential/1940"
+							},
+							{
+								"label": "1936 Presidential Election",
+								"route": "/app/usa/presidential/1936"
+							},
+							{
+								"label": "1932 Presidential Election",
+								"route": "/app/usa/presidential/1932"
+							},
+							{
+								"label": "1928 Presidential Election",
+								"route": "/app/usa/presidential/1928"
+							},
+							{
+								"label": "1924 Presidential Election",
+								"route": "/app/usa/presidential/1924"
+							},
+							{
+								"label": "1920 Presidential Election",
+								"route": "/app/usa/presidential/1920"
+							},
+							{
+								"label": "1916 Presidential Election",
+								"route": "/app/usa/presidential/1916"
+							},
+							{
+								"label": "1912 Presidential Election",
+								"route": "/app/usa/presidential/1912"
+							},
+							{
+								"label": "1908 Presidential Election",
+								"route": "/app/usa/presidential/1908"
+							},
+							{
+								"label": "1904 Presidential Election",
+								"route": "/app/usa/presidential/1904"
+							},
+							{
+								"label": "1900 Presidential Election",
+								"route": "/app/usa/presidential/1900"
+							},
+							{
+								"label": "1896 Presidential Election",
+								"route": "/app/usa/presidential/1896"
+							},
+							{
+								"label": "1892 Presidential Election",
+								"route": "/app/usa/presidential/1892"
+							},
+							{
+								"label": "1888 Presidential Election",
+								"route": "/app/usa/presidential/1888"
+							},
+							{
+								"label": "1884 Presidential Election",
+								"route": "/app/usa/presidential/1884"
+							},
+							{
+								"label": "1880 Presidential Election",
+								"route": "/app/usa/presidential/1880"
+							},
+							{
+								"label": "1876 Presidential Election",
+								"route": "/app/usa/presidential/1876"
+							},
+							{
+								"label": "1872 Presidential Election",
+								"route": "/app/usa/presidential/1872"
+							},
+							{
+								"label": "1868 Presidential Election",
+								"route": "/app/usa/presidential/1868"
+							},
+							{
+								"label": "1864 Presidential Election",
+								"route": "/app/usa/presidential/1864"
+							},
+							{
+								"label": "1860 Presidential Election",
+								"route": "/app/usa/presidential/1860"
+							},
+							{
+								"label": "1856 Presidential Election",
+								"route": "/app/usa/presidential/1856"
+							},
+							{
+								"label": "1852 Presidential Election",
+								"route": "/app/usa/presidential/1852"
+							},
+							{
+								"label": "1848 Presidential Election",
+								"route": "/app/usa/presidential/1848"
+							},
+							{
+								"label": "1844 Presidential Election",
+								"route": "/app/usa/presidential/1844"
+							},
+							{
+								"label": "1840 Presidential Election",
+								"route": "/app/usa/presidential/1840"
+							},
+							{
+								"label": "1836 Presidential Election",
+								"route": "/app/usa/presidential/1836"
+							},
+							{
+								"label": "1832 Presidential Election",
+								"route": "/app/usa/presidential/1832"
+							},
+							{
+								"label": "1828 Presidential Election",
+								"route": "/app/usa/presidential/1828"
+							},
+							{
+								"label": "1824 Presidential Election",
+								"route": "/app/usa/presidential/1824"
+							},
+							{
+								"label": "1820 Presidential Election",
+								"route": "/app/usa/presidential/1820"
+							},
+							{
+								"label": "1816 Presidential Election",
+								"route": "/app/usa/presidential/1816"
+							},
+							{
+								"label": "1812 Presidential Election",
+								"route": "/app/usa/presidential/1812"
+							},
+							{
+								"label": "1808 Presidential Election",
+								"route": "/app/usa/presidential/1808"
+							},
+							{
+								"label": "1804 Presidential Election",
+								"route": "/app/usa/presidential/1804"
+							},
+							{
+								"label": "1800 Presidential Election",
+								"route": "/app/usa/presidential/1800"
+							},
+							{
+								"label": "1796 Presidential Election",
+								"route": "/app/usa/presidential/1796"
+							},
+							{
+								"label": "1792 Presidential Election",
+								"route": "/app/usa/presidential/1792"
+							},
+							{
+								"label": "1788 Presidential Election",
+								"route": "/app/usa/presidential/1788"
+							}
+						]
+					}
+				]
 			}
 		]
 	}
