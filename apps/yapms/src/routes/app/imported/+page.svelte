@@ -1,10 +1,7 @@
 <script lang="ts">
 	import NavBar from '$lib/components/navbar/NavBar.svelte';
 	import SideBar from '$lib/components/sidebar/SideBar.svelte';
-	import { onMount } from 'svelte';
-	import { themeChange } from 'theme-change';
 	import CandidateBoxContainer from '$lib/components/candidatebox/CandidateBoxContainer.svelte';
-	import { InteractionStore } from '$lib/stores/Interaction';
 	import { ChartPositionStore, ChartTypeStore } from '$lib/stores/Chart';
 	import { CandidatesStore } from '$lib/stores/Candidates';
 	import HorizontalBattleChart from '$lib/components/chartbar/battlechart/BattleChart.svelte';
@@ -21,30 +18,11 @@
 		ImportModalStore.set({ open: true });
 	}
 
-	onMount(() => {
-		themeChange(false);
-	});
-
 	function setupMap(node: HTMLDivElement) {
 		applyPanZoom(node);
 		loadRegionsForApp(node);
 	}
-
-	function handleKeyDown(e: KeyboardEvent) {
-		$InteractionStore = $InteractionStore.set(e.code, true); //Set the key code to "true" in the map
-	}
-
-	function handleKeyUp(e: KeyboardEvent) {
-		$InteractionStore.delete(e.code); //Remove the key code from the map.. map.delete() returns a boolean??
-		$InteractionStore = $InteractionStore; //Tell the store it updated
-	}
 </script>
-
-<svelte:head>
-	<title>YAPms</title>
-</svelte:head>
-
-<svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp} />
 
 <div class="flex flex-col h-full">
 	{#if $ImportedSVGStore.loaded}
