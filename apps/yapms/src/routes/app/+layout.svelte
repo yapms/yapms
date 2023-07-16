@@ -2,7 +2,6 @@
 	import { page } from '$app/stores';
 	import '$lib/styles/global.css';
 	import '$lib/styles/roboto-swap.css';
-	import { onMount } from 'svelte';
 	import { get } from 'svelte/store';
 	import { loadPublicMap, loadUserMap } from '$lib/stores/LoadedMap';
 	import { goto } from '$app/navigation';
