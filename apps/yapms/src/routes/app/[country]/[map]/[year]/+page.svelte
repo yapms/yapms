@@ -1,6 +1,4 @@
 <script lang="ts">
-	import NavBar from '$lib/components/navbar/NavBar.svelte';
-	import SideBar from '$lib/components/sidebar/SideBar.svelte';
 	import CandidateBoxContainer from '$lib/components/candidatebox/CandidateBoxContainer.svelte';
 	import applyPanZoom from './initialize/ApplyPanZoom';
 	import { ChartPositionStore, ChartTypeStore } from '$lib/stores/Chart';
@@ -69,68 +67,62 @@
 	}
 </script>
 
-<div class="flex flex-col h-full">
-	<NavBar />
-	<div class="flex flex-row h-full overflow-hidden">
-		<div
-			class="flex flex-grow basis-9/12"
-			class:flex-col-reverse={$ChartPositionStore === 'bottom'}
-			class:flex-row={$ChartPositionStore === 'left'}
-		>
-			<div
-				class="flex justify-center items-center m-3 gap-4 overflow-hidden"
-				class:hidden={$ChartTypeStore === 'none'}
-				class:flex-row={$ChartPositionStore === 'bottom'}
-				class:flex-col={$ChartPositionStore === 'left'}
-				class:w-32={$ChartPositionStore === 'left' && $ChartTypeStore === 'battle'}
-				class:h-32={$ChartPositionStore === 'bottom' && $ChartTypeStore === 'battle'}
-				class:w-96={$ChartPositionStore === 'left' && $ChartTypeStore !== 'battle'}
-				class:h-80={$ChartPositionStore === 'bottom' && $ChartTypeStore !== 'battle'}
-			>
-				{#if $ChartTypeStore === 'battle' && $CandidatesStore.length <= 2}
-					<BattleChart />
-				{:else}
-					<ChartBar />
-				{/if}
-				{#if $LogoStore !== null}
-					<img
-						class="aspect-square"
-						style:width={logoSize.width}
-						style:height={logoSize.height}
-						alt=""
-						src={$LogoStore}
-					/>
-				{/if}
-			</div>
-
-			<div
-				class="divider"
-				class:divider-vertical={$ChartPositionStore === 'bottom'}
-				class:h-0={$ChartPositionStore === 'bottom'}
-				class:mb-0={$ChartPositionStore === 'bottom'}
-				class:mt-0={$ChartPositionStore === 'bottom'}
-				class:divider-horizontal={$ChartPositionStore === 'left'}
-				class:w-0={$ChartPositionStore === 'left'}
-				class:mr-0={$ChartPositionStore === 'left'}
-				class:ml-0={$ChartPositionStore === 'left'}
+<div
+	class="flex flex-grow basis-9/12"
+	class:flex-col-reverse={$ChartPositionStore === 'bottom'}
+	class:flex-row={$ChartPositionStore === 'left'}
+>
+	<div
+		class="flex justify-center items-center m-3 gap-4 overflow-hidden"
+		class:hidden={$ChartTypeStore === 'none'}
+		class:flex-row={$ChartPositionStore === 'bottom'}
+		class:flex-col={$ChartPositionStore === 'left'}
+		class:w-32={$ChartPositionStore === 'left' && $ChartTypeStore === 'battle'}
+		class:h-32={$ChartPositionStore === 'bottom' && $ChartTypeStore === 'battle'}
+		class:w-96={$ChartPositionStore === 'left' && $ChartTypeStore !== 'battle'}
+		class:h-80={$ChartPositionStore === 'bottom' && $ChartTypeStore !== 'battle'}
+	>
+		{#if $ChartTypeStore === 'battle' && $CandidatesStore.length <= 2}
+			<BattleChart />
+		{:else}
+			<ChartBar />
+		{/if}
+		{#if $LogoStore !== null}
+			<img
+				class="aspect-square"
+				style:width={logoSize.width}
+				style:height={logoSize.height}
+				alt=""
+				src={$LogoStore}
 			/>
+		{/if}
+	</div>
 
-			<div class="overflow-hidden w-full h-full">
-				<CandidateBoxContainer />
-				{#await imports[currentMap]()}
-					<h1>Loading Map...</h1>
-				{:then importedMap}
-					<div
-						use:setupMap
-						id="map-div"
-						class="overflow-hidden h-full"
-						class:insets-hidden={$MapInsetsStore.hidden}
-					>
-						{@html importedMap.default}
-					</div>
-				{/await}
+	<div
+		class="divider"
+		class:divider-vertical={$ChartPositionStore === 'bottom'}
+		class:h-0={$ChartPositionStore === 'bottom'}
+		class:mb-0={$ChartPositionStore === 'bottom'}
+		class:mt-0={$ChartPositionStore === 'bottom'}
+		class:divider-horizontal={$ChartPositionStore === 'left'}
+		class:w-0={$ChartPositionStore === 'left'}
+		class:mr-0={$ChartPositionStore === 'left'}
+		class:ml-0={$ChartPositionStore === 'left'}
+	/>
+
+	<div class="overflow-hidden w-full h-full">
+		<CandidateBoxContainer />
+		{#await imports[currentMap]()}
+			<h1>Loading Map...</h1>
+		{:then importedMap}
+			<div
+				use:setupMap
+				id="map-div"
+				class="overflow-hidden h-full"
+				class:insets-hidden={$MapInsetsStore.hidden}
+			>
+				{@html importedMap.default}
 			</div>
-		</div>
-		<SideBar />
+		{/await}
 	</div>
 </div>
