@@ -159,6 +159,54 @@
 				]
 			},
 			{
+				"name": "United Kingdom",
+				"bg": "gbr",
+				"alt": "Palace of Westminster",
+				"doubleCols": true,
+				"attribution": "Photo by derwiki on Pixabay",
+				"links": [
+					{
+						"label": "2024 Commons",
+						"route": "/app/gbr/commons/2024-blank"
+					},
+					{
+						"label": "2019 Commons",
+						"route": "/app/gbr/commons/2019-blank"
+					},
+					{
+						"label": "2019 Results",
+						"route": "/app/gbr/commons/2019-results"
+					}
+				],
+				"modals": [
+					{
+						"label": "More",
+						"buttons": [
+							{
+								"label": "2024 House of Commons",
+								"route": "/app/gbr/commons/2024-blank"
+							},
+							{
+								"label": "2019 House of Commons",
+								"route": "/app/gbr/commons/2019-blank"
+							},
+							{
+								"label": "2019 House of Commons Results",
+								"route": "/app/gbr/commons/2019-results"
+							},
+							{
+								"label": "Historic Counties",
+								"route": "/app/gbr/historic-counties/blank"
+							},
+							{
+								"label": "Counties and Unitary Authorities",
+								"route": "/app/gbr/counties/blank"
+							}
+						]
+					}
+				]
+			},
+			{
 				"name": "The Netherlands",
 				"bg": "nld",
 				"alt": "Dutch Binnenhof",

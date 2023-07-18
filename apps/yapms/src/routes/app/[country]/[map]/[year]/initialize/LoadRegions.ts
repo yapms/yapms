@@ -26,6 +26,7 @@ function createDefaultModeStore(node: HTMLDivElement) {
 		ModeStore.set(defaultMode.data);
 	} else {
 		console.error('Error Parsing defaultMode attribute from Map:\n\n' + defaultMode.error);
+		ModeStore.set('fill');
 	}
 }
 

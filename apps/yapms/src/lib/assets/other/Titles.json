@@ -160,6 +160,26 @@
 		"title": "Canadian 2015 House of Commons Results"
 	},
 	{
+		"path": "/app/gbr/commons/2024-blank",
+		"title": "British 2024 House of Commons"
+	},
+	{
+		"path": "/app/gbr/commons/2019-blank",
+		"title": "British 2019 House of Commons"
+	},
+	{
+		"path": "/app/gbr/commons/2019-results",
+		"title": "British 2019 House of Commons Results"
+	},
+	{
+		"path": "/app/gbr/historic-counties/blank",
+		"title": "British Historic Counties"
+	},
+	{
+		"path": "/app/gbr/counties/blank",
+		"title": "British Counties and Unitary Authorities"
+	},
+	{
 		"path": "/app/nld/provinces/blank",
 		"title": "Dutch Provinces"
 	},

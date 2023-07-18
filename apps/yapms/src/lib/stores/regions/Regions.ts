@@ -154,7 +154,7 @@ export const setPointerEvents = (): void => {
 			continue;
 		}
 
-		region.nodes.region.onpointerdown = () => {
+		region.nodes.region.onclick = () => {
 			const currentMode = get(ModeStore);
 			switch (currentMode) {
 				case 'fill':

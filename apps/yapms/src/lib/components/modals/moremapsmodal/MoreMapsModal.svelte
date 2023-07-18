@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { MoreMapsModalStore } from '$lib/stores/HomeModals';
 	import ModalBase from '../ModalBase.svelte';
-	function close() {
-		MoreMapsModalStore.set({
-			...$MoreMapsModalStore,
-			open: false
-		});
+	function close(event: MouseEvent) {
+		if (!event.ctrlKey) {
+			MoreMapsModalStore.set({
+				...$MoreMapsModalStore,
+				open: false
+			});
+		}
 	}
 </script>
 
