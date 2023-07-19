@@ -202,5 +202,241 @@
 	{
 		"path": "/app/de/folketing/blank",
 		"title": "Danish Folketing"
+	},
+	{
+		"path": "/app/usa/presidential/2020",
+		"title": "USA 2020 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/2016",
+		"title": "USA 2016 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/2012",
+		"title": "USA 2012 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/2008",
+		"title": "USA 2008 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/2004",
+		"title": "USA 2004 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/2000",
+		"title": "USA 2000 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1996",
+		"title": "USA 1996 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1992",
+		"title": "USA 1992 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1988",
+		"title": "USA 1988 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1984",
+		"title": "USA 1984 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1980",
+		"title": "USA 1980 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1976",
+		"title": "USA 1976 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1972",
+		"title": "USA 1972 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1968",
+		"title": "USA 1968 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1964",
+		"title": "USA 1964 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1960",
+		"title": "USA 1960 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1956",
+		"title": "USA 1956 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1952",
+		"title": "USA 1952 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1948",
+		"title": "USA 1948 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1944",
+		"title": "USA 1944 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1940",
+		"title": "USA 1940 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1936",
+		"title": "USA 1936 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1932",
+		"title": "USA 1932 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1928",
+		"title": "USA 1928 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1924",
+		"title": "USA 1924 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1920",
+		"title": "USA 1920 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1916",
+		"title": "USA 1916 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1912",
+		"title": "USA 1912 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1908",
+		"title": "USA 1908 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1904",
+		"title": "USA 1904 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1900",
+		"title": "USA 1900 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1896",
+		"title": "USA 1896 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1892",
+		"title": "USA 1892 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1888",
+		"title": "USA 1888 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1884",
+		"title": "USA 1884 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1880",
+		"title": "USA 1880 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1876",
+		"title": "USA 1876 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1872",
+		"title": "USA 1872 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1868",
+		"title": "USA 1868 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1864",
+		"title": "USA 1864 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1860",
+		"title": "USA 1860 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1856",
+		"title": "USA 1856 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1852",
+		"title": "USA 1852 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1848",
+		"title": "USA 1848 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1844",
+		"title": "USA 1844 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1840",
+		"title": "USA 1840 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1836",
+		"title": "USA 1836 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1832",
+		"title": "USA 1832 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1828",
+		"title": "USA 1828 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1824",
+		"title": "USA 1824 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1820",
+		"title": "USA 1820 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1816",
+		"title": "USA 1816 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1812",
+		"title": "USA 1812 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1808",
+		"title": "USA 1808 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1804",
+		"title": "USA 1804 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1800",
+		"title": "USA 1800 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1796",
+		"title": "USA 1796 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1792",
+		"title": "USA 1792 Presidential Election"
+	},
+	{
+		"path": "/app/usa/presidential/1788",
+		"title": "USA 1788 Presidential Election"
 	}
 ]
