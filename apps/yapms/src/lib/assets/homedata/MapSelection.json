@@ -253,6 +253,32 @@
 						]
 					}
 				]
+			},
+			{
+				"name": "Denmark",
+				"bg": "dnk",
+				"alt": "Christiansborg Palace",
+				"doubleCols": true,
+				"attribution": "Photo by merkulos on Pixabay",
+				"links": [
+					{
+						"label": "Folketing",
+						"route": "/app/dnk/folketing/2022-blank"
+					},
+					{
+						"label": "2022 Results",
+						"route": "/app/dnk/folketing/2022-results"
+					},
+					{
+						"label": "Municipalities",
+						"route": "/app/dnk/municipalities/blank"
+					},
+					{
+						"label": "Regions",
+						"route": "/app/dnk/regions/blank"
+					}
+				],
+				"modals":[]
 			}
 		]
 	},
