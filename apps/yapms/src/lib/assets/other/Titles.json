@@ -438,5 +438,21 @@
 	{
 		"path": "/app/usa/presidential/1788",
 		"title": "USA 1788 Presidential Election"
+	},
+	{
+		"path": "/app/dnk/folketing/2022-blank",
+		"title": "Danish 2022 Folketing"
+	},
+	{
+		"path": "/app/dnk/folketing/2022-results",
+		"title": "Danish 2022 Folketing Results"
+	},
+	{
+		"path": "/app/dnk/municipalities/blank",
+		"title": "Danish Municipalities"
+	},
+	{
+		"path": "/app/dnk/regions/blank",
+		"title": "Danish Regions"
 	}
 ]
