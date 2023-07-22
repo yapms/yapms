@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 	import { MapInsetsStore } from '$lib/stores/MapInsetsStore';
 	import { LoadedMapStore } from '$lib/stores/LoadedMap';
-	import applyPanZoom from '$lib/utils/applyPanZoom';
+	import { storeSVGForPan, applyPanZoom } from '$lib/utils/applyPanZoom';
 	import { loadRegionsForApp } from '$lib/utils/loadRegions';
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
@@ -37,7 +37,8 @@
 	let isLoaded = false;
 
 	function setupMap(node: HTMLDivElement) {
-		applyPanZoom(node);
+		storeSVGForPan(node);
+		applyPanZoom();
 		loadRegionsForApp(node);
 		isLoaded = true;
 	}
