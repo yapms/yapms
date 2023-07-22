@@ -44,10 +44,8 @@ function applyPanZoom(): PanZoom | undefined {
 }
 
 function reapplyPanZoom(): PanZoom | undefined {
-	if (panzoomInstance.getTransform().scale <= 1.1) {
-		panzoomInstance.dispose();
-		setTimeout(applyPanZoom, 0);
-	}
+	panzoomInstance.dispose();
+	setTimeout(applyPanZoom, 0);
 	return panzoomInstance;
 }
 
