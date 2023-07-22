@@ -9,7 +9,7 @@
 	import { LoadedMapStore } from '$lib/stores/LoadedMap';
 	import HorizontalBattleChart from '$lib/components/chartbar/battlechart/BattleChart.svelte';
 	import CandidateBoxContainer from '$lib/components/candidatebox/CandidateBoxContainer.svelte';
-	import { loadRegionsForView } from '../app/[country]/[map]/[year]/initialize/LoadRegions';
+	import { loadRegionsForView } from '$lib/utils/loadRegions';
 
 	//Glob import all maps in the maps directory so that we can check if a map exists and then load it.
 	//Query section makes sure the SVG contents are imported raw.

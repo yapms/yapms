@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { loadRegionsForApp } from '../[country]/[map]/[year]/initialize/LoadRegions';
-	import applyPanZoom from '../[country]/[map]/[year]/initialize/ApplyPanZoom';
 	import { ImportModalStore } from '$lib/stores/Modals';
 	import { ImportedSVGStore } from '$lib/stores/ImportedSVG';
 	import { get } from 'svelte/store';
 	import { MapInsetsStore } from '$lib/stores/MapInsetsStore';
+	import applyPanZoom from '$lib/utils/applyPanZoom';
+	import { loadRegionsForApp } from '$lib/utils/loadRegions';
 
 	const svg = get(ImportedSVGStore);
 	if (!svg.loaded) {
