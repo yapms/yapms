@@ -65,17 +65,11 @@ RegionsStore.subscribe((regions) => {
 		region.disabled || region.locked || region.permaLocked
 			? (region.nodes.region.style.fillOpacity = '0.25')
 			: (region.nodes.region.style.fillOpacity = '1'); //Transparent if disabled
-		region.disabled || region.locked || region.permaLocked
-			? (region.nodes.region.style.strokeOpacity = '0.25')
-			: (region.nodes.region.style.strokeOpacity = '1'); //Transparent if disabled
 		if (region.nodes.button) {
 			region.nodes.button.style.fill = winner.candidate.margins[marginIndex]?.color;
 			region.disabled || region.locked || region.permaLocked
 				? (region.nodes.button.style.fillOpacity = '0.25')
 				: (region.nodes.button.style.fillOpacity = '1'); //Transparent if disabled
-			region.disabled || region.locked || region.permaLocked
-				? (region.nodes.button.style.strokeOpacity = '0.25')
-				: (region.nodes.button.style.strokeOpacity = '1'); //Transparent if disabled
 		}
 		if (region.nodes.text) {
 			region.nodes.text.style.color =
