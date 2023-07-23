@@ -107,9 +107,8 @@ function getCandidatesForRegion(candidateStr: string, value: number) {
 
 function createRegionStore(node: HTMLDivElement) {
 	const regionsForStore = Array<Region>();
-	const regions = node.querySelector<HTMLElement>('.regions');
-	const buttons = node.querySelector<HTMLElement>('.region-buttons');
-	const texts = node.querySelector<HTMLElement>('[data-region-texts]');
+	const regions = node.querySelector<HTMLElement>('[regions]');
+	const texts = node.querySelector<HTMLElement>('[region-texts]');
 	const tossupCandidate = get(TossupCandidateStore);
 
 	if (regions === null) return;
@@ -136,12 +135,9 @@ function createRegionStore(node: HTMLDivElement) {
 					: [{ candidate: tossupCandidate, count: value, margin: 0 }],
 			nodes: {
 				region: childHTML,
-				button:
-					buttons?.querySelector(`[data-for-region="${childHTML.getAttribute('region') ?? ''}"]`) ??
-					null,
+				button: null,
 				text:
-					texts?.querySelector(`[data-for-region="${childHTML.getAttribute('region') ?? ''}"]`) ??
-					null
+					texts?.querySelector(`[for-region="${childHTML.getAttribute('region') ?? ''}"]`) ?? null
 			}
 		};
 		regionsForStore.push(newRegion);

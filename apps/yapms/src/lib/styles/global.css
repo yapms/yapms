@@ -31,28 +31,20 @@ body {
 	--auto-border-stroke-width: 0px;
 }
 
-#map-div > svg > .regions > path {
+[regions] path {
 	stroke-width: var(--auto-border-stroke-width);
 	stroke: hsla(var(--b1) / var(--tw-bg-opacity, 1));
 }
 
-#map-div > svg > .regions > g > path {
-	stroke-width: var(--auto-border-stroke-width);
-	stroke: hsla(var(--b1) / var(--tw-bg-opacity, 1));
-}
-
-.inset-texts {
+[inset-texts] {
 	fill: hsla(var(--bc) / var(--tw-text-opacity, 1));
 }
 
-.inset-lines {
+[inset-lines] {
 	fill: hsla(var(--bc) / var(--tw-text-opacity, 0.5));
 }
 
-.insets-hidden > svg > .insets {
-	display: none;
-}
-
-.insets-hidden > svg > .regions > g > .inset-region {
+.insets-hidden [insets],
+.insets-hidden [inset-region] {
 	display: none;
 }
