@@ -11,15 +11,15 @@
 				"links": [
 					{
 						"label": "President",
-						"route": "/app/usa/presidential/2022"
+						"route": "/app/usa/presidential/2022/blank"
 					},
 					{
 						"label": "Senate",
-						"route": "/app/usa/senate/2024"
+						"route": "/app/usa/senate/2024/blank"
 					},
 					{
 						"label": "House",
-						"route": "/app/usa/house/2024"
+						"route": "/app/usa/house/2024/blank"
 					}
 				],
 				"modals": [
@@ -27,80 +27,80 @@
 						"label": "More",
 						"buttons": [
 							{
-								"label": "2022 Presidential Election",
-								"route": "/app/usa/presidential/2022"
+								"label": "Presidential 2022",
+								"route": "/app/usa/presidential/2022/blank"
 							},
 							{
-								"label": "2024 Senate Elections",
-								"route": "/app/usa/senate/2024"
+								"label": "2024 Senate",
+								"route": "/app/usa/senate/2024/blank"
 							},
 							{
 								"label": "House 2024",
-								"route": "/app/usa/house/2024"
+								"route": "/app/usa/house/2024/blank"
 							},
 							{
 								"label": "Governors 2024",
-								"route": "/app/usa/governors/2024"
+								"route": "/app/usa/governors/2024/blank"
 							},
 							{
-								"label": "Current Senate",
-								"route": "/app/usa/senate/current"
+								"label": "2022 Senate Results",
+								"route": "/app/usa/senate/2022/results"
 							},
 							{
-								"label": "Current House",
-								"route": "/app/usa/house/current"
+								"label": "2022 House Results",
+								"route": "/app/usa/house/2022/results"
 							},
 							{
-								"label": "Current Governors",
-								"route": "/app/usa/governors/current"
+								"label": "2022 Gubernatorial Results",
+								"route": "/app/usa/governors/2022/results"
 							},
 							{
-								"label": "Democratic Primary",
-								"route": "/app/usa/dem/primary"
+								"label": "Democratic Primary 2024",
+								"route": "/app/usa/dem_primary/2024/blank"
 							},
 							{
-								"label": "Republican Primary",
-								"route": "/app/usa/rep/primary"
+								"label": "Republican Primary 2024",
+								"route": "/app/usa/rep_primary/2024/blank"
 							},
 							{
 								"label": "Counties",
-								"route": "/app/usa/counties/blank"
+								"route": "/app/usa/counties/2023/blank"
 							},
 							{
 								"label": "Senate",
-								"route": "/app/usa/senate/blank"
+								"route": "/app/usa/senate"
 							},
 							{
 								"label": "Senate Class 1",
-								"route": "/app/usa/senate/class1"
+								"route": "/app/usa/senate_class1"
 							},
 							{
 								"label": "Senate Class 2",
-								"route": "/app/usa/senate/class2"
+								"route": "/app/usa/senate_class2"
 							},
 							{
 								"label": "Senate Class 3",
-								"route": "/app/usa/senate/class3"
+								"route": "/app/usa/senate_class3"
 							},
 							{
 								"label": "Governors",
-								"route": "/app/usa/governors/blank"
+								"route": "/app/usa/governors"
 							},
 							{
 								"label": "Governors 2022",
-								"route": "/app/usa/governors/2022"
+								"route": "/app/usa/governors/2022/blank"
 							},
 							{
 								"label": "Governors 2023",
-								"route": "/app/usa/governors/2023"
+								"route": "/app/usa/governors/2023/blank"
 							},
 							{
 								"label": "Governors 2024",
-								"route": "/app/usa/governors/2024"
+								"route": "/app/usa/governors/2024/blank"
 							},
 							{
 								"label": "Governors 2025",
-								"route": "/app/usa/governors/2025"
+								"route": "/app/usa/governors/2025/blank"
 							}
 						]
 					}
@@ -115,15 +115,15 @@
 				"links": [
 					{
 						"label": "Provinces",
-						"route": "/app/can/provinces/blank"
+						"route": "/app/can/provinces"
 					},
 					{
 						"label": "House of Commons",
-						"route": "/app/can/commons/blank"
+						"route": "/app/can/commons/2021/blank"
 					},
 					{
 						"label": "2021 Results",
-						"route": "/app/can/commons/2021-results"
+						"route": "/app/can/commons/2021/results"
 					}
 				],
 				"modals": [
@@ -132,27 +132,27 @@
 						"buttons": [
 							{
 								"label": "Provinces",
-								"route": "/app/can/provinces/blank"
+								"route": "/app/can/provinces"
 							},
 							{
 								"label": "House of Commons",
-								"route": "/app/can/commons/blank"
+								"route": "/app/can/commons/2021/blank"
 							},
 							{
 								"label": "Senate",
-								"route": "/app/can/senate/blank"
+								"route": "/app/can/senate"
 							},
 							{
 								"label": "2021 House of Commons Results",
-								"route": "/app/can/commons/2021-results"
+								"route": "/app/can/commons/2021/results"
 							},
 							{
 								"label": "2019 House of Commons Results",
-								"route": "/app/can/commons/2019-results"
+								"route": "/app/can/commons/2019/results"
 							},
 							{
 								"label": "2015 House of Commons Results",
-								"route": "/app/can/commons/2015-results"
+								"route": "/app/can/commons/2015/results"
 							}
 						]
 					}
@@ -166,16 +166,16 @@
 				"attribution": "Photo by derwiki on Pixabay",
 				"links": [
 					{
-						"label": "2024 Commons",
-						"route": "/app/gbr/commons/2024-blank"
+						"label": "Commons 2024",
+						"route": "/app/gbr/commons/2024/blank"
 					},
 					{
-						"label": "2019 Commons",
-						"route": "/app/gbr/commons/2019-blank"
+						"label": "Commons 2019",
+						"route": "/app/gbr/commons/2019/blank"
 					},
 					{
 						"label": "2019 Results",
-						"route": "/app/gbr/commons/2019-results"
+						"route": "/app/gbr/commons/2019/results"
 					}
 				],
 				"modals": [
@@ -183,24 +183,24 @@
 						"label": "More",
 						"buttons": [
 							{
-								"label": "2024 House of Commons",
-								"route": "/app/gbr/commons/2024-blank"
+								"label": "House of Commons 2024",
+								"route": "/app/gbr/commons/2024/blank"
 							},
 							{
-								"label": "2019 House of Commons",
-								"route": "/app/gbr/commons/2019-blank"
+								"label": "House of Commons 2019",
+								"route": "/app/gbr/commons/2019/blank"
 							},
 							{
 								"label": "2019 House of Commons Results",
-								"route": "/app/gbr/commons/2019-results"
+								"route": "/app/gbr/commons/2019/results"
 							},
 							{
 								"label": "Historic Counties",
-								"route": "/app/gbr/historic-counties/blank"
+								"route": "/app/gbr/counties/1844/blank"
 							},
 							{
 								"label": "Counties and Unitary Authorities",
-								"route": "/app/gbr/counties/blank"
+								"route": "/app/gbr/counties/2023/blank"
 							}
 						]
 					}
@@ -215,15 +215,15 @@
 				"links": [
 					{
 						"label": "Provinces",
-						"route": "/app/nld/provinces/blank"
+						"route": "/app/nld/provinces"
 					},
 					{
 						"label": "House",
-						"route": "/app/nld/house/2023-blank"
+						"route": "/app/nld/house/2023/blank"
 					},
 					{
 						"label": "Provincial Councils",
-						"route": "/app/nld/provincial/2023-blank"
+						"route": "/app/nld/provincial/2023/blank"
 					}
 				],
 				"modals": [
@@ -232,23 +232,23 @@
 						"buttons": [
 							{
 								"label": "Provinces",
-								"route": "/app/nld/provinces/blank"
+								"route": "/app/nld/provinces"
 							},
 							{
-								"label": "2023 House Elections",
-								"route": "/app/nld/house/2023-blank"
+								"label": "House 2023",
+								"route": "/app/nld/house/2023/blank"
 							},
 							{
-								"label": "Provincial Councils",
-								"route": "/app/nld/provincial/2023-blank"
+								"label": "Provincial Councils 2023",
+								"route": "/app/nld/provincial/2023/blank"
 							},
 							{
 								"label": "2023 Provincial Councils Results",
-								"route": "/app/nld/provincial/2023-results"
+								"route": "/app/nld/provincial/2023/results"
 							},
 							{
-								"label": "2023 Gemeente",
-								"route": "/app/nld/gemeente/2023-blank"
+								"label": "Gemeente 2023",
+								"route": "/app/nld/gemeente/2023/blank"
 							}
 						]
 					}
@@ -263,19 +263,19 @@
 				"links": [
 					{
 						"label": "Folketing",
-						"route": "/app/dnk/folketing/2022-blank"
+						"route": "/app/dnk/folketing/2022/blank"
 					},
 					{
 						"label": "2022 Results",
-						"route": "/app/dnk/folketing/2022-results"
+						"route": "/app/dnk/folketing/2022/results"
 					},
 					{
 						"label": "Municipalities",
-						"route": "/app/dnk/municipalities/blank"
+						"route": "/app/dnk/municipalities/2021/blank"
 					},
 					{
 						"label": "Regions",
-						"route": "/app/dnk/regions/blank"
+						"route": "/app/dnk/regions/2021/blank"
 					}
 				],
 				"modals": []
@@ -294,15 +294,15 @@
 				"links": [
 					{
 						"label": "2022",
-						"route": "/app/usa/house/2022"
+						"route": "/app/usa/house/2022/blank"
 					},
 					{
 						"label": "2020",
-						"route": "/app/usa/house/2020"
+						"route": "/app/usa/house/2020/blank"
 					},
 					{
 						"label": "2018",
-						"route": "/app/usa/house/2018"
+						"route": "/app/usa/house/2018/blank"
 					}
 				],
 				"modals": [
@@ -311,67 +311,67 @@
 						"buttons": [
 							{
 								"label": "House 2022",
-								"route": "/app/usa/house/2022"
+								"route": "/app/usa/house/2022/blank"
 							},
 							{
 								"label": "House 2020",
-								"route": "/app/usa/house/2020"
+								"route": "/app/usa/house/2020/blank"
 							},
 							{
 								"label": "House 2018",
-								"route": "/app/usa/house/2018"
+								"route": "/app/usa/house/2018/blank"
 							},
 							{
 								"label": "House 2016",
-								"route": "/app/usa/house/2016"
+								"route": "/app/usa/house/2016/blank"
 							},
 							{
 								"label": "House 2014",
-								"route": "/app/usa/house/2014"
+								"route": "/app/usa/house/2014/blank"
 							},
 							{
 								"label": "House 2012",
-								"route": "/app/usa/house/2012"
+								"route": "/app/usa/house/2012/blank"
 							},
 							{
 								"label": "House 2010",
-								"route": "/app/usa/house/2010"
+								"route": "/app/usa/house/2010/blank"
 							},
 							{
 								"label": "House 2008",
-								"route": "/app/usa/house/2008"
+								"route": "/app/usa/house/2008/blank"
 							},
 							{
 								"label": "House 2006",
-								"route": "/app/usa/house/2006"
+								"route": "/app/usa/house/2006/blank"
 							},
 							{
 								"label": "House 2004",
-								"route": "/app/usa/house/2004"
+								"route": "/app/usa/house/2004/blank"
 							},
 							{
 								"label": "House 2002",
-								"route": "/app/usa/house/2002"
+								"route": "/app/usa/house/2002/blank"
 							},
 							{
 								"label": "House 2000",
-								"route": "/app/usa/house/2000"
+								"route": "/app/usa/house/2000/blank"
 							},
 							{
 								"label": "House 1998",
-								"route": "/app/usa/house/1998"
+								"route": "/app/usa/house/1998/blank"
 							},
 							{
 								"label": "House 1996",
-								"route": "/app/usa/house/1996"
+								"route": "/app/usa/house/1996/blank"
 							},
 							{
 								"label": "House 1994",
-								"route": "/app/usa/house/1994"
+								"route": "/app/usa/house/1994/blank"
 							},
 							{
 								"label": "House 1992",
-								"route": "/app/usa/house/1992"
+								"route": "/app/usa/house/1992/blank"
 							}
 						]
 					}
@@ -386,15 +386,15 @@
 				"links": [
 					{
 						"label": "2020",
-						"route": "/app/usa/presidential/2020"
+						"route": "/app/usa/presidential/2020/results"
 					},
 					{
 						"label": "2016",
-						"route": "/app/usa/presidential/2016"
+						"route": "/app/usa/presidential/2016/results"
 					},
 					{
 						"label": "2012",
-						"route": "/app/usa/presidential/2012"
+						"route": "/app/usa/presidential/2012/results"
 					}
 				],
 				"modals": [
@@ -402,240 +402,240 @@
 						"label": "More",
 						"buttons": [
 							{
-								"label": "2020 Presidential Election",
-								"route": "/app/usa/presidential/2020"
+								"label": "Presidential 2020",
+								"route": "/app/usa/presidential/2020/results"
 							},
 							{
-								"label": "2016 Presidential Election",
-								"route": "/app/usa/presidential/2016"
+								"label": "Presidential 2016",
+								"route": "/app/usa/presidential/2016/results"
 							},
 							{
-								"label": "2012 Presidential Election",
-								"route": "/app/usa/presidential/2012"
+								"label": "Presidential 2012",
+								"route": "/app/usa/presidential/2012/results"
 							},
 							{
-								"label": "2008 Presidential Election",
-								"route": "/app/usa/presidential/2008"
+								"label": "Presidential 2008",
+								"route": "/app/usa/presidential/2008/results"
 							},
 							{
-								"label": "2004 Presidential Election",
-								"route": "/app/usa/presidential/2004"
+								"label": "Presidential 2004",
+								"route": "/app/usa/presidential/2004/results"
 							},
 							{
-								"label": "2000 Presidential Election",
-								"route": "/app/usa/presidential/2000"
+								"label": "Presidential 2000",
+								"route": "/app/usa/presidential/2000/results"
 							},
 							{
-								"label": "1996 Presidential Election",
-								"route": "/app/usa/presidential/1996"
+								"label": "Presidential 1996",
+								"route": "/app/usa/presidential/1996/results"
 							},
 							{
-								"label": "1992 Presidential Election",
-								"route": "/app/usa/presidential/1992"
+								"label": "Presidential 1992",
+								"route": "/app/usa/presidential/1992/results"
 							},
 							{
-								"label": "1988 Presidential Election",
-								"route": "/app/usa/presidential/1988"
+								"label": "Presidential 1988",
+								"route": "/app/usa/presidential/1988/results"
 							},
 							{
-								"label": "1984 Presidential Election",
-								"route": "/app/usa/presidential/1984"
+								"label": "Presidential 1984",
+								"route": "/app/usa/presidential/1984/results"
 							},
 							{
-								"label": "1980 Presidential Election",
-								"route": "/app/usa/presidential/1980"
+								"label": "Presidential 1980",
+								"route": "/app/usa/presidential/1980/results"
 							},
 							{
-								"label": "1976 Presidential Election",
-								"route": "/app/usa/presidential/1976"
+								"label": "Presidential 1976",
+								"route": "/app/usa/presidential/1976/results"
 							},
 							{
-								"label": "1972 Presidential Election",
-								"route": "/app/usa/presidential/1972"
+								"label": "Presidential 1972",
+								"route": "/app/usa/presidential/1972/results"
 							},
 							{
-								"label": "1968 Presidential Election",
-								"route": "/app/usa/presidential/1968"
+								"label": "Presidential 1968",
+								"route": "/app/usa/presidential/1968/results"
 							},
 							{
-								"label": "1964 Presidential Election",
-								"route": "/app/usa/presidential/1964"
+								"label": "Presidential 1964",
+								"route": "/app/usa/presidential/1964/results"
 							},
 							{
-								"label": "1960 Presidential Election",
-								"route": "/app/usa/presidential/1960"
+								"label": "Presidential 1960",
+								"route": "/app/usa/presidential/1960/results"
 							},
 							{
-								"label": "1956 Presidential Election",
-								"route": "/app/usa/presidential/1956"
+								"label": "Presidential 1956",
+								"route": "/app/usa/presidential/1956/results"
 							},
 							{
-								"label": "1952 Presidential Election",
-								"route": "/app/usa/presidential/1952"
+								"label": "Presidential 1952",
+								"route": "/app/usa/presidential/1952/results"
 							},
 							{
-								"label": "1948 Presidential Election",
-								"route": "/app/usa/presidential/1948"
+								"label": "Presidential 1948",
+								"route": "/app/usa/presidential/1948/results"
 							},
 							{
-								"label": "1944 Presidential Election",
-								"route": "/app/usa/presidential/1944"
+								"label": "Presidential 1944",
+								"route": "/app/usa/presidential/1944/results"
 							},
 							{
-								"label": "1940 Presidential Election",
-								"route": "/app/usa/presidential/1940"
+								"label": "Presidential 1940",
+								"route": "/app/usa/presidential/1940/results"
 							},
 							{
-								"label": "1936 Presidential Election",
-								"route": "/app/usa/presidential/1936"
+								"label": "Presidential 1936",
+								"route": "/app/usa/presidential/1936/results"
 							},
 							{
-								"label": "1932 Presidential Election",
-								"route": "/app/usa/presidential/1932"
+								"label": "Presidential 1932",
+								"route": "/app/usa/presidential/1932/results"
 							},
 							{
-								"label": "1928 Presidential Election",
-								"route": "/app/usa/presidential/1928"
+								"label": "Presidential 1928",
+								"route": "/app/usa/presidential/1928/results"
 							},
 							{
-								"label": "1924 Presidential Election",
-								"route": "/app/usa/presidential/1924"
+								"label": "Presidential 1924",
+								"route": "/app/usa/presidential/1924/results"
 							},
 							{
-								"label": "1920 Presidential Election",
-								"route": "/app/usa/presidential/1920"
+								"label": "Presidential 1920",
+								"route": "/app/usa/presidential/1920/results"
 							},
 							{
-								"label": "1916 Presidential Election",
-								"route": "/app/usa/presidential/1916"
+								"label": "Presidential 1916",
+								"route": "/app/usa/presidential/1916/results"
 							},
 							{
-								"label": "1912 Presidential Election",
-								"route": "/app/usa/presidential/1912"
+								"label": "Presidential 1912",
+								"route": "/app/usa/presidential/1912/results"
 							},
 							{
-								"label": "1908 Presidential Election",
-								"route": "/app/usa/presidential/1908"
+								"label": "Presidential 1908",
+								"route": "/app/usa/presidential/1908/results"
 							},
 							{
-								"label": "1904 Presidential Election",
-								"route": "/app/usa/presidential/1904"
+								"label": "Presidential 1904",
+								"route": "/app/usa/presidential/1904/results"
 							},
 							{
-								"label": "1900 Presidential Election",
-								"route": "/app/usa/presidential/1900"
+								"label": "Presidential 1900",
+								"route": "/app/usa/presidential/1900/results"
 							},
 							{
-								"label": "1896 Presidential Election",
-								"route": "/app/usa/presidential/1896"
+								"label": "Presidential 1896",
+								"route": "/app/usa/presidential/1896/results"
 							},
 							{
-								"label": "1892 Presidential Election",
-								"route": "/app/usa/presidential/1892"
+								"label": "Presidential 1892",
+								"route": "/app/usa/presidential/1892/results"
 							},
 							{
-								"label": "1888 Presidential Election",
-								"route": "/app/usa/presidential/1888"
+								"label": "Presidential 1888",
+								"route": "/app/usa/presidential/1888/results"
 							},
 							{
-								"label": "1884 Presidential Election",
-								"route": "/app/usa/presidential/1884"
+								"label": "Presidential 1884",
+								"route": "/app/usa/presidential/1884/results"
 							},
 							{
-								"label": "1880 Presidential Election",
-								"route": "/app/usa/presidential/1880"
+								"label": "Presidential 1880",
+								"route": "/app/usa/presidential/1880/results"
 							},
 							{
-								"label": "1876 Presidential Election",
-								"route": "/app/usa/presidential/1876"
+								"label": "Presidential 1876",
+								"route": "/app/usa/presidential/1876/results"
 							},
 							{
-								"label": "1872 Presidential Election",
-								"route": "/app/usa/presidential/1872"
+								"label": "Presidential 1872",
+								"route": "/app/usa/presidential/1872/results"
 							},
 							{
-								"label": "1868 Presidential Election",
-								"route": "/app/usa/presidential/1868"
+								"label": "Presidential 1868",
+								"route": "/app/usa/presidential/1868/results"
 							},
 							{
-								"label": "1864 Presidential Election",
-								"route": "/app/usa/presidential/1864"
+								"label": "Presidential 1864",
+								"route": "/app/usa/presidential/1864/results"
 							},
 							{
-								"label": "1860 Presidential Election",
-								"route": "/app/usa/presidential/1860"
+								"label": "Presidential 1860",
+								"route": "/app/usa/presidential/1860/results"
 							},
 							{
-								"label": "1856 Presidential Election",
-								"route": "/app/usa/presidential/1856"
+								"label": "Presidential 1856",
+								"route": "/app/usa/presidential/1856/results"
 							},
 							{
-								"label": "1852 Presidential Election",
-								"route": "/app/usa/presidential/1852"
+								"label": "Presidential 1852",
+								"route": "/app/usa/presidential/1852/results"
 							},
 							{
-								"label": "1848 Presidential Election",
-								"route": "/app/usa/presidential/1848"
+								"label": "Presidential 1848",
+								"route": "/app/usa/presidential/1848/results"
 							},
 							{
-								"label": "1844 Presidential Election",
-								"route": "/app/usa/presidential/1844"
+								"label": "Presidential 1844",
+								"route": "/app/usa/presidential/1844/results"
 							},
 							{
-								"label": "1840 Presidential Election",
-								"route": "/app/usa/presidential/1840"
+								"label": "Presidential 1840",
+								"route": "/app/usa/presidential/1840/results"
 							},
 							{
-								"label": "1836 Presidential Election",
-								"route": "/app/usa/presidential/1836"
+								"label": "Presidential 1836",
+								"route": "/app/usa/presidential/1836/results"
 							},
 							{
-								"label": "1832 Presidential Election",
-								"route": "/app/usa/presidential/1832"
+								"label": "Presidential 1832",
+								"route": "/app/usa/presidential/1832/results"
 							},
 							{
-								"label": "1828 Presidential Election",
-								"route": "/app/usa/presidential/1828"
+								"label": "Presidential 1828",
+								"route": "/app/usa/presidential/1828/results"
 							},
 							{
-								"label": "1824 Presidential Election",
-								"route": "/app/usa/presidential/1824"
+								"label": "Presidential 1824",
+								"route": "/app/usa/presidential/1824/results"
 							},
 							{
-								"label": "1820 Presidential Election",
-								"route": "/app/usa/presidential/1820"
+								"label": "Presidential 1820",
+								"route": "/app/usa/presidential/1820/results"
 							},
 							{
-								"label": "1816 Presidential Election",
-								"route": "/app/usa/presidential/1816"
+								"label": "Presidential 1816",
+								"route": "/app/usa/presidential/1816/results"
 							},
 							{
-								"label": "1812 Presidential Election",
-								"route": "/app/usa/presidential/1812"
+								"label": "Presidential 1812",
+								"route": "/app/usa/presidential/1812/results"
 							},
 							{
-								"label": "1808 Presidential Election",
-								"route": "/app/usa/presidential/1808"
+								"label": "Presidential 1808",
+								"route": "/app/usa/presidential/1808/results"
 							},
 							{
-								"label": "1804 Presidential Election",
-								"route": "/app/usa/presidential/1804"
+								"label": "Presidential 1804",
+								"route": "/app/usa/presidential/1804/results"
 							},
 							{
-								"label": "1800 Presidential Election",
-								"route": "/app/usa/presidential/1800"
+								"label": "Presidential 1800",
+								"route": "/app/usa/presidential/1800/results"
 							},
 							{
-								"label": "1796 Presidential Election",
-								"route": "/app/usa/presidential/1796"
+								"label": "Presidential 1796",
+								"route": "/app/usa/presidential/1796/results"
 							},
 							{
-								"label": "1792 Presidential Election",
-								"route": "/app/usa/presidential/1792"
+								"label": "Presidential 1792",
+								"route": "/app/usa/presidential/1792/results"
 							},
 							{
-								"label": "1788 Presidential Election",
-								"route": "/app/usa/presidential/1788"
+								"label": "Presidential 1788",
+								"route": "/app/usa/presidential/1788/results"
 							}
 						]
 					}
