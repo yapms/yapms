@@ -1,17 +1,11 @@
 import panzoom, { type PanZoom } from 'panzoom';
 import z from 'zod';
 
-let panzoomInstance: PanZoom;
-let svg: SVGElement;
+let panzoomInstance: PanZoom | undefined;
+let savedSVG: SVGElement | undefined;
 
-function storeSVGForPan(mapBind: HTMLDivElement) {
-	const foundSVG = mapBind.querySelector<SVGElement>('svg'); //We can do this since the only child of node is the map svg itself.
-	if (foundSVG !== null) {
-		svg = foundSVG; //We can do this since the only child of node is the map svg itself.
-	}
-}
-
-function applyPanZoom(): PanZoom | undefined {
+function applyPanZoom(svg: SVGElement) {
+	savedSVG = svg;
 	panzoomInstance = panzoom(svg, {
 		minZoom: 0.5,
 		maxZoom: 100,
@@ -36,17 +30,20 @@ function applyPanZoom(): PanZoom | undefined {
 
 			adjustStroke(svg, initStroke, strokeUpper, panzoomInstance.getTransform().scale);
 			panzoomInstance.on('zoom', (e: PanZoom) => {
-				adjustStroke(svg, initStroke, strokeUpper, e.getTransform().scale);
+				if (svg !== undefined) {
+					adjustStroke(svg, initStroke, strokeUpper, e.getTransform().scale);
+				}
 			});
 		}
 	}
-	return panzoomInstance;
 }
 
-function reapplyPanZoom(): PanZoom | undefined {
+function reapplyPanZoom() {
+	if (panzoomInstance === undefined || savedSVG === undefined) {
+		return;
+	}
 	panzoomInstance.dispose();
-	setTimeout(applyPanZoom, 0);
-	return panzoomInstance;
+	applyPanZoom(savedSVG);
 }
 
 function adjustStroke(
@@ -64,4 +61,4 @@ function adjustStroke(
 	}
 }
 
-export { storeSVGForPan, applyPanZoom, reapplyPanZoom };
+export { applyPanZoom, reapplyPanZoom };

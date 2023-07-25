@@ -25,9 +25,8 @@
 	import { browser } from '$app/environment';
 	import NavBar from '$lib/components/navbar/NavBar.svelte';
 	import SideBar from '$lib/components/sidebar/SideBar.svelte';
-	import { ChartPositionStore } from '$lib/stores/Chart';
-	import CandidateBoxContainer from '$lib/components/candidatebox/CandidateBoxContainer.svelte';
-	import ChartArea from '$lib/components/chartarea/ChartArea.svelte';
+	import { reapplyPanZoom } from '$lib/utils/applyPanZoom';
+	import MapChartContainer from '$lib/components/mapchartcontainer/MapChartContainer.svelte';
 
 	if (browser) {
 		const url = get(page).url;
@@ -59,22 +58,14 @@
 	<title>YAPms</title>
 </svelte:head>
 
-<svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp} />
+<svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp} on:resize={reapplyPanZoom} />
 
 <div class="flex flex-col h-full">
 	<NavBar />
 	<div class="flex flex-row h-full overflow-hidden">
-		<div
-			class="flex flex-grow basis-9/12"
-			class:flex-col-reverse={$ChartPositionStore === 'bottom'}
-			class:flex-row={$ChartPositionStore === 'left'}
-		>
-			<ChartArea />
-			<div class="overflow-hidden w-full h-full">
-				<CandidateBoxContainer />
-				<slot />
-			</div>
-		</div>
+		<MapChartContainer>
+			<slot />
+		</MapChartContainer>
 		<SideBar />
 	</div>
 </div>
