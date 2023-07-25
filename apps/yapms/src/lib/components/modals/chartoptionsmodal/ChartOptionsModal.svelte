@@ -4,6 +4,7 @@
 	import type { ChartType } from '$lib/types/ChartType';
 	import ModalBase from '../ModalBase.svelte';
 	import type ChartPosition from '$lib/types/ChartPosition';
+	import { reapplyPanZoom } from '$lib/utils/applyPanZoom';
 
 	const chartTypeValues = ['pie', 'battle', 'none'];
 	const chartPositionValues = ['bottom', 'left'];
@@ -17,10 +18,12 @@
 
 	function setChartType(id: string) {
 		ChartTypeStore.set(id as ChartType);
+		reapplyPanZoom();
 	}
 
 	function setChartPosition(id: string) {
 		ChartPositionStore.set(id as ChartPosition);
+		reapplyPanZoom();
 	}
 </script>
 

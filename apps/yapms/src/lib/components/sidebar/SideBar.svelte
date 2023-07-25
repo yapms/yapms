@@ -3,11 +3,15 @@
 	import titles from '$lib/assets/other/Titles.json';
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
 	import { SideBarStore } from '$lib/stores/SideBar';
+	import { reapplyPanZoom } from '$lib/utils/applyPanZoom';
 	import SavedMaps from './sections/savedmaps/SavedMaps.svelte';
 	import { faReddit, faTwitter } from '@fortawesome/free-brands-svg-icons';
+	import { afterUpdate } from 'svelte';
 	import Fa from 'svelte-fa';
 
 	$: title = titles.find((elem) => elem.path === $page.url.pathname)?.title ?? 'YAPms';
+
+	afterUpdate(reapplyPanZoom);
 </script>
 
 {#if $SideBarStore}

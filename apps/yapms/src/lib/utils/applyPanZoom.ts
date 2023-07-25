@@ -1,39 +1,49 @@
 import panzoom, { type PanZoom } from 'panzoom';
 import z from 'zod';
 
-function applyPanZoom(mapBind: HTMLDivElement): PanZoom | undefined {
-	const svg = mapBind.querySelector<SVGElement>('svg'); //We can do this since the only child of node is the map svg itself.
-	if (svg) {
-		const panzoomInstance = panzoom(svg, {
-			minZoom: 0.5,
-			maxZoom: 100,
-			smoothScroll: false,
-			autocenter: true,
-			zoomDoubleClickSpeed: 1,
-			onTouch: function () {
-				return false;
-			}
-		});
-		if (svg.hasAttribute('auto-border-stroke-width')) {
-			const inputParser = z.number().positive().finite();
+let panzoomInstance: PanZoom | undefined;
+let savedSVG: SVGElement | undefined;
 
-			const initStroke = Number(svg.getAttribute('auto-border-stroke-width'));
-			const initStrokeValid = inputParser.safeParse(initStroke).success;
-			if (initStrokeValid) {
-				let strokeUpper: number | null = Number(svg.getAttribute('auto-border-stroke-width-limit'));
-				const strokeUpperValid = inputParser.safeParse(strokeUpper).success;
-				if (!strokeUpperValid) {
-					strokeUpper = null;
-				}
-
-				adjustStroke(svg, initStroke, strokeUpper, panzoomInstance.getTransform().scale);
-				panzoomInstance.on('zoom', (e: PanZoom) => {
-					adjustStroke(svg, initStroke, strokeUpper, e.getTransform().scale);
-				});
-			}
+function applyPanZoom(svg: SVGElement) {
+	savedSVG = svg;
+	panzoomInstance = panzoom(svg, {
+		minZoom: 0.5,
+		maxZoom: 100,
+		smoothScroll: false,
+		autocenter: true,
+		zoomDoubleClickSpeed: 1,
+		onTouch: function () {
+			return false;
 		}
-		return panzoomInstance;
+	});
+	if (svg.hasAttribute('auto-border-stroke-width')) {
+		const inputParser = z.number().positive().finite();
+
+		const initStroke = Number(svg.getAttribute('auto-border-stroke-width'));
+		const initStrokeValid = inputParser.safeParse(initStroke).success;
+		if (initStrokeValid) {
+			let strokeUpper: number | null = Number(svg.getAttribute('auto-border-stroke-width-limit'));
+			const strokeUpperValid = inputParser.safeParse(strokeUpper).success;
+			if (!strokeUpperValid) {
+				strokeUpper = null;
+			}
+
+			adjustStroke(svg, initStroke, strokeUpper, panzoomInstance.getTransform().scale);
+			panzoomInstance.on('zoom', (e: PanZoom) => {
+				if (svg !== undefined) {
+					adjustStroke(svg, initStroke, strokeUpper, e.getTransform().scale);
+				}
+			});
+		}
 	}
+}
+
+function reapplyPanZoom() {
+	if (panzoomInstance === undefined || savedSVG === undefined) {
+		return;
+	}
+	panzoomInstance.dispose();
+	applyPanZoom(savedSVG);
 }
 
 function adjustStroke(
@@ -51,4 +61,4 @@ function adjustStroke(
 	}
 }
 
-export default applyPanZoom;
+export { applyPanZoom, reapplyPanZoom };
