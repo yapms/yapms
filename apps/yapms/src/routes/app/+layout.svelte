@@ -12,7 +12,6 @@
 	import AddCandidateModal from '$lib/components/modals/addcandidatemodal/AddCandidateModal.svelte';
 	import PresetColorsModal from '$lib/components/modals/presetcolorsmodal/PresetColorsModal.svelte';
 	import EditRegionModal from '$lib/components/modals/editregionmodal/EditRegionModal.svelte';
-	import MapModal from '$lib/components/modals/mapmodal/MapModal.svelte';
 	import ChartOptionsModal from '$lib/components/modals/chartoptionsmodal/ChartOptionsModal.svelte';
 	import ModeModal from '$lib/components/modals/modemodal/ModeModal.svelte';
 	import StyleModal from '$lib/components/modals/stylemodal/StyleModal.svelte';
@@ -69,8 +68,6 @@
 		<SideBar />
 	</div>
 </div>
-
-<MapModal />
 
 <ClearMapModal />
 
