@@ -90,7 +90,6 @@ export {
 	EditCandidateModalStore,
 	EditTossupModalStore,
 	ClearMapModalStore,
-	MapModalStore,
 	EditRegionModalStore,
 	SplitRegionModalStore,
 	AddCandidateModalStore,
