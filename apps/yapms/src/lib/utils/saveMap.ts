@@ -31,7 +31,8 @@ function generateJson() {
 	const map = {
 		country: urlData[2],
 		type: urlData[3],
-		year: urlData[4]
+		year: urlData[4],
+		variant: urlData[5]
 	};
 
 	const data = {

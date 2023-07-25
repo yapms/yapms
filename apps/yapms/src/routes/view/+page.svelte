@@ -40,7 +40,13 @@
 		}
 
 		mapName =
-			savedFile.data.map.country + '-' + savedFile.data.map.type + '-' + savedFile.data.map.year;
+			savedFile.data.map.country +
+			'-' +
+			savedFile.data.map.type +
+			'-' +
+			savedFile.data.map.year +
+			'-' +
+			savedFile.data.map.variant;
 		mapName = `${mapName}.svg`;
 
 		LoadedMapStore.set(savedFile.data);
