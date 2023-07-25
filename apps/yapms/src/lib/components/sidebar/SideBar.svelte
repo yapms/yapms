@@ -8,6 +8,7 @@
 	import { faReddit, faTwitter } from '@fortawesome/free-brands-svg-icons';
 	import { afterUpdate } from 'svelte';
 	import Fa from 'svelte-fa';
+	import Shortcuts from './sections/shortcuts/Shortcuts.svelte';
 
 	$: title = titles.find((elem) => elem.path === $page.url.pathname)?.title ?? 'YAPms';
 
@@ -28,7 +29,7 @@
 			</button>
 		</div>
 		<h1 class="text-xl text-center font-bold">{title}</h1>
-		<div class="divider">Shortcuts</div>
+		<Shortcuts />
 		{#if $PocketBaseStore.authStore.isValid}
 			<SavedMaps />
 		{/if}
