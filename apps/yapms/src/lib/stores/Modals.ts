@@ -21,10 +21,6 @@ const ClearMapModalStore = writable({
 	open: false
 });
 
-const MapModalStore = writable({
-	open: false
-});
-
 const EditRegionModalStore = writable<{
 	region: Region | null;
 	open: boolean;
