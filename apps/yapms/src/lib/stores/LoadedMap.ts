@@ -26,7 +26,7 @@ async function loadMap(collection: string, urlKey: string, mapKey: string) {
 		LoadingErrorModalStore.set({
 			open: true
 		});
-		await goto('/app/usa/presidential/2022');
+		await goto('/app/usa/presidential/2022/blank');
 		return;
 	}
 
