@@ -6,8 +6,14 @@ export const SavedMapSchema = z.object({
 	map: z.object({
 		country: z.string().regex(/^[\w-]+$/),
 		type: z.string().regex(/^[\w-]+$/),
-		year: z.string().regex(/^[\w-]+$/),
-		variant: z.string().regex(/^[\w-]+$/)
+		year: z
+			.string()
+			.regex(/^[\w-]+$/)
+			.optional(),
+		variant: z
+			.string()
+			.regex(/^[\w-]+$/)
+			.optional()
 	}),
 	tossup: CandidateSchema,
 	candidates: CandidateSchema.array(),

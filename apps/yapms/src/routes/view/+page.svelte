@@ -39,14 +39,19 @@
 			return;
 		}
 
-		mapName =
-			savedFile.data.map.country +
-			'-' +
-			savedFile.data.map.type +
-			'-' +
-			savedFile.data.map.year +
-			'-' +
-			savedFile.data.map.variant;
+		if (savedFile.data.map.year !== undefined && savedFile.data.map.variant !== undefined) {
+			mapName =
+				savedFile.data.map.country +
+				'-' +
+				savedFile.data.map.type +
+				'-' +
+				savedFile.data.map.year +
+				'-' +
+				savedFile.data.map.variant;
+		} else {
+			mapName = savedFile.data.map.country + '-' + savedFile.data.map.type;
+		}
+
 		mapName = `${mapName}.svg`;
 
 		LoadedMapStore.set(savedFile.data);
