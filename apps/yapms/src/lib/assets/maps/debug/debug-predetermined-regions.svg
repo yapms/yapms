@@ -39,7 +39,7 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="g416145" />
   <g
-     class="regions"
+     regions
      id="areas"
      style="display:inline;fill:#bc0000;fill-opacity:1">
     <path
@@ -508,7 +508,7 @@
        ry="3" />
   </g>
   <g
-     class="region-buttons"
+     region-buttons
      id="g63">
     <rect
        data-for-region="ma"
