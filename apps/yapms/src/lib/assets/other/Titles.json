@@ -1,458 +1,454 @@
 [
 	{
-		"path": "/app/usa/presidential/2022",
-		"title": "USA 2022 Presidential Election"
+		"path": "/app/usa/presidential/2022/blank",
+		"title": "USA 2022 Presidential"
 	},
 	{
-		"path": "/app/usa/senate/2024",
-		"title": "USA 2024 Senate Elections"
+		"path": "/app/usa/senate/2024/blank",
+		"title": "USA 2024 Senate"
 	},
 	{
-		"path": "/app/usa/house/2024",
-		"title": "USA House 2024"
+		"path": "/app/usa/house/2024/blank",
+		"title": "USA 2024 House"
 	},
 	{
-		"path": "/app/usa/governors/2024",
-		"title": "USA Governors 2024"
+		"path": "/app/usa/governors/2024/blank",
+		"title": "USA 2024 Gubernatorial"
 	},
 	{
-		"path": "/app/usa/senate/current",
-		"title": "USA Current Senate"
+		"path": "/app/usa/senate/2022/results",
+		"title": "USA 2022 Senate Results"
 	},
 	{
-		"path": "/app/usa/house/current",
-		"title": "USA Current House"
+		"path": "/app/usa/house/2022/results",
+		"title": "USA 2022 House Results"
 	},
 	{
-		"path": "/app/usa/governors/current",
-		"title": "USA Current Governors"
+		"path": "/app/usa/governors/2022/results",
+		"title": "USA 2022 Gubernatorial Results"
 	},
 	{
-		"path": "/app/usa/dem/primary",
-		"title": "USA Democratic Primary"
+		"path": "/app/usa/dem_primary/2024/blank",
+		"title": "USA 2024 Democratic Primary"
 	},
 	{
-		"path": "/app/usa/rep/primary",
-		"title": "USA Republican Primary"
+		"path": "/app/usa/rep_primary/2024/blank",
+		"title": "USA 2024 Republican Primary"
 	},
 	{
-		"path": "/app/usa/counties/blank",
+		"path": "/app/usa/counties/2023/blank",
 		"title": "USA Counties"
 	},
 	{
-		"path": "/app/usa/senate/blank",
+		"path": "/app/usa/senate",
 		"title": "USA Senate"
 	},
 	{
-		"path": "/app/usa/senate/class1",
+		"path": "/app/usa/senate_class1",
 		"title": "USA Senate Class 1"
 	},
 	{
-		"path": "/app/usa/senate/class2",
+		"path": "/app/usa/senate_class2",
 		"title": "USA Senate Class 2"
 	},
 	{
-		"path": "/app/usa/senate/class3",
+		"path": "/app/usa/senate_class3",
 		"title": "USA Senate Class 3"
 	},
 	{
-		"path": "/app/usa/governors/blank",
+		"path": "/app/usa/governors",
 		"title": "USA Governors"
 	},
 	{
-		"path": "/app/usa/governors/2022",
-		"title": "USA Governors 2022"
+		"path": "/app/usa/governors/2022/blank",
+		"title": "USA 2022 Gubernatorial"
 	},
 	{
-		"path": "/app/usa/governors/2023",
-		"title": "USA Governors 2023"
+		"path": "/app/usa/governors/2023/blank",
+		"title": "USA 2023 Gubernatorial"
 	},
 	{
-		"path": "/app/usa/governors/2025",
-		"title": "USA Governors 2025"
+		"path": "/app/usa/governors/2025/blank",
+		"title": "USA 2025 Gubernatorial"
 	},
 	{
-		"path": "/app/usa/house/2022",
-		"title": "USA House 2022"
+		"path": "/app/usa/house/2022/blank",
+		"title": "USA 2022 House"
 	},
 	{
-		"path": "/app/usa/house/2020",
-		"title": "USA House 2020"
+		"path": "/app/usa/house/2020/blank",
+		"title": "USA 2020 House"
 	},
 	{
-		"path": "/app/usa/house/2018",
-		"title": "USA House 2018"
+		"path": "/app/usa/house/2018/blank",
+		"title": "USA 2018 House"
 	},
 	{
-		"path": "/app/usa/house/2016",
-		"title": "USA House 2016"
+		"path": "/app/usa/house/2016/blank",
+		"title": "USA 2016 House"
 	},
 	{
-		"path": "/app/usa/house/2014",
-		"title": "USA House 2014"
+		"path": "/app/usa/house/2014/blank",
+		"title": "USA 2014 House"
 	},
 	{
-		"path": "/app/usa/house/2012",
-		"title": "USA House 2012"
+		"path": "/app/usa/house/2012/blank",
+		"title": "USA 2012 House"
 	},
 	{
-		"path": "/app/usa/house/2010",
-		"title": "USA House 2010"
+		"path": "/app/usa/house/2010/blank",
+		"title": "USA 2010 House"
 	},
 	{
-		"path": "/app/usa/house/2008",
+		"path": "/app/usa/house/2008/blank",
 		"title": "USA House 2008"
 	},
 	{
-		"path": "/app/usa/house/2006",
-		"title": "USA House 2006"
+		"path": "/app/usa/house/2006/blank",
+		"title": "USA 2006 House"
 	},
 	{
-		"path": "/app/usa/house/2004",
-		"title": "USA House 2004"
+		"path": "/app/usa/house/2004/blank",
+		"title": "USA 2004 House"
 	},
 	{
-		"path": "/app/usa/house/2002",
-		"title": "USA House 2002"
+		"path": "/app/usa/house/2002/blank",
+		"title": "USA 2002 House"
 	},
 	{
-		"path": "/app/usa/house/2000",
-		"title": "USA House 2000"
+		"path": "/app/usa/house/2000/blank",
+		"title": "USA 2000 House"
 	},
 	{
-		"path": "/app/usa/house/1998",
-		"title": "USA House 1998"
+		"path": "/app/usa/house/1998/blank",
+		"title": "USA 1998 House"
 	},
 	{
-		"path": "/app/usa/house/1996",
-		"title": "USA House 1996"
+		"path": "/app/usa/house/1996/blank",
+		"title": "USA 1996 House"
 	},
 	{
-		"path": "/app/usa/house/1994",
-		"title": "USA House 1994"
+		"path": "/app/usa/house/1994/blank",
+		"title": "USA 1994 House"
 	},
 	{
-		"path": "/app/usa/house/1992",
-		"title": "USA House 1992"
+		"path": "/app/usa/house/1992/blank",
+		"title": "USA 1992 House"
 	},
 	{
-		"path": "/app/can/provinces/blank",
+		"path": "/app/can/provinces",
 		"title": "Canadian Provinces"
 	},
 	{
-		"path": "/app/can/commons/blank",
-		"title": "Canadian House of Commons"
+		"path": "/app/can/commons/2021/blank",
+		"title": "Canadian 2021 House of Commons"
 	},
 	{
-		"path": "/app/can/senate/blank",
+		"path": "/app/can/senate",
 		"title": "Canadian Senate"
 	},
 	{
-		"path": "/app/can/commons/2021-results",
+		"path": "/app/can/commons/2021/results",
 		"title": "Canadian 2021 House of Commons Results"
 	},
 	{
-		"path": "/app/can/commons/2019-results",
+		"path": "/app/can/commons/2019/results",
 		"title": "Canadian 2019 House of Commons Results"
 	},
 	{
-		"path": "/app/can/commons/2015-results",
+		"path": "/app/can/commons/2015/results",
 		"title": "Canadian 2015 House of Commons Results"
 	},
 	{
-		"path": "/app/gbr/commons/2024-blank",
+		"path": "/app/gbr/commons/2024/blank",
 		"title": "British 2024 House of Commons"
 	},
 	{
-		"path": "/app/gbr/commons/2019-blank",
+		"path": "/app/gbr/commons/2019/blank",
 		"title": "British 2019 House of Commons"
 	},
 	{
-		"path": "/app/gbr/commons/2019-results",
+		"path": "/app/gbr/commons/2019/results",
 		"title": "British 2019 House of Commons Results"
 	},
 	{
-		"path": "/app/gbr/historic-counties/blank",
+		"path": "/app/gbr/counties/1844/blank",
 		"title": "British Historic Counties"
 	},
 	{
-		"path": "/app/gbr/counties/blank",
+		"path": "/app/gbr/counties/2023/blank",
 		"title": "British Counties and Unitary Authorities"
 	},
 	{
-		"path": "/app/nld/provinces/blank",
+		"path": "/app/nld/provinces",
 		"title": "Dutch Provinces"
 	},
 	{
-		"path": "/app/nld/house/2023-blank",
-		"title": "Dutch 2023 House Elections"
+		"path": "/app/nld/house/2023/blank",
+		"title": "Dutch 2023 House"
 	},
 	{
-		"path": "/app/nld/provincial/2023-blank",
-		"title": "Dutch Provincial Councils"
+		"path": "/app/nld/provincial/2023/blank",
+		"title": "Dutch 2023 Provincial Councils"
 	},
 	{
-		"path": "/app/nld/provincial/2023-results",
+		"path": "/app/nld/provincial/2023/results",
 		"title": "Dutch 2023 Provincial Councils Results"
 	},
 	{
-		"path": "/app/nld/gemeente/2023-blank",
+		"path": "/app/nld/gemeente/2023/blank",
 		"title": "Dutch 2023 Gemeente"
 	},
 	{
-		"path": "/app/de/folketing/blank",
-		"title": "Danish Folketing"
+		"path": "/app/usa/presidential/2020/results",
+		"title": "USA 2020 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/2020",
-		"title": "USA 2020 Presidential Election"
+		"path": "/app/usa/presidential/2016/results",
+		"title": "USA 2016 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/2016",
-		"title": "USA 2016 Presidential Election"
+		"path": "/app/usa/presidential/2012/results",
+		"title": "USA 2012 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/2012",
-		"title": "USA 2012 Presidential Election"
+		"path": "/app/usa/presidential/2008/results",
+		"title": "USA 2008 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/2008",
-		"title": "USA 2008 Presidential Election"
+		"path": "/app/usa/presidential/2004/results",
+		"title": "USA 2004 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/2004",
-		"title": "USA 2004 Presidential Election"
+		"path": "/app/usa/presidential/2000/results",
+		"title": "USA 2000 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/2000",
-		"title": "USA 2000 Presidential Election"
+		"path": "/app/usa/presidential/1996/results",
+		"title": "USA 1996 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1996",
-		"title": "USA 1996 Presidential Election"
+		"path": "/app/usa/presidential/1992/results",
+		"title": "USA 1992 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1992",
-		"title": "USA 1992 Presidential Election"
+		"path": "/app/usa/presidential/1988/results",
+		"title": "USA 1988 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1988",
-		"title": "USA 1988 Presidential Election"
+		"path": "/app/usa/presidential/1984/results",
+		"title": "USA 1984 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1984",
-		"title": "USA 1984 Presidential Election"
+		"path": "/app/usa/presidential/1980/results",
+		"title": "USA 1980 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1980",
-		"title": "USA 1980 Presidential Election"
+		"path": "/app/usa/presidential/1976/results",
+		"title": "USA 1976 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1976",
-		"title": "USA 1976 Presidential Election"
+		"path": "/app/usa/presidential/1972/results",
+		"title": "USA 1972 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1972",
-		"title": "USA 1972 Presidential Election"
+		"path": "/app/usa/presidential/1968/results",
+		"title": "USA 1968 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1968",
-		"title": "USA 1968 Presidential Election"
+		"path": "/app/usa/presidential/1964/results",
+		"title": "USA 1964 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1964",
-		"title": "USA 1964 Presidential Election"
+		"path": "/app/usa/presidential/1960/results",
+		"title": "USA 1960 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1960",
-		"title": "USA 1960 Presidential Election"
+		"path": "/app/usa/presidential/1956/results",
+		"title": "USA 1956 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1956",
-		"title": "USA 1956 Presidential Election"
+		"path": "/app/usa/presidential/1952/results",
+		"title": "USA 1952 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1952",
-		"title": "USA 1952 Presidential Election"
+		"path": "/app/usa/presidential/1948/results",
+		"title": "USA 1948 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1948",
-		"title": "USA 1948 Presidential Election"
+		"path": "/app/usa/presidential/1944/results",
+		"title": "USA 1944 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1944",
-		"title": "USA 1944 Presidential Election"
+		"path": "/app/usa/presidential/1940/results",
+		"title": "USA 1940 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1940",
-		"title": "USA 1940 Presidential Election"
+		"path": "/app/usa/presidential/1936/results",
+		"title": "USA 1936 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1936",
-		"title": "USA 1936 Presidential Election"
+		"path": "/app/usa/presidential/1932/results",
+		"title": "USA 1932 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1932",
-		"title": "USA 1932 Presidential Election"
+		"path": "/app/usa/presidential/1928/results",
+		"title": "USA 1928 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1928",
-		"title": "USA 1928 Presidential Election"
+		"path": "/app/usa/presidential/1924/results",
+		"title": "USA 1924 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1924",
-		"title": "USA 1924 Presidential Election"
+		"path": "/app/usa/presidential/1920/results",
+		"title": "USA 1920 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1920",
-		"title": "USA 1920 Presidential Election"
+		"path": "/app/usa/presidential/1916/results",
+		"title": "USA 1916 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1916",
-		"title": "USA 1916 Presidential Election"
+		"path": "/app/usa/presidential/1912/results",
+		"title": "USA 1912 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1912",
-		"title": "USA 1912 Presidential Election"
+		"path": "/app/usa/presidential/1908/results",
+		"title": "USA 1908 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1908",
-		"title": "USA 1908 Presidential Election"
+		"path": "/app/usa/presidential/1904/results",
+		"title": "USA 1904 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1904",
-		"title": "USA 1904 Presidential Election"
+		"path": "/app/usa/presidential/1900/results",
+		"title": "USA 1900 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1900",
-		"title": "USA 1900 Presidential Election"
+		"path": "/app/usa/presidential/1896/results",
+		"title": "USA 1896 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1896",
-		"title": "USA 1896 Presidential Election"
+		"path": "/app/usa/presidential/1892/results",
+		"title": "USA 1892 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1892",
-		"title": "USA 1892 Presidential Election"
+		"path": "/app/usa/presidential/1888/results",
+		"title": "USA 1888 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1888",
-		"title": "USA 1888 Presidential Election"
+		"path": "/app/usa/presidential/1884/results",
+		"title": "USA 1884 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1884",
-		"title": "USA 1884 Presidential Election"
+		"path": "/app/usa/presidential/1880/results",
+		"title": "USA 1880 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1880",
-		"title": "USA 1880 Presidential Election"
+		"path": "/app/usa/presidential/1876/results",
+		"title": "USA 1876 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1876",
-		"title": "USA 1876 Presidential Election"
+		"path": "/app/usa/presidential/1872/results",
+		"title": "USA 1872 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1872",
-		"title": "USA 1872 Presidential Election"
+		"path": "/app/usa/presidential/1868/results",
+		"title": "USA 1868 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1868",
-		"title": "USA 1868 Presidential Election"
+		"path": "/app/usa/presidential/1864/results",
+		"title": "USA 1864 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1864",
-		"title": "USA 1864 Presidential Election"
+		"path": "/app/usa/presidential/1860/results",
+		"title": "USA 1860 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1860",
-		"title": "USA 1860 Presidential Election"
+		"path": "/app/usa/presidential/1856/results",
+		"title": "USA 1856 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1856",
-		"title": "USA 1856 Presidential Election"
+		"path": "/app/usa/presidential/1852/results",
+		"title": "USA 1852 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1852",
-		"title": "USA 1852 Presidential Election"
+		"path": "/app/usa/presidential/1848/results",
+		"title": "USA 1848 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1848",
-		"title": "USA 1848 Presidential Election"
+		"path": "/app/usa/presidential/1844/results",
+		"title": "USA 1844 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1844",
-		"title": "USA 1844 Presidential Election"
+		"path": "/app/usa/presidential/1840/results",
+		"title": "USA 1840 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1840",
-		"title": "USA 1840 Presidential Election"
+		"path": "/app/usa/presidential/1836/results",
+		"title": "USA 1836 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1836",
-		"title": "USA 1836 Presidential Election"
+		"path": "/app/usa/presidential/1832/results",
+		"title": "USA 1832 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1832",
-		"title": "USA 1832 Presidential Election"
+		"path": "/app/usa/presidential/1828/results",
+		"title": "USA 1828 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1828",
-		"title": "USA 1828 Presidential Election"
+		"path": "/app/usa/presidential/1824/results",
+		"title": "USA 1824 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1824",
-		"title": "USA 1824 Presidential Election"
+		"path": "/app/usa/presidential/1820/results",
+		"title": "USA 1820 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1820",
-		"title": "USA 1820 Presidential Election"
+		"path": "/app/usa/presidential/1816/results",
+		"title": "USA 1816 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1816",
-		"title": "USA 1816 Presidential Election"
+		"path": "/app/usa/presidential/1812/results",
+		"title": "USA 1812 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1812",
-		"title": "USA 1812 Presidential Election"
+		"path": "/app/usa/presidential/1808/results",
+		"title": "USA 1808 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1808",
-		"title": "USA 1808 Presidential Election"
+		"path": "/app/usa/presidential/1804/results",
+		"title": "USA 1804 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1804",
-		"title": "USA 1804 Presidential Election"
+		"path": "/app/usa/presidential/1800/results",
+		"title": "USA 1800 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1800",
-		"title": "USA 1800 Presidential Election"
+		"path": "/app/usa/presidential/1796/results",
+		"title": "USA 1796 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1796",
-		"title": "USA 1796 Presidential Election"
+		"path": "/app/usa/presidential/1792/results",
+		"title": "USA 1792 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1792",
-		"title": "USA 1792 Presidential Election"
+		"path": "/app/usa/presidential/1788/results",
+		"title": "USA 1788 Presidential"
 	},
 	{
-		"path": "/app/usa/presidential/1788",
-		"title": "USA 1788 Presidential Election"
-	},
-	{
-		"path": "/app/dnk/folketing/2022-blank",
+		"path": "/app/dnk/folketing/2022/blank",
 		"title": "Danish 2022 Folketing"
 	},
 	{
-		"path": "/app/dnk/folketing/2022-results",
+		"path": "/app/dnk/folketing/2022/results",
 		"title": "Danish 2022 Folketing Results"
 	},
 	{
-		"path": "/app/dnk/municipalities/blank",
-		"title": "Danish Municipalities"
+		"path": "/app/dnk/municipalities/2021/blank",
+		"title": "Danish 2021 Municipalities"
 	},
 	{
-		"path": "/app/dnk/regions/blank",
-		"title": "Danish Regions"
+		"path": "/app/dnk/regions/2021/blank",
+		"title": "Danish 2021 Regions"
 	}
 ]

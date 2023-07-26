@@ -26,7 +26,7 @@ async function loadMap(collection: string, urlKey: string, mapKey: string) {
 		LoadingErrorModalStore.set({
 			open: true
 		});
-		await goto('/app/usa/presidential/2022');
+		await goto('/app/usa/presidential/2022/blank');
 		return;
 	}
 
@@ -34,7 +34,11 @@ async function loadMap(collection: string, urlKey: string, mapKey: string) {
 
 	const country = encodeURIComponent(savedFile.data.map.country);
 	const type = encodeURIComponent(savedFile.data.map.type);
-	const year = encodeURIComponent(savedFile.data.map.year);
-
-	await goto(`/app/${country}/${type}/${year}?${urlKey}=${mapKey}`);
+	if (savedFile.data.map.year !== undefined && savedFile.data.map.variant !== undefined) {
+		const year = encodeURIComponent(savedFile.data.map.year);
+		const variant = encodeURIComponent(savedFile.data.map.variant);
+		await goto(`/app/${country}/${type}/${year}/${variant}?${urlKey}=${mapKey}`);
+	} else {
+		await goto(`/app/${country}/${type}?${urlKey}=${mapKey}`);
+	}
 }

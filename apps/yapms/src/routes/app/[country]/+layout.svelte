@@ -28,10 +28,10 @@
 
 	const requestedMap = $page.url.pathname.replace('/app/', '').replaceAll('/', '-').concat('.svg');
 
-	const currentMap = maps.get(requestedMap) ?? maps.get('usa-presidential-2022.svg');
+	const currentMap = maps.get(requestedMap) ?? maps.get('usa-presidential-2022-blank.svg');
 
 	if (browser && maps.has(requestedMap) === false) {
-		goto('/app/usa/presidential/2022', { replaceState: true });
+		goto('/app/usa/presidential/2022/blank', { replaceState: true });
 	}
 
 	let isLoaded = false;

@@ -40,7 +40,7 @@
 		} else if (userMapKey !== null) {
 			loadUserMap(userMapKey);
 		} else if (isInAppRoot) {
-			goto('/app/usa/presidential/2024');
+			goto('/app/usa/presidential/2024/blank');
 		}
 	}
 

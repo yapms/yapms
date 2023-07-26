@@ -4,10 +4,10 @@ import titles from '$lib/assets/other/Titles.json';
 export function entries() {
 	return titles.map((title) => {
 		const params = title.path.split('/');
-		if (params[2] === undefined || params[3] === undefined || params[4] === undefined) {
-			return { country: 'usa', map: 'presidential', year: '2022' };
+		if (params[2] === undefined || params[3] === undefined) {
+			return { country: 'usa', map: 'governors' };
 		}
-		return { country: params[2], map: params[3], year: params[4] };
+		return { country: params[2], map: params[3] };
 	});
 }
 
