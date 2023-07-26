@@ -139,10 +139,8 @@
 			</div>
 		</div>
 		<div class="modal-action">
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<label for="my-modal" class="btn btn-primary" on:click={cancel}>No</label>
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<label for="my-modal" class="btn btn-success" on:click={confirm}>Update</label>
+			<button class="btn btn-primary" on:click={cancel}>No</button>
+			<button class="btn btn-success" on:click={confirm}>Update</button>
 		</div>
 	</div>
 </div>
