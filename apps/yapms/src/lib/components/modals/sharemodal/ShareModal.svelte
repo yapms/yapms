@@ -90,14 +90,13 @@
 			</div>
 		</div>
 
-		<div
+		<button
 			class="alert shadow-lg mt-4 cursor-pointer transition-colors"
 			class:hidden={!linkID && !fetchingLinkID}
 			class:alert-warning={fetchingLinkID}
 			class:alert-info={!copiedLinkID && !fetchingLinkID}
 			class:alert-success={copiedLinkID && !fetchingLinkID}
 			on:click={copyLink}
-			on:keypress={copyLink}
 		>
 			<div>
 				<label class="swap swap-flip">
@@ -113,7 +112,7 @@
 					</span>
 				</label>
 			</div>
-		</div>
+		</button>
 
 		<div class="modal-action">
 			<button class="btn btn-primary" on:click={close}> Close </button>
