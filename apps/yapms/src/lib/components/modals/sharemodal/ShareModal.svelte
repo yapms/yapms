@@ -25,6 +25,16 @@
 		}
 	}
 
+	function testThing() {
+		console.log(window.turnstile);
+		window.turnstile.render('#testing', {
+			sitekey: '0x4AAAAAAAH3pDsaJQts4tre',
+			callback: function (token: any) {
+				console.log(token);
+			}
+		});
+	}
+
 	async function generateLink() {
 		fetchingLinkID = true;
 
@@ -90,6 +100,8 @@
 			</div>
 		</div>
 
+		<div id="testing" class="mt-4" />
+
 		<button
 			class="alert shadow-lg mt-4 cursor-pointer transition-colors"
 			class:hidden={!linkID && !fetchingLinkID}
@@ -115,6 +127,7 @@
 		</button>
 
 		<div class="modal-action">
+			<button class="btn btn-secondary" on:click={testThing}>test</button>
 			<button class="btn btn-primary" on:click={close}> Close </button>
 		</div>
 	</div>

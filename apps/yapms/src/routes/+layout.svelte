@@ -11,6 +11,10 @@
 
 <svelte:head>
 	<script async src={PUBLIC_UMAMI_URI} data-website-id={PUBLIC_UMAMI_DATA_WEBSITE_ID}></script>
+	<script
+		src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback"
+		defer
+	></script>
 </svelte:head>
 
 <slot />
