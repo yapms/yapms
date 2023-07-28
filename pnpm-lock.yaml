@@ -54,6 +54,7 @@ importers:
       svelte-eslint-parser: ^0.32.2
       svelte-fa: ^3.0.4
       svelte-preprocess: ^5.0.4
+      svelte-turnstile: ^0.5.0
       svelte-typeahead: 4.4.1
       tailwindcss: ^3.3.3
       theme-change: ^2.5.0
@@ -97,6 +98,7 @@ importers:
       svelte-eslint-parser: 0.32.2_svelte@4.1.1
       svelte-fa: 3.0.4
       svelte-preprocess: 5.0.4_thnl5ic4aspudykgeqp5fnc5fe
+      svelte-turnstile: 0.5.0_svelte@4.1.1
       svelte-typeahead: 4.4.1
       tailwindcss: 3.3.3
       theme-change: 2.5.0
@@ -3793,6 +3795,15 @@ packages:
     resolution: {integrity: sha512-e5hci9fZPMXb3fuRZvcYJGqh448M8vV3biY4lN4Nr9fqrG/HBnTjWYstKb399aUe9tsBxRbxRAWgtKicisL23g==}
     dev: true
 
+  /svelte-turnstile/0.5.0_svelte@4.1.1:
+    resolution: {integrity: sha512-FD/XOfyN2gOr7csfThLyrS/sSsRd2zgVfm5pwE1KvpWQHJYqx1HL/PQ92WEw8peL+SPqoKYx2619aZ65uPUsxg==}
+    peerDependencies:
+      svelte: ^3.58.0 || ^4.0.0
+    dependencies:
+      svelte: 4.1.1
+      turnstile-types: 1.1.2
+    dev: true
+
   /svelte-typeahead/4.4.1:
     resolution: {integrity: sha512-U8EYkCQ1HaDrQq1fnkVCEm8emZrdEfgfHhMulgOdoYnWV5PTvypiwCTNvqqxFHbz9ZGe5juAR9ok5tEcfnP9zw==}
     dependencies:
@@ -4030,6 +4041,10 @@ packages:
       turbo-linux-arm64: 1.10.11
       turbo-windows-64: 1.10.11
       turbo-windows-arm64: 1.10.11
+    dev: true
+
+  /turnstile-types/1.1.2:
+    resolution: {integrity: sha512-MJXbAeRPpORqPViZbHrpu8LWOHv1dp9i5GYSfoedu7GUmkUZpHWlAVLCFAhWlpRA5PQLBRworOGCEu4o6Ks7Zw==}
     dev: true
 
   /type-check/0.4.0:

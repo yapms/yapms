@@ -13,6 +13,7 @@ env:
   PUBLIC_REDIRECT_URI: dummy
   PUBLIC_UMAMI_URI: dummy
   PUBLIC_UMAMI_DATA_WEBSITE_ID: dummy
+  PUBLIC_TURNSTILE_SITE: dummy
 
 jobs:
   lint:

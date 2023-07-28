@@ -52,6 +52,7 @@
 		"svelte-eslint-parser": "^0.32.2",
 		"svelte-fa": "^3.0.4",
 		"svelte-preprocess": "^5.0.4",
+		"svelte-turnstile": "^0.5.0",
 		"svelte-typeahead": "4.4.1",
 		"tailwindcss": "^3.3.3",
 		"theme-change": "^2.5.0",

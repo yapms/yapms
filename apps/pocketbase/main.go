@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/pocketbase/pocketbase"
+	"github.com/pocketbase/pocketbase/apis"
 	"github.com/pocketbase/pocketbase/core"
 	"github.com/pocketbase/pocketbase/plugins/migratecmd"
 
@@ -16,6 +17,7 @@ func main() {
 
 	browserlessURI := os.Getenv("BROWSERLESS_URI")
 	browserlessFrontendURI := os.Getenv("BROWSERLESS_FRONTEND_URI")
+	turnstileSecret := os.Getenv("TURNSTILE_SECRET")
 
 	app := pocketbase.New()
 
@@ -31,7 +33,16 @@ func main() {
 	})
 
 	app.OnRecordBeforeCreateRequest().Add(func(e *core.RecordCreateEvent) error {
-		if e.Record.Collection().Name == "maps" || e.Record.Collection().Name == "user_maps" {
+		if e.Record.Collection().Name == "maps" {
+			err := support.VerifyCaptcha(e, &turnstileSecret)
+			if err != nil {
+				return apis.NewBadRequestError(
+					"Failed to verify captcha",
+					err,
+				)
+			}
+			support.CompressMapData(e)
+		} else if e.Record.Collection().Name == "user_maps" {
 			support.CompressMapData(e)
 		}
 		return nil
