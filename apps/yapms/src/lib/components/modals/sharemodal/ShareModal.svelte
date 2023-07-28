@@ -11,12 +11,17 @@
 	import CheckCircle from '$lib/icons/CheckCircle.svelte';
 	import { get } from 'svelte/store';
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
+  import { Turnstile } from 'svelte-turnstile';
+  import { PUBLIC_TURNSTILE_SITE } from '$env/static/public';
 
 	let files: FileList;
 
 	let fetchingLinkID = false;
 	let copiedLinkID = false;
 	let linkID: string | null = null;
+
+  let turnstileToken: string | null = null;
+  let resetTurnstile: () => void | undefined;
 
 	function load() {
 		if (files && files.length > 0) {
@@ -25,17 +30,12 @@
 		}
 	}
 
-	function testThing() {
-		console.log(window.turnstile);
-		window.turnstile.render('#testing', {
-			sitekey: '0x4AAAAAAAH3pDsaJQts4tre',
-			callback: function (token: any) {
-				console.log(token);
-			}
-		});
-	}
-
 	async function generateLink() {
+    if (turnstileToken === null) {
+      resetTurnstile?.();
+      return;
+    }
+
 		fetchingLinkID = true;
 
 		const form = new FormData();
@@ -45,11 +45,13 @@
 		});
 
 		form.append('data', mapData);
+    form.append('turnstile-token', turnstileToken);
 
 		const pocketbaseStore = get(PocketBaseStore);
 		const record = await pocketbaseStore.collection('maps').create(form);
 		linkID = record.id;
 		fetchingLinkID = false;
+    resetTurnstile?.();
 	}
 
 	async function copyLink() {
@@ -65,6 +67,18 @@
 		linkID = null;
 		ShareModalStore.set({ ...$ShareModalStore, open: false });
 	}
+
+  function onTurnstileSuccess(event: CustomEvent<{token: string}>) {
+    turnstileToken = event.detail.token;
+  }
+
+  function onTurnstileError() {
+    turnstileToken = null;
+  }
+
+  function onTurnstileExpired() {
+    turnstileToken = null;
+  }
 </script>
 
 <input type="checkbox" class="modal-toggle" checked={$ShareModalStore.open} />
@@ -81,7 +95,7 @@
 				<button
 					class="btn btn-secondary gap-1 flex-nowrap"
 					on:click={generateLink}
-					disabled={fetchingLinkID}
+					disabled={fetchingLinkID || turnstileToken === null}
 				>
 					<Link class="w-5 h-5" />
 					<span>Generate Link</span>
@@ -99,8 +113,6 @@
 				</button>
 			</div>
 		</div>
-
-		<div id="testing" class="mt-4" />
 
 		<button
 			class="alert shadow-lg mt-4 cursor-pointer transition-colors"
@@ -126,8 +138,15 @@
 			</div>
 		</button>
 
-		<div class="modal-action">
-			<button class="btn btn-secondary" on:click={testThing}>test</button>
+		<div class="modal-action justify-between items-end">
+      <Turnstile
+        siteKey={PUBLIC_TURNSTILE_SITE}
+        on:turnstile-callback={onTurnstileSuccess}
+        on:turnstile-expired={onTurnstileExpired}
+        on:turnstile-timeout={onTurnstileExpired}
+        on:turnstile-error={onTurnstileError}
+        bind:reset={resetTurnstile}
+      />
 			<button class="btn btn-primary" on:click={close}> Close </button>
 		</div>
 	</div>

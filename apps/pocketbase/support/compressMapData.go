@@ -45,10 +45,11 @@ func CompressMapData(e *core.RecordCreateEvent) error {
 	}
 
 	// set the file to the new file
-	e.UploadedFiles["data"][0] = newFile	
+	e.UploadedFiles["data"][0] = newFile
 
 	// change the file name to .json.gz
 	e.Record.Set("data", "data.json.gz")
 
 	return nil
 }
+
