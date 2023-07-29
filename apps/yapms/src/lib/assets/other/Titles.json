@@ -180,6 +180,30 @@
 		"title": "British Counties and Unitary Authorities"
 	},
 	{
+		"path": "/app/ita/deputies/2022/blank",
+		"title": "Italian 2022 Chamber of Deputies"
+	},
+	{
+		"path": "/app/ita/senate/2022/blank",
+		"title": "Italian 2022 Senate"
+	},
+	{
+		"path": "/app/ita/regions/2023/blank",
+		"title": "Italian Regions"
+	},
+	{
+		"path": "/app/ita/provinces/2023/blank",
+		"title": "Italian Provinces"
+	},
+	{
+		"path": "/app/ita/deputies/2022/results",
+		"title": "Italian 2022 Chamber of Deputies Results"
+	},
+	{
+		"path": "/app/ita/senate/2022/results",
+		"title": "Italian 2022 Senate Results"
+	},
+	{
 		"path": "/app/nld/provinces",
 		"title": "Dutch Provinces"
 	},
