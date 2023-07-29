@@ -59,14 +59,17 @@
 	/**
 	 * Calculate the color of the candidate with over half the votes
 	 */
-	$: winningColor = $CandidatesStore.reduce((current, candidate) => {
-		const nextWinner = $CandidateCounts.get(candidate.id) ?? 0;
-		if (nextWinner > total / 2) {
-			return candidate.margins.at(0)?.color ?? '#000000';
-		} else {
-			return current;
-		}
-	}, $TossupCandidateStore.margins.at(0)?.color ?? '#000000');
+	$: winningColor = $CandidatesStore.reduce(
+		(current, candidate) => {
+			const nextWinner = $CandidateCounts.get(candidate.id) ?? 0;
+			if (nextWinner > total / 2) {
+				return candidate.margins.at(0)?.color ?? '#000000';
+			} else {
+				return current;
+			}
+		},
+		$TossupCandidateStore.margins.at(0)?.color ?? '#000000'
+	);
 </script>
 
 <div
