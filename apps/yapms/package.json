@@ -42,7 +42,7 @@
 		"eslint-plugin-svelte": "^2.32.4",
 		"file-saver": "^2.0.5",
 		"panzoom": "^9.4.3",
-		"pocketbase": "^0.15.3",
+		"pocketbase": "^0.16.0",
 		"postcss": "^8.4.27",
 		"prettier": "^3.0.0",
 		"prettier-plugin-svelte": "^3.0.0",
