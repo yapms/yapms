@@ -4,6 +4,7 @@
 		SelectedCandidateStore,
 		TossupCandidateStore
 	} from '$lib/stores/Candidates';
+	import { AddCandidateModalStore } from '$lib/stores/Modals';
 	import { RegionsStore } from '$lib/stores/regions/Regions';
 	import { EditCandidateModalStore } from '$lib/stores/Modals';
 	import { get } from 'svelte/store';
@@ -58,10 +59,12 @@
 			};
 		});
 		$EditCandidateModalStore.open = false;
+		$AddCandidateModalStore.open = true;
 	}
 
 	function cancel() {
 		$EditCandidateModalStore.open = false;
+		$AddCandidateModalStore.open = true;
 	}
 
 	function confirm() {
@@ -90,6 +93,7 @@
 			}
 		});
 		$RegionsStore = newRegions;
+		$AddCandidateModalStore.open = true;
 	}
 </script>
 
