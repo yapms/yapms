@@ -5,16 +5,14 @@
       "cache": false
     },
     "build": {
+      "cache": false
     },
     "start": {
       "cache": false
     },
-    "check": {
-    },
-    "lint-no-warnings": {
-    },
-    "lint": {
-    },
+    "check": {},
+    "lint-no-warnings": {},
+    "lint": {},
     "format": {
       "cache": false
     }
