@@ -82,9 +82,9 @@
 	class="navbar flex-row bg-base-200 gap-3 overflow-x-scroll overflow-y-clip lg:overflow-x-clip min-h-0"
 >
 	<a href="/" class="btn btn-sm">home</a>
-	<button class="btn btn-sm" on:click={newImportedMap}>Import Map</button>
-	<button class="btn btn-sm" on:click={openClearMapModal}>clear</button>
-	<button class="btn btn-sm" on:click={openAddCandidateModal}>add candidate</button>
+	<button class="btn btn-sm btn-error" on:click={openClearMapModal}>clear</button>
+	<button class="btn btn-sm" on:click={openAddCandidateModal}>candidates</button>
+	<button class="btn btn-sm" on:click={newImportedMap}>import</button>
 	<button class="btn btn-sm" on:click={openStyle}>style</button>
 	<button class="btn btn-sm" on:click={openChartOptions}>chart options</button>
 	<button class="btn btn-sm" on:click={openMode}>mode: {$ModeStore}</button>

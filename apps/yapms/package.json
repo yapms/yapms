@@ -13,9 +13,9 @@
 		"start": "dotenv -e ../../.env -- node ./build/index.js",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint-no-warnings": "prettier --check . && eslint --max-warnings 0 .",
-		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write ."
+		"lint-no-warnings": "prettier --plugin prettier-plugin-svelte --check . && eslint --max-warnings 0 .",
+		"lint": "prettier --plugin prettier-plugin-svelte --check . && eslint .",
+		"format": "prettier --plugin prettier-plugin-svelte --write ."
 	},
 	"devDependencies": {
 		"@fortawesome/free-brands-svg-icons": "^6.4.0",
