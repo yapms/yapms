@@ -44,7 +44,7 @@ importers:
       eslint-plugin-svelte: ^2.32.4
       file-saver: ^2.0.5
       panzoom: ^9.4.3
-      pocketbase: ^0.15.3
+      pocketbase: ^0.16.0
       postcss: ^8.4.27
       prettier: ^3.0.0
       prettier-plugin-svelte: ^3.0.0
@@ -88,7 +88,7 @@ importers:
       eslint-plugin-svelte: 2.32.4_eslint@8.45.0+svelte@4.1.1
       file-saver: 2.0.5
       panzoom: 9.4.3
-      pocketbase: 0.15.3
+      pocketbase: 0.16.0
       postcss: 8.4.27
       prettier: 3.0.0
       prettier-plugin-svelte: 3.0.0_qaqoskuqimxnscy56lfynqijsu
@@ -3227,8 +3227,8 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
-  /pocketbase/0.15.3:
-    resolution: {integrity: sha512-sjM0XO4wHUlVZs94VhRJi4FeYtbLqvxFbRDJlfjFb/4FkxypbGwxLM4HDAEr8q6jdreuxAM1/n/b5HB1GjQ1Vg==}
+  /pocketbase/0.16.0:
+    resolution: {integrity: sha512-sndPu4Mbu1Y2VefvO2gIa/No5aIdP6E5br9HUGomvDYSfkmGfBxJNkivJSSKlr9KwWnaF8otf14304UUeFGOrA==}
     dev: true
 
   /postcss-import/15.1.0_postcss@8.4.27:
