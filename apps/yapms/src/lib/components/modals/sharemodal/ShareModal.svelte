@@ -13,15 +13,22 @@
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
 	import { Turnstile } from 'svelte-turnstile';
 	import { PUBLIC_TURNSTILE_SITE } from '$env/static/public';
+	import { fade } from 'svelte/transition';
 
 	let files: FileList;
 
-	let fetchingLinkID = false;
-	let copiedLinkID = false;
+	let fetchingLink = false;
+	let copiedLink = false;
+	let errorOnGenerateLink = false;
 	let linkID: string | null = null;
 
 	let turnstileToken: string | null = null;
-	let resetTurnstile: () => void | undefined;
+	let turnstileResetBind: () => void | undefined;
+
+	function resetTurnstile() {
+		turnstileToken = null;
+		turnstileResetBind?.();
+	}
 
 	function load() {
 		if (files && files.length > 0) {
@@ -32,11 +39,13 @@
 
 	async function generateLink() {
 		if (turnstileToken === null) {
-			resetTurnstile?.();
+			resetTurnstile();
 			return;
 		}
 
-		fetchingLinkID = true;
+		errorOnGenerateLink = true;
+		copiedLink = false;
+		fetchingLink = true;
 
 		const form = new FormData();
 
@@ -48,22 +57,28 @@
 		form.append('turnstile-token', turnstileToken);
 
 		const pocketbaseStore = get(PocketBaseStore);
-		const record = await pocketbaseStore.collection('maps').create(form);
-		linkID = record.id;
-		fetchingLinkID = false;
-		resetTurnstile?.();
+		try {
+			const record = await pocketbaseStore.collection('maps').create(form);
+			linkID = record.id;
+		} catch (error) {
+			console.error(error);
+		}
+		fetchingLink = false;
+		turnstileToken = null;
+		resetTurnstile();
 	}
 
 	async function copyLink() {
-		if (fetchingLinkID) return;
+		if (fetchingLink) return;
 		const url = new URL($page.url.origin + '/app?m=' + linkID);
 		await navigator.clipboard.writeText(url.toString());
-		copiedLinkID = true;
+		copiedLink = true;
 	}
 
 	function close() {
-		fetchingLinkID = false;
-		copiedLinkID = false;
+		fetchingLink = false;
+		copiedLink = false;
+		errorOnGenerateLink = false;
 		linkID = null;
 		ShareModalStore.set({ ...$ShareModalStore, open: false });
 	}
@@ -73,6 +88,10 @@
 	}
 
 	function onTurnstileError() {
+		turnstileToken = null;
+	}
+
+	function onTurnstileTimeout() {
 		turnstileToken = null;
 	}
 
@@ -95,7 +114,7 @@
 				<button
 					class="btn btn-secondary gap-1 flex-nowrap"
 					on:click={generateLink}
-					disabled={fetchingLinkID || turnstileToken === null}
+					disabled={fetchingLink || turnstileToken === null}
 				>
 					<Link class="w-5 h-5" />
 					<span>Generate Link</span>
@@ -116,26 +135,25 @@
 
 		<button
 			class="alert shadow-lg mt-4 cursor-pointer transition-colors"
-			class:hidden={!linkID && !fetchingLinkID}
-			class:alert-warning={fetchingLinkID}
-			class:alert-info={!copiedLinkID && !fetchingLinkID}
-			class:alert-success={copiedLinkID && !fetchingLinkID}
+			class:hidden={!linkID && !fetchingLink && !errorOnGenerateLink}
+			class:alert-warning={fetchingLink}
+			class:alert-info={!copiedLink && !fetchingLink}
+			class:alert-success={copiedLink && !fetchingLink}
+			class:alert-error={errorOnGenerateLink}
 			on:click={copyLink}
 		>
-			<div>
-				<label class="swap swap-flip">
-					<input type="checkbox" checked={copiedLinkID} disabled />
-					<ExclamationCircle class="swap-off w-6 h-6" />
-					<CheckCircle class="swap-on w-6 h-6" />
-				</label>
-				<label class="swap">
-					<input type="checkbox" checked={!fetchingLinkID && linkID !== null} disabled />
-					<span class="swap-off">Generating Link...</span>
-					<span class="swap-on">
-						{$page.url.origin}/app?m={linkID}
-					</span>
-				</label>
-			</div>
+			<label class="swap swap-flip">
+				<input type="checkbox" checked={copiedLink && errorOnGenerateLink === false} disabled />
+				<ExclamationCircle class="swap-off w-6 h-6" />
+				<CheckCircle class="swap-on w-6 h-6" />
+			</label>
+			{#if fetchingLink === true}
+				<span in:fade>Generating Link</span>
+			{:else if linkID !== null}
+				<span in:fade>{$page.url.origin}/app?m={linkID}</span>
+			{:else if errorOnGenerateLink === true}
+				<span in:fade>Error Generating Link. Try Again Later.</span>
+			{/if}
 		</button>
 
 		<div class="modal-action justify-between items-end">
@@ -143,9 +161,9 @@
 				siteKey={PUBLIC_TURNSTILE_SITE}
 				on:turnstile-callback={onTurnstileSuccess}
 				on:turnstile-expired={onTurnstileExpired}
-				on:turnstile-timeout={onTurnstileExpired}
+				on:turnstile-timeout={onTurnstileTimeout}
 				on:turnstile-error={onTurnstileError}
-				bind:reset={resetTurnstile}
+				bind:reset={turnstileResetBind}
 			/>
 			<button class="btn btn-primary" on:click={close}> Close </button>
 		</div>

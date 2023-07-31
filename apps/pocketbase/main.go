@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"os"
+	"strings"
 
 	"github.com/pocketbase/pocketbase"
 	"github.com/pocketbase/pocketbase/apis"
@@ -34,13 +35,24 @@ func main() {
 
 	app.OnRecordBeforeCreateRequest().Add(func(e *core.RecordCreateEvent) error {
 		if e.Record.Collection().Name == "maps" {
-			err := support.VerifyCaptcha(e, &turnstileSecret)
+
+			response, err := support.VerifyCaptcha(e, &turnstileSecret)
+
 			if err != nil {
-				return apis.NewBadRequestError(
-					"Failed to verify captcha",
-					err,
+				return apis.NewApiError(
+					500,
+					err.Error(),
+					nil,
 				)
 			}
+
+			if response.Success == false {
+				return apis.NewForbiddenError(
+					strings.Join(response.ErrorCodes, ","),
+					nil,
+				)
+			}
+
 			support.CompressMapData(e)
 		} else if e.Record.Collection().Name == "user_maps" {
 			support.CompressMapData(e)
