@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"errors"
 	"net/http"
-	"strings"
 
 	"github.com/pocketbase/pocketbase/core"
 )
@@ -15,7 +14,7 @@ type cloudflareResponse struct {
 	ErrorCodes []string `json:"error-codes"`
 }
 
-func VerifyCaptcha(e *core.RecordCreateEvent, turnstileSecret *string) error {
+func VerifyCaptcha(e *core.RecordCreateEvent, turnstileSecret *string) (*cloudflareResponse, error) {
 	token := e.HttpContext.FormValue("turnstile-token")
 
 	postBody, err := json.Marshal(map[string]string{
@@ -24,7 +23,7 @@ func VerifyCaptcha(e *core.RecordCreateEvent, turnstileSecret *string) error {
 	})
 
 	if err != nil {
-		return errors.New("Failed to create post body")
+		return nil, errors.New("Failed to create post body")
 	}
 
 	response, err := http.Post(
@@ -34,24 +33,15 @@ func VerifyCaptcha(e *core.RecordCreateEvent, turnstileSecret *string) error {
 	)
 
 	if err != nil {
-		return errors.New("Failed to request cloudflare")
+		return nil, errors.New("Failed to request cloudflare")
 	}
 
-	responseBody := cloudflareResponse{}
-	err = json.NewDecoder(response.Body).Decode(&responseBody)
+	decodedResponse := cloudflareResponse{}
+	err = json.NewDecoder(response.Body).Decode(&decodedResponse)
 
 	if err != nil {
-		return errors.New("Failed to decode response")
+		return nil, errors.New("Failed to decode response")
 	}
 
-	if responseBody.Success == false {
-		return errors.New(
-			strings.Join(
-				responseBody.ErrorCodes,
-				"|",
-			),
-		)
-	}
-
-	return nil
+	return &decodedResponse, nil
 }
