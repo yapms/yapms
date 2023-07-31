@@ -43,8 +43,8 @@
 			return;
 		}
 
-		errorOnGenerateLink = true;
 		copiedLink = false;
+		errorOnGenerateLink = false;
 		fetchingLink = true;
 
 		const form = new FormData();
@@ -61,6 +61,7 @@
 			const record = await pocketbaseStore.collection('maps').create(form);
 			linkID = record.id;
 		} catch (error) {
+			errorOnGenerateLink = false;
 			console.error(error);
 		}
 		fetchingLink = false;

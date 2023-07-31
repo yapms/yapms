@@ -63,6 +63,7 @@
         env:
           BROWSERLESS_URI: "ws://browserless:3000"
           BROWSERLESS_FRONTEND_URI: "http://yapms:3000"
+          TURNSTILE_SECRET: "{{turnstile_secret}}"
 
     - name: deploy browserless
       community.docker.docker_container:
