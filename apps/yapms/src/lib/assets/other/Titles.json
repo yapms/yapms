@@ -72,6 +72,14 @@
 		"title": "USA 2025 Gubernatorial"
 	},
 	{
+		"path": "/app/usa/presidential/2024/takeall",
+		"title": "USA 2024 Presidential Take-All"
+	},
+	{
+		"path": "/app/usa/presidential/2024/territories",
+		"title": "USA 2024 Presidential With Territories"
+	},
+	{
 		"path": "/app/usa/house/2022/blank",
 		"title": "USA 2022 House"
 	},
