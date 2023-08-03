@@ -3,6 +3,15 @@ import type Region from '$lib/types/Region';
 import type Candidate from '$lib/types/Candidate';
 import { TossupCandidateStore } from './Candidates';
 
+const CandidateModalStore = writable({
+	open: false
+});
+
+const AddCandidateModalStore = writable({
+	open: false,
+	newColors: ['#000000']
+});
+
 const EditCandidateModalStore = writable<{
 	candidate: Candidate;
 	open: boolean;
@@ -35,11 +44,6 @@ const SplitRegionModalStore = writable<{
 }>({
 	region: null,
 	open: false
-});
-
-const AddCandidateModalStore = writable({
-	open: false,
-	newColors: ['#000000']
 });
 
 const PresetColorsModalStore = writable({
@@ -87,6 +91,7 @@ const ShareDisabledModalStore = writable({
 });
 
 export {
+	CandidateModalStore,
 	EditCandidateModalStore,
 	EditTossupModalStore,
 	ClearMapModalStore,

@@ -6,10 +6,7 @@
 	import { loadPublicMap, loadUserMap } from '$lib/stores/LoadedMap';
 	import { goto } from '$app/navigation';
 	import ClearMapModal from '$lib/components/modals/clearmapmodal/ClearMapModal.svelte';
-	import EditCandidateModal from '$lib/components/modals/editcandidatemodal/EditCandidateModal.svelte';
-	import EditTossupModal from '$lib/components/modals/edittossupmodal/EditTossupModal.svelte';
 	import SplitRegionModal from '$lib/components/modals/splitregionmodal/SplitRegionModal.svelte';
-	import AddCandidateModal from '$lib/components/modals/addcandidatemodal/AddCandidateModal.svelte';
 	import PresetColorsModal from '$lib/components/modals/presetcolorsmodal/PresetColorsModal.svelte';
 	import EditRegionModal from '$lib/components/modals/editregionmodal/EditRegionModal.svelte';
 	import ChartOptionsModal from '$lib/components/modals/chartoptionsmodal/ChartOptionsModal.svelte';
@@ -20,12 +17,16 @@
 	import ShareModal from '$lib/components/modals/sharemodal/ShareModal.svelte';
 	import ShareDisabledModal from '$lib/components/modals/sharedisabledmodal/ShareDisabledModal.svelte';
 	import ImportModal from '$lib/components/modals/importmodal/ImportModal.svelte';
+	import CandidateModal from '$lib/components/modals/candidatemodal/CandidateModal.svelte';
 	import { InteractionStore } from '$lib/stores/Interaction';
 	import { browser } from '$app/environment';
 	import NavBar from '$lib/components/navbar/NavBar.svelte';
 	import SideBar from '$lib/components/sidebar/SideBar.svelte';
 	import { reapplyPanZoom } from '$lib/utils/applyPanZoom';
 	import MapChartContainer from '$lib/components/mapchartcontainer/MapChartContainer.svelte';
+	import EditCandidateModal from '$lib/components/modals/candidatemodal/EditCandidateModal.svelte';
+	import EditTossupModal from '$lib/components/modals/candidatemodal/EditTossupModal.svelte';
+	import AddCandidateModal from '$lib/components/modals/candidatemodal/AddCandidateModal.svelte';
 
 	if (browser) {
 		const url = get(page).url;
@@ -71,6 +72,10 @@
 
 <ClearMapModal />
 
+<CandidateModal />
+
+<AddCandidateModal />
+
 <EditCandidateModal />
 
 <EditTossupModal />
@@ -78,8 +83,6 @@
 <EditRegionModal />
 
 <SplitRegionModal />
-
-<AddCandidateModal />
 
 <PresetColorsModal />
 
