@@ -3,13 +3,10 @@
 	import {
 		CandidateModalStore,
 		AddCandidateModalStore,
-		EditCandidateModalStore,
 		PresetColorsModalStore
 	} from '$lib/stores/Modals';
 	import { v4 as uuidv4 } from 'uuid';
 	import ModalBase from '../ModalBase.svelte';
-	import { calculateLumaHEX } from '$lib/utils/luma';
-	import type Candidate from '$lib/types/Candidate';
 
 	let newName = '';
 
@@ -41,14 +38,6 @@
 			open: false
 		});
 		PresetColorsModalStore.set({
-			open: true
-		});
-	}
-
-	function openEditCandidateModal(candidate: Candidate) {
-		$AddCandidateModalStore.open = false;
-		EditCandidateModalStore.set({
-			candidate,
 			open: true
 		});
 	}
@@ -115,22 +104,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="divider" />
-		<div class="flex gap-2 mt-4 flex-wrap justify-center">
-			{#each $CandidatesStore as candidate}
-				<button
-					class="btn btn-ghost"
-					style:background-color={candidate.margins[0].color}
-					style:color={calculateLumaHEX(candidate.margins[0].color) > 0.5 ? 'black' : 'white'}
-					on:click={() => openEditCandidateModal(candidate)}
-				>
-					{candidate.name}
-				</button>
-			{/each}
-		</div>
 	</div>
 	<div slot="action">
-		<button class="btn btn-primary" on:click={close}> No </button>
 		<button class="btn btn-success" on:click={confirm}> Add </button>
+		<button class="btn btn-error" on:click={close}> Close </button>
 	</div>
 </ModalBase>
