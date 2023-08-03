@@ -46,7 +46,7 @@
 						: 'white'}
 					on:click={openEditTossupCandidateModal}
 				>
-					<span> Tossup </span>
+					<span>{$TossupCandidateStore.name}</span>
 					<Cog6Tooth class="w-5 h-5" />
 				</button>
 				{#each $CandidatesStore as candidate}

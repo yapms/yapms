@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { SelectedCandidateStore, TossupCandidateStore } from '$lib/stores/Candidates';
-	import { EditTossupModalStore } from '$lib/stores/Modals';
+	import { EditTossupModalStore, CandidateModalStore } from '$lib/stores/Modals';
 	import { RegionsStore } from '$lib/stores/regions/Regions';
 	import { get } from 'svelte/store';
 	import ModalBase from '../ModalBase.svelte';
@@ -14,6 +14,7 @@
 
 	function close() {
 		$EditTossupModalStore.open = false;
+		$CandidateModalStore.open = true;
 	}
 
 	function confirm() {
@@ -32,7 +33,7 @@
 			}
 		});
 		$RegionsStore = newRegions;
-		$EditTossupModalStore.open = false;
+		close();
 	}
 </script>
 
@@ -50,8 +51,8 @@
 			</div>
 		</div>
 		<div class="modal-action">
-			<button class="btn btn-primary" on:click={close}>No</button>
-			<button class="btn btn-success" on:click={confirm}>Update</button>
+			<button class="btn btn-success" on:click={confirm}>update</button>
+			<button class="btn btn-primary" on:click={close}>close</button>
 		</div>
 	</div>
 </ModalBase>
