@@ -101,6 +101,14 @@
 							{
 								"label": "Governors 2025",
 								"route": "/app/usa/governors/2025/blank"
+							},
+							{
+								"label": "Presidential 2024 Take-All",
+								"route": "/app/usa/presidential/2024/takeall"
+							},
+							{
+								"label": "Presidential 2024 With Territories",
+								"route": "/app/usa/presidential/2024/territories"
 							}
 						]
 					}
