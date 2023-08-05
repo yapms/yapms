@@ -39,7 +39,7 @@
 		<div class="flex">
 			<div class="flex gap-2 mt-4 flex-wrap justify-center">
 				<button
-					class="btn glass"
+					class="btn btn-ghost"
 					style:background-color={$TossupCandidateStore.margins[0].color}
 					style:color={calculateLumaHEX($TossupCandidateStore.margins[0].color) > 0.5
 						? 'black'
@@ -51,7 +51,7 @@
 				</button>
 				{#each $CandidatesStore as candidate}
 					<button
-						class="btn glass"
+						class="btn btn-ghost"
 						style:background-color={candidate.margins[0].color}
 						style:color={calculateLumaHEX(candidate.margins[0].color) > 0.5 ? 'black' : 'white'}
 						on:click={() => openEditCandidateModal(candidate)}
