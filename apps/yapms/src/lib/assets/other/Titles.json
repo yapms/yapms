@@ -204,6 +204,22 @@
 		"title": "Australian 2022 Senate Results"
 	},
 	{
+		"path": "/app/nzl/house/2023/blank",
+		"title": "New Zealander 2023 House"
+	},
+	{
+		"path": "/app/nzl/house/2020/results",
+		"title": "New Zealander 2020 House Results"
+	},
+	{
+		"path": "/app/nzl/maori/2023/blank",
+		"title": "New Zealander 2023 Māori Electorates"
+	},
+	{
+		"path": "/app/nzl/regions/2023/blank",
+		"title": "New Zealander 2023 Regional Councils"
+	},
+	{
 		"path": "/app/ita/deputies/2022/blank",
 		"title": "Italian 2022 Chamber of Deputies"
 	},
