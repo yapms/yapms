@@ -39,8 +39,8 @@ const EditRegionModalStore = writable<{
 });
 
 const SplitRegionModalStore = writable<{
-	region: Region | null;
 	open: boolean;
+	region: Region | null;
 }>({
 	region: null,
 	open: false

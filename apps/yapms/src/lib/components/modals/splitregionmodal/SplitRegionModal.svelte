@@ -172,7 +172,7 @@
 
 <ModalBase
 	title="Split {$SplitRegionModalStore.region?.longName} - {$SplitRegionModalStore.region?.value}"
-	open={$SplitRegionModalStore.open}
+	store={SplitRegionModalStore}
 >
 	<div slot="content">
 		{#each candidates as candidate}

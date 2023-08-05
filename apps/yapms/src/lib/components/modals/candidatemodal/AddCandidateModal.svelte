@@ -58,7 +58,7 @@
 	}
 </script>
 
-<ModalBase title="Add Candidate" open={$AddCandidateModalStore.open}>
+<ModalBase title="Add Candidate" store={AddCandidateModalStore} onClose={close}>
 	<div slot="content">
 		<div class="flex">
 			<div class="form-control w-full max-w-xs flex flex-col gap-3">

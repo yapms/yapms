@@ -1,31 +1,55 @@
 <script lang="ts">
-	export let open: boolean;
+	import type { Writable } from 'svelte/store';
+
+	export let open: boolean | undefined = undefined;
 	export let title: string;
+
+	export let store: Writable<{ open: boolean }> | undefined;
+	export let onClose: (() => void) | undefined = undefined;
+
+	export function close() {
+		if (onClose !== undefined) {
+			onClose();
+		} else if ($store !== undefined) {
+			$store.open = false;
+		}
+		console.log(open);
+	}
+
+	let content: HTMLDivElement | undefined;
+	let offsetHeight: number;
+
+	$: isOverflow = offsetHeight < (content?.scrollHeight ?? 0);
 </script>
 
-<input type="checkbox" class="modal-toggle" checked={open} />
+<input type="checkbox" class="modal-toggle" checked={$store?.open ?? false} />
 
-<div class="modal modal-bottom lg:modal-middle">
-	<div class="modal-box flex flex-col">
-		<div class="bg-base-100">
-			<div class="flex gap-x-2 ml-6">
+<dialog class="modal modal-bottom lg:modal-middle">
+	<div class="modal-box flex flex-col w-full">
+		<div class="mb-6">
+			<div class="flex gap-x-2 align-middle">
 				<slot name="icon" />
-				<h3 class="font-bold text-xl">
+				<h3 class="text-2xl flex-grow">
 					{title}
 				</h3>
+				<button class="btn btn-sm btn-circle btn-error" on:click={close} />
 			</div>
 		</div>
 
-		<div class="divider mb-0" />
+		{#if isOverflow}
+			<div class="divider p-0 m-0 h-0" />
+		{/if}
 
-		<div class="overflow-y-auto">
+		<div class="overflow-y-auto p-4" bind:this={content} bind:offsetHeight>
 			<slot name="content" />
 		</div>
 
-		<div class="divider mt-0" />
+		{#if isOverflow}
+			<div class="divider p-0 m-0 h-0" />
+		{/if}
 
-		<div class="modal-action mt-0">
+		<div class="modal-action">
 			<slot name="action" />
 		</div>
 	</div>
-</div>
+</dialog>

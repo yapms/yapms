@@ -1,20 +1,12 @@
 <script lang="ts">
 	import { BetaModalStore } from '$lib/stores/Modals';
-	import { dev } from '$app/environment';
 	import ExclamationCircle from '$lib/icons/ExclamationCircle.svelte';
 	import Fa from 'svelte-fa';
 	import { faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
 	import ModalBase from '../ModalBase.svelte';
-
-	function close() {
-		BetaModalStore.set({
-			...$BetaModalStore,
-			open: false
-		});
-	}
 </script>
 
-<ModalBase title="YAPms2 is in Beta" open={!dev && $BetaModalStore.open}>
+<ModalBase title="YAPms2 is in Beta" store={BetaModalStore}>
 	<div slot="icon"><ExclamationCircle class="w-9 h-9 text-yellow-500" /></div>
 	<div slot="content">
 		<div class="flex flex-col gap-y-2">
@@ -41,6 +33,5 @@
 			<Fa icon={faDiscord} />
 			<span>Discord</span>
 		</a>
-		<button class="btn btn-primary" on:click={close}> Okay </button>
 	</div>
 </ModalBase>

@@ -76,7 +76,7 @@
 	}
 </script>
 
-<ModalBase title="Import Map" open={$ImportModalStore.open}>
+<ModalBase title="Import Map" store={ImportModalStore}>
 	<div slot="content">
 		<div class="flex flex-col gap-y-2">
 			<div class="alert alert-error justify-start" class:hidden={!loadError}>

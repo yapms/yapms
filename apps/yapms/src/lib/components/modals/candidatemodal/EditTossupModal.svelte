@@ -37,7 +37,7 @@
 	}
 </script>
 
-<ModalBase title="Edit {name}" open={$EditTossupModalStore.open}>
+<ModalBase title="Edit {name}" store={EditTossupModalStore}>
 	<div slot="content">
 		<div class="flex gap-1">
 			<div class="form-control w-full max-w-xs flex flex-col gap-3">
