@@ -72,14 +72,6 @@
 		"title": "USA 2025 Gubernatorial"
 	},
 	{
-		"path": "/app/usa/presidential/2024/takeall",
-		"title": "USA 2024 Presidential Take-All"
-	},
-	{
-		"path": "/app/usa/presidential/2024/territories",
-		"title": "USA 2024 Presidential With Territories"
-	},
-	{
 		"path": "/app/usa/house/2022/blank",
 		"title": "USA 2022 House"
 	},
@@ -186,6 +178,30 @@
 	{
 		"path": "/app/gbr/counties/2023/blank",
 		"title": "British Counties and Unitary Authorities"
+	},
+	{
+		"path": "/app/aus/states/2023/blank",
+		"title": "Australian States & Territories"
+	},
+	{
+		"path": "/app/aus/senate",
+		"title": "Australian Senate"
+	},
+	{
+		"path": "/app/aus/house/2022/blank",
+		"title": "Australian 2022 House"
+	},
+	{
+		"path": "/app/aus/house/2022/results",
+		"title": "Australian 2022 House Results"
+	},
+	{
+		"path": "/app/aus/senate/2022/blank",
+		"title": "Australian 2022 Senate"
+	},
+	{
+		"path": "/app/aus/senate/2022/results",
+		"title": "Australian 2022 Senate Results"
 	},
 	{
 		"path": "/app/ita/deputies/2022/blank",

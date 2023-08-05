@@ -101,14 +101,6 @@
 							{
 								"label": "Governors 2025",
 								"route": "/app/usa/governors/2025/blank"
-							},
-							{
-								"label": "Presidential 2024 Take-All",
-								"route": "/app/usa/presidential/2024/takeall"
-							},
-							{
-								"label": "Presidential 2024 With Territories",
-								"route": "/app/usa/presidential/2024/territories"
 							}
 						]
 					}
@@ -209,6 +201,58 @@
 							{
 								"label": "Counties and Unitary Authorities",
 								"route": "/app/gbr/counties/2023/blank"
+							}
+						]
+					}
+				]
+			},
+			{
+				"name": "Australia",
+				"bg": "aus",
+				"alt": "Parliament House",
+				"doubleCols": true,
+				"attribution": "Photo by Josh Withers",
+				"links": [
+					{
+						"label": "States",
+						"route": "/app/aus/states/2023/blank"
+					},
+					{
+						"label": "House",
+						"route": "/app/aus/house/2022/blank"
+					},
+					{
+						"label": "Senate",
+						"route": "/app/aus/senate/2022/blank"
+					}
+				],
+				"modals": [
+					{
+						"label": "More",
+						"buttons": [
+							{
+								"label": "States & Territories",
+								"route": "/app/aus/states/2023/blank"
+							},
+							{
+								"label": "House of Representatives 2022",
+								"route": "/app/aus/house/2022/blank"
+							},
+							{
+								"label": "Senate 2022",
+								"route": "/app/aus/senate/2022/blank"
+							},
+							{
+								"label": "2022 House of Representatives Results",
+								"route": "/app/aus/house/2022/results"
+							},
+							{
+								"label": "2022 Senate Results",
+								"route": "/app/aus/senate/2022/results"
+							},
+							{
+								"label": "Senate",
+								"route": "/app/aus/senate"
 							}
 						]
 					}
