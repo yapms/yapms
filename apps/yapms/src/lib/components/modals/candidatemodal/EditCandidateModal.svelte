@@ -4,6 +4,7 @@
 		SelectedCandidateStore,
 		TossupCandidateStore
 	} from '$lib/stores/Candidates';
+	import { CandidateModalStore } from '$lib/stores/Modals';
 	import { RegionsStore } from '$lib/stores/regions/Regions';
 	import { EditCandidateModalStore } from '$lib/stores/Modals';
 	import { get } from 'svelte/store';
@@ -58,10 +59,12 @@
 			};
 		});
 		$EditCandidateModalStore.open = false;
+		$CandidateModalStore.open = true;
 	}
 
 	function cancel() {
 		$EditCandidateModalStore.open = false;
+		$CandidateModalStore.open = true;
 	}
 
 	function confirm() {
@@ -90,6 +93,7 @@
 			}
 		});
 		$RegionsStore = newRegions;
+		$CandidateModalStore.open = true;
 	}
 </script>
 
@@ -101,12 +105,7 @@
 			<div class="form-control w-full max-w-xs flex flex-col gap-3">
 				<h3 class="font-light text-lg">Name</h3>
 				<input type="text" class="input input-bordered w-full max-w-xs" bind:value={newName} />
-				<input
-					type="button"
-					class="btn btn-error"
-					value="Remove Candidate"
-					on:click={removeCandidate}
-				/>
+				<button class="btn btn-error" on:click={removeCandidate}>Remove Candidate</button>
 			</div>
 			<div class="divider divider-horizontal" />
 			<div class="form-control w-full max-w-xs flex flex-col gap-3">
@@ -139,8 +138,8 @@
 			</div>
 		</div>
 		<div class="modal-action">
-			<button class="btn btn-primary" on:click={cancel}>No</button>
 			<button class="btn btn-success" on:click={confirm}>Update</button>
+			<button class="btn btn-primary" on:click={cancel}>Close</button>
 		</div>
 	</div>
 </div>

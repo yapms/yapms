@@ -4,7 +4,7 @@
 	const importPage = $page.url.pathname === '/app/imported';
 	import {
 		ClearMapModalStore,
-		AddCandidateModalStore,
+		CandidateModalStore,
 		ModeModalStore,
 		ChartOptionsModalStore,
 		StyleModalStore,
@@ -24,11 +24,8 @@
 		});
 	}
 
-	function openAddCandidateModal() {
-		AddCandidateModalStore.set({
-			...$AddCandidateModalStore,
-			open: true
-		});
+	function openCandidateModal() {
+		$CandidateModalStore.open = true;
 	}
 
 	function openChartOptions() {
@@ -83,7 +80,7 @@
 >
 	<a href="/" class="btn btn-sm">home</a>
 	<button class="btn btn-sm btn-error" on:click={openClearMapModal}>clear</button>
-	<button class="btn btn-sm" on:click={openAddCandidateModal}>candidates</button>
+	<button class="btn btn-sm" on:click={openCandidateModal}>candidates</button>
 	<button class="btn btn-sm" on:click={newImportedMap}>import</button>
 	<button class="btn btn-sm" on:click={openStyle}>style</button>
 	<button class="btn btn-sm" on:click={openChartOptions}>chart options</button>

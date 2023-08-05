@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { CandidatesStore } from '$lib/stores/Candidates';
-	import { AddCandidateModalStore, PresetColorsModalStore } from '$lib/stores/Modals';
-	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
+	import {
+		CandidateModalStore,
+		AddCandidateModalStore,
+		PresetColorsModalStore
+	} from '$lib/stores/Modals';
 	import { v4 as uuidv4 } from 'uuid';
+	import ModalBase from '../ModalBase.svelte';
 
 	let newName = '';
 
@@ -24,6 +28,7 @@
 			open: false,
 			newColors: ['#000000']
 		});
+		$CandidateModalStore.open = true;
 		newName = '';
 	}
 
@@ -53,11 +58,8 @@
 	}
 </script>
 
-<input type="checkbox" class="modal-toggle" checked={$AddCandidateModalStore.open} />
-<div class="modal modal-bottom lg:modal-middle">
-	<div class="modal-box">
-		<ModalTitle title="Add Candidate" />
-
+<ModalBase title="Add Candidate" open={$AddCandidateModalStore.open}>
+	<div slot="content">
 		<div class="flex">
 			<div class="form-control w-full max-w-xs flex flex-col gap-3">
 				<h3 class="font-light text-lg">Name</h3>
@@ -102,10 +104,9 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="modal-action">
-			<button class="btn btn-primary" on:click={close}> No </button>
-			<button class="btn btn-success" on:click={confirm}> Add </button>
-		</div>
 	</div>
-</div>
+	<div slot="action">
+		<button class="btn btn-success" on:click={confirm}> Add </button>
+		<button class="btn btn-primary" on:click={close}> Close </button>
+	</div>
+</ModalBase>
