@@ -1,4 +1,5 @@
 <script lang="ts">
+	import XMark from '$lib/icons/XMark.svelte';
 	import type { Writable } from 'svelte/store';
 
 	export let open: boolean | undefined = undefined;
@@ -32,7 +33,9 @@
 				<h3 class="text-2xl flex-grow">
 					{title}
 				</h3>
-				<button class="btn btn-sm btn-circle btn-error" on:click={close} />
+				<button class="btn btn-sm btn-circle btn-error" on:click={close}>
+					<XMark class="w-5 h-5" />
+				</button>
 			</div>
 		</div>
 

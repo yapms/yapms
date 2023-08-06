@@ -107,6 +107,5 @@
 	</div>
 	<div slot="action">
 		<button class="btn btn-success" on:click={confirm}> Add </button>
-		<button class="btn btn-primary" on:click={close}> Close </button>
 	</div>
 </ModalBase>
