@@ -12,7 +12,7 @@
 	}
 </script>
 
-<ModalBase title="Share Functionality Disabled" open={$ShareDisabledModalStore.open}>
+<ModalBase title="Share Functionality Disabled" store={ShareDisabledModalStore}>
 	<div slot="icon"><ExclamationCircle class="w-9 h-9 text-red-500" /></div>
 	<div slot="content">
 		<div class="flex flex-col gap-y-2">

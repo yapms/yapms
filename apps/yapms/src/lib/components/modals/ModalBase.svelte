@@ -1,37 +1,58 @@
 <script lang="ts">
-	export let open: boolean;
+	import XMark from '$lib/icons/XMark.svelte';
+	import type { Writable } from 'svelte/store';
+
+	export let open: boolean | undefined = undefined;
 	export let title: string;
 
-	export let sticky = false;
+	export let store: Writable<{ open: boolean }> | undefined;
+	export let onClose: (() => void) | undefined = undefined;
+
+	export function close() {
+		if (onClose !== undefined) {
+			onClose();
+		} else if ($store !== undefined) {
+			$store.open = false;
+		}
+		console.log(open);
+	}
+
+	let content: HTMLDivElement | undefined;
+	let offsetHeight: number;
+
+	$: isOverflow = offsetHeight < (content?.scrollHeight ?? 0);
 </script>
 
-<input type="checkbox" class="modal-toggle" checked={open} />
+<input type="checkbox" class="modal-toggle" checked={$store?.open ?? false} />
 
-<div class="modal modal-bottom lg:modal-middle">
-	<div class="modal-box p-0 flex flex-col">
-		<div class="bg-base-100 pt-6" class:border-b={sticky} class:border-base-content={sticky}>
-			<div class="flex gap-x-2 ml-6">
+<dialog class="modal modal-bottom lg:modal-middle">
+	<div class="modal-box flex flex-col w-full">
+		<div class="mb-6">
+			<div class="flex gap-x-2 align-middle">
 				<slot name="icon" />
-				<h3 class="text-2xl pb-3">
+				<h3 class="text-2xl flex-grow">
 					{title}
 				</h3>
+				<button class="btn btn-sm btn-circle btn-error" on:click={close}>
+					<XMark class="w-5 h-5" />
+				</button>
 			</div>
 		</div>
 
-		<div class="px-6 flex-1" class:overflow-y-auto={sticky}>
+		{#if isOverflow}
+			<div class="divider p-0 m-0 h-0" />
+		{/if}
+
+		<div class="overflow-y-auto p-4" bind:this={content} bind:offsetHeight>
 			<slot name="content" />
 		</div>
 
-		<div
-			class="modal-action bg-base-100 pb-6"
-			class:mt-0={sticky}
-			class:pt-3={sticky}
-			class:border-t={sticky}
-			class:border-base-content={sticky}
-		>
-			<div class="mr-6">
-				<slot name="action" />
-			</div>
+		{#if isOverflow}
+			<div class="divider p-0 m-0 h-0" />
+		{/if}
+
+		<div class="modal-action">
+			<slot name="action" />
 		</div>
 	</div>
-</div>
+</dialog>

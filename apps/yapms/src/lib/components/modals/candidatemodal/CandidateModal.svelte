@@ -11,10 +11,6 @@
 	import type Candidate from '$lib/types/Candidate';
 	import Cog6Tooth from '$lib/icons/Cog6Tooth.svelte';
 
-	function close() {
-		$CandidateModalStore.open = false;
-	}
-
 	function openEditTossupCandidateModal() {
 		$CandidateModalStore.open = false;
 		$EditTossupModalStore.open = true;
@@ -34,7 +30,7 @@
 	}
 </script>
 
-<ModalBase title="Candidates" open={$CandidateModalStore.open}>
+<ModalBase title="Candidates" store={CandidateModalStore}>
 	<div slot="content">
 		<div class="flex">
 			<div class="flex gap-2 mt-4 flex-wrap justify-center">
@@ -67,6 +63,5 @@
 	</div>
 	<div slot="action">
 		<button class="btn btn-success" on:click={openAddCandidateModal}>Add</button>
-		<button class="btn btn-primary" on:click={close}> Close</button>
 	</div>
 </ModalBase>

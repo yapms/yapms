@@ -9,13 +9,6 @@
 	const chartTypeValues = ['pie', 'battle', 'none'];
 	const chartPositionValues = ['bottom', 'left'];
 
-	function close() {
-		ChartOptionsModalStore.set({
-			...$ChartOptionsModalStore,
-			open: false
-		});
-	}
-
 	function setChartType(id: string) {
 		ChartTypeStore.set(id as ChartType);
 		reapplyPanZoom();
@@ -27,7 +20,7 @@
 	}
 </script>
 
-<ModalBase title="Chart Options" open={$ChartOptionsModalStore.open}>
+<ModalBase title="Chart Options" store={ChartOptionsModalStore}>
 	<div slot="content">
 		<div class="flex flex-col">
 			<h3 class="font-light text-lg pb-3">Chart Type</h3>
@@ -65,8 +58,5 @@
 				{/each}
 			</div>
 		</div>
-	</div>
-	<div slot="action">
-		<button class="btn btn-primary" on:click={close}>Close</button>
 	</div>
 </ModalBase>

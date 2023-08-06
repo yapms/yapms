@@ -1,17 +1,9 @@
 <script lang="ts">
 	import { MoreMapsModalStore } from '$lib/stores/HomeModals';
 	import ModalBase from '../ModalBase.svelte';
-	function close(event: MouseEvent) {
-		if (!event.ctrlKey) {
-			MoreMapsModalStore.set({
-				...$MoreMapsModalStore,
-				open: false
-			});
-		}
-	}
 </script>
 
-<ModalBase title="{$MoreMapsModalStore.title} Maps" open={$MoreMapsModalStore.open} sticky>
+<ModalBase title="{$MoreMapsModalStore.title} Maps" store={MoreMapsModalStore}>
 	<div slot="content">
 		<div class="tabs flex-row lg:flex-col flex-end items-center space-y-2 justify-evenly my-3">
 			{#each $MoreMapsModalStore.buttons as button}
@@ -20,8 +12,5 @@
 				</a>
 			{/each}
 		</div>
-	</div>
-	<div slot="action">
-		<button class="btn btn-primary" on:click={close}>Close</button>
 	</div>
 </ModalBase>
