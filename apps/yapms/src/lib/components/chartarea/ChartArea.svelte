@@ -28,8 +28,8 @@
 	class:flex-col={$ChartPositionStore === 'left'}
 	class:w-32={$ChartPositionStore === 'left' && $ChartTypeStore === 'battle'}
 	class:h-32={$ChartPositionStore === 'bottom' && $ChartTypeStore === 'battle'}
-	class:w-96={$ChartPositionStore === 'left' && $ChartTypeStore !== 'battle'}
-	class:h-80={$ChartPositionStore === 'bottom' && $ChartTypeStore !== 'battle'}
+	class:w-96={$ChartPositionStore === 'left' && ($ChartTypeStore !== 'battle' || $CandidatesStore.length > 2)}
+	class:h-80={$ChartPositionStore === 'bottom' && ($ChartTypeStore !== 'battle' || $CandidatesStore.length > 2)}
 >
 	{#if $ChartTypeStore === 'battle' && $CandidatesStore.length <= 2}
 		<BattleChart />
