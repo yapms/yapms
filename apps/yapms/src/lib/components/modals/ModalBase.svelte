@@ -2,7 +2,6 @@
 	import XMark from '$lib/icons/XMark.svelte';
 	import type { Writable } from 'svelte/store';
 
-	export let open: boolean | undefined = undefined;
 	export let title: string;
 
 	export let store: Writable<{ open: boolean }> | undefined;
@@ -14,18 +13,20 @@
 		} else if ($store !== undefined) {
 			$store.open = false;
 		}
-		console.log(open);
 	}
 
 	let content: HTMLDivElement | undefined;
 	let offsetHeight: number;
+	let dialog: HTMLDialogElement;
 
 	$: isOverflow = offsetHeight < (content?.scrollHeight ?? 0);
+
+	$: if ($store?.open) dialog?.showModal();
+	$: if (!$store?.open) dialog?.close();
+
 </script>
 
-<input type="checkbox" class="modal-toggle" checked={$store?.open ?? false} />
-
-<dialog class="modal modal-bottom lg:modal-middle">
+<dialog class="modal modal-bottom lg:modal-middle" bind:this={dialog} on:close={close}>
 	<div class="modal-box flex flex-col w-full">
 		<div class="mb-6">
 			<div class="flex gap-x-2 align-middle">
@@ -55,4 +56,7 @@
 			<slot name="action" />
 		</div>
 	</div>
+	<form method="dialog" class="modal-backdrop">
+		<button on:click={close}>close</button>
+	</form>
 </dialog>
