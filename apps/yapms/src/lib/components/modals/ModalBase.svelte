@@ -23,7 +23,6 @@
 
 	$: if ($store?.open) dialog?.showModal();
 	$: if (!$store?.open) dialog?.close();
-
 </script>
 
 <dialog class="modal modal-bottom lg:modal-middle" bind:this={dialog} on:close={close}>
