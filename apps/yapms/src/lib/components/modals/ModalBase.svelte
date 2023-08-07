@@ -4,7 +4,7 @@
 
 	export let title: string;
 
-	export let store: Writable<{ open: boolean }> | undefined;
+	export let store: Writable<{ open: boolean }>;
 	export let onClose: (() => void) | undefined = undefined;
 
 	export function close() {
@@ -16,13 +16,13 @@
 	}
 
 	let content: HTMLDivElement | undefined;
-	let offsetHeight: number;
-	let dialog: HTMLDialogElement;
+	let offsetHeight: number | undefined;
+	let dialog: HTMLDialogElement | undefined;
 
-	$: isOverflow = offsetHeight < (content?.scrollHeight ?? 0);
+	$: isOverflow = offsetHeight && offsetHeight < (content?.scrollHeight ?? 0);
 
-	$: if ($store?.open) dialog?.showModal();
-	$: if (!$store?.open) dialog?.close();
+	$: if ($store.open) dialog?.showModal();
+	$: if (!$store.open) dialog?.close();
 </script>
 
 <dialog class="modal modal-bottom lg:modal-middle" bind:this={dialog} on:close={close}>
