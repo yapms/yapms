@@ -25,7 +25,7 @@
 		try {
 			ImportedSVGStore.set({ loaded: false, content: '' });
 			await importFromGeoJson(geoJsonFiles);
-			close();
+			close?.();
 			if ($page.url.pathname !== '/app/imported') {
 				await goto('/app/imported');
 			}
@@ -41,7 +41,7 @@
 		try {
 			ImportedSVGStore.set({ loaded: false, content: '' });
 			await importFromShapefiles(shapeFiles);
-			close();
+			close?.();
 			if ($page.url.pathname !== '/app/imported') {
 				await goto('/app/imported');
 			}
@@ -60,7 +60,7 @@
 				loaded: true,
 				content: DOMPurify.sanitize(await svgFiles[0].text(), DOMPurifyConfig)
 			});
-			close();
+			close?.();
 			if ($page.url.pathname !== '/app/imported') {
 				await goto('/app/imported');
 			}
@@ -71,12 +71,16 @@
 		loading = false;
 	}
 
-	function close() {
-		ImportModalStore.set({ ...$ImportModalStore, open: false });
-	}
+	const close =
+		$page.url.pathname === '/app/imported'
+			? () => {
+					goto('/');
+					$ImportModalStore.open = false;
+			  }
+			: undefined;
 </script>
 
-<ModalBase title="Import Map" store={ImportModalStore}>
+<ModalBase title="Import Map" store={ImportModalStore} onClose={close}>
 	<div slot="content">
 		<div class="flex flex-col gap-y-2">
 			<div class="alert alert-error justify-start" class:hidden={!loadError}>
@@ -173,18 +177,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<div slot="action">
-		<a
-			href="/"
-			on:click={close}
-			class:hidden={$page.url.pathname !== '/app/imported' || $ImportedSVGStore.loaded}
-			class="btn btn-primary">Home</a
-		>
-		<button
-			on:click={close}
-			class="btn btn-primary"
-			disabled={$page.url.pathname === '/app/imported' && !$ImportedSVGStore.loaded}>Close</button
-		>
 	</div>
 </ModalBase>
