@@ -7,7 +7,6 @@
 	import { goto } from '$app/navigation';
 	import ClearMapModal from '$lib/components/modals/clearmapmodal/ClearMapModal.svelte';
 	import SplitRegionModal from '$lib/components/modals/splitregionmodal/SplitRegionModal.svelte';
-	import PresetColorsModal from '$lib/components/modals/presetcolorsmodal/PresetColorsModal.svelte';
 	import EditRegionModal from '$lib/components/modals/editregionmodal/EditRegionModal.svelte';
 	import ChartOptionsModal from '$lib/components/modals/chartoptionsmodal/ChartOptionsModal.svelte';
 	import ModeModal from '$lib/components/modals/modemodal/ModeModal.svelte';
@@ -27,6 +26,7 @@
 	import EditCandidateModal from '$lib/components/modals/candidatemodal/EditCandidateModal.svelte';
 	import EditTossupModal from '$lib/components/modals/candidatemodal/EditTossupModal.svelte';
 	import AddCandidateModal from '$lib/components/modals/candidatemodal/AddCandidateModal.svelte';
+	import PresetColorsModal from '$lib/components/modals/candidatemodal/PresetColorsModal.svelte';
 
 	if (browser) {
 		const url = get(page).url;

@@ -63,24 +63,16 @@
 	}
 
 	function close() {
-		PresetColorsModalStore.set({
-			open: false
-		});
-		AddCandidateModalStore.set({
-			...$AddCandidateModalStore,
-			open: true
-		});
+		$PresetColorsModalStore.open = false;
+		$AddCandidateModalStore.open = true;
 	}
 
 	function confirm(margins: string[]) {
-		AddCandidateModalStore.set({
-			...$AddCandidateModalStore,
+		$PresetColorsModalStore.open = false;
+		$AddCandidateModalStore = {
 			open: true,
 			newColors: margins
-		});
-		PresetColorsModalStore.set({
-			open: false
-		});
+		};
 	}
 </script>
 

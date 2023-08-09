@@ -3,7 +3,7 @@
 	import { ClearMapModalStore } from '$lib/stores/Modals';
 	import { RegionsStore } from '$lib/stores/regions/Regions';
 	import { get } from 'svelte/store';
-	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
+	import ModalBase from '../ModalBase.svelte';
 
 	function clearMap() {
 		const regions = get(RegionsStore);
@@ -19,30 +19,17 @@
 		RegionsStore.set(regions);
 	}
 
-	function close() {
-		ClearMapModalStore.set({
-			...$ClearMapModalStore,
-			open: false
-		});
-	}
-
 	function confirm() {
 		clearMap();
-		ClearMapModalStore.set({
-			...$ClearMapModalStore,
-			open: false
-		});
+		$ClearMapModalStore.open = false;
 	}
 </script>
 
-<input type="checkbox" class="modal-toggle" checked={$ClearMapModalStore.open} />
-<div class="modal modal-bottom lg:modal-middle">
-	<div class="modal-box">
-		<ModalTitle title="Clear Map" />
+<ModalBase title="Clear Map" store={ClearMapModalStore}>
+	<div slot="content">
 		<p>Clearing the map will result in all your progress being cleared. Are you sure?</p>
-		<div class="modal-action">
-			<button class="btn btn-primary" on:click={close}> No </button>
-			<button class="btn btn-error" on:click={confirm}> Clear </button>
-		</div>
 	</div>
-</div>
+	<div slot="action">
+		<button class="btn btn-error" on:click={confirm}>confirm</button>
+	</div>
+</ModalBase>

@@ -8,7 +8,7 @@
 	import { RegionsStore } from '$lib/stores/regions/Regions';
 	import { EditCandidateModalStore } from '$lib/stores/Modals';
 	import { get } from 'svelte/store';
-	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
+	import ModalBase from '../ModalBase.svelte';
 
 	$: open = $EditCandidateModalStore.open;
 	$: id = open ? $EditCandidateModalStore.candidate.id : '';
@@ -62,7 +62,7 @@
 		$CandidateModalStore.open = true;
 	}
 
-	function cancel() {
+	function close() {
 		$EditCandidateModalStore.open = false;
 		$CandidateModalStore.open = true;
 	}
@@ -97,10 +97,8 @@
 	}
 </script>
 
-<input type="checkbox" class="modal-toggle" checked={open} />
-<div class="modal modal-bottom lg:modal-middle">
-	<div class="modal-box">
-		<ModalTitle title="Edit {name}" />
+<ModalBase title="Edit {name}" store={EditCandidateModalStore} onClose={close}>
+	<div slot="content">
 		<div class="flex gap-1">
 			<div class="form-control w-full max-w-xs flex flex-col gap-3">
 				<h3 class="font-light text-lg">Name</h3>
@@ -137,9 +135,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="modal-action">
-			<button class="btn btn-success" on:click={confirm}>Update</button>
-			<button class="btn btn-primary" on:click={cancel}>Close</button>
-		</div>
 	</div>
-</div>
+	<div slot="action">
+		<button class="btn btn-success" on:click={confirm}>Update</button>
+	</div>
+</ModalBase>
