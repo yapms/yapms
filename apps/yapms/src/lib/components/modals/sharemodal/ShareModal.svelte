@@ -155,7 +155,6 @@
 			{/if}
 		</button>
 	</div>
-
 	<div slot="action">
 		<Turnstile
 			siteKey={PUBLIC_TURNSTILE_SITE}
