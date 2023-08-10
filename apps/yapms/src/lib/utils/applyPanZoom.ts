@@ -1,64 +1,77 @@
 import panzoom, { type PanZoom } from 'panzoom';
 import z from 'zod';
 
-let panzoomInstance: PanZoom | undefined;
-let savedSVG: SVGElement | undefined;
+let panZoomSettings: { panzoom: PanZoom; svg: SVGElement } | undefined;
+let autoStrokeSettings: { initStroke: number; upperStroke: number; svg: SVGElement } | undefined;
 
 function applyPanZoom(svg: SVGElement) {
-	savedSVG = svg;
-	panzoomInstance = panzoom(svg, {
+	if (panZoomSettings !== undefined) {
+		panZoomSettings.panzoom.dispose();
+	}
+	const panzoomInstance = panzoom(svg, {
 		minZoom: 0.5,
 		maxZoom: 100,
-		smoothScroll: false,
 		autocenter: true,
 		zoomDoubleClickSpeed: 1,
 		onTouch: function () {
 			return false;
 		}
 	});
-	if (svg.hasAttribute('auto-border-stroke-width')) {
-		const inputParser = z.number().positive().finite();
 
-		const initStroke = Number(svg.getAttribute('auto-border-stroke-width'));
-		const initStrokeValid = inputParser.safeParse(initStroke).success;
-		if (initStrokeValid) {
-			let strokeUpper: number | null = Number(svg.getAttribute('auto-border-stroke-width-limit'));
-			const strokeUpperValid = inputParser.safeParse(strokeUpper).success;
-			if (!strokeUpperValid) {
-				strokeUpper = null;
-			}
+	panZoomSettings = { panzoom: panzoomInstance, svg };
 
-			adjustStroke(svg, initStroke, strokeUpper, panzoomInstance.getTransform().scale);
-			panzoomInstance.on('zoom', (e: PanZoom) => {
-				if (svg !== undefined) {
-					adjustStroke(svg, initStroke, strokeUpper, e.getTransform().scale);
-				}
-			});
-		}
+	connectZoomAndStroke();
+}
+
+function applyAutoStroke(svg: SVGElement) {
+	if (svg.hasAttribute('auto-border-stroke-width') === false) {
+		return;
 	}
+
+	const initStroke = Number(svg.getAttribute('auto-border-stroke-width'));
+	if (z.number().positive().finite().safeParse(initStroke).success === false) {
+		return;
+	}
+
+	let upperStroke = Number(svg.getAttribute('auto-border-stroke-width-limit'));
+	if (z.number().positive().safeParse(upperStroke).success === false) {
+		upperStroke = Infinity;
+	}
+
+	autoStrokeSettings = {
+		initStroke,
+		upperStroke,
+		svg
+	};
+
+	adjustStroke(1);
+	connectZoomAndStroke();
 }
 
 function reapplyPanZoom() {
-	if (panzoomInstance === undefined || savedSVG === undefined) {
+	if (panZoomSettings === undefined) {
 		return;
 	}
-	panzoomInstance.dispose();
-	applyPanZoom(savedSVG);
+	panZoomSettings.panzoom.dispose();
+	applyPanZoom(panZoomSettings.svg);
 }
 
-function adjustStroke(
-	svg: SVGElement,
-	initStroke: number,
-	strokeUpper: number | null,
-	scale: number
-) {
-	const newStroke = initStroke / scale;
-	if (strokeUpper !== null && newStroke > strokeUpper) {
-		svg.style.setProperty('--auto-border-stroke-width', `${strokeUpper}px`);
-	} else {
-		const newStroke = initStroke / scale;
-		svg.style.setProperty('--auto-border-stroke-width', `${newStroke}px`);
+function connectZoomAndStroke() {
+	if (panZoomSettings === undefined || autoStrokeSettings === undefined) {
+		return;
 	}
+	adjustStroke(panZoomSettings.panzoom.getTransform().scale);
+	panZoomSettings.panzoom.on('zoom', (e: PanZoom) => {
+		adjustStroke(e.getTransform().scale);
+	});
 }
 
-export { applyPanZoom, reapplyPanZoom };
+function adjustStroke(scale: number) {
+	if (autoStrokeSettings === undefined) {
+		return;
+	}
+	const newStroke = Math.min(autoStrokeSettings.initStroke / scale, autoStrokeSettings.upperStroke);
+	autoStrokeSettings.svg.style.setProperty('--auto-border-stroke-width', `${newStroke}px`);
+}
+
+export { applyPanZoom, reapplyPanZoom, applyAutoStroke };

@@ -10,6 +10,7 @@
 	import HorizontalBattleChart from '$lib/components/chartbar/battlechart/BattleChart.svelte';
 	import CandidateBoxContainer from '$lib/components/candidatebox/CandidateBoxContainer.svelte';
 	import { loadRegionsForView } from '$lib/utils/loadRegions';
+	import { applyAutoStroke, applyPanZoom } from '$lib/utils/applyPanZoom';
 
 	//Glob import all maps in the maps directory so that we can check if a map exists and then load it.
 	//Query section makes sure the SVG contents are imported raw.
@@ -58,6 +59,10 @@
 	});
 
 	function setupMap(node: HTMLDivElement) {
+		const svg = node.querySelector<SVGElement>('svg');
+		if (svg !== null) {
+			applyAutoStroke(svg);
+		}
 		loadRegionsForView(node);
 		if ($LoadedMapStore !== null) {
 			loadFromJson($LoadedMapStore);
