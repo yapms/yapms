@@ -11,13 +11,6 @@
 		margin: number;
 	}
 
-	function close() {
-		SplitRegionModalStore.set({
-			...$SplitRegionModalStore,
-			open: false
-		});
-	}
-
 	$: candidatesInRegion =
 		$SplitRegionModalStore.region?.candidates.map<SplitRegionCandidate>((candidate) => {
 			return candidate;
@@ -193,9 +186,5 @@
 				</div>
 			</div>
 		{/each}
-	</div>
-
-	<div slot="action">
-		<button class="btn btn-primary" on:click={close}>Okay</button>
 	</div>
 </ModalBase>
