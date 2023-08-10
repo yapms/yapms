@@ -199,32 +199,3 @@
 		<button class="btn btn-primary" on:click={close}>Okay</button>
 	</div>
 </ModalBase>
-
-<!--
-<input type="checkbox" class="modal-toggle" checked={$SplitRegionModalStore.open} />
-<div class="modal modal-bottom lg:modal-middle">
-  <div class="modal-box">
-    <ModalTitle title="Split" />
-    <div class="grid grid-cols-2 grid-flow-row gap-4">
-      {#each modes as mode}
-        <button
-          class="btn"
-          class:btn-primary={$ModeStore !== mode}
-          class:btn-success={$ModeStore === mode}
-          on:click={() => {
-            setMode(mode);
-            close();
-          }}
-        >
-          <span>
-            {mode.toUpperCase()}
-          </span>
-        </button>
-      {/each}
-    </div>
-    <div class="modal-action">
-      <button class="btn btn-primary" on:click={close}>No</button>
-    </div>
-  </div>
-</div>
--->

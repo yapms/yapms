@@ -131,30 +131,31 @@
 				</button>
 			</div>
 		</div>
+
+		<button
+			class="alert mt-4 cursor-pointer transition-colors"
+			class:hidden={!linkID && !fetchingLink && !errorOnGenerateLink}
+			class:alert-warning={fetchingLink}
+			class:alert-info={!copiedLink && !fetchingLink}
+			class:alert-success={copiedLink && !fetchingLink}
+			class:alert-error={errorOnGenerateLink}
+			on:click={copyLink}
+		>
+			<label class="swap swap-flip">
+				<input type="checkbox" checked={copiedLink && errorOnGenerateLink === false} disabled />
+				<ExclamationCircle class="swap-off w-6 h-6" />
+				<CheckCircle class="swap-on w-6 h-6" />
+			</label>
+			{#if fetchingLink === true}
+				<span in:fade>Generating Link</span>
+			{:else if linkID !== null}
+				<span in:fade>{$page.url.origin}/app?m={linkID}</span>
+			{:else if errorOnGenerateLink === true}
+				<span in:fade>Error Generating Link. Try Again Later.</span>
+			{/if}
+		</button>
 	</div>
 
-	<button
-		class="alert shadow-lg mt-4 cursor-pointer transition-colors"
-		class:hidden={!linkID && !fetchingLink && !errorOnGenerateLink}
-		class:alert-warning={fetchingLink}
-		class:alert-info={!copiedLink && !fetchingLink}
-		class:alert-success={copiedLink && !fetchingLink}
-		class:alert-error={errorOnGenerateLink}
-		on:click={copyLink}
-	>
-		<label class="swap swap-flip">
-			<input type="checkbox" checked={copiedLink && errorOnGenerateLink === false} disabled />
-			<ExclamationCircle class="swap-off w-6 h-6" />
-			<CheckCircle class="swap-on w-6 h-6" />
-		</label>
-		{#if fetchingLink === true}
-			<span in:fade>Generating Link</span>
-		{:else if linkID !== null}
-			<span in:fade>{$page.url.origin}/app?m={linkID}</span>
-		{:else if errorOnGenerateLink === true}
-			<span in:fade>Error Generating Link. Try Again Later.</span>
-		{/if}
-	</button>
 	<div slot="action">
 		<Turnstile
 			siteKey={PUBLIC_TURNSTILE_SITE}
