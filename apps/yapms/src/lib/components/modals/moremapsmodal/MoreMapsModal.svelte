@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { MoreMapsModalStore } from '$lib/stores/HomeModals';
 	import ModalBase from '../ModalBase.svelte';
+
+	function close() {
+		$MoreMapsModalStore.open = false;
+	}
 </script>
 
 <ModalBase title="{$MoreMapsModalStore.title} Maps" store={MoreMapsModalStore}>
