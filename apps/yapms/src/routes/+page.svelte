@@ -6,13 +6,14 @@
 	import Swatch from '$lib/icons/Swatch.svelte';
 	import mapSelectSections from '$lib/assets/homedata/MapSelection.json';
 	import ThemeModal from '$lib/components/modals/thememodal/ThemeModal.svelte';
-	import { ImportModalStore, ThemeModalStore } from '$lib/stores/Modals';
+	import { ImportModalStore, LoginModalStore, ThemeModalStore } from '$lib/stores/Modals';
 	import MapSelectionCard from '$lib/components/homepage/MapSelectionCard.svelte';
 	import MoreMapsModal from '$lib/components/modals/moremapsmodal/MoreMapsModal.svelte';
 	import MapSearch from '$lib/components/homepage/MapSearch.svelte';
 	import BetaModal from '$lib/components/modals/betamodal/BetaModal.svelte';
 	import ArrowUpTray from '$lib/icons/ArrowUpTray.svelte';
 	import ImportModal from '$lib/components/modals/importmodal/ImportModal.svelte';
+	import AuthModal from '$lib/components/modals/authmodal/AuthModal.svelte';
 
 	function openThemeModal() {
 		ThemeModalStore.set({
@@ -24,6 +25,13 @@
 	function openImportModal() {
 		ImportModalStore.set({
 			...$ImportModalStore,
+			open: true
+		});
+	}
+
+	function openLoginModal() {
+		LoginModalStore.set({
+			...$LoginModalStore,
 			open: true
 		});
 	}
@@ -56,8 +64,12 @@
 			<button class="btn btn-square mr-2 inline md:hidden" on:click={openThemeModal}
 				><Swatch class="h-8 m-auto" /></button
 			>
-			<button class="btn px-8 btn-primary mr-2 hidden md:inline">Login</button>
-			<button class="btn btn-square mr-2 inline md:hidden"><Login class="h-8 m-auto" /></button>
+			<button class="btn px-8 btn-primary mr-2 hidden md:inline" on:click={openLoginModal}
+				>Login</button
+			>
+			<button class="btn btn-square mr-2 inline md:hidden" on:click={openLoginModal}
+				><Login class="h-8 m-auto" /></button
+			>
 		</div>
 	</div>
 
@@ -91,5 +103,7 @@
 <MoreMapsModal />
 
 <ThemeModal />
+
+<AuthModal />
 
 <BetaModal />
