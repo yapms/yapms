@@ -1,15 +1,15 @@
 <script lang="ts">
 	import { EditRegionModalStore } from '$lib/stores/Modals';
 	import { RegionsStore } from '$lib/stores/regions/Regions';
-	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
+	import ModalBase from '../ModalBase.svelte';
 
 	$: open = $EditRegionModalStore.open;
 	$: longName = open ? $EditRegionModalStore.region?.longName : undefined;
 	$: value = open ? $EditRegionModalStore.region?.permaVal : undefined;
 	$: newValue = value ?? 0;
 
-	function close() {
-		$EditRegionModalStore.open = false;
+	$: if (newValue < 0 || newValue === null) {
+		newValue = 0;
 	}
 
 	function confirm() {
@@ -25,28 +25,18 @@
 	}
 </script>
 
-<input type="checkbox" class="modal-toggle" checked={open} />
-
-<div class="modal modal-bottom lg:modal-middle">
-	<div class="modal-box">
-		<ModalTitle title="Edit Region {longName} - {value}" />
+<ModalBase title="Edit Region {longName} - {value}" store={EditRegionModalStore}>
+	<div slot="content">
 		<input
 			type="number"
 			placeholder="Value"
 			class="input input-bordered w-full"
 			min="0"
-			required
 			bind:value={newValue}
+			required
 		/>
-		<div class="modal-action">
-			<button class="btn btn-primary" on:click={close}> No </button>
-			<button
-				class="btn btn-success"
-				on:click={confirm}
-				disabled={newValue === null || newValue < 0 || newValue % 1 !== 0}
-			>
-				Update
-			</button>
-		</div>
 	</div>
-</div>
+	<div slot="action">
+		<button class="btn btn-success" on:click={confirm}>Confirm</button>
+	</div>
+</ModalBase>

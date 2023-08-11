@@ -1,5 +1,4 @@
 <script lang="ts">
-	import ModalTitle from '$lib/components/modalutilities/ModalTitle.svelte';
 	import ArrowDownTray from '$lib/icons/ArrowDownTray.svelte';
 	import ArrowUpTray from '$lib/icons/ArrowUpTray.svelte';
 	import { ShareModalStore } from '$lib/stores/Modals';
@@ -14,6 +13,7 @@
 	import { Turnstile } from 'svelte-turnstile';
 	import { PUBLIC_TURNSTILE_SITE } from '$env/static/public';
 	import { fade } from 'svelte/transition';
+	import ModalBase from '../ModalBase.svelte';
 
 	let files: FileList;
 
@@ -81,7 +81,7 @@
 		copiedLink = false;
 		errorOnGenerateLink = false;
 		linkID = null;
-		ShareModalStore.set({ ...$ShareModalStore, open: false });
+		$ShareModalStore.open = false;
 	}
 
 	function onTurnstileSuccess(event: CustomEvent<{ token: string }>) {
@@ -101,10 +101,8 @@
 	}
 </script>
 
-<input type="checkbox" class="modal-toggle" checked={$ShareModalStore.open} />
-<div class="modal modal-bottom lg:modal-middle">
-	<div class="modal-box">
-		<ModalTitle title="Share Map" />
+<ModalBase title="Share Map" store={ShareModalStore} onClose={close}>
+	<div slot="content">
 		<div class="flex flex-row gap-4">
 			<div class="flex flex-col gap-2">
 				<h3 class="font-light text-lg pb-3">Save</h3>
@@ -135,7 +133,7 @@
 		</div>
 
 		<button
-			class="alert shadow-lg mt-4 cursor-pointer transition-colors"
+			class="alert mt-4 cursor-pointer transition-colors"
 			class:hidden={!linkID && !fetchingLink && !errorOnGenerateLink}
 			class:alert-warning={fetchingLink}
 			class:alert-info={!copiedLink && !fetchingLink}
@@ -156,17 +154,16 @@
 				<span in:fade>Error Generating Link. Try Again Later.</span>
 			{/if}
 		</button>
-
-		<div class="modal-action justify-between items-end">
-			<Turnstile
-				siteKey={PUBLIC_TURNSTILE_SITE}
-				on:turnstile-callback={onTurnstileSuccess}
-				on:turnstile-expired={onTurnstileExpired}
-				on:turnstile-timeout={onTurnstileTimeout}
-				on:turnstile-error={onTurnstileError}
-				bind:reset={turnstileResetBind}
-			/>
-			<button class="btn btn-primary" on:click={close}> Close </button>
-		</div>
 	</div>
-</div>
+
+	<div slot="action">
+		<Turnstile
+			siteKey={PUBLIC_TURNSTILE_SITE}
+			on:turnstile-callback={onTurnstileSuccess}
+			on:turnstile-expired={onTurnstileExpired}
+			on:turnstile-timeout={onTurnstileTimeout}
+			on:turnstile-error={onTurnstileError}
+			bind:reset={turnstileResetBind}
+		/>
+	</div>
+</ModalBase>

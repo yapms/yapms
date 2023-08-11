@@ -37,7 +37,7 @@
 	}
 </script>
 
-<ModalBase title="Edit {name}" store={EditTossupModalStore}>
+<ModalBase title="Edit {name}" store={EditTossupModalStore} onClose={close}>
 	<div slot="content">
 		<div class="flex gap-1">
 			<div class="form-control w-full max-w-xs flex flex-col gap-3">
@@ -50,9 +50,8 @@
 				<input type="color" bind:value={newColor} />
 			</div>
 		</div>
-		<div class="modal-action">
-			<button class="btn btn-success" on:click={confirm}>update</button>
-			<button class="btn btn-primary" on:click={close}>close</button>
-		</div>
+	</div>
+	<div slot="action">
+		<button class="btn btn-success" on:click={confirm}>update</button>
 	</div>
 </ModalBase>

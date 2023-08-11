@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { AddCandidateModalStore, PresetColorsModalStore } from '$lib/stores/Modals';
-	import ModalTitle from '../../modalutilities/ModalTitle.svelte';
+	import ModalBase from '../ModalBase.svelte';
 
 	let tab = 0;
 
@@ -63,31 +63,21 @@
 	}
 
 	function close() {
-		PresetColorsModalStore.set({
-			open: false
-		});
-		AddCandidateModalStore.set({
-			...$AddCandidateModalStore,
-			open: true
-		});
+		$PresetColorsModalStore.open = false;
+		$AddCandidateModalStore.open = true;
 	}
 
 	function confirm(margins: string[]) {
-		AddCandidateModalStore.set({
-			...$AddCandidateModalStore,
+		$PresetColorsModalStore.open = false;
+		$AddCandidateModalStore = {
 			open: true,
 			newColors: margins
-		});
-		PresetColorsModalStore.set({
-			open: false
-		});
+		};
 	}
 </script>
 
-<input type="checkbox" class="modal-toggle" checked={$PresetColorsModalStore.open} />
-<div class="modal modal-bottom lg:modal-middle">
-	<div class="modal-box">
-		<ModalTitle title="Select Preset Colors" />
+<ModalBase title="Select Preset Colors" store={PresetColorsModalStore} onClose={close}>
+	<div slot="content">
 		<div class="tabs pb-4 justify-center">
 			{#each groups as group, index}
 				<button
@@ -117,8 +107,5 @@
 				</button>
 			{/each}
 		</div>
-		<div class="modal-action">
-			<input type="button" class="btn btn-primary" value="No" on:click={close} />
-		</div>
 	</div>
-</div>
+</ModalBase>
