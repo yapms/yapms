@@ -36,8 +36,8 @@
 	}
 
 	function selectPresetColor() {
-		$AddCandidateModalStore.open = false;
 		$PresetColorsModalStore.open = true;
+		$AddCandidateModalStore.open = false;
 	}
 
 	function confirm() {
