@@ -24,6 +24,9 @@
 	}
 
 	function close() {
+		if ($PresetColorsModalStore.open === true) {
+			return;
+		}
 		$AddCandidateModalStore = {
 			open: false,
 			newColors: ['#000000']
@@ -33,9 +36,8 @@
 	}
 
 	function selectPresetColor() {
-		alert(1);
-		$AddCandidateModalStore.open = false;
 		$PresetColorsModalStore.open = true;
+		$AddCandidateModalStore.open = false;
 	}
 
 	function confirm() {
