@@ -71,13 +71,12 @@
 		loading = false;
 	}
 
-	const close =
-		$page.url.pathname === '/app/imported'
-			? () => {
-					goto('/');
-					$ImportModalStore.open = false;
-			  }
-			: undefined;
+	function close() {
+		$ImportModalStore.open = false;
+		if ($page.url.pathname === '/app/imported' && $ImportedSVGStore.loaded === false) {
+			goto('/');
+		}
+	}
 </script>
 
 <ModalBase title="Import Map" store={ImportModalStore} onClose={close}>
