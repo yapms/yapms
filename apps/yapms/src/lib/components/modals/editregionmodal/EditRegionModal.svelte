@@ -8,6 +8,10 @@
 	$: value = open ? $EditRegionModalStore.region?.permaVal : undefined;
 	$: newValue = value ?? 0;
 
+	$: if (newValue < 0 || newValue === null) {
+		newValue = 0;
+	}
+
 	function confirm() {
 		const index = $RegionsStore.findIndex(
 			(region) => region.id === $EditRegionModalStore.region?.id
@@ -28,8 +32,8 @@
 			placeholder="Value"
 			class="input input-bordered w-full"
 			min="0"
-			required
 			bind:value={newValue}
+			required
 		/>
 	</div>
 	<div slot="action">
