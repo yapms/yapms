@@ -61,7 +61,9 @@
 		<div class="flex">
 			<div class="form-control w-full max-w-xs flex flex-col gap-3">
 				<h3 class="font-light text-lg">Name</h3>
-				<input type="text" class="input input-bordered w-full max-w-xs" bind:value={newName} />
+				<form on:submit={confirm}>
+					<input type="text" class="input input-bordered w-full max-w-xs" bind:value={newName} />
+				</form>
 				<button class="btn btn-primary" on:click={selectPresetColor}> preset colors </button>
 			</div>
 
