@@ -8,7 +8,7 @@
 	import ClearMapModal from '$lib/components/modals/clearmapmodal/ClearMapModal.svelte';
 	import SplitRegionModal from '$lib/components/modals/splitregionmodal/SplitRegionModal.svelte';
 	import EditRegionModal from '$lib/components/modals/editregionmodal/EditRegionModal.svelte';
-	import ChartOptionsModal from '$lib/components/modals/chartoptionsmodal/ChartOptionsModal.svelte';
+	import OptionsModal from '$lib/components/modals/optionsmodal/OptionsModal.svelte';
 	import ModeModal from '$lib/components/modals/modemodal/ModeModal.svelte';
 	import StyleModal from '$lib/components/modals/stylemodal/StyleModal.svelte';
 	import AuthModal from '$lib/components/modals/authmodal/AuthModal.svelte';
@@ -86,7 +86,7 @@
 
 <PresetColorsModal />
 
-<ChartOptionsModal />
+<OptionsModal />
 
 <ModeModal />
 

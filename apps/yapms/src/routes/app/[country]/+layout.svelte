@@ -39,7 +39,7 @@
 	function setupMap(node: HTMLDivElement) {
 		const svg = node.querySelector<SVGElement>('svg');
 		if (svg !== null) {
-			applyPanZoom(svg);
+			applyPanZoom(svg, node);
 			applyAutoStroke(svg);
 		}
 		loadRegionsForApp(node);
