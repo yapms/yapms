@@ -9,9 +9,11 @@
 	$: newValue = value ?? 0;
 
 	$: negativeNumError = newValue < 0;
-	$: nullError = newValue === null;
 
 	function confirm() {
+		if (newValue === null) {
+			newValue = 0;
+		}
 		const index = $RegionsStore.findIndex(
 			(region) => region.id === $EditRegionModalStore.region?.id
 		);
@@ -36,7 +38,6 @@
 					class="input input-bordered w-full"
 					min="0"
 					bind:value={newValue}
-					required
 				/>
 				<label class="label" for="editRegionInput">
 					<span class="label-text text-error" class:hidden={!negativeNumError}
@@ -47,7 +48,7 @@
 		</div>
 	</div>
 	<div slot="action">
-		<button class="btn btn-success" on:click={confirm} disabled={negativeNumError || nullError}
+		<button class="btn btn-success" on:click={confirm} disabled={negativeNumError}
 			>Confirm</button
 		>
 	</div>
