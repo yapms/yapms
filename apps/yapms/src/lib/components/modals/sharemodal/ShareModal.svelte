@@ -131,7 +131,6 @@
 				</button>
 			</div>
 		</div>
-
 		<button
 			class="alert mt-4 cursor-pointer transition-colors"
 			class:hidden={!linkID && !fetchingLink && !errorOnGenerateLink}
@@ -155,7 +154,6 @@
 			{/if}
 		</button>
 	</div>
-
 	<div slot="action">
 		<Turnstile
 			siteKey={PUBLIC_TURNSTILE_SITE}
