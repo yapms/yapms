@@ -1,8 +1,22 @@
+import { LockMapStore } from '$lib/stores/LockMap';
 import panzoom, { type PanZoom } from 'panzoom';
+import { get } from 'svelte/store';
 import z from 'zod';
 
 let panZoomSettings: { panzoom: PanZoom; svg: SVGElement } | undefined;
 let autoStrokeSettings: { initStroke: number; upperStroke: number; svg: SVGElement } | undefined;
+
+LockMapStore.subscribe((locked) => {
+	lockMap(locked);
+});
+
+function lockMap(lock: boolean) {
+	if (lock === true) {
+		panZoomSettings?.panzoom.pause();
+	} else {
+		panZoomSettings?.panzoom.resume();
+	}
+}
 
 function applyPanZoom(svg: SVGElement) {
 	if (panZoomSettings !== undefined) {
@@ -13,13 +27,14 @@ function applyPanZoom(svg: SVGElement) {
 		maxZoom: 100,
 		autocenter: true,
 		zoomDoubleClickSpeed: 1,
+		smoothScroll: false,
 		onTouch: function () {
 			return false;
 		}
 	});
 
 	panZoomSettings = { panzoom: panzoomInstance, svg };
-
+	lockMap(get(LockMapStore));
 	connectZoomAndStroke();
 }
 

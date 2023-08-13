@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { ChartPositionStore, ChartTypeStore } from '$lib/stores/Chart';
-	import { ChartOptionsModalStore } from '$lib/stores/Modals';
+	import { OptionsModalStore } from '$lib/stores/Modals';
 	import type { ChartType } from '$lib/types/ChartType';
 	import ModalBase from '../ModalBase.svelte';
 	import type ChartPosition from '$lib/types/ChartPosition';
 	import { reapplyPanZoom } from '$lib/utils/applyPanZoom';
+	import { LockMapStore } from '$lib/stores/LockMap';
 
 	const chartTypeValues = ['pie', 'battle', 'none'];
 	const chartPositionValues = ['bottom', 'left'];
@@ -20,7 +21,7 @@
 	}
 </script>
 
-<ModalBase title="Chart Options" store={ChartOptionsModalStore}>
+<ModalBase title="Options" store={OptionsModalStore}>
 	<div slot="content">
 		<div class="flex flex-col">
 			<h3 class="font-light text-lg pb-3">Chart Type</h3>
@@ -56,6 +57,12 @@
 						</span>
 					</button>
 				{/each}
+			</div>
+			<div class="form-control">
+				<label class="label cursor-pointer">
+					<span class="label-text">Lock Map</span>
+					<input type="checkbox" class="toggle" bind:checked={$LockMapStore} />
+				</label>
 			</div>
 		</div>
 	</div>

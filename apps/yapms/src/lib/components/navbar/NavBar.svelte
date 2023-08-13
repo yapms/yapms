@@ -6,7 +6,7 @@
 		ClearMapModalStore,
 		CandidateModalStore,
 		ModeModalStore,
-		ChartOptionsModalStore,
+		OptionsModalStore,
 		StyleModalStore,
 		ShareModalStore,
 		LoginModalStore,
@@ -28,9 +28,9 @@
 		$CandidateModalStore.open = true;
 	}
 
-	function openChartOptions() {
-		ChartOptionsModalStore.set({
-			...$ChartOptionsModalStore,
+	function openOptions() {
+		OptionsModalStore.set({
+			...$OptionsModalStore,
 			open: true
 		});
 	}
@@ -83,7 +83,7 @@
 	<button class="btn btn-sm" on:click={openCandidateModal}>candidates</button>
 	<button class="btn btn-sm" on:click={newImportedMap}>import</button>
 	<button class="btn btn-sm" on:click={openStyle}>style</button>
-	<button class="btn btn-sm" on:click={openChartOptions}>chart options</button>
+	<button class="btn btn-sm" on:click={openOptions}>options</button>
 	<button class="btn btn-sm" on:click={openMode}>mode: {$ModeStore}</button>
 	{#if importPage}
 		<button class="btn btn-sm" on:click={openShareDisabled}>share</button>
