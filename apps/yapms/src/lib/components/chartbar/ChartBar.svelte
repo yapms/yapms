@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { afterUpdate, onMount } from 'svelte';
 	import { Chart, registerables } from 'chart.js';
 	import { CandidatesStore, TossupCandidateStore } from '$lib/stores/Candidates';
 	import { CandidateCounts } from '$lib/stores/regions/Regions';
 	import ChartDataLabels from 'chartjs-plugin-datalabels';
 	import { ChartPositionStore } from '$lib/stores/Chart';
+	import { reapplyPanZoom } from '$lib/utils/applyPanZoom';
 
 	let canvasBind: HTMLCanvasElement;
 	let myChart: Chart<'pie'>;
@@ -96,6 +97,8 @@
 			}
 		});
 	});
+
+	afterUpdate(reapplyPanZoom);
 </script>
 
 <div
