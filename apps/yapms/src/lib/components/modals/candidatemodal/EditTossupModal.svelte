@@ -42,9 +42,7 @@
 		<div class="flex gap-1">
 			<div class="form-control w-full max-w-xs flex flex-col gap-3">
 				<h3 class="font-light text-lg">Name</h3>
-				<form on:submit={confirm}>
-					<input type="text" class="input input-bordered w-full max-w-xs" bind:value={newName} />
-				</form>
+				<input type="text" class="input input-bordered w-full max-w-xs" bind:value={newName} />
 			</div>
 			<div class="divider divider-horizontal" />
 			<div class="form-control w-full max-w-xs flex flex-col gap-3">
