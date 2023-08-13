@@ -48,8 +48,6 @@
 		</div>
 	</div>
 	<div slot="action">
-		<button class="btn btn-success" on:click={confirm} disabled={negativeNumError}
-			>Confirm</button
-		>
+		<button class="btn btn-success" on:click={confirm} disabled={negativeNumError}>Confirm</button>
 	</div>
 </ModalBase>
