@@ -34,9 +34,7 @@
 			<h3 class="font-light text-lg">Region Value</h3>
 			<form on:submit={confirm}>
 				<input
-					id="editRegionInput"
 					type="number"
-					placeholder="Value"
 					class="input input-bordered w-full"
 					on:keypress={preventNonNumericalInput}
 					bind:value={newValue}
