@@ -7,10 +7,10 @@
 		CandidateModalStore,
 		ModeModalStore,
 		OptionsModalStore,
-		StyleModalStore,
 		ShareModalStore,
 		LoginModalStore,
-		ShareDisabledModalStore
+		ShareDisabledModalStore,
+		ThemeModalStore
 	} from '$lib/stores/Modals';
 	import { ModeStore } from '$lib/stores/Mode';
 	import ChevronDoubleRight from '$lib/icons/ChevronDoubleRight.svelte';
@@ -42,13 +42,6 @@
 		});
 	}
 
-	function openStyle() {
-		StyleModalStore.set({
-			...$StyleModalStore,
-			open: true
-		});
-	}
-
 	function openShare() {
 		ShareModalStore.set({
 			...$ShareModalStore,
@@ -59,6 +52,13 @@
 	function openShareDisabled() {
 		ShareDisabledModalStore.set({
 			...$ShareDisabledModalStore,
+			open: true
+		});
+	}
+
+	function openTheme() {
+		ThemeModalStore.set({
+			...$ThemeModalStore,
 			open: true
 		});
 	}
@@ -82,7 +82,6 @@
 	<button class="btn btn-sm btn-error" on:click={openClearMapModal}>clear</button>
 	<button class="btn btn-sm" on:click={openCandidateModal}>candidates</button>
 	<button class="btn btn-sm" on:click={newImportedMap}>import</button>
-	<button class="btn btn-sm" on:click={openStyle}>style</button>
 	<button class="btn btn-sm" on:click={openOptions}>options</button>
 	<button class="btn btn-sm" on:click={openMode}>mode: {$ModeStore}</button>
 	{#if importPage}
@@ -90,6 +89,7 @@
 	{:else}
 		<button class="btn btn-sm" on:click={openShare}>share</button>
 	{/if}
+	<button class="btn btn-sm" on:click={openTheme}>theme</button>
 	<button class="btn btn-sm" on:click={openLogin}>login</button>
 	<div class="grow" />
 	<button class="btn btn-sm hidden md:flex" on:click={toggleSidebar}>

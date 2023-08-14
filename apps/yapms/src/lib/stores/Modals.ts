@@ -58,10 +58,6 @@ const ModeModalStore = writable({
 	open: false
 });
 
-const StyleModalStore = writable({
-	open: false
-});
-
 const ShareModalStore = writable({
 	open: false
 });
@@ -101,7 +97,6 @@ export {
 	PresetColorsModalStore,
 	OptionsModalStore,
 	ModeModalStore,
-	StyleModalStore,
 	ShareModalStore,
 	LoginModalStore,
 	LoadingErrorModalStore,

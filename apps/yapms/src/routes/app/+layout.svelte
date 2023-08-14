@@ -10,7 +10,6 @@
 	import EditRegionModal from '$lib/components/modals/editregionmodal/EditRegionModal.svelte';
 	import OptionsModal from '$lib/components/modals/optionsmodal/OptionsModal.svelte';
 	import ModeModal from '$lib/components/modals/modemodal/ModeModal.svelte';
-	import StyleModal from '$lib/components/modals/stylemodal/StyleModal.svelte';
 	import AuthModal from '$lib/components/modals/authmodal/AuthModal.svelte';
 	import LoadingErrorModal from '$lib/components/modals/loadingerrormodal/LoadingErrorModal.svelte';
 	import ShareModal from '$lib/components/modals/sharemodal/ShareModal.svelte';
@@ -27,6 +26,7 @@
 	import EditTossupModal from '$lib/components/modals/candidatemodal/EditTossupModal.svelte';
 	import AddCandidateModal from '$lib/components/modals/candidatemodal/AddCandidateModal.svelte';
 	import PresetColorsModal from '$lib/components/modals/candidatemodal/PresetColorsModal.svelte';
+	import ThemeModal from '$lib/components/modals/thememodal/ThemeModal.svelte';
 
 	if (browser) {
 		const url = get(page).url;
@@ -90,7 +90,7 @@
 
 <ModeModal />
 
-<StyleModal />
+<ThemeModal />
 
 <AuthModal />
 
