@@ -16,7 +16,7 @@
 		{ name: 'None', src: null }
 	];
 
-	let selectedLogoName = logos.find((logo) => logo.src === $LogoStore)?.name;
+	$: selectedLogoName = logos.find((logo) => logo.src === $LogoStore)?.name;
 
 	function changeLogo() {
 		const logo = logos.find((logo) => logo.name === selectedLogoName);
