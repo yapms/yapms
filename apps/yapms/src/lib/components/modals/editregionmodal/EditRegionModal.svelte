@@ -14,7 +14,7 @@
 
 	function preventNonNumericalPaste(e: ClipboardEvent) {
 		const pasteContents = e.clipboardData?.getData(e.clipboardData.types[0]);
-		if (!pasteContents?.match(/^ *[0-9]+ *$/)) e.preventDefault();
+		if (!pasteContents?.match(/^[0-9]+$/)) e.preventDefault();
 	}
 
 	function confirm() {
