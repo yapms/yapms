@@ -8,7 +8,9 @@
 	$: value = open ? $EditRegionModalStore.region?.permaVal : undefined;
 	$: newValue = value ?? 0;
 
-	$: negativeNumError = newValue < 0;
+	function preventNonNumericalInput(e: KeyboardEvent) {
+		if (!e.key.match(/^[0-9]+$/)) e.preventDefault();
+	}
 
 	function confirm() {
 		if (newValue === null) {
@@ -36,18 +38,13 @@
 					type="number"
 					placeholder="Value"
 					class="input input-bordered w-full"
-					min="0"
+					on:keypress={preventNonNumericalInput}
 					bind:value={newValue}
 				/>
-				<label class="label" for="editRegionInput">
-					<span class="label-text text-error" class:hidden={!negativeNumError}
-						>Please enter a positive number.</span
-					>
-				</label>
 			</form>
 		</div>
 	</div>
 	<div slot="action">
-		<button class="btn btn-success" on:click={confirm} disabled={negativeNumError}>Confirm</button>
+		<button class="btn btn-success" on:click={confirm}>Confirm</button>
 	</div>
 </ModalBase>
