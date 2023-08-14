@@ -12,6 +12,11 @@
 		if (!e.key.match(/^[0-9]+$/)) e.preventDefault();
 	}
 
+	function preventNonNumericalPaste(e: ClipboardEvent) {
+		const pasteContents = e.clipboardData?.getData(e.clipboardData.types[0]);
+		if (!pasteContents?.match(/^[0-9]+$/)) e.preventDefault();
+	}
+
 	function confirm() {
 		if (newValue === null) {
 			newValue = 0;
@@ -36,7 +41,9 @@
 				<input
 					type="number"
 					class="input input-bordered w-full"
+					min="0"
 					on:keypress={preventNonNumericalInput}
+					on:paste={preventNonNumericalPaste}
 					bind:value={newValue}
 				/>
 			</form>
