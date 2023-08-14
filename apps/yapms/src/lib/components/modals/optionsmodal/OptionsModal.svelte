@@ -12,10 +12,11 @@
 	const chartPositionValues = ['bottom', 'left'];
 	const logos = [
 		{ name: 'Lets Talk Elections', src: LetsTalkElections },
-		{ name: 'Red Eagle Politics', src: RedEaglePolitics }
+		{ name: 'Red Eagle Politics', src: RedEaglePolitics },
+		{ name: 'None', src: null }
 	];
 
-	let selectedLogoName = '';
+	let selectedLogoName = logos.find((logo) => logo.src === $LogoStore)?.name;
 
 	function changeLogo() {
 		const logo = logos.find((logo) => logo.name === selectedLogoName);
