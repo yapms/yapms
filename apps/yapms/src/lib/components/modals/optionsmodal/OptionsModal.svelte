@@ -15,15 +15,6 @@
 		{ name: 'Red Eagle Politics', src: RedEaglePolitics },
 		{ name: 'None', src: null }
 	];
-
-	$: selectedLogoName = logos.find((logo) => logo.src === $LogoStore)?.name;
-
-	function changeLogo() {
-		const logo = logos.find((logo) => logo.name === selectedLogoName);
-		if (logo !== undefined) {
-			$LogoStore = logo.src;
-		}
-	}
 </script>
 
 <ModalBase title="Options" store={OptionsModalStore}>
@@ -57,13 +48,9 @@
 			<div class="form-control w-full">
 				<label class="label flex-col cursor-pointer items-start justify-start space-y-2">
 					<span class="label-text">Chart Logo</span>
-					<select
-						class="select select-bordered w-full"
-						bind:value={selectedLogoName}
-						on:change={changeLogo}
-					>
+					<select class="select select-bordered w-full" bind:value={$LogoStore}>
 						{#each logos as logo}
-							<option>{logo.name}</option>
+							<option value={logo.src}>{logo.name}</option>
 						{/each}
 					</select>
 				</label>
