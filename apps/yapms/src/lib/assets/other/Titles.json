@@ -500,6 +500,202 @@
 		"title": "USA 1788 Presidential"
 	},
 	{
+		"path": "/app/usa_state/al_lower/2022/blank",
+		"title": "Alabama 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/ak_lower/2022/blank",
+		"title": "Alaska 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/az_lower/2022/blank",
+		"title": "Arizona 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/ar_lower/2022/blank",
+		"title": "Arkansas 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/ca_lower/2022/blank",
+		"title": "California 2022 State Assembly"
+	},
+	{
+		"path": "/app/usa_state/co_lower/2022/blank",
+		"title": "Colorado 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/ct_lower/2022/blank",
+		"title": "Connecticut 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/de_lower/2022/blank",
+		"title": "Delaware 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/fl_lower/2022/blank",
+		"title": "Florida 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/ga_lower/2022/blank",
+		"title": "Georgia 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/hi_lower/2022/blank",
+		"title": "Hawaii 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/id_lower/2022/blank",
+		"title": "Idaho 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/il_lower/2022/blank",
+		"title": "Illinois 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/in_lower/2022/blank",
+		"title": "Indiana 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/ia_lower/2022/blank",
+		"title": "Iowa 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/ks_lower/2022/blank",
+		"title": "Kansas 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/ky_lower/2022/blank",
+		"title": "Kentucky 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/la_lower/2023/blank",
+		"title": "Louisiana 2023 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/me_lower/2022/blank",
+		"title": "Maine 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/md_lower/2022/blank",
+		"title": "Maryland 2022 House of Delegates"
+	},
+	{
+		"path": "/app/usa_state/ma_lower/2022/blank",
+		"title": "Massachusetts 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/mi_lower/2022/blank",
+		"title": "Michigan 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/mn_lower/2022/blank",
+		"title": "Minnesota 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/ms_lower/2023/blank",
+		"title": "Mississippi 2023 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/mo_lower/2022/blank",
+		"title": "Missouri 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/mt_lower/2022/blank",
+		"title": "Montana 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/nv_lower/2022/blank",
+		"title": "Nevada 2022 State Assembly"
+	},
+	{
+		"path": "/app/usa_state/nh_lower/2022/blank",
+		"title": "New Hampshire 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/nj_lower/2023/blank",
+		"title": "New Jersey 2023 General Assembly"
+	},
+	{
+		"path": "/app/usa_state/nm_lower/2022/blank",
+		"title": "New Mexico 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/ny_lower/2022/blank",
+		"title": "New York 2022 State Assembly"
+	},
+	{
+		"path": "/app/usa_state/nc_lower/2022/blank",
+		"title": "North Carolina 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/nd_lower/2022/blank",
+		"title": "North Dakota 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/oh_lower/2022/blank",
+		"title": "Ohio 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/ok_lower/2022/blank",
+		"title": "Oklahoma 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/or_lower/2022/blank",
+		"title": "Oregon 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/pa_lower/2022/blank",
+		"title": "Pennsylvania 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/ri_lower/2022/blank",
+		"title": "Rhode Island 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/sc_lower/2022/blank",
+		"title": "South Carolina 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/sd_lower/2022/blank",
+		"title": "South Dakota 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/tn_lower/2022/blank",
+		"title": "Tennessee 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/tx_lower/2022/blank",
+		"title": "Texas 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/ut_lower/2022/blank",
+		"title": "Utah 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/vt_lower/2022/blank",
+		"title": "Vermont 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/va_lower/2023/blank",
+		"title": "Virginia 2023 House of Delegates"
+	},
+	{
+		"path": "/app/usa_state/wa_lower/2022/blank",
+		"title": "Washington 2022 House of Representatives"
+	},
+	{
+		"path": "/app/usa_state/wv_lower/2022/blank",
+		"title": "West Virginia 2022 House of Delegates"
+	},
+	{
+		"path": "/app/usa_state/wi_lower/2022/blank",
+		"title": "Wisconsin 2022 State Assembly"
+	},
+	{
+		"path": "/app/usa_state/wy_lower/2022/blank",
+		"title": "Wyoming 2022 House of Representatives"
+	},
+	{
 		"path": "/app/dnk/folketing/2022/blank",
 		"title": "Danish 2022 Folketing"
 	},
