@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { themeChange } from 'theme-change';
+
 	const themes = [
 		//Hex codes can be found in node_modules/daisyui/src/colors/themes
 		//name: id for theme, margins ['base-100','primary','secondary','accent']
@@ -9,6 +12,10 @@
 		{ name: 'lofi', margins: ['#ffffff', '#0D0D0D', '#1A1919', '#262626'] },
 		{ name: 'night', margins: ['#0F172A', '#38bdf8', '#818CF8', '#F471B5'] }
 	];
+
+	onMount(() => {
+		themeChange(false);
+	});
 </script>
 
 <div class="flex flex-row gap-3 flex-wrap justify-center">
