@@ -23,10 +23,10 @@
 						count: $CandidateCounts.get($TossupCandidateStore.id) ?? 0,
 						color: $TossupCandidateStore.margins.at(0)?.color ?? '#000000'
 					},
-					...($CandidatesStore.at(1)?.margins.map((_margin, index) => ({
+					...($CandidatesStore.at(1)?.margins.map((_margin, index, margins) => ({
 						name: $CandidatesStore.at(1)?.name ?? '',
-						count: $CandidateCountsMargins.get($CandidatesStore.at(1)?.id ?? '')?.at(index) ?? 0,
-						color: $CandidatesStore.at(1)?.margins.at(index)?.color ?? '#000000'
+						count: $CandidateCountsMargins.get($CandidatesStore.at(1)?.id ?? '')?.at(margins.length - index - 1) ?? 0,
+						color: $CandidatesStore.at(1)?.margins.at(margins.length - index - 1)?.color ?? '#000000'
 					})) ?? [])
 			  ]
 			: [
