@@ -3,6 +3,7 @@
 	import { page } from '$app/stores';
 	import { MapInsetsStore } from '$lib/stores/MapInsetsStore';
 	import { LoadedMapStore } from '$lib/stores/LoadedMap';
+	import { applyAutoStroke, applyPanZoom } from '$lib/utils/applyPanZoom';
 	import { loadRegionsForApp } from '$lib/utils/loadRegions';
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
@@ -36,6 +37,11 @@
 	let isLoaded = false;
 
 	function setupMap(node: HTMLDivElement) {
+		const svg = node.querySelector<SVGElement>('svg');
+		if (svg !== null) {
+			applyPanZoom(svg);
+			applyAutoStroke(svg);
+		}
 		loadRegionsForApp(node);
 		isLoaded = true;
 	}

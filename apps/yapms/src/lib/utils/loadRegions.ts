@@ -18,7 +18,6 @@ import type Region from '$lib/types/Region';
 import { ModeSchema } from '$lib/types/Mode';
 import { CandidateSchema } from '$lib/types/Candidate';
 import { RegionCandidatesSchema } from '$lib/types/Region';
-import { applyPanZoom, applyAutoStroke } from './applyPanZoom';
 
 function createDefaultModeStore(node: HTMLDivElement) {
 	const defaultModeAttribute = node.querySelector('svg')?.getAttribute('default-mode');
@@ -148,11 +147,6 @@ function createRegionStore(node: HTMLDivElement) {
 }
 
 export function loadRegionsForApp(node: HTMLDivElement): void {
-	const svg = node.querySelector<SVGElement>('svg');
-	if (svg !== null) {
-		applyPanZoom(svg);
-		applyAutoStroke(svg);
-	}
 	createCandidateStore(node);
 	createTossupCandidateStore(node);
 	createSelectedCandidateStore();
@@ -164,10 +158,6 @@ export function loadRegionsForApp(node: HTMLDivElement): void {
 }
 
 export function loadRegionsForView(node: HTMLDivElement): void {
-	const svg = node.querySelector<SVGElement>('svg');
-	if (svg !== null) {
-		applyAutoStroke(svg);
-	}
 	createCandidateStore(node);
 	createTossupCandidateStore(node);
 	createRegionStore(node);

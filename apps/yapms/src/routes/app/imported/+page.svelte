@@ -3,6 +3,7 @@
 	import { ImportedSVGStore } from '$lib/stores/ImportedSVG';
 	import { get } from 'svelte/store';
 	import { MapInsetsStore } from '$lib/stores/MapInsetsStore';
+	import { applyAutoStroke, applyPanZoom } from '$lib/utils/applyPanZoom';
 	import { loadRegionsForApp } from '$lib/utils/loadRegions';
 
 	const svg = get(ImportedSVGStore);
@@ -11,6 +12,11 @@
 	}
 
 	function setupMap(node: HTMLDivElement) {
+		const svg = node.querySelector<SVGElement>('svg');
+		if (svg !== null) {
+			applyPanZoom(svg);
+			applyAutoStroke(svg);
+		}
 		loadRegionsForApp(node);
 	}
 </script>
