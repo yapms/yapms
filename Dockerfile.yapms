@@ -15,7 +15,7 @@ COPY --from=builder /app/out/pnpm-lock.yaml .
 COPY --from=builder /app/out/full/ .
 RUN pnpm install
 RUN pnpm dotenv-vault decrypt ${DOTENV_VAULT_KEY} > .env
-RUN pnpm run build
+RUN npm run build
 
 FROM node:18 AS runner
 WORKDIR /app
