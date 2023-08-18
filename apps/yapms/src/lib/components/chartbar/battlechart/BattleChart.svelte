@@ -5,48 +5,28 @@
 	import { CandidateCounts, CandidateCountsMargins } from '$lib/stores/regions/Regions';
 	import BattleChartLabel from './BattleChartLabel.svelte';
 
-	let counts: { name: string; count: number; color: string }[] = [];
-
 	$: tossupCounts = {
 		name: $TossupCandidateStore.name,
 		count: $CandidateCounts.get($TossupCandidateStore.id) ?? 0,
 		color: $TossupCandidateStore.margins.at(0)?.color ?? '#000000'
 	};
 
-	$: if ($CandidatesStore.length === 2) {
-		const leftCandidateCounts =
-			$CandidatesStore.at(0)?.margins.map((_margin, index) => ({
-				name: $CandidatesStore.at(0)?.name ?? '',
-				count: $CandidateCountsMargins.get($CandidatesStore.at(0)?.id ?? '')?.at(index) ?? 0,
-				color: $CandidatesStore.at(0)?.margins.at(index)?.color ?? '#000000'
-			})) ?? [];
+	$: remainingCandiatesCounts = $CandidatesStore.map((candidate) => {
+		return candidate.margins.map((margin, index) => ({
+			name: candidate.name,
+			count: $CandidateCountsMargins.get(candidate.id)?.at(index) ?? 0,
+			color: margin.color
+		}));
+	});
 
-		const rightCandidateCounts =
-			$CandidatesStore
-				.at(1)
-				?.margins.map((_margin, index) => ({
-					name: $CandidatesStore.at(1)?.name ?? '',
-					count: $CandidateCountsMargins.get($CandidatesStore.at(1)?.id ?? '')?.at(index) ?? 0,
-					color: $CandidatesStore.at(1)?.margins.at(index)?.color ?? '#000000'
-				}))
-				?.reverse() ?? [];
-
-		counts = [...leftCandidateCounts, tossupCounts, ...rightCandidateCounts];
-	}
-
-	$: if ($CandidatesStore.length !== 2) {
-		const remainingCandiatesCounts = $CandidatesStore
-			.map((candidate) => {
-				return candidate.margins.map((margin, index) => ({
-					name: candidate.name ?? '',
-					count: $CandidateCountsMargins.get(candidate.id ?? '')?.at(index) ?? 0,
-					color: margin.color
-				}));
-			})
-			.flat();
-
-		counts = [tossupCounts, ...remainingCandiatesCounts];
-	}
+	$: counts =
+		remainingCandiatesCounts.length === 2
+			? [
+					...(remainingCandiatesCounts.at(0) ?? []),
+					tossupCounts,
+					...(remainingCandiatesCounts.at(1) ?? []).reverse()
+			  ]
+			: [tossupCounts, ...remainingCandiatesCounts.flat()];
 
 	/**
 	 * Sum the total number of votes
