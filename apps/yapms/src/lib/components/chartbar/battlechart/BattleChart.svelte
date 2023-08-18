@@ -11,7 +11,7 @@
 		color: $TossupCandidateStore.margins.at(0)?.color ?? '#000000'
 	};
 
-	$: remainingCandiatesCounts = $CandidatesStore.map((candidate) => {
+	$: candiatesCounts = $CandidatesStore.map((candidate) => {
 		return candidate.margins.map((margin, index) => ({
 			name: candidate.name,
 			count: $CandidateCountsMargins.get(candidate.id)?.at(index) ?? 0,
@@ -20,13 +20,9 @@
 	});
 
 	$: counts =
-		remainingCandiatesCounts.length === 2
-			? [
-					...(remainingCandiatesCounts.at(0) ?? []),
-					tossupCounts,
-					...(remainingCandiatesCounts.at(1) ?? []).reverse()
-			  ]
-			: [tossupCounts, ...remainingCandiatesCounts.flat()];
+		candiatesCounts.length === 2
+			? [...(candiatesCounts.at(0) ?? []), tossupCounts, ...(candiatesCounts.at(1) ?? []).reverse()]
+			: [tossupCounts, ...candiatesCounts.flat()];
 
 	/**
 	 * Sum the total number of votes
