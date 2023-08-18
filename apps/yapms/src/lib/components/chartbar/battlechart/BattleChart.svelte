@@ -5,46 +5,48 @@
 	import { CandidateCounts, CandidateCountsMargins } from '$lib/stores/regions/Regions';
 	import BattleChartLabel from './BattleChartLabel.svelte';
 
-	/**
-	 * 1. Store the first candidate name, count and color
-	 * 2. Store the tossup candidate name, count and color
-	 * 3. Store the second candidate name, count and color
-	 */
-	$: counts =
-		$CandidatesStore.length === 2
-			? [
-					...($CandidatesStore.at(0)?.margins.map((_margin, index) => ({
-						name: $CandidatesStore.at(0)?.name ?? '',
-						count: $CandidateCountsMargins.get($CandidatesStore.at(0)?.id ?? '')?.at(index) ?? 0,
-						color: $CandidatesStore.at(0)?.margins.at(index)?.color ?? '#000000'
-					})) ?? []),
-					{
-						name: $TossupCandidateStore.name,
-						count: $CandidateCounts.get($TossupCandidateStore.id) ?? 0,
-						color: $TossupCandidateStore.margins.at(0)?.color ?? '#000000'
-					},
-					...($CandidatesStore.at(1)?.margins.map((_margin, index) => ({
-						name: $CandidatesStore.at(1)?.name ?? '',
-						count: $CandidateCountsMargins.get($CandidatesStore.at(1)?.id ?? '')?.at(index) ?? 0,
-						color: $CandidatesStore.at(1)?.margins.at(index)?.color ?? '#000000'
-					})) ?? [])
-			  ]
-			: [
-					{
-						name: $TossupCandidateStore.name,
-						count: $CandidateCounts.get($TossupCandidateStore.id) ?? 0,
-						color: $TossupCandidateStore.margins.at(0)?.color ?? '#000000'
-					},
-					...$CandidatesStore
-						.map((candidate) => {
-							return candidate.margins.map((margin, index) => ({
-								name: candidate.name ?? '',
-								count: $CandidateCountsMargins.get(candidate.id ?? '')?.at(index) ?? 0,
-								color: margin.color
-							}));
-						})
-						.flat()
-			  ];
+	let counts: { name: string; count: number; color: string }[] = [];
+
+	$: tossupCounts = {
+		name: $TossupCandidateStore.name,
+		count: $CandidateCounts.get($TossupCandidateStore.id) ?? 0,
+		color: $TossupCandidateStore.margins.at(0)?.color ?? '#000000'
+	};
+
+	$: if ($CandidatesStore.length === 2) {
+		const leftCandidateCounts =
+			$CandidatesStore.at(0)?.margins.map((_margin, index) => ({
+				name: $CandidatesStore.at(0)?.name ?? '',
+				count: $CandidateCountsMargins.get($CandidatesStore.at(0)?.id ?? '')?.at(index) ?? 0,
+				color: $CandidatesStore.at(0)?.margins.at(index)?.color ?? '#000000'
+			})) ?? [];
+
+		const rightCandidateCounts =
+			$CandidatesStore
+				.at(1)
+				?.margins.map((_margin, index) => ({
+					name: $CandidatesStore.at(1)?.name ?? '',
+					count: $CandidateCountsMargins.get($CandidatesStore.at(1)?.id ?? '')?.at(index) ?? 0,
+					color: $CandidatesStore.at(1)?.margins.at(index)?.color ?? '#000000'
+				}))
+				?.reverse() ?? [];
+
+		counts = [...leftCandidateCounts, tossupCounts, ...rightCandidateCounts];
+	}
+
+	$: if ($CandidatesStore.length !== 2) {
+		const remainingCandiatesCounts = $CandidatesStore
+			.map((candidate) => {
+				return candidate.margins.map((margin, index) => ({
+					name: candidate.name ?? '',
+					count: $CandidateCountsMargins.get(candidate.id ?? '')?.at(index) ?? 0,
+					color: margin.color
+				}));
+			})
+			.flat();
+
+		counts = [tossupCounts, ...remainingCandiatesCounts];
+	}
 
 	/**
 	 * Sum the total number of votes
