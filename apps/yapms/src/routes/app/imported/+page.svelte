@@ -22,7 +22,9 @@
 </script>
 
 {#if $ImportedSVGStore.loaded === false}
-	<h1>Loading Map...</h1>
+	<div class="flex justify-center w-full h-full">
+		<span class="loading loading-ring loading-lg text-primary"></span>
+	</div>
 {:else}
 	<div
 		use:setupMap
