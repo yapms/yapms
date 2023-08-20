@@ -1,7 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import { newImportedMap } from '$lib/utils/importMap';
-	const importPage = $page.url.pathname === '/app/imported';
 	import {
 		ClearMapModalStore,
 		CandidateModalStore,
@@ -9,7 +7,6 @@
 		OptionsModalStore,
 		ShareModalStore,
 		LoginModalStore,
-		ShareDisabledModalStore,
 		ThemeModalStore
 	} from '$lib/stores/Modals';
 	import { ModeStore } from '$lib/stores/Mode';
@@ -49,13 +46,6 @@
 		});
 	}
 
-	function openShareDisabled() {
-		ShareDisabledModalStore.set({
-			...$ShareDisabledModalStore,
-			open: true
-		});
-	}
-
 	function openTheme() {
 		ThemeModalStore.set({
 			...$ThemeModalStore,
@@ -84,11 +74,7 @@
 	<button class="btn btn-sm" on:click={newImportedMap}>import</button>
 	<button class="btn btn-sm" on:click={openOptions}>options</button>
 	<button class="btn btn-sm" on:click={openMode}>mode: {$ModeStore}</button>
-	{#if importPage}
-		<button class="btn btn-sm" on:click={openShareDisabled}>share</button>
-	{:else}
-		<button class="btn btn-sm" on:click={openShare}>share</button>
-	{/if}
+	<button class="btn btn-sm" on:click={openShare}>share</button>
 	<button class="btn btn-sm" on:click={openTheme}>theme</button>
 	<button class="btn btn-sm" on:click={openLogin}>login</button>
 	<div class="grow" />

@@ -13,7 +13,6 @@
 	import AuthModal from '$lib/components/modals/authmodal/AuthModal.svelte';
 	import LoadingErrorModal from '$lib/components/modals/loadingerrormodal/LoadingErrorModal.svelte';
 	import ShareModal from '$lib/components/modals/sharemodal/ShareModal.svelte';
-	import ShareDisabledModal from '$lib/components/modals/sharedisabledmodal/ShareDisabledModal.svelte';
 	import ImportModal from '$lib/components/modals/importmodal/ImportModal.svelte';
 	import CandidateModal from '$lib/components/modals/candidatemodal/CandidateModal.svelte';
 	import { InteractionStore } from '$lib/stores/Interaction';
@@ -97,7 +96,5 @@
 <LoadingErrorModal />
 
 <ShareModal />
-
-<ShareDisabledModal />
 
 <ImportModal />

@@ -14,6 +14,7 @@
 	import { PUBLIC_TURNSTILE_SITE } from '$env/static/public';
 	import { fade } from 'svelte/transition';
 	import ModalBase from '../ModalBase.svelte';
+	import { path } from 'd3';
 
 	let files: FileList;
 
@@ -113,7 +114,9 @@
 				<button
 					class="btn btn-secondary gap-1 flex-nowrap"
 					on:click={generateLink}
-					disabled={fetchingLink || turnstileToken === null}
+					disabled={fetchingLink ||
+						turnstileToken === null ||
+						$page.url.pathname === '/app/imported'}
 				>
 					<Link class="w-5 h-5" />
 					<span>Generate Link</span>
@@ -155,13 +158,15 @@
 		</button>
 	</div>
 	<div slot="action">
-		<Turnstile
-			siteKey={PUBLIC_TURNSTILE_SITE}
-			on:turnstile-callback={onTurnstileSuccess}
-			on:turnstile-expired={onTurnstileExpired}
-			on:turnstile-timeout={onTurnstileTimeout}
-			on:turnstile-error={onTurnstileError}
-			bind:reset={turnstileResetBind}
-		/>
+		{#if $page.url.pathname !== '/app/imported'}
+			<Turnstile
+				siteKey={PUBLIC_TURNSTILE_SITE}
+				on:turnstile-callback={onTurnstileSuccess}
+				on:turnstile-expired={onTurnstileExpired}
+				on:turnstile-timeout={onTurnstileTimeout}
+				on:turnstile-error={onTurnstileError}
+				bind:reset={turnstileResetBind}
+			/>
+		{/if}
 	</div>
 </ModalBase>
