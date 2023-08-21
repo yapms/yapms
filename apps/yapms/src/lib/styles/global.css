@@ -7,7 +7,6 @@ body {
 	width: 100dvw;
 	height: 100dvh;
 	overflow: hidden;
-	touch-action: none;
 }
 
 [data-svelte-typeahead] {
