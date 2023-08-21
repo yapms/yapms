@@ -18,20 +18,34 @@ function lockMap(lock: boolean) {
 	}
 }
 
-function applyPanZoom(svg: SVGElement) {
+function applyPanZoom(svg: SVGSVGElement) {
 	if (panZoomSettings !== undefined) {
 		panZoomSettings.panzoom.dispose();
 	}
+	const bb = svg.getBBox();
+	svg.setAttribute('viewBox', '0 0 ' + (bb.x + bb.width + bb.x) + ' ' + (bb.y + bb.height + bb.y));
+	let handler: NodeJS.Timeout | undefined;
+
 	const panzoomInstance = panzoom(svg, {
-		minZoom: 0.5,
-		maxZoom: 100,
+		transformOrigin: { x: 0.5, y: 0.5 },
 		autocenter: true,
 		zoomDoubleClickSpeed: 1,
 		smoothScroll: false,
+		initialX: (svg.parentElement?.offsetWidth ?? 0) / 2,
+		initialY: (svg.parentElement?.offsetHeight ?? 0) / 2,
+		initialZoom: 0.85,
+		zoomSpeed: 0.05,
 		onTouch: (event) => {
 			if (event.touches.length === 2) {
 				event.preventDefault();
 			}
+			console.log(panzoomInstance.getTransform().scale);
+			clearTimeout(handler);
+			handler = setTimeout(() => {
+				if (svg.parentElement) {
+					//svg.parentElement.style.transform = `scale(${1 / panzoomInstance.getTransform().scale})`;
+				}
+			}, 100);
 			return false;
 		}
 	});

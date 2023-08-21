@@ -37,7 +37,7 @@
 	let isLoaded = false;
 
 	function setupMap(node: HTMLDivElement) {
-		const svg = node.querySelector<SVGElement>('svg');
+		const svg = node.querySelector<SVGSVGElement>('svg');
 		if (svg !== null) {
 			applyPanZoom(svg);
 			applyAutoStroke(svg);
@@ -60,7 +60,7 @@
 		<div
 			use:setupMap
 			id="map-div"
-			class="overflow-hidden h-full"
+			class="overflow-hidden h-full w-full"
 			class:insets-hidden={$MapInsetsStore.hidden}
 		>
 			{@html importedMap.default}
