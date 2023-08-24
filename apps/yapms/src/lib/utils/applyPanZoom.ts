@@ -3,8 +3,8 @@ import panzoom, { type PanZoom } from 'panzoom';
 import { get } from 'svelte/store';
 import z from 'zod';
 
-let panZoomSettings: { panzoom: PanZoom; svg: SVGElement } | undefined;
-let autoStrokeSettings: { initStroke: number; upperStroke: number; svg: SVGElement } | undefined;
+let panZoomSettings: { panzoom: PanZoom; svg: SVGSVGElement } | undefined;
+let autoStrokeSettings: { initStroke: number; upperStroke: number; svg: SVGSVGElement } | undefined;
 
 LockMapStore.subscribe((locked) => {
 	lockMap(locked);
@@ -55,7 +55,7 @@ function applyPanZoom(svg: SVGSVGElement) {
 	connectZoomAndStroke();
 }
 
-function applyAutoStroke(svg: SVGElement) {
+function applyAutoStroke(svg: SVGSVGElement) {
 	if (svg.hasAttribute('auto-border-stroke-width') === false) {
 		return;
 	}
