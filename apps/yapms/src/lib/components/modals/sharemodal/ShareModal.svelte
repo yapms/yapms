@@ -14,7 +14,6 @@
 	import { PUBLIC_TURNSTILE_SITE } from '$env/static/public';
 	import { fade } from 'svelte/transition';
 	import ModalBase from '../ModalBase.svelte';
-	import { path } from 'd3';
 
 	let files: FileList;
 
