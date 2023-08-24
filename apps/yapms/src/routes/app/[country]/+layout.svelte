@@ -53,7 +53,9 @@
 
 {#if currentMap !== undefined}
 	{#await currentMap()}
-		<h1>Loading Map...</h1>
+		<div class="flex justify-center w-full h-full">
+			<span class="loading loading-ring loading-lg text-primary"></span>
+		</div>
 	{:then importedMap}
 		<div
 			use:setupMap
