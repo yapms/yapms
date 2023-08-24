@@ -59,7 +59,7 @@
 	});
 
 	function setupMap(node: HTMLDivElement) {
-		const svg = node.querySelector<SVGElement>('svg');
+		const svg = node.querySelector<SVGSVGElement>('svg');
 		if (svg !== null) {
 			applyAutoStroke(svg);
 		}
