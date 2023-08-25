@@ -16,5 +16,3 @@
 	<meta property="og:image" content={imageURI} />
 	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
-
-<div>Please wait while we redirect you to the map you requested...</div>
