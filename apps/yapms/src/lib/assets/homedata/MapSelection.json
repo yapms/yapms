@@ -777,6 +777,234 @@
 		"title": "State/Provincial Maps",
 		"cards": [
 			{
+				"name": "U.S State Senates",
+				"bg": "usastatesenate",
+				"alt": "The Utah State Legislature",
+				"doubleCols": true,
+				"attribution": "Photo by Tyler Moore",
+				"links": [
+					{
+						"label": "Virginia",
+						"route": "/app/usa_state/va_upper/2023/blank"
+					},
+					{
+						"label": "New Jersey",
+						"route": "/app/usa_state/nj_upper/2023/blank"
+					},
+					{
+						"label": "Mississippi",
+						"route": "/app/usa_state/ms_upper/2023/blank"
+					}
+				],
+				"modals": [
+					{
+						"label": "More",
+						"buttons": [
+							{
+								"route": "/app/usa_state/al_upper/2022/blank",
+								"label": "Alabama 2022"
+							},
+							{
+								"route": "/app/usa_state/ak_upper/2022/blank",
+								"label": "Alaska 2022"
+							},
+							{
+								"route": "/app/usa_state/az_upper/2022/blank",
+								"label": "Arizona 2022"
+							},
+							{
+								"route": "/app/usa_state/ar_upper/2022/blank",
+								"label": "Arkansas 2022"
+							},
+							{
+								"route": "/app/usa_state/ca_upper/2022/blank",
+								"label": "California 2022"
+							},
+							{
+								"route": "/app/usa_state/co_upper/2022/blank",
+								"label": "Colorado 2022"
+							},
+							{
+								"route": "/app/usa_state/ct_upper/2022/blank",
+								"label": "Connecticut 2022"
+							},
+							{
+								"route": "/app/usa_state/de_upper/2022/blank",
+								"label": "Delaware 2022"
+							},
+							{
+								"route": "/app/usa_state/fl_upper/2022/blank",
+								"label": "Florida 2022"
+							},
+							{
+								"route": "/app/usa_state/ga_upper/2022/blank",
+								"label": "Georgia 2022"
+							},
+							{
+								"route": "/app/usa_state/hi_upper/2022/blank",
+								"label": "Hawaii 2022"
+							},
+							{
+								"route": "/app/usa_state/id_upper/2022/blank",
+								"label": "Idaho 2022"
+							},
+							{
+								"route": "/app/usa_state/il_upper/2022/blank",
+								"label": "Illinois 2022"
+							},
+							{
+								"route": "/app/usa_state/in_upper/2022/blank",
+								"label": "Indiana 2022"
+							},
+							{
+								"route": "/app/usa_state/ia_upper/2022/blank",
+								"label": "Iowa 2022"
+							},
+							{
+								"route": "/app/usa_state/ks_upper/2022/blank",
+								"label": "Kansas 2022"
+							},
+							{
+								"route": "/app/usa_state/ky_upper/2022/blank",
+								"label": "Kentucky 2022"
+							},
+							{
+								"route": "/app/usa_state/la_upper/2023/blank",
+								"label": "Louisiana 2023"
+							},
+							{
+								"route": "/app/usa_state/me_upper/2022/blank",
+								"label": "Maine 2022"
+							},
+							{
+								"route": "/app/usa_state/md_upper/2022/blank",
+								"label": "Maryland 2022"
+							},
+							{
+								"route": "/app/usa_state/ma_upper/2022/blank",
+								"label": "Massachusetts 2022"
+							},
+							{
+								"route": "/app/usa_state/mi_upper/2022/blank",
+								"label": "Michigan 2022"
+							},
+							{
+								"route": "/app/usa_state/mn_upper/2022/blank",
+								"label": "Minnesota 2022"
+							},
+							{
+								"route": "/app/usa_state/ms_upper/2023/blank",
+								"label": "Mississippi 2023"
+							},
+							{
+								"route": "/app/usa_state/mo_upper/2022/blank",
+								"label": "Missouri 2022"
+							},
+							{
+								"route": "/app/usa_state/mt_upper/2022/blank",
+								"label": "Montana 2022"
+							},
+							{
+								"route": "/app/usa_state/ne_upper/2022/blank",
+								"label": "Nebraska 2022"
+							},
+							{
+								"route": "/app/usa_state/nv_upper/2022/blank",
+								"label": "Nevada 2022"
+							},
+							{
+								"route": "/app/usa_state/nh_upper/2022/blank",
+								"label": "New Hampshire 2022"
+							},
+							{
+								"route": "/app/usa_state/nj_upper/2023/blank",
+								"label": "New Jersey 2023"
+							},
+							{
+								"route": "/app/usa_state/nm_upper/2022/blank",
+								"label": "New Mexico 2022"
+							},
+							{
+								"route": "/app/usa_state/ny_upper/2022/blank",
+								"label": "New York 2022"
+							},
+							{
+								"route": "/app/usa_state/nc_upper/2022/blank",
+								"label": "North Carolina 2022"
+							},
+							{
+								"route": "/app/usa_state/nd_upper/2022/blank",
+								"label": "North Dakota 2022"
+							},
+							{
+								"route": "/app/usa_state/oh_upper/2022/blank",
+								"label": "Ohio 2022"
+							},
+							{
+								"route": "/app/usa_state/ok_upper/2022/blank",
+								"label": "Oklahoma 2022"
+							},
+							{
+								"route": "/app/usa_state/or_upper/2022/blank",
+								"label": "Oregon 2022"
+							},
+							{
+								"route": "/app/usa_state/pa_upper/2022/blank",
+								"label": "Pennsylvania 2022"
+							},
+							{
+								"route": "/app/usa_state/ri_upper/2022/blank",
+								"label": "Rhode Island 2022"
+							},
+							{
+								"route": "/app/usa_state/sc_upper/2022/blank",
+								"label": "South Carolina 2022"
+							},
+							{
+								"route": "/app/usa_state/sd_upper/2022/blank",
+								"label": "South Dakota 2022"
+							},
+							{
+								"route": "/app/usa_state/tn_upper/2022/blank",
+								"label": "Tennessee 2022"
+							},
+							{
+								"route": "/app/usa_state/tx_upper/2022/blank",
+								"label": "Texas 2022"
+							},
+							{
+								"route": "/app/usa_state/ut_upper/2022/blank",
+								"label": "Utah 2022"
+							},
+							{
+								"route": "/app/usa_state/vt_upper/2022/blank",
+								"label": "Vermont 2022"
+							},
+							{
+								"route": "/app/usa_state/va_upper/2023/blank",
+								"label": "Virginia 2023"
+							},
+							{
+								"route": "/app/usa_state/wa_upper/2022/blank",
+								"label": "Washington 2022"
+							},
+							{
+								"route": "/app/usa_state/wv_upper/2022/blank",
+								"label": "West Virginia 2022"
+							},
+							{
+								"route": "/app/usa_state/wi_upper/2022/blank",
+								"label": "Wisconsin 2022"
+							},
+							{
+								"route": "/app/usa_state/wy_upper/2022/blank",
+								"label": "Wyoming 2022"
+							}
+						]
+					}
+				]
+			},
+			{
 				"name": "U.S State Houses",
 				"bg": "usastatehouse",
 				"alt": "The California State Assembly",

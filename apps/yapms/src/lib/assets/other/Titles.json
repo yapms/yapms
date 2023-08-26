@@ -696,6 +696,206 @@
 		"title": "Wyoming 2022 House of Representatives"
 	},
 	{
+		"path": "/app/usa_state/al_upper/2022/blank",
+		"title": "Alabama 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/ak_upper/2022/blank",
+		"title": "Alaska 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/az_upper/2022/blank",
+		"title": "Arizona 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/ar_upper/2022/blank",
+		"title": "Arkansas 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/ca_upper/2022/blank",
+		"title": "California 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/co_upper/2022/blank",
+		"title": "Colorado 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/ct_upper/2022/blank",
+		"title": "Connecticut 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/de_upper/2022/blank",
+		"title": "Delaware 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/fl_upper/2022/blank",
+		"title": "Florida 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/ga_upper/2022/blank",
+		"title": "Georgia 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/hi_upper/2022/blank",
+		"title": "Hawaii 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/id_upper/2022/blank",
+		"title": "Idaho 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/il_upper/2022/blank",
+		"title": "Illinois 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/in_upper/2022/blank",
+		"title": "Indiana 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/ia_upper/2022/blank",
+		"title": "Iowa 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/ks_upper/2022/blank",
+		"title": "Kansas 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/ky_upper/2022/blank",
+		"title": "Kentucky 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/la_upper/2023/blank",
+		"title": "Louisiana 2023 State Senate"
+	},
+	{
+		"path": "/app/usa_state/me_upper/2022/blank",
+		"title": "Maine 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/md_upper/2022/blank",
+		"title": "Maryland 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/ma_upper/2022/blank",
+		"title": "Massachusetts 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/mi_upper/2022/blank",
+		"title": "Michigan 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/mn_upper/2022/blank",
+		"title": "Minnesota 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/ms_upper/2023/blank",
+		"title": "Mississippi 2023 State Senate"
+	},
+	{
+		"path": "/app/usa_state/mo_upper/2022/blank",
+		"title": "Missouri 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/mt_upper/2022/blank",
+		"title": "Montana 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/ne_upper/2022/blank",
+		"title": "Nebraska 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/nv_upper/2022/blank",
+		"title": "Nevada 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/nh_upper/2022/blank",
+		"title": "New Hampshire 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/nj_upper/2023/blank",
+		"title": "New Jersey 2023 State Senate"
+	},
+	{
+		"path": "/app/usa_state/nm_upper/2022/blank",
+		"title": "New Mexico 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/ny_upper/2022/blank",
+		"title": "New York 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/nc_upper/2022/blank",
+		"title": "North Carolina 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/nd_upper/2022/blank",
+		"title": "North Dakota 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/oh_upper/2022/blank",
+		"title": "Ohio 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/ok_upper/2022/blank",
+		"title": "Oklahoma 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/or_upper/2022/blank",
+		"title": "Oregon 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/pa_upper/2022/blank",
+		"title": "Pennsylvania 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/ri_upper/2022/blank",
+		"title": "Rhode Island 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/sc_upper/2022/blank",
+		"title": "South Carolina 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/sd_upper/2022/blank",
+		"title": "South Dakota 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/tn_upper/2022/blank",
+		"title": "Tennessee 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/tx_upper/2022/blank",
+		"title": "Texas 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/ut_upper/2022/blank",
+		"title": "Utah 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/vt_upper/2022/blank",
+		"title": "Vermont 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/va_upper/2023/blank",
+		"title": "Virginia 2023 State Senate"
+	},
+	{
+		"path": "/app/usa_state/wa_upper/2022/blank",
+		"title": "Washington 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/wv_upper/2022/blank",
+		"title": "West Virginia 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/wi_upper/2022/blank",
+		"title": "Wisconsin 2022 State Senate"
+	},
+	{
+		"path": "/app/usa_state/wy_upper/2022/blank",
+		"title": "Wyoming 2022 State Senate"
+	},
+	{
 		"path": "/app/dnk/folketing/2022/blank",
 		"title": "Danish 2022 Folketing"
 	},
