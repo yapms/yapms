@@ -14,10 +14,14 @@ import {
 	TossupCandidateStoreDefault,
 	SelectedCandidateStore
 } from '$lib/stores/Candidates';
+import {
+	OriginalSourceStore
+} from '$lib/stores/OriginalSource';
 import type Region from '$lib/types/Region';
 import { ModeSchema } from '$lib/types/Mode';
 import { CandidateSchema } from '$lib/types/Candidate';
 import { RegionCandidatesSchema } from '$lib/types/Region';
+import { z } from 'zod';
 
 function createDefaultModeStore(node: HTMLDivElement) {
 	const defaultModeAttribute = node.querySelector('svg')?.getAttribute('default-mode');
@@ -146,12 +150,32 @@ function createRegionStore(node: HTMLDivElement) {
 	RegionsStore.set(regionsForStore);
 }
 
+function createOriginalSourceStore(node: HTMLDivElement) {
+	const svg = node.querySelector<SVGElement>('svg');
+	if (svg === null) {
+		return;
+	}
+	const originalSource = svg.getAttribute("original-source");
+	console.error(originalSource);
+	if (originalSource === null) {
+		return;
+	}
+	try {
+		const result = z.string().array().parse(JSON.parse(originalSource));
+		OriginalSourceStore.set(result);
+	} catch (error) {
+		console.error('error parsing original-source attribute:\n\n' + error);
+		OriginalSourceStore.set([]);
+	}
+}
+
 export function loadRegionsForApp(node: HTMLDivElement): void {
 	createCandidateStore(node);
 	createTossupCandidateStore(node);
 	createSelectedCandidateStore();
 	createDefaultModeStore(node);
 	createRegionStore(node);
+	createOriginalSourceStore(node);
 	setCursorStyle();
 	setTransitionStyle();
 	setPointerEvents();
