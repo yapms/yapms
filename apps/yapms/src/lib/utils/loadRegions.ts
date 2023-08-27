@@ -156,7 +156,6 @@ function createOriginalSourceStore(node: HTMLDivElement) {
 		return;
 	}
 	const originalSource = svg.getAttribute("original-source");
-	console.error(originalSource);
 	if (originalSource === null) {
 		return;
 	}
