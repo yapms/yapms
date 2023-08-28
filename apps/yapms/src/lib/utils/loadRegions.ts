@@ -14,9 +14,7 @@ import {
 	TossupCandidateStoreDefault,
 	SelectedCandidateStore
 } from '$lib/stores/Candidates';
-import {
-	OriginalSourceStore
-} from '$lib/stores/OriginalSource';
+import { OriginalSourceStore } from '$lib/stores/OriginalSource';
 import type Region from '$lib/types/Region';
 import { ModeSchema } from '$lib/types/Mode';
 import { CandidateSchema } from '$lib/types/Candidate';
@@ -152,10 +150,11 @@ function createRegionStore(node: HTMLDivElement) {
 
 function createOriginalSourceStore(node: HTMLDivElement) {
 	const svg = node.querySelector<SVGElement>('svg');
+
 	if (svg === null) {
 		return;
 	}
-	const originalSource = svg.getAttribute("original-source");
+	const originalSource = svg.getAttribute('original-source');
 	if (originalSource === null) {
 		return;
 	}
