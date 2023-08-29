@@ -1,10 +1,15 @@
 <script lang="ts">
-	import { AddCandidateModalStore, PresetColorsModalStore } from '$lib/stores/Modals';
+	import { CustomColorsStore } from '$lib/stores/CustomColors';
+	import {
+		AddCandidateModalStore,
+		PresetColorsModalStore,
+		AddCustomColorModalStore
+	} from '$lib/stores/Modals';
 	import ModalBase from '../ModalBase.svelte';
 
 	let tab = 0;
 
-	const groups = [
+	$: groups = [
 		{
 			name: 'Classic',
 			colors: [
@@ -53,6 +58,15 @@
 					margins: ['#002b84', '#234a99', '#466aad', '#6a89c2', '#8da8d6', '#b0c8eb', '#d3e7ff']
 				}
 			]
+		},
+		{
+			name: 'Custom',
+			colors: $CustomColorsStore.map((color, index) => {
+				return {
+					name: `Custom ${index}`,
+					margins: color
+				};
+			})
 		}
 	];
 
@@ -62,7 +76,15 @@
 		tab = index;
 	}
 
+	function addCustomColor() {
+		$AddCustomColorModalStore.open = true;
+		$PresetColorsModalStore.open = false;
+	}
+
 	function close() {
+		if ($AddCustomColorModalStore.open === true) {
+			return;
+		}
 		$PresetColorsModalStore.open = false;
 		$AddCandidateModalStore.open = true;
 	}
@@ -77,7 +99,7 @@
 </script>
 
 <ModalBase title="Select Preset Colors" store={PresetColorsModalStore} onClose={close}>
-	<div slot="content">
+	<div slot="header">
 		<div class="tabs pb-4 justify-center">
 			{#each groups as group, index}
 				<button
@@ -89,7 +111,8 @@
 				</button>
 			{/each}
 		</div>
-
+	</div>
+	<div slot="content">
 		<div class="flex flex-row gap-3 flex-wrap justify-center">
 			{#each currentGroup.colors as color}
 				<button class="btn btn-lg" on:click={() => confirm(color.margins)}>
@@ -107,5 +130,10 @@
 				</button>
 			{/each}
 		</div>
+	</div>
+	<div slot="action">
+		{#if currentGroup.name === 'Custom'}
+			<button class="btn btn-success" on:click={addCustomColor}>Add</button>
+		{/if}
 	</div>
 </ModalBase>
