@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Cog6Tooth from '$lib/icons/Cog6Tooth.svelte';
+	import MinusCircle from '$lib/icons/MinusCircle.svelte';
 	import { CustomColorsStore } from '$lib/stores/CustomColors';
 	import {
 		AddCandidateModalStore,
@@ -63,7 +65,7 @@
 			name: 'Custom',
 			colors: $CustomColorsStore.map((color, index) => {
 				return {
-					name: `Custom ${index}`,
+					name: `Custom ${index + 1}`,
 					margins: color
 				};
 			})
@@ -79,6 +81,10 @@
 	function addCustomColor() {
 		$AddCustomColorModalStore.open = true;
 		$PresetColorsModalStore.open = false;
+	}
+
+	function removeCustomColor(index: number) {
+		$CustomColorsStore = $CustomColorsStore.toSpliced(index, 1);
 	}
 
 	function close() {
@@ -113,21 +119,37 @@
 		</div>
 	</div>
 	<div slot="content">
-		<div class="flex flex-row gap-3 flex-wrap justify-center">
-			{#each currentGroup.colors as color}
-				<button class="btn btn-lg" on:click={() => confirm(color.margins)}>
-					<div class="flex flex-col gap-2">
-						<h3>{color.name}</h3>
-						<div class="flex flex-row gap-2">
-							{#each color.margins as margin}
-								<div
-									class="outline outline-1 outline-white w-4 h-4 rounded-full"
-									style:background-color={margin}
-								/>
-							{/each}
+		<div class="flex flex-col gap-2 flex-wrap justify-center">
+			{#each currentGroup.colors as color, index}
+				<div class="join max-w-full">
+					{#if tab === 2}
+						<button
+							class="btn join-item btn-primary btn-lg"
+							on:click={() => removeCustomColor(index)}><Cog6Tooth class="w-6 h-6" /></button
+						>
+					{/if}
+					<button
+						class="btn join-item btn-glass btn-lg flex-grow"
+						on:click={() => confirm(color.margins)}
+					>
+						<div class="flex flex-col gap-2">
+							<h3>{color.name}</h3>
+							<div class="flex flex-row flex-wrap break-all gap-2">
+								{#each color.margins as margin}
+									<div
+										class="outline outline-1 outline-white w-4 h-4 rounded-full"
+										style:background-color={margin}
+									/>
+								{/each}
+							</div>
 						</div>
-					</div>
-				</button>
+					</button>
+					{#if tab === 2}
+						<button class="btn join-item btn-error btn-lg" on:click={() => removeCustomColor(index)}
+							><MinusCircle class="w-6 h-6" /></button
+						>
+					{/if}
+				</div>
 			{/each}
 		</div>
 	</div>

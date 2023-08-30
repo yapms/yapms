@@ -1,7 +1,10 @@
 <script lang="ts">
+	import MinusCircle from '$lib/icons/MinusCircle.svelte';
+	import PlusCircle from '$lib/icons/PlusCircle.svelte';
 	import { CustomColorsStore } from '$lib/stores/CustomColors';
 	import { AddCustomColorModalStore, PresetColorsModalStore } from '$lib/stores/Modals';
 	import ModalBase from '../ModalBase.svelte';
+	import CustomColor from './AddCustomColorModal/CustomColor.svelte';
 
 	function close() {
 		$AddCustomColorModalStore.open = false;
@@ -13,16 +16,6 @@
 		$AddCustomColorModalStore.newColors = [...$AddCustomColorModalStore.newColors, '#000000'];
 	}
 
-	function removeColor() {
-		$AddCustomColorModalStore.newColors = $AddCustomColorModalStore.newColors.slice(
-			0,
-			$AddCustomColorModalStore.newColors.length - 1
-		);
-		if ($AddCustomColorModalStore.newColors.length === 0) {
-			$AddCustomColorModalStore.newColors = ['#000000'];
-		}
-	}
-
 	function add() {
 		$CustomColorsStore = [...$CustomColorsStore, $AddCustomColorModalStore.newColors];
 		close();
@@ -31,21 +24,16 @@
 
 <ModalBase title="Add Custom Color" store={AddCustomColorModalStore} onClose={close}>
 	<div slot="content">
-		<div class="flex flex-row flex-wrap gap-2">
+		<div class="flex flex-row flex-wrap gap-2 items-center">
 			{#each $AddCustomColorModalStore.newColors as color, index}
-				<input
-					type="color"
-					value={color}
-					on:change={(change) => {
-						$AddCustomColorModalStore.newColors[index] = change.currentTarget.value;
-					}}
-				/>
+				<CustomColor {color} {index} />
 			{/each}
+			<button class="btn btn-sm btn-success" on:click={addColor}
+				><PlusCircle class="w-6 h-6" /></button
+			>
 		</div>
 	</div>
 	<div slot="action">
-		<button class="btn btn-error" on:click={removeColor}>remove color</button>
-		<button class="btn btn-success" on:click={addColor}>add color</button>
-		<button class="btn btn-success" on:click={add}>confirm</button>
+		<button class="btn btn-success" on:click={add}>add</button>
 	</div>
 </ModalBase>
