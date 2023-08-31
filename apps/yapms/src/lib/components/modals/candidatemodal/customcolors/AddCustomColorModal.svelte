@@ -1,10 +1,9 @@
 <script lang="ts">
-	import MinusCircle from '$lib/icons/MinusCircle.svelte';
 	import PlusCircle from '$lib/icons/PlusCircle.svelte';
 	import { CustomColorsStore } from '$lib/stores/CustomColors';
 	import { AddCustomColorModalStore, PresetColorsModalStore } from '$lib/stores/Modals';
-	import ModalBase from '../ModalBase.svelte';
-	import CustomColor from './AddCustomColorModal/CustomColor.svelte';
+	import ModalBase from '../../ModalBase.svelte';
+	import CustomColor from './CustomColor.svelte';
 
 	function close() {
 		$AddCustomColorModalStore.open = false;
