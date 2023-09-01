@@ -4,11 +4,12 @@
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
 	import { SideBarStore } from '$lib/stores/SideBar';
 	import { reapplyPanZoom } from '$lib/utils/applyPanZoom';
-	import SavedMaps from './sections/savedmaps/SavedMaps.svelte';
 	import { faReddit, faTwitter } from '@fortawesome/free-brands-svg-icons';
 	import { afterUpdate } from 'svelte';
 	import Fa from 'svelte-fa';
 	import Shortcuts from './sections/shortcuts/Shortcuts.svelte';
+	import SavedMaps from './sections/savedmaps/SavedMaps.svelte';
+	import Sources from './sections/sources/Sources.svelte';
 
 	$: title = titles.find((elem) => elem.path === $page.url.pathname)?.title ?? 'YAPms';
 
@@ -33,5 +34,6 @@
 		{#if $PocketBaseStore.authStore.isValid}
 			<SavedMaps />
 		{/if}
+		<Sources />
 	</div>
 {/if}
