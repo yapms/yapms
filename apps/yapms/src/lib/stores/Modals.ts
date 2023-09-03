@@ -55,6 +55,12 @@ const AddCustomColorModalStore = writable({
 	newColors: ['#000000']
 });
 
+const EditCustomColorModalStore = writable({
+	open: false,
+	customColor: ['#000000'],
+	customColorIndex: 0
+});
+
 const OptionsModalStore = writable({
 	open: false
 });
@@ -101,6 +107,7 @@ export {
 	AddCandidateModalStore,
 	PresetColorsModalStore,
 	AddCustomColorModalStore,
+	EditCustomColorModalStore,
 	OptionsModalStore,
 	ModeModalStore,
 	ShareModalStore,

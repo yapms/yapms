@@ -11,6 +11,15 @@
 		$AddCustomColorModalStore.newColors = ['#000000'];
 	}
 
+	function deleteColor(index: number) {
+		$AddCustomColorModalStore.newColors.splice(index, 1);
+		$AddCustomColorModalStore.newColors = $AddCustomColorModalStore.newColors;
+	}
+
+	function changeColor(index: number, color: string) {
+		$AddCustomColorModalStore.newColors[index] = color;
+	}
+
 	function addColor() {
 		$AddCustomColorModalStore.newColors = [...$AddCustomColorModalStore.newColors, '#000000'];
 	}
@@ -23,9 +32,13 @@
 
 <ModalBase title="Add Custom Color" store={AddCustomColorModalStore} onClose={close}>
 	<div slot="content">
-		<div class="flex flex-row flex-wrap gap-2 items-center">
+		<div class="flex flex-row flex-wrap gap-3">
 			{#each $AddCustomColorModalStore.newColors as color, index}
-				<CustomColor {color} {index} />
+				<CustomColor
+					{color}
+					onChange={(color) => changeColor(index, color)}
+					onDelete={() => deleteColor(index)}
+				/>
 			{/each}
 			<button class="btn btn-sm btn-success" on:click={addColor}
 				><PlusCircle class="w-6 h-6" /></button

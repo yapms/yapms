@@ -3,10 +3,11 @@
 	import {
 		AddCandidateModalStore,
 		PresetColorsModalStore,
-		AddCustomColorModalStore
+		AddCustomColorModalStore,
+		EditCustomColorModalStore
 	} from '$lib/stores/Modals';
-	import ModalBase from '../ModalBase.svelte';
-	import ColorButton from './customcolors/ColorButton.svelte';
+	import ModalBase from '../../ModalBase.svelte';
+	import ColorButton from '../customcolors/ColorButton.svelte';
 	import PresetColorsHeader from './PresetColorsHeader.svelte';
 
 	let tab = 0;
@@ -17,15 +18,19 @@
 	}
 
 	function removeCustomColor(index: number) {
-		$CustomColorsStore = $CustomColorsStore.toSpliced(index, 1);
+		$CustomColorsStore.splice(index, 1);
+		$CustomColorsStore = $CustomColorsStore;
 	}
 
 	function editCustomColor(index: number) {
 		$PresetColorsModalStore.open = false;
+		$EditCustomColorModalStore.open = true;
+		$EditCustomColorModalStore.customColorIndex = index;
+		$EditCustomColorModalStore.customColor = $CustomColorsStore.at(index) ?? [];
 	}
 
 	function close() {
-		if ($AddCustomColorModalStore.open === true) {
+		if ($AddCustomColorModalStore.open === true || $EditCustomColorModalStore.open === true) {
 			return;
 		}
 		$PresetColorsModalStore.open = false;
