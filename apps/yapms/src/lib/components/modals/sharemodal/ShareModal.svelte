@@ -110,16 +110,22 @@
 					<ArrowDownTray class="w-5 h-5" />
 					<span>Download</span>
 				</button>
-				<button
-					class="btn btn-secondary gap-1 flex-nowrap"
-					on:click={generateLink}
-					disabled={fetchingLink ||
-						turnstileToken === null ||
-						$page.url.pathname === '/app/imported'}
+				<div
+					class="tooltip-right"
+					class:tooltip={$page.url.pathname === '/app/imported'}
+					data-tip="Can not link to an imported map"
 				>
-					<Link class="w-5 h-5" />
-					<span>Generate Link</span>
-				</button>
+					<button
+						class="btn btn-secondary gap-1 flex-nowrap"
+						on:click={generateLink}
+						disabled={fetchingLink ||
+							turnstileToken === null ||
+							$page.url.pathname === '/app/imported'}
+					>
+						<Link class="w-5 h-5" />
+						<span>Generate Link</span>
+					</button>
+				</div>
 			</div>
 
 			<div class="divider divider-horizontal" />
