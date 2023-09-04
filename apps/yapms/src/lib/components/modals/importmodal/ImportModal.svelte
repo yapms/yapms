@@ -9,6 +9,7 @@
 	import DOMPurify from 'dompurify';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
+	import ExportSvgButton from './ExportSVGButton.svelte';
 
 	let geoJsonFiles: FileList;
 	let shapeFiles: FileList;
@@ -176,5 +177,9 @@
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<div slot="action">
+		<ExportSvgButton />
 	</div>
 </ModalBase>
