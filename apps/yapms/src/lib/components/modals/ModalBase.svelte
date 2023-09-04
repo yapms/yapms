@@ -26,7 +26,7 @@
 </script>
 
 <dialog class="modal modal-bottom lg:modal-middle" bind:this={dialog} on:close={close}>
-	<div class="modal-box flex flex-col w-full overflow-visible">
+	<div class="modal-box flex flex-col w-full">
 		<div class="mb-6">
 			<div class="flex gap-x-2 align-middle">
 				<slot name="icon" />
