@@ -28,7 +28,10 @@ function applyPanZoom(svg: SVGElement) {
 		autocenter: true,
 		zoomDoubleClickSpeed: 1,
 		smoothScroll: false,
-		onTouch: function () {
+		onTouch: (event) => {
+			if (event.touches.length >= 2) {
+				event.preventDefault();
+			}
 			return false;
 		}
 	});

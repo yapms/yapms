@@ -1,5 +1,6 @@
 <script>
 	import '$lib/styles/global.css';
+	import '@fontsource/roboto/400.css';
 	import { PUBLIC_UMAMI_URI, PUBLIC_UMAMI_DATA_WEBSITE_ID } from '$env/static/public';
 </script>
 

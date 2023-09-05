@@ -1,7 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import { newImportedMap } from '$lib/utils/importMap';
-	const importPage = $page.url.pathname === '/app/imported';
 	import {
 		ClearMapModalStore,
 		CandidateModalStore,
@@ -9,7 +7,6 @@
 		OptionsModalStore,
 		ShareModalStore,
 		LoginModalStore,
-		ShareDisabledModalStore,
 		ThemeModalStore
 	} from '$lib/stores/Modals';
 	import { ModeStore } from '$lib/stores/Mode';
@@ -49,13 +46,6 @@
 		});
 	}
 
-	function openShareDisabled() {
-		ShareDisabledModalStore.set({
-			...$ShareDisabledModalStore,
-			open: true
-		});
-	}
-
 	function openTheme() {
 		ThemeModalStore.set({
 			...$ThemeModalStore,
@@ -75,20 +65,14 @@
 	}
 </script>
 
-<div
-	class="navbar flex-row bg-base-200 gap-3 overflow-x-scroll overflow-y-clip lg:overflow-x-clip min-h-0"
->
+<div class="navbar flex-row bg-base-200 gap-3 overflow-x-auto overflow-y-clip min-h-0 z-10">
 	<a href="/" class="btn btn-sm">home</a>
 	<button class="btn btn-sm btn-error" on:click={openClearMapModal}>clear</button>
 	<button class="btn btn-sm" on:click={openCandidateModal}>candidates</button>
 	<button class="btn btn-sm" on:click={newImportedMap}>import</button>
 	<button class="btn btn-sm" on:click={openOptions}>options</button>
 	<button class="btn btn-sm" on:click={openMode}>mode: {$ModeStore}</button>
-	{#if importPage}
-		<button class="btn btn-sm" on:click={openShareDisabled}>share</button>
-	{:else}
-		<button class="btn btn-sm" on:click={openShare}>share</button>
-	{/if}
+	<button class="btn btn-sm" on:click={openShare}>share</button>
 	<button class="btn btn-sm" on:click={openTheme}>theme</button>
 	<button class="btn btn-sm" on:click={openLogin}>login</button>
 	<div class="grow" />
