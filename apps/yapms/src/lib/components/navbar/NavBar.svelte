@@ -65,9 +65,7 @@
 	}
 </script>
 
-<div
-	class="navbar flex-row bg-base-200 gap-3 overflow-x-auto overflow-y-clip min-h-0 z-10"
->
+<div class="navbar flex-row bg-base-200 gap-3 overflow-x-auto overflow-y-clip min-h-0 z-10">
 	<a href="/" class="btn btn-sm">home</a>
 	<button class="btn btn-sm btn-error" on:click={openClearMapModal}>clear</button>
 	<button class="btn btn-sm" on:click={openCandidateModal}>candidates</button>
