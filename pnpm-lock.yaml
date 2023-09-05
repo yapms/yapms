@@ -30,6 +30,7 @@ importers:
 
   apps/yapms:
     specifiers:
+      '@fontsource/roboto': ^5.0.8
       '@fortawesome/free-brands-svg-icons': ^6.4.0
       '@fortawesome/free-solid-svg-icons': ^6.4.0
       '@sveltejs/adapter-node': ^1.3.1
@@ -74,6 +75,7 @@ importers:
       vite: ^4.4.7
       zod: ^3.21.4
     devDependencies:
+      '@fontsource/roboto': 5.0.8
       '@fortawesome/free-brands-svg-icons': 6.4.0
       '@fortawesome/free-solid-svg-icons': 6.4.0
       '@sveltejs/adapter-node': 1.3.1_@sveltejs+kit@1.22.3
@@ -934,6 +936,10 @@ packages:
   /@eslint/js/8.44.0:
     resolution: {integrity: sha512-Ag+9YM4ocKQx9AarydN0KY2j0ErMHNIocPDrVo8zAE44xLTjEtz81OdR68/cydGtk6m6jDb5Za3r2useMzYmSw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    dev: true
+
+  /@fontsource/roboto/5.0.8:
+    resolution: {integrity: sha512-XxPltXs5R31D6UZeLIV1td3wTXU3jzd3f2DLsXI8tytMGBkIsGcc9sIyiupRtA8y73HAhuSCeweOoBqf6DbWCA==}
     dev: true
 
   /@fortawesome/fontawesome-common-types/6.4.0:
