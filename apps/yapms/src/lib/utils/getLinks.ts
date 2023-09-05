@@ -1,10 +1,9 @@
 import { PocketBaseStore } from '$lib/stores/PocketBase';
 import type ExternalLink from '$lib/types/ExternalLink';
-import type { Record } from 'pocketbase';
 import { get } from 'svelte/store';
 
 export async function getLinks(category: string) {
-	let links: Record[] = [];
+	let links = Array<ExternalLink>();
 
 	try {
 		const records = await get(PocketBaseStore)
@@ -17,5 +16,5 @@ export async function getLinks(category: string) {
 		console.log(`Failed to fetch links:\n${error}`);
 	}
 
-	return links as ExternalLink[];
+	return links;
 }
