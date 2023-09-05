@@ -3,7 +3,6 @@
 	import * as BrandIcons from '@fortawesome/free-brands-svg-icons';
 	import * as SolidIcons from '@fortawesome/free-solid-svg-icons';
 	import type { Record } from 'pocketbase';
-	import type { IconDefinition, IconPack, IconPrefix } from '@fortawesome/free-brands-svg-icons';
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
 	import { onMount } from 'svelte';
 
