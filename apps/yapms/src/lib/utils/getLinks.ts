@@ -1,9 +1,9 @@
 import { PocketBaseStore } from '$lib/stores/PocketBase';
-import type ExternalLink from '$lib/types/ExternalLink';
+import type { Record } from 'pocketbase';
 import { get } from 'svelte/store';
 
 export async function getLinks(category: string) {
-	let links = Array<ExternalLink>();
+	let links = Array<Record>();
 
 	try {
 		const records = await get(PocketBaseStore)

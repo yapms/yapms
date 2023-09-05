@@ -2,10 +2,10 @@
 	import Fa from 'svelte-fa';
 	import * as BrandIcons from '@fortawesome/free-brands-svg-icons';
 	import * as SolidIcons from '@fortawesome/free-solid-svg-icons';
-	import type ExternalLink from '$lib/types/ExternalLink';
+	import type { Record } from 'pocketbase';
 	import type { IconDefinition, IconPack, IconPrefix } from '@fortawesome/free-brands-svg-icons';
 
-	export let linkPromise: Promise<Array<ExternalLink>>;
+	export let linkPromise: Promise<Array<Record>>;
 
 	let icons = Array<IconDefinition | IconPrefix | IconPack | undefined>();
 

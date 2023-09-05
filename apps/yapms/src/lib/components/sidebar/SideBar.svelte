@@ -4,9 +4,7 @@
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
 	import { SideBarStore } from '$lib/stores/SideBar';
 	import { reapplyPanZoom } from '$lib/utils/applyPanZoom';
-	import { faReddit, faTwitter } from '@fortawesome/free-brands-svg-icons';
 	import { afterUpdate } from 'svelte';
-	import Fa from 'svelte-fa';
 	import Shortcuts from './sections/shortcuts/Shortcuts.svelte';
 	import SavedMaps from './sections/savedmaps/SavedMaps.svelte';
 	import Sources from './sections/sources/Sources.svelte';
