@@ -17,15 +17,13 @@
 
 	let content: HTMLDivElement | undefined;
 	let offsetHeight: number | undefined;
-	let dialog: HTMLDialogElement | undefined;
 
 	$: isOverflow = offsetHeight && offsetHeight < (content?.scrollHeight ?? 0);
-
-	$: if ($store.open) dialog?.showModal();
-	$: if (!$store.open) dialog?.close();
 </script>
 
-<dialog class="modal modal-bottom lg:modal-middle" bind:this={dialog} on:close={close}>
+<input type="checkbox" class="modal-toggle" checked={$store?.open ?? false} />
+
+<dialog class="modal modal-bottom lg:modal-middle" on:close={close}>
 	<div class="modal-box flex flex-col w-full">
 		<div class="mb-6">
 			<div class="flex gap-x-2 align-middle">
