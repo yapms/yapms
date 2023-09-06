@@ -23,7 +23,9 @@
 	import EditCandidateModal from '$lib/components/modals/candidatemodal/EditCandidateModal.svelte';
 	import EditTossupModal from '$lib/components/modals/candidatemodal/EditTossupModal.svelte';
 	import AddCandidateModal from '$lib/components/modals/candidatemodal/AddCandidateModal.svelte';
-	import PresetColorsModal from '$lib/components/modals/candidatemodal/PresetColorsModal.svelte';
+	import PresetColorsModal from '$lib/components/modals/candidatemodal/presetcolors/PresetColorsModal.svelte';
+	import AddCustomColorModal from '$lib/components/modals/candidatemodal/customcolors/AddCustomColorModal.svelte';
+	import EditCustomColorModal from '$lib/components/modals/candidatemodal/customcolors/EditCustomColorModal.svelte';
 	import ThemeModal from '$lib/components/modals/thememodal/ThemeModal.svelte';
 
 	if (browser) {
@@ -83,6 +85,10 @@
 <SplitRegionModal />
 
 <PresetColorsModal />
+
+<AddCustomColorModal />
+
+<EditCustomColorModal />
 
 <OptionsModal />
 

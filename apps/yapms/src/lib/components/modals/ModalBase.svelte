@@ -37,6 +37,8 @@
 			</div>
 		</div>
 
+		<slot name="header" />
+
 		{#if isOverflow}
 			<div class="divider p-0 m-0 h-0" />
 		{/if}
