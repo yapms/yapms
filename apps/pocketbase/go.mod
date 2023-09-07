@@ -3,7 +3,7 @@ module yapms/pocketbase
 go 1.20
 
 require (
-	github.com/pocketbase/dbx v1.10.0
+	github.com/pocketbase/dbx v1.10.1
 	github.com/pocketbase/pocketbase v0.17.0
 )
 
