@@ -35,12 +35,12 @@ export const DOMPurifyConfig = {
 };
 
 async function importFromShapefiles(files: FileList): Promise<void> {
-	const districtShapes = await shapefile.read(files[0].stream().read());
+	const districtShapes = await shapefile.read(files[0].stream());
 	districtShapes.features = [];
 
 	const unresolvedFeatures = [];
 	for (const file of files) {
-		unresolvedFeatures.push(shapefile.read(file.stream().read()));
+		unresolvedFeatures.push(shapefile.read(file.stream()));
 	}
 
 	const resolvedFeatures = await Promise.all(unresolvedFeatures);
