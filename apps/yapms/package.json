@@ -39,7 +39,7 @@
 		"daisyui": "^3.5.0",
 		"dompurify": "^3.0.5",
 		"eslint": "^8.45.0",
-		"eslint-config-prettier": "^8.8.0",
+		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-svelte": "^2.32.4",
 		"file-saver": "^2.0.5",
 		"panzoom": "^9.4.3",
