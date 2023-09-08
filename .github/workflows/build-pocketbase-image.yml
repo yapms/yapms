@@ -2,8 +2,7 @@ name: Build Pocketbase Image
 
 on:
   push:
-    branches:
-      - main
+    tags: [v*]
 
 env:
   REGISTRY: ghcr.io
