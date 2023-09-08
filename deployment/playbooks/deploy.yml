@@ -12,8 +12,8 @@
       with_items:
         - caddy:2.6.4-alpine
         - browserless/chrome:latest
-        - ghcr.io/yapms/yapms-yapms:main
-        - ghcr.io/yapms/yapms-pocketbase:main
+        - ghcr.io/yapms/yapms-yapms:latest
+        - ghcr.io/yapms/yapms-pocketbase:latest
         - mariadb:latest
         - docker.umami.dev/umami-software/umami:mysql-latest
 
@@ -46,7 +46,7 @@
     - name: deploy yapms
       community.docker.docker_container:
         name: yapms
-        image: ghcr.io/yapms/yapms-yapms:main
+        image: ghcr.io/yapms/yapms-yapms:latest
         restart_policy: always
         networks:
           - name: yapms
@@ -54,7 +54,7 @@
     - name: deploy pocketbase
       community.docker.docker_container:
         name: pocketbase
-        image: ghcr.io/yapms/yapms-pocketbase:main
+        image: ghcr.io/yapms/yapms-pocketbase:latest
         restart_policy: always
         networks:
           - name: yapms
