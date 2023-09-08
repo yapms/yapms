@@ -87,9 +87,11 @@
 		//Update candidate object in region store
 		const newRegions = get(RegionsStore);
 		newRegions.forEach((region) => {
-			if (region.candidates[0].candidate.id === id) {
-				//Limit it to objects where candidate object present
-				region.candidates[0].candidate = $CandidatesStore[candidateIndex];
+			for (const candidate of region.candidates) {
+				if (candidate.candidate.id === id) {
+					//Limit it to objects where candidate object present
+					candidate.candidate = $CandidatesStore[candidateIndex];
+				}
 			}
 		});
 		$RegionsStore = newRegions;

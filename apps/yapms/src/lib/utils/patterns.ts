@@ -11,14 +11,14 @@ export function removeAllPatterns() {
 	}
 }
 
-export function makePattern(winners: Array<RegionCandidate>) {
+export function makePattern(candidates: Array<RegionCandidate>) {
 	const pattern = document.createElementNS('http://www.w3.org/2000/svg', 'pattern');
 	pattern.setAttribute('patternUnits', 'userSpaceOnUse');
-	pattern.setAttribute('width', `${10 * winners.length}`);
+	pattern.setAttribute('width', `${10 * candidates.length}`);
 	pattern.setAttribute('height', '10');
 	pattern.setAttribute('patternTransform', 'rotate(45)');
 	let name = 'repeat';
-	winners.forEach((winner, i: number) => {
+	candidates.forEach((winner, i: number) => {
 		const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
 		line.setAttribute('stroke', winner.candidate.margins[0].color);
 		line.setAttribute('x1', `${5 + 10 * i}`);
