@@ -1,10 +1,11 @@
 import type Region from '$lib/types/Region';
-import { calculateLumaHEX } from '$lib/utils/luma';
+import { blendHexForLuma, calculateLumaHEX } from '$lib/utils/luma';
 import { derived, writable, get } from 'svelte/store';
 import { TossupCandidateStore, CandidatesStore } from '../Candidates';
 import { ModeStore } from '../Mode';
 import { disableRegion, editRegion, fillRegion, lockRegion, splitRegion } from './regionActions';
 import { InteractionStore } from '../Interaction';
+import { makePattern, removeAllPatterns } from '$lib/utils/patterns';
 
 /**
  * Stores the state of all regions.
@@ -16,28 +17,9 @@ export const RegionsStore = writable<Region[]>([]);
   update the colors of the regions in the DOM
 */
 RegionsStore.subscribe((regions) => {
-	// reduce extra counts
+	removeAllPatterns();
+
 	regions.forEach((region) => {
-		// get the winner of the district
-		const winner = region.disabled
-			? {
-					candidate: get(TossupCandidateStore),
-					count: 0,
-					margin: 0
-			  }
-			: region.candidates.reduce(
-					(prev, current) => (prev.count > current.count ? prev : current),
-					region.candidates[0]
-			  );
-
-		// set the margin of the new winner
-		let marginIndex = winner.margin ?? 0;
-		if (marginIndex >= winner.candidate.margins.length) {
-			marginIndex = winner.candidate.margins.length - 1;
-		} else if (marginIndex < 0) {
-			marginIndex = 0;
-		}
-
 		// reduce extra counts
 		let totalVotes = region.candidates.reduce(
 			(totalVotes, candidate) => totalVotes + candidate.count,
@@ -61,19 +43,52 @@ RegionsStore.subscribe((regions) => {
 			}
 		}
 
-		region.nodes.region.style.fill = winner.candidate.margins[marginIndex]?.color;
+		// get the winner(s) of the district
+		const maxValue = region.candidates.reduce(
+			(prev, current) => (prev > current.count ? prev : current.count),
+			region.candidates[0].count
+		);
+		const winners = region.disabled
+			? [
+					{
+						candidate: get(TossupCandidateStore),
+						count: 0,
+						margin: 0
+					}
+			  ]
+			: region.candidates.filter((candidate) => candidate.count === maxValue);
+
+		// set the margin of the new winner
+		let marginIndex = winners[0].margin ?? 0;
+		if (marginIndex >= winners[0].candidate.margins.length) {
+			marginIndex = winners[0].candidate.margins.length - 1;
+		} else if (marginIndex < 0) {
+			marginIndex = 0;
+		}
+
+		let fill = '';
+		let lumaColor = '';
+		if (winners.length === 1) {
+			fill = winners[0].candidate.margins[marginIndex]?.color;
+			lumaColor = fill;
+		} else {
+			fill = makePattern(winners);
+			const colors = winners.map((winner) => winner.candidate.margins[0].color);
+			lumaColor = `#${blendHexForLuma(colors)}`;
+		}
+
+		region.nodes.region.style.fill = fill;
 		region.disabled || region.locked || region.permaLocked
 			? (region.nodes.region.style.fillOpacity = '0.25')
 			: (region.nodes.region.style.fillOpacity = '1'); //Transparent if disabled
 		if (region.nodes.button) {
-			region.nodes.button.style.fill = winner.candidate.margins[marginIndex]?.color;
+			region.nodes.button.style.fill = fill;
 			region.disabled || region.locked || region.permaLocked
 				? (region.nodes.button.style.fillOpacity = '0.25')
 				: (region.nodes.button.style.fillOpacity = '1'); //Transparent if disabled
 		}
 		if (region.nodes.text) {
-			region.nodes.text.style.color =
-				calculateLumaHEX(winner.candidate.margins[marginIndex]?.color) > 0.5 ? 'black' : 'white';
+			region.nodes.text.style.color = calculateLumaHEX(lumaColor) > 0.5 ? 'black' : 'white';
 			const valueText = region.nodes.text.querySelector('[value-text]');
 			if (valueText) {
 				valueText.innerHTML = region.value.toString();

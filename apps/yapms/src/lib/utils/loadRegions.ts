@@ -18,7 +18,7 @@ import { OriginalSourceStore } from '$lib/stores/OriginalSource';
 import type Region from '$lib/types/Region';
 import { ModeSchema } from '$lib/types/Mode';
 import { CandidateSchema } from '$lib/types/Candidate';
-import { RegionCandidatesSchema } from '$lib/types/Region';
+import { SavedRegionCandidatesSchema } from '$lib/types/Region';
 import { z } from 'zod';
 
 function createDefaultModeStore(node: HTMLDivElement) {
@@ -76,10 +76,10 @@ function findCandidate(id: string) {
 
 function getCandidatesForRegion(candidateStr: string, value: number) {
 	try {
-		const RegionCandidates = RegionCandidatesSchema.parse(JSON.parse(candidateStr));
+		const SavedRegionCandidates = SavedRegionCandidatesSchema.parse(JSON.parse(candidateStr));
 		let totCount = 0;
 		const candidateArr = [];
-		RegionCandidates.forEach((candidate) => {
+		SavedRegionCandidates.forEach((candidate) => {
 			totCount += candidate.count;
 			candidateArr.push({
 				...candidate,
