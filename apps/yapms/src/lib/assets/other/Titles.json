@@ -37,7 +37,11 @@
 	},
 	{
 		"path": "/app/usa/counties/2023/blank",
-		"title": "USA Counties"
+		"title": "USA Counties 2023"
+	},
+	{
+		"path": "/app/usa/counties/2020/blank",
+		"title": "USA Counties 2020"
 	},
 	{
 		"path": "/app/usa/senate",

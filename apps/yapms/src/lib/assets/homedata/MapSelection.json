@@ -63,8 +63,12 @@
 								"route": "/app/usa/rep_primary/2024/blank"
 							},
 							{
-								"label": "Counties",
+								"label": "Counties 2023",
 								"route": "/app/usa/counties/2023/blank"
+							},
+							{
+								"label": "Counties 2020",
+								"route": "/app/usa/counties/2020/blank"
 							},
 							{
 								"label": "Senate",
