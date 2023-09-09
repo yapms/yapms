@@ -6,7 +6,7 @@ function hexToRGB(hex: string) {
 	return { r, g, b };
 }
 
-function blendHexForLuma(hexes: string[]) {
+function blendHexColors(hexes: string[]) {
 	let rCombined = 0,
 		gCombined = 0,
 		bCombined = 0;
@@ -22,7 +22,7 @@ function blendHexForLuma(hexes: string[]) {
 	rCombined = Math.floor(rCombined);
 	gCombined = Math.floor(gCombined);
 	bCombined = Math.floor(bCombined);
-	return rCombined.toString(16) + gCombined.toString(16) + bCombined.toString(16);
+	return '#' + rCombined.toString(16) + gCombined.toString(16) + bCombined.toString(16);
 }
 
 function calculateLumaRGB(r: number, g: number, b: number): number {
@@ -35,4 +35,4 @@ function calculateLumaHEX(hex: string): number {
 	return result;
 }
 
-export { blendHexForLuma, calculateLumaHEX, calculateLumaRGB };
+export { blendHexColors, calculateLumaHEX, calculateLumaRGB };

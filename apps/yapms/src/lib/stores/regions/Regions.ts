@@ -1,5 +1,5 @@
 import type Region from '$lib/types/Region';
-import { blendHexForLuma, calculateLumaHEX } from '$lib/utils/luma';
+import { blendHexColors, calculateLumaHEX } from '$lib/utils/luma';
 import { derived, writable, get } from 'svelte/store';
 import { TossupCandidateStore, CandidatesStore } from '../Candidates';
 import { ModeStore } from '../Mode';
@@ -74,7 +74,7 @@ RegionsStore.subscribe((regions) => {
 		} else {
 			fill = makePattern(winners);
 			const colors = winners.map((winner) => winner.candidate.margins[0].color);
-			lumaColor = `#${blendHexForLuma(colors)}`;
+			lumaColor = blendHexColors(colors);
 		}
 
 		region.nodes.region.style.fill = fill;
