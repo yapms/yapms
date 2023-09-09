@@ -19,6 +19,18 @@
 		}));
 	});
 
+	$: candidatesCounts2 = $CandidatesStore.map((candidate) => {
+		const init = {
+			name: candidate.name,
+			count: 0,
+			color: candidate.margins[0].color
+		};
+
+		return candidate.margins.reduce((prev, curr) => {
+			return prev;
+		}, init);
+	});
+
 	$: counts =
 		candiatesCounts.length === 2
 			? [...(candiatesCounts.at(0) ?? []), tossupCounts, ...(candiatesCounts.at(1) ?? []).reverse()]
