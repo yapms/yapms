@@ -24,6 +24,12 @@ export const RegionSchema = z.object({
 	})
 });
 
+export const RegionCandidateSchema = z.object({
+	candidate: CandidateSchema,
+	count: z.number(),
+	margin: z.number()
+});
+
 export const SavedRegionSchema = RegionSchema.omit({
 	shortName: true,
 	longName: true,
@@ -39,7 +45,7 @@ export const SavedRegionSchema = RegionSchema.omit({
 		.array()
 });
 
-export const RegionCandidatesSchema = z
+export const SavedRegionCandidatesSchema = z
 	.object({
 		candidate: z.string(),
 		count: z.number().nonnegative(),
@@ -49,6 +55,8 @@ export const RegionCandidatesSchema = z
 
 type Region = z.infer<typeof RegionSchema>;
 
-export type RegionCandidates = z.infer<typeof RegionCandidatesSchema>;
+export type RegionCandidate = z.infer<typeof RegionCandidateSchema>;
+
+export type SavedRegionCandidates = z.infer<typeof SavedRegionCandidatesSchema>;
 
 export default Region;

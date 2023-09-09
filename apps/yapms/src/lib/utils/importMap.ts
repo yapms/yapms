@@ -9,7 +9,7 @@ import { CandidatesStore, TossupCandidateStore } from '$lib/stores/Candidates';
 import { RegionsStore } from '$lib/stores/regions/Regions';
 import { saveAs } from 'file-saver';
 import DOMPurify from 'dompurify';
-import type { RegionCandidates } from '$lib/types/Region';
+import type { SavedRegionCandidates } from '$lib/types/Region';
 
 //This config allows all attributes used by the app to pass through DOMPurify without change.
 //If you are adding an attribute imported maps might need, add it here.
@@ -109,7 +109,7 @@ function exportImportAsSVG(): void {
 		svg.setAttribute('candidates', JSON.stringify(get(CandidatesStore)));
 		svg.setAttribute('tossup-candidate', JSON.stringify(get(TossupCandidateStore)));
 		for (const region of regions) {
-			const candidateAttr: RegionCandidates = [];
+			const candidateAttr: SavedRegionCandidates = [];
 			region.candidates.forEach((elem) => {
 				candidateAttr.push({
 					...elem,

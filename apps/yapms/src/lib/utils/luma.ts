@@ -6,6 +6,25 @@ function hexToRGB(hex: string) {
 	return { r, g, b };
 }
 
+function blendHexColors(hexes: string[]) {
+	let rCombined = 0,
+		gCombined = 0,
+		bCombined = 0;
+	for (const hex of hexes) {
+		const { r, g, b } = hexToRGB(hex);
+		rCombined += r;
+		gCombined += g;
+		bCombined += b;
+	}
+	rCombined /= hexes.length;
+	gCombined /= hexes.length;
+	bCombined /= hexes.length;
+	rCombined = Math.floor(rCombined);
+	gCombined = Math.floor(gCombined);
+	bCombined = Math.floor(bCombined);
+	return '#' + rCombined.toString(16) + gCombined.toString(16) + bCombined.toString(16);
+}
+
 function calculateLumaRGB(r: number, g: number, b: number): number {
 	return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
 }
@@ -16,4 +35,4 @@ function calculateLumaHEX(hex: string): number {
 	return result;
 }
 
-export { calculateLumaHEX, calculateLumaRGB };
+export { blendHexColors, calculateLumaHEX, calculateLumaRGB };
