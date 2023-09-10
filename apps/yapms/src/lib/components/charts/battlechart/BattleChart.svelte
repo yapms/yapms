@@ -7,14 +7,12 @@
 	import BattleChartLabel from './BattleChartLabel.svelte';
 
 	$: tossupCounts = {
-		name: $TossupCandidateStore.name,
 		count: $CandidateCounts.get($TossupCandidateStore.id) ?? 0,
 		color: $TossupCandidateStore.margins.at(0)?.color ?? '#000000'
 	};
 
 	$: countsWithLeans = $CandidatesStore.map((candidate) => {
 		return candidate.margins.map((margin, index) => ({
-			name: candidate.name,
 			count: $CandidateCountsMargins.get(candidate.id)?.at(index) ?? 0,
 			color: margin.color
 		}));
@@ -22,17 +20,10 @@
 
 	$: countsWithNoLeans = $CandidatesStore.map((candidate) => {
 		return [
-			candidate.margins.reduce<{ name: string; count: number; color: string }>(
-				(prev, _, index) => {
-					prev.count += $CandidateCountsMargins.get(candidate.id)?.at(index) ?? 0;
-					return prev;
-				},
-				{
-					name: candidate.name,
-					count: 0,
-					color: candidate.margins.at(0)?.color ?? 'grey'
-				}
-			)
+			{
+				count: $CandidateCounts.get(candidate.id) ?? 0,
+				color: candidate.margins[0].color
+			}
 		];
 	});
 
@@ -91,13 +82,7 @@
 		class:h-16={$ChartPositionStore === 'bottom'}
 	>
 		{#each finalChartData as count, index}
-			<BattleChartLabel
-				name={count.name}
-				count={count.count}
-				color={count.color}
-				percentage={percentages[index]}
-				displayName={false}
-			/>
+			<BattleChartLabel count={count.count} color={count.color} percentage={percentages[index]} />
 		{/each}
 	</div>
 </div>
