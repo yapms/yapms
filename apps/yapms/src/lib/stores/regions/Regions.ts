@@ -6,6 +6,7 @@ import { ModeStore } from '../Mode';
 import { disableRegion, editRegion, fillRegion, lockRegion, splitRegion } from './regionActions';
 import { InteractionStore } from '../Interaction';
 import { makePattern, removeAllPatterns } from '$lib/utils/patterns';
+import { RegionTooltipStore } from '../RegionTooltip';
 
 /**
  * Stores the state of all regions.
@@ -184,11 +185,48 @@ export const setPointerEvents = (): void => {
 			}
 		};
 
-		region.nodes.region.onmousemove = () => {
+		region.nodes.region.onmousemove = (e: MouseEvent) => {
+			if (get(RegionTooltipStore).enabled) {
+				RegionTooltipStore.set({
+					...get(RegionTooltipStore),
+					delayElapsed: false,
+					content: region.shortName,
+					x: e.clientX,
+					y: e.clientY
+				});
+
+				setTimeout(() => {
+					if (e.clientX === get(RegionTooltipStore).x) {
+						RegionTooltipStore.set({
+							...get(RegionTooltipStore),
+							delayElapsed: true
+						});
+					}
+				}, 400);
+			}
+
 			const currentMode = get(ModeStore);
 			const currentInteractions = get(InteractionStore);
 			if (currentMode === 'fill' && currentInteractions.has('KeyF')) {
 				fillRegion(region.id, false);
+			}
+		};
+
+		region.nodes.region.onmouseleave = () => {
+			if (get(RegionTooltipStore).enabled) {
+				RegionTooltipStore.set({
+					...get(RegionTooltipStore),
+					inRegions: false
+				});
+			}
+		};
+
+		region.nodes.region.onmouseenter = () => {
+			if (get(RegionTooltipStore).enabled) {
+				RegionTooltipStore.set({
+					...get(RegionTooltipStore),
+					inRegions: true
+				});
 			}
 		};
 

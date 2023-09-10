@@ -8,6 +8,7 @@
 	import { LogoStore } from '$lib/stores/Logo';
 	import RedEaglePolitics from '$lib/assets/logos/rep.png';
 	import LetsTalkElections from '$lib/assets/logos/lte.png';
+	import { RegionTooltipStore } from '$lib/stores/RegionTooltip';
 
 	const chartTypeValues = ['pie', 'battle', 'none'];
 	const chartPositionValues = ['bottom', 'left'];
@@ -73,6 +74,12 @@
 					<label class="label cursor-pointer justify-start gap-3">
 						<input type="checkbox" class="toggle" bind:checked={$ChartLeansStore.enabled} />
 						<span class="label-text">Chart Tilts</span>
+					</label>
+				</div>
+				<div class="form-control w-full">
+					<label class="label cursor-pointer justify-start gap-3">
+						<input type="checkbox" class="toggle" bind:checked={$RegionTooltipStore.enabled} />
+						<span class="label-text">Region Tooltip</span>
 					</label>
 				</div>
 			</div>

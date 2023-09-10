@@ -27,6 +27,7 @@
 	import AddCustomColorModal from '$lib/components/modals/candidatemodal/customcolors/AddCustomColorModal.svelte';
 	import EditCustomColorModal from '$lib/components/modals/candidatemodal/customcolors/EditCustomColorModal.svelte';
 	import ThemeModal from '$lib/components/modals/thememodal/ThemeModal.svelte';
+	import RegionTooltip from '$lib/components/tooltips/RegionTooltip.svelte';
 
 	if (browser) {
 		const url = get(page).url;
@@ -103,3 +104,5 @@
 <ShareModal />
 
 <ImportModal />
+
+<RegionTooltip />
