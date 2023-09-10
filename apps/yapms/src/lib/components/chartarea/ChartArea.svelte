@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { ChartTypeStore, ChartPositionStore } from '$lib/stores/Chart';
 	import { LogoStore } from '$lib/stores/Logo';
-	import ChartBar from '../chartbar/ChartBar.svelte';
-	import BattleChart from '../chartbar/battlechart/BattleChart.svelte';
+	import BattleChart from '../charts/battlechart/BattleChart.svelte';
+	import PieChart from '../charts/piechart/PieChart.svelte';
 
 	let logoSize: { width: string | undefined; height: string | undefined } = {
 		width: '100%',
@@ -33,7 +33,7 @@
 	{#if $ChartTypeStore === 'battle'}
 		<BattleChart />
 	{:else}
-		<ChartBar />
+		<PieChart />
 	{/if}
 	{#if $LogoStore !== null}
 		<img

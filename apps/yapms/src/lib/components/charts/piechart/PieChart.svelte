@@ -2,10 +2,11 @@
 	import { afterUpdate, onMount } from 'svelte';
 	import { Chart, registerables } from 'chart.js';
 	import { CandidatesStore, TossupCandidateStore } from '$lib/stores/Candidates';
-	import { CandidateCounts } from '$lib/stores/regions/Regions';
+	import { CandidateCounts, CandidateCountsMargins } from '$lib/stores/regions/Regions';
 	import ChartDataLabels from 'chartjs-plugin-datalabels';
 	import { ChartPositionStore } from '$lib/stores/Chart';
 	import { reapplyPanZoom } from '$lib/utils/applyPanZoom';
+	import { ChartLeansStore } from '$lib/stores/ChartLeansStore';
 
 	let canvasBind: HTMLCanvasElement;
 	let myChart: Chart<'pie'>;
@@ -15,15 +16,25 @@
 		const colors: string[] = [];
 		const labels: string[] = [];
 
-		$CandidatesStore.forEach((candidate) => {
-			let count = $CandidateCounts.get(candidate.id);
-			if (count === undefined) {
-				count = 0;
-			}
-			counts.push(count);
-			colors.push(candidate.margins[0].color);
-			labels.push(candidate.name);
-		});
+		if ($ChartLeansStore.enabled) {
+			$CandidatesStore.forEach((candidate) => {
+				$CandidateCountsMargins.get(candidate.id)?.forEach((margin, index) => {
+					counts.push(margin);
+					colors.push(candidate.margins[index].color);
+					labels.push(candidate.name);
+				});
+			});
+		} else {
+			$CandidatesStore.forEach((candidate) => {
+				let count = $CandidateCounts.get(candidate.id);
+				if (count === undefined) {
+					count = 0;
+				}
+				counts.push(count);
+				colors.push(candidate.margins[0].color);
+				labels.push(candidate.name);
+			});
+		}
 
 		const tossupCount = $CandidateCounts.get($TossupCandidateStore.id);
 		if (tossupCount !== undefined) {

@@ -6,7 +6,7 @@
 	import { onMount } from 'svelte';
 	import { loadFromJson } from '$lib/utils/loadMap';
 	import { LoadedMapStore } from '$lib/stores/LoadedMap';
-	import HorizontalBattleChart from '$lib/components/chartbar/battlechart/BattleChart.svelte';
+	import HorizontalBattleChart from '$lib/components/charts/battlechart/BattleChart.svelte';
 	import CandidateBoxContainer from '$lib/components/candidatebox/CandidateBoxContainer.svelte';
 	import { loadRegionsForView } from '$lib/utils/loadRegions';
 	import { applyAutoStroke } from '$lib/utils/applyPanZoom';
