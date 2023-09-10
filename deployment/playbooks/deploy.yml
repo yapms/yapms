@@ -14,7 +14,7 @@
         - browserless/chrome:latest
         - ghcr.io/yapms/yapms-yapms:latest
         - ghcr.io/yapms/yapms-pocketbase:latest
-        - mariadb:latest
+        - postgres:latest
         - docker.umami.dev/umami-software/umami:mysql-latest
 
     - name: remove containers
@@ -26,7 +26,7 @@
         - browserless
         - yapms
         - pocketbase
-        - mariadb
+        - postgres
         - umami
 
     - name: prune images
@@ -73,28 +73,28 @@
         networks:
           - name: yapms
 
-    - name: deploy mariadb
+    - name: deploy postgres
       community.docker.docker_container:
-        name: mariadb
-        image: mariadb:latest
+        name: postgres
+        image: postgres:latest
         restart_policy: always
         networks:
           - name: yapms
         volumes:
-          - /home/core/mariadb_data:/var/lib/mysql
+          - /home/core/umami_data:/var/lib/postgresql/data
         env:
-          MARIADB_DATABASE: umami
-          MARIADB_ROOT_PASSWORD: password
+          POSTGRES_DB: umami
+          POSTGRES_PASSWORD: password
 
     - name: deploy umami
       community.docker.docker_container:
         name: umami
-        image: docker.umami.dev/umami-software/umami:mysql-latest
+        image: docker.umami.dev/umami-software/umami:postgresql-latest
         restart_policy: always
         networks:
           - name: yapms
         env:
-          DATABASE_URL: mysql://root:password@mariadb:3306/umami
+          DATABASE_URL: postgresql://postgres:password@postgres:5432/umami
 
     - name: deploy caddy
       community.docker.docker_container:
