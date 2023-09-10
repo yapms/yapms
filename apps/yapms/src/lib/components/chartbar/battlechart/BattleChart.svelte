@@ -36,12 +36,16 @@
 		];
 	});
 
-	$: counts2 = $ChartLeansStore.enabled ? countsWithLeans : countsWithNoLeans;
+	$: choosenChartData = $ChartLeansStore.enabled ? countsWithLeans : countsWithNoLeans;
 
 	$: finalChartData =
-		counts2.length === 2
-			? [...(counts2.at(0) ?? []), tossupCounts, ...(counts2.at(1) ?? []).reverse()]
-			: [tossupCounts, ...counts2.flat()];
+		choosenChartData.length === 2
+			? [
+					...(choosenChartData.at(0) ?? []),
+					tossupCounts,
+					...(choosenChartData.at(1) ?? []).reverse()
+			  ]
+			: [tossupCounts, ...choosenChartData.flat()];
 
 	/**
 	 * Sum the total number of votes
