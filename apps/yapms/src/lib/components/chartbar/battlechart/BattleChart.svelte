@@ -2,6 +2,7 @@
 	import ArrowDownCircle from '$lib/icons/ArrowDownCircle.svelte';
 	import { CandidatesStore, TossupCandidateStore } from '$lib/stores/Candidates';
 	import { ChartPositionStore } from '$lib/stores/Chart';
+	import { ChartLeansStore } from '$lib/stores/ChartLeansStore';
 	import { CandidateCounts, CandidateCountsMargins } from '$lib/stores/regions/Regions';
 	import BattleChartLabel from './BattleChartLabel.svelte';
 
@@ -11,7 +12,7 @@
 		color: $TossupCandidateStore.margins.at(0)?.color ?? '#000000'
 	};
 
-	$: candiatesCounts = $CandidatesStore.map((candidate) => {
+	$: countsWithLeans = $CandidatesStore.map((candidate) => {
 		return candidate.margins.map((margin, index) => ({
 			name: candidate.name,
 			count: $CandidateCountsMargins.get(candidate.id)?.at(index) ?? 0,
@@ -19,32 +20,38 @@
 		}));
 	});
 
-	$: candidatesCounts2 = $CandidatesStore.map((candidate) => {
-		const init = {
-			name: candidate.name,
-			count: 0,
-			color: candidate.margins[0].color
-		};
-
-		return candidate.margins.reduce((prev, curr) => {
-			return prev;
-		}, init);
+	$: countsWithNoLeans = $CandidatesStore.map((candidate) => {
+		return [
+			candidate.margins.reduce<{ name: string; count: number; color: string }>(
+				(prev, _, index) => {
+					prev.count += $CandidateCountsMargins.get(candidate.id)?.at(index) ?? 0;
+					return prev;
+				},
+				{
+					name: candidate.name,
+					count: 0,
+					color: candidate.margins.at(0)?.color ?? 'grey'
+				}
+			)
+		];
 	});
 
-	$: counts =
-		candiatesCounts.length === 2
-			? [...(candiatesCounts.at(0) ?? []), tossupCounts, ...(candiatesCounts.at(1) ?? []).reverse()]
-			: [tossupCounts, ...candiatesCounts.flat()];
+	$: counts2 = $ChartLeansStore.enabled ? countsWithLeans : countsWithNoLeans;
+
+	$: finalChartData =
+		counts2.length === 2
+			? [...(counts2.at(0) ?? []), tossupCounts, ...(counts2.at(1) ?? []).reverse()]
+			: [tossupCounts, ...counts2.flat()];
 
 	/**
 	 * Sum the total number of votes
 	 */
-	$: total = counts.reduce((total, count) => total + count.count, 0);
+	$: total = finalChartData.reduce((total, count) => total + count.count, 0);
 
 	/**
 	 * Calculate the percentage of votes for each candidate
 	 */
-	$: percentages = counts.map((count) => count.count / total);
+	$: percentages = finalChartData.map((count) => count.count / total);
 
 	/**
 	 * Calculate the color of the candidate with over half the votes
@@ -79,7 +86,7 @@
 		class:w-16={$ChartPositionStore === 'left'}
 		class:h-16={$ChartPositionStore === 'bottom'}
 	>
-		{#each counts as count, index}
+		{#each finalChartData as count, index}
 			<BattleChartLabel
 				name={count.name}
 				count={count.count}

@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
 
-export const ChartTiltsStore = writable({
+export const ChartLeansStore = writable({
 	enabled: true
 });

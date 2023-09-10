@@ -4,7 +4,7 @@
 	import ModalBase from '../ModalBase.svelte';
 	import { LockMapStore } from '$lib/stores/LockMap';
 	import { MapInsetsStore } from '$lib/stores/MapInsetsStore';
-	import { ChartTiltsStore } from '$lib/stores/ChartTiltsStore';
+	import { ChartLeansStore } from '$lib/stores/ChartLeansStore';
 	import { LogoStore } from '$lib/stores/Logo';
 	import RedEaglePolitics from '$lib/assets/logos/rep.png';
 	import LetsTalkElections from '$lib/assets/logos/lte.png';
@@ -71,7 +71,7 @@
 				</div>
 				<div class="form-control w-full">
 					<label class="label cursor-pointer justify-start gap-3">
-						<input type="checkbox" class="toggle" bind:checked={$ChartTiltsStore.enabled} />
+						<input type="checkbox" class="toggle" bind:checked={$ChartLeansStore.enabled} />
 						<span class="label-text">Chart Tilts</span>
 					</label>
 				</div>
