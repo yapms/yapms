@@ -12,18 +12,27 @@
 </script>
 
 {#await authMethods}
-	<div>Loading...</div>
+	<span class="loading loading-ring"></span>
 {:then authMethods}
-	<div class="grid grid-cols-2 gap-3 p-2 items-center">
-		{#each authMethods.authProviders as method}
-			<button
-				class="btn btn-accent"
-				on:click={async () => {
-					await authenticate(method.name);
-				}}
-			>
-				Login With {method.name}
-			</button>
-		{/each}
-	</div>
+	<p class="mb-2 text-center">
+		Please log in to YAPms using a third-party account to save your maps
+	</p>
+	{#if authMethods.authProviders.length !== 0}
+		<div class="flex flex-row flex-wrap gap-2 justify-evenly items-center">
+			{#each authMethods.authProviders as method}
+				<button
+					class="btn btn-primary"
+					on:click={async () => {
+						await authenticate(method.name);
+					}}
+				>
+					Login With {method.name}
+				</button>
+			{/each}
+		</div>
+	{:else}
+		<p class="text-center">
+			Login functionality is currently <span class="text-error">disabled</span>
+		</p>
+	{/if}
 {/await}

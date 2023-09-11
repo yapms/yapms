@@ -73,7 +73,7 @@ const ShareModalStore = writable({
 	open: false
 });
 
-const LoginModalStore = writable({
+const AuthModalStore = writable({
 	open: false
 });
 
@@ -111,7 +111,7 @@ export {
 	OptionsModalStore,
 	ModeModalStore,
 	ShareModalStore,
-	LoginModalStore,
+	AuthModalStore,
 	LoadingErrorModalStore,
 	ThemeModalStore,
 	BetaModalStore,
