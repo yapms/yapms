@@ -44,6 +44,7 @@
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-svelte": "^2.33.0",
 		"file-saver": "^2.0.5",
+		"html-to-image": "^1.11.11",
 		"panzoom": "^9.4.3",
 		"pocketbase": "^0.18.0",
 		"postcss": "^8.4.29",
