@@ -6,16 +6,16 @@ services:
     network_mode: host
 
   umami:
-    image: docker.umami.dev/umami-software/umami:mysql-latest
+    image: docker.umami.dev/umami-software/umami:postgresql-latest
     restart: always
     ports:
       - 8079:3000
     environment:
-      DATABASE_URL: mysql://root:password@mariadb:3306/umami
+      DATABASE_URL: postgresql://postgres:password@postgres:5432/umami
 
-  mariadb:
-    image: mariadb:latest
+  postgres:
+    image: postgres:latest
     restart: always
     environment:
-      MARIADB_DATABASE: umami
-      MARIADB_ROOT_PASSWORD: password
+      POSTGRES_DB: umami
+      POSTGRES_PASSWORD: password
