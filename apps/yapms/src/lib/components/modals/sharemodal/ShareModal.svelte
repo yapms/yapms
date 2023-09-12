@@ -103,20 +103,19 @@
 		turnstileToken = null;
 	}
 
-	function screenshot() {
-		const mapdiv = document.getElementById('map-chart-div');
-		if (mapdiv === null) {
+	async function screenshot() {
+		const mapChart = document.getElementById('map-chart-div');
+		if (mapChart === null) {
 			return;
 		}
-		htmlToImage
-			.toBlob(mapdiv)
-			.then((data) => {
-				if (data !== null) fileSaver.saveAs(data, 'screenshot.png');
-			})
-			.catch((error) => {
-				console.error(error);
-			});
-		alert(1);
+
+		const data = await htmlToImage.toBlob(mapChart, {
+			backgroundColor: 'hsl(var(--b1))'
+		});
+
+		if (data !== null) {
+			fileSaver.saveAs(data, 'screenshot.png');
+		}
 	}
 </script>
 
@@ -126,7 +125,7 @@
 			<div class="flex flex-col gap-2">
 				<h3 class="font-light text-lg pb-3">Save</h3>
 				<button class="btn btn-secondary gap-1 flex-nowrap" on:click={screenshot}>
-					<Camera class="w-5 w-5" />
+					<Camera class="w-5 h-5" />
 					<span>Screenshot</span>
 				</button>
 				<button class="btn btn-secondary gap-1 flex-nowrap" on:click={downloadJson}>
