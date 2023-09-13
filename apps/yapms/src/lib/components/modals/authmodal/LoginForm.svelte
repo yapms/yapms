@@ -14,9 +14,7 @@
 {#await authMethods}
 	<span class="loading loading-ring"></span>
 {:then authMethods}
-	<p class="mb-2 text-center">
-		Please log in to YAPms using a third-party account to save your maps
-	</p>
+	<p class="mb-2 text-center">Please log in to YAPms to save your maps</p>
 	{#if authMethods.authProviders.length !== 0}
 		<div class="flex flex-row flex-wrap gap-2 justify-evenly items-center">
 			{#each authMethods.authProviders as method}
