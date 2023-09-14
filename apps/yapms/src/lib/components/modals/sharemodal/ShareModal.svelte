@@ -109,13 +109,15 @@
 			return;
 		}
 
-		const data = await htmlToImage.toBlob(mapChart, {
-			backgroundColor: 'hsl(var(--b1))'
-		});
+		mapChart.style.backgroundColor = 'hsl(var(--b1))';
+
+		const data = await htmlToImage.toBlob(mapChart);
 
 		if (data !== null) {
-			fileSaver.saveAs(data, 'screenshot.png');
+			fileSaver.saveAs(data, 'YAPmsScreenshot.png');
 		}
+
+		mapChart.style.backgroundColor = '';
 	}
 </script>
 
