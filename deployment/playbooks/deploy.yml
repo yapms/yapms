@@ -15,7 +15,7 @@
         - ghcr.io/yapms/yapms-yapms:latest
         - ghcr.io/yapms/yapms-pocketbase:latest
         - postgres:latest
-        - docker.umami.dev/umami-software/umami:mysql-latest
+        - docker.umami.dev/umami-software/umami:postgresql-latest
 
     - name: remove containers
       community.docker.docker_container:
