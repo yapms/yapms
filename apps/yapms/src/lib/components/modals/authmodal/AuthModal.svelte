@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { LoginModalStore } from '$lib/stores/Modals';
+	import { AuthModalStore } from '$lib/stores/Modals';
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
 	import { PUBLIC_PRIVACY_POLICY_URI } from '$env/static/public';
 	import LoginForm from './LoginForm.svelte';
@@ -7,9 +7,12 @@
 	import ModalBase from '../ModalBase.svelte';
 </script>
 
-<ModalBase title="Login" store={LoginModalStore}>
+<ModalBase
+	title={$PocketBaseStore.authStore.isValid ? 'Your Account' : 'Login'}
+	store={AuthModalStore}
+>
 	<div slot="content">
-		<div class="flex flex-row justify-around gap-1">
+		<div class="flex flex-col justify-around gap-2">
 			{#if $PocketBaseStore.authStore.isValid}
 				<AccountForm />
 			{:else}
@@ -17,6 +20,7 @@
 			{/if}
 		</div>
 	</div>
+
 	<div slot="action">
 		<span>
 			By using our services, you agree to our
