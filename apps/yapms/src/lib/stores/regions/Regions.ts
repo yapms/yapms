@@ -158,6 +158,7 @@ export const CandidateCountsMargins = derived(RegionsStore, ($RegionStore) => {
 });
 
 export const setPointerEvents = (): void => {
+	let delayElapse: NodeJS.Timeout | undefined;
 	const regions = get(RegionsStore);
 	for (const region of regions) {
 		if (region.permaLocked) {
@@ -195,13 +196,13 @@ export const setPointerEvents = (): void => {
 					y: e.clientY
 				});
 
-				setTimeout(() => {
-					if (e.clientX === get(RegionTooltipStore).x) {
-						RegionTooltipStore.set({
-							...get(RegionTooltipStore),
-							delayElapsed: true
-						});
-					}
+				clearTimeout(delayElapse);
+
+				delayElapse = setTimeout(() => {
+					RegionTooltipStore.set({
+						...get(RegionTooltipStore),
+						delayElapsed: true
+					});
 				}, 400);
 			}
 
