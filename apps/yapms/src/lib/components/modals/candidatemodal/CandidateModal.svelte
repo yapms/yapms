@@ -75,7 +75,7 @@
 						<span>{$TossupCandidateStore.name}</span>
 					</button>
 					{#each $CandidatesStore as candidate (candidate.id)}
-						<li class="handle">
+						<li>
 							<div
 								role="button"
 								tabindex="0"
