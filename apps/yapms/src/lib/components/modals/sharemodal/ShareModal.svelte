@@ -6,14 +6,17 @@
 	import Link from '$lib/icons/Link.svelte';
 	import { loadFromFile } from '$lib/utils/loadMap';
 	import ExclamationCircle from '$lib/icons/ExclamationCircle.svelte';
-	import { page } from '$app/stores';
 	import CheckCircle from '$lib/icons/CheckCircle.svelte';
 	import { get } from 'svelte/store';
+	import { page } from '$app/stores';
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
 	import { Turnstile } from 'svelte-turnstile';
 	import { PUBLIC_TURNSTILE_SITE } from '$env/static/public';
 	import { fade } from 'svelte/transition';
 	import ModalBase from '../ModalBase.svelte';
+	import * as htmlToImage from 'html-to-image';
+	import * as fileSaver from 'file-saver';
+	import Camera from '$lib/icons/Camera.svelte';
 
 	let files: FileList;
 
@@ -99,6 +102,23 @@
 	function onTurnstileExpired() {
 		turnstileToken = null;
 	}
+
+	async function screenshot() {
+		const mapChart = document.getElementById('map-chart-div');
+		if (mapChart === null) {
+			return;
+		}
+
+		mapChart.style.backgroundColor = 'hsl(var(--b1))';
+
+		const data = await htmlToImage.toBlob(mapChart);
+
+		if (data !== null) {
+			fileSaver.saveAs(data, 'YAPmsScreenshot.png');
+		}
+
+		mapChart.style.backgroundColor = '';
+	}
 </script>
 
 <ModalBase title="Share Map" store={ShareModalStore} onClose={close}>
@@ -106,6 +126,10 @@
 		<div class="flex flex-row gap-4">
 			<div class="flex flex-col gap-2">
 				<h3 class="font-light text-lg pb-3">Save</h3>
+				<button class="btn btn-secondary gap-1 flex-nowrap" on:click={screenshot}>
+					<Camera class="w-5 h-5" />
+					<span>Screenshot</span>
+				</button>
 				<button class="btn btn-secondary gap-1 flex-nowrap" on:click={downloadJson}>
 					<ArrowDownTray class="w-5 h-5" />
 					<span>Download</span>

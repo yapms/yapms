@@ -9,6 +9,7 @@
 </script>
 
 <div
+	id="map-chart-div"
 	class="flex flex-grow basis-9/12"
 	class:flex-col-reverse={$ChartPositionStore === 'bottom'}
 	class:flex-row={$ChartPositionStore === 'left'}

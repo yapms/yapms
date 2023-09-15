@@ -56,6 +56,7 @@ importers:
       eslint-config-prettier: ^9.0.0
       eslint-plugin-svelte: ^2.33.0
       file-saver: ^2.0.5
+      html-to-image: ^1.11.11
       panzoom: ^9.4.3
       pocketbase: ^0.18.0
       postcss: ^8.4.29
@@ -105,6 +106,7 @@ importers:
       eslint-config-prettier: 9.0.0_eslint@8.48.0
       eslint-plugin-svelte: 2.33.0_eslint@8.48.0+svelte@4.2.0
       file-saver: 2.0.5
+      html-to-image: 1.11.11
       panzoom: 9.4.3
       pocketbase: 0.18.0
       postcss: 8.4.29
@@ -3856,6 +3858,10 @@ packages:
   /html-escaper/3.0.3:
     resolution: {integrity: sha512-RuMffC89BOWQoY0WKGpIhn5gX3iI54O6nRA0yC124NYVtzjmFWBIiFd8M0x+ZdX0P9R4lADg1mgP8C7PxGOWuQ==}
     dev: false
+
+  /html-to-image/1.11.11:
+    resolution: {integrity: sha512-9gux8QhvjRO/erSnDPv28noDZcPZmYE7e1vFsBLKLlRlKDSqNJYebj6Qz1TGd5lsRV+X+xYyjCKjuZdABinWjA==}
+    dev: true
 
   /html-void-elements/2.0.1:
     resolution: {integrity: sha512-0quDb7s97CfemeJAnW9wC0hw78MtW7NU3hqtCD75g2vFlDLt36llsYD7uB7SUzojLMP24N5IatXf7ylGXiGG9A==}
