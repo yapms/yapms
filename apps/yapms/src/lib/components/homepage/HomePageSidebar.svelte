@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
 	import SideBarUpdate from './SideBarUpdate.svelte';
-	import ExternalLinkGrid from '../links/ExternalLinkGrid.svelte';
-
+	import SocialLinkGrid from '../links/SocialLinkGrid.svelte';
 
 	let updates = $PocketBaseStore.collection('updates').getList(1, 10, { sort: '-created' });
 </script>
@@ -22,6 +21,6 @@
 	</div>
 	<div class="mb-4">
 		<div class="divider">Social Links</div>
-		<ExternalLinkGrid category="social" />
+		<SocialLinkGrid />
 	</div>
 </div>
