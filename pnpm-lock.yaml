@@ -42,6 +42,7 @@ importers:
       '@types/dompurify': ^3.0.2
       '@types/file-saver': ^2.0.5
       '@types/shapefile': ^0.6.1
+      '@types/sortablejs': ^1.15.2
       '@types/uuid': ^9.0.3
       '@typescript-eslint/eslint-plugin': ^6.6.0
       '@typescript-eslint/parser': ^6.6.0
@@ -61,6 +62,7 @@ importers:
       prettier: ^3.0.3
       prettier-plugin-svelte: ^3.0.3
       shapefile: ^0.6.6
+      sortablejs: ^1.15.0
       svelte: ^4.2.0
       svelte-check: ^3.5.1
       svelte-eslint-parser: ^0.33.0
@@ -89,6 +91,7 @@ importers:
       '@types/dompurify': 3.0.2
       '@types/file-saver': 2.0.5
       '@types/shapefile': 0.6.1
+      '@types/sortablejs': 1.15.2
       '@types/uuid': 9.0.3
       '@typescript-eslint/eslint-plugin': 6.6.0_vt4saesn3ecaumaytn5wzbmrxe
       '@typescript-eslint/parser': 6.6.0_w2g2uv42be7wag4oipwkfv43p4
@@ -108,6 +111,7 @@ importers:
       prettier: 3.0.3
       prettier-plugin-svelte: 3.0.3_qj3jxqquorbmjtkdapjbd6ooru
       shapefile: 0.6.6
+      sortablejs: 1.15.0
       svelte: 4.2.0
       svelte-check: 3.5.1_zjvcia7djt4jkcaa4pb53wkhka
       svelte-eslint-parser: 0.33.0_svelte@4.2.0
@@ -1758,6 +1762,10 @@ packages:
     dependencies:
       '@types/geojson': 7946.0.10
       '@types/node': 20.5.9
+    dev: true
+
+  /@types/sortablejs/1.15.2:
+    resolution: {integrity: sha512-mOIv/EnPMzAZAVbuh9uGjOZ1BBdimP9Y6IPGntsvQJtko5yapSDKB7GwB3AOlF5N3bkpk4sBwQRpS3aEkiUbaA==}
     dev: true
 
   /@types/trusted-types/2.0.3:
@@ -5983,6 +5991,10 @@ packages:
       buffer-crc32: 0.2.13
       minimist: 1.2.8
       sander: 0.5.1
+    dev: true
+
+  /sortablejs/1.15.0:
+    resolution: {integrity: sha512-bv9qgVMjUMf89wAvM6AxVvS/4MX3sPeN0+agqShejLU5z5GX4C75ow1O2e5k4L6XItUyAK3gH6AxSbXrOM5e8w==}
     dev: true
 
   /source-map-js/1.0.2:
