@@ -1,44 +1,48 @@
 import { goto } from '$app/navigation';
+import { page } from '$app/stores';
 import { PUBLIC_POCKETBASE_URI } from '$env/static/public';
 import type SavedMap from '$lib/types/SavedMap';
 import { SavedMapSchema } from '$lib/types/SavedMap';
-import { writable } from 'svelte/store';
-import { LoadingErrorModalStore } from './Modals';
+import { get, writable } from 'svelte/store';
 
 export const LoadedMapStore = writable<SavedMap | null>(null);
 
-export async function loadUserMap(mapKey: string) {
-	await loadMap('user_maps', 'um', mapKey);
+export async function loadUserMapFromID(id: string) {
+	const newURL = new URL(get(page).url);
+	newURL.search = '';
+	newURL.searchParams.set('um', id);
+	loadMapFromURL(newURL);
 }
 
-export async function loadPublicMap(mapKey: string) {
-	await loadMap('maps', 'm', mapKey);
-}
+export async function loadMapFromURL(url: URL, navigate: boolean = true) {
+	const m = url.searchParams.get('m');
+	const um = url.searchParams.get('um');
 
-async function loadMap(collection: string, urlKey: string, mapKey: string) {
-	const data = await fetch(
-		`${PUBLIC_POCKETBASE_URI}/api/files/${collection}/${mapKey}/data.json.gz`
-	);
-	const jsonData = await data.json();
-	const savedFile = SavedMapSchema.safeParse(jsonData);
+	const collection = m ? 'maps' : 'user_maps';
+	const id = m ?? um;
 
-	if (savedFile.success === false) {
-		LoadingErrorModalStore.set({
-			open: true
-		});
-		await goto('/app/usa/presidential/2022/blank');
+	if (id === null) {
 		return;
 	}
 
-	LoadedMapStore.set(savedFile.data);
+	const data = await fetch(`${PUBLIC_POCKETBASE_URI}/api/files/${collection}/${id}/data.json.gz`);
+	const jsonData = await data.json();
+	const parsedData = SavedMapSchema.safeParse(jsonData);
 
-	const country = encodeURIComponent(savedFile.data.map.country);
-	const type = encodeURIComponent(savedFile.data.map.type);
-	if (savedFile.data.map.year !== undefined && savedFile.data.map.variant !== undefined) {
-		const year = encodeURIComponent(savedFile.data.map.year);
-		const variant = encodeURIComponent(savedFile.data.map.variant);
-		await goto(`/app/${country}/${type}/${year}/${variant}?${urlKey}=${mapKey}`);
-	} else {
-		await goto(`/app/${country}/${type}?${urlKey}=${mapKey}`);
+	if (parsedData.success === false) {
+		return;
 	}
+
+	const param = collection === 'maps' ? 'm' : 'um';
+	const { country, type, year, variant } = parsedData.data.map;
+	const neededURL = ['/app', country, type, year, variant]
+		.filter((path) => path !== undefined)
+		.join('/')
+		.concat(`?${param}=${id}`);
+
+	if (navigate) {
+		await goto(neededURL);
+	}
+
+	LoadedMapStore.set(parsedData.data);
 }

@@ -2,39 +2,19 @@
 	import { loadFromJson } from '$lib/utils/loadMap';
 	import { page } from '$app/stores';
 	import { MapInsetsStore } from '$lib/stores/MapInsetsStore';
-	import { LoadedMapStore } from '$lib/stores/LoadedMap';
 	import { applyAutoStroke, applyPanZoom } from '$lib/utils/applyPanZoom';
 	import { loadRegionsForApp } from '$lib/utils/loadRegions';
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
+	import { loadMapFromURL, LoadedMapStore } from '$lib/stores/LoadedMap';
 
-	type ImportedFile = typeof import('*?raw');
-	type ImportedFilePromise = () => Promise<ImportedFile>;
+	$: requestedMap = $page.url.pathname.replace('/app/', '').replaceAll('/', '-');
+	$: country = requestedMap.split('-').at(0);
+	$: map = import(`../../../lib/assets/maps/${country}/${requestedMap}.svg?raw`);
 
-	// import all files from $lib/assets/maps/
-	const importedFiles = import.meta.glob<ImportedFile>('$lib/assets/maps/*/*.svg', {
-		query: { raw: '' }
+	$: map.catch(() => {
+		if (browser) goto('/');
 	});
-
-	const maps = new Map<string, ImportedFilePromise>();
-
-	for (const key in importedFiles) {
-		const filename = key.split('/').pop();
-		const promise = importedFiles[key];
-		if (filename !== undefined) {
-			maps.set(filename, promise);
-		}
-	}
-
-	const requestedMap = $page.url.pathname.replace('/app/', '').replaceAll('/', '-').concat('.svg');
-
-	const currentMap = maps.get(requestedMap) ?? maps.get('usa-presidential-2022-blank.svg');
-
-	if (browser && maps.has(requestedMap) === false) {
-		goto('/app/usa/presidential/2022/blank', { replaceState: true });
-	}
-
-	let isLoaded = false;
 
 	function setupMap(node: HTMLDivElement) {
 		const svg = node.querySelector<SVGElement>('svg');
@@ -43,27 +23,23 @@
 			applyAutoStroke(svg);
 		}
 		loadRegionsForApp(node);
-		isLoaded = true;
+		loadMapFromURL($page.url);
 	}
 
-	$: if ($LoadedMapStore !== null && isLoaded) {
-		loadFromJson($LoadedMapStore);
-	}
+	$: if ($LoadedMapStore) loadFromJson($LoadedMapStore);
 </script>
 
-{#if currentMap !== undefined}
-	{#await currentMap()}
-		<div class="flex justify-center w-full h-full">
-			<span class="loading loading-ring loading-lg text-primary"></span>
-		</div>
-	{:then importedMap}
-		<div
-			use:setupMap
-			id="map-div"
-			class="overflow-hidden h-full"
-			class:insets-hidden={$MapInsetsStore.hidden}
-		>
-			{@html importedMap.default}
-		</div>
-	{/await}
-{/if}
+{#await map}
+	<div class="flex justify-center w-full h-full">
+		<span class="loading loading-ring loading-lg text-primary"></span>
+	</div>
+{:then map}
+	<div
+		use:setupMap
+		id="map-div"
+		class="overflow-hidden h-full"
+		class:insets-hidden={$MapInsetsStore.hidden}
+	>
+		{@html map.default}
+	</div>
+{/await}

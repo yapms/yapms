@@ -1,9 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import '$lib/styles/global.css';
-	import { get } from 'svelte/store';
-	import { loadPublicMap, loadUserMap } from '$lib/stores/LoadedMap';
-	import { goto } from '$app/navigation';
 	import ClearMapModal from '$lib/components/modals/clearmapmodal/ClearMapModal.svelte';
 	import SplitRegionModal from '$lib/components/modals/splitregionmodal/SplitRegionModal.svelte';
 	import EditRegionModal from '$lib/components/modals/editregionmodal/EditRegionModal.svelte';
@@ -15,7 +11,6 @@
 	import ImportModal from '$lib/components/modals/importmodal/ImportModal.svelte';
 	import CandidateModal from '$lib/components/modals/candidatemodal/CandidateModal.svelte';
 	import { InteractionStore } from '$lib/stores/Interaction';
-	import { browser } from '$app/environment';
 	import NavBar from '$lib/components/navbar/NavBar.svelte';
 	import SideBar from '$lib/components/sidebar/SideBar.svelte';
 	import { reapplyPanZoom } from '$lib/utils/applyPanZoom';
@@ -28,23 +23,6 @@
 	import EditCustomColorModal from '$lib/components/modals/candidatemodal/customcolors/EditCustomColorModal.svelte';
 	import ThemeModal from '$lib/components/modals/thememodal/ThemeModal.svelte';
 	import RegionTooltip from '$lib/components/tooltips/RegionTooltip.svelte';
-
-	if (browser) {
-		const url = get(page).url;
-
-		const isInAppRoot = url.pathname === '/app';
-
-		const publicMapKey = url.searchParams.get('m');
-		const userMapKey = url.searchParams.get('um');
-
-		if (publicMapKey !== null) {
-			loadPublicMap(publicMapKey);
-		} else if (userMapKey !== null) {
-			loadUserMap(userMapKey);
-		} else if (isInAppRoot) {
-			goto('/app/usa/presidential/2024/blank');
-		}
-	}
 
 	function handleKeyDown(event: KeyboardEvent) {
 		$InteractionStore.set(event.code, true);

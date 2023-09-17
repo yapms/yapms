@@ -1,10 +1,15 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import { PUBLIC_POCKETBASE_URI } from '$env/static/public';
+	import { loadMapFromURL } from '$lib/stores/LoadedMap';
 
-	const url = $page.url;
-	const m = url.searchParams.get('m');
+	const m = $page.url.searchParams.get('m');
 	const imageURI = m !== null ? `${PUBLIC_POCKETBASE_URI}/api/files/maps/${m}/screenshot.png` : '';
+
+	if (browser) {
+		loadMapFromURL($page.url);
+	}
 </script>
 
 <svelte:head>
