@@ -11,6 +11,8 @@
 	export let links: HomeLinkData[];
 	export let modals: HomeModalData[];
 
+	const image = import(`../../assets/images/countries/${bg}.webp`);
+
 	function openMoreModal(buttons: HomeLinkData[]) {
 		MoreMapsModalStore.set({
 			buttons,
@@ -21,7 +23,9 @@
 </script>
 
 <div class="card card-bordered w-80 md:w-92 h-48 lg:h-52 bg-base-100 shadow-xl image-full">
-	<figure><img src={`./countrybackgrounds/${bg}.webp`} {alt} /></figure>
+	{#await image then image}
+		<figure><img src={image.default} {alt} /></figure>
+	{/await}
 	<div class="card-body items-center text-center">
 		<h2 class="card-title text-white">{name}</h2>
 		<div class="grid gap-4" class:grid-cols-2={doubleCols}>
