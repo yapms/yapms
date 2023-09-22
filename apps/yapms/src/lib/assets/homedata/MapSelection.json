@@ -413,6 +413,20 @@
 					}
 				],
 				"modals": []
+			},
+			{
+				"name": "France",
+				"bg": "fra",
+				"alt": "Palais Bourbon",
+				"doubleCols": false,
+				"attribution": "Photo by DXR on Wikimedia",
+				"links": [
+					{
+						"label": "Departments",
+						"route": "/app/fra/departments/2022/blank"
+					}
+				],
+				"modals": []
 			}
 		]
 	},
