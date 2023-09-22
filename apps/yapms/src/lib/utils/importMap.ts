@@ -83,19 +83,25 @@ function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
 
 	const render = geoPath().projection(projection);
 
-	const paths = districtShapes.features.map(
-		(feature: GeoJSON.Feature, i: number) =>
-			`<path region="${i}" short-name="${i}" long-name="District ${i}" value="1" d="${render(
-				feature
-			)}"/>`
-	);
+	const paths = districtShapes.features.map((feature: GeoJSON.Feature, i: number) => {
+		const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+		path.setAttribute('region', i.toString());
+		path.setAttribute('short-name', i.toString());
+		path.setAttribute('long-name', i.toString());
+		path.setAttribute('value', '1');
+		path.setAttribute('d', render(feature) ?? '');
+		return path;
+	});
 
-	const output = `<svg width="${width}" height="${height}" auto-border-stroke-width="1" auto-border-stroke-width-limit=".1">
-    <g regions>
-    ${paths.join('\n')}
-    </g>
-    </svg>`;
-	ImportedSVGStore.set({ loaded: true, content: DOMPurify.sanitize(output, DOMPurifyConfig) });
+	const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+	svg.setAttribute('auto-border-stroke-width', '1');
+	svg.setAttribute('auto-border-stroke-width-limit', '0.1');
+	const regions = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+	paths.forEach((path) => {
+		regions.appendChild(path);
+	});
+	svg.appendChild(regions);
+	ImportedSVGStore.set({ loaded: true, content: DOMPurify.sanitize(svg, DOMPurifyConfig) });
 }
 
 function newImportedMap(): void {
