@@ -90,7 +90,7 @@ function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
 			)}"/>`
 	);
 
-	const output = `<svg id="importedSVG" width="${width}" height="${height}" auto-border-stroke-width="1" auto-border-stroke-width-limit=".1">
+	const output = `<svg width="${width}" height="${height}" auto-border-stroke-width="1" auto-border-stroke-width-limit=".1">
     <g regions>
     ${paths.join('\n')}
     </g>
@@ -116,6 +116,7 @@ function exportImportAsSVG(): void {
 					candidate: elem.candidate.id
 				});
 			});
+			region.nodes.region.removeAttribute('style');
 			region.nodes.region.setAttribute('candidates', JSON.stringify(candidateAttr));
 			region.nodes.region.setAttribute('value', region.permaVal.toString());
 			if (region.disabled) {
