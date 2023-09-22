@@ -116,7 +116,6 @@ function exportImportAsSVG(): void {
 					candidate: elem.candidate.id
 				});
 			});
-			region.nodes.region.removeAttribute('style');
 			region.nodes.region.setAttribute('candidates', JSON.stringify(candidateAttr));
 			region.nodes.region.setAttribute('value', region.permaVal.toString());
 			if (region.disabled) {
