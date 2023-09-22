@@ -19,7 +19,7 @@
 		</div>
 	{:then theMaps}
 		{#each theMaps as map}
-			<SavedMap mapName={map.name} mapId={map.id} on:submitted={refreshMaps} />
+			<SavedMap mapName={map.name} mapID={map.id} on:submitted={refreshMaps} />
 		{/each}
 	{/await}
 </div>
