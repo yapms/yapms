@@ -54,7 +54,7 @@
 			</div>
 			<div class="grow" />
 			<div>
-				<HorizontalBattleChart transitions={true} />
+				<HorizontalBattleChart transitions={false} />
 			</div>
 		</div>
 	{/await}

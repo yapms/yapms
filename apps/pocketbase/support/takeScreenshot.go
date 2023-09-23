@@ -3,7 +3,6 @@ package support
 import (
 	"context"
 	"fmt"
-	"time"
 
 	"github.com/chromedp/chromedp"
 	"github.com/pocketbase/pocketbase"
@@ -25,7 +24,6 @@ func TakeScreenshot(e *core.RecordCreateEvent, app *pocketbase.PocketBase, brows
 		chromedp.EmulateViewport(1200, 900),
 		chromedp.Navigate(*browserlessFrontendURI+"/view?m="+e.Record.Id),
 		chromedp.WaitVisible("#map-div > svg", chromedp.ByQuery),
-		chromedp.Sleep(1*time.Second),
 		chromedp.FullScreenshot(&screenshotBuffer, 100),
 	)
 	if err != nil {
