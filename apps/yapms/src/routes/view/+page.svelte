@@ -6,7 +6,7 @@
 	import HorizontalBattleChart from '$lib/components/charts/battlechart/BattleChart.svelte';
 	import CandidateBoxContainer from '$lib/components/candidatebox/CandidateBoxContainer.svelte';
 	import { loadRegionsForView } from '$lib/utils/loadRegions';
-	import { applyAutoStroke, applyPanZoom } from '$lib/utils/applyPanZoom';
+	import { applyAutoStroke } from '$lib/utils/applyPanZoom';
 	import { browser } from '$app/environment';
 
 	$: filename = undefined as string | undefined;
@@ -31,7 +31,7 @@
 		const svg = node.querySelector<SVGElement>('svg');
 		if (svg !== null) {
 			applyAutoStroke(svg);
-			applyPanZoom(svg);
+			// applyPanZoom(svg);
 		}
 		loadRegionsForView(node);
 		if ($LoadedMapStore !== null) {
