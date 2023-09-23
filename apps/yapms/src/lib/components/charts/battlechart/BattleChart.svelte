@@ -6,6 +6,8 @@
 	import { CandidateCounts, CandidateCountsMargins } from '$lib/stores/regions/Regions';
 	import BattleChartLabel from './BattleChartLabel.svelte';
 
+	export let transitions: boolean = true;
+
 	$: tossupCounts = {
 		count: $CandidateCounts.get($TossupCandidateStore.id) ?? 0,
 		color: $TossupCandidateStore.margins.at(0)?.color ?? '#000000'
@@ -82,7 +84,12 @@
 		class:h-16={$ChartPositionStore === 'bottom'}
 	>
 		{#each finalChartData as count, index}
-			<BattleChartLabel count={count.count} color={count.color} percentage={percentages[index]} />
+			<BattleChartLabel
+				count={count.count}
+				color={count.color}
+				percentage={percentages[index]}
+				{transitions}
+			/>
 		{/each}
 	</div>
 </div>
