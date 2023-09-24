@@ -23,16 +23,6 @@ function applyPanZoom(svg: SVGElement) {
 		panZoomSettings.panzoom.dispose();
 	}
 	const panzoomInstance = panzoom(svg, {
-		autocenter: true
-	});
-
-	panZoomSettings = { panzoom: panzoomInstance, svg };
-	lockMap(get(LockMapStore));
-	connectZoomAndStroke();
-}
-
-function applyFastPanZoom(svg: SVGElement) {
-	const panzoomInstance = panzoom(svg, {
 		minZoom: 0.5,
 		maxZoom: 100,
 		autocenter: true,
@@ -44,6 +34,16 @@ function applyFastPanZoom(svg: SVGElement) {
 			}
 			return false;
 		}
+	});
+
+	panZoomSettings = { panzoom: panzoomInstance, svg };
+	lockMap(get(LockMapStore));
+	connectZoomAndStroke();
+}
+
+function applyFastPanZoom(svg: SVGElement) {
+	const panzoomInstance = panzoom(svg, {
+		autocenter: true
 	});
 	panZoomSettings = { panzoom: panzoomInstance, svg };
 	connectZoomAndStroke();
