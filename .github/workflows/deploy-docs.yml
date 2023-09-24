@@ -19,4 +19,4 @@ jobs:
         with:
           path: ./apps/docs
 
-      - uses: actions/deploy-pages@v1
+      - uses: actions/deploy-pages@v2
