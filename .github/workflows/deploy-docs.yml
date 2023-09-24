@@ -14,7 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: withastro/action@v0
         with:
-          - path: /apps/docs
+          path: ./apps/docs
+
       - uses: actions/deploy-pages@v1
