@@ -7,8 +7,12 @@
 
 	export let candidate: Candidate;
 	export let selectable: boolean;
+	export let transitions = true;
 
 	$: selected = selectable && $SelectedCandidateStore.id === candidate.id;
+	$: textColor = calculateLumaHEX(candidate.margins[0].color) > 0.5 ? 'black' : 'white';
+	$: backgroundColor = candidate.margins[0].color;
+	$: transitionSpeed = transitions ? '150ms' : '0ms';
 
 	function updateSelectedCandidate() {
 		SelectedCandidateStore.set(candidate);
@@ -17,12 +21,12 @@
 
 <div class="btn-group p-0.5 pointer-events-auto">
 	<button
-		class="btn no-animation overflow-hidden p-0"
+		class="btn no-animation overflow-hidden p-0 transition-all"
 		class:btn-sm={selected}
 		class:btn-xs={!selected}
-		style:background-color={candidate.margins[0].color}
-		style:color={calculateLumaHEX(candidate.margins[0].color) > 0.5 ? 'black' : 'white'}
-		style="transition: all 0.25s"
+		style:transition-duration={transitionSpeed}
+		style:background-color={backgroundColor}
+		style:color={textColor}
 		on:click={updateSelectedCandidate}
 	>
 		<div class="flex flex-col gap-0">
