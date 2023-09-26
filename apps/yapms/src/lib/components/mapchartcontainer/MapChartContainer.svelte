@@ -15,7 +15,7 @@
 	class:flex-row={$ChartPositionStore === 'left'}
 >
 	<ChartArea />
-	<div class="overflow-hidden w-full h-full">
+	<div class="overflow-hidden w-full h-full max-w-[100vw]">
 		<CandidateBoxContainer />
 		<slot />
 	</div>
