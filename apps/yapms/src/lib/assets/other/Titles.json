@@ -1,7 +1,7 @@
 [
 	{
-		"path": "/app/usa/presidential/2022/blank",
-		"title": "USA 2022 Presidential"
+		"path": "/app/usa/presidential/2024/blank",
+		"title": "USA 2024 Presidential"
 	},
 	{
 		"path": "/app/usa/senate/2024/blank",
@@ -74,6 +74,14 @@
 	{
 		"path": "/app/usa/governors/2025/blank",
 		"title": "USA 2025 Gubernatorial"
+	},
+	{
+		"path": "/app/usa/presidential/2024/territories",
+		"title": "USA 2024 Presidential with Territories"
+	},
+	{
+		"path": "/app/usa/presidential/2024/takeall",
+		"title": "USA 2024 Presidential Take-All"
 	},
 	{
 		"path": "/app/usa/house/2022/blank",
