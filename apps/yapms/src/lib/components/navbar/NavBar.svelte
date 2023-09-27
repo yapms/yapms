@@ -79,7 +79,7 @@
 		>{$PocketBaseStore.authStore.isValid ? 'account' : 'login'}</button
 	>
 	<div class="grow" />
-	<button class="btn btn-sm hidden md:flex" on:click={toggleSidebar}>
+	<button class="btn btn-sm" on:click={toggleSidebar}>
 		{#if $SideBarStore}
 			<ChevronDoubleRight class="w-6 h-6" />
 		{:else}

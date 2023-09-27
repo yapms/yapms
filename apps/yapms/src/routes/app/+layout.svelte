@@ -23,6 +23,8 @@
 	import EditCustomColorModal from '$lib/components/modals/candidatemodal/customcolors/EditCustomColorModal.svelte';
 	import ThemeModal from '$lib/components/modals/thememodal/ThemeModal.svelte';
 	import RegionTooltip from '$lib/components/tooltips/RegionTooltip.svelte';
+	import { browser } from '$app/environment';
+	import { SideBarStore } from '$lib/stores/SideBar';
 
 	function handleKeyDown(event: KeyboardEvent) {
 		$InteractionStore.set(event.code, true);
@@ -30,6 +32,12 @@
 
 	function handleKeyUp(event: KeyboardEvent) {
 		$InteractionStore.delete(event.code);
+	}
+
+	if (browser) {
+		if (innerWidth > 768) {
+			$SideBarStore = true;
+		}
 	}
 </script>
 
