@@ -113,7 +113,7 @@
 </script>
 
 <div
-	class="flex justify-center"
+	class="flex justify-center items-center aspect-square min-w-0"
 	class:h-full={$ChartPositionStore === 'bottom'}
 	class:w-full={$ChartPositionStore === 'left'}
 >
