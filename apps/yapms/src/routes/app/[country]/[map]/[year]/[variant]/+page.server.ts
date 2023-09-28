@@ -10,7 +10,7 @@ export function entries() {
 			params[4] === undefined ||
 			params[5] === undefined
 		) {
-			return { country: 'usa', map: 'presidential', year: '2022', variant: 'blank' };
+			return { country: 'usa', map: 'presidential', year: '2024', variant: 'blank' };
 		}
 		return { country: params[2], map: params[3], year: params[4], variant: params[5] };
 	});

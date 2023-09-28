@@ -11,7 +11,7 @@
 				"links": [
 					{
 						"label": "President",
-						"route": "/app/usa/presidential/2022/blank"
+						"route": "/app/usa/presidential/2024/blank"
 					},
 					{
 						"label": "Senate",
@@ -27,8 +27,8 @@
 						"label": "More",
 						"buttons": [
 							{
-								"label": "Presidential 2022",
-								"route": "/app/usa/presidential/2022/blank"
+								"label": "Presidential 2024",
+								"route": "/app/usa/presidential/2024/blank"
 							},
 							{
 								"label": "2024 Senate",
@@ -105,6 +105,14 @@
 							{
 								"label": "Governors 2025",
 								"route": "/app/usa/governors/2025/blank"
+							},
+							{
+								"label": "Presidential 2024 Take-All",
+								"route": "/app/usa/presidential/2024/takeall"
+							},
+							{
+								"label": "Presidential 2024 with Territories",
+								"route": "/app/usa/presidential/2024/territories"
 							}
 						]
 					}
