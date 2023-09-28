@@ -67,7 +67,7 @@
 </script>
 
 <div
-	class="flex w-full h-full justify-center"
+	class="flex w-full h-full justify-center min-w-0"
 	class:flex-col={$ChartPositionStore === 'bottom'}
 	class:flex-row-reverse={$ChartPositionStore === 'left'}
 >
