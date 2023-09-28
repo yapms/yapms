@@ -77,7 +77,7 @@
 		</div>
 	{/if}
 	<div
-		class="flex rounded-md overflow-hidden min-w-fit min-h-fit"
+		class="flex rounded-md overflow-hidden"
 		class:flex-col={$ChartPositionStore === 'left'}
 		class:flex-row={$ChartPositionStore === 'bottom'}
 		class:w-16={$ChartPositionStore === 'left'}
