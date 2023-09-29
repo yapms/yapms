@@ -1,3 +1,3 @@
 import { writable } from 'svelte/store';
 
-export const SideBarStore = writable(true);
+export const SideBarStore = writable(false);
