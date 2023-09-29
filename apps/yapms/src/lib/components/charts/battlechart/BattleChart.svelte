@@ -67,7 +67,7 @@
 </script>
 
 <div
-	class="flex w-full h-full justify-center"
+	class="flex w-full h-full justify-center min-w-0 min-h-0"
 	class:flex-col={$ChartPositionStore === 'bottom'}
 	class:flex-row-reverse={$ChartPositionStore === 'left'}
 >
@@ -77,7 +77,7 @@
 		</div>
 	{/if}
 	<div
-		class="flex rounded-md overflow-hidden min-w-fit min-h-fit"
+		class="flex rounded-md overflow-hidden"
 		class:flex-col={$ChartPositionStore === 'left'}
 		class:flex-row={$ChartPositionStore === 'bottom'}
 		class:w-16={$ChartPositionStore === 'left'}

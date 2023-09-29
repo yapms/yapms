@@ -10,7 +10,7 @@
 
 <div
 	id="map-chart-div"
-	class="flex flex-grow basis-9/12"
+	class="flex flex-grow basis-9/12 max-w-[100vw]"
 	class:flex-col-reverse={$ChartPositionStore === 'bottom'}
 	class:flex-row={$ChartPositionStore === 'left'}
 >
