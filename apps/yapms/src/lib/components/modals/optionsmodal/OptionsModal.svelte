@@ -10,7 +10,6 @@
 	import LetsTalkElections from '$lib/assets/logos/lte.png';
 	import { RegionTooltipStore } from '$lib/stores/RegionTooltip';
 	import { AutoStrokeMultiplierStore } from '$lib/stores/AutoStrokeMultiplierStore';
-	import { updateAutoStroke } from '$lib/utils/applyPanZoom';
 
 	const chartTypeValues = ['pie', 'battle', 'none'];
 	const chartPositionValues = ['bottom', 'left'];
@@ -96,7 +95,6 @@
 					max="5"
 					step="0.1"
 					bind:value={$AutoStrokeMultiplierStore}
-					on:change={updateAutoStroke}
 					class="range"
 				/>
 			</label>

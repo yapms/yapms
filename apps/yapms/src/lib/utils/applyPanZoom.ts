@@ -93,13 +93,6 @@ function connectZoomAndStroke() {
 	});
 }
 
-function updateAutoStroke() {
-	const scale = panZoomSettings?.panzoom.getTransform().scale;
-	if (scale !== undefined) {
-		adjustStroke(scale);
-	}
-}
-
 function adjustStroke(scale: number) {
 	if (autoStrokeSettings === undefined) {
 		return;
@@ -111,4 +104,11 @@ function adjustStroke(scale: number) {
 	);
 }
 
-export { applyPanZoom, applyFastPanZoom, reapplyPanZoom, applyAutoStroke, updateAutoStroke };
+AutoStrokeMultiplierStore.subscribe(() => {
+	const scale = panZoomSettings?.panzoom.getTransform().scale;
+	if (scale !== undefined) {
+		adjustStroke(scale);
+	}
+});
+
+export { applyPanZoom, applyFastPanZoom, reapplyPanZoom, applyAutoStroke };
