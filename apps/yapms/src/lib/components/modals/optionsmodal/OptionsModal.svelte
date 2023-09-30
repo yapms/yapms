@@ -9,6 +9,7 @@
 	import RedEaglePolitics from '$lib/assets/logos/rep.png';
 	import LetsTalkElections from '$lib/assets/logos/lte.png';
 	import { RegionTooltipStore } from '$lib/stores/RegionTooltip';
+	import { AutoStrokeMultiplierStore } from '$lib/stores/AutoStrokeMultiplierStore';
 
 	const chartTypeValues = ['pie', 'battle', 'none'];
 	const chartPositionValues = ['bottom', 'left'];
@@ -83,6 +84,20 @@
 					</label>
 				</div>
 			</div>
+			<label class="label flex-col cursor-pointer items-start justify-start space-y-2">
+				<div class="flex w-full justify-between">
+					<span class="label-text">Border Width</span>
+					<span class="label-text">{($AutoStrokeMultiplierStore * 100).toFixed(0)}%</span>
+				</div>
+				<input
+					type="range"
+					min="0"
+					max="5"
+					step="0.1"
+					bind:value={$AutoStrokeMultiplierStore}
+					class="range"
+				/>
+			</label>
 		</div>
 	</div>
 </ModalBase>

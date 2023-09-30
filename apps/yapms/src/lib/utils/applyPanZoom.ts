@@ -1,3 +1,4 @@
+import { AutoStrokeMultiplierStore } from '$lib/stores/AutoStrokeMultiplierStore';
 import { LockMapStore } from '$lib/stores/LockMap';
 import panzoom, { type PanZoom } from 'panzoom';
 import { get } from 'svelte/store';
@@ -97,7 +98,17 @@ function adjustStroke(scale: number) {
 		return;
 	}
 	const newStroke = Math.min(autoStrokeSettings.initStroke / scale, autoStrokeSettings.upperStroke);
-	autoStrokeSettings.svg.style.setProperty('--auto-border-stroke-width', `${newStroke}px`);
+	autoStrokeSettings.svg.style.setProperty(
+		'--auto-border-stroke-width',
+		`${newStroke * get(AutoStrokeMultiplierStore)}px`
+	);
 }
+
+AutoStrokeMultiplierStore.subscribe(() => {
+	const scale = panZoomSettings?.panzoom.getTransform().scale;
+	if (scale !== undefined) {
+		adjustStroke(scale);
+	}
+});
 
 export { applyPanZoom, applyFastPanZoom, reapplyPanZoom, applyAutoStroke };
