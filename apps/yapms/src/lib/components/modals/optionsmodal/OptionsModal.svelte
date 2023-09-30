@@ -9,7 +9,7 @@
 	import RedEaglePolitics from '$lib/assets/logos/rep.png';
 	import LetsTalkElections from '$lib/assets/logos/lte.png';
 	import { RegionTooltipStore } from '$lib/stores/RegionTooltip';
-	import { AutoStrokeScaleStore } from '$lib/stores/AutoStrokeScaleStore';
+	import { AutoStrokeMultiplierStore } from '$lib/stores/AutoStrokeMultiplierStore';
 	import { updateAutoStroke } from '$lib/utils/applyPanZoom';
 
 	const chartTypeValues = ['pie', 'battle', 'none'];
@@ -88,14 +88,14 @@
 			<label class="label flex-col cursor-pointer items-start justify-start space-y-2">
 				<div class="flex w-full justify-between">
 					<span class="label-text">Border Width</span>
-					<span class="label-text">{($AutoStrokeScaleStore * 100).toFixed(0)}%</span>
+					<span class="label-text">{($AutoStrokeMultiplierStore * 100).toFixed(0)}%</span>
 				</div>
 				<input
 					type="range"
 					min="0"
 					max="5"
 					step="0.1"
-					bind:value={$AutoStrokeScaleStore}
+					bind:value={$AutoStrokeMultiplierStore}
 					on:change={updateAutoStroke}
 					class="range"
 				/>
