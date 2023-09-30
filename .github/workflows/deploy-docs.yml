@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: withastro/action@v0
+      - uses: withastro/action@v1
         with:
           path: ./apps/docs
 
