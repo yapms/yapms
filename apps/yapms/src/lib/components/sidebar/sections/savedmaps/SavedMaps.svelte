@@ -12,14 +12,14 @@
 
 <div class="divider">Saved Maps</div>
 <div class="flex flex-col gap-2 p-4">
-	<SaveMap on:submitted={refreshMaps} />
+	<SaveMap onSubmitted={refreshMaps} />
 	{#await maps}
 		<div class="flex justify-center">
 			<span class="loading loading-dots loading-lg" />
 		</div>
 	{:then theMaps}
 		{#each theMaps as map}
-			<SavedMap mapName={map.name} mapID={map.id} on:submitted={refreshMaps} />
+			<SavedMap mapName={map.name} mapID={map.id} onDeleted={refreshMaps} />
 		{/each}
 	{/await}
 </div>

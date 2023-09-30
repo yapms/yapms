@@ -2,12 +2,9 @@
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
 	import { generateJson } from '$lib/utils/saveMap';
 	import PlusCircle from '$lib/icons/PlusCircle.svelte';
-	import { createEventDispatcher } from 'svelte';
 
 	export let disabled = false;
-	const dispatch = createEventDispatcher();
-
-	const submitted = () => dispatch('submitted');
+	export let onSubmitted: () => void;
 
 	let submitting = false;
 	let newMapName = '';
@@ -29,7 +26,8 @@
 		form.append('user', $PocketBaseStore.authStore.model.id);
 		await $PocketBaseStore.collection('user_maps').create(form);
 		submitting = false;
-		submitted();
+		newMapName = '';
+		onSubmitted();
 	}
 </script>
 
