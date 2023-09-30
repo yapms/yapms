@@ -1,3 +1,4 @@
+import { AutoStrokeScaleStore } from '$lib/stores/AutoStrokeScaleStore';
 import { LockMapStore } from '$lib/stores/LockMap';
 import panzoom, { type PanZoom } from 'panzoom';
 import { get } from 'svelte/store';
@@ -92,12 +93,22 @@ function connectZoomAndStroke() {
 	});
 }
 
+function updateAutoStroke() {
+	const scale = panZoomSettings?.panzoom.getTransform().scale;
+	if (scale !== undefined) {
+		adjustStroke(scale);
+	}
+}
+
 function adjustStroke(scale: number) {
 	if (autoStrokeSettings === undefined) {
 		return;
 	}
 	const newStroke = Math.min(autoStrokeSettings.initStroke / scale, autoStrokeSettings.upperStroke);
-	autoStrokeSettings.svg.style.setProperty('--auto-border-stroke-width', `${newStroke}px`);
+	autoStrokeSettings.svg.style.setProperty(
+		'--auto-border-stroke-width',
+		`${newStroke * get(AutoStrokeScaleStore)}px`
+	);
 }
 
-export { applyPanZoom, applyFastPanZoom, reapplyPanZoom, applyAutoStroke };
+export { applyPanZoom, applyFastPanZoom, reapplyPanZoom, applyAutoStroke, updateAutoStroke };
