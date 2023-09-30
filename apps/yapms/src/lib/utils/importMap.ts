@@ -94,13 +94,19 @@ function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
 	});
 
 	const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+	svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
 	svg.setAttribute('auto-border-stroke-width', '1');
 	svg.setAttribute('auto-border-stroke-width-limit', '0.1');
+
 	const regions = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+	regions.setAttribute('regions', '*');
+
 	paths.forEach((path) => {
 		regions.appendChild(path);
 	});
+
 	svg.appendChild(regions);
+
 	ImportedSVGStore.set({ loaded: true, content: DOMPurify.sanitize(svg, DOMPurifyConfig) });
 }
 
