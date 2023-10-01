@@ -8,6 +8,7 @@ import (
 	"github.com/pocketbase/pocketbase"
 	"github.com/pocketbase/pocketbase/apis"
 	"github.com/pocketbase/pocketbase/core"
+	"github.com/pocketbase/pocketbase/models"
 	"github.com/pocketbase/pocketbase/plugins/migratecmd"
 
 	_ "yapms/pocketbase/migrations"
@@ -68,7 +69,8 @@ func main() {
 	})
 
 	app.OnRecordsListRequest().Add(func(e *core.RecordsListEvent) error {
-		if e.Collection.Name == "updates" || e.Collection.Name == "social_links" {
+		admin, _ := e.HttpContext.Get(apis.ContextAdminKey).(*models.Admin)
+		if admin == nil && (e.Collection.Name == "updates" || e.Collection.Name == "social_links") {
 			e.HttpContext.Response().Header().Set("Cache-Control", "max-age=86400")
 		}
 		return nil
