@@ -2,14 +2,10 @@
 	import MinusCircle from '$lib/icons/MinusCircle.svelte';
 	import { loadUserMapFromID } from '$lib/stores/LoadedMap';
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
-	import { createEventDispatcher } from 'svelte';
 
 	export let mapName: string;
 	export let mapID: string;
-
-	const dispatch = createEventDispatcher();
-
-	const submitted = () => dispatch('submitted');
+	export let onDeleted: () => void;
 
 	let submitting = false;
 
@@ -17,7 +13,7 @@
 		submitting = true;
 		await $PocketBaseStore.collection('user_maps').delete(mapID);
 		submitting = false;
-		submitted();
+		onDeleted();
 	}
 
 	async function openMap() {
