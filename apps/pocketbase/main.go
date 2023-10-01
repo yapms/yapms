@@ -67,6 +67,13 @@ func main() {
 		return nil
 	})
 
+	app.OnRecordsListRequest().Add(func(e *core.RecordsListEvent) error {
+		if e.Collection.Name == "updates" || e.Collection.Name == "social_links" {
+			e.HttpContext.Response().Header().Set("Cache-Control", "max-age=86400")
+		}
+		return nil
+	})
+
 	if err := app.Start(); err != nil {
 		log.Fatal(err)
 	}
