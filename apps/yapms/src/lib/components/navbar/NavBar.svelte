@@ -66,20 +66,23 @@
 	}
 </script>
 
-<div class="navbar flex-row bg-base-200 gap-3 overflow-x-auto overflow-y-clip min-h-0 z-10">
-	<a href="/" class="btn btn-sm">home</a>
-	<button class="btn btn-sm btn-error" on:click={openClearMapModal}>clear</button>
-	<button class="btn btn-sm" on:click={openCandidateModal}>candidates</button>
-	<button class="btn btn-sm" on:click={newImportedMap}>import</button>
-	<button class="btn btn-sm" on:click={openOptions}>options</button>
-	<button class="btn btn-sm" on:click={openMode}>mode: {$ModeStore}</button>
-	<button class="btn btn-sm" on:click={openShare}>share</button>
-	<button class="btn btn-sm" on:click={openTheme}>theme</button>
-	<button class="btn btn-sm" on:click={openAuth}
-		>{$PocketBaseStore.authStore.isValid ? 'account' : 'login'}</button
-	>
-	<div class="grow" />
-	<button class="btn btn-sm" on:click={toggleSidebar}>
+<div class="navbar bg-base-200 overflow-y-clip min-h-0 z-10">
+	<div class="flex-grow flex-row overflow-x-auto">
+		<a href="/" class="btn btn-sm">home</a>
+		<button class="btn btn-sm btn-error" on:click={openClearMapModal}>clear</button>
+		<button class="btn btn-sm" on:click={openCandidateModal}>candidates</button>
+		<button class="btn btn-sm" on:click={newImportedMap}>import</button>
+		<button class="btn btn-sm" on:click={openOptions}>options</button>
+		<button class="btn btn-sm" on:click={openMode}>mode: {$ModeStore}</button>
+		<button class="btn btn-sm" on:click={openShare}>share</button>
+		<button class="btn btn-sm" on:click={openTheme}>theme</button>
+		<button class="btn btn-sm" on:click={openAuth}
+			>{$PocketBaseStore.authStore.isValid ? 'account' : 'login'}</button
+		>
+		<div class="grow" />
+	</div>
+	<div class="divider divider-horizontal p-0 m-0" />
+	<button class="btn btn-sm btn-primary" on:click={toggleSidebar}>
 		{#if $SideBarStore}
 			<ChevronDoubleRight class="w-6 h-6" />
 		{:else}
