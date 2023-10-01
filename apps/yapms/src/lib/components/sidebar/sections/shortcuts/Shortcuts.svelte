@@ -1,5 +1,5 @@
-<div class="divider">Shortcuts</div>
-<div class="flex flex-col gap-4 p-2">
+<div class="hidden sm:divider">Shortcuts</div>
+<div class="hidden sm:flex flex-col gap-4 p-2">
 	<div class="flex justify-center items-center gap-2">
 		<span>Hold</span>
 		<kbd class="kbd">f</kbd>
