@@ -15,6 +15,11 @@
 	import { SideBarStore } from '$lib/stores/SideBar';
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
 
+	let content: HTMLDivElement | undefined;
+	let offsetWidth: number | undefined;
+
+	$: isOverflow = offsetWidth && offsetWidth < (content?.scrollWidth ?? 0);
+
 	function openClearMapModal() {
 		ClearMapModalStore.set({
 			...$ClearMapModalStore,
@@ -66,23 +71,28 @@
 	}
 </script>
 
-<div class="navbar bg-base-200 overflow-y-clip min-h-0 z-10">
-	<div class="flex-grow flex-row overflow-x-auto">
-		<a href="/" class="btn btn-sm">home</a>
-		<button class="btn btn-sm btn-error" on:click={openClearMapModal}>clear</button>
-		<button class="btn btn-sm" on:click={openCandidateModal}>candidates</button>
-		<button class="btn btn-sm" on:click={newImportedMap}>import</button>
-		<button class="btn btn-sm" on:click={openOptions}>options</button>
-		<button class="btn btn-sm" on:click={openMode}>mode: {$ModeStore}</button>
-		<button class="btn btn-sm" on:click={openShare}>share</button>
-		<button class="btn btn-sm" on:click={openTheme}>theme</button>
-		<button class="btn btn-sm" on:click={openAuth}
+<div class="navbar bg-base-200 overflow-y-clip min-h-0 z-10 px-0">
+	<div
+		class="flex-row overflow-x-scroll snap-x grow"
+		bind:this={content}
+		bind:offsetWidth
+		class:pt-2={isOverflow}
+		class:pb-3={isOverflow}
+	>
+		<a href="/" class="btn btn-sm snap-start">home</a>
+		<button class="btn btn-sm btn-error snap-start" on:click={openClearMapModal}>clear</button>
+		<button class="btn btn-sm snap-start" on:click={openCandidateModal}>candidates</button>
+		<button class="btn btn-sm snap-start" on:click={newImportedMap}>import</button>
+		<button class="btn btn-sm snap-start" on:click={openOptions}>options</button>
+		<button class="btn btn-sm snap-start" on:click={openMode}>mode: {$ModeStore}</button>
+		<button class="btn btn-sm snap-start" on:click={openShare}>share</button>
+		<button class="btn btn-sm snap-start" on:click={openTheme}>theme</button>
+		<button class="btn btn-sm snap-end" on:click={openAuth}
 			>{$PocketBaseStore.authStore.isValid ? 'account' : 'login'}</button
 		>
-		<div class="grow" />
 	</div>
-	<div class="divider divider-horizontal p-0 m-0" />
-	<button class="btn btn-sm btn-primary" on:click={toggleSidebar}>
+	<div class="divider divider-horizontal m-0 w-0" class:hidden={isOverflow === false} />
+	<button class="btn btn-sm btn-neutral mx-2" on:click={toggleSidebar}>
 		{#if $SideBarStore}
 			<ChevronDoubleRight class="w-6 h-6" />
 		{:else}
