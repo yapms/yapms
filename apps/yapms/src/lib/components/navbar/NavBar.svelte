@@ -21,10 +21,7 @@
 	$: isOverflow = offsetWidth && offsetWidth < (content?.scrollWidth ?? 0);
 
 	function openClearMapModal() {
-		ClearMapModalStore.set({
-			...$ClearMapModalStore,
-			open: true
-		});
+		$ClearMapModalStore.open = true;
 	}
 
 	function openCandidateModal() {
@@ -32,38 +29,23 @@
 	}
 
 	function openOptions() {
-		OptionsModalStore.set({
-			...$OptionsModalStore,
-			open: true
-		});
+		$OptionsModalStore.open = true;
 	}
 
 	function openMode() {
-		ModeModalStore.set({
-			...$ModeModalStore,
-			open: true
-		});
+		$ModeModalStore.open = true;
 	}
 
 	function openShare() {
-		ShareModalStore.set({
-			...$ShareModalStore,
-			open: true
-		});
+		$ShareModalStore.open = true;
 	}
 
 	function openTheme() {
-		ThemeModalStore.set({
-			...$ThemeModalStore,
-			open: true
-		});
+		$ThemeModalStore.open = true;
 	}
 
 	function openAuth() {
-		AuthModalStore.set({
-			...$AuthModalStore,
-			open: true
-		});
+		$AuthModalStore.open = true;
 	}
 
 	function toggleSidebar() {
