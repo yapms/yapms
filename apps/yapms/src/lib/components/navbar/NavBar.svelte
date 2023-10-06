@@ -55,11 +55,10 @@
 
 <div class="navbar bg-base-200 overflow-y-clip min-h-0 z-10 px-0">
 	<div
-		class="flex-row overflow-x-scroll snap-x grow"
+		class="flex-row snap-x overflow-x-auto grow"
+		style:scrollbar-width="thin"
 		bind:this={content}
 		bind:offsetWidth
-		class:pt-2={isOverflow}
-		class:pb-3={isOverflow}
 	>
 		<a href="/" class="btn btn-sm snap-start">home</a>
 		<button class="btn btn-sm btn-error snap-start" on:click={openClearMapModal}>clear</button>
