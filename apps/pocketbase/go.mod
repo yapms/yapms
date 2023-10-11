@@ -36,8 +36,8 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.17.1 // indirect
 	github.com/aws/aws-sdk-go-v2/service/sts v1.22.0 // indirect
 	github.com/aws/smithy-go v1.14.2 // indirect
-	github.com/chromedp/cdproto v0.0.0-20230901104747-bfe71bcbd1c0 // indirect
-	github.com/chromedp/chromedp v0.9.2
+	github.com/chromedp/cdproto v0.0.0-20231011050154-1d073bb38998 // indirect
+	github.com/chromedp/chromedp v0.9.3
 	github.com/chromedp/sysutil v1.0.0 // indirect
 	github.com/disintegration/imaging v1.6.2 // indirect
 	github.com/domodwyer/mailyak/v3 v3.6.2 // indirect
