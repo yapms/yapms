@@ -1,0 +1,13 @@
+{
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "devcontainer",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+	"features": {
+		"ghcr.io/devcontainers/features/go:1": {},
+		"ghcr.io/devcontainers/features/node:1": {}
+	},
+
+	"updateRemoteUserUID": true,
+	"postCreateCommand": "pnpm install && pnpm dotenv-vault pull example && mv -n .env.example .env"
+}
