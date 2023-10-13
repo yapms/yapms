@@ -9,5 +9,19 @@
 	},
 
 	"updateRemoteUserUID": true,
-	"postCreateCommand": "pnpm install && pnpm dotenv-vault pull example && mv -n .env.example .env"
+	"postCreateCommand": "pnpm install && pnpm dotenv-vault pull example && mv -n .env.example .env",
+
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"esbenp.prettier-vscode",
+				"svelte.svelte-vscode"
+			],
+			"settings": {
+				"eslint.workingDirectories": [
+					"./apps/yapms"
+				]
+			}
+		}
+	}
 }
