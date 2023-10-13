@@ -1,0 +1,25 @@
+version: "3.4"
+services:
+
+  devcontainer:
+    image: mcr.microsoft.com/devcontainers/base:jammy
+    volumes:
+      - ../../:/workspaces:cached
+    network_mode: service:browserless
+    command: sleep infinity
+  
+  browserless:
+    image: browserless/chrome:latest
+
+  umami:
+    image: docker.umami.dev/umami-software/umami:postgresql-latest
+    ports:
+      - 8079:3000
+    environment:
+      DATABASE_URL: postgresql://postgres:password@postgres:5432/umami
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: umami
+      POSTGRES_PASSWORD: password
