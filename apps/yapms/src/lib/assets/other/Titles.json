@@ -908,6 +908,54 @@
 		"title": "Wyoming 2022 House of Representatives"
 	},
 	{
+		"path": "/app/can/ab/2023/blank",
+		"title": "Alberta 2023 Legislative Assembly"
+	},
+	{
+		"path": "/app/can/bc/2020/blank",
+		"title": "British Columbia 2020 Legislative Assembly"
+	},
+	{
+		"path": "/app/can/mb/2023/blank",
+		"title": "Manitoba 2023 Legislative Assembly"
+	},
+	{
+		"path": "/app/can/nb/2020/blank",
+		"title": "New Brunswick 2020 Legislative Assembly"
+	},
+	{
+		"path": "/app/can/nl/2021/blank",
+		"title": "Newfoundland & Labrador 2021 Legislative Assembly"
+	},
+	{
+		"path": "/app/can/ns/2021/blank",
+		"title": "Nova Scotia 2021 Legislative Assembly"
+	},
+	{
+		"path": "/app/can/nt/2023/blank",
+		"title": "Northwest Territories 2023 Legislative Assembly"
+	},
+	{
+		"path": "/app/can/on/2022/blank",
+		"title": "Ontario 2022 Legislative Assembly"
+	},
+	{
+		"path": "/app/can/pe/2023/blank",
+		"title": "Prince Edward Island 2023 Legislative Assembly"
+	},
+	{
+		"path": "/app/can/qc/2022/blank",
+		"title": "Quebec 2022 Legislative Assembly"
+	},
+	{
+		"path": "/app/can/sk/2024/blank",
+		"title": "Saskatchewan 2024 Legislative Assembly"
+	},
+	{
+		"path": "/app/can/yt/2021/blank",
+		"title": "Yukon Territory 2021 Legislative Assembly"
+	},
+	{
 		"path": "/app/dnk/folketing/2022/blank",
 		"title": "Danish 2022 Folketing"
 	},
