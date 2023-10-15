@@ -1,7 +1,7 @@
 {
-	"packageManager": "pnpm@7.33.6",
+	"name": "yapms-project",
 	"engines": {
-		"node": "^18.0.0"
+		"node": "^18"
 	},
 	"scripts": {
 		"dev": "turbo run dev",
@@ -13,8 +13,14 @@
 		"format": "turbo run format"
 	},
 	"devDependencies": {
+		"@devcontainers/cli": "^0.52.0",
 		"dotenv-cli": "^7.3.0",
 		"dotenv-vault": "^1.25.0",
 		"turbo": "^1.10.13"
-	}
+	},
+	"workspaces": [
+		"./apps/yapms",
+		"./apps/pocketbase",
+		"./apps/docs"
+	]
 }
