@@ -1,4 +1,5 @@
 {
+	"name": "yapms-project",
 	"engines": {
 		"node": "^18"
 	},
