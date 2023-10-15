@@ -13,8 +13,6 @@
     "check": {},
     "lint-no-warnings": {},
     "lint": {},
-    "format": {
-      "cache": false
-    }
+    "format": {}
   }
 }

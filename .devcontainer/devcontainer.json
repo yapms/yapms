@@ -1,7 +1,12 @@
 {
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "devcontainer",
-	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"workspaceFolder": "/home/vscode/workspace",
+
+	"mounts": [
+		"type=bind,source=${localWorkspaceFolder},target=/home/vscode/workspace",
+		"type=bind,source=${env:PNPM_HOME},target=/home/vscode/.local/share/pnpm"
+	],
 
 	"features": {
 		"ghcr.io/devcontainers/features/go:1": {},
@@ -9,13 +14,14 @@
 	},
 
 	"updateRemoteUserUID": true,
-	"postCreateCommand": "pnpm install && pnpm dotenv-vault pull example && mv -n .env.example .env",
+	"postCreateCommand": "npm install && npx dotenv-vault pull example && mv -n .env.example .env",
 
 	"customizations": {
 		"vscode": {
 			"extensions": [
 				"esbenp.prettier-vscode",
-				"svelte.svelte-vscode"
+				"svelte.svelte-vscode",
+				"ms-azuretools.vscode-docker"
 			],
 			"settings": {
 				"eslint.workingDirectories": [

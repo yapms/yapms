@@ -3,13 +3,13 @@ services:
 
   devcontainer:
     image: mcr.microsoft.com/devcontainers/base:jammy
-    volumes:
-      - ../../:/workspaces:cached
-    network_mode: service:browserless
+    network_mode: host
     command: sleep infinity
   
   browserless:
     image: browserless/chrome:latest
+    network_mode: service:devcontainer
+    restart: always
 
   umami:
     image: docker.umami.dev/umami-software/umami:postgresql-latest
@@ -17,9 +17,11 @@ services:
       - 8079:3000
     environment:
       DATABASE_URL: postgresql://postgres:password@postgres:5432/umami
+    restart: always
 
   postgres:
     image: postgres:latest
     environment:
       POSTGRES_DB: umami
       POSTGRES_PASSWORD: password
+    restart: always
