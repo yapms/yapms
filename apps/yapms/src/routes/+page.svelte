@@ -2,20 +2,34 @@
 	import HomePageSidebar from '$lib/components/homepage/HomePageSidebar.svelte';
 	import MapSelectionGrid from '$lib/components/homepage/MapSelectionGrid.svelte';
 	import MapSelectionTitle from '$lib/components/homepage/MapSelectionTitle.svelte';
+	import MapCardGrid from '$lib/components/mapcard/MapCardGrid.svelte';
 	import Login from '$lib/icons/Login.svelte';
 	import Swatch from '$lib/icons/Swatch.svelte';
-	import mapSelectSections from '$lib/assets/homedata/MapSelection.json';
 	import ThemeModal from '$lib/components/modals/thememodal/ThemeModal.svelte';
 	import { ImportModalStore, AuthModalStore, ThemeModalStore } from '$lib/stores/Modals';
-	import MapSelectionCard from '$lib/components/homepage/MapSelectionCard.svelte';
 	import MoreMapsModal from '$lib/components/modals/moremapsmodal/MoreMapsModal.svelte';
-	import MapSearch from '$lib/components/homepage/MapSearch.svelte';
+	import MapSearch from '$lib/components/mapsearch/MapSearch.svelte';
 	import BetaModal from '$lib/components/modals/betamodal/BetaModal.svelte';
 	import ArrowUpTray from '$lib/icons/ArrowUpTray.svelte';
 	import ImportModal from '$lib/components/modals/importmodal/ImportModal.svelte';
 	import AuthModal from '$lib/components/modals/authmodal/AuthModal.svelte';
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
 	import type { PageData } from './$types';
+	import UsaMapCard from '$lib/components/mapcard/mapcards/USAMapCard.svelte';
+	import CanMapCard from '$lib/components/mapcard/mapcards/CANMapCard.svelte';
+	import DnkMapCard from '$lib/components/mapcard/mapcards/DNKMapCard.svelte';
+	import FraMapCard from '$lib/components/mapcard/mapcards/FRAMapCard.svelte';
+	import GbrMapCard from '$lib/components/mapcard/mapcards/GBRMapCard.svelte';
+	import ItaMapCard from '$lib/components/mapcard/mapcards/ITAMapCard.svelte';
+	import NldMapCard from '$lib/components/mapcard/mapcards/NLDMapCard.svelte';
+	import NzlMapCard from '$lib/components/mapcard/mapcards/NZLMapCard.svelte';
+	import AusMapCard from '$lib/components/mapcard/mapcards/AUSMapCard.svelte';
+	import UsaCongressionalMapCard from '$lib/components/mapcard/mapcards/USACongressionalMapCard.svelte';
+	import UsaPresidentialMapCard from '$lib/components/mapcard/mapcards/USAPresidentialMapCard.svelte';
+	import UsaStateSenateMapCard from '$lib/components/mapcard/mapcards/USAStateSenateMapCard.svelte';
+	import UsaStateHouseMapCard from '$lib/components/mapcard/mapcards/USAStateHouseMapCard.svelte';
+	import CanProvincesMapCard from '$lib/components/mapcard/mapcards/CANProvincesMapCard.svelte';
+	import UpdatesSidebar from '$lib/components/updatessidebar/UpdatesSidebar.svelte';
 
 	export let data: PageData;
 
@@ -78,26 +92,33 @@
 	</div>
 
 	<div class="flex flex-row h-full overflow-hidden">
-		<HomePageSidebar />
+		<UpdatesSidebar />
 		<div class="divider md:divider-horizontal ml-0 w-0 !mr-0" />
 		<div class="flex-1 md:px-5 overflow-auto overflow-x-clip pb-4">
 			<MapSearch data={data.post.search} />
-			{#each mapSelectSections as section}
-				<MapSelectionTitle title={section.title} />
-				<MapSelectionGrid>
-					{#each section.cards as card}
-						<MapSelectionCard
-							name={card.name}
-							bg={card.bg}
-							alt={card.alt}
-							doubleCols={card.doubleCols}
-							attribution={card.attribution}
-							links={card.links}
-							modals={card.modals}
-						/>
-					{/each}
-				</MapSelectionGrid>
-			{/each}
+
+			<MapCardGrid>
+				<UsaMapCard />
+				<CanMapCard />
+				<GbrMapCard />
+				<AusMapCard />
+				<DnkMapCard />
+				<ItaMapCard />
+				<NldMapCard />
+				<NzlMapCard />
+				<FraMapCard />
+			</MapCardGrid>
+
+			<MapCardGrid title="State & Provincial Maps">
+				<UsaStateSenateMapCard />
+				<UsaStateHouseMapCard />
+				<CanProvincesMapCard />
+			</MapCardGrid>
+
+			<MapCardGrid title="Historical Maps">
+				<UsaCongressionalMapCard />
+				<UsaPresidentialMapCard />
+			</MapCardGrid>
 		</div>
 	</div>
 </div>
