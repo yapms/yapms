@@ -49,7 +49,7 @@
 	}
 
 	function toggleSidebar() {
-		$SideBarStore = !$SideBarStore;
+		$SideBarStore.open = !$SideBarStore.open;
 	}
 </script>
 
