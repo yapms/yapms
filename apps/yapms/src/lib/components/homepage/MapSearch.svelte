@@ -1,12 +1,9 @@
 <script lang="ts">
-	import titles from '$lib/assets/other/Titles.json';
 	import Typeahead from 'svelte-typeahead';
-	import { goto } from '$app/navigation';
 	import MagnifyingGlass from '$lib/icons/MagnifyingGlass.svelte';
+	import { goto } from '$app/navigation';
 
-	function onSelect({ detail }: CustomEvent) {
-		void goto(titles[detail.originalIndex].path);
-	}
+	export let data: { title: string; route: string }[] = [];
 </script>
 
 <div class="pt-6">
@@ -15,15 +12,14 @@
 		<Typeahead
 			limit={8}
 			hideLabel={true}
-			data={titles}
+			{data}
 			extract={(item) => item.title}
-			inputAfterSelect="clear"
-			on:select={onSelect}
+			on:select={async (selected) => {
+				await goto(selected.detail.original.route);
+			}}
 			let:result
 		>
-			<div>
-				{titles[result.index].title}
-			</div>
+			{result.original.title}
 		</Typeahead>
 	</div>
 </div>
