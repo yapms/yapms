@@ -9,9 +9,11 @@ export const load: PageServerLoad = () => {
 
 	for (const file of files) {
 		const data = fs.readFileSync(file, 'utf8');
-		const title = data.match(/title=['"](?<title>[^'"]*)['"]/)?.groups?.['title'] ?? '';
+		const title = data.match(/title=['"](?<title>[^'"]*)['"]/)?.groups?.['title'];
+		if (title === undefined) {
+			continue;
+		}
 		const route = '/app/' + file.split('/').pop()?.split('.').at(0)?.replaceAll('-', '/');
-		console.log(title);
 		search.push({
 			title,
 			route
