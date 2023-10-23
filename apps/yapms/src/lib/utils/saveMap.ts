@@ -3,6 +3,7 @@ import { get } from 'svelte/store';
 import { saveAs } from 'file-saver';
 import { page } from '$app/stores';
 import { RegionsStore } from '$lib/stores/regions/Regions';
+import { MapIdentifier } from '$lib/stores/MapIdentifier';
 
 /**
  * Generates a JSON object with the current state of the map
@@ -27,12 +28,11 @@ function generateJson() {
 		}))
 	}));
 
-	const urlData = get(page).url.pathname.split('/');
 	const map = {
-		country: urlData[2],
-		type: urlData[3],
-		year: urlData[4],
-		variant: urlData[5]
+		country: get(MapIdentifier)?.country,
+		type: get(MapIdentifier)?.type,
+		year: get(MapIdentifier)?.date,
+		variant: get(MapIdentifier)?.variant
 	};
 
 	const data = {
