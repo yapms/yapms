@@ -36,7 +36,7 @@
 
 	if (browser) {
 		if (innerWidth > 768) {
-			$SideBarStore = true;
+			$SideBarStore.open = true;
 		}
 	}
 </script>

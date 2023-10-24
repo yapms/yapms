@@ -1,14 +1,18 @@
-import titles from '$lib/assets/other/Titles.json';
-
-/** @type {import('./$types').EntryGenerator} */
 export function entries() {
-	return titles.map((title) => {
-		const params = title.path.split('/');
-		if (params[2] === undefined || params[3] === undefined) {
-			return { country: 'usa', map: 'governors' };
+	const maps = import.meta.glob('$lib/assets/maps/*/*.svg');
+
+	const result = [];
+	for (const key in maps) {
+		const params = key.split('/').pop()?.split('.').at(0)?.split('-');
+		if (params === undefined || params.length !== 2) {
+			continue;
 		}
-		return { country: params[2], map: params[3] };
-	});
+		result.push({
+			country: params[0],
+			map: params[1]
+		});
+	}
+	return result;
 }
 
 export const prerender = true;

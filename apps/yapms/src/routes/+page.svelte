@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import HomePageSidebar from '$lib/components/homepage/HomePageSidebar.svelte';
 	import MapSelectionGrid from '$lib/components/homepage/MapSelectionGrid.svelte';
 	import MapSelectionTitle from '$lib/components/homepage/MapSelectionTitle.svelte';
@@ -15,6 +15,9 @@
 	import ImportModal from '$lib/components/modals/importmodal/ImportModal.svelte';
 	import AuthModal from '$lib/components/modals/authmodal/AuthModal.svelte';
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
 
 	function openThemeModal() {
 		ThemeModalStore.set({
@@ -78,7 +81,7 @@
 		<HomePageSidebar />
 		<div class="divider md:divider-horizontal ml-0 w-0 !mr-0" />
 		<div class="flex-1 md:px-5 overflow-auto overflow-x-clip pb-4">
-			<MapSearch />
+			<MapSearch data={data.post.search} />
 			{#each mapSelectSections as section}
 				<MapSelectionTitle title={section.title} />
 				<MapSelectionGrid>
