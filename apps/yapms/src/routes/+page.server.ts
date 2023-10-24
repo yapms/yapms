@@ -14,7 +14,7 @@ export const load: PageServerLoad = () => {
 			continue;
 		}
 		const route = '/app/' + file.split('/').pop()?.split('.').at(0)?.replaceAll('-', '/');
-		search.push({
+		search.unshift({
 			title,
 			route
 		});

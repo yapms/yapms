@@ -10,6 +10,11 @@ const config: UserConfig = {
 	preview: {
 		host: '0.0.0.0',
 		port: 8081
+	},
+	build: {
+		rollupOptions: {
+			external: ['fs']
+		}
 	}
 };
 
