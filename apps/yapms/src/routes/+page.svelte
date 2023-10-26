@@ -1,7 +1,4 @@
 <script lang="ts">
-	import HomePageSidebar from '$lib/components/homepage/HomePageSidebar.svelte';
-	import MapSelectionGrid from '$lib/components/homepage/MapSelectionGrid.svelte';
-	import MapSelectionTitle from '$lib/components/homepage/MapSelectionTitle.svelte';
 	import MapCardGrid from '$lib/components/mapcard/MapCardGrid.svelte';
 	import Login from '$lib/icons/Login.svelte';
 	import Swatch from '$lib/icons/Swatch.svelte';
