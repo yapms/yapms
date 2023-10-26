@@ -1,6 +1,7 @@
 import type { PageServerLoad } from './$types';
 import { globSync } from 'glob';
 import fs from 'fs';
+import path from 'path';
 
 export const load: PageServerLoad = () => {
 	const files = globSync('./src/lib/assets/maps/**/*.svg');
@@ -13,7 +14,7 @@ export const load: PageServerLoad = () => {
 		if (title === undefined) {
 			continue;
 		}
-		const route = '/app/' + file.split('/').pop()?.split('.').at(0)?.replaceAll('-', '/');
+		const route = '/app/' + file.split(path.sep).pop()?.split('.').at(0)?.replaceAll('-', '/');
 		search.unshift({
 			title,
 			route
