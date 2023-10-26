@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
-	import SideBarUpdate from './SideBarUpdate.svelte';
+	import Update from './Update.svelte';
 	import SocialLinkGrid from '../links/SocialLinkGrid.svelte';
 
 	let updates = $PocketBaseStore.collection('updates').getList(1, 10, { sort: '-created' });
@@ -14,7 +14,7 @@
 				<span class="loading loading-ring loading-lg text-primary self-center"></span>
 			{:then updates}
 				{#each updates.items as update}
-					<SideBarUpdate title={update.title} description={update.description} />
+					<Update title={update.title} description={update.description} />
 				{/each}
 			{/await}
 		</div>
