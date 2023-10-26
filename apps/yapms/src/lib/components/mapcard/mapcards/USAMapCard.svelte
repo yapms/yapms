@@ -15,14 +15,6 @@
 			route: '/app/usa/house/2024/blank'
 		},
 		{
-			label: 'House 2',
-			route: '/app/usa/house/2024/blank'
-		},
-		{
-			label: 'House 4',
-			route: '/app/usa/house/2024/blank'
-		},
-		{
 			label: 'Presidential 2024',
 			route: '/app/usa/presidential/2024/blank'
 		},

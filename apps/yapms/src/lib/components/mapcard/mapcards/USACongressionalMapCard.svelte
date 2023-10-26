@@ -81,7 +81,7 @@
 </script>
 
 <MapCard
-	name="USA Congressional Results"
+	name="Historical USA House"
 	bg="usahouse"
 	attribution="Photo by Lawrence Jackson"
 	{links}
