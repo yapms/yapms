@@ -1,7 +1,6 @@
 import { TossupCandidateStore, CandidatesStore } from '$lib/stores/Candidates';
 import { get } from 'svelte/store';
 import { saveAs } from 'file-saver';
-import { page } from '$app/stores';
 import { RegionsStore } from '$lib/stores/regions/Regions';
 import { MapIdentifier } from '$lib/stores/MapIdentifier';
 
