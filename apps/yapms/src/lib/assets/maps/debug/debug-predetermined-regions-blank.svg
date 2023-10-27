@@ -6,7 +6,7 @@
 
 -->
 
-<svg
+<svg map="debug" type="predetermined" date="regions" variant="blank"
    viewBox="0 0 959 593"
    id="testing-map"
    version="1.1"

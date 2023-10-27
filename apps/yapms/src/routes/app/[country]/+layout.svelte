@@ -8,6 +8,7 @@
 	import { browser } from '$app/environment';
 	import { loadMapFromURL, LoadedMapStore } from '$lib/stores/LoadedMap';
 	import { loadSidebarTitle } from '$lib/stores/SideBar';
+	import { loadMapIdentifier } from '$lib/stores/MapIdentifier';
 
 	$: requestedMap = $page.url.pathname.replace('/app/', '').replaceAll('/', '-');
 	$: country = requestedMap.split('-').at(0);
@@ -23,6 +24,7 @@
 			applyPanZoom(svg);
 			applyAutoStroke(svg);
 			loadSidebarTitle(svg);
+			loadMapIdentifier(svg);
 		}
 		loadRegionsForApp(node);
 		loadMapFromURL($page.url);
