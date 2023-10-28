@@ -9,13 +9,12 @@ RUN turbo prune --scope=yapms --docker
 FROM node:18 AS installer
 ARG DOTENV_VAULT_KEY
 WORKDIR /app
-RUN corepack enable && corepack prepare pnpm@latest --activate
 COPY --from=builder /app/.env.vault .
-COPY --from=builder /app/out/pnpm-lock.yaml .
+COPY --from=builder /app/out/package-lock.json .
 COPY --from=builder /app/out/full/ .
-RUN pnpm install
-RUN pnpm dotenv-vault decrypt ${DOTENV_VAULT_KEY} > .env
-RUN pnpm run build
+RUN npm install
+RUN npx dotenv-vault decrypt ${DOTENV_VAULT_KEY} > .env
+RUN npm run build
 
 FROM node:18 AS runner
 WORKDIR /app
