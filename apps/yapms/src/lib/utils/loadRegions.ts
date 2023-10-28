@@ -109,8 +109,8 @@ function getCandidatesForRegion(candidateStr: string, value: number) {
 
 function createRegionStore(node: HTMLDivElement) {
 	const regionsForStore = Array<Region>();
-	const regions = node.querySelector<HTMLElement>('[regions]');
-	const texts = node.querySelector<HTMLElement>('[region-texts]');
+	const regions = node.querySelector<HTMLElement>('[map-type="regions"]');
+	const texts = node.querySelector<HTMLElement>('[map-type="region-texts"]');
 	const tossupCandidate = get(TossupCandidateStore);
 
 	if (regions === null) return;
