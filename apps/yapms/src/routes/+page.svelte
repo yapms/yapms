@@ -14,6 +14,7 @@
 	import type { PageData } from './$types';
 	import UsaMapCard from '$lib/components/mapcard/mapcards/USAMapCard.svelte';
 	import CanMapCard from '$lib/components/mapcard/mapcards/CANMapCard.svelte';
+	import BraMapCard from '$lib/components/mapcard/mapcards/BRAMapCard.svelte';
 	import DnkMapCard from '$lib/components/mapcard/mapcards/DNKMapCard.svelte';
 	import FraMapCard from '$lib/components/mapcard/mapcards/FRAMapCard.svelte';
 	import GbrMapCard from '$lib/components/mapcard/mapcards/GBRMapCard.svelte';
@@ -99,6 +100,7 @@
 				<CanMapCard />
 				<GbrMapCard />
 				<AusMapCard />
+				<BraMapCard />
 				<DnkMapCard />
 				<ItaMapCard />
 				<NldMapCard />
