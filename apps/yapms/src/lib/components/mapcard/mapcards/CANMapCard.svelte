@@ -7,7 +7,7 @@
 		},
 		{
 			label: 'House of Commons',
-			route: '/app/can/commons/2021/blank'
+			route: '/app/can/commons/next/blank'
 		},
 		{
 			label: '2021 Results',
@@ -19,7 +19,7 @@
 		},
 		{
 			label: 'House of Commons',
-			route: '/app/can/commons/2021/blank'
+			route: '/app/can/commons/next/blank'
 		},
 		{
 			label: 'Senate',
