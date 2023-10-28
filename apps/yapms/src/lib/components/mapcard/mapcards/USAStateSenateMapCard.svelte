@@ -142,6 +142,10 @@
 			label: 'New York 2022'
 		},
 		{
+			route: '/app/usa/nc_upper/2023298/blank',
+			label: 'North Carolina 2024'
+		},
+		{
 			route: '/app/usa/nc_upper/2022/blank',
 			label: 'North Carolina 2022'
 		},
