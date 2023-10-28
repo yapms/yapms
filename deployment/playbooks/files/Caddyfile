@@ -1,4 +1,4 @@
-yapms2.com {
+yapms.com, yapms2.com {
   tls internal
 
   encode gzip
@@ -12,7 +12,7 @@ yapms2.com {
   }
 }
 
-analytics.yapms2.com {
+analytics.yapms.com, analytics.yapms2.com {
   tls internal
 
   encode gzip
