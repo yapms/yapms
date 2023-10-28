@@ -1,5 +1,5 @@
 # change all map parameters to country parameters
-# ls ../apps/yapms/src/lib/assets/maps/**/*.svg | xargs gawk -f add-url-params-to-svgs.awk -i inplace
+# find ../apps/yapms/src/lib/assets/maps \! -type l | xargs awk -f change-map-to-country.awk -i inplace
 
 {
 	match($0,/map="([a-zA-Z]*)"/,data)
