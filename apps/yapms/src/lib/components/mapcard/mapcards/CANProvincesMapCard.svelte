@@ -10,12 +10,16 @@
 			route: '/app/can/mb/2023/blank'
 		},
 		{
-			label: 'Alberta',
-			route: '/app/can/ab/2023/blank'
+			route: '/app/can/bc/2023107/blank',
+			label: 'British Columbia'
 		},
 		{
 			route: '/app/can/ab/2023/blank',
 			label: 'Alberta 2023'
+		},
+		{
+			route: '/app/can/bc/2023107/blank',
+			label: 'British Columbia 2024'
 		},
 		{
 			route: '/app/can/bc/2020/blank',
