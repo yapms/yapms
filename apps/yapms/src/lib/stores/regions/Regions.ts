@@ -90,7 +90,7 @@ RegionsStore.subscribe((regions) => {
 		}
 		if (region.nodes.text) {
 			region.nodes.text.style.color = calculateLumaHEX(lumaColor) > 0.5 ? 'black' : 'white';
-			const valueText = region.nodes.text.querySelector('[value-text]');
+			const valueText = region.nodes.text.querySelector('[map-type="value-text"]');
 			if (valueText) {
 				valueText.innerHTML = region.value.toString();
 			}
