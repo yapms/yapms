@@ -15,7 +15,6 @@ import type { SavedRegionCandidates } from '$lib/types/Region';
 //If you are adding an attribute imported maps might need, add it here.
 export const DOMPurifyConfig = {
 	ADD_ATTR: [
-		'region',
 		'short-name',
 		'long-name',
 		'value',
@@ -28,9 +27,7 @@ export const DOMPurifyConfig = {
 		'default-mode',
 		'auto-border-stroke-width',
 		'auto-border-stroke-width-limit',
-		'regions',
-		'region-texts',
-		'value-text'
+		'map-type'
 	]
 };
 
