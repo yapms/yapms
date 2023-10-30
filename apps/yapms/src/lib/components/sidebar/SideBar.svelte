@@ -19,6 +19,16 @@
 				<SocialLinkGrid />
 			</div>
 			<h1 class="text-xl text-center font-bold">{$SideBarStore.title}</h1>
+
+			<!-- /21838847269/yapms-sidebar -->
+			<div id="div-gpt-ad-1698618618626-0" style="min-width: 200px; min-height: 200px;">
+				<script>
+					googletag.cmd.push(function () {
+						googletag.display('div-gpt-ad-1698618618626-0');
+					});
+				</script>
+			</div>
+
 			<Shortcuts />
 			{#if $PocketBaseStore.authStore.isValid}
 				<SavedMaps />
