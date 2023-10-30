@@ -15,13 +15,14 @@ import type { SavedRegionCandidates } from '$lib/types/Region';
 //If you are adding an attribute imported maps might need, add it here.
 export const DOMPurifyConfig = {
 	ADD_ATTR: [
+		'region',
 		'short-name',
 		'long-name',
 		'value',
 		'locked',
 		'permalocked',
 		'disabled',
-		'for',
+		'for-region',
 		'candidates',
 		'tossup-candidate',
 		'default-mode',
@@ -96,7 +97,7 @@ function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
 	svg.setAttribute('auto-border-stroke-width-limit', '0.1');
 
 	const regions = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-	regions.setAttribute('regions', '*');
+	regions.setAttribute('map-type', 'regions');
 
 	paths.forEach((path) => {
 		regions.appendChild(path);
