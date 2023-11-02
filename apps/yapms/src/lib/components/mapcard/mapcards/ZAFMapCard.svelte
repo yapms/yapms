@@ -32,4 +32,4 @@
 	];
 </script>
 
-<MapCard name="South Africa" bg="saf" attribution="Photo by Clayton" {links} />
+<MapCard name="South Africa" bg="zaf" attribution="Photo by Clayton" {links} />
