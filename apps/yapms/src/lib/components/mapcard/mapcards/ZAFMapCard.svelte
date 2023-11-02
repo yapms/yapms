@@ -3,31 +3,31 @@
 	const links = [
 		{
 			label: 'National Assembly',
-			route: '/app/saf/national_assembly/2019/blank'
+			route: '/app/zaf/national_assembly/2019128/blank'
 		},
 		{
 			label: '2019 Results',
-			route: '/app/saf/national_assembly/2019/results'
+			route: '/app/zaf/national_assembly/2019128/results'
 		},
 		{
 			label: 'Provinces',
-			route: '/app/saf/provinces'
+			route: '/app/zaf/provinces'
 		},
 		{
 			label: '2019 National Assembly',
-			route: '/app/saf/national_assembly/2019/blank'
+			route: '/app/zaf/national_assembly/2019128/blank'
 		},
 		{
 			label: '2019 National Assembly Results',
-			route: '/app/saf/national_assembly/2019/results'
+			route: '/app/zaf/national_assembly/2019128/results'
 		},
 		{
 			label: 'Provinces',
-			route: '/app/saf/provinces'
+			route: '/app/zaf/provinces'
 		},
 		{
-			label: '2023 Municipalities',
-			route: '/app/saf/municipalities/2023/blank'
+			label: 'Municipalities',
+			route: '/app/zaf/municipalities/2019275/blank'
 		}
 	];
 </script>
