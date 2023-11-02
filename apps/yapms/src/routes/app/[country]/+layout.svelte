@@ -7,7 +7,7 @@
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
 	import { loadMapFromURL, LoadedMapStore } from '$lib/stores/LoadedMap';
-	import { loadSidebarTitle } from '$lib/stores/SideBar';
+	import { loadSidebarTitle, loadSidebarSources } from '$lib/stores/SideBar';
 	import { loadMapIdentifier } from '$lib/stores/MapIdentifier';
 
 	$: requestedMap = $page.url.pathname.replace('/app/', '').replaceAll('/', '-');
@@ -24,6 +24,7 @@
 			applyPanZoom(svg);
 			applyAutoStroke(svg);
 			loadSidebarTitle(svg);
+			loadSidebarSources(svg);
 			loadMapIdentifier(svg);
 		}
 		loadRegionsForApp(node);

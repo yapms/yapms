@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { OriginalSourceStore } from '$lib/stores/OriginalSource';
+	import { SideBarStore } from '$lib/stores/SideBar';
 
-	$: sources = $OriginalSourceStore.map((source) => {
+	$: sources = $SideBarStore.sources.map((source) => {
 		return new URL(source);
 	});
 </script>
