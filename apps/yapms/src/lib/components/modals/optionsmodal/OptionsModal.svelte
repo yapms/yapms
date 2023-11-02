@@ -11,13 +11,37 @@
 	import { RegionTooltipStore } from '$lib/stores/RegionTooltip';
 	import { AutoStrokeMultiplierStore } from '$lib/stores/AutoStrokeMultiplierStore';
 
-	const chartTypeValues = ['pie', 'battle', 'none'];
-	const chartPositionValues = ['bottom', 'left'];
-	const logos = [
+	let logoFile: FileList | undefined;
+	let logoFileInput: HTMLInputElement | undefined;
+
+	let logos: Array<{ name: string; src: string | ArrayBuffer | null }> = [
 		{ name: 'Lets Talk Elections', src: LetsTalkElections },
 		{ name: 'Red Eagle Politics', src: RedEaglePolitics },
 		{ name: 'None', src: null }
 	];
+
+	const chartTypeValues = ['pie', 'battle', 'none'];
+	const chartPositionValues = ['bottom', 'left'];
+
+	function readLogoFile() {
+		if (logoFile === undefined || logoFile.length < 1) {
+			return;
+		}
+		const fileReader = new FileReader();
+		const file = logoFile[0];
+		new FileReader().readAsDataURL(file);
+		fileReader.readAsDataURL(file);
+		fileReader.onload = () => {
+			$LogoStore = fileReader.result?.toString() || null;
+		};
+		fileReader.onerror = () => {
+			console.error(fileReader.error);
+		};
+	}
+
+	function clearLogoFile() {
+		if (logoFileInput) logoFileInput.value = '';
+	}
 </script>
 
 <ModalBase title="Options" store={OptionsModalStore}>
@@ -51,11 +75,24 @@
 			<div class="form-control w-full">
 				<label class="label flex-col cursor-pointer items-start justify-start space-y-2">
 					<span class="label-text">Chart Logo</span>
-					<select class="select select-bordered w-full" bind:value={$LogoStore}>
+					<select
+						class="select select-bordered w-full"
+						bind:value={$LogoStore}
+						on:change={clearLogoFile}
+					>
+						<option selected disabled>Choose one...</option>
 						{#each logos as logo}
 							<option value={logo.src}>{logo.name}</option>
 						{/each}
 					</select>
+					<input
+						type="file"
+						class="file-input file-input-bordered w-full"
+						accept="image/*"
+						bind:files={logoFile}
+						bind:this={logoFileInput}
+						on:change={readLogoFile}
+					/>
 				</label>
 			</div>
 			<div class="grid grid-cols-2">
