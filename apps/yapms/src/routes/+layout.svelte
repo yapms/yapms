@@ -3,6 +3,7 @@
 	import '@fontsource/roboto/400.css';
 	import { PUBLIC_UMAMI_URI, PUBLIC_UMAMI_DATA_WEBSITE_ID } from '$env/static/public';
 	import { browser } from '$app/environment';
+	import { navigating } from '$app/stores';
 
 	if (browser) {
 		window.googletag = window.googletag || { cmd: [] };
@@ -39,6 +40,12 @@
 			window.googletag.enableServices();
 		});
 	}
+
+	$: if ($navigating) {
+		window.googletag.cmd.push(function () {
+			window.googletag.display('div-gpt-ad-1698625359953-0');
+		});
+	}
 </script>
 
 <svelte:head>
@@ -49,10 +56,4 @@
 <slot />
 
 <!-- /21838847269/yapms-interstitials -->
-<div id="div-gpt-ad-1698625359953-0" style="min-width: 300px; min-height: 250px;">
-	<script>
-		googletag.cmd.push(function () {
-			googletag.display('div-gpt-ad-1698625359953-0');
-		});
-	</script>
-</div>
+<div id="div-gpt-ad-1698625359953-0" style="min-width: 300px; min-height: 250px;" />
