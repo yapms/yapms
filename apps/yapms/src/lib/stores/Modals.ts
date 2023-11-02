@@ -30,6 +30,10 @@ const ClearMapModalStore = writable({
 	open: false
 });
 
+const NavigateHomeModalStore = writable({
+	open: false
+});
+
 const EditRegionModalStore = writable<{
 	region: Region | null;
 	open: boolean;
@@ -102,6 +106,7 @@ export {
 	EditCandidateModalStore,
 	EditTossupModalStore,
 	ClearMapModalStore,
+	NavigateHomeModalStore,
 	EditRegionModalStore,
 	SplitRegionModalStore,
 	AddCandidateModalStore,

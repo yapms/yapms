@@ -25,6 +25,7 @@
 	import RegionTooltip from '$lib/components/tooltips/RegionTooltip.svelte';
 	import { browser } from '$app/environment';
 	import { SideBarStore } from '$lib/stores/SideBar';
+	import NavigateHomeModal from '$lib/components/modals/navigatehomemodal/NavigateHomeModal.svelte';
 
 	function handleKeyDown(event: KeyboardEvent) {
 		$InteractionStore.set(event.code, true);
@@ -56,6 +57,8 @@
 		<SideBar />
 	</div>
 </div>
+
+<NavigateHomeModal />
 
 <ClearMapModal />
 
