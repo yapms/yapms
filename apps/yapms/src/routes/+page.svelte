@@ -28,7 +28,7 @@
 	import UsaStateHouseMapCard from '$lib/components/mapcard/mapcards/USAStateHouseMapCard.svelte';
 	import CanProvincesMapCard from '$lib/components/mapcard/mapcards/CANProvincesMapCard.svelte';
 	import UpdatesSidebar from '$lib/components/updatessidebar/UpdatesSidebar.svelte';
-	import SafMapCard from '$lib/components/mapcard/mapcards/SAFMapCard.svelte';
+	import ZafMapCard from '$lib/components/mapcard/mapcards/ZAFMapCard.svelte';
 
 	export let data: PageData;
 
@@ -106,7 +106,7 @@
 				<ItaMapCard />
 				<NldMapCard />
 				<NzlMapCard />
-				<SafMapCard />
+				<ZafMapCard />
 				<FraMapCard />
 			</MapCardGrid>
 
