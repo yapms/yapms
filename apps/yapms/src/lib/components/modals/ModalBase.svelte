@@ -23,7 +23,7 @@
 
 <input type="checkbox" class="modal-toggle" checked={$store?.open ?? false} />
 
-<dialog class="modal modal-bottom lg:modal-middle" on:close={close}>
+<div class="modal modal-bottom lg:modal-middle" on:close={close}>
 	<div class="modal-box flex flex-col w-full">
 		<div class="mb-6">
 			<div class="flex gap-x-2 align-middle">
@@ -58,4 +58,4 @@
 	<form method="dialog" class="modal-backdrop">
 		<button on:click={close}>close</button>
 	</form>
-</dialog>
+</div>
