@@ -7,7 +7,8 @@
 		OptionsModalStore,
 		ShareModalStore,
 		AuthModalStore,
-		ThemeModalStore
+		ThemeModalStore,
+		NavigateHomeModalStore
 	} from '$lib/stores/Modals';
 	import { ModeStore } from '$lib/stores/Mode';
 	import ChevronDoubleRight from '$lib/icons/ChevronDoubleRight.svelte';
@@ -19,6 +20,10 @@
 	let offsetWidth: number | undefined;
 
 	$: isOverflow = offsetWidth && offsetWidth < (content?.scrollWidth ?? 0);
+
+	function openNavigateHomeModal() {
+		$NavigateHomeModalStore.open = true;
+	}
 
 	function openClearMapModal() {
 		$ClearMapModalStore.open = true;
@@ -60,7 +65,7 @@
 		bind:this={content}
 		bind:offsetWidth
 	>
-		<a href="/" class="btn btn-sm snap-start">home</a>
+		<button class="btn btn-sm snap-start" on:click={openNavigateHomeModal}>Home</button>
 		<button class="btn btn-sm btn-error snap-start" on:click={openClearMapModal}>clear</button>
 		<button class="btn btn-sm snap-start" on:click={openCandidateModal}>candidates</button>
 		<button class="btn btn-sm snap-start" on:click={newImportedMap}>import</button>
