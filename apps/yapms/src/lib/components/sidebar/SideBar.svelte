@@ -7,8 +7,15 @@
 	import SavedMaps from './sections/savedmaps/SavedMaps.svelte';
 	import Sources from './sections/sources/Sources.svelte';
 	import SocialLinkGrid from '../links/SocialLinkGrid.svelte';
+	import { browser } from '$app/environment';
 
 	afterUpdate(reapplyPanZoom);
+
+	if (browser) {
+		window.googletag.cmd.push(function () {
+			window.googletag.display('div-gpt-ad-1698618618626-0');
+		});
+	}
 </script>
 
 {#if $SideBarStore.open}
@@ -21,13 +28,7 @@
 			<h1 class="text-xl text-center font-bold">{$SideBarStore.title}</h1>
 
 			<!-- /21838847269/yapms-sidebar -->
-			<div id="div-gpt-ad-1698618618626-0" style="min-width: 200px; min-height: 200px;">
-				<script>
-					googletag.cmd.push(function () {
-						googletag.display('div-gpt-ad-1698618618626-0');
-					});
-				</script>
-			</div>
+			<div id="div-gpt-ad-1698618618626-0" style="min-width: 200px; min-height: 200px;" />
 
 			<Shortcuts />
 			{#if $PocketBaseStore.authStore.isValid}
