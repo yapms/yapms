@@ -1,8 +1,11 @@
 package support
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"os/exec"
+	"strings"
 
 	"github.com/chromedp/chromedp"
 	"github.com/pocketbase/pocketbase"
@@ -27,14 +30,20 @@ func TakeScreenshot(e *core.RecordCreateEvent, app *pocketbase.PocketBase, brows
 		chromedp.FullScreenshot(&screenshotBuffer, 100),
 	)
 	if err != nil {
-		fmt.Println("ERROR: ", err)
+		fmt.Println("error: ", err)
 		return nil
+	}
+
+	// compress the byte data
+	screenshotBuffer, err = compressImage(screenshotBuffer)
+	if err != nil {
+		fmt.Println("error: ", err)
 	}
 
 	// create a file from the screenshot
 	newFile, err := filesystem.NewFileFromBytes(screenshotBuffer, "screenshot.png")
 	if err != nil {
-		fmt.Println("ERROR: ", err)
+		fmt.Println("error: ", err)
 		return nil
 	}
 	newFile.Name = "screenshot.png"
@@ -44,9 +53,23 @@ func TakeScreenshot(e *core.RecordCreateEvent, app *pocketbase.PocketBase, brows
 	form.AddFiles("screenshot", newFile)
 	form.Submit()
 	if err != nil {
-		fmt.Println("ERROR: ", err)
+		fmt.Println("error: ", err)
 		return nil
 	}
 
 	return nil
+}
+
+func compressImage(input []byte) (output []byte, err error) {
+	cmd := exec.Command("pngquant", "-", "--quality=0-50", "-s1")
+	cmd.Stdin = strings.NewReader(string(input))
+	var out bytes.Buffer
+	cmd.Stdout = &out
+	err = cmd.Run()
+	if err != nil {
+		output = input
+		return
+	}
+	output = out.Bytes()
+	return
 }
