@@ -1,13 +1,13 @@
-FROM golang:1.21 AS INSTALLER
+FROM golang:1.21-alpine AS INSTALLER
 WORKDIR /app
 COPY apps/pocketbase/ .
 RUN go clean
-RUN go get github.com/pocketbase/pocketbase
 RUN go build
 RUN ./pocketbase migrate
 
-FROM golang:1.21 AS RUNNER
+FROM golang:1.21-alpine AS RUNNER
 WORKDIR /app
+RUN apk add pngquant
 COPY --from=INSTALLER /app/pocketbase .
 COPY --from=INSTALLER /app/pb_data ./pb_data
 CMD ./pocketbase serve --http=0.0.0.0:8080
