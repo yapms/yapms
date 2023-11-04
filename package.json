@@ -25,13 +25,8 @@
   ],
   "renovate": {
     "extends": [
-      "config:recommended"
-    ],
-    "dependencyDashboard": true,
-    "automergeType": "pr",
-    "lockFileMaintenance": {
-      "enabled": true,
-      "automerge": true
-    }
+      "config:recommended",
+      ":pinAllExceptPeerDependencies"
+    ]
   }
 }
