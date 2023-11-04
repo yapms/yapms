@@ -21,7 +21,13 @@
 	$: isOverflow = offsetHeight && offsetHeight < (content?.scrollHeight ?? 0);
 </script>
 
-<input type="checkbox" class="modal-toggle" checked={$store?.open ?? false} />
+<input
+	aria-hidden="true"
+	tabindex="-1"
+	type="checkbox"
+	class="modal-toggle"
+	checked={$store?.open ?? false}
+/>
 
 <div class="modal modal-bottom lg:modal-middle" on:close={close}>
 	<div class="modal-box flex flex-col w-full">
@@ -31,7 +37,7 @@
 				<h3 class="text-2xl flex-grow">
 					{title}
 				</h3>
-				<button class="btn btn-sm btn-circle btn-error" on:click={close}>
+				<button title="Close Modal" class="btn btn-sm btn-circle btn-error" on:click={close}>
 					<XMark class="w-5 h-5" />
 				</button>
 			</div>
