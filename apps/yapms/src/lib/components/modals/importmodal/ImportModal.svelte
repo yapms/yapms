@@ -93,87 +93,91 @@
 				<span class="flex gap-x-2"><ArrowUpTray class="w-6 h-6" />Loading Map...</span>
 			</div>
 			<div class="flex flex-col gap-y-2">
-				<div class="flex flex-col gap-2">
-					<div class="flex gap-x-1">
-						<h3 class="font-light text-lg">Open from GeoJson</h3>
-						<div class="tooltip" data-tip={multipleFilesTooltip}>
-							<DocumentDuplicate class="w-6" />
+				<div class="flex flex-row gap-x-2">
+					<label>
+						<div class="flex gap-x-1 mb-2">
+							Open From GeoJson
+							<div class="tooltip tooltip-bottom" data-tip={multipleFilesTooltip}>
+								<DocumentDuplicate class="w-6" />
+							</div>
 						</div>
-					</div>
-					<div class="flex flex-row gap-x-2">
-						<input
-							multiple
-							type="file"
-							accept=".geojson"
-							class="file-input file-input-primary w-full"
-							bind:files={geoJsonFiles}
-						/>
-						<button
-							class="btn btn-secondary gap-1 flex-nowrap"
-							on:click={loadGeoJson}
-							disabled={!geoJsonFiles || geoJsonFiles.length < 1 || loading}
-						>
-							<ArrowUpTray class="w-5 h-5" />
-							<span>Load</span>
-						</button>
-					</div>
+						<div class="flex gap-x-2">
+							<input
+								multiple
+								type="file"
+								accept=".geojson"
+								class="file-input file-input-primary w-full"
+								bind:files={geoJsonFiles}
+							/>
+							<button
+								class="btn btn-secondary gap-1 flex-nowrap"
+								on:click={loadGeoJson}
+								disabled={!geoJsonFiles || geoJsonFiles.length < 1 || loading}
+							>
+								<ArrowUpTray class="w-5 h-5" />
+								<span>Load</span>
+							</button>
+						</div>
+					</label>
 				</div>
 
 				<div class="divider divider-vertical mt-1 -mb-1" />
 
-				<div class="flex flex-col gap-2">
-					<div class="flex gap-x-1">
-						<h3 class="font-light text-lg">Open from Shapefiles</h3>
-						<div class="tooltip" data-tip={multipleFilesTooltip}>
-							<DocumentDuplicate class="w-6" />
+				<div class="flex flex-row gap-x-2">
+					<label>
+						<div class="flex gap-x-1 mb-2">
+							Open From Shapefiles
+							<div class="tooltip" data-tip={multipleFilesTooltip}>
+								<DocumentDuplicate class="w-6" />
+							</div>
 						</div>
-					</div>
-					<div class="flex flex-row gap-x-2">
-						<input
-							multiple
-							type="file"
-							accept=".shp"
-							class="file-input file-input-primary w-full"
-							bind:files={shapeFiles}
-						/>
-						<button
-							class="btn btn-secondary gap-1 flex-nowrap"
-							on:click={loadShapeFiles}
-							disabled={!shapeFiles || shapeFiles.length < 1 || loading}
-						>
-							<ArrowUpTray class="w-5 h-5" />
-							<span>Load</span>
-						</button>
-					</div>
+						<div class="flex gap-x-2">
+							<input
+								multiple
+								type="file"
+								accept=".shp"
+								class="file-input file-input-primary w-full"
+								bind:files={shapeFiles}
+							/>
+							<button
+								class="btn btn-secondary gap-1 flex-nowrap"
+								on:click={loadShapeFiles}
+								disabled={!shapeFiles || shapeFiles.length < 1 || loading}
+							>
+								<ArrowUpTray class="w-5 h-5" />
+								<span>Load</span>
+							</button>
+						</div>
+					</label>
 				</div>
 
 				<div class="divider divider-vertical mt-1 -mb-1" />
 
-				<div class="flex flex-col gap-2">
-					<h3 class="font-light text-lg">
-						Open from SVG<br /><span class="italic text-sm"
-							>Works only with <a
-								class="underline"
-								href="https://github.com/yapms/yapms/wiki/Map-SVG-Format">YAPms SVGs</a
-							></span
-						>
-					</h3>
-					<div class="flex flex-row gap-x-2">
-						<input
-							type="file"
-							accept=".svg"
-							class="file-input file-input-primary w-full"
-							bind:files={svgFiles}
-						/>
-						<button
-							class="btn btn-secondary gap-1 flex-nowrap"
-							on:click={loadSVG}
-							disabled={!svgFiles || svgFiles.length < 1 || loading}
-						>
-							<ArrowUpTray class="w-5 h-5" />
-							<span>Load</span>
-						</button>
-					</div>
+				<div class="flex flex-row gap-x-2">
+					<label>
+						<div class="mb-2">
+							Open from SVG following
+							<a class="underline italic" href="https://github.com/yapms/yapms/wiki/Map-SVG-Format"
+								>YAPms format</a
+							>
+						</div>
+						<div class="flex gap-x-2">
+							<input
+								type="file"
+								accept=".svg"
+								class="file-input file-input-primary w-full"
+								bind:files={svgFiles}
+							/>
+							<button
+								class="btn btn-secondary gap-1 flex-nowrap"
+								on:click={loadSVG}
+								disabled={!svgFiles || svgFiles.length < 1 || loading}
+							>
+								<ArrowUpTray class="w-5 h-5" />
+								<span>Load</span>
+							</button>
+						</div>
+					</label>
 				</div>
 			</div>
 		</div>

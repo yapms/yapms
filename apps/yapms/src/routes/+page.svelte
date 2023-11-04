@@ -56,6 +56,7 @@
 
 <svelte:head>
 	<title>YAPms - Yet Another Political Map Simulator</title>
+	<meta name="description" content="Create and share maps of countries across the world." />
 </svelte:head>
 
 <div class="flex flex-col h-full overflow-hidden">
