@@ -1,26 +1,37 @@
 {
-	"name": "yapms-project",
-	"engines": {
-		"node": "^18"
-	},
-	"scripts": {
-		"dev": "turbo run dev",
-		"build": "turbo run build",
-		"start": "turbo run start",
-		"check": "turbo run check",
-		"lint-no-warnings": "turbo run lint-no-warnings",
-		"lint": "turbo run lint",
-		"format": "turbo run format"
-	},
-	"devDependencies": {
-		"@devcontainers/cli": "^0.52.0",
-		"dotenv-cli": "^7.3.0",
-		"dotenv-vault": "^1.25.0",
-		"turbo": "^1.10.13"
-	},
-	"workspaces": [
-		"./apps/yapms",
-		"./apps/pocketbase",
-		"./apps/docs"
-	]
+  "name": "yapms-project",
+  "engines": {
+    "node": "^18"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "start": "turbo run start",
+    "check": "turbo run check",
+    "lint-no-warnings": "turbo run lint-no-warnings",
+    "lint": "turbo run lint",
+    "format": "turbo run format"
+  },
+  "devDependencies": {
+    "@devcontainers/cli": "^0.52.0",
+    "dotenv-cli": "^7.3.0",
+    "dotenv-vault": "^1.25.0",
+    "turbo": "^1.10.13"
+  },
+  "workspaces": [
+    "./apps/yapms",
+    "./apps/pocketbase",
+    "./apps/docs"
+  ],
+  "renovate": {
+    "extends": [
+      "config:recommended"
+    ],
+    "dependencyDashboard": true,
+    "automergeType": "pr",
+    "lockFileMaintenance": {
+      "enabled": true,
+      "automerge": true
+    }
+  }
 }
