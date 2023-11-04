@@ -25,8 +25,7 @@
   ],
   "renovate": {
     "extends": [
-      "config:recommended",
-      ":pinAllExceptPeerDependencies"
+      "config:js-app"
     ]
   }
 }
