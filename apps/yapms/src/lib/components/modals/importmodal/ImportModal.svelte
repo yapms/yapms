@@ -156,9 +156,11 @@
 				<div class="flex flex-row gap-x-2">
 					<label>
 						<div class="mb-2">
-							Open from SVG following
-							<a class="underline italic" href="https://github.com/yapms/yapms/wiki/Map-SVG-Format"
-								>YAPms format</a
+							Open from SVG
+							<a
+								class="underline italic text-sm font-light"
+								href="https://github.com/yapms/yapms/wiki/Map-SVG-Format"
+								>Works only with YAPms format</a
 							>
 						</div>
 						<div class="flex gap-x-2">
