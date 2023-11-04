@@ -25,7 +25,8 @@
   ],
   "renovate": {
     "extends": [
-      "config:js-app"
+      "config:js-app",
+      "group:turboMonorepo"
     ]
   }
 }
