@@ -1,11 +1,10 @@
 <script lang="ts">
-	import { afterUpdate, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import { Chart, registerables } from 'chart.js';
 	import { CandidatesStore, TossupCandidateStore } from '$lib/stores/Candidates';
 	import { CandidateCounts, CandidateCountsMargins } from '$lib/stores/regions/Regions';
 	import ChartDataLabels from 'chartjs-plugin-datalabels';
 	import { ChartPositionStore } from '$lib/stores/Chart';
-	import { reapplyPanZoom } from '$lib/utils/applyPanZoom';
 	import { ChartLeansStore } from '$lib/stores/ChartLeansStore';
 
 	let canvasBind: HTMLCanvasElement;
