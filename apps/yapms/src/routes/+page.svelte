@@ -6,7 +6,6 @@
 	import { ImportModalStore, AuthModalStore, ThemeModalStore } from '$lib/stores/Modals';
 	import MoreMapsModal from '$lib/components/modals/moremapsmodal/MoreMapsModal.svelte';
 	import MapSearch from '$lib/components/mapsearch/MapSearch.svelte';
-	import BetaModal from '$lib/components/modals/betamodal/BetaModal.svelte';
 	import ArrowUpTray from '$lib/icons/ArrowUpTray.svelte';
 	import ImportModal from '$lib/components/modals/importmodal/ImportModal.svelte';
 	import AuthModal from '$lib/components/modals/authmodal/AuthModal.svelte';
@@ -131,5 +130,3 @@
 <ThemeModal />
 
 <AuthModal />
-
-<BetaModal />
