@@ -108,8 +108,6 @@
 			}
 		});
 	});
-
-	afterUpdate(reapplyPanZoom);
 </script>
 
 <div
