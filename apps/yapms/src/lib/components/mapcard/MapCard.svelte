@@ -25,7 +25,7 @@
 	{/await}
 	<div class="card-body items-center text-center">
 		<h2 class="card-title text-white">{name}</h2>
-		<div class="grid gap-4 grid-cols-2">
+		<div class:grid-cols-2={links.length > 1} class="grid gap-4">
 			{#if links.length <= 4}
 				{#each links as link}
 					<a href={link.route} class="btn btn-sm btn-primary w-full">{link.label}</a>

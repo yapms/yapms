@@ -28,6 +28,7 @@
 	import CanProvincesMapCard from '$lib/components/mapcard/mapcards/CANProvincesMapCard.svelte';
 	import UpdatesSidebar from '$lib/components/updatessidebar/UpdatesSidebar.svelte';
 	import ZafMapCard from '$lib/components/mapcard/mapcards/ZAFMapCard.svelte';
+	import GlbMapCard from '$lib/components/mapcard/mapcards/GLBMapCard.svelte';
 
 	export let data: PageData;
 
@@ -107,6 +108,7 @@
 				<NzlMapCard />
 				<ZafMapCard />
 				<FraMapCard />
+				<GlbMapCard />
 			</MapCardGrid>
 
 			<MapCardGrid title="State & Provincial Maps">
