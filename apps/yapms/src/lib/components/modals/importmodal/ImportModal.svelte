@@ -158,7 +158,7 @@
 						<div class="mb-2">
 							Open from SVG following
 							<a class="underline italic" href="https://github.com/yapms/yapms/wiki/Map-SVG-Format"
-								>format</a
+								>YAPms format</a
 							>
 						</div>
 						<div class="flex gap-x-2">
