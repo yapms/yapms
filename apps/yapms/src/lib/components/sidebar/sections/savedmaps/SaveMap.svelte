@@ -2,6 +2,7 @@
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
 	import { generateJson } from '$lib/utils/saveMap';
 	import PlusCircle from '$lib/icons/PlusCircle.svelte';
+	import { ImportedSVGStore } from '$lib/stores/ImportedSVG';
 
 	export let disabled = false;
 	export let onSubmitted: () => void;
@@ -37,13 +38,13 @@
 		class="input input-bordered input-sm flex-grow overflow-hidden join-item"
 		bind:value={newMapName}
 		placeholder="Map Name"
-		disabled={disabled || submitting}
+		disabled={disabled || submitting || $ImportedSVGStore.loaded}
 	/>
 	<div class="tooltip" data-tip="Create">
 		<button
 			class="btn btn-sm btn-primary join-item"
 			on:click={createMap}
-			disabled={disabled || submitting}
+			disabled={disabled || submitting || $ImportedSVGStore.loaded}
 		>
 			{#if submitting}
 				<span class="loading loading-dots loading-sm" />
