@@ -1,12 +1,12 @@
 ARG DOTENV_VAULT_KEY
 
-FROM node:18 AS builder
+FROM node:21 AS builder
 WORKDIR /app
 COPY . .
 RUN npm install turbo --global
 RUN turbo prune --scope=yapms --docker
 
-FROM node:18 AS installer
+FROM node:21 AS installer
 ARG DOTENV_VAULT_KEY
 WORKDIR /app
 COPY --from=builder /app/.env.vault .
@@ -16,7 +16,7 @@ RUN npm install
 RUN npx dotenv-vault decrypt ${DOTENV_VAULT_KEY} > .env
 RUN npm run build
 
-FROM node:18 AS runner
+FROM node:21 AS runner
 WORKDIR /app
 COPY --from=installer /app/apps/yapms/package.json .
 COPY --from=installer /app/apps/yapms/build/ .
