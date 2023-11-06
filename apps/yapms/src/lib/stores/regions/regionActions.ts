@@ -36,6 +36,21 @@ export function fillRegion(regionID: string, increment: boolean): void {
 	}
 }
 
+export function fillGroup(group: number) {
+	const regions = get(RegionsStore);
+	for (const region of regions) {
+		if (region.fillGroup !== group) continue;
+		region.candidates = [
+			{
+				candidate: get(SelectedCandidateStore),
+				count: region.value,
+				margin: 0
+			}
+		];
+	}
+	RegionsStore.set(regions);
+}
+
 export function splitRegion(regionID: string): void {
 	const region = get(RegionsStore).find((region) => region.id === regionID);
 	SplitRegionModalStore.set({

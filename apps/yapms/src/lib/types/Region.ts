@@ -3,6 +3,7 @@ import { z } from 'zod';
 
 export const RegionSchema = z.object({
 	id: z.string(),
+	fillGroup: z.number().optional(),
 	shortName: z.string(),
 	longName: z.string(),
 	value: z.number(),

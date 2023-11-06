@@ -3,7 +3,14 @@ import { blendHexColors, calculateLumaHEX } from '$lib/utils/luma';
 import { derived, writable, get } from 'svelte/store';
 import { TossupCandidateStore, CandidatesStore } from '../Candidates';
 import { ModeStore } from '../Mode';
-import { disableRegion, editRegion, fillRegion, lockRegion, splitRegion } from './regionActions';
+import {
+	disableRegion,
+	editRegion,
+	fillRegion,
+	fillGroup,
+	lockRegion,
+	splitRegion
+} from './regionActions';
 import { InteractionStore } from '../Interaction';
 import { makePattern, removeAllPatterns } from '$lib/utils/patterns';
 import { RegionTooltipStore } from '../RegionTooltip';
@@ -167,9 +174,14 @@ export const setPointerEvents = (): void => {
 
 		region.nodes.region.onclick = () => {
 			const currentMode = get(ModeStore);
+			const interactions = get(InteractionStore);
 			switch (currentMode) {
 				case 'fill':
-					fillRegion(region.id, true);
+					if (region.fillGroup !== undefined && interactions.has('KeyD')) {
+						fillGroup(region.fillGroup);
+					} else {
+						fillRegion(region.id, true);
+					}
 					break;
 				case 'split':
 					splitRegion(region.id);

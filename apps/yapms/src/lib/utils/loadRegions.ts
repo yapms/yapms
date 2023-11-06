@@ -122,6 +122,9 @@ function createRegionStore(node: HTMLDivElement) {
 		const candidateString = childHTML.getAttribute('candidates');
 		const newRegion: Region = {
 			id: childHTML.getAttribute('region') ?? '',
+			fillGroup: childHTML.hasAttribute('fill-group')
+				? Number(childHTML.getAttribute('fill-group'))
+				: undefined,
 			shortName: childHTML.getAttribute('short-name') ?? '',
 			longName: childHTML.getAttribute('long-name') ?? '',
 			value: childHTML.hasAttribute('disabled') ? 0 : value,

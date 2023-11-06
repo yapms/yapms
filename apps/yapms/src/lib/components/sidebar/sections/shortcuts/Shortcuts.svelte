@@ -7,6 +7,11 @@
 	</div>
 	<div class="flex justify-center items-center gap-2">
 		<span>Hold</span>
+		<kbd class="kbd">d</kbd>
+		<span>to fill in groups</span>
+	</div>
+	<div class="flex justify-center items-center gap-2">
+		<span>Hold</span>
 		<kbd class="kbd">ctrl</kbd>
 		<span>to decrement colors</span>
 	</div>
