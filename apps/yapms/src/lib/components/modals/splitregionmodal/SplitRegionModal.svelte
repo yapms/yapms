@@ -163,28 +163,27 @@
 	}
 </script>
 
-<ModalBase
-	title="Split {$SplitRegionModalStore.region?.longName} - {$SplitRegionModalStore.region?.value}"
-	store={SplitRegionModalStore}
->
-	<div slot="content">
+<ModalBase title="Split {$SplitRegionModalStore.region?.longName}" store={SplitRegionModalStore}>
+	<div slot="content" class="flex flex-col gap-4">
 		{#each candidates as candidate}
-			<div class="flex flex-col items-center gap-1">
-				<div class="flex-grow">
-					{candidate.candidate.name} - {candidate.count}
+			<label class="flex flex-col w-full gap-2">
+				<div class="flex justify-between">
+					<span class="font-medium">{candidate.candidate.name}</span>
+					<span class="font-thin font-mono">
+						({candidate.count}/{$SplitRegionModalStore.region?.value})
+						{((candidate.count / ($SplitRegionModalStore.region?.value ?? 1)) * 100).toFixed(2)}%
+					</span>
 				</div>
-				<div class="flex-grow">
-					<input
-						type="range"
-						class="range"
-						min="0"
-						max={$SplitRegionModalStore.region?.value}
-						value={candidate.count}
-						on:input={(event) => updateCandidateCount(event, candidate)}
-						disabled={isTossupCandidate(candidate.candidate.id)}
-					/>
-				</div>
-			</div>
+				<input
+					type="range"
+					class="range"
+					min="0"
+					max={$SplitRegionModalStore.region?.value}
+					value={candidate.count}
+					on:input={(event) => updateCandidateCount(event, candidate)}
+					disabled={isTossupCandidate(candidate.candidate.id)}
+				/>
+			</label>
 		{/each}
 	</div>
 </ModalBase>
