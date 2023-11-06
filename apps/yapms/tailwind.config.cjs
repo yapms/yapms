@@ -2,7 +2,11 @@
 module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		extend: {}
+		extend: {
+			fontFamily: {
+				mono: ['Roboto Mono Variable']
+			}
+		}
 	},
 	// @ts-ignore
 	plugins: [require('daisyui')],
