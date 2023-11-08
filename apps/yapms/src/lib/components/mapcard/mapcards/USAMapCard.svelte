@@ -60,7 +60,7 @@
 		},
 		{
 			label: 'States & Territories',
-			route: '/app/usa/states/2023001/blank'
+			route: '/app/usa/states_and_territories/2023001/blank'
 		},
 		{
 			label: 'Senate',
