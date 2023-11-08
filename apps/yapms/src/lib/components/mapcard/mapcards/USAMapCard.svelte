@@ -59,6 +59,10 @@
 			route: '/app/usa/counties/2020/blank'
 		},
 		{
+			label: 'States & Territories',
+			route: '/app/usa/states_and_territories/2023001/blank'
+		},
+		{
 			label: 'Senate',
 			route: '/app/usa/senate'
 		},
