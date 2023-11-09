@@ -5,19 +5,20 @@
 
 	$: {
 		const lowerSearch = search.toLowerCase().trim();
-		const regions = [...$RegionsStore];
-		regions.forEach((region) => {
+
+		const regions = $RegionsStore.map((region) => {
 			if (
 				(region.longName.toLowerCase().trim().includes(lowerSearch) ||
 					region.shortName.toLowerCase().trim().includes(lowerSearch)) &&
 				lowerSearch !== ''
 			) {
 				region.nodes.region.style['stroke'] = 'yellow';
-				region.nodes.region.style['stroke-width'] = '5';
+				region.nodes.region.style['stroke-width'] = '0.5';
 			} else {
 				region.nodes.region.style['stroke'] = '';
 				region.nodes.region.style['stroke-width'] = '0';
 			}
+			return region;
 		});
 
 		$RegionsStore = regions;
