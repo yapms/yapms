@@ -35,7 +35,8 @@ export const SavedRegionSchema = RegionSchema.omit({
 	shortName: true,
 	longName: true,
 	nodes: true,
-	candidates: true
+	candidates: true,
+	actionGroups: true
 }).extend({
 	candidates: z
 		.object({
