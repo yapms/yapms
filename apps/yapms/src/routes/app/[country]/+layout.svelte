@@ -9,6 +9,7 @@
 	import { loadMapFromURL, LoadedMapStore } from '$lib/stores/LoadedMap';
 	import { loadSidebarTitle, loadSidebarSources } from '$lib/stores/SideBar';
 	import { loadMapIdentifier } from '$lib/stores/MapIdentifier';
+	import { loadActionGroups } from '$lib/stores/ActionGroups';
 
 	$: requestedMap = $page.url.pathname.replace('/app/', '').replaceAll('/', '-');
 	$: country = requestedMap.split('-').at(0);
@@ -26,6 +27,7 @@
 			loadSidebarTitle(svg);
 			loadSidebarSources(svg);
 			loadMapIdentifier(svg);
+			loadActionGroups(svg);
 		}
 		loadRegionsForApp(node);
 		loadMapFromURL($page.url);

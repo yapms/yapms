@@ -3,10 +3,20 @@ import { blendHexColors, calculateLumaHEX } from '$lib/utils/luma';
 import { derived, writable, get } from 'svelte/store';
 import { TossupCandidateStore, CandidatesStore } from '../Candidates';
 import { ModeStore } from '../Mode';
-import { disableRegion, editRegion, fillRegion, lockRegion, splitRegion } from './regionActions';
+import {
+	disableRegion,
+	editRegion,
+	fillRegion,
+	fillGroup,
+	lockRegion,
+	splitRegion,
+	disableGroup,
+	lockGroup
+} from './regionActions';
 import { InteractionStore } from '../Interaction';
 import { makePattern, removeAllPatterns } from '$lib/utils/patterns';
 import { RegionTooltipStore } from '../RegionTooltip';
+import { SelectedActionGroup } from '../ActionGroups';
 
 /**
  * Stores the state of all regions.
@@ -167,22 +177,41 @@ export const setPointerEvents = (): void => {
 
 		region.nodes.region.onclick = () => {
 			const currentMode = get(ModeStore);
-			switch (currentMode) {
-				case 'fill':
-					fillRegion(region.id, true);
-					break;
-				case 'split':
-					splitRegion(region.id);
-					break;
-				case 'edit':
-					editRegion(region.id);
-					break;
-				case 'disable':
-					disableRegion(region.id);
-					break;
-				case 'lock':
-					lockRegion(region.id);
-					break;
+			const interactions = get(InteractionStore);
+			if (interactions.has('KeyG')) {
+				const group = get(SelectedActionGroup);
+				if (group === undefined) return;
+				const subgroup = region.actionGroups.at(group);
+				if (subgroup === undefined) return;
+				switch (currentMode) {
+					case 'fill':
+						fillGroup(group, subgroup);
+						break;
+					case 'disable':
+						disableGroup(group, subgroup);
+						break;
+					case 'lock':
+						lockGroup(group, subgroup);
+						break;
+				}
+			} else {
+				switch (currentMode) {
+					case 'fill':
+						fillRegion(region.id, true);
+						break;
+					case 'split':
+						splitRegion(region.id);
+						break;
+					case 'edit':
+						editRegion(region.id);
+						break;
+					case 'disable':
+						disableRegion(region.id);
+						break;
+					case 'lock':
+						lockRegion(region.id);
+						break;
+				}
 			}
 		};
 

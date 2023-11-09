@@ -36,6 +36,21 @@ export function fillRegion(regionID: string, increment: boolean): void {
 	}
 }
 
+export function fillGroup(group: number, subgroup: number) {
+	const regions = get(RegionsStore);
+	for (const region of regions) {
+		if (region.actionGroups.at(group) !== subgroup) continue;
+		region.candidates = [
+			{
+				candidate: get(SelectedCandidateStore),
+				count: region.value,
+				margin: 0
+			}
+		];
+	}
+	RegionsStore.set(regions);
+}
+
 export function splitRegion(regionID: string): void {
 	const region = get(RegionsStore).find((region) => region.id === regionID);
 	SplitRegionModalStore.set({
@@ -52,31 +67,50 @@ export function editRegion(regionID: string): void {
 	});
 }
 
-export function disableRegion(regionID: string): void {
+export function disableRegion(regionID: string) {
 	const regions = get(RegionsStore);
 	const region = regions.find((region) => region.id === regionID);
 	if (region) {
 		if (region?.disabled) {
-			//Currently Disabled (Enable)
 			region.disabled = false;
-			//Set Region value back to OG value
 			region.value = region.permaVal;
 		} else {
-			//Currently Enabled (Disable)
 			region.disabled = true;
-			//Set Region value to 0, save current val for when enabled again.
 			region.value = 0;
 		}
 		RegionsStore.set(regions);
 	}
 }
 
-export function lockRegion(regionID: string): void {
+export function disableGroup(group: number, subgroup: number) {
+	const regions = get(RegionsStore);
+	for (const region of regions) {
+		if (region.actionGroups.at(group) !== subgroup) continue;
+		if (region.disabled) {
+			region.disabled = false;
+			region.value = region.permaVal;
+		} else {
+			region.disabled = true;
+			region.value = 0;
+		}
+	}
+	RegionsStore.set(regions);
+}
+
+export function lockRegion(regionID: string) {
 	const regions = get(RegionsStore);
 	const region = regions.find((region) => region.id === regionID);
 	if (region) {
-		//Lock if unlocked, unlock if locked
 		region.locked = !region.locked;
 		RegionsStore.set(regions);
 	}
+}
+
+export function lockGroup(group: number, subgroup: number) {
+	const regions = get(RegionsStore);
+	for (const region of regions) {
+		if (region.actionGroups.at(group) !== subgroup) continue;
+		region.locked = !region.locked;
+	}
+	RegionsStore.set(regions);
 }
