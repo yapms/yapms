@@ -11,6 +11,7 @@ export const RegionSchema = z.object({
 	disabled: z.boolean(),
 	locked: z.boolean(),
 	permaLocked: z.boolean(),
+	visible: z.boolean(),
 	candidates: z
 		.object({
 			candidate: CandidateSchema,
@@ -36,7 +37,8 @@ export const SavedRegionSchema = RegionSchema.omit({
 	longName: true,
 	nodes: true,
 	candidates: true,
-	actionGroups: true
+	actionGroups: true,
+	visible: true
 }).extend({
 	candidates: z
 		.object({

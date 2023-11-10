@@ -89,24 +89,32 @@ RegionsStore.subscribe((regions) => {
 		}
 
 		region.nodes.region.style.fill = fill;
-		region.disabled || region.locked || region.permaLocked
-			? (region.nodes.region.style.fillOpacity = '0.25')
-			: (region.nodes.region.style.fillOpacity = '1'); //Transparent if disabled
-		if (region.nodes.button) {
-			region.nodes.button.style.fill = fill;
-			region.disabled || region.locked || region.permaLocked
-				? (region.nodes.button.style.fillOpacity = '0.25')
-				: (region.nodes.button.style.fillOpacity = '1'); //Transparent if disabled
+
+		if (region.visible === true) {
+			region.nodes.region.style.visibility = 'visible';
+			if (region.nodes.text) region.nodes.text.style.visibility = 'visible';
+		} else {
+			region.nodes.region.style.visibility = 'hidden';
+			if (region.nodes.text) region.nodes.text.style.visibility ??= 'hidden';
 		}
+
+		if (region.disabled || region.locked || region.permaLocked) {
+			region.nodes.region.style.fillOpacity = '0.25';
+		} else {
+			region.nodes.region.style.fillOpacity = '1';
+		}
+
 		if (region.nodes.text) {
 			region.nodes.text.style.color = calculateLumaHEX(lumaColor) > 0.5 ? 'black' : 'white';
 			const valueText = region.nodes.text.querySelector('[map-type="value-text"]');
 			if (valueText) {
 				valueText.innerHTML = region.value.toString();
 			}
-			region.permaLocked
-				? (region.nodes.text.style.opacity = '0')
-				: (region.nodes.text.style.opacity = '1');
+			if (region.permaLocked === true) {
+				region.nodes.text.style.visibility = 'hidden';
+			} else {
+				region.nodes.text.style.visibility = 'visible';
+			}
 		}
 	});
 });

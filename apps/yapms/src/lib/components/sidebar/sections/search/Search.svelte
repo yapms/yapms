@@ -8,15 +8,13 @@
 
 		const regions = $RegionsStore.map((region) => {
 			if (
-				(region.longName.toLowerCase().trim().includes(lowerSearch) ||
-					region.shortName.toLowerCase().trim().includes(lowerSearch)) &&
-				lowerSearch !== ''
+				region.longName.toLowerCase().trim().includes(lowerSearch) ||
+				region.shortName.toLowerCase().trim().includes(lowerSearch) ||
+				lowerSearch === ''
 			) {
-				region.nodes.region.style['stroke'] = 'yellow';
-				region.nodes.region.style['stroke-width'] = '0.5';
+				region.visible = true;
 			} else {
-				region.nodes.region.style['stroke'] = '';
-				region.nodes.region.style['stroke-width'] = '0';
+				region.visible = false;
 			}
 			return region;
 		});
