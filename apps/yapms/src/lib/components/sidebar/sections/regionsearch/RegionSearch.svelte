@@ -25,5 +25,10 @@
 
 <div class="divider">Search</div>
 <div class="p-4">
-	<input type="text" class="input input-bordered w-full" bind:value={search} />
+	<input
+		type="text"
+		class="input input-bordered w-full"
+		placeholder="Search by region name"
+		bind:value={search}
+	/>
 </div>

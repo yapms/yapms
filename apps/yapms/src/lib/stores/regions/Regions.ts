@@ -90,7 +90,7 @@ RegionsStore.subscribe((regions) => {
 
 		region.nodes.region.style.fill = fill;
 
-		if (region.visible === true) {
+		if (region.visible) {
 			region.nodes.region.style.visibility = 'visible';
 			if (region.nodes.text) region.nodes.text.style.visibility = 'visible';
 		} else {
@@ -100,8 +100,10 @@ RegionsStore.subscribe((regions) => {
 
 		if (region.disabled || region.locked || region.permaLocked) {
 			region.nodes.region.style.fillOpacity = '0.25';
+			if (region.nodes.text) region.nodes.text.style.visibility = 'hidden';
 		} else {
 			region.nodes.region.style.fillOpacity = '1';
+			if (region.nodes.text) region.nodes.text.style.visibility = 'visible';
 		}
 
 		if (region.nodes.text) {
@@ -109,11 +111,6 @@ RegionsStore.subscribe((regions) => {
 			const valueText = region.nodes.text.querySelector('[map-type="value-text"]');
 			if (valueText) {
 				valueText.innerHTML = region.value.toString();
-			}
-			if (region.permaLocked === true) {
-				region.nodes.text.style.visibility = 'hidden';
-			} else {
-				region.nodes.text.style.visibility = 'visible';
 			}
 		}
 	});
