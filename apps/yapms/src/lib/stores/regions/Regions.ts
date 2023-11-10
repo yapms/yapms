@@ -95,7 +95,7 @@ RegionsStore.subscribe((regions) => {
 			if (region.nodes.text) region.nodes.text.style.visibility = 'visible';
 		} else {
 			region.nodes.region.style.visibility = 'hidden';
-			if (region.nodes.text) region.nodes.text.style.visibility ??= 'hidden';
+			if (region.nodes.text) region.nodes.text.style.visibility = 'hidden';
 		}
 
 		if (region.disabled || region.locked || region.permaLocked) {
