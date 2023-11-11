@@ -7,6 +7,7 @@
 	import SavedMaps from './sections/savedmaps/SavedMaps.svelte';
 	import Sources from './sections/sources/Sources.svelte';
 	import SocialLinkGrid from '../links/SocialLinkGrid.svelte';
+	import RegionSearch from './sections/regionsearch/RegionSearch.svelte';
 
 	afterUpdate(reapplyPanZoom);
 
@@ -34,8 +35,8 @@
 			style="min-width: 200px; min-height: 200px;"
 			class="flex justify-center"
 		/>
-
 		<Shortcuts />
+		<RegionSearch />
 		{#if $PocketBaseStore.authStore.isValid}
 			<SavedMaps />
 		{/if}

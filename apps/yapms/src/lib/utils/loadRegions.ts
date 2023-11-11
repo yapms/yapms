@@ -134,6 +134,7 @@ function createRegionStore(node: HTMLDivElement) {
 			disabled: childHTML.hasAttribute('disabled'),
 			locked: childHTML.hasAttribute('locked'),
 			permaLocked: childHTML.hasAttribute('permalocked'),
+			visible: true,
 			candidates:
 				candidateString !== null //God bless our linting overlords.
 					? getCandidatesForRegion(candidateString, value)

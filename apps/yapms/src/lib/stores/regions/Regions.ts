@@ -89,24 +89,18 @@ RegionsStore.subscribe((regions) => {
 		}
 
 		region.nodes.region.style.fill = fill;
-		region.disabled || region.locked || region.permaLocked
-			? (region.nodes.region.style.fillOpacity = '0.25')
-			: (region.nodes.region.style.fillOpacity = '1'); //Transparent if disabled
-		if (region.nodes.button) {
-			region.nodes.button.style.fill = fill;
-			region.disabled || region.locked || region.permaLocked
-				? (region.nodes.button.style.fillOpacity = '0.25')
-				: (region.nodes.button.style.fillOpacity = '1'); //Transparent if disabled
-		}
+		region.nodes.region.style.visibility = region.visible ? 'visible' : 'hidden';
+		region.nodes.region.style.fillOpacity =
+			region.disabled || region.locked || region.permaLocked ? '0.25' : '1';
+
 		if (region.nodes.text) {
+			region.nodes.text.style.visibility =
+				region.disabled || region.permaLocked || region.visible === false ? 'hidden' : 'visible';
 			region.nodes.text.style.color = calculateLumaHEX(lumaColor) > 0.5 ? 'black' : 'white';
 			const valueText = region.nodes.text.querySelector('[map-type="value-text"]');
 			if (valueText) {
 				valueText.innerHTML = region.value.toString();
 			}
-			region.permaLocked
-				? (region.nodes.text.style.opacity = '0')
-				: (region.nodes.text.style.opacity = '1');
 		}
 	});
 });
