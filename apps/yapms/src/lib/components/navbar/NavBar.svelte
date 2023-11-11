@@ -79,7 +79,7 @@
 	</div>
 	<div class="divider divider-horizontal m-0 w-0" class:hidden={isOverflow === false} />
 	<button class="btn btn-sm btn-neutral mx-2" on:click={toggleSidebar}>
-		{#if $SideBarStore}
+		{#if $SideBarStore.open}
 			<ChevronDoubleRight class="w-6 h-6" />
 		{:else}
 			<ChevronDoubleLeft class="w-6 h-6" />
