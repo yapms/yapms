@@ -23,7 +23,7 @@
 		<span class="loading loading-ring"></span>
 	{:then links}
 		{#each links as link}
-			<a class="btn btn-sm px-4 flex-nowrap flex-grow gap-2" href={link.URL}>
+			<a class="btn btn-sm px-4 flex-nowrap flex-grow gap-2" target="_blank" href={link.URL}>
 				<Fa icon={getIcon(link.faIcon)} />
 				<span>{link.label}</span>
 			</a>
