@@ -36,15 +36,13 @@
 		<PieChart />
 	{/if}
 	{#if $LogoStore !== null}
-		<div class="aspect-square" style:width={logoSize.width} style:height={logoSize.height}>
-			<enhanced:img
-				class="aspect-square"
-				style:width="100%"
-				style:height="100%"
-				alt=""
-				src={$LogoStore}
-			/>
-		</div>
+		<img
+			class="aspect-square"
+			style:width={logoSize.width}
+			style:height={logoSize.height}
+			alt="Logo"
+			src={$LogoStore}
+		/>
 	{/if}
 </div>
 
