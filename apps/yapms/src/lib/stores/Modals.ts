@@ -1,6 +1,5 @@
 import { get, writable } from 'svelte/store';
 import type Region from '$lib/types/Region';
-import type Candidate from '$lib/types/Candidate';
 import { TossupCandidateStore } from './Candidates';
 
 const CandidateModalStore = writable({
@@ -13,10 +12,10 @@ const AddCandidateModalStore = writable({
 });
 
 const EditCandidateModalStore = writable<{
-	candidate: Candidate;
+	candidateId: string;
 	open: boolean;
 }>({
-	candidate: get(TossupCandidateStore),
+	candidateId: get(TossupCandidateStore).id,
 	open: false
 });
 

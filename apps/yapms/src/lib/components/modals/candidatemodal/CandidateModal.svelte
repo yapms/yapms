@@ -48,7 +48,7 @@
 	function openEditCandidateModal(candidate: Candidate) {
 		$CandidateModalStore.open = false;
 		$EditCandidateModalStore = {
-			candidate,
+			candidateId: candidate.id,
 			open: true
 		};
 	}
