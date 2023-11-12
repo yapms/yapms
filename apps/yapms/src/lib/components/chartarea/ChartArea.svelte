@@ -40,7 +40,7 @@
 			class="aspect-square"
 			style:width={logoSize.width}
 			style:height={logoSize.height}
-			alt=""
+			alt="Logo"
 			src={$LogoStore}
 		/>
 	{/if}

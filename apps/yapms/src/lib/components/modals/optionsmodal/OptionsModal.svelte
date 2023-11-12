@@ -6,8 +6,8 @@
 	import { MapInsetsStore } from '$lib/stores/MapInsetsStore';
 	import { ChartLeansStore } from '$lib/stores/ChartLeansStore';
 	import { LogoStore } from '$lib/stores/Logo';
-	import RedEaglePolitics from '$lib/assets/logos/rep.png';
-	import LetsTalkElections from '$lib/assets/logos/lte.png';
+	import RedEaglePolitics from '$lib/assets/images/logos/rep.png';
+	import LetsTalkElections from '$lib/assets/images/logos/lte.png';
 	import { RegionTooltipStore } from '$lib/stores/RegionTooltip';
 	import { AutoStrokeMultiplierStore } from '$lib/stores/AutoStrokeMultiplierStore';
 
