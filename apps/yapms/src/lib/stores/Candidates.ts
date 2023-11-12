@@ -1,6 +1,6 @@
 import type Candidate from '$lib/types/Candidate';
 import { CandidateSchema } from '$lib/types/Candidate';
-import { get, writable } from 'svelte/store';
+import { derived, get, writable } from 'svelte/store';
 import { z } from 'zod';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -39,6 +39,17 @@ export const CandidatesStoreDefault: Candidate[] = [
 ];
 
 export const CandidatesStore = writable<Candidate[]>(CandidatesStoreDefault);
+
+export const CandidatesTable = derived(CandidatesStore, (candidates) => {
+	return candidates.reduce((prev, next) => {
+		return prev.set(next.id, next);
+	}, new Map<string, Candidate>());
+	const data = new Map<string, Candidate>();
+	for (const candidate of candidates) {
+		data.set(candidate.id, candidate);
+	}
+	return data;
+});
 
 export function isTossupCandidate(candidateID: string): boolean {
 	return candidateID === get(TossupCandidateStore).id;
