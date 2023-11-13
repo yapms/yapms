@@ -9,13 +9,41 @@
 	import { CandidateModalStore } from '$lib/stores/Modals';
 	import { EditCandidateModalStore } from '$lib/stores/Modals';
 	import { RegionsStore } from '$lib/stores/regions/Regions';
+	import Sortable from 'sortablejs';
 	import ModalBase from '../ModalBase.svelte';
 
+	$: candidateIndex = $CandidatesStore.findIndex(
+		(candidate) => candidate.id === $EditCandidateModalStore.candidateId
+	);
+
+	let sortable: Sortable | undefined;
 	let colorToDelete: number | undefined = undefined;
+
+	function onListMount(list: HTMLUListElement) {
+		sortable = Sortable.create(list, {
+			animation: 140,
+			dragoverBubble: true,
+			delay: 250,
+			delayOnTouchOnly: true,
+			onUpdate: (event) => {
+				if (event.oldIndex === undefined || event.newIndex === undefined) {
+					return;
+				}
+				const colors = [...($CandidatesStore.at(candidateIndex)?.margins ?? [])];
+				const color = colors[event.oldIndex];
+				colors.splice(event.oldIndex, 1);
+				colors.splice(event.newIndex, 0, color);
+				$CandidatesStore[candidateIndex].margins = colors;
+				$RegionsStore = $RegionsStore;
+				colorToDelete = undefined;
+			}
+		});
+	}
 
 	function close() {
 		$EditCandidateModalStore.open = false;
 		$CandidateModalStore.open = true;
+		colorToDelete = undefined;
 	}
 
 	function deleteCandidate() {
@@ -30,12 +58,9 @@
 		close();
 	}
 
-	$: candidateIndex = $CandidatesStore.findIndex(
-		(candidate) => candidate.id === $EditCandidateModalStore.candidateId
-	);
-
 	function updateName(event: Event & { currentTarget: EventTarget & HTMLInputElement }) {
 		$CandidatesStore[candidateIndex].name = event.currentTarget.value;
+		colorToDelete = undefined;
 	}
 
 	function updateColor(
@@ -44,6 +69,7 @@
 	) {
 		$CandidatesStore[candidateIndex].margins[index].color = event.currentTarget.value;
 		$RegionsStore = $RegionsStore;
+		colorToDelete = undefined;
 	}
 
 	function addColor() {
@@ -51,6 +77,7 @@
 			...$CandidatesStore[candidateIndex].margins,
 			{ color: '#000000' }
 		];
+		colorToDelete = undefined;
 	}
 
 	function confirmRemove(index: number) {
@@ -64,6 +91,7 @@
 			1
 		);
 		$RegionsStore = $RegionsStore;
+		colorToDelete = undefined;
 	}
 </script>
 
@@ -77,8 +105,8 @@
 			value={$CandidatesStore.at(candidateIndex)?.name}
 		/>
 	</label>
-	<ul slot="content" class="flex flex-row flex-wrap gap-4 justify-center">
-		{#each $CandidatesStore.at(candidateIndex)?.margins || [] as margin, index}
+	<ul slot="content" class="flex flex-row flex-wrap gap-4 justify-center" use:onListMount>
+		{#each $CandidatesStore.at(candidateIndex)?.margins || [] as margin, index (margin)}
 			<li class="input-group w-min">
 				<input type="color" value={margin.color} on:change={(event) => updateColor(event, index)} />
 				<button
