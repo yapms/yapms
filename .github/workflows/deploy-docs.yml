@@ -1,8 +1,6 @@
 name: Deploy Docs
 
-on:
-  push:
-    tags: [v*]
+on: workflow_dispatch
 
 permissions:
   contents: read
