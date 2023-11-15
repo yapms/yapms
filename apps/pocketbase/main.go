@@ -34,43 +34,42 @@ func main() {
 		return nil
 	})
 
-	app.OnRecordBeforeCreateRequest().Add(func(e *core.RecordCreateEvent) error {
-		if e.Record.Collection().Name == "maps" {
-
-			response, err := support.VerifyCaptcha(e, &turnstileSecret)
-
-			if err != nil {
-				return apis.NewApiError(
-					500,
-					err.Error(),
-					nil,
-				)
-			}
-
-			if response.Success == false {
-				return apis.NewForbiddenError(
-					strings.Join(response.ErrorCodes, ","),
-					nil,
-				)
-			}
-
-			support.CompressMapData(e)
-		} else if e.Record.Collection().Name == "user_maps" {
-			support.CompressMapData(e)
-		}
+	app.OnRecordBeforeCreateRequest("user_maps").Add(func(e *core.RecordCreateEvent) error {
+		support.CompressMapData(e)
 		return nil
 	})
 
-	app.OnRecordAfterCreateRequest().Add(func(e *core.RecordCreateEvent) error {
-		if e.Record.Collection().Name == "maps" {
-			support.TakeScreenshot(e, app, &browserlessURI, &browserlessFrontendURI)
+	app.OnRecordBeforeCreateRequest("maps").Add(func(e *core.RecordCreateEvent) error {
+
+		response, err := support.VerifyCaptcha(e, &turnstileSecret)
+
+		if err != nil {
+			return apis.NewApiError(
+				500,
+				err.Error(),
+				nil,
+			)
 		}
+
+		if response.Success == false {
+			return apis.NewForbiddenError(
+				strings.Join(response.ErrorCodes, ","),
+				nil,
+			)
+		}
+
+		support.CompressMapData(e)
 		return nil
 	})
 
-	app.OnRecordsListRequest().Add(func(e *core.RecordsListEvent) error {
+	app.OnRecordAfterCreateRequest("maps").Add(func(e *core.RecordCreateEvent) error {
+		go support.TakeScreenshot(e, app, &browserlessURI, &browserlessFrontendURI)
+		return nil
+	})
+
+	app.OnRecordsListRequest("updates", "social_links").Add(func(e *core.RecordsListEvent) error {
 		admin, _ := e.HttpContext.Get(apis.ContextAdminKey).(*models.Admin)
-		if admin == nil && (e.Collection.Name == "updates" || e.Collection.Name == "social_links") {
+		if admin == nil {
 			e.HttpContext.Response().Header().Set("Cache-Control", "max-age=86400")
 		}
 		return nil
