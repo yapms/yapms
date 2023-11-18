@@ -121,7 +121,7 @@
 				/>
 			{:else if tab === 2}
 				{#if $CustomColorsStore.length === 0}
-					<button class="btn btn-success" on:click={addCustomColor}>add color</button>
+					<button class="btn btn-success" on:click={addCustomColor}>Add Color</button>
 				{/if}
 				{#each $CustomColorsStore as colors, index}
 					<ColorButton

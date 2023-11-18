@@ -35,15 +35,15 @@ body {
 
 [map-type='regions'] path {
 	stroke-width: var(--auto-border-stroke-width);
-	stroke: hsla(var(--b1) / var(--tw-bg-opacity, 1));
+	stroke: oklch(var(--b1) / var(--tw-bg-opacity, 1));
 }
 
 [map-type='inset-texts'] {
-	fill: hsla(var(--bc) / var(--tw-text-opacity, 1));
+	fill: oklch(var(--bc) / var(--tw-text-opacity, 1));
 }
 
 [map-type='inset-lines'] {
-	fill: hsla(var(--bc) / var(--tw-text-opacity, 0.5));
+	fill: oklch(var(--bc) / var(--tw-text-opacity, 0.5));
 }
 
 .insets-hidden [map-type='insets'],
