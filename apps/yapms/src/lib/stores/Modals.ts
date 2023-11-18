@@ -2,16 +2,15 @@ import { get, writable } from 'svelte/store';
 import type Region from '$lib/types/Region';
 import { TossupCandidateStore } from './Candidates';
 
-const CandidateModalStore = writable({
+export const CandidateModalStore = writable({
 	open: false
 });
 
-const AddCandidateModalStore = writable({
-	open: false,
-	newColors: ['#000000']
+export const AddCandidateModalStore = writable({
+	open: false
 });
 
-const EditCandidateModalStore = writable<{
+export const EditCandidateModalStore = writable<{
 	candidateId: string;
 	open: boolean;
 }>({
@@ -19,21 +18,21 @@ const EditCandidateModalStore = writable<{
 	open: false
 });
 
-const EditTossupModalStore = writable<{
+export const EditTossupModalStore = writable<{
 	open: boolean;
 }>({
 	open: false
 });
 
-const ClearMapModalStore = writable({
+export const ClearMapModalStore = writable({
 	open: false
 });
 
-const NavigateHomeModalStore = writable({
+export const NavigateHomeModalStore = writable({
 	open: false
 });
 
-const EditRegionModalStore = writable<{
+export const EditRegionModalStore = writable<{
 	region: Region | null;
 	open: boolean;
 }>({
@@ -41,7 +40,7 @@ const EditRegionModalStore = writable<{
 	open: false
 });
 
-const SplitRegionModalStore = writable<{
+export const SplitRegionModalStore = writable<{
 	open: boolean;
 	region: Region | null;
 }>({
@@ -49,76 +48,55 @@ const SplitRegionModalStore = writable<{
 	open: false
 });
 
-const PresetColorsModalStore = writable({
+export const PresetColorsModalStore = writable({
 	open: false
 });
 
-const AddCustomColorModalStore = writable({
+export const PresetColorsModalSelectedStore = writable(Array<string>());
+
+export const AddCustomColorModalStore = writable({
 	open: false,
 	newColors: ['#000000']
 });
 
-const EditCustomColorModalStore = writable({
+export const EditCustomColorModalStore = writable({
 	open: false,
 	customColor: ['#000000'],
 	customColorIndex: 0
 });
 
-const OptionsModalStore = writable({
+export const OptionsModalStore = writable({
 	open: false
 });
 
-const ModeModalStore = writable({
+export const ModeModalStore = writable({
 	open: false
 });
 
-const ShareModalStore = writable({
+export const ShareModalStore = writable({
 	open: false
 });
 
-const AuthModalStore = writable({
+export const AuthModalStore = writable({
 	open: false
 });
 
-const LoadingErrorModalStore = writable({
+export const LoadingErrorModalStore = writable({
 	open: false
 });
 
-const ThemeModalStore = writable({
+export const ThemeModalStore = writable({
 	open: false
 });
 
-const BetaModalStore = writable({
+export const BetaModalStore = writable({
 	open: true
 });
 
-const ImportModalStore = writable({
+export const ImportModalStore = writable({
 	open: false
 });
 
-const ShareDisabledModalStore = writable({
+export const ShareDisabledModalStore = writable({
 	open: false
 });
-
-export {
-	CandidateModalStore,
-	EditCandidateModalStore,
-	EditTossupModalStore,
-	ClearMapModalStore,
-	NavigateHomeModalStore,
-	EditRegionModalStore,
-	SplitRegionModalStore,
-	AddCandidateModalStore,
-	PresetColorsModalStore,
-	AddCustomColorModalStore,
-	EditCustomColorModalStore,
-	OptionsModalStore,
-	ModeModalStore,
-	ShareModalStore,
-	AuthModalStore,
-	LoadingErrorModalStore,
-	ThemeModalStore,
-	BetaModalStore,
-	ImportModalStore,
-	ShareDisabledModalStore
-};

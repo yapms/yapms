@@ -94,8 +94,8 @@
 		</div>
 	</div>
 	<div slot="action" class="flex justify-between w-full">
-		<div class="flex gap-1 self-center items-center">
-			<QuestionMarkCircle class="w-5 h-5" />
+		<div class="flex gap-1 self-center items-center font-thin">
+			<QuestionMarkCircle class="w-5 h-5" style="stroke-width: 0.75px" />
 			<span>Click and drag to reorder</span>
 		</div>
 		<button class="btn btn-success" on:click={openAddCandidateModal}>Add</button>

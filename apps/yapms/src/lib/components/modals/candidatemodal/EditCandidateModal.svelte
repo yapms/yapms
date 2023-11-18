@@ -107,10 +107,15 @@
 	</label>
 	<ul slot="content" class="flex flex-row flex-wrap gap-4 justify-center" use:onListMount>
 		{#each $CandidatesStore.at(candidateIndex)?.margins || [] as margin, index (margin)}
-			<li class="input-group w-min">
-				<input type="color" value={margin.color} on:change={(event) => updateColor(event, index)} />
+			<li class="join">
+				<input
+					class="join-item"
+					type="color"
+					value={margin.color}
+					on:change={(event) => updateColor(event, index)}
+				/>
 				<button
-					class="btn btn-sm btn-primary"
+					class="btn btn-sm btn-primary join-item"
 					class:btn-error={colorToDelete === index}
 					on:click={() => {
 						if (index === colorToDelete) {
