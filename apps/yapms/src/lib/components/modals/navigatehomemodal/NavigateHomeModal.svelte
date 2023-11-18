@@ -15,6 +15,6 @@
 	</div>
 
 	<div slot="action">
-		<button class="btn btn-error" on:click={confirm}>confirm</button>
+		<button class="btn btn-error" on:click={confirm}>Confirm</button>
 	</div>
 </ModalBase>

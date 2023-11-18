@@ -35,9 +35,9 @@
 				{$CandidateCounts.get(candidate.id) ?? 0}
 			</div>
 			{#if candidate.margins.length > 1}
-				<div class="flex flex-row w-full">
+				<div class="flex flex-row w-full h-6">
 					{#each candidate.margins as margin}
-						<div class="w-full min-h-6" style:background-color={margin.color} />
+						<div class="w-full" style:background-color={margin.color} />
 					{/each}
 				</div>
 			{/if}

@@ -66,15 +66,17 @@
 		bind:offsetWidth
 	>
 		<button class="btn btn-sm snap-start" on:click={openNavigateHomeModal}>Home</button>
-		<button class="btn btn-sm btn-error snap-start" on:click={openClearMapModal}>clear</button>
-		<button class="btn btn-sm snap-start" on:click={openCandidateModal}>candidates</button>
-		<button class="btn btn-sm snap-start" on:click={newImportedMap}>import</button>
-		<button class="btn btn-sm snap-start" on:click={openOptions}>options</button>
-		<button class="btn btn-sm snap-start" on:click={openMode}>mode: {$ModeStore}</button>
-		<button class="btn btn-sm snap-start" on:click={openShare}>share</button>
-		<button class="btn btn-sm snap-start" on:click={openTheme}>theme</button>
+		<button class="btn btn-sm btn-error snap-start" on:click={openClearMapModal}>Clear</button>
+		<button class="btn btn-sm snap-start" on:click={openCandidateModal}>Candidates</button>
+		<button class="btn btn-sm snap-start" on:click={newImportedMap}>Import</button>
+		<button class="btn btn-sm snap-start" on:click={openOptions}>Options</button>
+		<button class="btn btn-sm snap-start" on:click={openMode}
+			>Mode: <b>{$ModeStore.toUpperCase()}</b></button
+		>
+		<button class="btn btn-sm snap-start" on:click={openShare}>Share</button>
+		<button class="btn btn-sm snap-start" on:click={openTheme}>Theme</button>
 		<button class="btn btn-sm snap-end" on:click={openAuth}
-			>{$PocketBaseStore.authStore.isValid ? 'account' : 'login'}</button
+			>{$PocketBaseStore.authStore.isValid ? 'Account' : 'Login'}</button
 		>
 	</div>
 	<div class="divider divider-horizontal m-0 w-0" class:hidden={isOverflow === false} />
