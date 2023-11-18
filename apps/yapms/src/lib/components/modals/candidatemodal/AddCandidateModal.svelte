@@ -74,7 +74,7 @@
 <ModalBase store={AddCandidateModalStore} onClose={close}>
 	<div slot="title" class="flex flex-row gap-x-2 items-center">
 		<span>Add</span>
-		<input type="text" class="input input-bordered w-full max-w-xs" bind:value={newName} />
+		<input type="text" class="input input-sm input-bordered w-full max-w-xs" bind:value={newName} />
 	</div>
 	<ul slot="content" class="flex flex-row flex-wrap gap-4 justify-center" use:onListMount>
 		{#each newColors as color, index}
