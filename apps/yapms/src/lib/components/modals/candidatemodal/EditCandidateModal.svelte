@@ -11,6 +11,7 @@
 	import { RegionsStore } from '$lib/stores/regions/Regions';
 	import Sortable from 'sortablejs';
 	import ModalBase from '../ModalBase.svelte';
+	import { onDestroy } from 'svelte';
 
 	$: candidateIndex = $CandidatesStore.findIndex(
 		(candidate) => candidate.id === $EditCandidateModalStore.candidateId
@@ -93,6 +94,10 @@
 		$RegionsStore = $RegionsStore;
 		colorToDelete = undefined;
 	}
+
+	onDestroy(() => {
+		sortable?.destroy();
+	});
 </script>
 
 <ModalBase store={EditCandidateModalStore} onClose={close}>

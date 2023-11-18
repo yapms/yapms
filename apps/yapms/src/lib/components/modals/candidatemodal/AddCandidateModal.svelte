@@ -4,25 +4,22 @@
 		CandidateModalStore,
 		AddCandidateModalStore,
 		PresetColorsModalStore,
-		PresetColorsModalSelectedStore,
-		EditCandidateModalStore
+		PresetColorsModalSelectedStore
 	} from '$lib/stores/Modals';
 	import { v4 as uuidv4 } from 'uuid';
 	import ModalBase from '../ModalBase.svelte';
 	import Trash from '$lib/icons/Trash.svelte';
 	import Sortable from 'sortablejs';
-	import EditCandidateModal from './EditCandidateModal.svelte';
 
 	let newName = 'New Candidate';
 	let newColors = ['#000000'];
-	let sortable: Sortable | undefined;
 
 	PresetColorsModalSelectedStore.subscribe((presetColors) => {
 		if (presetColors.length !== 0) newColors = presetColors;
 	});
 
 	function onListMount(list: HTMLUListElement) {
-		sortable = Sortable.create(list, {
+		Sortable.create(list, {
 			animation: 140,
 			dragoverBubble: true,
 			delay: 250,
