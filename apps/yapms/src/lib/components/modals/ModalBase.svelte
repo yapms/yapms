@@ -2,7 +2,7 @@
 	import XMark from '$lib/icons/XMark.svelte';
 	import type { Writable } from 'svelte/store';
 
-	export let title: string;
+	export let title: string | undefined = undefined;
 
 	export let store: Writable<{ open: boolean }>;
 	export let onClose: (() => void) | undefined = undefined;
@@ -34,8 +34,11 @@
 		<div class="mb-6">
 			<div class="flex gap-x-2 align-middle">
 				<slot name="icon" />
-				<h3 class="text-2xl flex-grow">
-					{title}
+				<h3 class="flex flex-row flex-nowrap text-2xl flex-grow">
+					{#if title !== undefined}
+						<span>{title}</span>
+					{/if}
+					<slot name="title" />
 				</h3>
 				<button title="Close Modal" class="btn btn-sm btn-circle btn-error" on:click={close}>
 					<XMark class="w-5 h-5" />

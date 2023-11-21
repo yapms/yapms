@@ -1,144 +1,147 @@
 <script lang="ts">
+	import MinusCircle from '$lib/icons/MinusCircle.svelte';
+	import Trash from '$lib/icons/Trash.svelte';
 	import {
 		CandidatesStore,
 		SelectedCandidateStore,
 		TossupCandidateStore
 	} from '$lib/stores/Candidates';
 	import { CandidateModalStore } from '$lib/stores/Modals';
-	import { RegionsStore } from '$lib/stores/regions/Regions';
 	import { EditCandidateModalStore } from '$lib/stores/Modals';
-	import { get } from 'svelte/store';
+	import { RegionsStore } from '$lib/stores/regions/Regions';
+	import Sortable from 'sortablejs';
 	import ModalBase from '../ModalBase.svelte';
+	import { onDestroy } from 'svelte';
 
-	$: open = $EditCandidateModalStore.open;
-	$: id = open ? $EditCandidateModalStore.candidate.id : '';
-	$: name = open ? $EditCandidateModalStore.candidate.name : '';
-	$: newName = name;
-	$: newColors = $EditCandidateModalStore.candidate.margins.map((margin) => {
-		return margin.color;
-	});
+	$: candidateIndex = $CandidatesStore.findIndex(
+		(candidate) => candidate.id === $EditCandidateModalStore.candidateId
+	);
 
-	function addColor() {
-		newColors = [...newColors, '#000000'];
-	}
+	let sortable: Sortable | undefined;
+	let colorToDelete: number | undefined = undefined;
 
-	function removeColor() {
-		if (newColors.length === 1) {
-			return;
-		}
-		newColors = newColors.slice(0, newColors.length - 1);
-	}
-
-	function removeCandidate() {
-		$CandidatesStore = $CandidatesStore.filter((candidate) => candidate.id !== id);
-		$SelectedCandidateStore =
-			$SelectedCandidateStore.id === id ? $TossupCandidateStore : $SelectedCandidateStore;
-
-		$RegionsStore = $RegionsStore.map((region) => {
-			const candidateToRemove = region.candidates.find(
-				(candidate) => candidate.candidate.id === id
-			);
-			if (candidateToRemove === undefined) {
-				return region;
+	function onListMount(list: HTMLUListElement) {
+		sortable = Sortable.create(list, {
+			animation: 140,
+			dragoverBubble: true,
+			delay: 250,
+			delayOnTouchOnly: true,
+			onUpdate: (event) => {
+				if (event.oldIndex === undefined || event.newIndex === undefined) {
+					return;
+				}
+				const colors = [...($CandidatesStore.at(candidateIndex)?.margins ?? [])];
+				const color = colors[event.oldIndex];
+				colors.splice(event.oldIndex, 1);
+				colors.splice(event.newIndex, 0, color);
+				$CandidatesStore[candidateIndex].margins = colors;
+				$RegionsStore = $RegionsStore;
+				colorToDelete = undefined;
 			}
-
-			const tossupCandidate = region.candidates.find(
-				(candidate) => candidate.candidate.id === $TossupCandidateStore.id
-			);
-			if (tossupCandidate === undefined) {
-				return {
-					...region,
-					candidates: [{ candidate: $TossupCandidateStore, count: region.value, margin: 0 }]
-				};
-			}
-
-			tossupCandidate.count += candidateToRemove.count;
-			return {
-				...region,
-				candidates: region.candidates.filter((candidate) => candidate.candidate.id !== id)
-			};
 		});
-		$EditCandidateModalStore.open = false;
-		$CandidateModalStore.open = true;
 	}
 
 	function close() {
 		$EditCandidateModalStore.open = false;
 		$CandidateModalStore.open = true;
+		colorToDelete = undefined;
 	}
 
-	function confirm() {
-		const candidateIndex = $CandidatesStore.findIndex((candidate) => candidate.id === id);
-		$CandidatesStore[candidateIndex] = {
-			...$CandidatesStore[candidateIndex],
-			id,
-			name: newName,
-			margins: newColors.map((color) => {
-				return {
-					color
-				};
-			})
-		};
-		$EditCandidateModalStore.open = false;
-		//Update selected candidate object
-		if ($SelectedCandidateStore.id === id) {
-			$SelectedCandidateStore = $CandidatesStore[candidateIndex];
-		}
-		//Update candidate object in region store
-		const newRegions = get(RegionsStore);
-		newRegions.forEach((region) => {
-			for (const candidate of region.candidates) {
-				if (candidate.candidate.id === id) {
-					//Limit it to objects where candidate object present
-					candidate.candidate = $CandidatesStore[candidateIndex];
-				}
-			}
-		});
-		$RegionsStore = newRegions;
-		$CandidateModalStore.open = true;
+	function deleteCandidate() {
+		$CandidatesStore = $CandidatesStore.filter(
+			(candidate) => candidate.id !== $EditCandidateModalStore.candidateId
+		);
+		$SelectedCandidateStore =
+			$SelectedCandidateStore.id === $EditCandidateModalStore.candidateId
+				? $TossupCandidateStore
+				: $SelectedCandidateStore;
+		$RegionsStore = $RegionsStore;
+		close();
 	}
+
+	function updateName(event: Event & { currentTarget: EventTarget & HTMLInputElement }) {
+		$CandidatesStore[candidateIndex].name = event.currentTarget.value;
+		colorToDelete = undefined;
+	}
+
+	function updateColor(
+		event: Event & { currentTarget: EventTarget & HTMLInputElement },
+		index: number
+	) {
+		$CandidatesStore[candidateIndex].margins[index].color = event.currentTarget.value;
+		$RegionsStore = $RegionsStore;
+		colorToDelete = undefined;
+	}
+
+	function addColor() {
+		$CandidatesStore[candidateIndex].margins = [
+			...$CandidatesStore[candidateIndex].margins,
+			{ color: '#000000' }
+		];
+		colorToDelete = undefined;
+	}
+
+	function confirmRemove(index: number) {
+		colorToDelete = index;
+	}
+
+	function removeColor(index: number) {
+		colorToDelete = undefined;
+		$CandidatesStore[candidateIndex].margins = $CandidatesStore[candidateIndex].margins.toSpliced(
+			index,
+			1
+		);
+		$RegionsStore = $RegionsStore;
+		colorToDelete = undefined;
+	}
+
+	onDestroy(() => {
+		sortable?.destroy();
+	});
 </script>
 
-<ModalBase title="Edit {name}" store={EditCandidateModalStore} onClose={close}>
-	<div slot="content">
-		<div class="flex gap-1">
-			<div class="form-control w-full max-w-xs flex flex-col gap-3">
-				<h3 class="font-light text-lg">Name</h3>
-				<input type="text" class="input input-bordered w-full max-w-xs" bind:value={newName} />
-				<button class="btn btn-error" on:click={removeCandidate}>Remove Candidate</button>
-			</div>
-			<div class="divider divider-horizontal" />
-			<div class="form-control w-full max-w-xs flex flex-col gap-3">
-				<h3 class="font-light text-lg">Colors</h3>
-				<div class="flex flex-row flex-wrap gap-2">
-					{#each newColors as color, index}
-						<input
-							type="color"
-							value={color}
-							on:change={(change) => {
-								newColors[index] = change.currentTarget.value;
-							}}
-						/>
-					{/each}
-				</div>
-				<div class="btn-group btn-group-horizontal">
-					<input
-						type="button"
-						class="btn btn-error btn-sm grow"
-						on:click={removeColor}
-						value="Remove"
-					/>
-					<input
-						type="button"
-						class="btn btn-success btn-sm grow"
-						on:click={addColor}
-						value="Add"
-					/>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div slot="action">
-		<button class="btn btn-success" on:click={confirm}>Update</button>
+<ModalBase store={EditCandidateModalStore} onClose={close}>
+	<label slot="title" class="flex flex-row gap-x-2 items-center">
+		<span>Edit</span>
+		<input
+			type="text"
+			class="input input-sm input-bordered"
+			on:input={updateName}
+			value={$CandidatesStore.at(candidateIndex)?.name}
+		/>
+	</label>
+	<ul slot="content" class="flex flex-row flex-wrap gap-4 justify-center" use:onListMount>
+		{#each $CandidatesStore.at(candidateIndex)?.margins || [] as margin, index (margin)}
+			<li class="join">
+				<input
+					class="join-item"
+					type="color"
+					value={margin.color}
+					on:change={(event) => updateColor(event, index)}
+				/>
+				<button
+					class="btn btn-sm btn-primary join-item"
+					class:btn-error={colorToDelete === index}
+					on:click={() => {
+						if (index === colorToDelete) {
+							removeColor(index);
+						} else {
+							confirmRemove(index);
+						}
+					}}
+					disabled={$CandidatesStore.at(candidateIndex)?.margins.length === 1}
+				>
+					{#if colorToDelete === index}
+						<Trash class="w-6 h-6" />
+					{:else}
+						<MinusCircle class="w-6 h-6" />
+					{/if}
+				</button>
+			</li>
+		{/each}
+	</ul>
+	<div slot="action" class="flex flex-grow justify-between">
+		<button class="btn btn-error" on:click={deleteCandidate}>Delete Candidate</button>
+		<button class="btn btn-success" on:click={addColor}>Add Color</button>
 	</div>
 </ModalBase>

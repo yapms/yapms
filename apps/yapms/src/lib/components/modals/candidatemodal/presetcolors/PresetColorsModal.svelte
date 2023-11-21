@@ -3,6 +3,7 @@
 	import {
 		AddCandidateModalStore,
 		PresetColorsModalStore,
+		PresetColorsModalSelectedStore,
 		AddCustomColorModalStore,
 		EditCustomColorModalStore
 	} from '$lib/stores/Modals';
@@ -39,10 +40,8 @@
 
 	function confirm(margins: string[]) {
 		$PresetColorsModalStore.open = false;
-		$AddCandidateModalStore = {
-			open: true,
-			newColors: margins
-		};
+		$PresetColorsModalSelectedStore = margins;
+		$AddCandidateModalStore.open = true;
 	}
 </script>
 

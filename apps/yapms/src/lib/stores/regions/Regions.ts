@@ -1,7 +1,12 @@
 import type Region from '$lib/types/Region';
 import { blendHexColors, calculateLumaHEX } from '$lib/utils/luma';
 import { derived, writable, get } from 'svelte/store';
-import { TossupCandidateStore, CandidatesStore } from '../Candidates';
+import {
+	TossupCandidateStore,
+	CandidatesStore,
+	CandidatesTable,
+	isTossupCandidate
+} from '../Candidates';
 import { ModeStore } from '../Mode';
 import {
 	disableRegion,
@@ -52,6 +57,28 @@ RegionsStore.subscribe((regions) => {
 					}
 				}
 			}
+		}
+
+		region.candidates = region.candidates
+			.filter((candidate) => {
+				return (
+					isTossupCandidate(candidate.candidate.id) ||
+					get(CandidatesTable).has(candidate.candidate.id)
+				);
+			})
+			.map((candidate) => {
+				if (candidate.margin > candidate.candidate.margins.length) {
+					candidate.margin = candidate.candidate.margins.length - 1;
+				}
+				return candidate;
+			});
+
+		if (region.candidates.length === 0) {
+			region.candidates.push({
+				candidate: get(TossupCandidateStore),
+				count: region.value,
+				margin: 0
+			});
 		}
 
 		// get the winner(s) of the district
