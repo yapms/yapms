@@ -6,6 +6,7 @@
 	export let name: string;
 	export let bg: string;
 	export let attribution: string;
+	export let attributionLink: string | undefined = undefined;
 	export let links: { label: string; route: string }[];
 
 	const image = import(`../../assets/images/countries/${bg}.webp`);
@@ -46,11 +47,13 @@
 				</button>
 			{/if}
 		</div>
-		<div
+		<a
+			target="_blank"
+			href={attributionLink}
 			class="tooltip tooltip-left absolute top-0 right-0 w-6 m-2 before:w-64 before:max-w-max"
 			data-tip={attribution}
 		>
 			<InformationCircle />
-		</div>
+		</a>
 	</div>
 </div>

@@ -30,6 +30,7 @@
 	import UpdatesSidebar from '$lib/components/updatessidebar/UpdatesSidebar.svelte';
 	import ZafMapCard from '$lib/components/mapcard/mapcards/ZAFMapCard.svelte';
 	import GlbMapCard from '$lib/components/mapcard/mapcards/GLBMapCard.svelte';
+	import KorMapCard from '$lib/components/mapcard/mapcards/KORMapCard.svelte';
 
 	export let data: PageData;
 
@@ -111,6 +112,7 @@
 				<NzlMapCard />
 				<ZafMapCard />
 				<FraMapCard />
+				<KorMapCard />
 				<GlbMapCard />
 			</MapCardGrid>
 
