@@ -25,8 +25,15 @@
   ],
   "renovate": {
     "extends": [
+      ":automergeLinters",
       "config:js-app",
       "group:turboMonorepo"
+    ],
+    "packageRules": [
+      {
+        "matchUpdateTypes": ["patch", "pin", "digest"],
+        "automerge": true
+      }
     ]
   }
 }
