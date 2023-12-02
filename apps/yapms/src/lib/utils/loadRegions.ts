@@ -18,6 +18,7 @@ import type Region from '$lib/types/Region';
 import { ModeSchema } from '$lib/types/Mode';
 import { CandidateSchema } from '$lib/types/Candidate';
 import { SavedRegionCandidatesSchema } from '$lib/types/Region';
+import { dev } from '$app/environment';
 
 function createDefaultModeStore(node: HTMLDivElement) {
 	const defaultModeAttribute = node.querySelector('svg')?.getAttribute('default-mode');
@@ -112,10 +113,21 @@ function createRegionStore(node: HTMLDivElement) {
 	const tossupCandidate = get(TossupCandidateStore);
 
 	if (regions === null) return;
+
+	const regionIDArr = Array<string | null>();
+
 	for (const child of regions.childNodes) {
 		const childHTML = child as HTMLElement;
 		if (childHTML.getAttribute === undefined) {
 			continue;
+		}
+
+		if (dev) {
+			const regionID = childHTML.getAttribute('region');
+			if (regionIDArr.indexOf(regionID) !== -1) {
+				console.error("DUPLICATE REGION ID:" + regionID)
+			}
+			regionIDArr.push(regionID);
 		}
 
 		const value = Number(childHTML.getAttribute('value'));
