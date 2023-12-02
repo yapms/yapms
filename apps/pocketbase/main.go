@@ -58,7 +58,14 @@ func main() {
 			)
 		}
 
-		support.CompressMapData(e)
+		err = support.CompressMapData(e)
+		if err != nil {
+			return apis.NewApiError(
+				500,
+				err.Error(),
+				nil,
+			)
+		}
 		return nil
 	})
 
