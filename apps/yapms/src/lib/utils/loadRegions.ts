@@ -114,7 +114,7 @@ function createRegionStore(node: HTMLDivElement) {
 
 	if (regions === null) return;
 
-	const regionIDArr = Array<string | null>();
+	const regionIDMap = new Map<string, number>();
 
 	for (const child of regions.childNodes) {
 		const childHTML = child as HTMLElement;
@@ -124,10 +124,12 @@ function createRegionStore(node: HTMLDivElement) {
 
 		if (dev) {
 			const regionID = childHTML.getAttribute('region');
-			if (regionIDArr.indexOf(regionID) !== -1) {
-				console.error('DUPLICATE REGION ID:' + regionID);
+			if (regionID !== null) {
+				if (regionIDMap.get(regionID) !== undefined) {
+					console.error('DUPLICATE REGION ID:' + regionID);
+				}
+				regionIDMap.set(regionID, 1);
 			}
-			regionIDArr.push(regionID);
 		}
 
 		const value = Number(childHTML.getAttribute('value'));
