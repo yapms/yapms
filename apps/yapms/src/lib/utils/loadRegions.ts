@@ -125,7 +125,7 @@ function createRegionStore(node: HTMLDivElement) {
 		if (dev) {
 			const regionID = childHTML.getAttribute('region');
 			if (regionIDArr.indexOf(regionID) !== -1) {
-				console.error("DUPLICATE REGION ID:" + regionID)
+				console.error('DUPLICATE REGION ID:' + regionID);
 			}
 			regionIDArr.push(regionID);
 		}
