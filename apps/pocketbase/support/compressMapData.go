@@ -3,6 +3,7 @@ package support
 import (
 	"bytes"
 	"compress/gzip"
+	"errors"
 	"io"
 
 	"github.com/pocketbase/pocketbase/core"
@@ -44,6 +45,10 @@ func CompressMapData(e *core.RecordCreateEvent) error {
 		return err
 	}
 
+	if newFile.Size > 500000 {
+		return errors.New("compressed file too big")
+	}
+
 	// set the file to the new file
 	e.UploadedFiles["data"][0] = newFile
 
@@ -52,4 +57,3 @@ func CompressMapData(e *core.RecordCreateEvent) error {
 
 	return nil
 }
-
