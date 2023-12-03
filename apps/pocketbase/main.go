@@ -35,7 +35,14 @@ func main() {
 	})
 
 	app.OnRecordBeforeCreateRequest("user_maps").Add(func(e *core.RecordCreateEvent) error {
-		support.CompressMapData(e)
+		err := support.CompressMapData(e)
+		if err != nil {
+			return apis.NewApiError(
+				500,
+				err.Error(),
+				nil,
+			)
+		}
 		return nil
 	})
 
