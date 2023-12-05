@@ -31,9 +31,9 @@
 		newColors = [...newColors, '#000000'];
 	}
 
-	function removeColor() {
+	function removeColor(index: number) {
 		if (newColors.length > 1) {
-			newColors = newColors.slice(0, newColors.length - 1);
+			newColors = newColors.toSpliced(index, 1);
 		}
 	}
 
@@ -86,7 +86,7 @@
 				/>
 				<button
 					class="btn btn-sm btn-error join-item"
-					on:click={removeColor}
+					on:click={() => removeColor(index)}
 					disabled={newColors.length === 1}
 				>
 					<Trash class="w-6 h-6" />
