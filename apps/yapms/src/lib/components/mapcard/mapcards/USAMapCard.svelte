@@ -105,6 +105,10 @@
 		{
 			label: 'Presidential 2024 with Territories',
 			route: '/app/usa/presidential/2024/territories'
+		},
+		{
+			label: 'Presidential 2024 Take-All with Territories',
+			route: '/app/usa/presidential/2024/takeall_territories'
 		}
 	];
 </script>
