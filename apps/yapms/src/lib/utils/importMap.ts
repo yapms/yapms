@@ -1,15 +1,16 @@
 import { ImportedSVGStore } from '$lib/stores/ImportedSVG';
 import { ImportModalStore } from '$lib/stores/Modals';
 import rewind from '@turf/rewind';
-import { geoMercator, geoPath } from 'd3';
+import { geoPath, geoProjection, type GeoRawProjection } from 'd3';
 import * as shapefile from 'shapefile';
-import type { AllGeoJSON } from '@turf/helpers';
+import { degreesToRadians, type AllGeoJSON, radiansToDegrees } from '@turf/helpers';
 import { get } from 'svelte/store';
 import { CandidatesStore, TossupCandidateStore } from '$lib/stores/Candidates';
 import { RegionsStore } from '$lib/stores/regions/Regions';
 import { saveAs } from 'file-saver';
 import DOMPurify from 'dompurify';
 import type { SavedRegionCandidates } from '$lib/types/Region';
+import proj4 from 'proj4';
 
 //This config allows all attributes used by the app to pass through DOMPurify without change.
 //If you are adding an attribute imported maps might need, add it here.
@@ -77,7 +78,9 @@ function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
 			rewind(feature as AllGeoJSON, { reverse: true }) as GeoJSON.Feature
 	);
 
-	const projection = geoMercator().fitSize([width, height], districtShapes);
+	const importOptions = get(ImportedSVGStore).options;
+
+	const projection = proj4ToProjection(importOptions.projection).fitSize([width, height], districtShapes);
 
 	const render = geoPath().projection(projection);
 
@@ -104,8 +107,12 @@ function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
 	});
 
 	svg.appendChild(regions);
-
-	ImportedSVGStore.set({ loaded: true, content: DOMPurify.sanitize(svg, DOMPurifyConfig) });
+	
+	ImportedSVGStore.set({
+		...get(ImportedSVGStore),
+		loaded: true,
+		content: DOMPurify.sanitize(svg, DOMPurifyConfig)
+	});
 }
 
 function newImportedMap(): void {
@@ -140,6 +147,22 @@ function exportImportAsSVG(): void {
 			'YapmsMap.svg'
 		);
 	}
+}
+
+function proj4ToProjection(projectionDefinition: string) {
+	const proj4Projection = proj4(projectionDefinition);
+
+	const project = function(lambda: number, phi: number) {
+		return proj4Projection
+			.forward([lambda, phi].map(radiansToDegrees));
+	};
+	
+	project.invert = function(x: number, y: number) {
+		return proj4Projection
+			.inverse([x, y]).map(degreesToRadians);
+	};
+
+	return geoProjection(project as GeoRawProjection);
 }
 
 export { importFromGeoJson, importFromShapefiles, newImportedMap, exportImportAsSVG };
