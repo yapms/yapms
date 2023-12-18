@@ -93,7 +93,7 @@ RegionsStore.subscribe((regions) => {
 						count: 0,
 						margin: 0
 					}
-				]
+			  ]
 			: region.candidates.filter((candidate) => candidate.count === maxValue);
 
 		// set the margin of the new winner
