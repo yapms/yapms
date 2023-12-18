@@ -1,8 +1,11 @@
+import type { GeoProjection } from 'd3';
+
 type ImportedSVG = {
 	loaded: boolean;
 	content: string;
 	options: {
-		projection: string;
+		projectionFunction: () => GeoProjection;
+		customProjectionDefinition: string;
 	};
 };
 

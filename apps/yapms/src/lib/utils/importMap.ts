@@ -80,7 +80,7 @@ function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
 
 	const importOptions = get(ImportedSVGStore).options;
 
-	const projection = proj4ToProjection(importOptions.projection).fitSize([width, height], districtShapes);
+	const projection = importOptions.projectionFunction().fitSize([width, height], districtShapes);
 
 	const render = geoPath().projection(projection);
 
@@ -107,7 +107,7 @@ function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
 	});
 
 	svg.appendChild(regions);
-	
+
 	ImportedSVGStore.set({
 		...get(ImportedSVGStore),
 		loaded: true,
@@ -149,20 +149,24 @@ function exportImportAsSVG(): void {
 	}
 }
 
-function proj4ToProjection(projectionDefinition: string) {
-	const proj4Projection = proj4(projectionDefinition);
+function proj4ToProjection() {
+	const proj4Projection = proj4(get(ImportedSVGStore).options.customProjectionDefinition);
 
-	const project = function(lambda: number, phi: number) {
-		return proj4Projection
-			.forward([lambda, phi].map(radiansToDegrees));
+	const project = function (lambda: number, phi: number) {
+		return proj4Projection.forward([lambda, phi].map(radiansToDegrees));
 	};
-	
-	project.invert = function(x: number, y: number) {
-		return proj4Projection
-			.inverse([x, y]).map(degreesToRadians);
+
+	project.invert = function (x: number, y: number) {
+		return proj4Projection.inverse([x, y]).map(degreesToRadians);
 	};
 
 	return geoProjection(project as GeoRawProjection);
 }
 
-export { importFromGeoJson, importFromShapefiles, newImportedMap, exportImportAsSVG };
+export {
+	importFromGeoJson,
+	importFromShapefiles,
+	newImportedMap,
+	exportImportAsSVG,
+	proj4ToProjection
+};

@@ -22,7 +22,7 @@
 	const multipleFilesTooltip =
 		'Select multiple files to upload and they will be automatically merged.';
 
-		async function load(importFunc: (files: FileList) => void, files: FileList) {
+	async function load(importFunc: (files: FileList) => Promise<void>, files: FileList) {
 		loading = true;
 		try {
 			ImportedSVGStore.set({
@@ -30,7 +30,7 @@
 				loaded: false,
 				content: ''
 			});
-			importFunc(files);
+			await importFunc(files);
 			close?.();
 			if ($page.url.pathname !== '/app/imported') {
 				await goto('/app/imported');
@@ -165,11 +165,12 @@
 						</div>
 					</label>
 				</div>
+
+				<div class="divider divider-vertical mt-1 -mb-1" />
+
+				<ImportOptions />
 			</div>
 		</div>
-		
-		<ImportOptions />
-		
 	</div>
 
 	<div slot="action">
