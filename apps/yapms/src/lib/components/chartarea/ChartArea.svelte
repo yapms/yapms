@@ -2,7 +2,7 @@
 	import { ChartTypeStore, ChartPositionStore } from '$lib/stores/Chart';
 	import { LogoStore } from '$lib/stores/Logo';
 	import BattleChart from '../charts/battlechart/BattleChart.svelte';
-	import PieChart from '../charts/piechart/PieChart.svelte';
+	import CircleChart from '../charts/circlechart/CircleChart.svelte';
 
 	let logoSize: { width: string | undefined; height: string | undefined } = {
 		width: '100%',
@@ -32,8 +32,10 @@
 >
 	{#if $ChartTypeStore === 'battle'}
 		<BattleChart />
+	{:else if $ChartTypeStore === 'pie'}
+		<CircleChart type="pie" />
 	{:else}
-		<PieChart />
+		<CircleChart type="doughnut" />
 	{/if}
 	{#if $LogoStore !== null}
 		<img

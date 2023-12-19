@@ -1,1 +1,1 @@
-export type ChartType = 'battle' | 'pie' | 'none';
+export type ChartType = 'battle' | 'pie' | 'doughnut' | 'none';
