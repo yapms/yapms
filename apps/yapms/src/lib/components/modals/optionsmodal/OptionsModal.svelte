@@ -20,7 +20,7 @@
 		{ name: 'None', src: null }
 	];
 
-	const chartTypeValues = ['pie', 'battle', 'none'];
+	const chartTypeValues = ['pie', 'doughnut', 'battle', 'none'];
 	const chartPositionValues = ['bottom', 'left'];
 
 	function readLogoFile() {

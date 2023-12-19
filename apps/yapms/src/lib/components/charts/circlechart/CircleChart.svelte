@@ -7,8 +7,10 @@
 	import { ChartPositionStore } from '$lib/stores/Chart';
 	import { ChartLeansStore } from '$lib/stores/ChartLeansStore';
 
+	export let type: 'pie' | 'doughnut';
+
 	let canvasBind: HTMLCanvasElement;
-	let myChart: Chart<'pie'>;
+	let myChart: Chart<'pie' | 'doughnut'>;
 
 	$: if (myChart) {
 		const counts: number[] = [];
@@ -60,7 +62,7 @@
 		Chart.register(ChartDataLabels);
 		// todo: fix this typescript error
 		myChart = new Chart(ctx, {
-			type: 'pie',
+			type: type,
 			data: {
 				labels: [] as string[],
 				datasets: [
