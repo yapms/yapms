@@ -5,7 +5,9 @@
 	export let transitions = true;
 </script>
 
-<div class="flex flex-row flex-wrap justify-center relative pointer-events-none gap-1 h-0 z-10">
+<div
+	class="flex flex-row flex-wrap items-start justify-center relative pointer-events-none gap-1 h-0 z-10"
+>
 	<CandidateBox candidate={$TossupCandidateStore} {selectable} {transitions} />
 	{#each $CandidatesStore as candidate}
 		<CandidateBox {candidate} {selectable} {transitions} />

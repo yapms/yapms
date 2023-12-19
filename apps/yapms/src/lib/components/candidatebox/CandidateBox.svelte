@@ -4,6 +4,7 @@
 
 	import { calculateLumaHEX } from '$lib/utils/luma';
 	import type Candidate from '$lib/types/Candidate';
+	import { CandidateBoxOptions } from '$lib/stores/CandidateBoxOptions';
 
 	export let candidate: Candidate;
 	export let selectable: boolean;
@@ -20,9 +21,15 @@
 </script>
 
 <button
-	class="btn no-animation overflow-hidden p-0 transition-all m-0.5 pointer-events-auto"
-	class:btn-md={selected}
-	class:btn-sm={!selected}
+	class="overflow-hidden transition-all m-0.5 pointer-events-auto cursor-pointer font-bold rounded border-double"
+	class:text-xs={$CandidateBoxOptions.fontSize === 0}
+	class:text-sm={$CandidateBoxOptions.fontSize === 1}
+	class:text-md={$CandidateBoxOptions.fontSize === 2}
+	class:text-lg={$CandidateBoxOptions.fontSize === 3}
+	class:text-xl={$CandidateBoxOptions.fontSize === 4}
+	class:border-4={selected}
+	class:border-white={textColor === 'white'}
+	class:border-black={textColor !== 'white'}
 	style:transition-duration={transitionSpeed}
 	style:background-color={backgroundColor}
 	style:color={textColor}
