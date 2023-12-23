@@ -37,7 +37,7 @@
 					...(choosenChartData.at(0) ?? []),
 					tossupCounts,
 					...(choosenChartData.at(1) ?? []).reverse()
-			  ]
+				]
 			: [tossupCounts, ...choosenChartData.flat()];
 
 	/**
