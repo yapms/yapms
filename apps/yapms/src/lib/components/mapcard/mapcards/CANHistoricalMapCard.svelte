@@ -48,6 +48,38 @@
 		{
 			label: 'House of Commons 1997',
 			route: '/app/can/commons/1997153/results'
+		},
+		{
+			label: 'House of Commons 1993',
+			route: '/app/can/commons/1993298/results'
+		},
+		{
+			label: 'House of Commons 1988',
+			route: '/app/can/commons/1988325/results'
+		},
+		{
+			label: 'House of Commons 1984',
+			route: '/app/can/commons/1984247/results'
+		},
+		{
+			label: 'House of Commons 1980',
+			route: '/app/can/commons/1980049/results'
+		},
+		{
+			label: 'House of Commons 1979',
+			route: '/app/can/commons/1979142/results'
+		},
+		{
+			label: 'House of Commons 1974',
+			route: '/app/can/commons/1974189/results'
+		},
+		{
+			label: 'House of Commons 1972',
+			route: '/app/can/commons/1972303/results'
+		},
+		{
+			label: 'House of Commons 1968',
+			route: '/app/can/commons/1968176/results'
 		}
 	];
 </script>
