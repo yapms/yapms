@@ -31,6 +31,7 @@
 	import ZafMapCard from '$lib/components/mapcard/mapcards/ZAFMapCard.svelte';
 	import GlbMapCard from '$lib/components/mapcard/mapcards/GLBMapCard.svelte';
 	import KorMapCard from '$lib/components/mapcard/mapcards/KORMapCard.svelte';
+	import CanHistoricalMapCard from '$lib/components/mapcard/mapcards/CANHistoricalMapCard.svelte';
 
 	export let data: PageData;
 
@@ -125,6 +126,7 @@
 			<MapCardGrid title="Historical Maps">
 				<UsaCongressionalMapCard />
 				<UsaPresidentialMapCard />
+				<CanHistoricalMapCard />
 			</MapCardGrid>
 		</div>
 	</div>
