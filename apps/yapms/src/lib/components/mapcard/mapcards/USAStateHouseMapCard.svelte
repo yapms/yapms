@@ -50,6 +50,10 @@
 			label: 'Florida 2022'
 		},
 		{
+			route: '/app/usa/ga_lower/2023363/blank',
+			label: 'Georgia 2024'
+		},
+		{
 			route: '/app/usa/ga_lower/2022/blank',
 			label: 'Georgia 2022'
 		},
