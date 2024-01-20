@@ -11,7 +11,7 @@
 		},
 		{
 			label: 'Municipalities',
-			route: '/app/prt/municipalities/20181112/blank'
+			route: '/app/prt/municipalities/2018316/blank'
 		}
 	];
 </script>
