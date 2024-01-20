@@ -8,6 +8,10 @@
 		{
 			label: 'Districts',
 			route: '/app/prt/districts/2021093/blank'
+		},
+		{
+			label: 'Municipalities',
+			route: '/app/prt/municipalities/2018316/blank'
 		}
 	];
 </script>
