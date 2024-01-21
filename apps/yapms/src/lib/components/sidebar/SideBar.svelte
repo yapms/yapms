@@ -11,10 +11,10 @@
 
 	afterUpdate(reapplyPanZoom);
 
-	onMount(() => {
-		window.googletag.cmd.push(function () {
-			window.googletag.display('div-gpt-ad-1698618618626-0');
-		});
+	/* eslint-disable  @typescript-eslint/no-explicit-any */
+	let ads: any;
+	onMount(async () => {
+		ads = (await import('$lib/components/sidebar/sections/ads/SideBarAds.svelte')).default;
 	});
 </script>
 
@@ -29,12 +29,7 @@
 		</div>
 		<h1 class="text-xl text-center font-bold">{$SideBarStore.title}</h1>
 
-		<!-- /21838847269/yapms-sidebar -->
-		<div
-			id="div-gpt-ad-1698618618626-0"
-			style="min-width: 200px; min-height: 200px;"
-			class="flex justify-center"
-		/>
+		<svelte:component this={ads} />
 		<Shortcuts />
 		<RegionSearch />
 		{#if $PocketBaseStore.authStore.isValid}
