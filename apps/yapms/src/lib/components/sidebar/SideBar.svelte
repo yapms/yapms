@@ -11,6 +11,7 @@
 
 	afterUpdate(reapplyPanZoom);
 
+	/* eslint-disable  @typescript-eslint/no-explicit-any */
 	let ads: any;
 	onMount(async () => {
 		ads = (await import('$lib/components/sidebar/sections/ads/SideBarAds.svelte')).default;
