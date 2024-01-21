@@ -36,7 +36,6 @@
 					'div-gpt-ad-1698625359953-0'
 				)
 				.addService(window.googletag.pubads());
-			window.googletag.pubads().enableSingleRequest();
 			window.googletag.enableServices();
 		});
 	}
