@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { beforeUpdate, afterUpdate } from 'svelte';
 	afterUpdate(() => {
+		window.googletag = window.googletag || { cmd: [] };
 		window.googletag.cmd.push(() => {
 			window.googletag
 				.defineSlot(
@@ -22,6 +23,7 @@
 	});
 
 	beforeUpdate(() => {
+		window.googletag = window.googletag || { cmd: [] };
 		window.googletag.cmd.push(() => {
 			window.googletag.destroySlots();
 		});
