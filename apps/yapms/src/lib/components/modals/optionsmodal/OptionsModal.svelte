@@ -8,6 +8,7 @@
 	import { LogoStore } from '$lib/stores/Logo';
 	import RedEaglePolitics from '$lib/assets/images/logos/rep.png';
 	import LetsTalkElections from '$lib/assets/images/logos/lte.png';
+	import PAElectionHQ from '$lib/assets/images/logos/pa.png';
 	import { RegionTooltipStore } from '$lib/stores/RegionTooltip';
 	import { AutoStrokeMultiplierStore } from '$lib/stores/AutoStrokeMultiplierStore';
 	import { CandidateBoxOptions } from '$lib/stores/CandidateBoxOptions';
@@ -18,6 +19,7 @@
 	let logos: Array<{ name: string; src: string | ArrayBuffer | null }> = [
 		{ name: 'Lets Talk Elections', src: LetsTalkElections },
 		{ name: 'Red Eagle Politics', src: RedEaglePolitics },
+		{ name: 'PA Election HQ', src: PAElectionHQ },
 		{ name: 'None', src: null }
 	];
 
