@@ -6,7 +6,7 @@ export const CandidateBoxOptions = writable({
 });
 
 if (browser) {
-	let fontSize = Number(localStorage.getItem("CandidateBoxOptions.fontSize") ?? "1");
+	let fontSize = Number(localStorage.getItem('CandidateBoxOptions.fontSize') ?? '1');
 	if (isNaN(fontSize)) {
 		fontSize = 1;
 	}
@@ -14,6 +14,6 @@ if (browser) {
 		fontSize: fontSize
 	});
 	CandidateBoxOptions.subscribe((value) => {
-		localStorage.setItem("CandidateBoxOptions.fontSize", value.fontSize.toString());
+		localStorage.setItem('CandidateBoxOptions.fontSize', value.fontSize.toString());
 	});
 }
