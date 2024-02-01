@@ -22,6 +22,7 @@ import { InteractionStore } from '../Interaction';
 import { makePattern, removeAllPatterns } from '$lib/utils/patterns';
 import { RegionTooltipStore } from '../RegionTooltip';
 import { SelectedActionGroup } from '../ActionGroups';
+import { FontColor } from '../FontColor';
 
 /**
  * Stores the state of all regions.
@@ -29,8 +30,8 @@ import { SelectedActionGroup } from '../ActionGroups';
 export const RegionsStore = writable<Region[]>([]);
 
 /**
-  When the region store changes,
-  update the colors of the regions in the DOM
+	When the region store changes,
+	update the colors of the regions in the DOM
 */
 RegionsStore.subscribe((regions) => {
 	removeAllPatterns();
@@ -88,12 +89,12 @@ RegionsStore.subscribe((regions) => {
 		);
 		const winners = region.disabled
 			? [
-					{
-						candidate: get(TossupCandidateStore),
-						count: 0,
-						margin: 0
-					}
-				]
+				{
+					candidate: get(TossupCandidateStore),
+					count: 0,
+					margin: 0
+				}
+			]
 			: region.candidates.filter((candidate) => candidate.count === maxValue);
 
 		// set the margin of the new winner
@@ -123,7 +124,13 @@ RegionsStore.subscribe((regions) => {
 		if (region.nodes.text) {
 			region.nodes.text.style.visibility =
 				region.disabled || region.permaLocked || region.visible === false ? 'hidden' : 'visible';
-			region.nodes.text.style.color = calculateLumaHEX(lumaColor) > 0.5 ? 'black' : 'white';
+
+			if (get(FontColor) === 'auto') {
+				region.nodes.text.style.color = calculateLumaHEX(lumaColor) > 0.5 ? 'black' : 'white';
+			} else {
+				region.nodes.text.style.color = get(FontColor);
+			}
+
 			const valueText = region.nodes.text.querySelector('[map-type="value-text"]');
 			if (valueText) {
 				valueText.innerHTML = region.value.toString();
@@ -133,10 +140,10 @@ RegionsStore.subscribe((regions) => {
 });
 
 /**
-  When the region store changes,
-  create a derived store that contains the count of each candidate.
+	When the region store changes,
+	create a derived store that contains the count of each candidate.
 
-  Candidates will be undefined if they are not in the region store
+	Candidates will be undefined if they are not in the region store
  */
 export const CandidateCounts = derived(RegionsStore, ($RegionStore) => {
 	const candidates = new Map<string, number>(); //Use default counts if included in map
