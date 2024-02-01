@@ -4,10 +4,8 @@ import { browser } from '$app/environment';
 export const FontColorStore = writable<'auto' | 'white' | 'black'>('auto');
 
 if (browser) {
-	let fontColor = localStorage.getItem('FontColor');
-	if (fontColor === 'auto' ||
-		fontColor === 'white' ||
-		fontColor === 'black') {
+	const fontColor = localStorage.getItem('FontColor');
+	if (fontColor === 'auto' || fontColor === 'white' || fontColor === 'black') {
 		FontColorStore.set(fontColor);
 	}
 	FontColorStore.subscribe((value) => {

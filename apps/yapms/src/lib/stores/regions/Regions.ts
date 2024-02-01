@@ -92,12 +92,12 @@ RegionsStore.subscribe((regions) => {
 		);
 		const winners = region.disabled
 			? [
-				{
-					candidate: get(TossupCandidateStore),
-					count: 0,
-					margin: 0
-				}
-			]
+					{
+						candidate: get(TossupCandidateStore),
+						count: 0,
+						margin: 0
+					}
+				]
 			: region.candidates.filter((candidate) => candidate.count === maxValue);
 
 		// set the margin of the new winner
