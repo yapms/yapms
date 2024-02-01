@@ -22,12 +22,15 @@ import { InteractionStore } from '../Interaction';
 import { makePattern, removeAllPatterns } from '$lib/utils/patterns';
 import { RegionTooltipStore } from '../RegionTooltip';
 import { SelectedActionGroup } from '../ActionGroups';
-import { FontColor } from '../FontColor';
+import { FontColorStore } from '../FontColorStore';
 
 /**
  * Stores the state of all regions.
  */
 export const RegionsStore = writable<Region[]>([]);
+FontColorStore.subscribe(() => {
+	RegionsStore.set(get(RegionsStore));
+});
 
 /**
 	When the region store changes,
@@ -125,10 +128,10 @@ RegionsStore.subscribe((regions) => {
 			region.nodes.text.style.visibility =
 				region.disabled || region.permaLocked || region.visible === false ? 'hidden' : 'visible';
 
-			if (get(FontColor) === 'auto') {
+			if (get(FontColorStore) === 'auto') {
 				region.nodes.text.style.color = calculateLumaHEX(lumaColor) > 0.5 ? 'black' : 'white';
 			} else {
-				region.nodes.text.style.color = get(FontColor);
+				region.nodes.text.style.color = get(FontColorStore);
 			}
 
 			const valueText = region.nodes.text.querySelector('[map-type="value-text"]');
