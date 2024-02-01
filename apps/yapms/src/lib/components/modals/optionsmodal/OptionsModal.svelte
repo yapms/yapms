@@ -6,22 +6,16 @@
 	import { MapInsetsStore } from '$lib/stores/MapInsetsStore';
 	import { ChartLeansStore } from '$lib/stores/ChartLeansStore';
 	import { LogoStore } from '$lib/stores/Logo';
-	import RedEaglePolitics from '$lib/assets/images/logos/rep.png';
-	import LetsTalkElections from '$lib/assets/images/logos/lte.png';
-	import PAElectionHQ from '$lib/assets/images/logos/pa.png';
 	import { RegionTooltipStore } from '$lib/stores/RegionTooltip';
 	import { AutoStrokeMultiplierStore } from '$lib/stores/AutoStrokeMultiplierStore';
 	import { CandidateBoxOptions } from '$lib/stores/CandidateBoxOptions';
+	import { PocketBaseStore } from '$lib/stores/PocketBase';
+	import { PUBLIC_POCKETBASE_URI } from '$env/static/public';
 
 	let logoFile: FileList | undefined;
 	let logoFileInput: HTMLInputElement | undefined;
 
-	let logos: Array<{ name: string; src: string | ArrayBuffer | null }> = [
-		{ name: 'Lets Talk Elections', src: LetsTalkElections },
-		{ name: 'Red Eagle Politics', src: RedEaglePolitics },
-		{ name: 'PA Election HQ', src: PAElectionHQ },
-		{ name: 'None', src: null }
-	];
+	let logos = $PocketBaseStore.collection('creator_logos').getFullList();
 
 	const chartTypeValues = ['pie', 'doughnut', 'battle', 'none'];
 	const chartPositionValues = ['bottom', 'left'];
@@ -80,9 +74,16 @@
 					on:change={clearLogoFile}
 				>
 					<option selected disabled>Choose one...</option>
-					{#each logos as logo}
-						<option value={logo.src}>{logo.name}</option>
-					{/each}
+					<option value={null}>None</option>
+					{#await logos then logos}
+						{#each logos as logo}
+							<option
+								value={`${PUBLIC_POCKETBASE_URI}/api/files/${logo.collectionId}/${logo.id}/${logo.image}`}
+							>
+								{logo.label}
+							</option>
+						{/each}
+					{/await}
 				</select>
 				<input
 					type="file"
