@@ -22,15 +22,19 @@ import { InteractionStore } from '../Interaction';
 import { makePattern, removeAllPatterns } from '$lib/utils/patterns';
 import { RegionTooltipStore } from '../RegionTooltip';
 import { SelectedActionGroup } from '../ActionGroups';
+import { FontColorStore } from '../FontColorStore';
 
 /**
  * Stores the state of all regions.
  */
 export const RegionsStore = writable<Region[]>([]);
+FontColorStore.subscribe(() => {
+	RegionsStore.set(get(RegionsStore));
+});
 
 /**
-  When the region store changes,
-  update the colors of the regions in the DOM
+	When the region store changes,
+	update the colors of the regions in the DOM
 */
 RegionsStore.subscribe((regions) => {
 	removeAllPatterns();
@@ -123,7 +127,13 @@ RegionsStore.subscribe((regions) => {
 		if (region.nodes.text) {
 			region.nodes.text.style.visibility =
 				region.disabled || region.permaLocked || region.visible === false ? 'hidden' : 'visible';
-			region.nodes.text.style.color = calculateLumaHEX(lumaColor) > 0.5 ? 'black' : 'white';
+
+			if (get(FontColorStore) === 'auto') {
+				region.nodes.text.style.color = calculateLumaHEX(lumaColor) > 0.5 ? 'black' : 'white';
+			} else {
+				region.nodes.text.style.color = get(FontColorStore);
+			}
+
 			const valueText = region.nodes.text.querySelector('[map-type="value-text"]');
 			if (valueText) {
 				valueText.innerHTML = region.value.toString();
@@ -133,10 +143,10 @@ RegionsStore.subscribe((regions) => {
 });
 
 /**
-  When the region store changes,
-  create a derived store that contains the count of each candidate.
+	When the region store changes,
+	create a derived store that contains the count of each candidate.
 
-  Candidates will be undefined if they are not in the region store
+	Candidates will be undefined if they are not in the region store
  */
 export const CandidateCounts = derived(RegionsStore, ($RegionStore) => {
 	const candidates = new Map<string, number>(); //Use default counts if included in map

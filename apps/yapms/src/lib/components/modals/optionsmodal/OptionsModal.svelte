@@ -10,6 +10,7 @@
 	import { AutoStrokeMultiplierStore } from '$lib/stores/AutoStrokeMultiplierStore';
 	import { CandidateBoxOptions } from '$lib/stores/CandidateBoxOptions';
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
+	import { FontColorStore } from '$lib/stores/FontColorStore';
 	import { PUBLIC_POCKETBASE_URI } from '$env/static/public';
 
 	let logoFile: FileList | undefined;
@@ -93,6 +94,16 @@
 					bind:this={logoFileInput}
 					on:change={readLogoFile}
 				/>
+			</label>
+		</div>
+		<div class="form-control w-full">
+			<label class="label flex-col cursor-pointer items-start justify-start space-y-2">
+				<span class="label-text">Font Color</span>
+				<select class="select select-bordered w-full capitalize" bind:value={$FontColorStore}>
+					<option value="auto">Auto</option>
+					<option value="white">White</option>
+					<option value="black">Black</option>
+				</select>
 			</label>
 		</div>
 		<div class="grid grid-cols-2">
