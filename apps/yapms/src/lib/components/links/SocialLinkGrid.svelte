@@ -6,15 +6,29 @@
 
 	let links = $PocketBaseStore.collection('social_links').getFullList();
 
+	function isIconDefinition(
+		faItem: BrandIcons.IconDefinition | BrandIcons.IconPrefix | BrandIcons.IconPack
+	): faItem is BrandIcons.IconDefinition {
+		return (
+			(faItem as BrandIcons.IconDefinition).iconName !== undefined &&
+			(faItem as BrandIcons.IconDefinition).prefix !== undefined &&
+			(faItem as BrandIcons.IconDefinition).icon !== undefined
+		);
+	}
+
 	function getIcon(name: string) {
 		const brandIcon = BrandIcons[name as keyof typeof BrandIcons];
 		const solidIcon = SolidIcons[name as keyof typeof SolidIcons];
 
-		if (brandIcon !== undefined) {
+		if (isIconDefinition(brandIcon)) {
 			return brandIcon;
-		} else if (solidIcon !== undefined) {
+		}
+
+		if (isIconDefinition(solidIcon)) {
 			return solidIcon;
 		}
+
+		return SolidIcons.faLink;
 	}
 </script>
 
