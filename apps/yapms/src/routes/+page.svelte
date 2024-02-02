@@ -33,6 +33,7 @@
 	import KorMapCard from '$lib/components/mapcard/mapcards/KORMapCard.svelte';
 	import CanHistoricalMapCard from '$lib/components/mapcard/mapcards/CANHistoricalMapCard.svelte';
 	import PrtMapCard from '$lib/components/mapcard/mapcards/PRTMapCard.svelte';
+	import IrlMapCard from '$lib/components/mapcard/mapcards/IRLMapCard.svelte';
 
 	export let data: PageData;
 
@@ -113,6 +114,7 @@
 				<NldMapCard />
 				<NzlMapCard />
 				<ZafMapCard />
+				<IrlMapCard />
 				<FraMapCard />
 				<KorMapCard />
 				<PrtMapCard />
