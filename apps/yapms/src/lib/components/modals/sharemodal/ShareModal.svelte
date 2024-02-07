@@ -15,7 +15,7 @@
 	import { fade } from 'svelte/transition';
 	import ModalBase from '../ModalBase.svelte';
 	import * as htmlToImage from 'html-to-image';
-	import * as fileSaver from 'file-saver';
+	import fileSaver from 'file-saver';
 	import Camera from '$lib/icons/Camera.svelte';
 
 	let files: FileList;

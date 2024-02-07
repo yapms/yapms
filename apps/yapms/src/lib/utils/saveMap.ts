@@ -1,6 +1,6 @@
 import { TossupCandidateStore, CandidatesStore } from '$lib/stores/Candidates';
 import { get } from 'svelte/store';
-import { saveAs } from 'file-saver';
+import fileSaver from 'file-saver';
 import { RegionsStore } from '$lib/stores/regions/Regions';
 import { MapIdentifier } from '$lib/stores/MapIdentifier';
 
@@ -52,7 +52,7 @@ function generateJson() {
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function downloadJson() {
 	const data = generateJson();
-	saveAs(
+	fileSaver.saveAs(
 		new Blob([JSON.stringify(data)], { type: 'application/json;charset=utf-8' }),
 		'YapmsMap.json'
 	);

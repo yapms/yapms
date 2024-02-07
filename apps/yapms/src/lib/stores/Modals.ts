@@ -1,5 +1,5 @@
 import { get, writable } from 'svelte/store';
-import type Region from '$lib/types/Region';
+import type { Region } from '$lib/types/Region';
 import { TossupCandidateStore } from './Candidates';
 
 export const CandidateModalStore = writable({

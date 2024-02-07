@@ -7,7 +7,7 @@ import { degreesToRadians, type AllGeoJSON, radiansToDegrees } from '@turf/helpe
 import { get } from 'svelte/store';
 import { CandidatesStore, TossupCandidateStore } from '$lib/stores/Candidates';
 import { RegionsStore } from '$lib/stores/regions/Regions';
-import { saveAs } from 'file-saver';
+import fileSaver from 'file-saver';
 import DOMPurify from 'dompurify';
 import type { SavedRegionCandidates } from '$lib/types/Region';
 import proj4 from 'proj4';
@@ -142,7 +142,7 @@ function exportImportAsSVG(): void {
 				region.nodes.region.setAttribute('locked', region.locked.toString());
 			}
 		}
-		saveAs(
+		fileSaver.saveAs(
 			new Blob([DOMPurify.sanitize(svg.outerHTML, DOMPurifyConfig)], { type: 'text/svg' }),
 			'YapmsMap.svg'
 		);
@@ -152,11 +152,11 @@ function exportImportAsSVG(): void {
 function proj4ToProjection() {
 	const proj4Projection = proj4(get(ImportedSVGStore).options.customProjectionDefinition);
 
-	const project = function (lambda: number, phi: number) {
+	const project = function(lambda: number, phi: number) {
 		return proj4Projection.forward([lambda, phi].map(radiansToDegrees));
 	};
 
-	project.invert = function (x: number, y: number) {
+	project.invert = function(x: number, y: number) {
 		return proj4Projection.inverse([x, y]).map(degreesToRadians);
 	};
 

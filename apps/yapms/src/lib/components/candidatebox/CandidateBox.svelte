@@ -3,7 +3,7 @@
 	import { CandidateCounts } from '$lib/stores/regions/Regions';
 
 	import { calculateLumaHEX } from '$lib/utils/luma';
-	import type Candidate from '$lib/types/Candidate';
+	import type { Candidate } from '$lib/types/Candidate';
 	import { CandidateBoxOptions } from '$lib/stores/CandidateBoxOptions';
 
 	export let candidate: Candidate;

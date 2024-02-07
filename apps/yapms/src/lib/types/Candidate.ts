@@ -11,7 +11,4 @@ export const CandidateSchema = z.object({
 	)
 });
 
-//See https://github.com/colinhacks/zod#basic-usage for more on .infer
-type Candidate = z.infer<typeof CandidateSchema>;
-
-export default Candidate;
+export type Candidate = z.infer<typeof CandidateSchema>;

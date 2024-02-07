@@ -8,7 +8,7 @@
 	} from '$lib/stores/Modals';
 	import ModalBase from '../ModalBase.svelte';
 	import { calculateLumaHEX } from '$lib/utils/luma';
-	import type Candidate from '$lib/types/Candidate';
+	import type { Candidate } from '$lib/types/Candidate';
 	import Sortable from 'sortablejs';
 	import Bars3 from '$lib/icons/Bars3.svelte';
 	import QuestionMarkCircle from '$lib/icons/QuestionMarkCircle.svelte';

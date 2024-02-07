@@ -1,6 +1,6 @@
 import type { GeoProjection } from 'd3';
 
-type ImportedSVG = {
+export type ImportedSVG = {
 	loaded: boolean;
 	content: string;
 	options: {
@@ -8,5 +8,3 @@ type ImportedSVG = {
 		customProjectionDefinition: string;
 	};
 };
-
-export default ImportedSVG;

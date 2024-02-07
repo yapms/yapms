@@ -57,10 +57,8 @@ export const SavedRegionCandidatesSchema = z
 	})
 	.array();
 
-type Region = z.infer<typeof RegionSchema>;
+export type Region = z.infer<typeof RegionSchema>;
 
 export type RegionCandidate = z.infer<typeof RegionCandidateSchema>;
 
 export type SavedRegionCandidates = z.infer<typeof SavedRegionCandidatesSchema>;
-
-export default Region;

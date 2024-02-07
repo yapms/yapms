@@ -1,11 +1,9 @@
-type HomeLinkData = {
+export type HomeLinkData = {
 	label: string;
 	route: string;
 };
 
-type HomeModalData = {
+export type HomeModalData = {
 	label: string;
 	buttons: HomeLinkData[];
 };
-
-export type { HomeLinkData, HomeModalData };
