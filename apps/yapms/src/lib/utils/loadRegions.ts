@@ -14,7 +14,7 @@ import {
 	TossupCandidateStoreDefault,
 	SelectedCandidateStore
 } from '$lib/stores/Candidates';
-import type Region from '$lib/types/Region';
+import type { Region } from '$lib/types/Region';
 import { ModeSchema } from '$lib/types/Mode';
 import { CandidateSchema } from '$lib/types/Candidate';
 import { SavedRegionCandidatesSchema } from '$lib/types/Region';

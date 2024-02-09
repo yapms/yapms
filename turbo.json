@@ -1,18 +1,19 @@
 {
-  "$schema": "https://turbo.build/schema.json",
-  "pipeline": {
-    "dev": {
-      "cache": false
-    },
-    "build": {
-      "cache": false
-    },
-    "start": {
-      "cache": false
-    },
-    "check": {},
-    "lint-no-warnings": {},
-    "lint": {},
-    "format": {}
-  }
+	"$schema": "https://turbo.build/schema.json",
+	"pipeline": {
+		"dev": {
+			"cache": false,
+			"persistent": true
+		},
+		"build": {
+			"cache": false
+		},
+		"start": {
+			"cache": false
+		},
+		"check": {},
+		"lint-no-warnings": {},
+		"lint": {},
+		"format": {}
+	}
 }

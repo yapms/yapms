@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import type ImportedSVG from '$lib/types/ImportedSVG';
+import type { ImportedSVG } from '$lib/types/ImportedSVG';
 import { geoMercator } from 'd3';
 
 /**

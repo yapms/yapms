@@ -1,4 +1,4 @@
-import type Region from '$lib/types/Region';
+import type { Region } from '$lib/types/Region';
 import { blendHexColors, calculateLumaHEX } from '$lib/utils/luma';
 import { derived, writable, get } from 'svelte/store';
 import {

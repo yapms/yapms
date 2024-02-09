@@ -1,7 +1,7 @@
 import { goto } from '$app/navigation';
 import { page } from '$app/stores';
 import { PUBLIC_POCKETBASE_URI } from '$env/static/public';
-import type SavedMap from '$lib/types/SavedMap';
+import type { SavedMap } from '$lib/types/SavedMap';
 import { SavedMapSchema } from '$lib/types/SavedMap';
 import { get, writable } from 'svelte/store';
 

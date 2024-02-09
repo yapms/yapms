@@ -1,3 +1,1 @@
-type ChartPosition = 'bottom' | 'left';
-
-export default ChartPosition;
+export type ChartPosition = 'bottom' | 'left';

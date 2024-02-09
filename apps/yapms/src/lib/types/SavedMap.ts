@@ -20,6 +20,4 @@ export const SavedMapSchema = z.object({
 	regions: SavedRegionSchema.array()
 });
 
-type SavedMap = z.infer<typeof SavedMapSchema>;
-
-export default SavedMap;
+export type SavedMap = z.infer<typeof SavedMapSchema>;

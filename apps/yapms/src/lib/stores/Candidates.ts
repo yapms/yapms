@@ -1,4 +1,4 @@
-import type Candidate from '$lib/types/Candidate';
+import type { Candidate } from '$lib/types/Candidate';
 import { CandidateSchema } from '$lib/types/Candidate';
 import { derived, get, writable } from 'svelte/store';
 import { z } from 'zod';
