@@ -17,7 +17,7 @@
 	const shortNameTooltip = 'The "short name" is used as region tooltip.';
 	const longNameTooltip = 'The "long name" is shown when editing or splitting a region.';
 	const propertySettingsTooltip =
-		'If you are importing from a GeoJSON or Shapefile with properties, you can use those properties for the name or value of the regions in YAPms.';
+		'If you are importing from a GeoJSON file with properties, you can use those properties for the name or value of the regions in YAPms.';
 
 	const projectionOptions = [
 		{ label: 'Mercator', projectionFunction: geoMercator },
