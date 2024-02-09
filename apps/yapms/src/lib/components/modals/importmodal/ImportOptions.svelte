@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ExclamationCircle from '$lib/icons/ExclamationCircle.svelte';
 	import QuestionMarkCircle from '$lib/icons/QuestionMarkCircle.svelte';
 	import { ImportedSVGStore } from '$lib/stores/ImportedSVG';
 	import { proj4ToProjection } from '$lib/utils/importMap';
@@ -14,10 +15,11 @@
 
 	const customProjectionDefinitionTooltip =
 		'Projection definitions are used to describe different map projections. YAPms uses PROJ.4 definitions. You can find many of these on https://epsg.io/';
-	const shortNameTooltip = 'The "short name" is used as region tooltip.';
-	const longNameTooltip = 'The "long name" is shown when editing or splitting a region.';
 	const propertySettingsTooltip =
 		'If you are importing from a GeoJSON file with properties, you can use those properties for the name or value of the regions in YAPms.';
+	const shortNameTooltip = 'The "short name" is used as region tooltip.';
+	const longNameTooltip = 'The "long name" is shown when editing or splitting a region.';
+	const valueTooltip = 'Make sure to use a property that is a numeric value for this property.';
 
 	const projectionOptions = [
 		{ label: 'Mercator', projectionFunction: geoMercator },
@@ -102,7 +104,12 @@
 			</div>
 			<div class="form-control w-full">
 				<label class="label flex-col cursor-pointer items-start justify-start">
-					<span class="label-text mb-2">Value</span>
+					<div class="flex gap-x-1 mb-2">
+						<span class="label-text">Value</span>
+						<div class="tooltip tooltip-right before:max-w-[12rem]" data-tip={valueTooltip}>
+							<ExclamationCircle class="w-5" />
+						</div>
+					</div>
 					<input
 						type="text"
 						class="input input-bordered w-full"
