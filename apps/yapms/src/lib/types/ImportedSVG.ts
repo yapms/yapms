@@ -6,5 +6,8 @@ export type ImportedSVG = {
 	options: {
 		projectionFunction: () => GeoProjection;
 		customProjectionDefinition: string;
+		shortNameProp: string;
+		longNameProp: string;
+		valueProp: string;
 	};
 };

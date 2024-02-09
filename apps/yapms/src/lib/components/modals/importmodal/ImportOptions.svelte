@@ -14,6 +14,10 @@
 
 	const customProjectionDefinitionTooltip =
 		'Projection definitions are used to describe different map projections. YAPms uses PROJ.4 definitions. You can find many of these on https://epsg.io/';
+	const shortNameTooltip = 'The "short name" is used as region tooltip.';
+	const longNameTooltip = 'The "long name" is shown when editing or splitting a region.';
+	const propertySettingsTooltip =
+		'If you are importing from a GeoJSON or Shapefile with properties, you can use those properties for the name or value of the regions in YAPms.';
 
 	const projectionOptions = [
 		{ label: 'Mercator', projectionFunction: geoMercator },
@@ -30,7 +34,7 @@
 <details class="collapse bg-base-200">
 	<summary class="collapse-title text-xl font-medium">Import Options</summary>
 	<div class="collapse-content">
-		<div class="flex flex-col gap-2">
+		<div class="flex flex-col gap-0">
 			<div class="form-control w-full">
 				<label class="label flex-col cursor-pointer items-start justify-start space-y-2">
 					<span class="label-text">Map Projection</span>
@@ -58,6 +62,53 @@
 						/>
 					</label>
 				{/if}
+			</div>
+			<span class="divider m-2"></span>
+			<div class="flex gap-x-1">
+				Property Settings (Advanced)
+				<div class="tooltip" data-tip={propertySettingsTooltip}>
+					<QuestionMarkCircle class="w-5" />
+				</div>
+			</div>
+			<div class="form-control w-full">
+				<label class="label flex-col cursor-pointer items-start justify-start">
+					<div class="flex gap-x-1 mb-2">
+						<span class="label-text">Short Name</span>
+						<div class="tooltip tooltip-right before:max-w-[12rem]" data-tip={shortNameTooltip}>
+							<QuestionMarkCircle class="w-5" />
+						</div>
+					</div>
+					<input
+						type="text"
+						class="input input-bordered w-full"
+						bind:value={$ImportedSVGStore.options.shortNameProp}
+					/>
+				</label>
+			</div>
+			<div class="form-control w-full">
+				<label class="label flex-col cursor-pointer items-start justify-start">
+					<div class="flex gap-x-1 mb-2">
+						<span class="label-text">Long Name</span>
+						<div class="tooltip tooltip-right before:max-w-[12rem]" data-tip={longNameTooltip}>
+							<QuestionMarkCircle class="w-5" />
+						</div>
+					</div>
+					<input
+						type="text"
+						class="input input-bordered w-full"
+						bind:value={$ImportedSVGStore.options.longNameProp}
+					/>
+				</label>
+			</div>
+			<div class="form-control w-full">
+				<label class="label flex-col cursor-pointer items-start justify-start">
+					<span class="label-text mb-2">Value</span>
+					<input
+						type="text"
+						class="input input-bordered w-full"
+						bind:value={$ImportedSVGStore.options.valueProp}
+					/>
+				</label>
 			</div>
 		</div>
 	</div>
