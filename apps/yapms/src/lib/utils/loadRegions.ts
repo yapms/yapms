@@ -132,7 +132,10 @@ function createRegionStore(node: HTMLDivElement) {
 			}
 		}
 
-		const value = Number(childHTML.getAttribute('value'));
+		let value = Number(childHTML.getAttribute('value'));
+		if (isNaN(value)) {
+			value = 1;
+		}
 		const candidateString = childHTML.getAttribute('candidates');
 		const newRegion: Region = {
 			id: childHTML.getAttribute('region') ?? '',
