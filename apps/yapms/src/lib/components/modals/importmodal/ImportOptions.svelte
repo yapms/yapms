@@ -67,7 +67,7 @@
 			</div>
 			<span class="divider m-2"></span>
 			<div class="flex gap-x-1">
-				Property Settings (Advanced)
+				GeoJSON Properties (Advanced)
 				<div class="tooltip" data-tip={propertySettingsTooltip}>
 					<QuestionMarkCircle class="w-5" />
 				</div>
