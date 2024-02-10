@@ -87,9 +87,24 @@ function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
 	const paths = districtShapes.features.map((feature: GeoJSON.Feature, i: number) => {
 		const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
 		path.setAttribute('region', i.toString());
-		path.setAttribute('short-name', i.toString());
-		path.setAttribute('long-name', i.toString());
-		path.setAttribute('value', '1');
+		path.setAttribute(
+			'short-name',
+			importOptions.shortNameProp !== '' && feature.properties
+				? feature.properties[importOptions.shortNameProp]
+				: i.toString()
+		);
+		path.setAttribute(
+			'long-name',
+			importOptions.shortNameProp !== '' && feature.properties
+				? feature.properties[importOptions.longNameProp]
+				: i.toString()
+		);
+		path.setAttribute(
+			'value',
+			importOptions.valueProp !== '' && feature.properties
+				? feature.properties[importOptions.valueProp]
+				: '1'
+		);
 		path.setAttribute('d', render(feature) ?? '');
 		return path;
 	});

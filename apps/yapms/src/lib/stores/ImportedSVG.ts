@@ -10,6 +10,9 @@ export const ImportedSVGStore = writable<ImportedSVG>({
 	content: '',
 	options: {
 		projectionFunction: geoMercator,
-		customProjectionDefinition: ''
+		customProjectionDefinition: '',
+		shortNameProp: '',
+		longNameProp: '',
+		valueProp: ''
 	}
 });
