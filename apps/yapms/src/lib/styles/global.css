@@ -52,6 +52,6 @@ body {
 }
 
 .texts-hidden [map-type='region-texts'],
-.texts-hidden [map-type='hide-with-texts'] {
+.texts-hidden [map-type='button'] {
 	display: none;
 }

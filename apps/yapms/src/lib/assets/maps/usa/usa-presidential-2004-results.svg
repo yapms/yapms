@@ -360,7 +360,7 @@
        short-name="ne-al"
        value="2"
        id="path1"
-       map-type="hide-with-texts" />
+       map-type="button" />
     <path
        d="m 779,19.5 c -2.5,0 -4.5,2 -4.5,4.5 v 60 c 0,2.5 2,4.5 4.5,4.5 h 72 c 2.5,0 4.5,-2 4.5,-4.5 V 24 c 0,-2.5 -2,-4.5 -4.5,-4.5 z m 4,22 h 64 a 3.5,3.5 0 0 1 3.5,3.5 V 80 A 3.5,3.5 0 0 1 847,83.5 H 783 A 3.5,3.5 0 0 1 779.5,80 V 45 a 3.5,3.5 0 0 1 3.5,-3.5 z"
        candidates="[{&quot;candidate&quot;:&quot;0&quot;,&quot;count&quot;:2,&quot;margin&quot;:0}]"
@@ -369,7 +369,7 @@
        short-name="me-al"
        value="2"
        id="path50"
-       map-type="hide-with-texts" />
+       map-type="button" />
     <g
        id="g8"
        value="7"
@@ -385,7 +385,7 @@
          d="m 893.69,298.14 c -1.65685,0 -3,1.34315 -3,3 v 34 c 0,1.65685 1.34315,3 3,3 h 34 c 1.65685,0 3,-1.34315 3,-3 v -34 c 0,-1.65685 -1.34315,-3 -3,-3 z"
          id="path7-5-0"
          sodipodi:nodetypes="sssssssss"
-         map-type="hide-with-texts" />
+         map-type="button" />
     </g>
     <g
        id="g6"
@@ -402,7 +402,7 @@
          d="m 893.69,396.28 c -1.65685,0 -3,1.34315 -3,3 v 34 c 0,1.65685 1.34315,3 3,3 h 34 c 1.65685,0 3,-1.34315 3,-3 v -34 c 0,-1.65685 -1.34315,-3 -3,-3 z"
          id="path8-6"
          sodipodi:nodetypes="sssssssss"
-         map-type="hide-with-texts" />
+         map-type="button" />
     </g>
     <g
        id="g2"
@@ -419,7 +419,7 @@
          d="m 246.48,545.39 c -1.65685,0 -3,1.34315 -3,3 v 34 c 0,1.65685 1.34315,3 3,3 h 34 c 1.65685,0 3,-1.34315 3,-3 v -34 c 0,-1.65685 -1.34315,-3 -3,-3 z"
          id="path11-0-5"
          sodipodi:nodetypes="sssssssss"
-         map-type="hide-with-texts" />
+         map-type="button" />
     </g>
     <g
        id="g5"
@@ -436,7 +436,7 @@
          d="m 893.69,445.35 c -1.65685,0 -3,1.34315 -3,3 v 34 c 0,1.65685 1.34315,3 3,3 h 34 c 1.65685,0 3,-1.34315 3,-3 v -34 c 0,-1.65685 -1.34315,-3 -3,-3 z"
          id="path19-6-9"
          sodipodi:nodetypes="sssssssss"
-         map-type="hide-with-texts" />
+         map-type="button" />
     </g>
     <g
        id="g3"
@@ -453,7 +453,7 @@
          d="m 845.16,396.28 c -1.65685,0 -3,1.34315 -3,3 v 34 c 0,1.65685 1.34315,3 3,3 h 34 c 1.65685,0 3,-1.34315 3,-3 v -34 c 0,-1.65685 -1.34315,-3 -3,-3 z"
          id="path20-1"
          sodipodi:nodetypes="sssssssss"
-         map-type="hide-with-texts" />
+         map-type="button" />
     </g>
     <g
        id="g10"
@@ -470,7 +470,7 @@
          d="m 893.68,202.14 c -1.65685,0 -3,1.34315 -3,3 v 34 c 0,1.65685 1.34315,3 3,3 h 34 c 1.65685,0 3,-1.34315 3,-3 v -34 c 0,-1.65685 -1.34315,-3 -3,-3 z"
          id="path27-1-6"
          sodipodi:nodetypes="sssssssss"
-         map-type="hide-with-texts" />
+         map-type="button" />
     </g>
     <g
        id="g7"
@@ -487,7 +487,7 @@
          d="m 893.69,347.2 c -1.65685,0 -3,1.34315 -3,3 v 34 c 0,1.65685 1.34315,3 3,3 h 34 c 1.65685,0 3,-1.34315 3,-3 v -34 c 0,-1.65685 -1.34315,-3 -3,-3 z"
          id="path28-5"
          sodipodi:nodetypes="sssssssss"
-         map-type="hide-with-texts" />
+         map-type="button" />
     </g>
     <g
        id="g4"
@@ -504,7 +504,7 @@
          d="m 845.16,445.34 c -1.65685,0 -3,1.34315 -3,3 v 34 c 0,1.65685 1.34315,3 3,3 h 34 c 1.65685,0 3,-1.34315 3,-3 v -34 c 0,-1.65685 -1.34315,-3 -3,-3 z"
          id="path37-5-4"
          sodipodi:nodetypes="sssssssss"
-         map-type="hide-with-texts" />
+         map-type="button" />
     </g>
     <g
        id="g9"
@@ -521,7 +521,7 @@
          d="m 893.69,249.42 c -1.65685,0 -3,1.34315 -3,3 v 34 c 0,1.65685 1.34315,3 3,3 h 34 c 1.65685,0 3,-1.34315 3,-3 v -34 c 0,-1.65685 -1.34315,-3 -3,-3 z"
          id="path43-7-5"
          sodipodi:nodetypes="sssssssss"
-         map-type="hide-with-texts" />
+         map-type="button" />
     </g>
     <g
        id="g11"
@@ -538,7 +538,7 @@
          rx="3"
          ry="3"
          id="rect50"
-         map-type="hide-with-texts" />
+         map-type="button" />
       <path
          id="path184"
          d="m 800.90757,250.32031 -0.35938,0.62891 -0.54319,0.91016 -0.008,0.01 c 0.26,0.33 0.72991,0.38024 1.17991,0.74024 v -0.01 l 0.0508,0.041 -0.0508,-0.0312 c 0.77,0.49998 0.46054,1.40156 0.56054,1.60156 l 0.0391,0.0684 v 0.002 l 0.004,0.006 0.0449,0.21484 c 0.44942,-0.87851 1.029,-1.67781 1.54102,-2.48242 z"
@@ -559,7 +559,7 @@
          d="M 779.5,62.5 V 79 c 0,2.5 2,4.5 4.5,4.5 h 62 c 2.5,0 4.5,-2 4.5,-4.5 V 62.5 Z"
          id="path51-9"
          sodipodi:nodetypes="csssscc"
-         map-type="hide-with-texts" />
+         map-type="button" />
     </g>
     <g
        id="g173"
@@ -576,7 +576,7 @@
          d="m 689,41.5 c -2.5,0 -4.5,2 -4.5,4.5 v 16.5 h 71 V 46 c 0,-2.5 -2,-4.5 -4.5,-4.5 z"
          id="path52-9"
          sodipodi:nodetypes="ssccsss"
-         map-type="hide-with-texts" />
+         map-type="button" />
     </g>
     <g
        id="g172"
@@ -593,7 +593,7 @@
          d="m 684.5,62.5 v 21 h 71 v -21 z"
          id="path53-3"
          sodipodi:nodetypes="ccccc"
-         map-type="hide-with-texts" />
+         map-type="button" />
     </g>
     <g
        id="g171"
@@ -609,7 +609,7 @@
       <path
          d="M 684.5,83.5 V 100 c 0,2.5 2,4.5 4.5,4.5 h 62 c 2.5,0 4.5,-2 4.5,-4.5 V 83.5 Z"
          id="path54-7"
-         map-type="hide-with-texts"
+         map-type="button"
          sodipodi:nodetypes="csssscc" />
     </g>
     <g
@@ -627,7 +627,7 @@
          d="m 784,41.5 c -2.5,0 -4.5,2 -4.5,4.5 v 16.5 h 71 V 46 c 0,-2.5 -2,-4.5 -4.5,-4.5 z"
          id="path55-7"
          sodipodi:nodetypes="ssccsss"
-         map-type="hide-with-texts" />
+         map-type="button" />
     </g>
   </g>
   <g
