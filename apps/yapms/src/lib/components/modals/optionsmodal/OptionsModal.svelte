@@ -12,6 +12,7 @@
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
 	import { FontColorStore } from '$lib/stores/FontColorStore';
 	import { PUBLIC_POCKETBASE_URI } from '$env/static/public';
+	import { RegionTextsStore } from '$lib/stores/RegionTextsStore';
 
 	let logoFile: FileList | undefined;
 	let logoFileInput: HTMLInputElement | undefined;
@@ -129,6 +130,12 @@
 				<label class="label cursor-pointer justify-start gap-3">
 					<input type="checkbox" class="toggle" bind:checked={$RegionTooltipStore.enabled} />
 					<span class="label-text">Region Tooltip</span>
+				</label>
+			</div>
+			<div class="form-control w-full">
+				<label class="label cursor-pointer justify-start gap-3">
+					<input type="checkbox" class="toggle" bind:checked={$RegionTextsStore.enabled} />
+					<span class="label-text">Region Labels</span>
 				</label>
 			</div>
 		</div>

@@ -50,3 +50,8 @@ body {
 .insets-hidden [map-type='inset-region'] {
 	display: none;
 }
+
+.texts-hidden [map-type='region-texts'],
+.texts-hidden [map-type='hide-with-texts'] {
+	display: none;
+}
