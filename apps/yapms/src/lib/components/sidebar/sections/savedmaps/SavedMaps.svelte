@@ -17,8 +17,8 @@
 		<div class="flex justify-center">
 			<span class="loading loading-dots loading-lg" />
 		</div>
-	{:then theMaps}
-		{#each theMaps as map}
+	{:then maps}
+		{#each maps.sort((a, b) => a.name.localeCompare(b.name)) as map}
 			<SavedMap mapName={map.name} mapID={map.id} onDeleted={refreshMaps} />
 		{/each}
 	{/await}
