@@ -134,8 +134,8 @@
 			</div>
 			<div class="form-control w-full">
 				<label class="label cursor-pointer justify-start gap-3">
-					<input type="checkbox" class="toggle" bind:checked={$RegionTextsStore.enabled} />
-					<span class="label-text">Region Labels</span>
+					<input type="checkbox" class="toggle" bind:checked={$RegionTextsStore.hidden} />
+					<span class="label-text">Hide Labels</span>
 				</label>
 			</div>
 		</div>

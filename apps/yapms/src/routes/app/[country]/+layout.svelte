@@ -47,7 +47,7 @@
 		id="map-div"
 		class="overflow-hidden h-full"
 		class:insets-hidden={$MapInsetsStore.hidden}
-		class:texts-hidden={!$RegionTextsStore.enabled}
+		class:texts-hidden={$RegionTextsStore.hidden}
 	>
 		{@html map.default}
 	</div>
