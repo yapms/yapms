@@ -10,6 +10,7 @@
 	import { loadSidebarTitle, loadSidebarSources } from '$lib/stores/SideBar';
 	import { loadMapIdentifier } from '$lib/stores/MapIdentifier';
 	import { loadActionGroups } from '$lib/stores/ActionGroups';
+	import { RegionTextsStore } from '$lib/stores/RegionTextsStore';
 
 	$: requestedMap = $page.url.pathname.replace('/app/', '').replaceAll('/', '-');
 	$: country = requestedMap.split('-').at(0);
@@ -46,6 +47,7 @@
 		id="map-div"
 		class="overflow-hidden h-full"
 		class:insets-hidden={$MapInsetsStore.hidden}
+		class:texts-hidden={$RegionTextsStore.hidden}
 	>
 		{@html map.default}
 	</div>
