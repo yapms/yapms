@@ -20,6 +20,16 @@
 				{/each}
 			</select>
 		</div>
+		<div class="flex justify-center items-center gap-2">
+			<span>Hold</span>
+			<kbd class="kbd text-nowrap">G</kbd>
+			<span>to fill every other</span>
+			<select class="select select-secondary select-sm" bind:value={$SelectedActionGroup}>
+				{#each $ActionGroups as groupName, index}
+					<option value={index}>{groupName}</option>
+				{/each}
+			</select>
+		</div>
 	{/if}
 	<div class="flex justify-center items-center gap-2">
 		<span>Hold</span>

@@ -51,6 +51,21 @@ export function fillGroup(group: number, subgroup: number) {
 	RegionsStore.set(regions);
 }
 
+export function fillNotGroup(group: number, subgroup: number) {
+	const regions = get(RegionsStore);
+	for (const region of regions) {
+		if (region.actionGroups.at(group) === subgroup) continue;
+		region.candidates = [
+			{
+				candidate: get(SelectedCandidateStore),
+				count: region.value,
+				margin: 0
+			}
+		];
+	}
+	RegionsStore.set(regions);
+}
+
 export function splitRegion(regionID: string): void {
 	const region = get(RegionsStore).find((region) => region.id === regionID);
 	SplitRegionModalStore.set({
@@ -97,6 +112,21 @@ export function disableGroup(group: number, subgroup: number) {
 	RegionsStore.set(regions);
 }
 
+export function disableNotGroup(group: number, subgroup: number) {
+	const regions = get(RegionsStore);
+	for (const region of regions) {
+		if (region.actionGroups.at(group) === subgroup) continue;
+		if (region.disabled) {
+			region.disabled = false;
+			region.value = region.permaVal;
+		} else {
+			region.disabled = true;
+			region.value = 0;
+		}
+	}
+	RegionsStore.set(regions);
+}
+
 export function lockRegion(regionID: string) {
 	const regions = get(RegionsStore);
 	const region = regions.find((region) => region.id === regionID);
@@ -110,6 +140,15 @@ export function lockGroup(group: number, subgroup: number) {
 	const regions = get(RegionsStore);
 	for (const region of regions) {
 		if (region.actionGroups.at(group) !== subgroup) continue;
+		region.locked = !region.locked;
+	}
+	RegionsStore.set(regions);
+}
+
+export function lockNotGroup(group: number, subgroup: number) {
+	const regions = get(RegionsStore);
+	for (const region of regions) {
+		if (region.actionGroups.at(group) === subgroup) continue;
 		region.locked = !region.locked;
 	}
 	RegionsStore.set(regions);

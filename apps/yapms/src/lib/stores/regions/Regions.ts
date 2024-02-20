@@ -16,7 +16,10 @@ import {
 	lockRegion,
 	splitRegion,
 	disableGroup,
-	lockGroup
+	lockGroup,
+	disableNotGroup,
+	fillNotGroup,
+	lockNotGroup
 } from './regionActions';
 import { InteractionStore } from '../Interaction';
 import { makePattern, removeAllPatterns } from '$lib/utils/patterns';
@@ -214,15 +217,16 @@ export const setPointerEvents = (): void => {
 				if (group === undefined) return;
 				const subgroup = region.actionGroups.at(group);
 				if (subgroup === undefined) return;
+				const opposite = interactions.has('ShiftLeft') || interactions.has('ShiftRight');
 				switch (currentMode) {
 					case 'fill':
-						fillGroup(group, subgroup);
+						opposite ? fillNotGroup(group, subgroup) : fillGroup(group, subgroup);
 						break;
 					case 'disable':
-						disableGroup(group, subgroup);
+						opposite ? disableNotGroup(group, subgroup) : disableGroup(group, subgroup);
 						break;
 					case 'lock':
-						lockGroup(group, subgroup);
+						opposite ? lockNotGroup(group, subgroup) : lockGroup(group, subgroup);
 						break;
 				}
 			} else {
