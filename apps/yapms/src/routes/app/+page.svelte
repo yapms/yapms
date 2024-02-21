@@ -25,4 +25,5 @@
 	<meta property="og:description" content="Yet Another Political Map Simulator" />
 	<meta property="og:image" content={imageURI} />
 	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="robots" content="noindex" />
 </svelte:head>
