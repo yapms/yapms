@@ -44,6 +44,7 @@
 
 <svelte:head>
 	<title>YAPms</title>
+	<meta name="robots" content="nosnippet" />
 </svelte:head>
 
 <svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp} on:resize={reapplyPanZoom} />
