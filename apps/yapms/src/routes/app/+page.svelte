@@ -3,12 +3,17 @@
 	import { page } from '$app/stores';
 	import { PUBLIC_POCKETBASE_URI } from '$env/static/public';
 	import { loadMapFromURL } from '$lib/stores/LoadedMap';
+	import { goto } from '$app/navigation';
 
 	const m = $page.url.searchParams.get('m');
 	const imageURI = m !== null ? `${PUBLIC_POCKETBASE_URI}/api/files/maps/${m}/screenshot.png` : '';
 
 	if (browser) {
-		loadMapFromURL($page.url);
+		loadMapFromURL($page.url).then((success) => {
+			if (success === false) {
+				goto('/');
+			}
+		});
 	}
 </script>
 

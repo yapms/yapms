@@ -14,7 +14,7 @@ export async function loadUserMapFromID(id: string) {
 	loadMapFromURL(newURL);
 }
 
-export async function loadMapFromURL(url: URL, navigate: boolean = true) {
+export async function loadMapFromURL(url: URL, navigate: boolean = true): Promise<boolean> {
 	const m = url.searchParams.get('m');
 	const um = url.searchParams.get('um');
 
@@ -22,7 +22,7 @@ export async function loadMapFromURL(url: URL, navigate: boolean = true) {
 	const id = m ?? um;
 
 	if (id === null) {
-		return;
+		return false;
 	}
 
 	const data = await fetch(`${PUBLIC_POCKETBASE_URI}/api/files/${collection}/${id}/data.json.gz`);
@@ -30,7 +30,7 @@ export async function loadMapFromURL(url: URL, navigate: boolean = true) {
 	const parsedData = SavedMapSchema.safeParse(jsonData);
 
 	if (parsedData.success === false) {
-		return;
+		return false;
 	}
 
 	const param = collection === 'maps' ? 'm' : 'um';
@@ -45,4 +45,5 @@ export async function loadMapFromURL(url: URL, navigate: boolean = true) {
 	}
 
 	LoadedMapStore.set(parsedData.data);
+	return true;
 }
