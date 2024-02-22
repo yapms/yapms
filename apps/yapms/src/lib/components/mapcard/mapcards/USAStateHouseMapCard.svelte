@@ -154,6 +154,10 @@
 			label: 'North Dakota 2022'
 		},
 		{
+			route: '/app/usa/oh_lower/2023272/blank',
+			label: 'Ohio 2024'
+		},
+		{
 			route: '/app/usa/oh_lower/2022/blank',
 			label: 'Ohio 2022'
 		},

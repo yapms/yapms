@@ -95,7 +95,7 @@ function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
 		);
 		path.setAttribute(
 			'long-name',
-			importOptions.shortNameProp !== '' && feature.properties
+			importOptions.longNameProp !== '' && feature.properties
 				? feature.properties[importOptions.longNameProp]
 				: i.toString()
 		);
