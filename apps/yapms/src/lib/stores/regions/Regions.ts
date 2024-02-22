@@ -151,23 +151,26 @@ RegionsStore.subscribe((regions) => {
 
 	Candidates will be undefined if they are not in the region store
  */
-export const CandidateCounts = derived(RegionsStore, ($RegionStore) => {
-	const candidates = new Map<string, number>(); //Use default counts if included in map
-	for (const candidate of get(CandidatesStore)) {
-		candidates.set(candidate.id, candidate.defaultCount);
-	}
-	$RegionStore.forEach((region) => {
-		region.candidates.forEach((candidate) => {
-			const currentCount = candidates.get(candidate.candidate.id);
-			if (currentCount !== undefined) {
-				candidates.set(candidate.candidate.id, currentCount + candidate.count);
-			} else {
-				candidates.set(candidate.candidate.id, candidate.count);
-			}
+export const CandidateCounts = derived(
+	[RegionsStore, CandidatesStore],
+	([$RegionStore, $CandidatesStore]) => {
+		const candidates = new Map<string, number>(); //Use default counts if included in map
+		for (const candidate of $CandidatesStore) {
+			candidates.set(candidate.id, candidate.defaultCount);
+		}
+		$RegionStore.forEach((region) => {
+			region.candidates.forEach((candidate) => {
+				const currentCount = candidates.get(candidate.candidate.id);
+				if (currentCount !== undefined) {
+					candidates.set(candidate.candidate.id, currentCount + candidate.count);
+				} else {
+					candidates.set(candidate.candidate.id, candidate.count);
+				}
+			});
 		});
-	});
-	return candidates;
-});
+		return candidates;
+	}
+);
 
 /**
  * When the region store changes,
@@ -175,31 +178,34 @@ export const CandidateCounts = derived(RegionsStore, ($RegionStore) => {
  *
  * Candidates will be undefined if they are not in the region store.
  */
-export const CandidateCountsMargins = derived(RegionsStore, ($RegionStore) => {
-	const candidates = new Map<string, number[]>();
-	for (const candidate of get(CandidatesStore)) {
-		//Account for default counts
-		candidates.set(candidate.id, [candidate.defaultCount]);
-	}
-	$RegionStore.forEach((region) => {
-		region.candidates.forEach((candidate) => {
-			const currentCount = candidates.get(candidate.candidate.id);
-			if (currentCount !== undefined) {
-				if (currentCount[candidate.margin] === undefined) {
-					currentCount[candidate.margin] = candidate.count;
+export const CandidateCountsMargins = derived(
+	[RegionsStore, CandidatesStore],
+	([$RegionStore, $CandidatesStore]) => {
+		const candidates = new Map<string, number[]>();
+		for (const candidate of $CandidatesStore) {
+			//Account for default counts
+			candidates.set(candidate.id, [candidate.defaultCount]);
+		}
+		$RegionStore.forEach((region) => {
+			region.candidates.forEach((candidate) => {
+				const currentCount = candidates.get(candidate.candidate.id);
+				if (currentCount !== undefined) {
+					if (currentCount[candidate.margin] === undefined) {
+						currentCount[candidate.margin] = candidate.count;
+					} else {
+						currentCount[candidate.margin] += candidate.count;
+					}
+					candidates.set(candidate.candidate.id, currentCount);
 				} else {
-					currentCount[candidate.margin] += candidate.count;
+					const newCounts: number[] = [];
+					newCounts[candidate.margin] = candidate.count;
+					candidates.set(candidate.candidate.id, newCounts);
 				}
-				candidates.set(candidate.candidate.id, currentCount);
-			} else {
-				const newCounts: number[] = [];
-				newCounts[candidate.margin] = candidate.count;
-				candidates.set(candidate.candidate.id, newCounts);
-			}
+			});
 		});
-	});
-	return candidates;
-});
+		return candidates;
+	}
+);
 
 export const setPointerEvents = (): void => {
 	let delayElapse: NodeJS.Timeout | undefined;

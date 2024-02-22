@@ -64,6 +64,11 @@
 		colorToDelete = undefined;
 	}
 
+	function updateDefaultValue(event: Event & { currentTarget: EventTarget & HTMLInputElement }) {
+		$CandidatesStore[candidateIndex].defaultCount = Number(event.currentTarget.value);
+		colorToDelete = undefined;
+	}
+
 	function updateColor(
 		event: Event & { currentTarget: EventTarget & HTMLInputElement },
 		index: number
@@ -101,13 +106,22 @@
 </script>
 
 <ModalBase store={EditCandidateModalStore} onClose={close}>
-	<label slot="title" class="flex flex-row gap-x-2 items-center">
+	<label slot="title" class="flex flex-row gap-x-2 items-center w-full">
 		<span>Edit</span>
 		<input
 			type="text"
-			class="input input-sm input-bordered"
+			class="input input-sm input-bordered w-3/5"
 			on:input={updateName}
 			value={$CandidatesStore.at(candidateIndex)?.name}
+		/>
+		<input
+			type="number"
+			class="input input-sm input-bordered w-2/5"
+			on:input={updateDefaultValue}
+			placeholder="Starting Value"
+			value={$CandidatesStore.at(candidateIndex)?.defaultCount !== 0
+				? $CandidatesStore.at(candidateIndex)?.defaultCount
+				: ''}
 		/>
 	</label>
 	<ul slot="content" class="flex flex-row flex-wrap gap-4 justify-center" use:onListMount>
