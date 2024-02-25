@@ -1,19 +1,26 @@
-# Ansible
+# How To Use Ansible
 
-## examples
-
-### run playbook with password
+## Playbook Examples
 
 ```bash
-ansible-playbook {playbook} --user {user} --ask-pass --ask-become-pass -i {inventory}
+# use with custom server user and password
+ansible-playbook ./playbooks/deploy.yml --user {user} --ask-pass -i {inventory}
+
+# use custom host file
+ansible-playbook ./playbooks/deploy.yml -i ./inventory/host
+
+# use default host file ./inventory/host
+ansible-playbook ./playbooks/deploy.yml
 ```
 
-### host file
+## Host File Examples
 
 ```bash
 [servers]
 {ip_address}
 
 [servers:vars]
+ansible_user={username}
 ansible_python_interpreter=/opt/bin/python
+turnstile_secret={secret}
 ```

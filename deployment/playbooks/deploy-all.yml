@@ -1,0 +1,122 @@
+---
+- name: deploy
+  hosts: all
+
+  tasks:
+    - name: pull images
+      community.docker.docker_image:
+        name: "{{ item }}"
+        source: pull
+        force_source: true
+      with_items:
+        - caddy:latest
+        - browserless/chrome:latest
+        - ghcr.io/yapms/yapms-yapms:latest
+        - ghcr.io/yapms/yapms-pocketbase:latest
+        - portainer/portainer-ce:latest
+        - postgres:latest
+        - docker.umami.dev/umami-software/umami:postgresql-latest
+
+    - name: remove containers
+      community.docker.docker_container:
+        name: "{{ item }}"
+        state: absent
+      with_items:
+        - caddy
+        - browserless
+        - yapms
+        - pocketbase
+        - portainer
+        - postgres
+        - umami
+
+    - name: prune images
+      community.docker.docker_prune:
+        images: true
+
+    - name: copy caddy file
+      copy:
+        src: Caddyfile
+        dest: ./Caddyfile
+
+    - name: create yapms network
+      community.docker.docker_network:
+        name: yapms
+        state: present
+
+    - name: deploy yapms
+      community.docker.docker_container:
+        name: yapms
+        image: ghcr.io/yapms/yapms-yapms:latest
+        restart_policy: always
+        networks:
+          - name: yapms
+
+    - name: deploy pocketbase
+      community.docker.docker_container:
+        name: pocketbase
+        image: ghcr.io/yapms/yapms-pocketbase:latest
+        restart_policy: always
+        networks:
+          - name: yapms
+        volumes:
+          - ./pb_data:/app/pb_data
+        env:
+          BROWSERLESS_URI: "ws://browserless:3000"
+          BROWSERLESS_FRONTEND_URI: "http://yapms:3000"
+          TURNSTILE_SECRET: "{{ TURNSTILE_SECRET }}"
+
+    - name: deploy portainer-ce
+      community.docker.docker_container:
+        name: portainer
+        image: portainer/portainer-ce:latest
+        restart_policy: always
+        networks:
+          - name: yapms
+        volumes:
+          - /var/run/docker.sock:/var/run/docker.sock
+          - ./portainer_data:/data
+
+    - name: deploy browserless
+      community.docker.docker_container:
+        name: browserless
+        image: browserless/chrome:latest
+        restart_policy: always
+        networks:
+          - name: yapms
+
+    - name: deploy postgres
+      community.docker.docker_container:
+        name: postgres
+        image: postgres:latest
+        restart_policy: always
+        networks:
+          - name: yapms
+        volumes:
+          - ./umami_data:/var/lib/postgresql/data
+        env:
+          POSTGRES_DB: umami
+          POSTGRES_PASSWORD: password
+
+    - name: deploy umami
+      community.docker.docker_container:
+        name: umami
+        image: docker.umami.dev/umami-software/umami:postgresql-latest
+        restart_policy: always
+        networks:
+          - name: yapms
+        env:
+          DATABASE_URL: postgresql://postgres:password@postgres:5432/umami
+
+    - name: deploy caddy
+      community.docker.docker_container:
+        name: caddy
+        image: caddy:latest
+        restart_policy: always
+        volumes:
+          - ./Caddyfile:/etc/caddy/Caddyfile
+        ports:
+          - 80:80
+          - 443:443
+        networks:
+          - name: yapms
