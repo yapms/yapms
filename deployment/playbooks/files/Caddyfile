@@ -21,3 +21,13 @@ analytics.yapms.com, analytics.yapms2.com {
     reverse_proxy umami:3000
   }
 }
+
+portainer.yapms.com, portainer.yapms2.com {
+  tls internal
+
+  encode gzip
+
+  handle {
+    reverse_proxy portainer:9000
+  }
+}

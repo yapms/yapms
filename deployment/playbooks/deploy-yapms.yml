@@ -1,7 +1,6 @@
 ---
 - name: deploy
   hosts: all
-  become: True
 
   tasks:
     - name: pull images
@@ -10,12 +9,8 @@
         source: pull
         force_source: true
       with_items:
-        - caddy:2.6.4-alpine
-        - browserless/chrome:latest
         - ghcr.io/yapms/yapms-yapms:latest
         - ghcr.io/yapms/yapms-pocketbase:latest
-        - postgres:latest
-        - docker.umami.dev/umami-software/umami:postgresql-latest
 
     - name: remove containers
       community.docker.docker_container:
@@ -23,11 +18,8 @@
         state: absent
       with_items:
         - caddy
-        - browserless
         - yapms
         - pocketbase
-        - postgres
-        - umami
 
     - name: prune images
       community.docker.docker_prune:
@@ -36,7 +28,7 @@
     - name: copy caddy file
       copy:
         src: Caddyfile
-        dest: /home/core/Caddyfile
+        dest: ./Caddyfile
 
     - name: create yapms network
       community.docker.docker_network:
@@ -59,50 +51,19 @@
         networks:
           - name: yapms
         volumes:
-          - /home/core/pb_data:/app/pb_data
+          - ./pb_data:/app/pb_data
         env:
           BROWSERLESS_URI: "ws://browserless:3000"
           BROWSERLESS_FRONTEND_URI: "http://yapms:3000"
-          TURNSTILE_SECRET: "{{turnstile_secret}}"
-
-    - name: deploy browserless
-      community.docker.docker_container:
-        name: browserless
-        image: browserless/chrome:latest
-        restart_policy: always
-        networks:
-          - name: yapms
-
-    - name: deploy postgres
-      community.docker.docker_container:
-        name: postgres
-        image: postgres:latest
-        restart_policy: always
-        networks:
-          - name: yapms
-        volumes:
-          - /home/core/umami_data:/var/lib/postgresql/data
-        env:
-          POSTGRES_DB: umami
-          POSTGRES_PASSWORD: password
-
-    - name: deploy umami
-      community.docker.docker_container:
-        name: umami
-        image: docker.umami.dev/umami-software/umami:postgresql-latest
-        restart_policy: always
-        networks:
-          - name: yapms
-        env:
-          DATABASE_URL: postgresql://postgres:password@postgres:5432/umami
+          TURNSTILE_SECRET: "{{ TURNSTILE_SECRET }}"
 
     - name: deploy caddy
       community.docker.docker_container:
         name: caddy
-        image: caddy:2.6.4-alpine
+        image: caddy:latest
         restart_policy: always
         volumes:
-          - /home/core/Caddyfile:/etc/caddy/Caddyfile
+          - ./Caddyfile:/etc/caddy/Caddyfile
         ports:
           - 80:80
           - 443:443
