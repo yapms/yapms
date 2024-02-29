@@ -138,6 +138,10 @@
 			label: 'New Mexico 2022'
 		},
 		{
+			route: '/app/usa/ny_lower/2023114/blank',
+			label: 'New York 2024'
+		},
+		{
 			route: '/app/usa/ny_lower/2022/blank',
 			label: 'New York 2022'
 		},
