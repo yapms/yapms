@@ -43,14 +43,6 @@
 			route: '/app/usa/governors/2022/results'
 		},
 		{
-			label: 'Democratic Primary 2024',
-			route: '/app/usa/dem_primary/2024/blank'
-		},
-		{
-			label: 'Republican Primary 2024',
-			route: '/app/usa/rep_primary/2024/blank'
-		},
-		{
 			label: 'Counties 2023',
 			route: '/app/usa/counties/2023/blank'
 		},

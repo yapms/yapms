@@ -34,6 +34,7 @@
 	import CanHistoricalMapCard from '$lib/components/mapcard/mapcards/CANHistoricalMapCard.svelte';
 	import PrtMapCard from '$lib/components/mapcard/mapcards/PRTMapCard.svelte';
 	import IrlMapCard from '$lib/components/mapcard/mapcards/IRLMapCard.svelte';
+	import UsaPrimariesMapCard from '$lib/components/mapcard/mapcards/USAPrimariesMapCard.svelte';
 
 	export let data: PageData;
 
@@ -104,6 +105,7 @@
 
 			<MapCardGrid>
 				<UsaMapCard />
+				<UsaPrimariesMapCard />
 				<CanMapCard />
 				<GbrMapCard />
 				<AusMapCard />
