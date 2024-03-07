@@ -17,6 +17,7 @@
 					pkgs.nodejs_18
 					pkgs.go
 					pkgs.ansible
+					pkgs.libwebp
 				];
 				shellHook = ''
 					npx devcontainer up --workspace-folder .
