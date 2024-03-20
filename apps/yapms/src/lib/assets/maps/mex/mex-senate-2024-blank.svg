@@ -276,7 +276,7 @@
 		<path region="PR" short-name="PR" long-name="Proportional Representation" value="32" d="m 568.90523,370.99597 h 162.91789 c 5.0068,0 9.05024,5.67166 9.05024,12.6934 v 21.1602 c 0,7.02173 -4.04344,12.6934 -9.05024,12.6934 H 568.90523 c -5.0068,0 -9.05024,-5.67167 -9.05024,-12.6934 v -21.1602 c 0,-7.02174 4.04344,-12.6934 9.05024,-12.6934 z" style="stroke-width:0.678429"></path>
 	</g>
 	<g map-type="region-texts" fill="currentColor" transform="matrix(0.92964491,0,0,0.92964491,119.66207,-453.31903)">
-		<text for-region="Proportional" x="690.56" y="812.72998" style="font-size:37.333px" xml:space="preserve">
+		<text for-region="PR" x="690.56" y="812.72998" style="font-size:37.333px" xml:space="preserve">
 			<tspan x="707.56" y="812.72998" style="font-size:37.333px">Proportional</tspan>
 		</text>
 	</g>
