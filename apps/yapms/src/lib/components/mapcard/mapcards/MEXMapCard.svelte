@@ -2,7 +2,7 @@
 	import MapCard from '../MapCard.svelte';
 	const links = [
 		{
-			label: 'Chamber of Deputies 2024',
+			label: "Chamber of Deputies '24",
 			route: '/app/mex/deputies/2024/blank'
 		},
 		{
