@@ -4,10 +4,11 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"os/exec"
-	"strings"
+	"image/png"
+	_ "image/png"
 
 	"github.com/chromedp/chromedp"
+	"github.com/fish1/gopngquant"
 	"github.com/pocketbase/pocketbase"
 	"github.com/pocketbase/pocketbase/core"
 	"github.com/pocketbase/pocketbase/forms"
@@ -60,16 +61,28 @@ func TakeScreenshot(e *core.RecordCreateEvent, app *pocketbase.PocketBase, brows
 	return nil
 }
 
-func compressImage(input []byte) (output []byte, err error) {
-	cmd := exec.Command("pngquant", "-", "--quality=0-50", "-s1")
-	cmd.Stdin = strings.NewReader(string(input))
-	var out bytes.Buffer
-	cmd.Stdout = &out
-	err = cmd.Run()
+func compressImage(input []byte) ([]byte, error) {
+	// parse image from bytes
+	img, err := png.Decode(bytes.NewReader(input))
 	if err != nil {
-		output = input
-		return
+		return nil, err
 	}
-	output = out.Bytes()
-	return
+
+	// compress image
+	img, err = gopngquant.CompressImage(img, gopngquant.Options{
+		Speed:         1,
+		MinQuality:    0,
+		TargetQuality: 50,
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	// convert image back to bytes
+	buffer := new(bytes.Buffer)
+	encoder := png.Encoder{
+		CompressionLevel: png.BestCompression,
+	}
+	encoder.Encode(buffer, img)
+	return buffer.Bytes(), nil
 }
