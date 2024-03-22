@@ -11,7 +11,7 @@
 		},
 		{
 			label: 'Results May 2023',
-			route: '/app/grc/parliament/2023142/blank'
+			route: '/app/grc/parliament/2023142/results'
 		},
 		{
 			label: 'Regions',
