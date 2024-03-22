@@ -3,11 +3,11 @@
 	const links = [
 		{
 			label: "Chamber of Deputies '24",
-			route: '/app/mex/deputies/2024/blank'
+			route: '/app/mex/deputies/2024001/blank'
 		},
 		{
 			label: 'Senate 2024',
-			route: '/app/mex/senate/2024/blank'
+			route: '/app/mex/senate/2024001/blank'
 		}
 	];
 </script>
