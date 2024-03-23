@@ -14,6 +14,7 @@
 	import UsaMapCard from '$lib/components/mapcard/mapcards/USAMapCard.svelte';
 	import CanMapCard from '$lib/components/mapcard/mapcards/CANMapCard.svelte';
 	import BraMapCard from '$lib/components/mapcard/mapcards/BRAMapCard.svelte';
+	import MexMapCard from '$lib/components/mapcard/mapcards/MEXMapCard.svelte';
 	import DeuMapCard from '$lib/components/mapcard/mapcards/DEUMapCard.svelte';
 	import DnkMapCard from '$lib/components/mapcard/mapcards/DNKMapCard.svelte';
 	import FraMapCard from '$lib/components/mapcard/mapcards/FRAMapCard.svelte';
@@ -111,6 +112,7 @@
 				<GbrMapCard />
 				<AusMapCard />
 				<BraMapCard />
+				<MexMapCard />
 				<DeuMapCard />
 				<DnkMapCard />
 				<ItaMapCard />
