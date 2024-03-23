@@ -8,11 +8,11 @@ import (
 	_ "image/png"
 
 	"github.com/chromedp/chromedp"
-	"github.com/fish1/gopngquant"
 	"github.com/pocketbase/pocketbase"
 	"github.com/pocketbase/pocketbase/core"
 	"github.com/pocketbase/pocketbase/forms"
 	"github.com/pocketbase/pocketbase/tools/filesystem"
+	"github.com/yapms/gopngquant"
 )
 
 func TakeScreenshot(e *core.RecordCreateEvent, app *pocketbase.PocketBase, browserlessURI *string, browserlessFrontendURI *string) error {

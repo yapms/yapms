@@ -6,9 +6,9 @@ toolchain go1.21.8
 
 require (
 	github.com/chromedp/chromedp v0.9.4
-	github.com/fish1/gopngquant v0.0.3-alpha
 	github.com/pocketbase/dbx v1.10.1
 	github.com/pocketbase/pocketbase v0.21.1
+	github.com/yapms/gopngquant v0.0.2-alpha
 )
 
 require (
@@ -40,7 +40,6 @@ require (
 	github.com/domodwyer/mailyak/v3 v3.6.2 // indirect
 	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/fatih/color v1.16.0 // indirect
-	github.com/fish1/golibimagequant v0.0.3-alpha // indirect
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
 	github.com/ganigeorgiev/fexpr v0.4.0 // indirect
 	github.com/go-ozzo/ozzo-validation/v4 v4.3.0 // indirect
@@ -70,6 +69,7 @@ require (
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
+	github.com/yapms/golibimagequant v0.0.1-alpha // indirect
 	go.opencensus.io v0.24.0 // indirect
 	gocloud.dev v0.36.0 // indirect
 	golang.org/x/crypto v0.18.0 // indirect
