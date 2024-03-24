@@ -20,7 +20,6 @@ You can host a YAPms development environment by either using the provided devcon
 1. Install [Docker Desktop](https://docs.docker.com/get-docker/) or [Docker CLI on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
 2. Install [NodeJS](https://nodejs.org)
 3. Install [Go](https://go.dev/)
-4. (Optional) Install [pngquant](https://pngquant.org/)
 5. Clone the [GIT Repository](https://github.com/yapms/yapms)
 6. Run shell command `npm install`
 7. Run shell command `npx dotenv-vault pull example`

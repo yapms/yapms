@@ -16,6 +16,7 @@
 				buildInputs = [
 					pkgs.nodejs_18
 					pkgs.go
+					pkgs.gcc
 					pkgs.ansible
 					pkgs.libwebp
 				];
