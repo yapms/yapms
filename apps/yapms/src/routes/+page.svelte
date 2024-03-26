@@ -32,6 +32,7 @@
 	import ZafMapCard from '$lib/components/mapcard/mapcards/ZAFMapCard.svelte';
 	import GlbMapCard from '$lib/components/mapcard/mapcards/GLBMapCard.svelte';
 	import KorMapCard from '$lib/components/mapcard/mapcards/KORMapCard.svelte';
+	import JpnMapCard from '$lib/components/mapcard/mapcards/JPNMapCard.svelte';
 	import CanHistoricalMapCard from '$lib/components/mapcard/mapcards/CANHistoricalMapCard.svelte';
 	import PrtMapCard from '$lib/components/mapcard/mapcards/PRTMapCard.svelte';
 	import IrlMapCard from '$lib/components/mapcard/mapcards/IRLMapCard.svelte';
@@ -124,6 +125,7 @@
 				<GrcMapCard />
 				<FraMapCard />
 				<KorMapCard />
+				<JpnMapCard />
 				<PrtMapCard />
 				<NorMapCard />
 				<GlbMapCard />
