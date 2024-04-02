@@ -102,6 +102,10 @@
 			label: 'Massachusetts 2022'
 		},
 		{
+			route: '/app/usa/mi_lower/2024060/blank',
+			label: 'Michigan 2024'
+		},
+		{
 			route: '/app/usa/mi_lower/2022/blank',
 			label: 'Michigan 2022'
 		},
