@@ -20,7 +20,7 @@
 	}
 </script>
 
-<div class="card card-bordered w-80 md:w-92 h-48 lg:h-52 bg-base-100 shadow-xl image-full">
+<div class="card w-80 md:w-92 h-48 lg:h-52 bg-base-100 image-full">
 	{#await image then image}
 		<figure><img src={image.default} alt={name} /></figure>
 	{/await}
