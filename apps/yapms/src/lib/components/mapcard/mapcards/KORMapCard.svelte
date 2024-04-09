@@ -2,8 +2,12 @@
 	import MapCard from '../MapCard.svelte';
 	const links = [
 		{
-			label: 'National Assembly',
+			label: "National Assembly '20",
 			route: '/app/kor/national_assembly/2020001/blank'
+		},
+		{
+			label: "National Assembly '24",
+			route: '/app/kor/national_assembly/2024101/blank'
 		},
 		{
 			label: 'Municipalities',
