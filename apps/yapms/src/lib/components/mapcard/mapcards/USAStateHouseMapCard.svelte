@@ -222,6 +222,10 @@
 			label: 'West Virginia 2022'
 		},
 		{
+			route: '/app/usa/wi_lower/2024050/blank',
+			label: 'Wisconsin 2024'
+		},
+		{
 			route: '/app/usa/wi_lower/2022/blank',
 			label: 'Wisconsin 2022'
 		},
