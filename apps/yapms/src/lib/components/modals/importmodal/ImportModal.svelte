@@ -9,7 +9,7 @@
 	import DOMPurify from 'dompurify';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import ExportSvgButton from './ExportSVGButton.svelte';
+	import { exportImportAsSVG } from '$lib/utils/importMap';
 	import ImportOptions from './ImportOptions.svelte';
 
 	let geoJsonFiles: FileList;
@@ -174,6 +174,8 @@
 	</div>
 
 	<div slot="action">
-		<ExportSvgButton />
+		<button class="btn btn-primary" disabled={false} on:click={exportImportAsSVG}>
+			Export SVG
+		</button>
 	</div>
 </ModalBase>
