@@ -105,4 +105,10 @@
 	];
 </script>
 
-<MapCard name="United States" bg="usa" attribution="test" {links} />
+<MapCard
+	name="United States"
+	bg="usa"
+	attribution="Photo by Andy Feliciotti"
+	{links}
+	attributionLink="https://unsplash.com/photos/brown-concrete-building-near-green-trees-during-daytime-6kA9FjqUxhM"
+/>

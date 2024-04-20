@@ -39,6 +39,7 @@
 	import GrcMapCard from '$lib/components/mapcard/mapcards/GRCMapCard.svelte';
 	import NorMapCard from '$lib/components/mapcard/mapcards/NORMapCard.svelte';
 	import UsaPrimariesMapCard from '$lib/components/mapcard/mapcards/USAPrimariesMapCard.svelte';
+	import SvnMapCard from '$lib/components/mapcard/mapcards/SVNMapCard.svelte';
 
 	export let data: PageData;
 
@@ -128,6 +129,7 @@
 				<JpnMapCard />
 				<PrtMapCard />
 				<NorMapCard />
+				<SvnMapCard />
 				<GlbMapCard />
 			</MapCardGrid>
 
