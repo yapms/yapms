@@ -40,6 +40,7 @@
 	import NorMapCard from '$lib/components/mapcard/mapcards/NORMapCard.svelte';
 	import UsaPrimariesMapCard from '$lib/components/mapcard/mapcards/USAPrimariesMapCard.svelte';
 	import SvnMapCard from '$lib/components/mapcard/mapcards/SVNMapCard.svelte';
+	import IndMapCard from '$lib/components/mapcard/mapcards/INDMapCard.svelte';
 
 	export let data: PageData;
 
@@ -127,6 +128,7 @@
 				<FraMapCard />
 				<KorMapCard />
 				<JpnMapCard />
+				<IndMapCard />
 				<PrtMapCard />
 				<NorMapCard />
 				<SvnMapCard />
