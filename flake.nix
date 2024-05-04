@@ -14,7 +14,7 @@
 			virtualisation.docker.enable = true;
 			devShells.default = pkgs.mkShell {
 				buildInputs = [
-					pkgs.nodejs_18
+					pkgs.nodejs_20
 					pkgs.go
 					pkgs.ansible
 					pkgs.libwebp
