@@ -15,7 +15,7 @@
 		},
 		{
 			label: 'Results 2023',
-			route: '/app/nzl/house/2023/results'
+			route: '/app/nzl/house/2023303/results'
 		},
 		{
 			label: 'Results 2020',
