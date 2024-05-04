@@ -52,3 +52,4 @@
 		{@html map.default}
 	</div>
 {/await}
+<slot />
