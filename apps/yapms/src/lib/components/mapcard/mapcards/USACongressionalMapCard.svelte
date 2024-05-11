@@ -76,6 +76,46 @@
 		{
 			label: 'House 1992',
 			route: '/app/usa/house/1992/blank'
+		},
+		{
+			label: 'House 1990',
+			route: '/app/usa/house/1991003/blank'
+		},
+		{
+			label: 'House 1988',
+			route: '/app/usa/house/1989003/blank'
+		},
+		{
+			label: 'House 1986',
+			route: '/app/usa/house/1987003/blank'
+		},
+		{
+			label: 'House 1984',
+			route: '/app/usa/house/1985003/blank'
+		},
+		{
+			label: 'House 1982',
+			route: '/app/usa/house/1983003/blank'
+		},
+		{
+			label: 'House 1980',
+			route: '/app/usa/house/1981003/blank'
+		},
+		{
+			label: 'House 1978',
+			route: '/app/usa/house/1979003/blank'
+		},
+		{
+			label: 'House 1976',
+			route: '/app/usa/house/1977003/blank'
+		},
+		{
+			label: 'House 1974',
+			route: '/app/usa/house/1975003/blank'
+		},
+		{
+			label: 'House 1972',
+			route: '/app/usa/house/1973003/blank'
 		}
 	];
 </script>
