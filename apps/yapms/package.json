@@ -49,7 +49,7 @@
 		"pocketbase": "^0.21.0",
 		"postcss": "^8.4.29",
 		"prettier": "^3.0.3",
-		"prettier-plugin-svelte": "^3.0.3",
+		"prettier-plugin-svelte": "^3.1.2",
 		"proj4": "^2.9.2",
 		"shapefile": "^0.6.6",
 		"sortablejs": "^1.15.0",
