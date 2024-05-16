@@ -8,8 +8,18 @@
 	$: value = open ? $EditRegionModalStore.region?.permaVal : undefined;
 	$: newValue = value ?? 0;
 
+	$: open && focusInput();
+
+	let valueInput: HTMLInputElement;
+
+	function focusInput() {
+		if (valueInput) {
+			valueInput.focus();
+		}
+	}
+
 	function preventNonNumericalInput(e: KeyboardEvent) {
-		if (!e.key.match(/^[0-9]+$/)) e.preventDefault();
+		if (e.key !== 'Enter' && !e.key.match(/^[0-9]+$/)) e.preventDefault();
 	}
 
 	function preventNonNumericalPaste(e: ClipboardEvent) {
@@ -45,6 +55,7 @@
 					on:keypress={preventNonNumericalInput}
 					on:paste={preventNonNumericalPaste}
 					bind:value={newValue}
+					bind:this={valueInput}
 				/>
 			</form>
 		</div>
