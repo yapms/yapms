@@ -19,7 +19,7 @@
 
 	let logos = $PocketBaseStore.collection('creator_logos').getFullList();
 
-	const chartTypeValues = ['pie', 'doughnut', 'battle', 'none'];
+	const chartTypeValues = ['pie', 'doughnut', 'battle', 'horizontal Bar', 'none'];
 	const chartPositionValues = ['bottom', 'left'];
 
 	function readLogoFile() {
