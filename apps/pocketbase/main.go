@@ -30,6 +30,7 @@ func main() {
 	app.OnFileDownloadRequest().Add(func(e *core.FileDownloadEvent) error {
 		if e.FileField.Name == "data" {
 			e.HttpContext.Response().Header().Set("Content-Encoding", "gzip")
+			e.HttpContext.Response().Header().Set("Content-Disposition", "")
 		}
 		return nil
 	})
