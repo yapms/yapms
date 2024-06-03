@@ -112,7 +112,10 @@
 			<div class="form-control w-full">
 				<label class="label flex-col cursor-pointer items-start justify-start space-y-2">
 					<span class="label-text">Border Color</span>
-					<select class="select select-bordered w-full capitalize" bind:value={$RegionStrokeColorStore}>
+					<select
+						class="select select-bordered w-full capitalize"
+						bind:value={$RegionStrokeColorStore}
+					>
 						<option value="background">Background</option>
 						<option value="contrast">Contrasting</option>
 						<option value="white">White</option>
