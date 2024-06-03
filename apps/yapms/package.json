@@ -23,7 +23,7 @@
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@turf/helpers": "^7.0.0-alpha.113",
-		"@turf/rewind": "^7.0.0-alpha.113",
+		"@turf/rewind": "^7.0.0-alpha",
 		"@types/d3": "^7.4.0",
 		"@types/dompurify": "^3.0.2",
 		"@types/file-saver": "^2.0.5",
