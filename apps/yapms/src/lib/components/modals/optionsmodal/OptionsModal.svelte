@@ -13,6 +13,7 @@
 	import { FontColorStore } from '$lib/stores/FontColorStore';
 	import { PUBLIC_POCKETBASE_URI } from '$env/static/public';
 	import { RegionTextsStore } from '$lib/stores/RegionTextsStore';
+	import { RegionStrokeColorStore } from '$lib/stores/RegionStrokeColorStore';
 
 	let logoFile: FileList | undefined;
 	let logoFileInput: HTMLInputElement | undefined;
@@ -97,17 +98,31 @@
 				/>
 			</label>
 		</div>
-		<div class="form-control w-full">
-			<label class="label flex-col cursor-pointer items-start justify-start space-y-2">
-				<span class="label-text">Font Color</span>
-				<select class="select select-bordered w-full capitalize" bind:value={$FontColorStore}>
-					<option value="auto">Auto</option>
-					<option value="white">White</option>
-					<option value="black">Black</option>
-				</select>
-			</label>
-		</div>
 		<div class="grid grid-cols-2">
+			<div class="form-control w-full">
+				<label class="label flex-col cursor-pointer items-start justify-start space-y-2">
+					<span class="label-text">Font Color</span>
+					<select class="select select-bordered w-full capitalize" bind:value={$FontColorStore}>
+						<option value="auto">Auto</option>
+						<option value="white">White</option>
+						<option value="black">Black</option>
+					</select>
+				</label>
+			</div>
+			<div class="form-control w-full">
+				<label class="label flex-col cursor-pointer items-start justify-start space-y-2">
+					<span class="label-text">Border Color</span>
+					<select
+						class="select select-bordered w-full capitalize"
+						bind:value={$RegionStrokeColorStore}
+					>
+						<option value="background">Background</option>
+						<option value="contrast">Contrasting</option>
+						<option value="white">White</option>
+						<option value="black">Black</option>
+					</select>
+				</label>
+			</div>
 			<div class="form-control w-full">
 				<label class="label cursor-pointer justify-start gap-3">
 					<input type="checkbox" class="toggle" bind:checked={$LockMapStore} />
