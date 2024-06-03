@@ -11,6 +11,7 @@
 	import { loadMapIdentifier } from '$lib/stores/MapIdentifier';
 	import { loadActionGroups } from '$lib/stores/ActionGroups';
 	import { RegionTextsStore } from '$lib/stores/RegionTextsStore';
+	import { setRegionStrokeColor } from '$lib/stores/RegionStrokeColorStore';
 
 	$: requestedMap = $page.url.pathname.replace('/app/', '').replaceAll('/', '-');
 	$: country = requestedMap.split('-').at(0);
@@ -25,6 +26,7 @@
 		if (svg !== null) {
 			applyPanZoom(svg);
 			applyAutoStroke(svg);
+			setRegionStrokeColor(svg);
 			loadSidebarTitle(svg);
 			loadSidebarSources(svg);
 			loadMapIdentifier(svg);
