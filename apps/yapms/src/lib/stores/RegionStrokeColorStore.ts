@@ -33,5 +33,5 @@ if (browser) {
 
 //This exists because map-div/SVG is not defined when the above code runs.
 export function setRegionStrokeColor(node: SVGElement) {
-	node.style.setProperty('--region-stroke-color', get(RegionStrokeColorStore));
+	node.style.setProperty('--region-stroke-color', colorsByKey[get(RegionStrokeColorStore)]);
 }
