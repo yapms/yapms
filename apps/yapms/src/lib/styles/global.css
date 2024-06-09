@@ -31,11 +31,12 @@ body {
 
 #map-div > svg {
 	--auto-border-stroke-width: 0px;
+	--region-stroke-color: 'oklch(var(--b1) / var(--tw-bg-opacity, 1))';
 }
 
 [map-type='regions'] path {
 	stroke-width: var(--auto-border-stroke-width);
-	stroke: oklch(var(--b1) / var(--tw-bg-opacity, 1));
+	stroke: var(--region-stroke-color);
 }
 
 [map-type='inset-texts'] {

@@ -5,6 +5,7 @@
 	import { MapInsetsStore } from '$lib/stores/MapInsetsStore';
 	import { applyAutoStroke, applyPanZoom } from '$lib/utils/applyPanZoom';
 	import { loadRegionsForApp } from '$lib/utils/loadRegions';
+	import { setRegionStrokeColor } from '$lib/stores/RegionStrokeColorStore';
 
 	const svg = get(ImportedSVGStore);
 	if (!svg.loaded) {
@@ -16,6 +17,7 @@
 		if (svg !== null) {
 			applyPanZoom(svg);
 			applyAutoStroke(svg);
+			setRegionStrokeColor(svg);
 		}
 		loadRegionsForApp(node);
 	}
