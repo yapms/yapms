@@ -3,7 +3,7 @@ ARG DOTENV_VAULT_KEY
 FROM node:20 AS builder
 WORKDIR /app
 COPY . .
-RUN npm install turbo --global
+RUN npm install turbo@^1.13.3 --global
 RUN turbo prune --scope=yapms --docker
 
 FROM node:20 AS installer
