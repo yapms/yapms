@@ -41,6 +41,7 @@
 	import UsaPrimariesMapCard from '$lib/components/mapcard/mapcards/USAPrimariesMapCard.svelte';
 	import SvnMapCard from '$lib/components/mapcard/mapcards/SVNMapCard.svelte';
 	import IndMapCard from '$lib/components/mapcard/mapcards/INDMapCard.svelte';
+	import UsaCanMapCard from '$lib/components/mapcard/mapcards/USACANMapCard.svelte';
 
 	export let data: PageData;
 
@@ -145,6 +146,10 @@
 				<UsaCongressionalMapCard />
 				<UsaPresidentialMapCard />
 				<CanHistoricalMapCard />
+			</MapCardGrid>
+
+			<MapCardGrid title="Fantasy">
+				<UsaCanMapCard />
 			</MapCardGrid>
 		</div>
 	</div>
