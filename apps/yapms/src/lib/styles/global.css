@@ -34,7 +34,8 @@ body {
 	--region-stroke-color: 'oklch(var(--b1) / var(--tw-bg-opacity, 1))';
 }
 
-[map-type='regions'] path {
+[map-type='regions'] path,
+rect {
 	stroke-width: var(--auto-border-stroke-width);
 	stroke: var(--region-stroke-color);
 }
