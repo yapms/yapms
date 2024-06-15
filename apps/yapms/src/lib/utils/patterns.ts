@@ -20,7 +20,7 @@ export function makePattern(candidates: Array<RegionCandidate>) {
 	let name = 'repeat';
 	candidates.forEach((winner, i: number) => {
 		const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-		line.setAttribute('stroke', winner.candidate.margins[0].color);
+		line.setAttribute('stroke', winner.candidate.margins[winner.margin].color);
 		line.setAttribute('x1', `${5 + 10 * i}`);
 		line.setAttribute('x2', `${5 + 10 * i}`);
 		line.setAttribute('y1', '0');
@@ -28,6 +28,7 @@ export function makePattern(candidates: Array<RegionCandidate>) {
 		line.setAttribute('stroke-width', `10`);
 		pattern.appendChild(line);
 		name += `-${winner.candidate.id}`;
+		name += `-${winner.margin}`;
 	});
 	pattern.setAttribute('id', name);
 	const mapSVG = document?.getElementById('map-div')?.querySelector('svg');
