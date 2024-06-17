@@ -2,7 +2,7 @@
 	import MapCard from '../MapCard.svelte';
 	const links = [
 		{
-			label: 'Countries',
+			label: 'Countries (UN)',
 			route: '/app/glb/countries/2020078/blank'
 		}
 	];
