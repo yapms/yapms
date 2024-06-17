@@ -4,6 +4,10 @@
 		{
 			label: 'Countries (UN)',
 			route: '/app/glb/countries/2020078/blank'
+		},
+		{
+			label: 'Countries (NE)',
+			route: '/app/glb/countries/2020078/natearth'
 		}
 	];
 </script>
