@@ -36,4 +36,9 @@
 		<kbd class="kbd">ctrl</kbd>
 		<span>to decrement colors</span>
 	</div>
+	<div class="flex justify-center items-center gap-2">
+		<span>Press</span>
+		<kbd class="kbd">r</kbd>
+		<span>to recenter map</span>
+	</div>
 </div>

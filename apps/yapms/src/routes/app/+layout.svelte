@@ -29,6 +29,9 @@
 
 	function handleKeyDown(event: KeyboardEvent) {
 		$InteractionStore.set(event.code, true);
+		if (event.code === 'KeyR' && event.target instanceof Element && event.target.id === 'map-div') {
+			reapplyPanZoom();
+		}
 	}
 
 	function handleKeyUp(event: KeyboardEvent) {
