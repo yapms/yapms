@@ -8,6 +8,7 @@
 	import { loadRegionsForView } from '$lib/utils/loadRegions';
 	import { applyAutoStroke, applyFastPanZoom } from '$lib/utils/applyPanZoom';
 	import { browser } from '$app/environment';
+	import { setRegionStrokeColor } from '$lib/stores/RegionStrokeColorStore';
 
 	$: filename = undefined as string | undefined;
 	$: countryPath = undefined as string | undefined;
@@ -32,6 +33,7 @@
 		if (svg !== null) {
 			applyAutoStroke(svg);
 			applyFastPanZoom(svg);
+			setRegionStrokeColor(svg);
 		}
 		loadRegionsForView(node);
 		if ($LoadedMapStore !== null) {
