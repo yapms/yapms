@@ -227,6 +227,10 @@ github.com/valyala/bytebufferpool v1.0.0 h1:GqA5TC/0021Y/b9FG4Oi9Mr3q7XYx6Kllzaw
 github.com/valyala/bytebufferpool v1.0.0/go.mod h1:6bBcMArwyJ5K/AmCkWv1jt77kVWyCJ6HpOuEn7z0Csc=
 github.com/valyala/fasttemplate v1.2.2 h1:lxLXG0uE3Qnshl9QyaK6XJxMXlQZELvChBOCmQD0Loo=
 github.com/valyala/fasttemplate v1.2.2/go.mod h1:KHLXt3tVN2HBp8eijSv/kGJopbvo7S+qRAEEKiv+SiQ=
+github.com/yapms/golibimagequant v0.0.1-alpha h1:/U79z8lf8a5QcFu3Za88MzwzrWLQ0Vycss9hDFW570g=
+github.com/yapms/golibimagequant v0.0.1-alpha/go.mod h1:HYVVKW0DjhCVsUznDKIyLNbwoNniQ3Q8RIuDKXSZ+bY=
+github.com/yapms/gopngquant v0.0.2-alpha h1:cKyZyAaPK3yrnflnd+uPMpk3znB7vwCrsa9aN+IQzsQ=
+github.com/yapms/gopngquant v0.0.2-alpha/go.mod h1:ZO77cyX5MEdlB6AePu9nwY7K393IZFKCt5BDrgk/BdE=
 github.com/yuin/goldmark v1.4.13/go.mod h1:6yULJ656Px+3vBD8DxQVa3kxgyrAnzto9xy5taEt/CY=
 go.opencensus.io v0.24.0 h1:y73uSU6J157QMP2kn2r30vwW1A2W2WFwSCGnAVxeaD0=
 go.opencensus.io v0.24.0/go.mod h1:vNK8G9p7aAivkbmorf4v+7Hgx+Zs0yY+0fOtgBfjQKo=
