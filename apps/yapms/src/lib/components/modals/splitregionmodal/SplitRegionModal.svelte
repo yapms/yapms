@@ -57,13 +57,13 @@
 			return {
 				candidate: $TossupCandidateStore,
 				count: splitRegionCandidate.count,
-				margin: 0
+				margin: splitRegionCandidate.margin
 			};
 		}
 		return {
 			candidate,
 			count: splitRegionCandidate.count,
-			margin: 0
+			margin: splitRegionCandidate.margin
 		};
 	}
 
@@ -161,6 +161,32 @@
 		$SplitRegionModalStore.region.candidates = generateCandidates();
 		$RegionsStore = $RegionsStore;
 	}
+
+	function updateCandidateMargin(
+		event: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement },
+		candidateToBeEdited: { candidate: Candidate; count: number; margin: number }
+	) {
+		if ($SplitRegionModalStore.region === null) {
+			return;
+		}
+
+		const currentCandidateMargin = candidateToBeEdited.margin;
+
+		if (!event.ctrlKey) {
+			candidateToBeEdited.margin =
+				currentCandidateMargin === candidateToBeEdited.candidate.margins.length - 1
+					? 0
+					: candidateToBeEdited.margin + 1;
+		} else {
+			candidateToBeEdited.margin =
+				currentCandidateMargin === 0
+					? candidateToBeEdited.candidate.margins.length - 1
+					: candidateToBeEdited.margin - 1;
+		}
+
+		$SplitRegionModalStore.region.candidates = generateCandidates();
+		$RegionsStore = $RegionsStore;
+	}
 </script>
 
 <ModalBase title="Split {$SplitRegionModalStore.region?.longName}" store={SplitRegionModalStore}>
@@ -168,7 +194,15 @@
 		{#each candidates as candidate}
 			<label class="flex flex-col w-full gap-2">
 				<div class="flex justify-between">
-					<span class="font-medium">{candidate.candidate.name}</span>
+					<div class="flex items-center gap-x-1">
+						<span class="font-medium">{candidate.candidate.name}</span>
+						<button
+							style="background-color:{candidate.candidate.margins.at(candidate.margin)?.color};"
+							class="w-5 h-5 rounded-md"
+							class:hidden={isTossupCandidate(candidate.candidate.id)}
+							on:click={(event) => updateCandidateMargin(event, candidate)}
+						/>
+					</div>
 					<span class="font-thin font-mono">
 						({candidate.count}/{$SplitRegionModalStore.region?.value})
 						{((candidate.count / ($SplitRegionModalStore.region?.value ?? 1)) * 100).toFixed(2)}%
