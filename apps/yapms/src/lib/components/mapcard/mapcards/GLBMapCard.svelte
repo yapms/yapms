@@ -7,7 +7,7 @@
 		},
 		{
 			label: 'Countries (NE)',
-			route: '/app/glb/countries/2020078/natearth'
+			route: '/app/glb/countries/2020078/natural_earth'
 		}
 	];
 </script>
