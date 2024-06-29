@@ -9,7 +9,6 @@ import { MapIdentifier } from '$lib/stores/MapIdentifier';
  *
  * @returns The current state of the map
  */
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function generateJson() {
 	const tossupStore = get(TossupCandidateStore);
 	const candidateStore = get(CandidatesStore);
@@ -49,7 +48,6 @@ function generateJson() {
  *
  * @returns void
  */
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function downloadJson() {
 	const data = generateJson();
 	fileSaver.saveAs(
