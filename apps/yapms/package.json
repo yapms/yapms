@@ -15,7 +15,7 @@
 	},
 	"devDependencies": {
 		"@floating-ui/dom": "^1.6.1",
-		"@fontsource-variable/roboto-mono": "^5.0.16",
+		"@fontsource-variable/roboto-mono": "^5.0.17",
 		"@fontsource/roboto": "^5.0.8",
 		"@fortawesome/free-brands-svg-icons": "^6.4.2",
 		"@fortawesome/free-solid-svg-icons": "^6.4.2",
