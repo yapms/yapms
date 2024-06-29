@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { goto } from '$app/navigation';
 	import { NavigateHomeModalStore } from '$lib/stores/Modals';
 	import ModalBase from '../ModalBase.svelte';
