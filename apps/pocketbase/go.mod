@@ -5,7 +5,7 @@ go 1.21
 toolchain go1.21.4
 
 require (
-	github.com/chromedp/chromedp v0.9.4
+	github.com/chromedp/chromedp v0.9.5
 	github.com/pocketbase/dbx v1.10.1
 	github.com/pocketbase/pocketbase v0.22.14
 )
@@ -33,7 +33,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.24.6 // indirect
 	github.com/aws/aws-sdk-go-v2/service/sts v1.28.13 // indirect
 	github.com/aws/smithy-go v1.20.2 // indirect
-	github.com/chromedp/cdproto v0.0.0-20240127002248-bd7a66284627 // indirect
+	github.com/chromedp/cdproto v0.0.0-20240202021202-6d0b6a386732 // indirect
 	github.com/chromedp/sysutil v1.0.0 // indirect
 	github.com/disintegration/imaging v1.6.2 // indirect
 	github.com/domodwyer/mailyak/v3 v3.6.2 // indirect
