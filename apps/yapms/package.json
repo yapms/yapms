@@ -42,7 +42,7 @@
 		"eslint-config-prettier": "9.1.0",
 		"eslint-plugin-svelte": "2.41.0",
 		"file-saver": "2.0.5",
-		"glob": "10.3.10",
+		"glob": "10.4.2",
 		"html-to-image": "1.11.11",
 		"panzoom": "9.4.3",
 		"pocketbase": "0.21.0",
