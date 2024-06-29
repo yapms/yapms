@@ -13,10 +13,10 @@
     "format": "turbo run format"
   },
   "devDependencies": {
-    "@devcontainers/cli": "^0.56.0",
-    "dotenv-cli": "^7.3.0",
-    "dotenv-vault": "^1.25.0",
-    "turbo": "^1.13.3"
+    "@devcontainers/cli": "0.56.2",
+    "dotenv-cli": "7.3.0",
+    "dotenv-vault": "1.26.0",
+    "turbo": "1.13.3"
   },
   "workspaces": [
     "./apps/yapms",
