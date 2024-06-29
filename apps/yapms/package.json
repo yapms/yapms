@@ -32,7 +32,7 @@
 		"@types/shapefile": "0.6.4",
 		"@types/sortablejs": "1.15.8",
 		"@types/uuid": "9.0.8",
-		"autoprefixer": "10.4.17",
+		"autoprefixer": "10.4.19",
 		"chart.js": "4.4.3",
 		"chartjs-plugin-datalabels": "2.2.0",
 		"d3": "7.9.0",
