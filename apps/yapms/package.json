@@ -47,7 +47,6 @@
 		"panzoom": "9.4.3",
 		"pocketbase": "0.21.0",
 		"postcss": "8.4.38",
-		"postcss-load-config": "6.0.1",
 		"prettier": "3.2.5",
 		"prettier-plugin-svelte": "3.2.3",
 		"proj4": "2.10.0",
