@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
 </script>
 

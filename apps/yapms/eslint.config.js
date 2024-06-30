@@ -50,7 +50,14 @@ const config = [
 			}
 		},
 		rules: {
-			'svelte/no-at-html-tags': 'off'
+			'svelte/no-at-html-tags': 'off',
+			'svelte/block-lang': [
+				'error',
+				{
+					enforceScriptPresent: true,
+					script: ['ts']
+				}
+			]
 		}
 	}
 ];

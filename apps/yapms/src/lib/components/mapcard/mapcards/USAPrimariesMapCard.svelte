@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import MapCard from '../MapCard.svelte';
 
 	const links = [
