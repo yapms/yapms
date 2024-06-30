@@ -1,8 +1,9 @@
 {
   "name": "yapms-project",
   "engines": {
-    "node": "^20.0.0"
+    "node": "20.15.0"
   },
+  "packageManager": "npm@10.8.2",
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
@@ -16,7 +17,7 @@
     "@devcontainers/cli": "0.65.0",
     "dotenv-cli": "7.4.2",
     "dotenv-vault": "1.26.2",
-    "turbo": "1.13.4"
+    "turbo": "2.0.6"
   },
   "workspaces": [
     "./apps/yapms",
