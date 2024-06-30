@@ -1,5 +1,13 @@
 {
 	"$schema": "https://turbo.build/schema.json",
+	"globalEnv": [
+		"PUBLIC_POCKETBASE_URI",
+		"PUBLIC_REDIRECT_URI",
+		"PUBLIC_UMAMI_URI",
+		"PUBLIC_UMAMI_DATA_WEBSITE_ID",
+		"PUBLIC_TURNSTILE_SITE",
+		"PUBLIC_PRIVACY_POLICY_URI"
+	],
 	"tasks": {
 		"dev": {
 			"cache": false,
