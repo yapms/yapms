@@ -3,7 +3,7 @@
 	const links = [
 		{
 			label: 'House of Representatives',
-			route: '/app/jpn/house_of_representatives/2021305/blank'
+			route: '/app/jpn/house/2021305/blank'
 		}
 	];
 </script>

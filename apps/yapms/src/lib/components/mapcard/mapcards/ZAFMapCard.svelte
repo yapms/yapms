@@ -3,11 +3,11 @@
 	const links = [
 		{
 			label: 'National Assembly',
-			route: '/app/zaf/national_assembly/2019128/blank'
+			route: '/app/zaf/assembly/2019128/blank'
 		},
 		{
 			label: '2019 Results',
-			route: '/app/zaf/national_assembly/2019128/results'
+			route: '/app/zaf/assembly/2019128/results'
 		},
 		{
 			label: 'Provinces',
@@ -15,11 +15,11 @@
 		},
 		{
 			label: '2019 National Assembly',
-			route: '/app/zaf/national_assembly/2019128/blank'
+			route: '/app/zaf/assembly/2019128/blank'
 		},
 		{
 			label: '2019 National Assembly Results',
-			route: '/app/zaf/national_assembly/2019128/results'
+			route: '/app/zaf/assembly/2019128/results'
 		},
 		{
 			label: 'Provinces',
