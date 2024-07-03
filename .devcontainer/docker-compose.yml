@@ -7,8 +7,11 @@ services:
     command: sleep infinity
   
   browserless:
-    image: browserless/chrome:latest
+    image: ghcr.io/browserless/chrome:latest
     network_mode: service:devcontainer
+    environment:
+      CONCURRENT: 10
+      TOKEN: null
     restart: always
 
   umami:

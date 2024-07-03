@@ -10,7 +10,7 @@
         force_source: true
       with_items:
         - caddy:latest
-        - browserless/chrome:latest
+        - ghcr.io/browserless/chrome:latest
         - ghcr.io/yapms/yapms-yapms:latest
         - ghcr.io/yapms/yapms-pocketbase:latest
         - portainer/portainer-ce:latest
@@ -62,7 +62,7 @@
         volumes:
           - ./pb_data:/app/pb_data
         env:
-          BROWSERLESS_URI: "ws://browserless:3000"
+          BROWSERLESS_URI: "ws://browserless:3000/chrome?token=null"
           BROWSERLESS_FRONTEND_URI: "http://yapms:3000"
           TURNSTILE_SECRET: "{{ TURNSTILE_SECRET }}"
 
@@ -80,10 +80,13 @@
     - name: deploy browserless
       community.docker.docker_container:
         name: browserless
-        image: browserless/chrome:latest
+        image: ghcr.io/browserless/chrome:latest
         restart_policy: always
         networks:
           - name: yapms
+        env:
+          CONCURRENT: 10
+          TOKEN: null
 
     - name: deploy postgres
       community.docker.docker_container:

@@ -16,9 +16,9 @@ import (
 
 func TakeScreenshot(e *core.RecordCreateEvent, app *pocketbase.PocketBase, browserlessURI *string, browserlessFrontendURI *string) error {
 	// create a screenshot with browserless
-	ctx, cancel := chromedp.NewRemoteAllocator(context.Background(), *browserlessURI)
+	allocator, cancel := chromedp.NewRemoteAllocator(context.Background(), *browserlessURI, chromedp.NoModifyURL)
 	defer cancel()
-	ctx, cancel = chromedp.NewContext(ctx)
+	ctx, cancel := chromedp.NewContext(allocator)
 	defer cancel()
 
 	// take a screenshot
