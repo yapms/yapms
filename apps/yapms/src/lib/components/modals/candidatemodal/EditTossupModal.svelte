@@ -20,12 +20,16 @@
 		<span>Edit</span>
 		<input
 			type="text"
-			class="input input-bordered w-full max-w-xs"
+			class="input input-sm input-bordered w-full max-w-xs"
 			bind:value={$TossupCandidateStore.name}
 		/>
 	</label>
-	<div slot="content" class="form-control w-full max-w-xs flex flex-col gap-3">
-		<h3 class="font-light text-lg">Color</h3>
-		<input type="color" on:change={updateColor} value={$TossupCandidateStore.margins[0].color} />
+	<div slot="content" class="flex justify-center">
+		<input
+			type="color"
+			class="cursor-pointer"
+			on:change={updateColor}
+			value={$TossupCandidateStore.margins[0].color}
+		/>
 	</div>
 </ModalBase>
