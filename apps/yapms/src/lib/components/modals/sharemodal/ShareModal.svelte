@@ -190,10 +190,10 @@
 		{#if $page.url.pathname !== '/app/imported'}
 			<Turnstile
 				siteKey={PUBLIC_TURNSTILE_SITE}
-				on:turnstile-callback={onTurnstileSuccess}
-				on:turnstile-expired={onTurnstileExpired}
-				on:turnstile-timeout={onTurnstileTimeout}
-				on:turnstile-error={onTurnstileError}
+				on:callback={onTurnstileSuccess}
+				on:expired={onTurnstileExpired}
+				on:timeout={onTurnstileTimeout}
+				on:error={onTurnstileError}
 				bind:reset={turnstileResetBind}
 			/>
 		{/if}
