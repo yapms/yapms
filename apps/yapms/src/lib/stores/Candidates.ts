@@ -1,5 +1,6 @@
 import type { Candidate } from '$lib/types/Candidate';
 import { CandidateSchema } from '$lib/types/Candidate';
+import { keyCodeToNumber } from '$lib/utils/keyCodeToNumber';
 import { derived, get, writable } from 'svelte/store';
 import { z } from 'zod';
 import { v4 as uuidv4 } from 'uuid';
@@ -59,3 +60,14 @@ export const SelectedCandidateStore = writable<Candidate>(get(TossupCandidateSto
 
 //Schema
 export const CandidateStoreSchema = z.array(CandidateSchema);
+
+export function handleCandidateSelectionShortcut(keycode: string) {
+	const digit = keyCodeToNumber(keycode);
+	if (digit !== null && digit < get(CandidatesStore).length + 1) {
+		if (digit === 0) {
+			SelectedCandidateStore.set(get(TossupCandidateStore));
+		} else {
+			SelectedCandidateStore.set(get(CandidatesStore)[digit - 1]);
+		}
+	}
+}

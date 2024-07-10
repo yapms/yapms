@@ -11,6 +11,7 @@
 	import ImportModal from '$lib/components/modals/importmodal/ImportModal.svelte';
 	import CandidateModal from '$lib/components/modals/candidatemodal/CandidateModal.svelte';
 	import { InteractionStore } from '$lib/stores/Interaction';
+	import { handleCandidateSelectionShortcut } from '$lib/stores/Candidates';
 	import NavBar from '$lib/components/navbar/NavBar.svelte';
 	import SideBar from '$lib/components/sidebar/SideBar.svelte';
 	import { reapplyPanZoom } from '$lib/utils/applyPanZoom';
@@ -29,8 +30,12 @@
 
 	function handleKeyDown(event: KeyboardEvent) {
 		$InteractionStore.set(event.code, true);
-		if (event.code === 'KeyR' && event.target instanceof Element && event.target.id === 'map-div') {
-			reapplyPanZoom();
+
+		if (event.target instanceof Element && event.target.id === 'map-div') {
+			if (event.code === 'KeyR') {
+				reapplyPanZoom();
+			}
+			handleCandidateSelectionShortcut(event.code);
 		}
 	}
 
