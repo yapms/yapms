@@ -85,8 +85,8 @@
         networks:
           - name: yapms
         env:
-          CONCURRENT: 10
-          TOKEN: null
+          CONCURRENT: "10"
+          TOKEN: "null"
 
     - name: deploy postgres
       community.docker.docker_container:
