@@ -24,6 +24,6 @@
     "./apps/pocketbase"
   ],
   "dependencies": {
-    "svelte-eslint-parser": "0.39.2"
+    "svelte-eslint-parser": "0.40.0"
   }
 }
