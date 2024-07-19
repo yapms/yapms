@@ -6,8 +6,8 @@
 			route: '/app/can/sk/2024/blank'
 		},
 		{
-			label: 'Manitoba',
-			route: '/app/can/mb/2023/blank'
+			label: 'New Brunswick',
+			route: '/app/can/nb/2024264/blank'
 		},
 		{
 			route: '/app/can/bc/2023107/blank',
@@ -28,6 +28,10 @@
 		{
 			route: '/app/can/mb/2023/blank',
 			label: 'Manitoba 2023'
+		},
+		{
+			route: '/app/can/nb/2024264/blank',
+			label: 'New Brunswick 2024'
 		},
 		{
 			route: '/app/can/nb/2020/blank',
