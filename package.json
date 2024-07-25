@@ -22,8 +22,5 @@
   "workspaces": [
     "./apps/yapms",
     "./apps/pocketbase"
-  ],
-  "dependencies": {
-    "svelte-eslint-parser": "0.41.0"
-  }
+  ]
 }
