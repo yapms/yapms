@@ -13,7 +13,7 @@
 
 <div class="md:w-1/3 lg:w-1/5 pl-5 hidden md:flex flex-col h-full justify-between">
 	<svelte:component this={ads} />
-	<div class="overflow-y-auto">
+	<div class="overflow-y-auto flex-grow">
 		<div class="divider">Updates</div>
 		<Updates />
 	</div>
