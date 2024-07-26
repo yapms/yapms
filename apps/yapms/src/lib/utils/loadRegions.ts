@@ -61,10 +61,14 @@ function createTossupCandidateStore(node: HTMLDivElement) {
 }
 
 function createSelectedCandidateStore() {
-	if (get(CandidatesStore).length > 0) {
-		SelectedCandidateStore.set(get(CandidatesStore)[0]);
+	const candidatesStore = get(CandidatesStore);
+	const firstCandidate = candidatesStore.at(0);
+
+	if (firstCandidate !== undefined) {
+		SelectedCandidateStore.set(firstCandidate);
 	} else {
-		SelectedCandidateStore.set(get(TossupCandidateStore));
+		const tossupCandidate = get(TossupCandidateStore);
+		SelectedCandidateStore.set(tossupCandidate);
 	}
 }
 
