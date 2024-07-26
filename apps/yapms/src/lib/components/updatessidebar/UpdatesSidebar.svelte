@@ -1,23 +1,21 @@
 <script lang="ts">
-	import { PocketBaseStore } from '$lib/stores/PocketBase';
-	import Update from './Update.svelte';
 	import SocialLinkGrid from '../links/SocialLinkGrid.svelte';
+	import Updates from './sections/Updates.svelte';
 
-	let updates = $PocketBaseStore.collection('updates').getList(1, 10, { sort: '-created' });
+	import { onMount } from 'svelte';
+
+	/* eslint-disable  @typescript-eslint/no-explicit-any */
+	let ads: any;
+	onMount(async () => {
+		ads = (await import('$lib/components/updatessidebar/sections/UpdatesAds.svelte')).default;
+	});
 </script>
 
 <div class="md:w-1/3 lg:w-1/5 pl-5 hidden md:flex flex-col h-full justify-between">
+	<svelte:component this={ads} />
 	<div class="overflow-y-auto">
 		<div class="divider">Updates</div>
-		<div class="flex flex-col gap-y-3 items-stretch">
-			{#await updates}
-				<span class="loading loading-ring loading-lg text-primary self-center"></span>
-			{:then updates}
-				{#each updates.items as update}
-					<Update title={update.title} description={update.description} />
-				{/each}
-			{/await}
-		</div>
+		<Updates />
 	</div>
 	<div class="mb-4">
 		<div class="divider">Social Links</div>
