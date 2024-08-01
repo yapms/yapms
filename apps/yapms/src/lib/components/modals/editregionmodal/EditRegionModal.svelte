@@ -8,7 +8,7 @@
 	$: value = open ? $EditRegionModalStore.region?.permaVal : undefined;
 	$: newValue = value ?? 0;
 
-	$: open && focusInput();
+	$: if (open) focusInput();
 
 	let valueInput: HTMLInputElement;
 

@@ -95,12 +95,12 @@ RegionsStore.subscribe((regions) => {
 		);
 		const winners = region.disabled
 			? [
-					{
-						candidate: get(TossupCandidateStore),
-						count: 0,
-						margin: 0
-					}
-				]
+				{
+					candidate: get(TossupCandidateStore),
+					count: 0,
+					margin: 0
+				}
+			]
 			: region.candidates.filter((candidate) => candidate.count === maxValue);
 
 		// set the margin of the new winner
@@ -226,13 +226,25 @@ export const setPointerEvents = (): void => {
 				const opposite = interactions.has('ShiftLeft') || interactions.has('ShiftRight');
 				switch (currentMode) {
 					case 'fill':
-						opposite ? fillNotGroup(group, subgroup) : fillGroup(group, subgroup);
+						if (opposite === true) {
+							fillNotGroup(group, subgroup);
+						} else {
+							fillGroup(group, subgroup);
+						}
 						break;
 					case 'disable':
-						opposite ? disableNotGroup(group, subgroup) : disableGroup(group, subgroup);
+						if (opposite === true) {
+							disableNotGroup(group, subgroup);
+						} else {
+							disableGroup(group, subgroup);
+						}
 						break;
 					case 'lock':
-						opposite ? lockNotGroup(group, subgroup) : lockGroup(group, subgroup);
+						if (opposite === true) {
+							lockNotGroup(group, subgroup);
+						} else {
+							lockGroup(group, subgroup);
+						}
 						break;
 				}
 			} else {
