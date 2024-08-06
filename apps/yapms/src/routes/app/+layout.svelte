@@ -27,6 +27,8 @@
 	import { browser } from '$app/environment';
 	import { SideBarStore } from '$lib/stores/SideBar';
 	import NavigateHomeModal from '$lib/components/modals/navigatehomemodal/NavigateHomeModal.svelte';
+	import { PresentationModeStore } from '$lib/stores/PresentationMode';
+	import PresentationNavBar from '$lib/components/navbar/PresentationNavBar.svelte';
 
 	function handleKeyDown(event: KeyboardEvent) {
 		$InteractionStore.set(event.code, true);
@@ -58,7 +60,11 @@
 <svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp} on:resize={reapplyPanZoom} />
 
 <div class="flex flex-col h-full">
-	<NavBar />
+	{#if $PresentationModeStore.enabled}
+		<PresentationNavBar />
+	{:else}
+		<NavBar />
+	{/if}
 	<div class="flex flex-row h-full overflow-hidden">
 		<MapChartContainer>
 			<slot />

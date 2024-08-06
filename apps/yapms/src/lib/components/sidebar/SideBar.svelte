@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
 	import { SideBarStore } from '$lib/stores/SideBar';
+	import { PresentationModeStore } from '$lib/stores/PresentationMode';
 	import { reapplyPanZoom } from '$lib/utils/applyPanZoom';
 	import { afterUpdate, onMount } from 'svelte';
 	import Shortcuts from './sections/shortcuts/Shortcuts.svelte';
@@ -20,7 +21,7 @@
 
 <div
 	class="z-10 h-full flex absolute right-0 md:relative md:basis-3/12 max-w-lg"
-	class:hidden={$SideBarStore.open === false}
+	class:hidden={$SideBarStore.open === false || $PresentationModeStore.enabled === true}
 >
 	<div class="divider divider-horizontal w-0 m-0 flex" />
 	<div class="overflow-y-auto bg-base-100 w-full px-4 md:px-0">

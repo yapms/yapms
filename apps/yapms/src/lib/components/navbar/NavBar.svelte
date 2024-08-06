@@ -11,10 +11,12 @@
 		NavigateHomeModalStore
 	} from '$lib/stores/Modals';
 	import { ModeStore } from '$lib/stores/Mode';
+	import { PresentationModeStore } from '$lib/stores/PresentationMode';
 	import ChevronDoubleRight from '$lib/icons/ChevronDoubleRight.svelte';
 	import ChevronDoubleLeft from '$lib/icons/ChevronDoubleLeft.svelte';
 	import { SideBarStore } from '$lib/stores/SideBar';
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
+	import VideoCamera from '$lib/icons/VideoCamera.svelte';
 
 	let content: HTMLDivElement | undefined;
 	let offsetWidth: number | undefined;
@@ -56,6 +58,10 @@
 	function toggleSidebar() {
 		$SideBarStore.open = !$SideBarStore.open;
 	}
+
+	function togglePresentationMode() {
+		$PresentationModeStore.enabled = !$PresentationModeStore.enabled;
+	}
 </script>
 
 <div class="navbar bg-base-200 overflow-y-clip min-h-0 z-10 px-0">
@@ -80,6 +86,9 @@
 		>
 	</div>
 	<div class="divider divider-horizontal m-0 w-0" class:hidden={isOverflow === false} />
+	<button class="btn btn-sm btn-neutral" on:click={togglePresentationMode}>
+		<VideoCamera class="w-6 h-6" />
+	</button>
 	<button class="btn btn-sm btn-neutral mx-2" on:click={toggleSidebar}>
 		{#if $SideBarStore.open}
 			<ChevronDoubleRight class="w-6 h-6" />
