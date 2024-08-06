@@ -4,6 +4,7 @@
 	import ChartArea from '../chartarea/ChartArea.svelte';
 	import { ChartPositionStore } from '$lib/stores/Chart';
 	import { reapplyPanZoom } from '$lib/utils/applyPanZoom';
+	import { PresentationModeStore } from '$lib/stores/PresentationMode';
 
 	afterUpdate(reapplyPanZoom);
 </script>
@@ -16,7 +17,7 @@
 >
 	<ChartArea />
 	<div class="overflow-hidden w-full h-full">
-		<CandidateBoxContainer />
+		<CandidateBoxContainer margins={$PresentationModeStore.enabled} />
 		<slot />
 	</div>
 </div>
