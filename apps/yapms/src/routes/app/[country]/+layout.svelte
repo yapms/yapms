@@ -47,7 +47,7 @@
 	<div
 		use:setupMap
 		id="map-div"
-		class="overflow-hidden h-full"
+		class="overflow-hidden h-full outline-none"
 		class:insets-hidden={$MapInsetsStore.hidden}
 		class:texts-hidden={$RegionTextsStore.hidden}
 	>
