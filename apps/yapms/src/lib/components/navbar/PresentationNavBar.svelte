@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import VideoCameraSlash from '$lib/icons/VideoCameraSlash.svelte';
 	import { PresentationModeStore } from '$lib/stores/PresentationMode';
 

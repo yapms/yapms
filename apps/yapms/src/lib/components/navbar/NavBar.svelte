@@ -17,7 +17,6 @@
 	import { SideBarStore } from '$lib/stores/SideBar';
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
 	import VideoCamera from '$lib/icons/VideoCamera.svelte';
-	import VideoCameraSlash from '$lib/icons/VideoCameraSlash.svelte';
 
 	let content: HTMLDivElement | undefined;
 	let offsetWidth: number | undefined;
