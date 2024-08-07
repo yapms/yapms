@@ -1,12 +1,9 @@
 import adapter from '@sveltejs/adapter-node';
-import { sveltePreprocess } from 'svelte-preprocess';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 const config = {
-	preprocess: [
-		sveltePreprocess({
-			postcss: true
-		})
-	],
+
+	preprocess: vitePreprocess(),
 
 	kit: {
 		adapter: adapter(),
