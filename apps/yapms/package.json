@@ -60,7 +60,7 @@
 		"svelte-preprocess": "6.0.2",
 		"svelte-turnstile": "0.7.1",
 		"svelte-typeahead": "4.4.1",
-		"tailwindcss": "3.4.8",
+		"tailwindcss": "3.4.9",
 		"theme-change": "2.5.0",
 		"tslib": "2.6.3",
 		"typescript": "5.5.4",
