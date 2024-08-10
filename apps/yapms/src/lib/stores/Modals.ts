@@ -100,3 +100,12 @@ export const ImportModalStore = writable({
 export const ShareDisabledModalStore = writable({
 	open: false
 });
+
+//Tool modals
+export const ToolsModalStore = writable({
+	open: false
+});
+
+export const MassEditModalStore = writable({
+	open: false
+});
