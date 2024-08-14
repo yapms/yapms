@@ -58,7 +58,7 @@
 		"svelte-fa": "4.0.2",
 		"svelte-local-storage-store": "0.6.4",
 		"svelte-preprocess": "6.0.2",
-		"svelte-turnstile": "0.7.1",
+		"svelte-turnstile": "0.8.0",
 		"svelte-typeahead": "4.4.1",
 		"tailwindcss": "3.4.10",
 		"theme-change": "2.5.0",
