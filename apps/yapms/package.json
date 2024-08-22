@@ -22,7 +22,7 @@
 		"@fortawesome/free-solid-svg-icons": "6.6.0",
 		"@sveltejs/adapter-node": "5.2.2",
 		"@sveltejs/kit": "2.5.24",
-		"@sveltejs/vite-plugin-svelte": "3.1.1",
+		"@sveltejs/vite-plugin-svelte": "3.1.2",
 		"@turf/helpers": "7.1.0",
 		"@turf/rewind": "7.1.0",
 		"@types/d3": "7.4.3",
