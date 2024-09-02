@@ -45,6 +45,10 @@
 		$InteractionStore.delete(event.code);
 	}
 
+	function handleOnFocusOut() {
+		$InteractionStore.clear();
+	}
+
 	if (browser) {
 		if (innerWidth > 768) {
 			$SideBarStore.open = true;
@@ -57,7 +61,12 @@
 	<meta name="robots" content="nosnippet" />
 </svelte:head>
 
-<svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp} on:resize={reapplyPanZoom} />
+<svelte:window
+	on:keydown={handleKeyDown}
+	on:keyup={handleKeyUp}
+	on:resize={reapplyPanZoom}
+	on:focusout={handleOnFocusOut}
+/>
 
 <div class="flex flex-col h-full">
 	{#if $PresentationModeStore.enabled}
