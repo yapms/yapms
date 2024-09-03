@@ -17,7 +17,7 @@ export function fillRegion(regionID: string, increment: boolean): void {
 			margin: 0
 		};
 		if (currentCandidate.candidate.id === selectedCandidate.id && increment) {
-			if (!currentInteractions.has('ControlLeft')) {
+			if (!currentInteractions.has('ControlLeft') && !currentInteractions.has('ControlRight')) {
 				//Increment
 				newCandidate.margin =
 					currentCandidate.margin + 1 >= selectedCandidate.margins.length
