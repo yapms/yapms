@@ -86,10 +86,10 @@
 		>
 		<button class="btn btn-sm snap-start" on:click={openShare}>Share</button>
 		<button class="btn btn-sm snap-start" on:click={openTheme}>Theme</button>
+		<button class="btn btn-sm snap-start" on:click={openTools}>Tools</button>
 		<button class="btn btn-sm snap-end" on:click={openAuth}
 			>{$PocketBaseStore.authStore.isValid ? 'Account' : 'Login'}</button
 		>
-		<button class="btn btn-sm snap-start" on:click={openTools}>Tools</button>
 	</div>
 	<div class="divider divider-horizontal m-0 w-0" class:hidden={isOverflow === false} />
 	<button class="btn btn-sm btn-neutral" on:click={togglePresentationMode}>
