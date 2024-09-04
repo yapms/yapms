@@ -29,6 +29,7 @@
 	import NavigateHomeModal from '$lib/components/modals/navigatehomemodal/NavigateHomeModal.svelte';
 	import { PresentationModeStore } from '$lib/stores/PresentationMode';
 	import PresentationNavBar from '$lib/components/navbar/PresentationNavBar.svelte';
+	import ToolsModal from '$lib/components/modals/toolsmodal/ToolsModal.svelte';
 
 	function handleKeyDown(event: KeyboardEvent) {
 		$InteractionStore.set(event.code, true);
@@ -117,5 +118,7 @@
 <ShareModal />
 
 <ImportModal />
+
+<ToolsModal />
 
 <RegionTooltip />

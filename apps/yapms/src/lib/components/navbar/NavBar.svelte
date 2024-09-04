@@ -8,7 +8,8 @@
 		ShareModalStore,
 		AuthModalStore,
 		ThemeModalStore,
-		NavigateHomeModalStore
+		NavigateHomeModalStore,
+		ToolsModalStore
 	} from '$lib/stores/Modals';
 	import { ModeStore } from '$lib/stores/Mode';
 	import { PresentationModeStore } from '$lib/stores/PresentationMode';
@@ -55,6 +56,10 @@
 		$AuthModalStore.open = true;
 	}
 
+	function openTools() {
+		$ToolsModalStore.open = true;
+	}
+
 	function toggleSidebar() {
 		$SideBarStore.open = !$SideBarStore.open;
 	}
@@ -81,6 +86,7 @@
 		>
 		<button class="btn btn-sm snap-start" on:click={openShare}>Share</button>
 		<button class="btn btn-sm snap-start" on:click={openTheme}>Theme</button>
+		<button class="btn btn-sm snap-start" on:click={openTools}>Tools</button>
 		<button class="btn btn-sm snap-end" on:click={openAuth}
 			>{$PocketBaseStore.authStore.isValid ? 'Account' : 'Login'}</button
 		>
