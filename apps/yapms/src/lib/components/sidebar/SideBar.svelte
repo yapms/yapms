@@ -12,9 +12,10 @@
 
 	afterUpdate(reapplyPanZoom);
 
-	let adsbygoogle: any;
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	let adsbygoogle: unknown;
 	onMount(() => {
-		(adsbygoogle = (window as any).adsbygoogle || []).push({});
+		(adsbygoogle = window.adsbygoogle || []).push({});
 	});
 </script>
 

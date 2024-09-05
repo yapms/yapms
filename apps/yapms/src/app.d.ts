@@ -11,4 +11,5 @@ declare namespace App {
 declare interface Window {
 	/* eslint-disable @typescript-eslint/no-explicit-any */
 	googletag: any;
+	adsbygoogle: any;
 }
