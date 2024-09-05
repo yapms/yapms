@@ -12,10 +12,10 @@
 
 	afterUpdate(reapplyPanZoom);
 
-	/* eslint-disable  @typescript-eslint/no-explicit-any */
-	let ads: any;
-	onMount(async () => {
-		ads = (await import('$lib/components/sidebar/sections/ads/SideBarAds.svelte')).default;
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	let adsbygoogle: unknown;
+	onMount(() => {
+		(adsbygoogle = window.adsbygoogle || []).push({});
 	});
 </script>
 
@@ -29,8 +29,13 @@
 			<SocialLinkGrid />
 		</div>
 		<h1 class="text-xl text-center font-bold">{$SideBarStore.title}</h1>
-
-		<svelte:component this={ads} />
+		<ins
+			class="adsbygoogle"
+			style="display:block;width:100%;max-height:280px;height:280px;"
+			data-ad-client="ca-pub-1660456925957249"
+			data-ad-slot="7948019306"
+			data-full-width-responsive="true"
+		></ins>
 		<Shortcuts />
 		<RegionSearch />
 		{#if $PocketBaseStore.authStore.isValid}
