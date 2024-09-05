@@ -30,10 +30,9 @@
 		<h1 class="text-xl text-center font-bold">{$SideBarStore.title}</h1>
 		<ins
 			class="adsbygoogle"
-			style="display:block;width:100%;max-height:280px"
+			style="display:block;width:100%;max-height:280px;height:280px;"
 			data-ad-client="ca-pub-1660456925957249"
 			data-ad-slot="7948019306"
-			data-ad-format="auto"
 			data-full-width-responsive="true"
 		></ins>
 		<Shortcuts />
