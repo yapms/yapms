@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import SocialLinkGrid from '../links/SocialLinkGrid.svelte';
 	import Updates from './sections/Updates.svelte';
-	
+
 	let adsbygoogle: any;
 	onMount(() => {
 		(adsbygoogle = (window as any).adsbygoogle || []).push({});
