@@ -42,6 +42,7 @@
 	import SvnMapCard from '$lib/components/mapcard/mapcards/SVNMapCard.svelte';
 	import IndMapCard from '$lib/components/mapcard/mapcards/INDMapCard.svelte';
 	import UsaCanMapCard from '$lib/components/mapcard/mapcards/USACANMapCard.svelte';
+	import EspMapCard from '$lib/components/mapcard/mapcards/ESPMapCard.svelte';
 
 	export let data: PageData;
 
@@ -118,6 +119,7 @@
 				<AusMapCard />
 				<BraMapCard />
 				<MexMapCard />
+				<EspMapCard />
 				<DeuMapCard />
 				<DnkMapCard />
 				<ItaMapCard />
