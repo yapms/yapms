@@ -4,10 +4,6 @@
 		{
 			label: 'Congress of Deputies',
 			route: '/app/esp/deputies/2024/blank'
-		},
-		{
-			label: 'Congress of Deputies 1',
-			route: '/app/esp/deputies/2024/blank1'
 		}
 	];
 </script>
