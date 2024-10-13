@@ -23,7 +23,7 @@ services:
     restart: always
 
   postgres:
-    image: postgres:latest
+    image: postgres:16-alpine
     environment:
       POSTGRES_DB: umami
       POSTGRES_PASSWORD: password
