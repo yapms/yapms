@@ -3,7 +3,7 @@
 	const links = [
 		{
 			label: 'Congress of Deputies',
-			route: '/app/esp/deputies/2024/blank'
+			route: '/app/esp/deputies/2023150/blank'
 		}
 	];
 </script>
