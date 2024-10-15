@@ -114,27 +114,29 @@
 			<MapCardGrid>
 				<UsaMapCard />
 				<UsaPrimariesMapCard />
-				<CanMapCard />
-				<GbrMapCard />
+
 				<AusMapCard />
 				<BraMapCard />
-				<MexMapCard />
-				<EspMapCard />
-				<DeuMapCard />
+				<CanMapCard />
 				<DnkMapCard />
+				<FraMapCard />
+				<DeuMapCard />
+				<GrcMapCard />
+				<IndMapCard />
+				<IrlMapCard />
 				<ItaMapCard />
+				<JpnMapCard />
+				<MexMapCard />
 				<NldMapCard />
 				<NzlMapCard />
-				<ZafMapCard />
-				<IrlMapCard />
-				<GrcMapCard />
-				<FraMapCard />
-				<KorMapCard />
-				<JpnMapCard />
-				<IndMapCard />
-				<PrtMapCard />
 				<NorMapCard />
+				<PrtMapCard />
 				<SvnMapCard />
+				<ZafMapCard />
+				<KorMapCard />
+				<EspMapCard />
+				<GbrMapCard />
+
 				<GlbMapCard />
 			</MapCardGrid>
 
