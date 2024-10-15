@@ -2,7 +2,11 @@
 	import MapCard from '../MapCard.svelte';
 	const links = [
 		{
-			label: 'House of Representatives',
+			label: 'House 2024',
+			route: '/app/jpn/house/2022330/blank'
+		},
+		{
+			label: 'House 2021',
 			route: '/app/jpn/house/2021305/blank'
 		}
 	];
