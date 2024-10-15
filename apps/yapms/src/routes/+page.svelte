@@ -114,10 +114,11 @@
 			<MapCardGrid>
 				<UsaMapCard />
 				<UsaPrimariesMapCard />
-
-				<AusMapCard />
-				<BraMapCard />
+				<GbrMapCard />
 				<CanMapCard />
+				<AusMapCard />
+
+				<BraMapCard />
 				<DnkMapCard />
 				<FraMapCard />
 				<DeuMapCard />
@@ -135,7 +136,6 @@
 				<ZafMapCard />
 				<KorMapCard />
 				<EspMapCard />
-				<GbrMapCard />
 
 				<GlbMapCard />
 			</MapCardGrid>
