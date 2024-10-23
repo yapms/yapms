@@ -10,8 +10,8 @@
 			route: '/app/gbr/commons/2019/blank'
 		},
 		{
-			label: '2019 Results',
-			route: '/app/gbr/commons/2019/results'
+			label: '2024 Results',
+			route: '/app/gbr/commons/2024185/results'
 		},
 		{
 			label: 'House of Commons 2024',
@@ -20,6 +20,10 @@
 		{
 			label: 'House of Commons 2019',
 			route: '/app/gbr/commons/2019/blank'
+		},
+		{
+			label: '2024 House of Commons Results',
+			route: '/app/gbr/commons/2024185/results'
 		},
 		{
 			label: '2019 House of Commons Results',
