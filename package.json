@@ -1,7 +1,7 @@
 {
   "name": "yapms-project",
   "engines": {
-    "node": "20.18.0"
+    "node": "22.11.0"
   },
   "packageManager": "npm@10.9.0",
   "scripts": {
