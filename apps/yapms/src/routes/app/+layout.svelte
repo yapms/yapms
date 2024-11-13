@@ -67,6 +67,7 @@
 	on:keyup={handleKeyUp}
 	on:resize={reapplyPanZoom}
 	on:focusout={handleOnFocusOut}
+	on:beforeunload|preventDefault
 />
 
 <div class="flex flex-col h-full">
