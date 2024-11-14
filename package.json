@@ -17,7 +17,7 @@
     "@devcontainers/cli": "0.72.0",
     "dotenv-cli": "7.4.2",
     "dotenv-vault": "1.26.2",
-    "turbo": "2.2.3"
+    "turbo": "2.3.0"
   },
   "workspaces": [
     "./apps/yapms",
