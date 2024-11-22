@@ -4,43 +4,43 @@
 	const links = [
 		{
 			label: 'President',
-			route: '/app/usa/presidential/2024/blank'
+			route: '/app/usa/presidential/2028/blank'
 		},
 		{
 			label: 'Senate',
-			route: '/app/usa/senate/2024/blank'
+			route: '/app/usa/senate/2026/blank'
 		},
 		{
 			label: 'House',
-			route: '/app/usa/house/2024/blank'
+			route: '/app/usa/house/2026/blank'
 		},
 		{
-			label: 'Presidential 2024',
-			route: '/app/usa/presidential/2024/blank'
+			label: 'Presidential 2028',
+			route: '/app/usa/presidential/2028/blank'
 		},
 		{
-			label: '2024 Senate',
-			route: '/app/usa/senate/2024/blank'
+			label: '2026 Senate',
+			route: '/app/usa/senate/2026/blank'
 		},
 		{
-			label: 'House 2024',
-			route: '/app/usa/house/2024/blank'
+			label: 'House 2026',
+			route: '/app/usa/house/2026/blank'
 		},
 		{
-			label: 'Governors 2024',
-			route: '/app/usa/governors/2024/blank'
+			label: 'Governors 2025',
+			route: '/app/usa/governors/2025/blank'
 		},
 		{
-			label: '2022 Senate Results',
-			route: '/app/usa/senate/2022/results'
+			label: 'Governors 2026',
+			route: '/app/usa/governors/2026/blank'
 		},
 		{
-			label: '2022 House Results',
-			route: '/app/usa/house/2022/results'
+			label: '2024 Senate Results',
+			route: '/app/usa/senate/2024310/results'
 		},
 		{
-			label: '2022 Gubernatorial Results',
-			route: '/app/usa/governors/2022/results'
+			label: '2024 Gubernatorial Results',
+			route: '/app/usa/governors/2024310/results'
 		},
 		{
 			label: 'Counties 2023',
@@ -75,10 +75,6 @@
 			route: '/app/usa/governors'
 		},
 		{
-			label: 'Governors 2022',
-			route: '/app/usa/governors/2022/blank'
-		},
-		{
 			label: 'Governors 2023',
 			route: '/app/usa/governors/2023/blank'
 		},
@@ -91,16 +87,32 @@
 			route: '/app/usa/governors/2025/blank'
 		},
 		{
-			label: 'Presidential 2024 Take-All',
-			route: '/app/usa/presidential/2024/takeall'
+			label: 'Governors 2026',
+			route: '/app/usa/governors/2026/blank'
 		},
 		{
-			label: 'Presidential 2024 with Territories',
-			route: '/app/usa/presidential/2024/territories'
+			label: 'Presidential 2028 Take-All',
+			route: '/app/usa/presidential/2028/takeall'
 		},
 		{
-			label: 'Presidential 2024 Take-All with Territories',
-			route: '/app/usa/presidential/2024/takeall_territories'
+			label: 'Presidential 2028 with Territories',
+			route: '/app/usa/presidential/2028/territories'
+		},
+		{
+			label: 'Presidential 2028 Take-All with Territories',
+			route: '/app/usa/presidential/2028/takeall_territories'
+		},
+		{
+			label: '2022 Senate Results',
+			route: '/app/usa/senate/2022/results'
+		},
+		{
+			label: '2022 House Results',
+			route: '/app/usa/house/2022/results'
+		},
+		{
+			label: '2022 Gubernatorial Results',
+			route: '/app/usa/governors/2022/results'
 		}
 	];
 </script>

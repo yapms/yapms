@@ -2,6 +2,10 @@
 	import MapCard from '../MapCard.svelte';
 	const links = [
 		{
+			label: '2024',
+			route: '/app/usa/presidential/2024310/results'
+		},
+		{
 			label: '2020',
 			route: '/app/usa/presidential/2020/results'
 		},
@@ -10,8 +14,8 @@
 			route: '/app/usa/presidential/2016/results'
 		},
 		{
-			label: '2012',
-			route: '/app/usa/presidential/2012/results'
+			label: 'Presidential 2024',
+			route: '/app/usa/presidential/2024310/results'
 		},
 		{
 			label: 'Presidential 2020',
