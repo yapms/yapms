@@ -4,7 +4,7 @@
 	const links = [
 		{
 			label: 'President',
-			route: '/app/usa/presidential/2028312/blank'
+			route: '/app/usa/presidential/2028/blank'
 		},
 		{
 			label: 'Senate',
@@ -16,7 +16,7 @@
 		},
 		{
 			label: 'Presidential 2028',
-			route: '/app/usa/presidential/2028312/blank'
+			route: '/app/usa/presidential/2028/blank'
 		},
 		{
 			label: '2026 Senate',
@@ -92,15 +92,15 @@
 		},
 		{
 			label: 'Presidential 2028 Take-All',
-			route: '/app/usa/presidential/2028312/takeall'
+			route: '/app/usa/presidential/2028/takeall'
 		},
 		{
 			label: 'Presidential 2028 with Territories',
-			route: '/app/usa/presidential/2028312/territories'
+			route: '/app/usa/presidential/2028/territories'
 		},
 		{
 			label: 'Presidential 2028 Take-All with Territories',
-			route: '/app/usa/presidential/2028312/takeall_territories'
+			route: '/app/usa/presidential/2028/takeall_territories'
 		},
 		{
 			label: '2022 Senate Results',
