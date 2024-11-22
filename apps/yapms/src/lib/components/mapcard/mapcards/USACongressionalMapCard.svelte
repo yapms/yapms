@@ -2,6 +2,10 @@
 	import MapCard from '../MapCard.svelte';
 	const links = [
 		{
+			label: '2024',
+			route: '/app/usa/house/2024/blank'
+		},
+		{
 			label: '2022',
 			route: '/app/usa/house/2022/blank'
 		},
@@ -10,8 +14,8 @@
 			route: '/app/usa/house/2020/blank'
 		},
 		{
-			label: '2018',
-			route: '/app/usa/house/2018/blank'
+			label: 'House 2024',
+			route: '/app/usa/house/2024/blank'
 		},
 		{
 			label: 'House 2022',
