@@ -51,7 +51,7 @@
 		"prettier-plugin-svelte": "3.3.2",
 		"proj4": "2.15.0",
 		"shapefile": "0.6.6",
-		"sortablejs": "1.15.4",
+		"sortablejs": "1.15.5",
 		"svelte": "4.2.19",
 		"svelte-check": "4.1.0",
 		"svelte-eslint-parser": "0.43.0",
