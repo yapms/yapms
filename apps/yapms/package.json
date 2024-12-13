@@ -36,7 +36,7 @@
 		"chart.js": "4.4.7",
 		"chartjs-plugin-datalabels": "2.2.0",
 		"d3": "7.9.0",
-		"daisyui": "4.12.21",
+		"daisyui": "4.12.22",
 		"dompurify": "3.2.3",
 		"eslint": "9.16.0",
 		"eslint-config-prettier": "9.1.0",
