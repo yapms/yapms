@@ -7,7 +7,7 @@ toolchain go1.23.4
 require (
 	github.com/chromedp/chromedp v0.11.2
 	github.com/pocketbase/dbx v1.11.0
-	github.com/pocketbase/pocketbase v0.23.9
+	github.com/pocketbase/pocketbase v0.23.10
 )
 
 require (
