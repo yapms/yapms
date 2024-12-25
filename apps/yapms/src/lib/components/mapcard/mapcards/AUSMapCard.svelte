@@ -7,7 +7,7 @@
 		},
 		{
 			label: 'House',
-			route: '/app/aus/house/2022/blank'
+			route: '/app/aus/house/2025001/blank'
 		},
 		{
 			label: 'Senate',
@@ -18,12 +18,16 @@
 			route: '/app/aus/states/2023/blank'
 		},
 		{
-			label: 'House of Representatives 2022',
-			route: '/app/aus/house/2022/blank'
+			label: 'House of Representatives 2025',
+			route: '/app/aus/house/2025001/blank'
 		},
 		{
 			label: 'Senate 2022',
 			route: '/app/aus/senate/2022/blank'
+		},
+		{
+			label: 'House of Representatives 2022',
+			route: '/app/aus/house/2022/blank'
 		},
 		{
 			label: '2022 House of Representatives Results',
