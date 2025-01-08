@@ -15,7 +15,7 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "9.17.0",
-		"@floating-ui/dom": "1.6.12",
+		"@floating-ui/dom": "1.6.13",
 		"@fontsource-variable/roboto-mono": "5.1.1",
 		"@fontsource/roboto": "5.1.1",
 		"@fortawesome/free-brands-svg-icons": "6.7.2",
