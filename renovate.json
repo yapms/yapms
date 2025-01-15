@@ -18,6 +18,15 @@
 			],
 			"matchCurrentVersion": "!/^0/",
 			"automerge": true
+		},
+		{
+			"matchPackageNames": [
+				"github.com/pocketbase/pocketbase",
+				"github.com/pocketbase/dbx",
+				"github.com/chromedp/chromedp",
+				"pocketbase"
+			],
+			"automerge": false
 		}
 	]
 }
