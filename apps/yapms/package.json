@@ -37,7 +37,7 @@
 		"chartjs-plugin-datalabels": "2.2.0",
 		"d3": "7.9.0",
 		"daisyui": "4.12.23",
-		"dompurify": "3.2.3",
+		"dompurify": "3.2.4",
 		"eslint": "9.18.0",
 		"eslint-config-prettier": "10.0.1",
 		"eslint-plugin-svelte": "2.46.1",
