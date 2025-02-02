@@ -15,9 +15,9 @@
 	<span class="loading loading-ring"></span>
 {:then authMethods}
 	<p class="mb-2 text-center">Please log in to YAPms to save your maps</p>
-	{#if authMethods.authProviders.length !== 0}
+	{#if authMethods.oauth2.providers.length !== 0}
 		<div class="flex flex-row flex-wrap gap-2 justify-evenly items-center">
-			{#each authMethods.authProviders as method}
+			{#each authMethods.oauth2.providers as method}
 				<button
 					class="btn btn-primary"
 					on:click={async () => {

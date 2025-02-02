@@ -14,8 +14,8 @@ type cloudflareResponse struct {
 	ErrorCodes []string `json:"error-codes"`
 }
 
-func VerifyCaptcha(e *core.RecordCreateEvent, turnstileSecret *string) (*cloudflareResponse, error) {
-	token := e.HttpContext.FormValue("turnstile-token")
+func VerifyCaptcha(e *core.RecordRequestEvent, turnstileSecret *string) (*cloudflareResponse, error) {
+	token := e.Request.FormValue("turnstile-token")
 
 	postBody, err := json.Marshal(map[string]string{
 		"response": token,
