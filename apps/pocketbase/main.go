@@ -8,11 +8,11 @@ import (
 	"github.com/pocketbase/pocketbase"
 	"github.com/pocketbase/pocketbase/apis"
 	"github.com/pocketbase/pocketbase/core"
-	"github.com/pocketbase/pocketbase/models"
 	"github.com/pocketbase/pocketbase/plugins/migratecmd"
 
-	_ "yapms/pocketbase/migrations"
 	"yapms/pocketbase/support"
+
+	_ "yapms/pocketbase/migrations"
 )
 
 func main() {
@@ -27,15 +27,15 @@ func main() {
 		Automigrate: true,
 	})
 
-	app.OnFileDownloadRequest().Add(func(e *core.FileDownloadEvent) error {
+	app.OnFileDownloadRequest().BindFunc(func(e *core.FileDownloadRequestEvent) error {
 		if e.FileField.Name == "data" {
-			e.HttpContext.Response().Header().Set("Content-Encoding", "gzip")
-			e.HttpContext.Response().Header().Set("Content-Disposition", "inline")
+			e.Response.Header().Set("Content-Encoding", "gzip")
+			e.Response.Header().Set("Content-Disposition", "inline")
 		}
-		return nil
+		return e.Next()
 	})
 
-	app.OnRecordBeforeCreateRequest("user_maps").Add(func(e *core.RecordCreateEvent) error {
+	app.OnRecordCreateRequest("user_maps").BindFunc(func(e *core.RecordRequestEvent) error {
 		err := support.CompressMapData(e)
 		if err != nil {
 			return apis.NewApiError(
@@ -44,11 +44,10 @@ func main() {
 				nil,
 			)
 		}
-		return nil
+		return e.Next()
 	})
 
-	app.OnRecordBeforeCreateRequest("maps").Add(func(e *core.RecordCreateEvent) error {
-
+	app.OnRecordCreateRequest("maps").BindFunc(func(e *core.RecordRequestEvent) error {
 		response, err := support.VerifyCaptcha(e, &turnstileSecret)
 
 		if err != nil {
@@ -74,20 +73,20 @@ func main() {
 				nil,
 			)
 		}
-		return nil
+
+		return e.Next()
 	})
 
-	app.OnRecordAfterCreateRequest("maps").Add(func(e *core.RecordCreateEvent) error {
+	app.OnRecordAfterCreateSuccess("maps").BindFunc(func(e *core.RecordEvent) error {
 		go support.TakeScreenshot(e, app, &browserlessURI, &browserlessFrontendURI)
-		return nil
+		return e.Next()
 	})
 
-	app.OnRecordsListRequest("updates", "social_links").Add(func(e *core.RecordsListEvent) error {
-		admin, _ := e.HttpContext.Get(apis.ContextAdminKey).(*models.Admin)
-		if admin == nil {
-			e.HttpContext.Response().Header().Set("Cache-Control", "max-age=86400")
+	app.OnRecordsListRequest("updates", "social_links").BindFunc(func(e *core.RecordsListRequestEvent) error {
+		if e.HasSuperuserAuth() == false {
+			e.Response.Header().Set("Cache-Control", "max-age=86400")
 		}
-		return nil
+		return e.Next()
 	})
 
 	if err := app.Start(); err != nil {

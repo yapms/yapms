@@ -10,11 +10,10 @@ import (
 	"github.com/chromedp/chromedp"
 	"github.com/pocketbase/pocketbase"
 	"github.com/pocketbase/pocketbase/core"
-	"github.com/pocketbase/pocketbase/forms"
 	"github.com/pocketbase/pocketbase/tools/filesystem"
 )
 
-func TakeScreenshot(e *core.RecordCreateEvent, app *pocketbase.PocketBase, browserlessURI *string, browserlessFrontendURI *string) error {
+func TakeScreenshot(e *core.RecordEvent, app *pocketbase.PocketBase, browserlessURI *string, browserlessFrontendURI *string) error {
 	// create a screenshot with browserless
 	allocator, cancel := chromedp.NewRemoteAllocator(context.Background(), *browserlessURI, chromedp.NoModifyURL)
 	defer cancel()
@@ -31,7 +30,7 @@ func TakeScreenshot(e *core.RecordCreateEvent, app *pocketbase.PocketBase, brows
 	)
 	if err != nil {
 		fmt.Println("error: ", err)
-		return nil
+		return err
 	}
 
 	// compress the byte data
@@ -44,17 +43,16 @@ func TakeScreenshot(e *core.RecordCreateEvent, app *pocketbase.PocketBase, brows
 	newFile, err := filesystem.NewFileFromBytes(screenshotBuffer, "screenshot.png")
 	if err != nil {
 		fmt.Println("error: ", err)
-		return nil
+		return err
 	}
 	newFile.Name = "screenshot.png"
 
 	// update record
-	form := forms.NewRecordUpsert(app, e.Record)
-	form.AddFiles("screenshot", newFile)
-	form.Submit()
+	e.Record.Set("screenshot", newFile)
+	err = app.Save(e.Record)
 	if err != nil {
 		fmt.Println("error: ", err)
-		return nil
+		return err
 	}
 
 	return nil

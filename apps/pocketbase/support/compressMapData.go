@@ -10,18 +10,25 @@ import (
 	"github.com/pocketbase/pocketbase/tools/filesystem"
 )
 
-func CompressMapData(e *core.RecordCreateEvent) error {
-	file := e.UploadedFiles["data"][0]
+func CompressMapData(e *core.RecordRequestEvent) error {
+	// get the file
+	files, err := e.FindUploadedFiles("data")
+	if err != nil {
+		return err
+	}
+	if len(files) < 1 {
+		return errors.New("no files found")
+	}
 
-	// open the file
-	reader, err := file.Reader.Open()
+	// get file reader
+	reader, err := files[0].Reader.Open()
 	if err != nil {
 		return err
 	}
 	defer reader.Close()
 
-	// get the file data
-	data, err := io.ReadAll(reader)
+	// read file into buffer
+	buffer, err := io.ReadAll(reader)
 	if err != nil {
 		return err
 	}
@@ -29,13 +36,18 @@ func CompressMapData(e *core.RecordCreateEvent) error {
 	// compress the data
 	var compressedData bytes.Buffer
 	gzip := gzip.NewWriter(&compressedData)
-	_, err = gzip.Write(data)
+	_, err = gzip.Write(buffer)
 	if err != nil {
 		return err
 	}
 	err = gzip.Close()
 	if err != nil {
 		return err
+	}
+
+	// if more than 500000 bytes, then don't upload
+	if len(compressedData.Bytes()) > 500000 {
+		return errors.New("compressed file too big")
 	}
 
 	// create a file from the compressed data
@@ -49,11 +61,8 @@ func CompressMapData(e *core.RecordCreateEvent) error {
 		return errors.New("compressed file too big")
 	}
 
-	// set the file to the new file
-	e.UploadedFiles["data"][0] = newFile
-
 	// change the file name to .json.gz
-	e.Record.Set("data", "data.json.gz")
+	e.Record.Set("data", newFile)
 
 	return nil
 }
