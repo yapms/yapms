@@ -55,7 +55,7 @@ func TakeScreenshot(e *core.RecordEvent, app *pocketbase.PocketBase, browserless
 		return err
 	}
 
-	return e.Next()
+	return nil
 }
 
 func compressImage(input []byte) (output []byte, err error) {
