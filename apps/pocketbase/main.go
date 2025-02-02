@@ -1,8 +1,6 @@
 package main
 
 import (
-	// "fmt"
-	"fmt"
 	"log"
 	"os"
 	"strings"
@@ -30,7 +28,6 @@ func main() {
 	})
 
 	app.OnFileDownloadRequest().BindFunc(func(e *core.FileDownloadRequestEvent) error {
-		fmt.Println(e.FileField)
 		if e.FileField.Name == "data" {
 			e.Response.Header().Set("Content-Encoding", "gzip")
 			e.Response.Header().Set("Content-Disposition", "inline")
