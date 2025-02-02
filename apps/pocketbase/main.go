@@ -12,8 +12,9 @@ import (
 	"github.com/pocketbase/pocketbase/core"
 	"github.com/pocketbase/pocketbase/plugins/migratecmd"
 
-	// _ "yapms/pocketbase/migrations"
 	"yapms/pocketbase/support"
+
+	_ "yapms/pocketbase/migrations"
 )
 
 func main() {
