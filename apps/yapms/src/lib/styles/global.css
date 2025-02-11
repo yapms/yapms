@@ -57,3 +57,14 @@ rect {
 .texts-hidden [map-type='button'] {
 	display: none;
 }
+
+.resizing-input-split {
+	max-width: 6ch;
+}
+
+@supports (field-sizing: content) {
+	.resizing-input-split {
+		field-sizing: content;
+		max-width: none;
+	}
+}

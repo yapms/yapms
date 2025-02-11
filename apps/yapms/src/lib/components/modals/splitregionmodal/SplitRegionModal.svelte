@@ -187,6 +187,15 @@
 		$SplitRegionModalStore.region.candidates = generateCandidates();
 		$RegionsStore = $RegionsStore;
 	}
+
+	function preventNonNumericalInput(e: KeyboardEvent) {
+		if (e.key !== 'Enter' && !e.key.match(/^[0-9]+$/)) e.preventDefault();
+	}
+
+	function preventNonNumericalPaste(e: ClipboardEvent) {
+		const pasteContents = e.clipboardData?.getData(e.clipboardData.types[0]);
+		if (!pasteContents?.match(/^[0-9]+$/)) e.preventDefault();
+	}
 </script>
 
 <ModalBase title="Split {$SplitRegionModalStore.region?.longName}" store={SplitRegionModalStore}>
@@ -203,10 +212,26 @@
 							on:click={(event) => updateCandidateMargin(event, candidate)}
 						/>
 					</div>
-					<span class="font-thin font-mono">
-						({candidate.count}/{$SplitRegionModalStore.region?.value})
-						{((candidate.count / ($SplitRegionModalStore.region?.value ?? 1)) * 100).toFixed(2)}%
-					</span>
+					<div class="flex space-x-0 font-thin font-mono">
+						<span class="px-0">(</span>
+						{#if isTossupCandidate(candidate.candidate.id)}
+							<span>{candidate.count}</span>
+						{:else}
+							<input
+								on:change={(event) => updateCandidateCount(event, candidate)}
+								on:keypress={preventNonNumericalInput}
+								on:paste={preventNonNumericalPaste}
+								value={candidate.count}
+								class="rounded-md px-1 text-end resizing-input-split"
+							/>
+						{/if}
+						<span
+							>/{$SplitRegionModalStore.region?.value})
+							{((candidate.count / ($SplitRegionModalStore.region?.value ?? 1)) * 100).toFixed(
+								2
+							)}%</span
+						>
+					</div>
 				</div>
 				<input
 					type="range"
