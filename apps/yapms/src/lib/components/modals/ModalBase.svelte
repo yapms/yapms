@@ -16,20 +16,17 @@
 	}
 
 	let content: HTMLDivElement | undefined;
+	let dialog: HTMLDialogElement | undefined;
 	let offsetHeight: number | undefined;
 
 	$: isOverflow = offsetHeight && offsetHeight < (content?.scrollHeight ?? 0);
+
+	$: if ($store.open) dialog?.showModal();
+
+	$: if (!$store.open) dialog?.close();
 </script>
 
-<input
-	aria-hidden="true"
-	tabindex="-1"
-	type="checkbox"
-	class="modal-toggle"
-	checked={$store?.open ?? false}
-/>
-
-<div class="modal modal-bottom lg:modal-middle" on:close={close}>
+<dialog class="modal modal-bottom lg:modal-middle" bind:this={dialog} on:close={close}>
 	<div class="modal-box flex flex-col w-full">
 		<div class="mb-6">
 			<div class="flex gap-x-2 align-middle">
@@ -67,4 +64,4 @@
 	<form method="dialog" class="modal-backdrop">
 		<button on:click={close}>close</button>
 	</form>
-</div>
+</dialog>
