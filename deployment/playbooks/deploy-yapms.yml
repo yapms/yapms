@@ -53,7 +53,7 @@
         volumes:
           - ./pb_data:/app/pb_data
         env:
-          BROWSERLESS_URI: "ws://browserless:3000"
+          BROWSERLESS_URI: "ws://browserless:3000/chrome?token=null"
           BROWSERLESS_FRONTEND_URI: "http://yapms:3000"
           TURNSTILE_SECRET: "{{ TURNSTILE_SECRET }}"
 
