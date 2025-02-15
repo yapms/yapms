@@ -8,6 +8,6 @@
     "start": "dotenv -e ../../.env -- ./pocketbase serve --http=0.0.0.0:8080"
   },
   "devDependencies": {
-    "dotenv-cli": "7.4.4"
+    "dotenv-cli": "8.0.0"
   }
 }
