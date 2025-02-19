@@ -83,7 +83,7 @@
 							<input
 								multiple
 								type="file"
-								accept=".geojson"
+								accept=".geojson, .json"
 								class="file-input file-input-primary w-full"
 								bind:files={geoJsonFiles}
 							/>
