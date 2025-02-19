@@ -3,6 +3,7 @@
 	import { ImportedSVGStore } from '$lib/stores/ImportedSVG';
 	import { get } from 'svelte/store';
 	import { MapInsetsStore } from '$lib/stores/MapInsetsStore';
+	import { RegionTextsStore } from '$lib/stores/RegionTextsStore';
 	import { applyAutoStroke, applyPanZoom } from '$lib/utils/applyPanZoom';
 	import { loadRegionsForApp } from '$lib/utils/loadRegions';
 	import { setRegionStrokeColor } from '$lib/stores/RegionStrokeColorStore';
@@ -32,7 +33,8 @@
 		use:setupMap
 		id="map-div"
 		class="overflow-hidden h-full"
-		class:insetsHidden={$MapInsetsStore.hidden}
+		class:insets-hidden={$MapInsetsStore.hidden}
+		class:texts-hidden={$RegionTextsStore.hidden}
 	>
 		{@html $ImportedSVGStore.content}
 	</div>
