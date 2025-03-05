@@ -109,3 +109,7 @@ export const ToolsModalStore = writable({
 export const MassEditModalStore = writable({
 	open: false
 });
+
+export const TableModalStore = writable({
+	open: false
+});
