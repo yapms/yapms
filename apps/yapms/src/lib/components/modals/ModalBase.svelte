@@ -4,6 +4,8 @@
 
 	export let title: string | undefined = undefined;
 
+	export let fullWidth: boolean = false;
+
 	export let store: Writable<{ open: boolean }>;
 	export let onClose: (() => void) | undefined = undefined;
 
@@ -27,7 +29,7 @@
 </script>
 
 <dialog class="modal modal-bottom lg:modal-middle" bind:this={dialog} on:close={close}>
-	<div class="modal-box flex flex-col w-full">
+	<div class="modal-box flex flex-col w-full" class:!max-w-full={fullWidth}>
 		<div class="mb-6">
 			<div class="flex gap-x-2 align-middle">
 				<slot name="icon" />
