@@ -82,8 +82,12 @@ github.com/aws/smithy-go v1.22.2/go.mod h1:irrKGvNn1InZwb2d7fkIRNucdfwR8R+Ts3wxY
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
 github.com/chromedp/cdproto v0.0.0-20241022234722-4d5d5faf59fb h1:noKVm2SsG4v0Yd0lHNtFYc9EUxIVvrr4kJ6hM8wvIYU=
 github.com/chromedp/cdproto v0.0.0-20241022234722-4d5d5faf59fb/go.mod h1:4XqMl3iIW08jtieURWL6Tt5924w21pxirC6th662XUM=
+github.com/chromedp/cdproto v0.0.0-20250222051814-50c6cb17f10a h1:EnkQjhmp/MxhDB4KOTssv6xC20aQ9rhFRCfGHTsTqmE=
+github.com/chromedp/cdproto v0.0.0-20250222051814-50c6cb17f10a/go.mod h1:NItd7aLkcfOA/dcMXvl8p1u+lQqioRMq/SqDp71Pb/k=
 github.com/chromedp/chromedp v0.11.2 h1:ZRHTh7DjbNTlfIv3NFTbB7eVeu5XCNkgrpcGSpn2oX0=
 github.com/chromedp/chromedp v0.11.2/go.mod h1:lr8dFRLKsdTTWb75C/Ttol2vnBKOSnt0BW8R9Xaupi8=
+github.com/chromedp/chromedp v0.13.1 h1:FDh9CfaAt0w70gl69Hb69M/xgZrWuppH9AW22aGa+iU=
+github.com/chromedp/chromedp v0.13.1/go.mod h1:O3nO4Lno7iLoVX+7GdqQkehhKG7DtLf/zFRyJo0AhXY=
 github.com/chromedp/sysutil v1.1.0 h1:PUFNv5EcprjqXZD9nJb9b/c9ibAbxiYo4exNWZyipwM=
 github.com/chromedp/sysutil v1.1.0/go.mod h1:WiThHUdltqCNKGc4gaU50XgYjwjYIhKWoHGPTUfWTJ8=
 github.com/client9/misspell v0.3.4/go.mod h1:qj6jICC3Q7zFZvVWo7KLAzC3yx5G7kyvSDkc90ppPyw=
@@ -113,6 +117,8 @@ github.com/gabriel-vasile/mimetype v1.4.8 h1:FfZ3gj38NjllZIeJAmMhr+qKL8Wu+nOoI3G
 github.com/gabriel-vasile/mimetype v1.4.8/go.mod h1:ByKUIKGjh1ODkGM1asKUbQZOLGrPjydw3hYPU2YU9t8=
 github.com/ganigeorgiev/fexpr v0.4.1 h1:hpUgbUEEWIZhSDBtf4M9aUNfQQ0BZkGRaMePy7Gcx5k=
 github.com/ganigeorgiev/fexpr v0.4.1/go.mod h1:RyGiGqmeXhEQ6+mlGdnUleLHgtzzu/VGO2WtJkF5drE=
+github.com/go-json-experiment/json v0.0.0-20250211171154-1ae217ad3535 h1:yE7argOs92u+sSCRgqqe6eF+cDaVhSPlioy1UkA0p/w=
+github.com/go-json-experiment/json v0.0.0-20250211171154-1ae217ad3535/go.mod h1:BWmvoE1Xia34f3l/ibJweyhrT+aROb/FQ6d+37F0e2s=
 github.com/go-logr/logr v1.4.2 h1:6pFjapn8bFcIbiKo3XT4j/BhANplGihG6tvd+8rYgrY=
 github.com/go-logr/logr v1.4.2/go.mod h1:9T104GzyrTigFIr8wt5mBrctHMim0Nb2HLGrmQ40KvY=
 github.com/go-logr/stdr v1.2.2 h1:hSWxHoqTgW2S2qGc0LTAI563KZ5YKYRhT3MFKZMbjag=
