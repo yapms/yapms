@@ -53,7 +53,7 @@
 	function changeWinner(event: Event & { currentTarget: EventTarget & HTMLSelectElement }) {
 		const newWinnerId = event.currentTarget.value;
 
-		fillRegionWithCandidate(region.id, newWinnerId, false)
+		fillRegionWithCandidate(region.id, newWinnerId, false);
 	}
 </script>
 

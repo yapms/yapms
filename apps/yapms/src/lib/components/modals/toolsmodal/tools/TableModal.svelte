@@ -4,12 +4,17 @@
 	import type { Region } from '$lib/types/Region';
 	import ModalBase from '../../ModalBase.svelte';
 	import { disableRegion, lockRegion } from '$lib/stores/regions/regionActions';
-	import { get } from 'svelte/store';
 	import CandidateActions from './tablecomponents/CandidateActions.svelte';
 
 	let filterInput = '';
-	$: isFiltering = filterInput !== '';
-	$: regionsToShow = filterRegions(filterInput);
+	$: sortedAndFilteredRegions = $RegionsStore
+		.filter((region) => {
+			const lowerSearch = filterInput.toLowerCase().trim();
+			return region.longName.toLowerCase().trim().includes(lowerSearch) || lowerSearch == '';
+		})
+		.sort((regionA, regionB) => {
+			return regionA.longName > regionB.longName ? 1 : -1;
+		});
 
 	function preventNonNumericalInput(e: KeyboardEvent) {
 		if (e.key !== 'Enter' && !e.key.match(/^[0-9]+$/)) e.preventDefault();
@@ -32,29 +37,6 @@
 		}
 		$RegionsStore[index].permaVal = newValue;
 	}
-
-	function filterRegions(filterInput: string) {
-		const lowerSearch = filterInput.toLowerCase();
-		const regions = get(RegionsStore);
-
-		const regionVisibilityMap = new Map<string, boolean>();
-
-		for (const region of regions) {
-			if (region.longName.toLowerCase().trim().includes(lowerSearch) || lowerSearch === '') {
-				regionVisibilityMap.set(region.id, true);
-			} else {
-				regionVisibilityMap.set(region.id, false);
-			}
-		}
-
-		return regionVisibilityMap;
-	}
-
-	function sortRegions(regions: Region[]) {
-		return regions.sort((a, b) => {
-			return a.longName > b.longName ? 1 : -1;
-		});
-	}
 </script>
 
 <ModalBase title="Regions Table" store={TableModalStore} fullWidth>
@@ -67,7 +49,7 @@
 		<div>
 			<table class="table table-sm table-fixed min-w-[36rem]">
 				<thead>
-					<tr class="border-neutral">
+					<tr class="border-base-content border-opacity-50 text-md">
 						<th style="width:15%;">Region</th>
 						<th style="width:20%;">Candidate</th>
 						<th style="width:10%;">Value</th>
@@ -77,48 +59,46 @@
 				</thead>
 				{#if $TableModalStore.open}
 					<tbody>
-						{#each sortRegions($RegionsStore) as region}
-							{#if !isFiltering || regionsToShow.get(region.id) == true}
-								<tr class="border-neutral">
-									<th>
-										<p class="truncate">{region.longName}</p>
-									</th>
-									<td>
-										<CandidateActions {region} />
-									</td>
-									<td>
-										<input
-											type="number"
-											class="input input-sm input-bordered w-full"
-											min="0"
-											on:input={(e) => updateRegionValue(e, region)}
-											on:keypress={preventNonNumericalInput}
-											on:paste={preventNonNumericalPaste}
-											value={region.permaVal}
-										/>
-									</td>
-									<td>
-										<input
-											type="checkbox"
-											class="toggle"
-											checked={region.disabled}
-											on:change={() => {
-												disableRegion(region.id);
-											}}
-										/>
-									</td>
-									<td>
-										<input
-											type="checkbox"
-											class="toggle"
-											checked={region.locked}
-											on:change={() => {
-												lockRegion(region.id);
-											}}
-										/>
-									</td>
-								</tr>
-							{/if}
+						{#each sortedAndFilteredRegions as region}
+							<tr class="border-base-content border-opacity-20">
+								<td>
+									<p class="truncate font-semibold">{region.longName}</p>
+								</td>
+								<td>
+									<CandidateActions {region} />
+								</td>
+								<td>
+									<input
+										type="number"
+										class="input input-sm input-bordered w-full"
+										min="0"
+										on:input={(e) => updateRegionValue(e, region)}
+										on:keypress={preventNonNumericalInput}
+										on:paste={preventNonNumericalPaste}
+										value={region.permaVal}
+									/>
+								</td>
+								<td>
+									<input
+										type="checkbox"
+										class="toggle"
+										checked={region.disabled}
+										on:change={() => {
+											disableRegion(region.id);
+										}}
+									/>
+								</td>
+								<td>
+									<input
+										type="checkbox"
+										class="toggle"
+										checked={region.locked}
+										on:change={() => {
+											lockRegion(region.id);
+										}}
+									/>
+								</td>
+							</tr>
 						{/each}
 					</tbody>
 				{/if}

@@ -36,11 +36,16 @@ export function fillRegion(regionID: string, increment: boolean): void {
 	}
 }
 
-export function fillRegionWithCandidate(regionID: string, candidateID: string, increment: boolean): void {
+export function fillRegionWithCandidate(
+	regionID: string,
+	candidateID: string,
+	increment: boolean
+): void {
 	const regions = get(RegionsStore);
 	const candidates = get(CandidatesStore);
 	const region = regions.find((region) => region.id == regionID);
-	const candidate = candidates.find((candidate) => candidate.id == candidateID) ?? get(TossupCandidateStore);
+	const candidate =
+		candidates.find((candidate) => candidate.id == candidateID) ?? get(TossupCandidateStore);
 	if (region && !(region.disabled || region.locked)) {
 		const currentInteractions = get(InteractionStore);
 		const currentCandidate = region.candidates[0];
@@ -53,9 +58,7 @@ export function fillRegionWithCandidate(regionID: string, candidateID: string, i
 			if (!currentInteractions.has('ControlLeft') && !currentInteractions.has('ControlRight')) {
 				//Increment
 				newCandidate.margin =
-					currentCandidate.margin + 1 >= candidate.margins.length
-						? 0
-						: currentCandidate.margin + 1;
+					currentCandidate.margin + 1 >= candidate.margins.length ? 0 : currentCandidate.margin + 1;
 			} else {
 				//Decrement
 				newCandidate.margin =
