@@ -1,12 +1,10 @@
 <script lang="ts">
 	import type { Region } from '$lib/types/Region';
 
-	import { get } from 'svelte/store';
 	import { TossupCandidateStore } from '$lib/stores/Candidates';
 	import { CandidatesStore } from '$lib/stores/Candidates';
-	import { RegionsStore } from '$lib/stores/regions/Regions';
 	import { makePatternCSS } from '$lib/utils/patterns';
-	import { splitRegion } from '$lib/stores/regions/regionActions';
+	import { splitRegion, fillRegionWithCandidate } from '$lib/stores/regions/regionActions';
 	import Sliders from '$lib/icons/Sliders.svelte';
 
 	export let region: Region;
@@ -55,55 +53,15 @@
 	function changeWinner(event: Event & { currentTarget: EventTarget & HTMLSelectElement }) {
 		const newWinnerId = event.currentTarget.value;
 
-		const candidates = get(CandidatesStore);
-		let newWinner = candidates.find((candidate) => candidate.id === newWinnerId);
-
-		const tossupCandidate = get(TossupCandidateStore);
-		if (newWinnerId == tossupCandidate.id) {
-			newWinner = tossupCandidate;
-		}
-
-		if (newWinner) {
-			const newCandidate = {
-				candidate: newWinner,
-				count: region.value,
-				margin: 0
-			};
-			region.candidates = [newCandidate];
-			$RegionsStore = $RegionsStore;
-		}
-	}
-
-	function cycleWinnerMargin(event: MouseEvent) {
-		if (winners.length != 1) {
-			return;
-		}
-
-		const candidateToBeEdited = winners[0];
-
-		const currentCandidateMargin = winners[0].margin;
-
-		if (!event.ctrlKey) {
-			candidateToBeEdited.margin =
-				currentCandidateMargin === candidateToBeEdited.candidate.margins.length - 1
-					? 0
-					: candidateToBeEdited.margin + 1;
-		} else {
-			candidateToBeEdited.margin =
-				currentCandidateMargin === 0
-					? candidateToBeEdited.candidate.margins.length - 1
-					: candidateToBeEdited.margin - 1;
-		}
-
-		region.candidates = [candidateToBeEdited];
-		$RegionsStore = $RegionsStore;
+		fillRegionWithCandidate(region.id, newWinnerId, false)
 	}
 </script>
 
 {#if region}
 	<div class="flex space-x-2 items-center truncate grow">
 		<button
-			on:click={cycleWinnerMargin}
+			on:click={() => fillRegionWithCandidate(region.id, winners[0].candidate.id, true)}
+			disabled={winners.length != 1}
 			style="background:{getWinningColor(region)};"
 			class="w-5 h-5 rounded-md aspect-square"
 		/>
