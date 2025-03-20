@@ -59,7 +59,7 @@
 				</thead>
 				{#if $TableModalStore.open}
 					<tbody>
-						{#each sortedAndFilteredRegions as region}
+						{#each sortedAndFilteredRegions as region (region.id)}
 							<tr class="border-base-content border-opacity-20">
 								<td>
 									<p class="truncate font-semibold">{region.longName}</p>
