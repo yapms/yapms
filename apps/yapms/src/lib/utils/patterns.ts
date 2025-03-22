@@ -35,3 +35,21 @@ export function makePattern(candidates: Array<RegionCandidate>) {
 	mapSVG?.appendChild(pattern);
 	return `url(#${name})`;
 }
+
+export function makePatternCSS(candidates: Array<RegionCandidate>) {
+	let gradientString = 'linear-gradient(-45deg, ';
+	const numColors = candidates.length;
+	const colorInterval = (1 / numColors) * 100;
+	const colors: string[] = [];
+	candidates.forEach((winner, i: number) => {
+		colors.push(
+			`${winner.candidate.margins[winner.margin].color} ${colorInterval * i}% ${colorInterval * (i + 1)}%`
+		);
+	});
+
+	gradientString += colors.join(', ');
+
+	gradientString += ')';
+
+	return gradientString;
+}
