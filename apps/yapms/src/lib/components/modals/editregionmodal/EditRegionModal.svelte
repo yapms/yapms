@@ -3,14 +3,13 @@
 	import { RegionsStore } from '$lib/stores/regions/Regions';
 	import ModalBase from '../ModalBase.svelte';
 
-	$: open = $EditRegionModalStore.open;
-	$: longName = $EditRegionModalStore.region?.longName;
-	$: value = $EditRegionModalStore.region?.value;
+	$: displayName = $EditRegionModalStore.region?.longName ?? '';
+	$: displayValue = $EditRegionModalStore.region?.value ?? 0;
 
 	let valueInput: HTMLInputElement;
 	let valueBind = 0;
 
-	$: if (open) {
+	$: if ($EditRegionModalStore.open) {
 		setInput();
 		focusInput();
 	}
@@ -47,7 +46,7 @@
 	}
 </script>
 
-<ModalBase title="Edit Region {longName} - {value}" store={EditRegionModalStore}>
+<ModalBase title="Edit Region {displayName} - {displayValue}" store={EditRegionModalStore}>
 	<div slot="content">
 		<div class="form-control w-full flex flex-col gap-3">
 			<h3 class="font-light text-lg">Region Value</h3>
