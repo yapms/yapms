@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { RegionsStore } from '$lib/stores/regions/Regions';
 
-	$: search = '';
-
-	$: {
+	function onchange(x: Event & { currentTarget: EventTarget & HTMLInputElement }) {
+		const search = x.currentTarget.value;
 		const lowerSearch = search.toLowerCase().trim();
 
 		const regions = $RegionsStore.map((region) => {
@@ -29,6 +28,6 @@
 		type="text"
 		class="input input-bordered w-full"
 		placeholder="Search by region name"
-		bind:value={search}
+		on:input={onchange}
 	/>
 </div>

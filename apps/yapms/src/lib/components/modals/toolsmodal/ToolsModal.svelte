@@ -9,8 +9,8 @@
 <ModalBase title="Tools" store={ToolsModalStore}>
 	<div slot="content">
 		<div class="flex flex-col gap-y-2 mx-5">
-			<ToolButton text={'Regions Table'} store={TableModalStore} />
-			<ToolButton text={'Edit All Regions'} store={MassEditModalStore} />
+			<ToolButton text="Regions Table" store={TableModalStore} />
+			<ToolButton text="Edit All Regions" store={MassEditModalStore} />
 		</div>
 	</div>
 </ModalBase>

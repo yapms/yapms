@@ -4,18 +4,25 @@
 	import ModalBase from '../ModalBase.svelte';
 
 	$: open = $EditRegionModalStore.open;
-	$: longName = open ? $EditRegionModalStore.region?.longName : undefined;
-	$: value = open ? $EditRegionModalStore.region?.permaVal : undefined;
-	$: newValue = value ?? 0;
-
-	$: if (open) focusInput();
+	$: longName = $EditRegionModalStore.region?.longName;
+	$: value = $EditRegionModalStore.region?.value;
 
 	let valueInput: HTMLInputElement;
+	let valueBind = 0;
+
+	$: if (open) {
+		setInput();
+		focusInput();
+	}
 
 	function focusInput() {
 		if (valueInput) {
 			valueInput.focus();
 		}
+	}
+
+	function setInput() {
+		valueBind = $EditRegionModalStore.region?.value ?? 0;
 	}
 
 	function preventNonNumericalInput(e: KeyboardEvent) {
@@ -28,17 +35,14 @@
 	}
 
 	function confirm() {
-		if (newValue === null) {
-			newValue = 0;
-		}
 		const index = $RegionsStore.findIndex(
 			(region) => region.id === $EditRegionModalStore.region?.id
 		);
 		if (!$RegionsStore[index].disabled) {
 			//Don't update value if disabled so the state stays disabled!
-			$RegionsStore[index].value = newValue;
+			$RegionsStore[index].value = valueBind ?? 0;
 		}
-		$RegionsStore[index].permaVal = newValue;
+		$RegionsStore[index].permaVal = valueBind ?? 0;
 		$EditRegionModalStore.open = false;
 	}
 </script>
@@ -54,7 +58,7 @@
 					min="0"
 					on:keypress={preventNonNumericalInput}
 					on:paste={preventNonNumericalPaste}
-					bind:value={newValue}
+					bind:value={valueBind}
 					bind:this={valueInput}
 				/>
 			</form>

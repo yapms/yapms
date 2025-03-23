@@ -50,6 +50,7 @@ const config = [
 			}
 		},
 		rules: {
+			'svelte/require-each-key': 'off',
 			'svelte/no-at-html-tags': 'off',
 			'svelte/block-lang': [
 				'error',
