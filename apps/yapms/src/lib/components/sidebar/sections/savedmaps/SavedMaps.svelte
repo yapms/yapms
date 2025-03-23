@@ -3,7 +3,7 @@
 	import SavedMap from './SavedMap.svelte';
 	import SaveMap from './SaveMap.svelte';
 
-	$: maps = $PocketBaseStore.collection('user_maps').getFullList();
+	let maps = $PocketBaseStore.collection('user_maps').getFullList();
 
 	function refreshMaps() {
 		maps = $PocketBaseStore.collection('user_maps').getFullList();

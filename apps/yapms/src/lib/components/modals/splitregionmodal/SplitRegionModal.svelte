@@ -123,7 +123,8 @@
 
 	function updateCandidateCount(
 		event: Event & { currentTarget: EventTarget & HTMLInputElement },
-		candidateToBeEdited: { candidate: Candidate; count: number; margin: number }
+		candidateToBeEdited: { candidate: Candidate; count: number; margin: number },
+		tossupCandidate: { candidate: Candidate; count: number; margin: number }
 	) {
 		if ($SplitRegionModalStore.region === null) {
 			return;
@@ -218,7 +219,7 @@
 							<span>{candidate.count}</span>
 						{:else}
 							<input
-								on:change={(event) => updateCandidateCount(event, candidate)}
+								on:change={(event) => updateCandidateCount(event, candidate, tossupCandidate)}
 								on:keypress={preventNonNumericalInput}
 								on:paste={preventNonNumericalPaste}
 								value={candidate.count}
@@ -239,7 +240,7 @@
 					min="0"
 					max={$SplitRegionModalStore.region?.value}
 					value={candidate.count}
-					on:input={(event) => updateCandidateCount(event, candidate)}
+					on:input={(event) => updateCandidateCount(event, candidate, tossupCandidate)}
 					disabled={isTossupCandidate(candidate.candidate.id)}
 				/>
 			</label>

@@ -10,8 +10,8 @@
 	import { browser } from '$app/environment';
 	import { setRegionStrokeColor } from '$lib/stores/RegionStrokeColorStore';
 
-	$: filename = undefined as string | undefined;
-	$: countryPath = undefined as string | undefined;
+	let filename = undefined as string | undefined;
+	let countryPath = undefined as string | undefined;
 	$: map =
 		filename !== undefined && countryPath !== undefined
 			? import(`../../lib/assets/maps/${countryPath}/${filename}.svg?raw`)
