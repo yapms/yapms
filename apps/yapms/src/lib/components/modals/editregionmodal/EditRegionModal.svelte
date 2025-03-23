@@ -40,9 +40,9 @@
 		);
 		if (!$RegionsStore[index].disabled) {
 			//Don't update value if disabled so the state stays disabled!
-			$RegionsStore[index].value = valueBind ?? 0;
+			$RegionsStore[index].value = valueBind;
 		}
-		$RegionsStore[index].permaVal = valueBind ?? 0;
+		$RegionsStore[index].permaVal = valueBind;
 		$EditRegionModalStore.open = false;
 	}
 </script>
