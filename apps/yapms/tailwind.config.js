@@ -6,9 +6,6 @@ const config = {
 				mono: ['Roboto Mono Variable']
 			}
 		}
-	},
-	daisyui: {
-		themes: ['light', 'dark', 'cupcake', 'dracula', 'lofi', 'night']
 	}
 };
 
