@@ -2,10 +2,17 @@
 
 @import 'tailwindcss';
 @plugin 'daisyui' {
-		themes: light --default, dark --prefers-dark, cupcake, dracula, lofi, night;
+	themes:
+		light --default,
+		dark --prefers-dark,
+		cupcake,
+		dracula,
+		lofi,
+		night;
 }
 
-html, body {
+html,
+body {
 	width: 100dvw;
 	height: 100dvh;
 	overflow: hidden;
@@ -34,8 +41,8 @@ html, body {
 	--region-stroke-color: 'var(--color-base-100)';
 }
 
-[map-type='regions']
-path, rect {
+[map-type='regions'] path,
+rect {
 	stroke-width: var(--auto-border-stroke-width);
 	stroke: var(--region-stroke-color);
 }
