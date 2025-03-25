@@ -236,7 +236,7 @@
 				</div>
 				<input
 					type="range"
-					class="range"
+					class="range w-full"
 					min="0"
 					max={$SplitRegionModalStore.region?.value}
 					value={candidate.count}
