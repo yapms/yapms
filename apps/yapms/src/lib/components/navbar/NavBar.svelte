@@ -76,7 +76,7 @@
 		bind:this={content}
 		bind:offsetWidth
 	>
-		<button class="btn btn-sm snap-start" on:click={openNavigateHomeModal}>Home</button>
+		<button class="btn btn-sm snap-start ml-2" on:click={openNavigateHomeModal}>Home</button>
 		<button class="btn btn-sm btn-error snap-start" on:click={openClearMapModal}>Clear</button>
 		<button class="btn btn-sm snap-start" on:click={openCandidateModal}>Candidates</button>
 		<button class="btn btn-sm snap-start" on:click={newImportedMap}>Import</button>
