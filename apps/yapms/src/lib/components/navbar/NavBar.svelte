@@ -69,14 +69,14 @@
 	}
 </script>
 
-<div class="navbar bg-base-200 overflow-y-clip min-h-0 z-10 px-0">
+<div class="navbar bg-base-300 min-h-0 z-10">
 	<div
-		class="flex-row snap-x overflow-x-auto grow"
+		class="inline-flex gap-1 grow overflow-x-auto"
 		style:scrollbar-width="thin"
 		bind:this={content}
 		bind:offsetWidth
 	>
-		<button class="btn btn-sm snap-start ml-2" on:click={openNavigateHomeModal}>Home</button>
+		<button class="btn btn-sm snap-start" on:click={openNavigateHomeModal}>Home</button>
 		<button class="btn btn-sm btn-error snap-start" on:click={openClearMapModal}>Clear</button>
 		<button class="btn btn-sm snap-start" on:click={openCandidateModal}>Candidates</button>
 		<button class="btn btn-sm snap-start" on:click={newImportedMap}>Import</button>
@@ -95,7 +95,7 @@
 	<button class="btn btn-sm btn-neutral" on:click={togglePresentationMode}>
 		<VideoCamera class="w-6 h-6" />
 	</button>
-	<button class="btn btn-sm btn-neutral mx-2" on:click={toggleSidebar}>
+	<button class="btn btn-sm btn-neutral ml-1" on:click={toggleSidebar}>
 		{#if $SideBarStore.open}
 			<ChevronDoubleRight class="w-6 h-6" />
 		{:else}
