@@ -119,14 +119,14 @@
 			<fieldset class="fieldset">
 				<label class="fieldset-label">
 					<input type="checkbox" class="toggle" bind:checked={$MapInsetsStore.hidden} />
-					Hide Insets Lock Map
+					Hide Insets
 				</label>
 			</fieldset>
 
 			<fieldset class="fieldset">
 				<label class="fieldset-label">
 					<input type="checkbox" class="toggle" bind:checked={$ChartLeansStore.enabled} />
-					Chart Tils
+					Chart Tilts
 				</label>
 			</fieldset>
 
