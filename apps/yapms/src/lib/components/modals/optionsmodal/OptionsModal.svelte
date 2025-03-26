@@ -108,7 +108,7 @@
 			</select>
 		</fieldset>
 
-		<div class="grid grid-cols-2 col-span-2">
+		<div class="grid grid-cols-2 lg:col-span-2">
 			<fieldset class="fieldset">
 				<label class="fieldset-label">
 					<input type="checkbox" class="toggle" bind:checked={$LockMapStore} />
