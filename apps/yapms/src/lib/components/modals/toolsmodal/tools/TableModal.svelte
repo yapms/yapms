@@ -49,7 +49,7 @@
 		<div>
 			<table class="table table-sm table-fixed min-w-[36rem]">
 				<thead>
-					<tr class="border-base-content border-opacity-50 text-md">
+					<tr class="border-base-content/50 text-md">
 						<th style="width:15%;">Region</th>
 						<th style="width:20%;">Candidate</th>
 						<th style="width:10%;">Value</th>
@@ -60,7 +60,7 @@
 				{#if $TableModalStore.open}
 					<tbody>
 						{#each sortedAndFilteredRegions as region (region.id)}
-							<tr class="border-base-content border-opacity-20">
+							<tr class="border-base-content/20">
 								<td>
 									<p class="truncate font-semibold">{region.longName}</p>
 								</td>
