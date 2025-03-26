@@ -8,7 +8,7 @@
 
 <div class="pt-6">
 	<div class="px-6 md:px-0 w-full lg:w-4/6 flex">
-		<MagnifyingGlass class="pointer-events-none stroke-current my-3 pt-1 w-9 z-10 ml-2" />
+		<MagnifyingGlass class="pointer-events-none stroke-current pt-1 w-9 z-10 ml-2" />
 		<Typeahead
 			limit={8}
 			hideLabel={true}

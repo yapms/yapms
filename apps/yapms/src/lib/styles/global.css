@@ -23,7 +23,7 @@ body {
 	@apply flex-grow! bg-transparent! -mr-12!;
 }
 [data-svelte-search] input {
-	@apply input! input-lg! border-2! -ml-12! pr-4! pl-14! rounded-md! bg-base-200! text-2xl!;
+	@apply input! input-xl! border-2! -ml-12! pr-4! pl-14! rounded-md! bg-base-200! text-2xl! w-full!;
 }
 [data-svelte-typeahead] .svelte-typeahead-list {
 	@apply mt-2! rounded-md! overflow-hidden! -ml-12! z-50!;
