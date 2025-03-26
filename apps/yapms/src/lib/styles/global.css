@@ -1,8 +1,15 @@
-@import '@fontsource-variable/roboto-mono';
+@import '@fontsource-variable/roboto-mono' layer(base);
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@plugin 'daisyui' {
+	themes:
+		light --default,
+		dark --prefers-dark,
+		cupcake,
+		dracula,
+		lofi,
+		night;
+}
 
 html,
 body {
@@ -13,25 +20,25 @@ body {
 }
 
 [data-svelte-typeahead] {
-	@apply flex-grow bg-transparent -mr-12 !important;
+	@apply flex-grow! bg-transparent! -mr-12!;
 }
 [data-svelte-search] input {
-	@apply input input-lg input-bordered border-gray-400 border-2 -ml-12 pr-4 pl-14 rounded-md bg-base-200 text-2xl !important;
+	@apply input! input-xl! border-2! -ml-12! pr-4! pl-14! rounded-md! bg-base-200! text-2xl! w-full!;
 }
 [data-svelte-typeahead] .svelte-typeahead-list {
-	@apply mt-2 rounded-md overflow-hidden -ml-12 z-50 !important;
+	@apply mt-2! rounded-md! overflow-hidden! -ml-12! z-50!;
 }
 [data-svelte-typeahead] .svelte-typeahead-list li {
 	@apply bg-base-200 text-lg;
 }
 [data-svelte-typeahead] .svelte-typeahead-list .selected,
 [data-svelte-typeahead] .svelte-typeahead-list .selected:hover {
-	@apply bg-neutral text-neutral-content font-semibold !important;
+	@apply bg-neutral! text-neutral-content! font-semibold!;
 }
 
 #map-div > svg {
 	--auto-border-stroke-width: 0px;
-	--region-stroke-color: 'oklch(var(--b1) / var(--tw-bg-opacity, 1))';
+	--region-stroke-color: 'var(--color-base-100)';
 }
 
 [map-type='regions'] path,
@@ -41,11 +48,12 @@ rect {
 }
 
 [map-type='inset-texts'] {
-	fill: oklch(var(--bc) / var(--tw-text-opacity, 1));
+	fill: var(--color-base-content);
 }
 
 [map-type='inset-lines'] {
-	fill: oklch(var(--bc) / var(--tw-text-opacity, 0.5));
+	fill: var(--color-base-content);
+	opacity: 50%;
 }
 
 .insets-hidden [map-type='insets'],

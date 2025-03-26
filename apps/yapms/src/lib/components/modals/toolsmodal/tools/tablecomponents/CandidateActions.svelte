@@ -84,8 +84,8 @@
 				{/each}
 			</select>
 		{/if}
-		<div class="tooltip" data-tip="Split Region">
-			<button on:click={() => splitRegion(region.id)} class="btn btn-xs btn-neutral mx-2"
+		<div class="tooltip tooltip-left" data-tip="Split Region">
+			<button on:click={() => splitRegion(region.id)} class="btn btn-xs mx-2"
 				><Sliders class="w-4 h-4" /></button
 			>
 		</div>

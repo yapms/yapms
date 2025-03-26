@@ -71,102 +71,92 @@
 				<span class="flex gap-x-2"><ArrowUpTray class="w-6 h-6" />Loading Map...</span>
 			</div>
 			<div class="flex flex-col gap-y-2">
-				<div class="flex flex-row gap-x-2">
-					<label>
-						<div class="flex gap-x-1 mb-2">
-							Open From GeoJson
-							<div class="tooltip tooltip-bottom" data-tip={multipleFilesTooltip}>
-								<DocumentDuplicate class="w-6" />
-							</div>
+				<fieldset class="fieldset w-full flex gap-x-2">
+					<legend class="fieldset-legend flex gap-x-1">
+						<p class="text-lg">Open From GeoJson</p>
+						<div class="tooltip tooltip-bottom" data-tip={multipleFilesTooltip}>
+							<DocumentDuplicate class="w-6" />
 						</div>
-						<div class="flex gap-x-2">
-							<input
-								multiple
-								type="file"
-								accept=".geojson, .json"
-								class="file-input file-input-primary w-full"
-								bind:files={geoJsonFiles}
-							/>
-							<button
-								class="btn btn-secondary gap-1 flex-nowrap"
-								on:click={() => {
-									load(importFromGeoJson, geoJsonFiles);
-								}}
-								disabled={!geoJsonFiles || geoJsonFiles.length < 1 || loading}
-							>
-								<ArrowUpTray class="w-5 h-5" />
-								<span>Load</span>
-							</button>
+					</legend>
+					<input
+						multiple
+						type="file"
+						accept=".geojson, .json"
+						class="file-input file-input-primary w-full"
+						bind:files={geoJsonFiles}
+					/>
+					<button
+						class="btn btn-secondary gap-1 flex-nowrap"
+						on:click={() => {
+							load(importFromGeoJson, geoJsonFiles);
+						}}
+						disabled={!geoJsonFiles || geoJsonFiles.length < 1 || loading}
+					>
+						<ArrowUpTray class="w-5 h-5" />
+						<span>Load</span>
+					</button>
+				</fieldset>
+
+				<div class="divider divider-vertical mt-1 -mb-2" />
+
+				<fieldset class="fieldset w-full flex gap-x-2">
+					<legend class="fieldset-legend flex gap-x-1">
+						<p class="text-lg">Open From Shapefiles</p>
+						<div class="tooltip" data-tip={multipleFilesTooltip}>
+							<DocumentDuplicate class="w-6" />
 						</div>
-					</label>
-				</div>
+					</legend>
+					<input
+						multiple
+						type="file"
+						accept=".shp"
+						class="file-input file-input-primary w-full"
+						bind:files={shapeFiles}
+					/>
+					<button
+						class="btn btn-secondary gap-1 flex-nowrap"
+						on:click={() => {
+							load(importFromShapefiles, shapeFiles);
+						}}
+						disabled={!shapeFiles || shapeFiles.length < 1 || loading}
+					>
+						<ArrowUpTray class="w-5 h-5" />
+						<span>Load</span>
+					</button>
+				</fieldset>
 
-				<div class="divider divider-vertical mt-1 -mb-1" />
+				<div class="divider divider-vertical mt-1 -mb-2" />
 
-				<div class="flex flex-row gap-x-2">
-					<label>
-						<div class="flex gap-x-1 mb-2">
-							Open From Shapefiles
-							<div class="tooltip" data-tip={multipleFilesTooltip}>
-								<DocumentDuplicate class="w-6" />
-							</div>
-						</div>
-						<div class="flex gap-x-2">
-							<input
-								multiple
-								type="file"
-								accept=".shp"
-								class="file-input file-input-primary w-full"
-								bind:files={shapeFiles}
-							/>
-							<button
-								class="btn btn-secondary gap-1 flex-nowrap"
-								on:click={() => {
-									load(importFromShapefiles, shapeFiles);
-								}}
-								disabled={!shapeFiles || shapeFiles.length < 1 || loading}
-							>
-								<ArrowUpTray class="w-5 h-5" />
-								<span>Load</span>
-							</button>
-						</div>
-					</label>
-				</div>
-
-				<div class="divider divider-vertical mt-1 -mb-1" />
-
-				<div class="flex flex-row gap-x-2">
-					<label>
-						<div class="mb-2">
+				<fieldset class="fieldset w-full flex gap-x-2">
+					<legend class="fieldset-legend">
+						<p class="text-lg">
 							Open from SVG
 							<a
 								class="underline italic text-sm font-light"
 								href="https://github.com/yapms/yapms/wiki/Map-SVG-Format"
 								>Works only with YAPms format</a
 							>
-						</div>
-						<div class="flex gap-x-2">
-							<input
-								type="file"
-								accept=".svg"
-								class="file-input file-input-primary w-full"
-								bind:files={svgFiles}
-							/>
-							<button
-								class="btn btn-secondary gap-1 flex-nowrap"
-								on:click={() => {
-									load(loadSVG, svgFiles);
-								}}
-								disabled={!svgFiles || svgFiles.length < 1 || loading}
-							>
-								<ArrowUpTray class="w-5 h-5" />
-								<span>Load</span>
-							</button>
-						</div>
-					</label>
-				</div>
+						</p>
+					</legend>
+					<input
+						type="file"
+						accept=".svg"
+						class="file-input file-input-primary w-full"
+						bind:files={svgFiles}
+					/>
+					<button
+						class="btn btn-secondary gap-1 flex-nowrap"
+						on:click={() => {
+							load(loadSVG, svgFiles);
+						}}
+						disabled={!svgFiles || svgFiles.length < 1 || loading}
+					>
+						<ArrowUpTray class="w-5 h-5" />
+						<span>Load</span>
+					</button>
+				</fieldset>
 
-				<div class="divider divider-vertical mt-1 -mb-1" />
+				<div class="divider divider-vertical mt-1 mb-1" />
 
 				<ImportOptions />
 			</div>

@@ -6,8 +6,8 @@ export const RegionStrokeColorStore = writable<'background' | 'contrast' | 'whit
 );
 
 const colorsByKey = {
-	background: 'oklch(var(--b1) / var(--tw-bg-opacity, 1))',
-	contrast: 'oklch(var(--bc) / var(--tw-bg-opacity, 1))',
+	background: 'var(--color-base-100)',
+	contrast: 'var(--color-base-content)',
 	white: '#ffffff',
 	black: '#000000'
 };

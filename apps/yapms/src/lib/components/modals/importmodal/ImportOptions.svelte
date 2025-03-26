@@ -36,87 +36,85 @@
 <details class="collapse bg-base-200">
 	<summary class="collapse-title text-xl font-medium">Import Options</summary>
 	<div class="collapse-content">
-		<div class="flex flex-col gap-0">
-			<div class="form-control w-full">
-				<label class="label flex-col cursor-pointer items-start justify-start space-y-2">
-					<span class="label-text">Map Projection</span>
-					<select
-						class="select select-bordered w-full capitalize"
-						bind:value={$ImportedSVGStore.options.projectionFunction}
-					>
-						{#each projectionOptions as projection}
-							<option value={projection.projectionFunction}>{projection.label}</option>
-						{/each}
-					</select>
-				</label>
-				{#if $ImportedSVGStore.options.projectionFunction == proj4ToProjection}
-					<label class="label flex-col cursor-pointer items-start justify-start space-y-2">
-						<div class="flex gap-x-1 mb-2">
-							<span class="label-text">Custom Projection Definition</span>
-							<div class="tooltip" data-tip={customProjectionDefinitionTooltip}>
-								<QuestionMarkCircle class="w-5" />
-							</div>
+		<div class="flex flex-col">
+			<fieldset class="fieldset">
+				<legend class="fieldset-legend">Map Projection</legend>
+				<select
+					class="select select-bordered w-full capitalize"
+					bind:value={$ImportedSVGStore.options.projectionFunction}
+				>
+					{#each projectionOptions as projection}
+						<option value={projection.projectionFunction}>{projection.label}</option>
+					{/each}
+				</select>
+			</fieldset>
+
+			{#if $ImportedSVGStore.options.projectionFunction == proj4ToProjection}
+				<fieldset class="fieldset">
+					<legend class="fieldset-legend flex gap-x-1">
+						Custom Projection Definition
+						<div class="tooltip" data-tip={customProjectionDefinitionTooltip}>
+							<QuestionMarkCircle class="w-5" />
 						</div>
-						<input
-							type="text"
-							class="input input-bordered w-full"
-							bind:value={$ImportedSVGStore.options.customProjectionDefinition}
-						/>
-					</label>
-				{/if}
-			</div>
-			<span class="divider m-2"></span>
-			<div class="flex gap-x-1">
+					</legend>
+					<input
+						type="text"
+						class="input input-bordered w-full"
+						bind:value={$ImportedSVGStore.options.customProjectionDefinition}
+					/>
+				</fieldset>
+			{/if}
+
+			<span class="divider my-2"></span>
+
+			<div class="flex gap-x-1 items-center">
 				GeoJSON Properties (Advanced)
 				<div class="tooltip" data-tip={propertySettingsTooltip}>
 					<QuestionMarkCircle class="w-5" />
 				</div>
 			</div>
-			<div class="form-control w-full">
-				<label class="label flex-col cursor-pointer items-start justify-start">
-					<div class="flex gap-x-1 mb-2">
-						<span class="label-text">Short Name</span>
-						<div class="tooltip tooltip-right before:max-w-[12rem]" data-tip={shortNameTooltip}>
-							<QuestionMarkCircle class="w-5" />
-						</div>
+
+			<fieldset class="fieldset">
+				<legend class="fieldset-legend flex gap-x-1">
+					<span class="label-text">Short Name</span>
+					<div class="tooltip tooltip-right before:max-w-[12rem]!" data-tip={shortNameTooltip}>
+						<QuestionMarkCircle class="w-5" />
 					</div>
-					<input
-						type="text"
-						class="input input-bordered w-full"
-						bind:value={$ImportedSVGStore.options.shortNameProp}
-					/>
-				</label>
-			</div>
-			<div class="form-control w-full">
-				<label class="label flex-col cursor-pointer items-start justify-start">
-					<div class="flex gap-x-1 mb-2">
-						<span class="label-text">Long Name</span>
-						<div class="tooltip tooltip-right before:max-w-[12rem]" data-tip={longNameTooltip}>
-							<QuestionMarkCircle class="w-5" />
-						</div>
+				</legend>
+				<input
+					type="text"
+					class="input input-bordered w-full"
+					bind:value={$ImportedSVGStore.options.shortNameProp}
+				/>
+			</fieldset>
+
+			<fieldset class="fieldset">
+				<legend class="fieldset-legend flex gap-x-1">
+					<span class="label-text">Long Name</span>
+					<div class="tooltip tooltip-right before:max-w-[12rem]!" data-tip={longNameTooltip}>
+						<QuestionMarkCircle class="w-5" />
 					</div>
-					<input
-						type="text"
-						class="input input-bordered w-full"
-						bind:value={$ImportedSVGStore.options.longNameProp}
-					/>
-				</label>
-			</div>
-			<div class="form-control w-full">
-				<label class="label flex-col cursor-pointer items-start justify-start">
-					<div class="flex gap-x-1 mb-2">
-						<span class="label-text">Value</span>
-						<div class="tooltip tooltip-right before:max-w-[12rem]" data-tip={valueTooltip}>
-							<ExclamationCircle class="w-5" />
-						</div>
+				</legend>
+				<input
+					type="text"
+					class="input input-bordered w-full"
+					bind:value={$ImportedSVGStore.options.longNameProp}
+				/>
+			</fieldset>
+
+			<fieldset class="fieldset">
+				<legend class="fieldset-legend flex gap-x-1">
+					<span class="label-text">Value</span>
+					<div class="tooltip tooltip-right before:max-w-[12rem]!" data-tip={valueTooltip}>
+						<ExclamationCircle class="w-5" />
 					</div>
-					<input
-						type="text"
-						class="input input-bordered w-full"
-						bind:value={$ImportedSVGStore.options.valueProp}
-					/>
-				</label>
-			</div>
+				</legend>
+				<input
+					type="text"
+					class="input input-bordered w-full"
+					bind:value={$ImportedSVGStore.options.valueProp}
+				/>
+			</fieldset>
 		</div>
 	</div>
 </details>
