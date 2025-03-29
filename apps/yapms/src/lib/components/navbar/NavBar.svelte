@@ -91,7 +91,7 @@
 			>{$PocketBaseStore.authStore.isValid ? 'Account' : 'Login'}</button
 		>
 	</div>
-	<div class="divider divider-horizontal m-0 w-0" class:hidden={isOverflow === false} />
+	<div class="divider divider-horizontal m-0 w-0" class:hidden={isOverflow === false}></div>
 	<button class="btn btn-sm btn-neutral" on:click={togglePresentationMode}>
 		<VideoCamera class="w-6 h-6" />
 	</button>

@@ -116,5 +116,5 @@
 	class:h-full={$ChartPositionStore === 'bottom'}
 	class:w-full={$ChartPositionStore === 'left'}
 >
-	<canvas bind:this={canvasBind} />
+	<canvas bind:this={canvasBind}></canvas>
 </div>

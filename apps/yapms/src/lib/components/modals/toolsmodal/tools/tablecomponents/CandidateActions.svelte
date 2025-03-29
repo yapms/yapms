@@ -64,7 +64,8 @@
 			disabled={winners.length != 1}
 			style="background:{getWinningColor(region)};"
 			class="w-5 h-5 rounded-md aspect-square"
-		/>
+			aria-label="candidate-fill"
+		></button>
 		{#if region.disabled}
 			<select class="select select-bordered select-sm w-full grow" disabled>
 				<option value="disabled">Region Disabled</option>

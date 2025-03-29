@@ -97,7 +97,7 @@
 					</button>
 				</fieldset>
 
-				<div class="divider divider-vertical mt-1 -mb-2" />
+				<div class="divider divider-vertical mt-1 -mb-2"></div>
 
 				<fieldset class="fieldset w-full flex gap-x-2">
 					<legend class="fieldset-legend flex gap-x-1">
@@ -125,7 +125,7 @@
 					</button>
 				</fieldset>
 
-				<div class="divider divider-vertical mt-1 -mb-2" />
+				<div class="divider divider-vertical mt-1 -mb-2"></div>
 
 				<fieldset class="fieldset w-full flex gap-x-2">
 					<legend class="fieldset-legend">
@@ -156,7 +156,7 @@
 					</button>
 				</fieldset>
 
-				<div class="divider divider-vertical mt-1 mb-1" />
+				<div class="divider divider-vertical mt-1 mb-1"></div>
 
 				<ImportOptions />
 			</div>

@@ -108,7 +108,7 @@
 
 	<div class="flex flex-row h-full overflow-hidden">
 		<UpdatesSidebar />
-		<div class="divider md:divider-horizontal ml-0 w-0 !mr-0" />
+		<div class="divider md:divider-horizontal ml-0 w-0 !mr-0"></div>
 		<div class="flex-1 md:px-5 overflow-auto overflow-x-clip pb-4">
 			<MapSearch data={data.post.search} />
 

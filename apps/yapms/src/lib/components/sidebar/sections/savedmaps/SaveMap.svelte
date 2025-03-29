@@ -48,7 +48,7 @@
 			disabled={disabled || submitting || $page.url.pathname === '/app/imported'}
 		>
 			{#if submitting}
-				<span class="loading loading-dots loading-sm" />
+				<span class="loading loading-dots loading-sm"></span>
 			{:else}
 				<PlusCircle class="w-6 h-6" />
 			{/if}

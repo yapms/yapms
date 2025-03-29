@@ -10,7 +10,7 @@
 	export let onDelete: (() => void) | undefined = undefined;
 </script>
 
-<button class="join">
+<div class="join">
 	{#if onEdit !== undefined}
 		<button class="btn btn-lg btn-primary join-item" on:click={onEdit}
 			><Cog6Tooth class="w-6 h-6" /></button
@@ -28,7 +28,7 @@
 				<div
 					class="outline outline-1 outline-white w-4 h-4 rounded-full"
 					style:background-color={color}
-				/>
+				></div>
 			{/each}
 		</div>
 	</button>
@@ -37,4 +37,4 @@
 			><MinusCircle class="w-6 h-6" /></button
 		>
 	{/if}
-</button>
+</div>

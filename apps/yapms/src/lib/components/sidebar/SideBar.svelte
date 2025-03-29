@@ -23,7 +23,7 @@
 	class="z-10 h-full flex absolute right-0 md:relative md:basis-3/12 max-w-lg"
 	class:hidden={$SideBarStore.open === false || $PresentationModeStore.enabled === true}
 >
-	<div class="divider divider-horizontal w-0 m-0 flex" />
+	<div class="divider divider-horizontal w-0 m-0 flex"></div>
 	<div class="overflow-y-auto bg-base-100 w-full px-4 md:px-0">
 		<div class="flex flex-wrap justify-center p-2">
 			<SocialLinkGrid />

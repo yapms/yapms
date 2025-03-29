@@ -58,4 +58,4 @@
 	class:w-0={$ChartPositionStore === 'left'}
 	class:mr-0={$ChartPositionStore === 'left'}
 	class:ml-0={$ChartPositionStore === 'left'}
-/>
+></div>
