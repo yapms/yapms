@@ -32,4 +32,10 @@
 	];
 </script>
 
-<MapCard name="South Africa" bg="zaf" attribution="Photo by Clayton" {links} />
+<MapCard
+	name="South Africa"
+	bg="zaf"
+	attribution="Photo by Clayton"
+	attributionLink="https://www.pexels.com/photo/the-statue-of-nelson-mandela-on-the-union-buildings-grounds-pretoria-gauteng-south-africa-10527763/"
+	{links}
+/>

@@ -232,4 +232,10 @@
 	];
 </script>
 
-<MapCard name="USA State Senates" bg="usastatesenate" attribution="Photo by Tyler Moore" {links} />
+<MapCard
+	name="USA State Senates"
+	bg="usastatesenate"
+	attribution="Photo by Tyler Moore"
+	attributionLink="https://pixabay.com/photos/salt-lake-city-capitol-capital-1659141/"
+	{links}
+/>

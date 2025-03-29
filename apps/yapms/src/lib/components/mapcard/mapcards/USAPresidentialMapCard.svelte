@@ -256,4 +256,10 @@
 	];
 </script>
 
-<MapCard name="USA Presidential Results" bg="usapres" attribution="Photo by Tom Fisk" {links} />
+<MapCard
+	name="USA Presidential Results"
+	bg="usapres"
+	attribution="Photo by Tom Fisk"
+	attributionLink="https://www.pexels.com/photo/the-white-house-in-autumn-11563771/"
+	{links}
+/>

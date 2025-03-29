@@ -75,6 +75,7 @@
 <MapCard
 	name="Canadian Provinces"
 	bg="canlegassem"
-	attribution="Photo by Jermaine W from Pixabay"
+	attribution="Photo by Jermaine W"
+	attributionLink="https://pixabay.com/photos/queens-park-ontario-government-4650367/"
 	{links}
 />
