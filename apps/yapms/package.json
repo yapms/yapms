@@ -45,7 +45,7 @@
 		"glob": "11.0.1",
 		"html-to-image": "1.11.13",
 		"panzoom": "9.4.3",
-		"pocketbase": "0.22.0",
+		"pocketbase": "0.25.2",
 		"postcss": "8.5.3",
 		"prettier": "3.5.3",
 		"prettier-plugin-svelte": "3.3.3",
