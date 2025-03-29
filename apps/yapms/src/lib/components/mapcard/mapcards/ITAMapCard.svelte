@@ -40,4 +40,10 @@
 	];
 </script>
 
-<MapCard name="Italy" bg="ita" attribution="Photo by Enzo Abramo" {links} />
+<MapCard
+	name="Italy"
+	bg="ita"
+	attribution="Photo by Enzo Abramo"
+	attributionLink="https://www.publicdomainpictures.net/en/view-image.php?image=118762&picture=palazzo-montecitorio-in-rome"
+	{links}
+/>

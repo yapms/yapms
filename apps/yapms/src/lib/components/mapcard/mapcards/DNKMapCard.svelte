@@ -20,4 +20,10 @@
 	];
 </script>
 
-<MapCard name="Denmark" bg="dnk" attribution="Photo by merkulos on Pixabay" {links} />
+<MapCard
+	name="Denmark"
+	bg="dnk"
+	attribution="Photo by merkulos"
+	attributionLink="https://pixabay.com/photos/christiansborg-palace-copenhagen-3700331/"
+	{links}
+/>

@@ -20,4 +20,10 @@
 	];
 </script>
 
-<MapCard name="Germany" bg="deu" attribution="Photo by Guy Percival" {links} />
+<MapCard
+	name="Germany"
+	bg="deu"
+	attribution="Photo by Guy Percival"
+	attributionLink="https://www.publicdomainpictures.net/en/view-image.php?image=307270&picture=reichstag-building-in-berlin"
+	{links}
+/>

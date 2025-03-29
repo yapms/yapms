@@ -24,4 +24,10 @@
 	];
 </script>
 
-<MapCard name="New Zealand" bg="nzl" attribution="Photo by 飞谢" {links} />
+<MapCard
+	name="New Zealand"
+	bg="nzl"
+	attribution="Photo by 飞谢"
+	attributionLink="https://www.pexels.com/photo/the-beehive-building-in-wellington-new-zealand-10116189/"
+	{links}
+/>

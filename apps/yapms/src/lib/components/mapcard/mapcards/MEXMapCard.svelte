@@ -15,7 +15,7 @@
 <MapCard
 	name="Mexico"
 	bg="mex"
-	attribution="Photo by Thelmadatter on Wikimedia"
+	attribution="Photo by Thelmadatter"
 	attributionLink="https://commons.wikimedia.org/wiki/File:LegPalaceDF.JPG"
 	{links}
 />

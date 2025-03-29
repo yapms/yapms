@@ -12,4 +12,10 @@
 	];
 </script>
 
-<MapCard name="World" bg="glb" attribution="Photo by hallidayfineart on Pixabay" {links} />
+<MapCard
+	name="World"
+	bg="glb"
+	attribution="Photo by hallidayfineart"
+	attributionLink="https://www.lse.ac.uk/News/Latest-news-from-LSE/2022/i-September-22/New-survey-finds-public-support-for-increasing-UN-authority-over-member-states"
+	{links}
+/>

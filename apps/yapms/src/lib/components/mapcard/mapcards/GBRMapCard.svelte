@@ -40,4 +40,10 @@
 	];
 </script>
 
-<MapCard name="United Kingdom" bg="gbr" attribution="Photo by derwiki on Pixabay" {links} />
+<MapCard
+	name="United Kingdom"
+	bg="gbr"
+	attribution="Photo by derwiki"
+	attributionLink="https://pixabay.com/photos/palace-london-parliament-big-ben-530055/"
+	{links}
+/>
