@@ -43,7 +43,7 @@
 		{#if candidate.margins.length > 1}
 			<div class="flex flex-row w-full h-2">
 				{#each candidate.margins as margin}
-					<div class="w-full" style:background-color={margin.color} />
+					<div class="w-full" style:background-color={margin.color}></div>
 				{/each}
 			</div>
 		{/if}

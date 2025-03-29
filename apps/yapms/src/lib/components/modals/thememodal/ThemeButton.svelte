@@ -9,7 +9,10 @@
 		<h3>{title}</h3>
 		<div class="flex flex-row gap-2">
 			{#each margins as margin}
-				<div class="outline outline-white w-4 h-4 rounded-full" style:background-color={margin} />
+				<div
+					class="outline outline-white w-4 h-4 rounded-full"
+					style:background-color={margin}
+				></div>
 			{/each}
 		</div>
 	</div>

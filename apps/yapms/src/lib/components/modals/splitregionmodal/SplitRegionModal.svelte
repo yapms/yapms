@@ -211,7 +211,8 @@
 							class="w-5 h-5 rounded-md"
 							class:hidden={isTossupCandidate(candidate.candidate.id)}
 							on:click={(event) => updateCandidateMargin(event, candidate)}
-						/>
+							aria-label="candidate-fill-color"
+						></button>
 					</div>
 					<div class="flex space-x-0 font-thin font-mono">
 						<span class="px-0">(</span>

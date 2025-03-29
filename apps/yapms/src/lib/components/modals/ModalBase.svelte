@@ -48,7 +48,7 @@
 		<slot name="header" />
 
 		{#if isOverflow}
-			<div class="divider p-0 m-0 h-0" />
+			<div class="divider p-0 m-0 h-0"></div>
 		{/if}
 
 		<div class="overflow-y-auto p-4" bind:this={content} bind:offsetHeight>
@@ -56,7 +56,7 @@
 		</div>
 
 		{#if isOverflow}
-			<div class="divider p-0 m-0 h-0" />
+			<div class="divider p-0 m-0 h-0"></div>
 		{/if}
 
 		<div class="modal-action">

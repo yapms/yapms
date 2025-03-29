@@ -15,7 +15,7 @@
 	<SaveMap onSubmitted={refreshMaps} />
 	{#await maps}
 		<div class="flex justify-center">
-			<span class="loading loading-dots loading-lg" />
+			<span class="loading loading-dots loading-lg"></span>
 		</div>
 	{:then maps}
 		{#each maps.sort((a, b) => a.name.localeCompare(b.name)) as map}

@@ -97,7 +97,7 @@
 	<div slot="action" class="flex w-full gap-2">
 		<button class="btn btn-secondary" on:click={selectPresetColor}> Preset Colors </button>
 		<button class="btn btn-primary" on:click={addColor}>Add Color</button>
-		<div class="grow" />
+		<div class="grow"></div>
 		<button class="btn btn-success" on:click={confirm}>Add Candidate</button>
 	</div>
 </ModalBase>

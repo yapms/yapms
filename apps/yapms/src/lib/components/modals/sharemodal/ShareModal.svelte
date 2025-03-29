@@ -152,7 +152,7 @@
 				</div>
 			</div>
 
-			<div class="divider divider-horizontal" />
+			<div class="divider divider-horizontal"></div>
 
 			<div class="flex flex-col gap-2">
 				<h3 class="font-light text-lg pb-3">Load</h3>

@@ -50,11 +50,11 @@
 	{#await map then map}
 		<div class="flex flex-col h-full p-3">
 			<CandidateBoxContainer selectable={false} transitions={false} />
-			<div class="grow" />
+			<div class="grow"></div>
 			<div use:setupMap id="map-div" class="overflow-hidden">
 				{@html map.default}
 			</div>
-			<div class="grow" />
+			<div class="grow"></div>
 			<div>
 				<HorizontalBattleChart transitions={false} />
 			</div>
