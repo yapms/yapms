@@ -4,11 +4,11 @@
 @plugin 'daisyui' {
 	themes:
 		light --default,
+		dim,
+		cmyk,
 		dark --prefers-dark,
-		cupcake,
-		dracula,
-		lofi,
-		night;
+		nord,
+		black;
 }
 
 html,
