@@ -68,32 +68,36 @@
 	}
 </script>
 
-<ModalBase store={AddCandidateModalStore} onClose={close}>
-	<div slot="title" class="flex flex-row gap-x-2 items-center">
-		<span>Add</span>
-		<input type="text" class="input input-sm input-bordered w-full max-w-xs" bind:value={newName} />
+<ModalBase title="Add Candidate" store={AddCandidateModalStore} onClose={close}>
+	<div slot="content" class="flex flex-col gap-4">
+		<input
+			type="text"
+			placeholder="Candidate Name"
+			class="input input-sm w-full"
+			bind:value={newName}
+		/>
+		<ul class="flex flex-row flex-wrap gap-4 justify-center" use:onListMount>
+			{#each newColors as color, index}
+				<li class="join">
+					<input
+						class="join-item"
+						type="color"
+						value={color}
+						on:change={(change) => {
+							newColors[index] = change.currentTarget.value;
+						}}
+					/>
+					<button
+						class="btn btn-sm btn-error join-item"
+						on:click={() => removeColor(index)}
+						disabled={newColors.length === 1}
+					>
+						<Trash class="w-6 h-6" />
+					</button>
+				</li>
+			{/each}
+		</ul>
 	</div>
-	<ul slot="content" class="flex flex-row flex-wrap gap-4 justify-center" use:onListMount>
-		{#each newColors as color, index}
-			<li class="join">
-				<input
-					class="join-item"
-					type="color"
-					value={color}
-					on:change={(change) => {
-						newColors[index] = change.currentTarget.value;
-					}}
-				/>
-				<button
-					class="btn btn-sm btn-error join-item"
-					on:click={() => removeColor(index)}
-					disabled={newColors.length === 1}
-				>
-					<Trash class="w-6 h-6" />
-				</button>
-			</li>
-		{/each}
-	</ul>
 	<div slot="action" class="flex w-full gap-2">
 		<button class="btn btn-secondary" on:click={selectPresetColor}> Preset Colors </button>
 		<button class="btn btn-primary" on:click={addColor}>Add Color</button>

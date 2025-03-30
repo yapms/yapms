@@ -15,16 +15,14 @@
 	}
 </script>
 
-<ModalBase store={EditTossupModalStore} onClose={close}>
-	<label slot="title" class="flex flex-row gap-x-2 items-center">
-		<span>Edit</span>
+<ModalBase title="Edit" store={EditTossupModalStore} onClose={close}>
+	<div slot="content" class="flex justify-center gap-4">
 		<input
 			type="text"
+			placeholder="Tossup Name"
 			class="input input-sm input-bordered w-full max-w-xs"
 			bind:value={$TossupCandidateStore.name}
 		/>
-	</label>
-	<div slot="content" class="flex justify-center">
 		<input
 			type="color"
 			class="cursor-pointer"
