@@ -9,7 +9,6 @@
 	import ArrowUpTray from '$lib/icons/ArrowUpTray.svelte';
 	import ImportModal from '$lib/components/modals/importmodal/ImportModal.svelte';
 	import AuthModal from '$lib/components/modals/authmodal/AuthModal.svelte';
-	import { PocketBaseStore } from '$lib/stores/PocketBase';
 	import type { PageData } from './$types';
 	import UsaMapCard from '$lib/components/mapcard/mapcards/USAMapCard.svelte';
 	import CanMapCard from '$lib/components/mapcard/mapcards/CANMapCard.svelte';
