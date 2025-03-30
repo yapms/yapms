@@ -12,7 +12,7 @@
 <MapCard
 	name="United States & Canada"
 	bg="usacan"
-	attribution="US Embassy & Consulates in Canada"
-	{links}
+	attribution="Photo by US Embassy & Consulates in Canada"
 	attributionLink="https://ca.usembassy.gov/united-states-canada-strength-partnership/"
+	{links}
 />

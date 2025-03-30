@@ -44,4 +44,10 @@
 	];
 </script>
 
-<MapCard name="Australia" bg="aus" attribution="Photo by Josh Withers" {links} />
+<MapCard
+	name="Australia"
+	bg="aus"
+	attribution="Photo by Josh Withers"
+	attributionLink="https://www.pexels.com/@hellojoshwithers/"
+	{links}
+/>

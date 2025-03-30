@@ -36,4 +36,10 @@
 	];
 </script>
 
-<MapCard name="The Netherlands" bg="nld" attribution="Photo by Nikodi on Pixabay" {links} />
+<MapCard
+	name="The Netherlands"
+	bg="nld"
+	attribution="Photo by Nikodi"
+	attributionLink="https://pixabay.com/photos/the-hague-holland-courtyard-993466/"
+	{links}
+/>

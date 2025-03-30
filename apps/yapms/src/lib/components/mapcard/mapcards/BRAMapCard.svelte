@@ -32,4 +32,10 @@
 	];
 </script>
 
-<MapCard name="Brazil" bg="bra" attribution="Photo by Magali Guimarães" {links} />
+<MapCard
+	name="Brazil"
+	bg="bra"
+	attribution="Photo by Magali Guimarães"
+	attributionLink="https://www.pexels.com/@magali-guimaraes-3411930/"
+	{links}
+/>

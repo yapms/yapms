@@ -236,4 +236,10 @@
 	];
 </script>
 
-<MapCard name="USA State Houses" bg="usastatehouse" attribution="Photo by Steve" {links} />
+<MapCard
+	name="USA State Houses"
+	bg="usastatehouse"
+	attribution="Photo by Steve"
+	attributionLink="https://www.pexels.com/photo/the-california-state-capitol-building-under-a-blue-clear-sky-8347375/"
+	{links}
+/>

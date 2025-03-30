@@ -12,4 +12,10 @@
 	];
 </script>
 
-<MapCard name="France" bg="fra" attribution="Photo by DXR on Wikimedia" {links} />
+<MapCard
+	name="France"
+	bg="fra"
+	attribution="Photo by DXR"
+	attributionLink="https://en.m.wikipedia.org/wiki/File:Palais_Bourbon,_Paris_7e,_NW_View_140402_1.jpg"
+	{links}
+/>
