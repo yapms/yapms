@@ -75,34 +75,29 @@
 </svelte:head>
 
 <div class="flex flex-col h-full overflow-hidden">
-	<div class="navbar bg-base-200">
-		<div class="navbar-start">
-			<button class="btn px-8 btn-primary mr-2 hidden md:inline" on:click={openImportModal}
-				>Import</button
-			>
-			<button class="btn btn-square mr-2 inline md:hidden" on:click={openImportModal}
-				><ArrowUpTray class="h-8 m-auto" /></button
-			>
+	<div class="navbar bg-base-300">
+		<div class="navbar-start w-auto grow">
+			<h1 class="ml-5 text-2xl font-bold">YAPMS</h1>
 		</div>
-		<div class="navbar-center">
-			<h1 class="text-2xl font-bold m-auto hidden lg:inline">
-				Yet Another Political Map Simulator
-			</h1>
-			<h1 class="text-2xl font-bold m-auto inline lg:hidden">YAPms</h1>
+		<div class="navbar-center w-auto grow hidden md:inline">
+			<MapSearch data={data.post.search} />
 		</div>
-		<div class="navbar-end">
-			<button class="btn px-8 btn-primary mr-2 hidden md:inline" on:click={openThemeModal}
-				>Theme</button
-			>
-			<button class="btn btn-square mr-2 inline md:hidden" on:click={openThemeModal}
-				><Swatch class="h-8 m-auto" /></button
-			>
-			<button class="btn px-8 btn-primary mr-2 hidden md:inline" on:click={openAuthModal}
-				>{$PocketBaseStore.authStore.isValid ? 'Account' : 'Login'}</button
-			>
-			<button class="btn btn-square mr-2 inline md:hidden" on:click={openAuthModal}
-				><Login class="h-8 m-auto" /></button
-			>
+		<div class="navbar-end w-auto grow gap-1">
+			<button class="btn btn-circle" on:click={openImportModal}>
+				<ArrowUpTray class="h-6 m-auto" />
+			</button>
+			<button class="btn btn-circle" on:click={openThemeModal}>
+				<Swatch class="h-6 m-auto" />
+			</button>
+			<button class="btn btn-circle" on:click={openAuthModal}>
+				<Login class="h-6 m-auto" />
+			</button>
+		</div>
+	</div>
+
+	<div class="navbar bg-base-200 md:hidden">
+		<div class="navbar-center w-auto grow">
+			<MapSearch data={data.post.search} />
 		</div>
 	</div>
 
@@ -110,8 +105,6 @@
 		<UpdatesSidebar />
 		<div class="divider md:divider-horizontal ml-0 w-0 !mr-0"></div>
 		<div class="flex-1 md:px-5 overflow-auto overflow-x-clip pb-4">
-			<MapSearch data={data.post.search} />
-
 			<MapCardGrid>
 				<UsaMapCard />
 				<UsaPrimariesMapCard />
