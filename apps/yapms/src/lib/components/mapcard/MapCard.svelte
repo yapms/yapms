@@ -29,12 +29,16 @@
 		<div class:grid-cols-2={links.length > 1} class="grid gap-4">
 			{#if links.length <= 4}
 				{#each links as link}
-					<a href={link.route} class="btn btn-sm btn-primary w-full">{link.label}</a>
+					<a href={link.route} class="btn btn-sm btn-primary w-full leading-3.5">{link.label}</a>
 				{/each}
 			{:else}
 				{#each links as link, index}
 					<!-- hidden links will be prerendered -->
-					<a href={link.route} class="btn btn-sm btn-primary w-full" class:hidden={index >= 3}>
+					<a
+						href={link.route}
+						class="btn btn-sm btn-primary w-full -bg-linear-30 leading-3.5"
+						class:hidden={index >= 3}
+					>
 						{link.label}
 					</a>
 				{/each}
