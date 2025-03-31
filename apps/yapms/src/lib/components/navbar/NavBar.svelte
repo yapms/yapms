@@ -16,8 +16,17 @@
 	import ChevronDoubleRight from '$lib/icons/ChevronDoubleRight.svelte';
 	import ChevronDoubleLeft from '$lib/icons/ChevronDoubleLeft.svelte';
 	import { SideBarStore } from '$lib/stores/SideBar';
-	import { PocketBaseStore } from '$lib/stores/PocketBase';
 	import VideoCamera from '$lib/icons/VideoCamera.svelte';
+	import TrashSolid from '$lib/icons/TrashSolid.svelte';
+	import HomeSolid from '$lib/icons/HomeSolid.svelte';
+	import ArrowDownTray from '$lib/icons/ArrowDownTray.svelte';
+	import Cog6Tooth from '$lib/icons/Cog6Tooth.svelte';
+	import ShareSolid from '$lib/icons/ShareSolid.svelte';
+	import PaintBrushSolid from '$lib/icons/PaintBrushSolid.svelte';
+	import WrenchSolid from '$lib/icons/WrenchSolid.svelte';
+	import UserCircleSolid from '$lib/icons/UserCircleSolid.svelte';
+	import UserSolid from '$lib/icons/UserSolid.svelte';
+	import CursorArrowRaysSolid from '$lib/icons/CursorArrowRaysSolid.svelte';
 
 	let content: HTMLDivElement | undefined;
 	let offsetWidth: number | undefined;
@@ -76,20 +85,39 @@
 		bind:this={content}
 		bind:offsetWidth
 	>
-		<button class="btn btn-sm snap-start" on:click={openNavigateHomeModal}>Home</button>
-		<button class="btn btn-sm btn-error snap-start" on:click={openClearMapModal}>Clear</button>
-		<button class="btn btn-sm snap-start" on:click={openCandidateModal}>Candidates</button>
-		<button class="btn btn-sm snap-start" on:click={newImportedMap}>Import</button>
-		<button class="btn btn-sm snap-start" on:click={openOptions}>Options</button>
-		<button class="btn btn-sm snap-start" on:click={openMode}
-			>Mode: <b>{$ModeStore.toUpperCase()}</b></button
-		>
-		<button class="btn btn-sm snap-start" on:click={openShare}>Share</button>
-		<button class="btn btn-sm snap-start" on:click={openTheme}>Theme</button>
-		<button class="btn btn-sm snap-start" on:click={openTools}>Tools</button>
-		<button class="btn btn-sm snap-end" on:click={openAuth}
-			>{$PocketBaseStore.authStore.isValid ? 'Account' : 'Login'}</button
-		>
+		<button class="btn btn-sm snap-start" on:click={openNavigateHomeModal}>
+			<HomeSolid class="w-5 h-5" />
+		</button>
+		<button class="btn btn-sm btn-error snap-start" on:click={openClearMapModal}>
+			<TrashSolid class="w-5 h-5" />
+		</button>
+		<div class="tooltip tooltip-right" data-tip="Edit Candidates">
+			<button class="btn btn-sm snap-start" on:click={openCandidateModal}>
+				<UserSolid class="w-5 h-5" />
+			</button>
+		</div>
+		<button class="btn btn-sm snap-start" on:click={newImportedMap}>
+			<ArrowDownTray class="w-5 h-5" />
+		</button>
+		<button class="btn btn-sm snap-start" on:click={openOptions}>
+			<Cog6Tooth class="w-5 h-5" />
+		</button>
+		<button class="btn btn-sm snap-start" on:click={openMode}>
+			<CursorArrowRaysSolid class="w-5 h-5" />
+			<p class="font-bold">{$ModeStore.toUpperCase()}</p>
+		</button>
+		<button class="btn btn-sm snap-start" on:click={openShare}>
+			<ShareSolid class="w-5 h-5" />
+		</button>
+		<button class="btn btn-sm snap-start" on:click={openTheme}>
+			<PaintBrushSolid class="w-5 h-5" />
+		</button>
+		<button class="btn btn-sm snap-start" on:click={openTools}>
+			<WrenchSolid class="w-5 h-5" />
+		</button>
+		<button class="btn btn-sm snap-end" on:click={openAuth}>
+			<UserCircleSolid class="w-5 h-5" />
+		</button>
 	</div>
 	<div class="divider divider-horizontal m-0 w-0" class:hidden={isOverflow === false}></div>
 	<button class="btn btn-sm btn-neutral" on:click={togglePresentationMode}>
