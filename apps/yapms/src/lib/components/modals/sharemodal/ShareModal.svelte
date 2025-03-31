@@ -123,68 +123,74 @@
 
 <ModalBase title="Share Map" store={ShareModalStore} onClose={close}>
 	<div slot="content">
-		<div class="flex flex-row gap-4">
-			<div class="flex flex-col gap-2">
-				<h3 class="font-light text-lg pb-3">Save</h3>
-				<button class="btn btn-secondary gap-1 flex-nowrap" on:click={screenshot}>
-					<Camera class="w-5 h-5" />
-					<span>Screenshot</span>
-				</button>
-				<button class="btn btn-secondary gap-1 flex-nowrap" on:click={downloadJson}>
-					<ArrowDownTray class="w-5 h-5" />
-					<span>Download</span>
-				</button>
-				<div
-					class="tooltip-right"
-					class:tooltip={$page.url.pathname === '/app/imported'}
-					data-tip="Can not link to an imported map"
-				>
+		<div class="flex flex-col gap-4">
+			<fieldset class="flex flex-col gap-2">
+				<legend class="fieldset-legend">Load Local File</legend>
+				<div class="flex flex-row gap-2">
+					<input type="file" class="file-input w-full" bind:files />
+					<button class="btn btn-secondary" on:click={load}>
+						<ArrowUpTray class="w-5 h-5" />
+						<span>Load</span>
+					</button>
+				</div>
+			</fieldset>
+
+			<fieldset class="flex flex-col gap-2">
+				<legend class="fieldset-legend">Save Local File</legend>
+				<div class="flex flex-row gap-2">
+					<button class="btn" on:click={downloadJson}>
+						<ArrowDownTray class="w-5 h-5" />
+						<span>Download</span>
+					</button>
+					<button class="btn" on:click={screenshot}>
+						<Camera class="w-5 h-5" />
+						<span>Screenshot</span>
+					</button>
+				</div>
+			</fieldset>
+
+			{#if $page.url.pathname !== '/app/imported'}
+				<fieldset class="flex flex-col gap-2">
+					<legend class="fieldset-legend">Generate Link</legend>
 					<button
-						class="btn btn-secondary gap-1 flex-nowrap"
+						class="btn btn-primary"
 						on:click={generateLink}
 						disabled={fetchingLink ||
 							turnstileToken === null ||
 							$page.url.pathname === '/app/imported'}
 					>
 						<Link class="w-5 h-5" />
-						<span>Generate Link</span>
+						<span>Generate a link to share with others!</span>
 					</button>
-				</div>
-			</div>
-
-			<div class="divider divider-horizontal"></div>
-
-			<div class="flex flex-col gap-2">
-				<h3 class="font-light text-lg pb-3">Load</h3>
-				<input type="file" class="file-input file-input-primary w-full" bind:files />
-				<button class="btn btn-secondary gap-1 flex-nowrap" on:click={load}>
-					<ArrowUpTray class="w-5 h-5" />
-					<span>Load</span>
-				</button>
-			</div>
-		</div>
-		<button
-			class="alert mt-4 cursor-pointer transition-colors"
-			class:hidden={!linkID && !fetchingLink && !errorOnGenerateLink}
-			class:alert-warning={fetchingLink}
-			class:alert-info={!copiedLink && !fetchingLink}
-			class:alert-success={copiedLink && !fetchingLink}
-			class:alert-error={errorOnGenerateLink}
-			on:click={copyLink}
-		>
-			<label class="swap swap-flip">
-				<input type="checkbox" checked={copiedLink && errorOnGenerateLink === false} disabled />
-				<ExclamationCircle class="swap-off w-6 h-6" />
-				<CheckCircle class="swap-on w-6 h-6" />
-			</label>
-			{#if fetchingLink === true}
-				<span in:fade>Generating Link</span>
-			{:else if linkID !== null}
-				<span in:fade>{$page.url.origin}/app?m={linkID}</span>
-			{:else if errorOnGenerateLink === true}
-				<span in:fade>Error Generating Link. Try Again Later.</span>
+					<button
+						class="alert cursor-pointer transition-colors w-full"
+						class:hidden={!linkID && !fetchingLink && !errorOnGenerateLink}
+						class:alert-warning={fetchingLink}
+						class:alert-info={!copiedLink && !fetchingLink}
+						class:alert-success={copiedLink && !fetchingLink}
+						class:alert-error={errorOnGenerateLink}
+						on:click={copyLink}
+					>
+						<label class="swap swap-flip">
+							<input
+								type="checkbox"
+								checked={copiedLink && errorOnGenerateLink === false}
+								disabled
+							/>
+							<ExclamationCircle class="swap-off w-6 h-6" />
+							<CheckCircle class="swap-on w-6 h-6" />
+						</label>
+						{#if fetchingLink === true}
+							<span in:fade>Generating Link</span>
+						{:else if linkID !== null}
+							<span in:fade>{$page.url.origin}/app?m={linkID}</span>
+						{:else if errorOnGenerateLink === true}
+							<span in:fade>Error Generating Link. Try Again Later.</span>
+						{/if}
+					</button>
+				</fieldset>
 			{/if}
-		</button>
+		</div>
 	</div>
 	<div slot="action">
 		{#if $page.url.pathname !== '/app/imported'}
