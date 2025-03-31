@@ -9,7 +9,8 @@
 	import { v4 as uuidv4 } from 'uuid';
 	import ModalBase from '../ModalBase.svelte';
 	import Trash from '$lib/icons/Trash.svelte';
-	import Sortable from 'sortablejs';
+	import { SortableItem } from 'svelte-sortable-items';
+	import { flip } from 'svelte/animate';
 
 	let newName = 'New Candidate';
 	let newColors = ['#000000'];
@@ -17,15 +18,6 @@
 	PresetColorsModalSelectedStore.subscribe((presetColors) => {
 		if (presetColors.length !== 0) newColors = presetColors;
 	});
-
-	function onListMount(list: HTMLUListElement) {
-		Sortable.create(list, {
-			animation: 140,
-			dragoverBubble: true,
-			delay: 250,
-			delayOnTouchOnly: true
-		});
-	}
 
 	function addColor() {
 		newColors = [...newColors, '#000000'];
@@ -76,25 +68,29 @@
 			class="input input-sm w-full"
 			bind:value={newName}
 		/>
-		<ul class="flex flex-row flex-wrap gap-4 justify-center" use:onListMount>
-			{#each newColors as color, index}
-				<li class="join">
-					<input
-						class="join-item"
-						type="color"
-						value={color}
-						on:change={(change) => {
-							newColors[index] = change.currentTarget.value;
-						}}
-					/>
-					<button
-						class="btn btn-sm btn-error join-item"
-						on:click={() => removeColor(index)}
-						disabled={newColors.length === 1}
-					>
-						<Trash class="w-6 h-6" />
-					</button>
-				</li>
+		<ul class="flex flex-row flex-wrap gap-4 justify-center">
+			{#each newColors as color, index (index)}
+				<div animate:flip={{ duration: 100 }}>
+					<SortableItem propItemNumber={index} bind:propData={newColors}>
+						<li class="join">
+							<input
+								class="join-item"
+								type="color"
+								value={color}
+								on:change={(change) => {
+									newColors[index] = change.currentTarget.value;
+								}}
+							/>
+							<button
+								class="btn btn-sm btn-error join-item"
+								on:click={() => removeColor(index)}
+								disabled={newColors.length === 1}
+							>
+								<Trash class="w-6 h-6" />
+							</button>
+						</li>
+					</SortableItem>
+				</div>
 			{/each}
 		</ul>
 	</div>
