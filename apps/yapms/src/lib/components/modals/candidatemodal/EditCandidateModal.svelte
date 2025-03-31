@@ -105,55 +105,63 @@
 	});
 </script>
 
-<ModalBase store={EditCandidateModalStore} onClose={close}>
-	<label slot="title" class="flex flex-row gap-x-2 items-center w-full">
-		<span>Edit</span>
-		<input
-			type="text"
-			class="input input-sm input-bordered w-3/5"
-			on:input={updateName}
-			value={$CandidatesStore.at(candidateIndex)?.name}
-		/>
-		<input
-			type="number"
-			class="input input-sm input-bordered w-2/5"
-			on:input={updateDefaultValue}
-			placeholder="Starting Value"
-			value={$CandidatesStore.at(candidateIndex)?.defaultCount !== 0
-				? $CandidatesStore.at(candidateIndex)?.defaultCount
-				: ''}
-		/>
-	</label>
-	<ul slot="content" class="flex flex-row flex-wrap gap-4 justify-center" use:onListMount>
-		{#each $CandidatesStore.at(candidateIndex)?.margins || [] as margin, index (margin)}
-			<li class="join">
+<ModalBase title="Edit" store={EditCandidateModalStore} onClose={close}>
+	<div slot="content" class="flex flex-col gap-4">
+		<div class="flex flex-row gap-2 items-center w-full">
+			<fieldset class="fieldset grow basis-75">
+				<legend class="fieldset-legend">Name</legend>
 				<input
-					class="join-item"
-					type="color"
-					value={margin.color}
-					on:change={(event) => updateColor(event, index)}
+					type="text"
+					placeholder="Candidate Name"
+					class="input input-sm"
+					on:input={updateName}
+					value={$CandidatesStore.at(candidateIndex)?.name}
 				/>
-				<button
-					class="btn btn-sm btn-primary join-item"
-					class:btn-error={colorToDelete === index}
-					on:click={() => {
-						if (index === colorToDelete) {
-							removeColor(index);
-						} else {
-							confirmRemove(index);
-						}
-					}}
-					disabled={$CandidatesStore.at(candidateIndex)?.margins.length === 1}
-				>
-					{#if colorToDelete === index}
-						<Trash class="w-6 h-6" />
-					{:else}
-						<MinusCircle class="w-6 h-6" />
-					{/if}
-				</button>
-			</li>
-		{/each}
-	</ul>
+			</fieldset>
+			<fieldset class="fieldset grow">
+				<legend class="fieldset-legend">Starting Value</legend>
+				<input
+					type="number"
+					placeholder="Starting Value"
+					class="input input-sm"
+					on:input={updateDefaultValue}
+					value={$CandidatesStore.at(candidateIndex)?.defaultCount !== 0
+						? $CandidatesStore.at(candidateIndex)?.defaultCount
+						: ''}
+				/>
+			</fieldset>
+		</div>
+		<ul class="flex flex-row flex-wrap gap-4 justify-center" use:onListMount>
+			{#each $CandidatesStore.at(candidateIndex)?.margins || [] as margin, index (margin)}
+				<li class="join">
+					<input
+						class="join-item"
+						type="color"
+						value={margin.color}
+						on:change={(event) => updateColor(event, index)}
+					/>
+					<button
+						class="btn btn-sm btn-primary join-item"
+						class:btn-error={colorToDelete === index}
+						on:click={() => {
+							if (index === colorToDelete) {
+								removeColor(index);
+							} else {
+								confirmRemove(index);
+							}
+						}}
+						disabled={$CandidatesStore.at(candidateIndex)?.margins.length === 1}
+					>
+						{#if colorToDelete === index}
+							<Trash class="w-6 h-6" />
+						{:else}
+							<MinusCircle class="w-6 h-6" />
+						{/if}
+					</button>
+				</li>
+			{/each}
+		</ul>
+	</div>
 	<div slot="action" class="flex flex-grow justify-between">
 		<button class="btn btn-error" on:click={deleteCandidate}>Delete Candidate</button>
 		<button class="btn btn-success" on:click={addColor}>Add Color</button>
