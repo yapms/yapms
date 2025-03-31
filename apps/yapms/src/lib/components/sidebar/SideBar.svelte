@@ -20,7 +20,7 @@
 </script>
 
 <div
-	class="z-10 h-full flex absolute right-0 md:relative md:basis-3/12 max-w-lg"
+	class="z-10 h-full flex absolute right-0 w-full max-w-full sm:relative sm:max-w-3xs md:max-w-2xs lg:max-w-xs xl:max-w-sm 2xl:max-w-md 3xl:max-w-lg"
 	class:hidden={$SideBarStore.open === false || $PresentationModeStore.enabled === true}
 >
 	<div class="divider divider-horizontal !w-0 m-0 flex"></div>
