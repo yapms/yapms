@@ -160,7 +160,7 @@
 							$page.url.pathname === '/app/imported'}
 					>
 						<Link class="w-5 h-5" />
-						<span>Generate link to share with others!</span>
+						<span>Generate a link to share with others!</span>
 					</button>
 					<button
 						class="alert cursor-pointer transition-colors w-full"
