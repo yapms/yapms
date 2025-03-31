@@ -24,16 +24,16 @@ body {
 }
 
 [data-svelte-typeahead] {
-	@apply flex-grow! bg-transparent! -mr-12!;
+	@apply flex-grow! bg-transparent!;
 }
 [data-svelte-search] input {
-	@apply input! input-xl! border-2! -ml-12! pr-4! pl-14! rounded-md! bg-base-200! text-2xl! w-full!;
+	@apply input! w-full!;
 }
 [data-svelte-typeahead] .svelte-typeahead-list {
-	@apply mt-2! rounded-md! overflow-hidden! -ml-12! z-50!;
+	@apply mt-2! rounded-md! overflow-hidden! z-50!;
 }
 [data-svelte-typeahead] .svelte-typeahead-list li {
-	@apply bg-base-200 text-lg;
+	@apply bg-base-100;
 }
 [data-svelte-typeahead] .svelte-typeahead-list .selected,
 [data-svelte-typeahead] .svelte-typeahead-list .selected:hover {
