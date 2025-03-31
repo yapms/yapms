@@ -108,22 +108,28 @@
 <ModalBase title="Edit" store={EditCandidateModalStore} onClose={close}>
 	<div slot="content" class="flex flex-col gap-4">
 		<div class="flex flex-row gap-2 items-center w-full">
-			<input
-				type="text"
-				placeholder="Candidate Name"
-				class="input input-sm w-7/10"
-				on:input={updateName}
-				value={$CandidatesStore.at(candidateIndex)?.name}
-			/>
-			<input
-				type="number"
-				placeholder="Starting Value"
-				class="input input-sm w-3/10"
-				on:input={updateDefaultValue}
-				value={$CandidatesStore.at(candidateIndex)?.defaultCount !== 0
-					? $CandidatesStore.at(candidateIndex)?.defaultCount
-					: ''}
-			/>
+			<fieldset class="fieldset grow basis-75">
+				<legend class="fieldset-legend">Name</legend>
+				<input
+					type="text"
+					placeholder="Candidate Name"
+					class="input input-sm"
+					on:input={updateName}
+					value={$CandidatesStore.at(candidateIndex)?.name}
+				/>
+			</fieldset>
+			<fieldset class="fieldset grow">
+				<legend class="fieldset-legend">Starting Value</legend>
+				<input
+					type="number"
+					placeholder="Starting Value"
+					class="input input-sm"
+					on:input={updateDefaultValue}
+					value={$CandidatesStore.at(candidateIndex)?.defaultCount !== 0
+						? $CandidatesStore.at(candidateIndex)?.defaultCount
+						: ''}
+				/>
+			</fieldset>
 		</div>
 		<ul class="flex flex-row flex-wrap gap-4 justify-center" use:onListMount>
 			{#each $CandidatesStore.at(candidateIndex)?.margins || [] as margin, index (margin)}

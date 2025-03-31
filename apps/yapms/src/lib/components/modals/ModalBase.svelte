@@ -34,11 +34,8 @@
 			{title ?? ''}
 		</h3>
 
-		<button
-			class="btn btn-sm lg:btn-xs btn-circle btn-error absolute right-4 top-4 lg:top-5"
-			on:click={close}
-		>
-			<XMark class="w-4 h-4" />
+		<button class="btn btn-md btn-circle btn-ghost absolute right-4 top-4" on:click={close}>
+			<XMark class="w-6 h-6" />
 		</button>
 
 		<slot name="header" />
