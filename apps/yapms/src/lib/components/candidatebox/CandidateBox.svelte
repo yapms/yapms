@@ -21,7 +21,7 @@
 </script>
 
 <button
-	class="overflow-hidden transition-all m-0.5 pointer-events-auto cursor-pointer font-bold rounded border-double"
+	class="overflow-hidden transition-all m-0.5 mt-1 pointer-events-auto cursor-pointer font-bold rounded border-double"
 	class:text-xs={$CandidateBoxOptions.fontSize === 0}
 	class:text-sm={$CandidateBoxOptions.fontSize === 1}
 	class:text-md={$CandidateBoxOptions.fontSize === 2}

@@ -7,7 +7,7 @@
 </script>
 
 <div
-	class="flex flex-row flex-wrap items-start justify-center relative pointer-events-none gap-1 h-0 z-10 mt-1"
+	class="flex flex-row flex-wrap items-start justify-center relative pointer-events-none gap-1 h-0 z-10"
 	class:mx-14={margins}
 >
 	<CandidateBox candidate={$TossupCandidateStore} {selectable} {transitions} />

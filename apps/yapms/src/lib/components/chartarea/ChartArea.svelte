@@ -51,11 +51,11 @@
 <div
 	class="divider"
 	class:divider-vertical={$ChartPositionStore === 'bottom'}
-	class:h-0={$ChartPositionStore === 'bottom'}
+	class:!h-0={$ChartPositionStore === 'bottom'}
 	class:mb-0={$ChartPositionStore === 'bottom'}
 	class:mt-0={$ChartPositionStore === 'bottom'}
 	class:divider-horizontal={$ChartPositionStore === 'left'}
-	class:w-0={$ChartPositionStore === 'left'}
+	class:!w-0={$ChartPositionStore === 'left'}
 	class:mr-0={$ChartPositionStore === 'left'}
 	class:ml-0={$ChartPositionStore === 'left'}
 ></div>
