@@ -78,7 +78,7 @@
 		<div class="navbar-start w-auto grow">
 			<h1 class="ml-5 text-2xl font-bold">YAPMS</h1>
 		</div>
-		<div class="navbar-center w-auto grow hidden md:inline">
+		<div class="navbar-center w-auto grow hidden lg:inline">
 			<MapSearch data={data.post.search} />
 		</div>
 		<div class="navbar-end w-auto grow gap-1">
@@ -94,7 +94,7 @@
 		</div>
 	</div>
 
-	<div class="navbar bg-base-200 md:hidden">
+	<div class="navbar bg-base-200 lg:hidden">
 		<div class="navbar-center w-auto grow">
 			<MapSearch data={data.post.search} />
 		</div>
@@ -102,8 +102,7 @@
 
 	<div class="flex flex-row h-full overflow-hidden">
 		<UpdatesSidebar />
-		<div class="divider md:divider-horizontal ml-0 w-0 !mr-0"></div>
-		<div class="flex-1 md:px-5 overflow-auto overflow-x-clip pb-4">
+		<div class="flex flex-col gap-6 flex-1 p-4 overflow-auto overflow-x-clip">
 			<MapCardGrid>
 				<UsaMapCard />
 				<UsaPrimariesMapCard />
