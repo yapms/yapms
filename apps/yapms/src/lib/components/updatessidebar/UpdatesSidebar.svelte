@@ -10,21 +10,19 @@
 	});
 </script>
 
-<div class="hidden lg:flex flex-row w-full md:max-w-sm xl:max-w-sm 2xl:max-w-md">
+<div class="grow hidden lg:flex flex-row w-full md:max-w-sm xl:max-w-sm 2xl:max-w-md">
 	<div class="w-full flex flex-col h-full justify-between">
 		<ins
 			class="adsbygoogle"
-			style="display:block;width:100%;max-height:280px;height:280px"
+			style="display:block;width:100%;max-height:280px;height:280px;min-height:290px;"
 			data-ad-client="ca-pub-1660456925957249"
 			data-ad-slot="5242761073"
 			data-full-width-responsive="true"
 		></ins>
-		<div class="overflow-y-auto flex-grow">
-			<div class="divider">Updates</div>
-			<Updates />
-		</div>
+		<div class="divider">Updates</div>
+		<Updates />
+		<div class="divider">Social Links</div>
 		<div class="mb-4">
-			<div class="divider">Social Links</div>
 			<SocialLinkGrid />
 		</div>
 	</div>
