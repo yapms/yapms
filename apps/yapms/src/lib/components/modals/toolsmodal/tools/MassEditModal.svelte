@@ -31,8 +31,8 @@
 
 <ModalBase title="Edit All Regions" store={MassEditModalStore}>
 	<div slot="content">
-		<div class="form-control w-full flex flex-col gap-3">
-			<h3 class="font-light text-lg">Region Value</h3>
+		<fieldset class="fieldset">
+			<legend class="fieldset-legend">Region Value</legend>
 			<form on:submit={confirm}>
 				<input
 					type="number"
@@ -43,7 +43,7 @@
 					bind:value
 				/>
 			</form>
-		</div>
+		</fieldset>
 	</div>
 	<div slot="action">
 		<button class="btn btn-success" on:click={confirm}>Confirm</button>
