@@ -5,7 +5,7 @@
 	let updates = $PocketBaseStore.collection('updates').getList(1, 10, { sort: '-created' });
 </script>
 
-<div class="flex flex-col gap-y-3 items-stretch">
+<div class="grow flex flex-col gap-y-4 items-stretch px-4 overflow-y-auto">
 	{#await updates}
 		<span class="loading loading-ring loading-lg text-primary self-center"></span>
 	{:then updates}
