@@ -5,12 +5,12 @@
 	import { ImportedSVGStore } from '$lib/stores/ImportedSVG';
 	import ExclamationCircle from '$lib/icons/ExclamationCircle.svelte';
 	import ModalBase from '../ModalBase.svelte';
-	import DocumentDuplicate from '$lib/icons/DocumentDuplicate.svelte';
 	import DOMPurify from 'dompurify';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import { exportImportAsSVG } from '$lib/utils/importMap';
-	import ImportOptions from './ImportOptions.svelte';
+	import GeoJsonOptions from './GeoJSONOptions.svelte';
+	import ProjectionOptions from './ProjectionOptions.svelte';
 
 	let geoJsonFiles: FileList;
 	let shapeFiles: FileList;
@@ -18,9 +18,6 @@
 
 	let loadError = false;
 	let loading = false;
-
-	const multipleFilesTooltip =
-		'Select multiple files to upload and they will be automatically merged.';
 
 	async function load(importFunc: (files: FileList) => Promise<void>, files: FileList) {
 		loading = true;
@@ -50,6 +47,16 @@
 		});
 	}
 
+	function loadCustomMap() {
+		if (geoJsonFiles && geoJsonFiles.length > 0) {
+			load(importFromGeoJson, geoJsonFiles);
+		} else if (shapeFiles && shapeFiles.length > 0) {
+			load(importFromShapefiles, shapeFiles);
+		} else if (svgFiles && svgFiles.length > 0) {
+			load(loadSVG, svgFiles);
+		}
+	}
+
 	function close() {
 		$ImportModalStore.open = false;
 		if ($page.url.pathname === '/app/imported' && $ImportedSVGStore.loaded === false) {
@@ -58,114 +65,83 @@
 	}
 </script>
 
-<ModalBase title="Import Map" store={ImportModalStore} onClose={close}>
+<ModalBase title="Custom Map" store={ImportModalStore} onClose={close}>
 	<div slot="content">
 		<div class="flex flex-col gap-y-2">
 			<div class="alert alert-error justify-start" class:hidden={!loadError}>
-				<span class="flex gap-x-2"
-					><ExclamationCircle class="w-6 h-6" />There was an error loading your map, please try
-					again.</span
-				>
+				<span class="flex gap-x-2">
+					<ExclamationCircle class="w-6 h-6" />
+					There was an error loading your map, please try again.
+				</span>
 			</div>
 			<div class="alert alert-info justify-start" class:hidden={!loading}>
 				<span class="flex gap-x-2"><ArrowUpTray class="w-6 h-6" />Loading Map...</span>
 			</div>
 			<div class="flex flex-col gap-y-2">
-				<fieldset class="fieldset w-full flex gap-x-2">
-					<legend class="fieldset-legend flex gap-x-1">
-						<p class="text-lg">Open From GeoJson</p>
-						<div class="tooltip tooltip-bottom" data-tip={multipleFilesTooltip}>
-							<DocumentDuplicate class="w-6" />
-						</div>
-					</legend>
-					<input
-						multiple
-						type="file"
-						accept=".geojson, .json"
-						class="file-input file-input-primary w-full"
-						bind:files={geoJsonFiles}
-					/>
-					<button
-						class="btn btn-secondary gap-1 flex-nowrap"
-						on:click={() => {
-							load(importFromGeoJson, geoJsonFiles);
-						}}
-						disabled={!geoJsonFiles || geoJsonFiles.length < 1 || loading}
-					>
-						<ArrowUpTray class="w-5 h-5" />
-						<span>Load</span>
-					</button>
+				<fieldset class="fieldset w-full">
+					<legend class="fieldset-legend"> Open From GeoJSONs </legend>
+					<div class="flex gap-x-2">
+						<input
+							multiple
+							type="file"
+							accept=".geojson, .json"
+							class="file-input w-full"
+							bind:files={geoJsonFiles}
+						/>
+					</div>
+					<p class="fieldset-label">Select multiple files and they will be merged.</p>
 				</fieldset>
 
-				<div class="divider divider-vertical mt-1 -mb-2"></div>
-
-				<fieldset class="fieldset w-full flex gap-x-2">
-					<legend class="fieldset-legend flex gap-x-1">
-						<p class="text-lg">Open From Shapefiles</p>
-						<div class="tooltip" data-tip={multipleFilesTooltip}>
-							<DocumentDuplicate class="w-6" />
-						</div>
-					</legend>
-					<input
-						multiple
-						type="file"
-						accept=".shp"
-						class="file-input file-input-primary w-full"
-						bind:files={shapeFiles}
-					/>
-					<button
-						class="btn btn-secondary gap-1 flex-nowrap"
-						on:click={() => {
-							load(importFromShapefiles, shapeFiles);
-						}}
-						disabled={!shapeFiles || shapeFiles.length < 1 || loading}
-					>
-						<ArrowUpTray class="w-5 h-5" />
-						<span>Load</span>
-					</button>
+				<fieldset class="fieldset w-full">
+					<legend class="fieldset-legend"> Open From Shapefiles </legend>
+					<div class="flex gap-x-2">
+						<input
+							multiple
+							type="file"
+							accept=".shp"
+							class="file-input w-full"
+							bind:files={shapeFiles}
+						/>
+					</div>
+					<p class="fieldset-label">Select multiple files and they will be merged.</p>
 				</fieldset>
 
-				<div class="divider divider-vertical mt-1 -mb-2"></div>
-
-				<fieldset class="fieldset w-full flex gap-x-2">
-					<legend class="fieldset-legend">
-						<p class="text-lg">
-							Open from SVG
-							<a
-								class="underline italic text-sm font-light"
-								href="https://github.com/yapms/yapms/wiki/Map-SVG-Format"
-								>Works only with YAPms format</a
-							>
-						</p>
-					</legend>
-					<input
-						type="file"
-						accept=".svg"
-						class="file-input file-input-primary w-full"
-						bind:files={svgFiles}
-					/>
-					<button
-						class="btn btn-secondary gap-1 flex-nowrap"
-						on:click={() => {
-							load(loadSVG, svgFiles);
-						}}
-						disabled={!svgFiles || svgFiles.length < 1 || loading}
+				<fieldset class="fieldset w-full">
+					<legend class="fieldset-legend"> Open from SVG </legend>
+					<input type="file" accept=".svg" class="file-input w-full" bind:files={svgFiles} />
+					<a
+						class="fieldset-label link"
+						href="https://github.com/yapms/yapms/wiki/Map-SVG-Format"
+						target="_blank"
 					>
-						<ArrowUpTray class="w-5 h-5" />
-						<span>Load</span>
-					</button>
+						Works only with a YAPms formatted SVG
+					</a>
 				</fieldset>
 
-				<div class="divider divider-vertical mt-1 mb-1"></div>
-
-				<ImportOptions />
+				<ProjectionOptions />
+				{#if geoJsonFiles && geoJsonFiles.length > 0}
+					<GeoJsonOptions />
+				{/if}
+				<fieldset class="fieldset">
+					<legend class="fieldset-legend">Advanced</legend>
+					<button class="btn btn-secondar" on:click={exportImportAsSVG}>Export Current SVG</button>
+				</fieldset>
 			</div>
 		</div>
 	</div>
 
 	<div slot="action">
-		<button class="btn btn-primary" disabled={false} on:click={exportImportAsSVG}>
-			Export SVG
+		<button
+			class="btn btn-primary"
+			disabled={svgFiles &&
+				geoJsonFiles &&
+				shapeFiles &&
+				svgFiles.length === 0 &&
+				geoJsonFiles.length === 0 &&
+				shapeFiles.length === 0}
+			on:click={loadCustomMap}
+		>
+			Load Custom Map
 		</button>
 	</div>
 </ModalBase>
