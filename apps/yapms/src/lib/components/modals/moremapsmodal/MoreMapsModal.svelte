@@ -7,12 +7,12 @@
 	}
 </script>
 
-<ModalBase title="{$MoreMapsModalStore.title} Maps" store={MoreMapsModalStore}>
+<ModalBase title={$MoreMapsModalStore.title} store={MoreMapsModalStore}>
 	<div slot="content">
 		<div class="flex flex-col gap-3 items-center">
 			{#each $MoreMapsModalStore.buttons as button}
-				<a class="btn btn-primary w-2/3 leading-3.5" href={button.route} onclick={close}>
-					{button.label}
+				<a class="btn btn-primary w-2/3 leading-3.5" href={button.route} on:click={close}>
+					{button.modalLabel ? button.modalLabel : button.label}
 				</a>
 			{/each}
 		</div>
