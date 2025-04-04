@@ -1,5 +1,6 @@
 export type HomeLinkData = {
 	label: string;
+	modalLabel?: string;
 	route: string;
 };
 

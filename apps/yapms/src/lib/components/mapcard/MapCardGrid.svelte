@@ -1,18 +1,17 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
-
-	const { title = undefined, children }: { title?: string | undefined; children: Snippet } =
-		$props();
+	export let title: string | undefined = undefined;
 </script>
 
-<div class="flex flex-col gap-2">
+<div class="flex flex-col gap-2 w-full items-center">
 	{#if title !== undefined}
 		<div class="text-3xl text-center lg:text-left lg:ml-4">
 			{title}
 		</div>
 	{/if}
 
-	<div class="flex w-full flex-wrap gap-4 justify-center lg:justify-start">
-		{@render children()}
+	<div
+		class="grid grid-cols-2 3xl:grid-cols-3 4xl:grid-cols-4 w-full gap-4 justify-center lg:justify-start max-w-5xl 3xl:max-w-[96rem] 4xl:max-w-[112rem]"
+	>
+		<slot />
 	</div>
 </div>
