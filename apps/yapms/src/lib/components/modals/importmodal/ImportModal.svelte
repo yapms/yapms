@@ -12,12 +12,25 @@
 	import GeoJsonOptions from './GeoJSONOptions.svelte';
 	import ProjectionOptions from './ProjectionOptions.svelte';
 
-	let geoJsonFiles: FileList;
-	let shapeFiles: FileList;
-	let svgFiles: FileList;
+	let files = $state<FileList | null | undefined>();
 
-	let loadError = false;
-	let loading = false;
+	let fileType = $derived(
+		Array.from(files || []).reduce((accu, curr) => {
+			let type = curr.type;
+			if (type === 'application/json') {
+				type = 'application/geo+json';
+			}
+
+			if (accu === '' || accu === type) {
+				return type + 'test';
+			}
+
+			return 'invalid';
+		}, '')
+	);
+
+	let loadError = $state(false);
+	let loading = $state(false);
 
 	async function load(importFunc: (files: FileList) => Promise<void>, files: FileList) {
 		loading = true;
@@ -48,12 +61,20 @@
 	}
 
 	function loadCustomMap() {
-		if (geoJsonFiles && geoJsonFiles.length > 0) {
-			load(importFromGeoJson, geoJsonFiles);
-		} else if (shapeFiles && shapeFiles.length > 0) {
-			load(importFromShapefiles, shapeFiles);
-		} else if (svgFiles && svgFiles.length > 0) {
-			load(loadSVG, svgFiles);
+		if (files === undefined || files === null) {
+			return;
+		}
+
+		if (fileType === '' || fileType === 'invalid') {
+			return;
+		}
+
+		if (fileType === 'application/geo+json') {
+			load(importFromGeoJson, files);
+		} else if (fileType === 'application/shapefile') {
+			load(importFromShapefiles, files);
+		} else if (fileType === 'image/svg+xml') {
+			load(loadSVG, files);
 		}
 	}
 
@@ -79,19 +100,30 @@
 			</div>
 			<div class="flex flex-col gap-y-2">
 				<fieldset class="fieldset w-full">
-					<legend class="fieldset-legend"> Open From GeoJSONs </legend>
+					<legend class="fieldset-legend">Map Files</legend>
 					<div class="flex gap-x-2">
 						<input
 							multiple
 							type="file"
-							accept=".geojson, .json"
+							accept=".geojson, .json, .svg, .shp"
 							class="file-input w-full"
-							bind:files={geoJsonFiles}
+							bind:files
 						/>
 					</div>
-					<p class="fieldset-label">Select multiple files and they will be merged.</p>
+					{#if fileType !== 'invalid'}
+						<p class="fieldset-label">
+							Select multiple geojson or shape files and they will be merged. Only one SVG may be
+							loaded.
+						</p>
+					{:else}
+						<div class="alert alert-error mt-2">
+							<ExclamationCircle class="w-6 h-6" />
+							<span>Please select the same types of maps.</span>
+						</div>
+					{/if}
 				</fieldset>
 
+				<!--
 				<fieldset class="fieldset w-full">
 					<legend class="fieldset-legend"> Open From Shapefiles </legend>
 					<div class="flex gap-x-2">
@@ -117,14 +149,15 @@
 						Works only with a YAPms formatted SVG
 					</a>
 				</fieldset>
+				-->
 
 				<ProjectionOptions />
-				{#if geoJsonFiles && geoJsonFiles.length > 0}
+				{#if fileType === 'application/geo+json'}
 					<GeoJsonOptions />
 				{/if}
 				<fieldset class="fieldset">
-					<legend class="fieldset-legend">Advanced</legend>
-					<button class="btn btn-secondar" on:click={exportImportAsSVG}>Export Current SVG</button>
+					<legend class="fieldset-legend">Other</legend>
+					<button class="btn" onclick={exportImportAsSVG}> Export Current Map As SVG </button>
 				</fieldset>
 			</div>
 		</div>
@@ -132,16 +165,11 @@
 
 	<div slot="action">
 		<button
-			class="btn btn-primary"
-			disabled={svgFiles &&
-				geoJsonFiles &&
-				shapeFiles &&
-				svgFiles.length === 0 &&
-				geoJsonFiles.length === 0 &&
-				shapeFiles.length === 0}
-			on:click={loadCustomMap}
+			class="btn"
+			disabled={fileType === '' || fileType === 'invalid'}
+			onclick={loadCustomMap}
 		>
-			Load Custom Map
+			Load Custom Map {fileType}
 		</button>
 	</div>
 </ModalBase>
