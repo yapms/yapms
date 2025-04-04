@@ -1,13 +1,18 @@
 <script lang="ts">
 	import MapCard from '../MapCard.svelte';
-	const links = [
+	const groups = [
 		{
-			label: "Chamber of Deputies '24",
-			route: '/app/mex/deputies/2024001/blank'
-		},
-		{
-			label: 'Senate 2024',
-			route: '/app/mex/senate/2024001/blank'
+			label:'',
+			routes: [
+						{
+					label: "Chamber of Deputies 2024",
+					route: '/app/mex/deputies/2024001/blank'
+				},
+				{
+					label: 'Senate 2024',
+					route: '/app/mex/senate/2024001/blank'
+				}
+			]
 		}
 	];
 </script>
@@ -17,5 +22,5 @@
 	bg="mex"
 	attribution="Photo by Thelmadatter"
 	attributionLink="https://commons.wikimedia.org/wiki/File:LegPalaceDF.JPG"
-	{links}
+	{groups}
 />
