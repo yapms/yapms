@@ -126,18 +126,18 @@
 <ModalBase title="Share Map" store={ShareModalStore} onClose={close}>
 	<div slot="content">
 		<div class="flex flex-col gap-4">
-			<fieldset class="flex flex-col gap-2">
+			<fieldset class="fieldset flex flex-col gap-2">
 				<legend class="fieldset-legend">Load Local File</legend>
 				<div class="flex flex-row gap-2">
 					<input type="file" class="file-input w-full" bind:files />
-					<button class="btn btn-secondary" on:click={load}>
+					<button class="btn btn-primary" on:click={load}>
 						<ArrowUpTray class="w-5 h-5" />
 						<span>Load</span>
 					</button>
 				</div>
 			</fieldset>
 
-			<fieldset class="flex flex-col gap-2">
+			<fieldset class="fieldset flex flex-col gap-2">
 				<legend class="fieldset-legend">Save Local File</legend>
 				<div class="flex flex-row gap-2">
 					<button class="btn" on:click={downloadJson}>
@@ -152,7 +152,7 @@
 			</fieldset>
 
 			{#if $page.url.pathname !== '/app/imported'}
-				<fieldset class="flex flex-col gap-2">
+				<fieldset class="fieldset flex flex-col gap-2">
 					<legend class="fieldset-legend">Generate Link</legend>
 					<button
 						class="btn btn-primary"
