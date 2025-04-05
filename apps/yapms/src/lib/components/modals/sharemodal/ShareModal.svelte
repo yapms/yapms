@@ -111,7 +111,9 @@
 
 		mapChart.style.backgroundColor = 'hsl(var(--b1))';
 
-		const data = await htmlToImage.toBlob(mapChart);
+		const data = await htmlToImage.toBlob(mapChart, {
+			skipFonts: true
+		});
 
 		if (data !== null) {
 			fileSaver.saveAs(data, 'YAPmsScreenshot.png');
