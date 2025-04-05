@@ -16,34 +16,27 @@
 	let loading = $state<boolean>(false);
 
 	let fileType = $derived(
-		// set the file type to the mime type
-		// if a mime type isn't detected, then use the file extension
 		Array.from(files || []).reduce((accu, curr) => {
-			let type: string | undefined = undefined;
+			let extension = curr.name.split('.').at(-1);
 
-			if (curr.type === 'application/json') {
-				type = 'application/geo+json';
-			} else if (curr.type !== '') {
-				type = curr.type;
+			if (extension === undefined) {
+				return 'invalid';
 			}
 
-			if (type === undefined) {
-				const extension = curr.name.split('.').at(-1) ?? '';
-				type = extension;
+			if (extension === 'json') {
+				extension = 'geojson';
 			}
 
-			if (accu === '' || accu === type) {
-				return type;
+			if (accu === '' || accu === extension) {
+				return extension;
 			}
 
-			return 'multiple';
+			return 'invalid';
 		}, '')
 	);
 
 	let fileTypeIsInvalid = $derived(
-		files &&
-			files.length > 0 &&
-			['application/geo+json', 'shp', 'image/svg+xml'].includes(fileType) === false
+		files && files.length > 0 && ['geojson', 'shp', 'svg'].includes(fileType) === false
 	);
 
 	async function load(importFunc: (files: FileList) => Promise<void>, files: FileList) {
@@ -83,11 +76,11 @@
 			return;
 		}
 
-		if (fileType === 'application/geo+json') {
+		if (fileType === 'geojson') {
 			load(importFromGeoJson, files);
 		} else if (fileType === 'shp') {
 			load(importFromShapefiles, files);
-		} else if (fileType === 'image/svg+xml') {
+		} else if (fileType === 'svg') {
 			load(loadSVG, files);
 		}
 	}
@@ -144,7 +137,9 @@
 					</p>
 				</fieldset>
 
-				<ProjectionOptions disabled={loading} />
+				{#if fileType === 'application/geo+json' || fileType === 'shp'}
+					<ProjectionOptions disabled={loading} />
+				{/if}
 
 				{#if fileType === 'application/geo+json'}
 					<GeoJsonOptions disabled={loading} />
