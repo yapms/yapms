@@ -103,6 +103,7 @@
 							class:file-input-error={errorLoading || fileTypeIsInvalid}
 							disabled={isLoading}
 							bind:files
+							onchange={() => (errorLoading = false)}
 						/>
 					</div>
 					{#if errorLoading === true}
