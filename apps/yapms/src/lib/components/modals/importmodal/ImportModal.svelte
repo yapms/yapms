@@ -39,6 +39,8 @@
 		files && files.length > 0 && ['geojson', 'shp', 'svg'].includes(fileType) === false
 	);
 
+	let noFilesSelected = $derived(files === null || files === undefined || files.length === 0);
+
 	async function load(importFunc: (files: FileList) => Promise<void>, files: FileList) {
 		loading = true;
 		try {
@@ -156,7 +158,11 @@
 	</div>
 
 	<div slot="action">
-		<button class="btn btn-primary" disabled={fileTypeIsInvalid || loading} onclick={loadCustomMap}>
+		<button
+			class="btn btn-primary"
+			disabled={noFilesSelected || fileTypeIsInvalid || loading}
+			onclick={loadCustomMap}
+		>
 			{#if loading === true}
 				Loading Custom Map
 				<span class="loading loading-spinner loading-md"></span>
