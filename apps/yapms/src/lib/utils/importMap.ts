@@ -34,6 +34,11 @@ export const DOMPurifyConfig = {
 };
 
 async function importFromShapefiles(files: FileList): Promise<void> {
+	ImportedSVGStore.set({
+		...get(ImportedSVGStore),
+		loaded: false,
+		content: ''
+	});
 	const districtShapes = await shapefile.read(await files[0].arrayBuffer());
 	districtShapes.features = [];
 
@@ -51,6 +56,11 @@ async function importFromShapefiles(files: FileList): Promise<void> {
 }
 
 async function importFromGeoJson(files: FileList): Promise<void> {
+	ImportedSVGStore.set({
+		...get(ImportedSVGStore),
+		loaded: false,
+		content: ''
+	});
 	const districtShapes = JSON.parse(await files[0].text());
 	districtShapes.features = [];
 
@@ -68,6 +78,11 @@ async function importFromGeoJson(files: FileList): Promise<void> {
 }
 
 async function importFromSVG(files: FileList): Promise<void> {
+	ImportedSVGStore.set({
+		...get(ImportedSVGStore),
+		loaded: false,
+		content: ''
+	});
 	const importedSVGStore = get(ImportedSVGStore);
 	ImportedSVGStore.set({
 		...importedSVGStore,
@@ -176,11 +191,11 @@ function exportImportAsSVG(): void {
 function proj4ToProjection() {
 	const proj4Projection = proj4(get(ImportedSVGStore).options.customProjectionDefinition);
 
-	const project = function (lambda: number, phi: number) {
+	const project = function(lambda: number, phi: number) {
 		return proj4Projection.forward([lambda, phi].map(radiansToDegrees));
 	};
 
-	project.invert = function (x: number, y: number) {
+	project.invert = function(x: number, y: number) {
 		return proj4Projection.inverse([x, y]).map(degreesToRadians);
 	};
 
