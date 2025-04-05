@@ -1,15 +1,9 @@
 <script lang="ts">
 	import { ImportModalStore } from '$lib/stores/Modals';
-	import {
-		DOMPurifyConfig,
-		importFromGeoJson,
-		importFromShapefiles,
-		importFromSVG
-	} from '$lib/utils/importMap';
+	import { importFromGeoJson, importFromShapefiles, importFromSVG } from '$lib/utils/importMap';
 	import { ImportedSVGStore } from '$lib/stores/ImportedSVG';
 	import ExclamationCircle from '$lib/icons/ExclamationCircle.svelte';
 	import ModalBase from '../ModalBase.svelte';
-	import DOMPurify from 'dompurify';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 	import { exportImportAsSVG } from '$lib/utils/importMap';
