@@ -122,7 +122,7 @@
 
 					<p class="fieldset-label block">
 						Select multiple geojson or shape files and they will be merged. Only one SVG may be
-						loaded. SVGs must be properly formatted, learn how at
+						loaded. SVGs must be follow YAPms standards, learn how at
 						<a
 							class="link"
 							href="https://github.com/yapms/yapms/wiki/Map-SVG-Format"
