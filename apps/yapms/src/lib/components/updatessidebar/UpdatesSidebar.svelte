@@ -22,7 +22,7 @@
 		<div class="divider">Updates</div>
 		<Updates />
 		<div class="divider">Social Links</div>
-		<div class="mb-4">
+		<div class="mb-4 mx-4">
 			<SocialLinkGrid />
 		</div>
 	</div>
