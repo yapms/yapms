@@ -43,11 +43,6 @@
 	async function load(importFunc: (files: FileList) => Promise<void>, files: FileList) {
 		isLoading = true;
 		try {
-			ImportedSVGStore.set({
-				...$ImportedSVGStore,
-				loaded: false,
-				content: ''
-			});
 			await importFunc(files);
 			close();
 			if (page.url.pathname !== '/app/imported') {
