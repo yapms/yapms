@@ -45,7 +45,7 @@
 			bind:value={$ImportedSVGStore.options.customProjectionDefinition}
 		/>
 		<p class="fieldset-label block break-keep whitespace-break-spaces">
-			YAPms uses PROJ.4 definitions. You can find many of these options at
+			YAPms uses PROJ.4 definitions. You can find many of these definitions at
 			<a class="link" href="https://epsg.io" target="_blank">epsg.io</a>.
 		</p>
 	{/if}
