@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import {
 		geoAlbers,
 		geoAlbersUsa,
@@ -10,7 +10,8 @@
 	} from 'd3';
 	import { proj4ToProjection } from '$lib/utils/importMap';
 	import { ImportedSVGStore } from '$lib/stores/ImportedSVG';
-	import QuestionMarkCircle from '$lib/icons/QuestionMarkCircle.svelte';
+
+	let { disabled = false } = $props();
 
 	const projectionOptions = [
 		{ label: 'Mercator', projectionFunction: geoMercator },
@@ -28,6 +29,7 @@
 	<legend class="fieldset-legend">Map Projection</legend>
 	<select
 		class="select select-bordered w-full capitalize"
+		{disabled}
 		bind:value={$ImportedSVGStore.options.projectionFunction}
 	>
 		{#each projectionOptions as projection}
@@ -39,11 +41,12 @@
 			type="text"
 			class="input input-bordered w-full"
 			placeholder="Enter projection here."
+			{disabled}
 			bind:value={$ImportedSVGStore.options.customProjectionDefinition}
 		/>
 		<p class="fieldset-label block break-keep whitespace-break-spaces">
 			YAPms uses PROJ.4 definitions. You can find many of these options at
-			<a class="link" href="https://epsg.io" target="_blank">https://epsg.io/</a>
+			<a class="link" href="https://epsg.io" target="_blank">epsg.io</a>.
 		</p>
 	{/if}
 </fieldset>

@@ -1,36 +1,50 @@
 <script lang="ts">
-	import ArrowUpTray from '$lib/icons/ArrowUpTray.svelte';
 	import { ImportModalStore } from '$lib/stores/Modals';
 	import { DOMPurifyConfig, importFromGeoJson, importFromShapefiles } from '$lib/utils/importMap';
 	import { ImportedSVGStore } from '$lib/stores/ImportedSVG';
 	import ExclamationCircle from '$lib/icons/ExclamationCircle.svelte';
 	import ModalBase from '../ModalBase.svelte';
 	import DOMPurify from 'dompurify';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 	import { exportImportAsSVG } from '$lib/utils/importMap';
 	import GeoJsonOptions from './GeoJSONOptions.svelte';
 	import ProjectionOptions from './ProjectionOptions.svelte';
 
-	let files = $state<FileList | null | undefined>();
+	let files = $state<FileList | null | undefined>(undefined);
+	let loadError = $state<boolean>(false);
+	let loading = $state<boolean>(false);
 
 	let fileType = $derived(
+		// set the file type to the mime type
+		// if a mime type isn't detected, then use the file extension
 		Array.from(files || []).reduce((accu, curr) => {
-			let type = curr.type;
-			if (type === 'application/json') {
+			let type: string | undefined = undefined;
+
+			if (curr.type === 'application/json') {
 				type = 'application/geo+json';
+			} else if (curr.type !== '') {
+				type = curr.type;
+			}
+
+			if (type === undefined) {
+				const extension = curr.name.split('.').at(-1) ?? '';
+				type = extension;
 			}
 
 			if (accu === '' || accu === type) {
-				return type + 'test';
+				return type;
 			}
 
-			return 'invalid';
+			return 'multiple';
 		}, '')
 	);
 
-	let loadError = $state(false);
-	let loading = $state(false);
+	let fileTypeIsInvalid = $derived(
+		files &&
+			files.length > 0 &&
+			['application/geo+json', 'shp', 'image/svg+xml'].includes(fileType) === false
+	);
 
 	async function load(importFunc: (files: FileList) => Promise<void>, files: FileList) {
 		loading = true;
@@ -42,7 +56,7 @@
 			});
 			await importFunc(files);
 			close?.();
-			if ($page.url.pathname !== '/app/imported') {
+			if (page.url.pathname !== '/app/imported') {
 				await goto('/app/imported');
 			}
 		} catch (error) {
@@ -71,7 +85,7 @@
 
 		if (fileType === 'application/geo+json') {
 			load(importFromGeoJson, files);
-		} else if (fileType === 'application/shapefile') {
+		} else if (fileType === 'shp') {
 			load(importFromShapefiles, files);
 		} else if (fileType === 'image/svg+xml') {
 			load(loadSVG, files);
@@ -80,7 +94,7 @@
 
 	function close() {
 		$ImportModalStore.open = false;
-		if ($page.url.pathname === '/app/imported' && $ImportedSVGStore.loaded === false) {
+		if (page.url.pathname === '/app/imported' && $ImportedSVGStore.loaded === false) {
 			goto('/');
 		}
 	}
@@ -89,15 +103,6 @@
 <ModalBase title="Custom Map" store={ImportModalStore} onClose={close}>
 	<div slot="content">
 		<div class="flex flex-col gap-y-2">
-			<div class="alert alert-error justify-start" class:hidden={!loadError}>
-				<span class="flex gap-x-2">
-					<ExclamationCircle class="w-6 h-6" />
-					There was an error loading your map, please try again.
-				</span>
-			</div>
-			<div class="alert alert-info justify-start" class:hidden={!loading}>
-				<span class="flex gap-x-2"><ArrowUpTray class="w-6 h-6" />Loading Map...</span>
-			</div>
 			<div class="flex flex-col gap-y-2">
 				<fieldset class="fieldset w-full">
 					<legend class="fieldset-legend">Map Files</legend>
@@ -107,69 +112,62 @@
 							type="file"
 							accept=".geojson, .json, .svg, .shp"
 							class="file-input w-full"
+							class:file-input-error={loadError || fileTypeIsInvalid}
+							disabled={loading}
 							bind:files
 						/>
 					</div>
-					{#if fileType !== 'invalid'}
-						<p class="fieldset-label">
-							Select multiple geojson or shape files and they will be merged. Only one SVG may be
-							loaded.
-						</p>
-					{:else}
+					{#if loadError === true}
 						<div class="alert alert-error mt-2">
 							<ExclamationCircle class="w-6 h-6" />
-							<span>Please select the same types of maps.</span>
+							<span>There was an error loading your map, please try again.</span>
 						</div>
 					{/if}
+
+					{#if fileTypeIsInvalid}
+						<div class="alert alert-error mt-2">
+							<ExclamationCircle class="w-6 h-6" />
+							<span>Please select a set of GeoJSONs, a set of ShapeFiles or a single SVG.</span>
+						</div>
+					{/if}
+
+					<p class="fieldset-label block">
+						Select multiple geojson or shape files and they will be merged. Only one SVG may be
+						loaded. SVGs must be properly formatted, learn how at
+						<a
+							class="link"
+							href="https://github.com/yapms/yapms/wiki/Map-SVG-Format"
+							target="_blank"
+						>
+							github.com
+						</a>.
+					</p>
 				</fieldset>
 
-				<!--
-				<fieldset class="fieldset w-full">
-					<legend class="fieldset-legend"> Open From Shapefiles </legend>
-					<div class="flex gap-x-2">
-						<input
-							multiple
-							type="file"
-							accept=".shp"
-							class="file-input w-full"
-							bind:files={shapeFiles}
-						/>
-					</div>
-					<p class="fieldset-label">Select multiple files and they will be merged.</p>
-				</fieldset>
+				<ProjectionOptions disabled={loading} />
 
-				<fieldset class="fieldset w-full">
-					<legend class="fieldset-legend"> Open from SVG </legend>
-					<input type="file" accept=".svg" class="file-input w-full" bind:files={svgFiles} />
-					<a
-						class="fieldset-label link"
-						href="https://github.com/yapms/yapms/wiki/Map-SVG-Format"
-						target="_blank"
-					>
-						Works only with a YAPms formatted SVG
-					</a>
-				</fieldset>
-				-->
-
-				<ProjectionOptions />
 				{#if fileType === 'application/geo+json'}
-					<GeoJsonOptions />
+					<GeoJsonOptions disabled={loading} />
 				{/if}
+
 				<fieldset class="fieldset">
-					<legend class="fieldset-legend">Other</legend>
-					<button class="btn" onclick={exportImportAsSVG}> Export Current Map As SVG </button>
+					<legend class="fieldset-legend">Export</legend>
+					<button class="btn" disabled={loading} onclick={exportImportAsSVG}>
+						Export Current Map As SVG
+					</button>
 				</fieldset>
 			</div>
 		</div>
 	</div>
 
 	<div slot="action">
-		<button
-			class="btn"
-			disabled={fileType === '' || fileType === 'invalid'}
-			onclick={loadCustomMap}
-		>
-			Load Custom Map {fileType}
+		<button class="btn btn-primary" disabled={fileTypeIsInvalid || loading} onclick={loadCustomMap}>
+			{#if loading === true}
+				Loading Custom Map
+				<span class="loading loading-spinner loading-md"></span>
+			{:else}
+				Load Custom Map
+			{/if}
 		</button>
 	</div>
 </ModalBase>
