@@ -30,6 +30,6 @@
 		<p>Clearing the map will result in all of your progress being cleared. Are you sure?</p>
 	</div>
 	<div slot="action">
-		<button class="btn btn-error" on:click={confirm}>confirm</button>
+		<button class="btn btn-error" on:click={confirm}>Confirm</button>
 	</div>
 </ModalBase>
