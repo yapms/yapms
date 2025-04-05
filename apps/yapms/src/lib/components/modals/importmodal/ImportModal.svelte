@@ -12,8 +12,8 @@
 	import ProjectionOptions from './ProjectionOptions.svelte';
 
 	let files = $state<FileList | null | undefined>(undefined);
-	let loadError = $state<boolean>(false);
-	let loading = $state<boolean>(false);
+	let errorLoading = $state<boolean>(false);
+	let isLoading = $state<boolean>(false);
 
 	let fileType = $derived(
 		Array.from(files || []).reduce((accu, curr) => {
@@ -42,7 +42,7 @@
 	let noFilesSelected = $derived(files === null || files === undefined || files.length === 0);
 
 	async function load(importFunc: (files: FileList) => Promise<void>, files: FileList) {
-		loading = true;
+		isLoading = true;
 		try {
 			ImportedSVGStore.set({
 				...$ImportedSVGStore,
@@ -56,9 +56,9 @@
 			}
 		} catch (error) {
 			console.error(error);
-			loadError = true;
+			error = true;
 		}
-		loading = false;
+		isLoading = false;
 	}
 
 	async function loadSVG(files: FileList) {
@@ -107,12 +107,12 @@
 							type="file"
 							accept=".geojson, .json, .svg, .shp"
 							class="file-input w-full"
-							class:file-input-error={loadError || fileTypeIsInvalid}
-							disabled={loading}
+							class:file-input-error={errorLoading || fileTypeIsInvalid}
+							disabled={isLoading}
 							bind:files
 						/>
 					</div>
-					{#if loadError === true}
+					{#if errorLoading === true}
 						<div class="alert alert-error mt-2">
 							<ExclamationCircle class="w-6 h-6" />
 							<span>There was an error loading your map, please try again.</span>
@@ -140,16 +140,16 @@
 				</fieldset>
 
 				{#if fileType === 'geojson' || fileType === 'shp'}
-					<ProjectionOptions disabled={loading} />
+					<ProjectionOptions disabled={isLoading} />
 				{/if}
 
 				{#if fileType === 'geojson'}
-					<GeoJsonOptions disabled={loading} />
+					<GeoJsonOptions disabled={isLoading} />
 				{/if}
 
 				<fieldset class="fieldset">
 					<legend class="fieldset-legend">Export</legend>
-					<button class="btn" disabled={loading} onclick={exportImportAsSVG}>
+					<button class="btn" disabled={isLoading} onclick={exportImportAsSVG}>
 						Export Current Map As SVG
 					</button>
 				</fieldset>
@@ -160,10 +160,10 @@
 	<div slot="action">
 		<button
 			class="btn btn-primary"
-			disabled={noFilesSelected || fileTypeIsInvalid || loading}
+			disabled={noFilesSelected || fileTypeIsInvalid || isLoading}
 			onclick={loadCustomMap}
 		>
-			{#if loading === true}
+			{#if isLoading === true}
 				Loading Custom Map
 				<span class="loading loading-spinner loading-md"></span>
 			{:else}
