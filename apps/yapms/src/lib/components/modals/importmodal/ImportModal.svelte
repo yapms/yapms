@@ -10,7 +10,7 @@
 	import GeoJsonOptions from './GeoJSONOptions.svelte';
 	import ProjectionOptions from './ProjectionOptions.svelte';
 
-	let files = $state<FileList | null | undefined>(undefined);
+	let files = $state<FileList>();
 	let errorLoading = $state<boolean>(false);
 	let isLoading = $state<boolean>(false);
 
@@ -38,7 +38,7 @@
 		files && files.length > 0 && ['geojson', 'shp', 'svg'].includes(fileType) === false
 	);
 
-	let noFilesSelected = $derived(files === null || files === undefined || files.length === 0);
+	let noFilesSelected = $derived(files === undefined || files.length === 0);
 
 	async function load(importFunc: (files: FileList) => Promise<void>, files: FileList) {
 		isLoading = true;
@@ -61,7 +61,7 @@
 	}
 
 	function loadCustomMap() {
-		if (noFilesSelected || fileTypeIsInvalid || files === undefined || files === null) {
+		if (noFilesSelected || fileTypeIsInvalid || files === undefined) {
 			return;
 		}
 
