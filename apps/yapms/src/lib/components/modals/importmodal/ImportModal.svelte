@@ -139,11 +139,11 @@
 					</p>
 				</fieldset>
 
-				{#if fileType === 'application/geo+json' || fileType === 'shp'}
+				{#if fileType === 'geojson' || fileType === 'shp'}
 					<ProjectionOptions disabled={loading} />
 				{/if}
 
-				{#if fileType === 'application/geo+json'}
+				{#if fileType === 'geojson'}
 					<GeoJsonOptions disabled={loading} />
 				{/if}
 
