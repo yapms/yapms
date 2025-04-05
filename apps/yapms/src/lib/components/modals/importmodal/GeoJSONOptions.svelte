@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { ImportedSVGStore } from '$lib/stores/ImportedSVG';
 
 	let { disabled = false } = $props();
