@@ -1,6 +1,11 @@
 <script lang="ts">
 	import { ImportModalStore } from '$lib/stores/Modals';
-	import { DOMPurifyConfig, importFromGeoJson, importFromShapefiles } from '$lib/utils/importMap';
+	import {
+		DOMPurifyConfig,
+		importFromGeoJson,
+		importFromShapefiles,
+		importFromSVG
+	} from '$lib/utils/importMap';
 	import { ImportedSVGStore } from '$lib/stores/ImportedSVG';
 	import ExclamationCircle from '$lib/icons/ExclamationCircle.svelte';
 	import ModalBase from '../ModalBase.svelte';
@@ -50,31 +55,19 @@
 				content: ''
 			});
 			await importFunc(files);
-			close?.();
+			close();
 			if (page.url.pathname !== '/app/imported') {
 				await goto('/app/imported');
 			}
 		} catch (error) {
 			console.error(error);
-			error = true;
+			errorLoading = true;
 		}
 		isLoading = false;
 	}
 
-	async function loadSVG(files: FileList) {
-		ImportedSVGStore.set({
-			...$ImportedSVGStore,
-			loaded: true,
-			content: DOMPurify.sanitize(await files[0].text(), DOMPurifyConfig)
-		});
-	}
-
 	function loadCustomMap() {
-		if (files === undefined || files === null) {
-			return;
-		}
-
-		if (fileType === '' || fileType === 'invalid') {
+		if (noFilesSelected || fileTypeIsInvalid || files === undefined || files === null) {
 			return;
 		}
 
@@ -83,7 +76,7 @@
 		} else if (fileType === 'shp') {
 			load(importFromShapefiles, files);
 		} else if (fileType === 'svg') {
-			load(loadSVG, files);
+			load(importFromSVG, files);
 		}
 	}
 
