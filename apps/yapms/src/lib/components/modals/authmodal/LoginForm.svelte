@@ -19,7 +19,7 @@
 		<div class="flex flex-row flex-wrap gap-2 justify-evenly items-center">
 			{#each authMethods.oauth2.providers as method}
 				<button
-					class="btn btn-primary"
+					class="btn btn-primary capitalize"
 					on:click={async () => {
 						await authenticate(method.name);
 					}}
