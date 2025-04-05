@@ -39,6 +39,10 @@
 			route: '/app/usa/senate/2024310/results'
 		},
 		{
+			label: '2024 House Results',
+			route: '/app/usa/house/2024310/results'
+		},
+		{
 			label: '2024 Gubernatorial Results',
 			route: '/app/usa/governors/2024310/results'
 		},
