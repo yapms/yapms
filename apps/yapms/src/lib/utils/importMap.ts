@@ -67,6 +67,15 @@ async function importFromGeoJson(files: FileList): Promise<void> {
 	geoJsonToSVG(districtShapes);
 }
 
+async function importFromSVG(files: FileList): Promise<void> {
+	const importedSVGStore = get(ImportedSVGStore);
+	ImportedSVGStore.set({
+		...importedSVGStore,
+		loaded: true,
+		content: DOMPurify.sanitize(await files[0].text(), DOMPurifyConfig)
+	});
+}
+
 function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
 	const width = 1000,
 		height = 1000;
@@ -181,6 +190,7 @@ function proj4ToProjection() {
 export {
 	importFromGeoJson,
 	importFromShapefiles,
+	importFromSVG,
 	newImportedMap,
 	exportImportAsSVG,
 	proj4ToProjection

@@ -79,7 +79,7 @@
 		<button class="btn btn-sm snap-start" on:click={openNavigateHomeModal}>Home</button>
 		<button class="btn btn-sm btn-error snap-start" on:click={openClearMapModal}>Clear</button>
 		<button class="btn btn-sm snap-start" on:click={openCandidateModal}>Candidates</button>
-		<button class="btn btn-sm snap-start" on:click={newImportedMap}>Import</button>
+		<button class="btn btn-sm snap-start" on:click={newImportedMap}>Custom</button>
 		<button class="btn btn-sm snap-start" on:click={openOptions}>Options</button>
 		<button class="btn btn-sm snap-start" on:click={openMode}
 			>Mode: <b>{$ModeStore.toUpperCase()}</b></button
