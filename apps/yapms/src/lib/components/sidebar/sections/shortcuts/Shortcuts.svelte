@@ -12,7 +12,7 @@
 	<div>Decrement colors.</div>
 
 	<div class="text-right content-center">Press <kbd class="kbd">r</kbd></div>
-	<div>Recenter map</div>
+	<div>Recenter map.</div>
 
 	<div class="text-right content-center">
 		Press <kbd class="kbd">0</kbd> - <kbd class="kbd">9</kbd>
