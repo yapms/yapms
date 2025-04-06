@@ -27,7 +27,6 @@
 		"@turf/helpers": "7.2.0",
 		"@turf/rewind": "7.2.0",
 		"@types/d3": "7.4.3",
-		"@types/dompurify": "3.2.0",
 		"@types/file-saver": "2.0.7",
 		"@types/proj4": "2.5.6",
 		"@types/shapefile": "0.6.4",
