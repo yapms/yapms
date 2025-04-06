@@ -3,49 +3,41 @@
 </script>
 
 <div class="hidden sm:divider">Shortcuts</div>
-<div class="hidden sm:flex flex-col gap-4 p-2">
-	<div class="flex justify-center items-center gap-2">
-		<span>Hold</span>
-		<kbd class="kbd">f</kbd>
-		<span>to quickly fill in regions</span>
+
+<div class="hidden sm:grid grid-cols-[auto_auto] gap-2 m-4">
+	<div class="text-right content-center">Hold <kbd class="kbd">f</kbd></div>
+	<div>Quickly fill in regions.</div>
+
+	<div class="text-right content-center">Hold <kbd class="kbd">ctrl</kbd></div>
+	<div>Decrement colors.</div>
+
+	<div class="text-right content-center">Press <kbd class="kbd">r</kbd></div>
+	<div>Recenter map</div>
+
+	<div class="text-right content-center">
+		Press <kbd class="kbd">0</kbd> - <kbd class="kbd">9</kbd>
 	</div>
+	<div>Switch candidates.</div>
+
 	{#if $ActionGroups.length !== 0}
-		<div class="flex justify-center items-center gap-2">
-			<span>Hold</span>
-			<kbd class="kbd">g</kbd>
-			<span>to fill in</span>
-			<select class="select select-secondary select-sm" bind:value={$SelectedActionGroup}>
+		<div class="text-right content-center">Hold <kbd class="kbd">g</kbd></div>
+		<div class="flex flex-col">
+			<span>Fill in...</span>
+			<select class="select select-secondary select-xs" bind:value={$SelectedActionGroup}>
 				{#each $ActionGroups as groupName, index}
 					<option value={index}>{groupName}</option>
 				{/each}
 			</select>
 		</div>
-		<div class="flex justify-center items-center gap-2">
-			<span>Hold</span>
-			<kbd class="kbd text-nowrap">G</kbd>
-			<span>to fill every other</span>
-			<select class="select select-secondary select-sm" bind:value={$SelectedActionGroup}>
+
+		<div class="text-right content-center">Hold <kbd class="kbd">G</kbd></div>
+		<div>
+			<span>Fill in every other...</span>
+			<select class="select select-secondary select-xs" bind:value={$SelectedActionGroup}>
 				{#each $ActionGroups as groupName, index}
 					<option value={index}>{groupName}</option>
 				{/each}
 			</select>
 		</div>
 	{/if}
-	<div class="flex justify-center items-center gap-2">
-		<span>Hold</span>
-		<kbd class="kbd">ctrl</kbd>
-		<span>to decrement colors</span>
-	</div>
-	<div class="flex justify-center items-center gap-2">
-		<span>Press</span>
-		<kbd class="kbd">r</kbd>
-		<span>to recenter map</span>
-	</div>
-	<div class="flex justify-center items-center gap-2">
-		<span>Press</span>
-		<kbd class="kbd">0</kbd>
-		<span> - </span>
-		<kbd class="kbd">9</kbd>
-		<span>to switch candidates</span>
-	</div>
 </div>
