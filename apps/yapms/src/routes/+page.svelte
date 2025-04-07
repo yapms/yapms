@@ -46,6 +46,7 @@
 	import AusStatesMapCard from '$lib/components/mapcard/mapcards/AUSStatesMapCard.svelte';
 	import SocialLinkGrid from '$lib/components/links/SocialLinkGrid.svelte';
 	import GbrHistoricalMapCard from '$lib/components/mapcard/mapcards/GBRHistoricalMapCard.svelte';
+	import KenMapCard from '$lib/components/mapcard/mapcards/KENMapCard.svelte';
 
 	export let data: PageData;
 
@@ -126,6 +127,7 @@
 				<IrlMapCard />
 				<ItaMapCard />
 				<JpnMapCard />
+				<KenMapCard />
 				<MexMapCard />
 				<NldMapCard />
 				<NzlMapCard />
