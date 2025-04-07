@@ -34,6 +34,11 @@ export const DOMPurifyConfig = {
 };
 
 async function importFromShapefiles(files: FileList): Promise<void> {
+	ImportedSVGStore.set({
+		...get(ImportedSVGStore),
+		loaded: false,
+		content: ''
+	});
 	const districtShapes = await shapefile.read(await files[0].arrayBuffer());
 	districtShapes.features = [];
 
@@ -51,6 +56,11 @@ async function importFromShapefiles(files: FileList): Promise<void> {
 }
 
 async function importFromGeoJson(files: FileList): Promise<void> {
+	ImportedSVGStore.set({
+		...get(ImportedSVGStore),
+		loaded: false,
+		content: ''
+	});
 	const districtShapes = JSON.parse(await files[0].text());
 	districtShapes.features = [];
 
@@ -65,6 +75,20 @@ async function importFromGeoJson(files: FileList): Promise<void> {
 	}
 
 	geoJsonToSVG(districtShapes);
+}
+
+async function importFromSVG(files: FileList): Promise<void> {
+	ImportedSVGStore.set({
+		...get(ImportedSVGStore),
+		loaded: false,
+		content: ''
+	});
+	const importedSVGStore = get(ImportedSVGStore);
+	ImportedSVGStore.set({
+		...importedSVGStore,
+		loaded: true,
+		content: DOMPurify.sanitize(await files[0].text(), DOMPurifyConfig)
+	});
 }
 
 function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
@@ -181,6 +205,7 @@ function proj4ToProjection() {
 export {
 	importFromGeoJson,
 	importFromShapefiles,
+	importFromSVG,
 	newImportedMap,
 	exportImportAsSVG,
 	proj4ToProjection
