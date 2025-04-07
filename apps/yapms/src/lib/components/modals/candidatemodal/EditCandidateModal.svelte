@@ -9,21 +9,28 @@
 	import { CandidateModalStore } from '$lib/stores/Modals';
 	import { EditCandidateModalStore } from '$lib/stores/Modals';
 	import { RegionsStore } from '$lib/stores/regions/Regions';
+	import { reorder, useSortable } from '$lib/utils/sortableHook.svelte';
 	import ModalBase from '../ModalBase.svelte';
-	import { SortableItem } from 'svelte-sortable-items';
-	import { flip } from 'svelte/animate';
 
-	$: candidateIndex = $CandidatesStore.findIndex(
-		(candidate) => candidate.id === $EditCandidateModalStore.candidateId
+	let candidateIndex = $derived(
+		$CandidatesStore.findIndex((candidate) => candidate.id === $EditCandidateModalStore.candidateId)
 	);
 
-	let colorToDelete: number | undefined = undefined;
+	let colorList = $state<HTMLUListElement | undefined>(undefined);
+	let colorToDelete = $state<number | undefined>(undefined);
 
-	function onMarginUpdate(colors: { color: string }[]) {
-		$CandidatesStore[candidateIndex].margins = colors;
-		$RegionsStore = $RegionsStore;
-		colorToDelete = undefined;
-	}
+	useSortable(() => colorList, {
+		animation: 140,
+		dragoverBubble: true,
+		delay: 250,
+		delayOnTouchOnly: true,
+		onEnd(evt) {
+			$CandidatesStore[candidateIndex].margins = reorder(
+				$CandidatesStore[candidateIndex].margins,
+				evt
+			);
+		}
+	});
 
 	function close() {
 		$EditCandidateModalStore.open = false;
@@ -94,7 +101,7 @@
 					type="text"
 					placeholder="Candidate Name"
 					class="input input-sm"
-					on:input={updateName}
+					oninput={updateName}
 					value={$CandidatesStore.at(candidateIndex)?.name}
 				/>
 			</fieldset>
@@ -104,55 +111,46 @@
 					type="number"
 					placeholder="Starting Value"
 					class="input input-sm"
-					on:input={updateDefaultValue}
+					oninput={updateDefaultValue}
 					value={$CandidatesStore.at(candidateIndex)?.defaultCount !== 0
 						? $CandidatesStore.at(candidateIndex)?.defaultCount
 						: ''}
 				/>
 			</fieldset>
 		</div>
-		<ul class="flex flex-row flex-wrap gap-4 justify-center">
+		<ul class="flex flex-row flex-wrap gap-4 justify-center" bind:this={colorList}>
 			{#each $CandidatesStore.at(candidateIndex)?.margins || [] as margin, index (margin)}
-				<div animate:flip={{ duration: 100 }}>
-					<SortableItem
-						propItemNumber={index}
-						bind:propData={
-							() => $CandidatesStore.at(candidateIndex)?.margins || [], (v) => onMarginUpdate(v)
-						}
+				<li class="join">
+					<input
+						class="join-item"
+						type="color"
+						value={margin.color}
+						onchange={(event) => updateColor(event, index)}
+					/>
+					<button
+						class="btn btn-sm btn-primary join-item"
+						class:btn-error={colorToDelete === index}
+						onclick={() => {
+							if (index === colorToDelete) {
+								removeColor(index);
+							} else {
+								confirmRemove(index);
+							}
+						}}
+						disabled={$CandidatesStore.at(candidateIndex)?.margins.length === 1}
 					>
-						<li class="join">
-							<input
-								class="join-item"
-								type="color"
-								value={margin.color}
-								on:change={(event) => updateColor(event, index)}
-							/>
-							<button
-								class="btn btn-sm btn-primary join-item"
-								class:btn-error={colorToDelete === index}
-								on:click={() => {
-									if (index === colorToDelete) {
-										removeColor(index);
-									} else {
-										confirmRemove(index);
-									}
-								}}
-								disabled={$CandidatesStore.at(candidateIndex)?.margins.length === 1}
-							>
-								{#if colorToDelete === index}
-									<Trash class="w-6 h-6" />
-								{:else}
-									<MinusCircle class="w-6 h-6" />
-								{/if}
-							</button>
-						</li>
-					</SortableItem>
-				</div>
+						{#if colorToDelete === index}
+							<Trash class="w-6 h-6" />
+						{:else}
+							<MinusCircle class="w-6 h-6" />
+						{/if}
+					</button>
+				</li>
 			{/each}
 		</ul>
 	</div>
 	<div slot="action" class="flex flex-grow justify-between">
-		<button class="btn btn-error" on:click={deleteCandidate}>Delete Candidate</button>
-		<button class="btn btn-success" on:click={addColor}>Add Color</button>
+		<button class="btn btn-error" onclick={deleteCandidate}>Delete Candidate</button>
+		<button class="btn btn-success" onclick={addColor}>Add Color</button>
 	</div>
 </ModalBase>
