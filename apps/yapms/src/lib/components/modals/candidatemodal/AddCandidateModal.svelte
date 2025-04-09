@@ -9,18 +9,31 @@
 	import { v4 as uuidv4 } from 'uuid';
 	import ModalBase from '../ModalBase.svelte';
 	import Trash from '$lib/icons/Trash.svelte';
-	import { SortableItem } from 'svelte-sortable-items';
-	import { flip } from 'svelte/animate';
+	import { reorder, useSortable } from '$lib/utils/sortableHook.svelte';
 
-	let newName = 'New Candidate';
-	let newColors = ['#000000'];
+	let newName = $state<string>('New Candidate');
+	let newColors = $state([{ color: '#000000' }]);
 
-	PresetColorsModalSelectedStore.subscribe((presetColors) => {
-		if (presetColors.length !== 0) newColors = presetColors;
+	let colorList = $state<HTMLUListElement | undefined>(undefined);
+
+	useSortable(() => colorList, {
+		animation: 140,
+		dragoverBubble: true,
+		delay: 250,
+		delayOnTouchOnly: true,
+		onEnd(evt) {
+			newColors = reorder(newColors, evt);
+		}
 	});
 
+	PresetColorsModalSelectedStore.subscribe((presetColors) => {
+		if (presetColors.length !== 0)
+			newColors = presetColors.map((presetColor) => {
+				return { color: presetColor };
+			});
+	});
 	function addColor() {
-		newColors = [...newColors, '#000000'];
+		newColors = [...newColors, { color: '#000000' }];
 	}
 
 	function removeColor(index: number) {
@@ -36,7 +49,7 @@
 		$AddCandidateModalStore.open = false;
 		$CandidateModalStore.open = true;
 		newName = 'New Candidate';
-		newColors = ['#000000'];
+		newColors = [{ color: '#000000' }];
 	}
 
 	function selectPresetColor() {
@@ -52,7 +65,7 @@
 				defaultCount: 0,
 				name: newName,
 				margins: newColors.map((color) => {
-					return { color };
+					return { color: color.color };
 				})
 			}
 		]);
@@ -68,36 +81,32 @@
 			class="input input-sm w-full"
 			bind:value={newName}
 		/>
-		<ul class="flex flex-row flex-wrap gap-4 justify-center">
-			{#each newColors as color, index (index)}
-				<div animate:flip={{ duration: 100 }}>
-					<SortableItem propItemNumber={index} bind:propData={newColors}>
-						<li class="join">
-							<input
-								class="join-item"
-								type="color"
-								value={color}
-								on:change={(change) => {
-									newColors[index] = change.currentTarget.value;
-								}}
-							/>
-							<button
-								class="btn btn-sm btn-error join-item"
-								on:click={() => removeColor(index)}
-								disabled={newColors.length === 1}
-							>
-								<Trash class="w-6 h-6" />
-							</button>
-						</li>
-					</SortableItem>
-				</div>
+		<ul class="flex flex-row flex-wrap gap-4 justify-center" bind:this={colorList}>
+			{#each newColors as color, index (color)}
+				<li class="join">
+					<input
+						class="join-item"
+						type="color"
+						value={color.color}
+						onchange={(change) => {
+							newColors[index].color = change.currentTarget.value;
+						}}
+					/>
+					<button
+						class="btn btn-sm btn-error join-item"
+						onclick={() => removeColor(index)}
+						disabled={newColors.length === 1}
+					>
+						<Trash class="w-6 h-6" />
+					</button>
+				</li>
 			{/each}
 		</ul>
 	</div>
 	<div slot="action" class="flex w-full gap-2">
-		<button class="btn btn-secondary" on:click={selectPresetColor}> Preset Colors </button>
-		<button class="btn btn-primary" on:click={addColor}>Add Color</button>
+		<button class="btn btn-secondary" onclick={selectPresetColor}> Preset Colors </button>
+		<button class="btn btn-primary" onclick={addColor}>Add Color</button>
 		<div class="grow"></div>
-		<button class="btn btn-success" on:click={confirm}>Add Candidate</button>
+		<button class="btn btn-success" onclick={confirm}>Add Candidate</button>
 	</div>
 </ModalBase>

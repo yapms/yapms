@@ -11,8 +11,26 @@
 	import type { Candidate } from '$lib/types/Candidate';
 	import Bars3 from '$lib/icons/Bars3.svelte';
 	import QuestionMarkCircle from '$lib/icons/QuestionMarkCircle.svelte';
-	import { SortableItem } from 'svelte-sortable-items';
-	import { flip } from 'svelte/animate';
+	import { reorder, useSortable } from '$lib/utils/sortableHook.svelte';
+
+	let list = $state<HTMLDivElement | undefined>(undefined);
+	useSortable(() => list, {
+		animation: 140,
+		dragoverBubble: true,
+		delay: 250,
+		delayOnTouchOnly: true,
+		filter: '.not-sortable',
+		onMove: function (e) {
+			if (e.related.classList.contains('not-sortable')) {
+				return false;
+			}
+		},
+		onEnd(evt) {
+			if (evt.oldIndex) evt.oldIndex--;
+			if (evt.newIndex) evt.newIndex--;
+			$CandidatesStore = reorder($CandidatesStore, evt);
+		}
+	});
 
 	function openEditTossupCandidateModal() {
 		$CandidateModalStore.open = false;
@@ -36,36 +54,30 @@
 <ModalBase title="Candidates" store={CandidateModalStore}>
 	<div slot="content">
 		<div class="flex gap-2 mt-4 flex-wrap justify-center">
-			<ul class="flex flex-wrap justify-center gap-3">
+			<div class="flex flex-wrap justify-center gap-3" bind:this={list}>
 				<button
-					class="btn btn-ghost"
+					class="btn btn-ghost not-sortable"
 					style:background-color={$TossupCandidateStore.margins[0].color}
 					style:color={calculateLumaHEX($TossupCandidateStore.margins[0].color) > 0.5
 						? 'black'
 						: 'white'}
-					on:click={openEditTossupCandidateModal}
+					onclick={openEditTossupCandidateModal}
 				>
 					<span>{$TossupCandidateStore.name}</span>
 				</button>
-				{#each $CandidatesStore as candidate, index (candidate.id)}
-					<div animate:flip={{ duration: 100 }}>
-						<SortableItem propItemNumber={index} bind:propData={$CandidatesStore}>
-							<div
-								role="button"
-								tabindex="0"
-								class="btn btn-ghost"
-								style:background-color={candidate.margins[0].color}
-								style:color={calculateLumaHEX(candidate.margins[0].color) > 0.5 ? 'black' : 'white'}
-								on:click={() => openEditCandidateModal(candidate)}
-								on:keydown={() => openEditCandidateModal(candidate)}
-							>
-								{candidate.name}
-								<Bars3 class="w-5 h-5" />
-							</div>
-						</SortableItem>
-					</div>
+				{#each $CandidatesStore as candidate (candidate)}
+					<button
+						class="btn btn-ghost"
+						style:background-color={candidate.margins[0].color}
+						style:color={calculateLumaHEX(candidate.margins[0].color) > 0.5 ? 'black' : 'white'}
+						onclick={() => openEditCandidateModal(candidate)}
+						onkeydown={() => openEditCandidateModal(candidate)}
+					>
+						{candidate.name}
+						<Bars3 class="w-5 h-5" />
+					</button>
 				{/each}
-			</ul>
+			</div>
 		</div>
 	</div>
 	<div slot="action" class="flex justify-between w-full">
@@ -73,6 +85,6 @@
 			<QuestionMarkCircle class="w-5 h-5" style="stroke-width: 0.75px" />
 			<span>Click and drag to reorder</span>
 		</div>
-		<button class="btn btn-success" on:click={openAddCandidateModal}>Add</button>
+		<button class="btn btn-success" onclick={openAddCandidateModal}>Add</button>
 	</div>
 </ModalBase>
