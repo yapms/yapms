@@ -46,39 +46,38 @@
 </script>
 
 <div
-	class="card w-full h-58 lg:h-48 image-full before:!opacity-65 col-span-2 lg:col-span-2  3xl:max-w-4xl 3xl:col-span-1"
-	class:xl:col-span-1={square || !full}
+	class="card before:!opacity-65 image-full h-58 lg:h-48 col-span-2 lg:col-span-2 3xl:max-w-4xl 3xl:col-span-1"
 	class:sm:col-span-1={!square && !full}
+	class:xl:col-span-1={square || !full}
 	class:xl:row-span-2={square}
 	class:xl:h-100={square}
 >
 	{#await image then image}
 		<figure><img class="w-full object-left" src={image.default} alt={name} /></figure>
 	{/await}
-	<div class="card-body justify-between overflow-hidden max-w-full">
-		<h2 class="card-title text-3xl text-white">{name}</h2>
+	<div class="card-body justify-between h-58 lg:h-48" class:xl:h-100={square}>
+		<h2 class="card-title text-white truncate text-2xl lg:text-3xl ">{name}</h2>
 		<div
-			class="flex space-y-4 flex-col lg:flex-row lg:justify-between lg:space-y-0 items-end hidden sm:flex"
+			class="hidden sm:flex flex-col items-end space-y-4 lg:flex-row lg:justify-between lg:space-y-0"
 			class:xl:flex-col={square}
-			class:xl:flex-nowrap={square}
 			class:xl:h-full={square}
 			class:xl:mt-8={square}
 		>
 			<div
-				class="grid grid-cols-2 w-full max-h-22 py-1 sm:inline-flex sm:flex-row sm:gap-6 sm:flex-wrap lg:w-[80%] overflow-hidden"
-				class:xl:max-h-50={square}
+				class="inline-flex flex-row flex-wrap items-end overflow-hidden w-full h-22 gap-6 py-1 lg:w-4/5"
+				class:xl:h-50={square}
 				class:xl:w-full={square}
 				class:xl:justify-center={square}
 			>
 				{#each groups as group}
-					<MapCardLinkGroup name={group.label} links={group.routes}/>
+					<MapCardLinkGroup name={group.label} links={group.routes} />
 				{/each}
 			</div>
 			<button class="btn btn-md btn-primary" on:click={openMoreMapsModal}>Browse All Maps </button>
 		</div>
 		<!-- Mobile Buttons -->
-		<div class="space-y-2 sm:hidden flex flex-col items-center">
-			<div class="space-y-2 flex-wrap w-48">
+		<div class="flex flex-col items-center space-y-2 sm:hidden">
+			<div class="w-48 flex-wrap space-y-2">
 				{#each mobileLinks as link}
 					<a href={link.route} class="btn btn-sm btn-accent btn-block">
 						{link.label}
@@ -91,7 +90,7 @@
 		</div>
 		<button
 			on:click={openAttributionModal}
-			class="absolute top-0 right-0 w-6 m-2 before:w-64 before:max-w-max cursor-pointer"
+			class="absolute top-0 right-0 w-6 m-2 cursor-pointer"
 		>
 			<InformationCircle />
 		</button>

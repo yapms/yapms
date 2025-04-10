@@ -5,17 +5,17 @@
 			label: 'National Assembly',
 			routes: [
 				{
-					label: "National Assembly 2024",
+					label: 'National Assembly 2024',
 					route: '/app/kor/assembly/2024101/blank'
 				},
 				{
-					label: "National Assembly 2020",
+					label: 'National Assembly 2020',
 					route: '/app/kor/assembly/2020001/blank'
 				}
 			]
 		},
 		{
-			label:'',
+			label: '',
 			routes: [
 				{
 					label: 'Municipalities',
