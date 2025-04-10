@@ -19,7 +19,6 @@
 				}
 			]
 		}
-		
 	];
 
 	const imageLinks = [
@@ -31,12 +30,7 @@
 			label: 'Eiffel Tower by Yovan Verma',
 			route: 'https://www.pexels.com/photo/eiffel-tower-2082103/'
 		}
-	]
+	];
 </script>
 
-<MapCard
-	name="France"
-	bg="fra"
-	{imageLinks}
-	{groups}
-/>
+<MapCard name="France" bg="fra" {imageLinks} {groups} />

@@ -6,7 +6,7 @@
 </script>
 
 <div class="flex flex-col items-center">
-	<h1 class="font-semibold text-lg text-white hidden sm:block underline">
+	<h1 class="font-semibold text-lg text-white block underline">
 		{#if name === ''}
 			<br />
 		{:else}

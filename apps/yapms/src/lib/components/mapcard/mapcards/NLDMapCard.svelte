@@ -36,7 +36,7 @@
 					route: '/app/nld/provincial/2023/results'
 				}
 			]
-		},
+		}
 	];
 </script>
 

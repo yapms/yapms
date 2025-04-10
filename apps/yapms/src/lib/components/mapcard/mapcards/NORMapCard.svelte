@@ -5,15 +5,14 @@
 			label: 'Storting',
 			routes: [
 				{
-				label: 'Storting 2021',
-				route: '/app/nor/storting/2021256/blank'
+					label: 'Storting 2021',
+					route: '/app/nor/storting/2021256/blank'
 				},
 				{
 					label: 'Storting 2017',
 					route: '/app/nor/storting/2017254/results'
 				}
 			]
-			
 		},
 		{
 			label: 'Regions',
@@ -22,7 +21,7 @@
 					label: 'Regions 2024',
 					route: '/app/nor/regions/2024001/blank'
 				},
-				
+
 				{
 					label: 'Regions 2020',
 					route: '/app/nor/regions/2020001/blank'
@@ -37,7 +36,7 @@
 					route: '/app/nor/storting/2021256/results'
 				}
 			]
-		}		
+		}
 	];
 </script>
 
