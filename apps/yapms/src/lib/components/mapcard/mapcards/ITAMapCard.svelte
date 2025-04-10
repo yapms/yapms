@@ -5,14 +5,14 @@
 			label: 'Chamber of Deputies',
 			routes: [
 				{
-				label: 'Chamber of Deputies',
-				route: '/app/ita/deputies/2022/blank'
-			},
-			{
-				label: '2022 Chamber Results',
-				modalLabel: '2022 Chamber of Deputies Results',
-				route: '/app/ita/deputies/2022/results'
-			},
+					label: 'Chamber of Deputies',
+					route: '/app/ita/deputies/2022/blank'
+				},
+				{
+					label: '2022 Chamber Results',
+					modalLabel: '2022 Chamber of Deputies Results',
+					route: '/app/ita/deputies/2022/results'
+				}
 			]
 		},
 		{
@@ -22,8 +22,7 @@
 					label: 'Senate 2022',
 					route: '/app/ita/senate/2022/blank'
 				},
-				
-				
+
 				{
 					label: '2022 Senate Results',
 					route: '/app/ita/senate/2022/results'

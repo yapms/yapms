@@ -2,10 +2,10 @@
 	import MapCard from '../MapCard.svelte';
 	const groups = [
 		{
-			label:'',
+			label: '',
 			routes: [
-						{
-					label: "Chamber of Deputies 2024",
+				{
+					label: 'Chamber of Deputies 2024',
 					route: '/app/mex/deputies/2024001/blank'
 				},
 				{

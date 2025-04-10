@@ -33,19 +33,15 @@
 
 	const imageLinks = [
 		{
-			label: "Christiansborg Palace by merkulos",
+			label: 'Christiansborg Palace by merkulos',
 			route: 'https://pixabay.com/photos/christiansborg-palace-copenhagen-3700331/'
 		},
 		{
-			label: "Copenhagen by Efrem Efre",
-			route: 'https://www.pexels.com/photo/scenic-view-of-nyhavn-canal-in-copenhagen-denmark-31400921/'
+			label: 'Copenhagen by Efrem Efre',
+			route:
+				'https://www.pexels.com/photo/scenic-view-of-nyhavn-canal-in-copenhagen-denmark-31400921/'
 		}
-	]
+	];
 </script>
 
-<MapCard
-	name="Denmark"
-	bg="dnk"
-	{imageLinks}
-	{groups}
-/>
+<MapCard name="Denmark" bg="dnk" {imageLinks} {groups} />
