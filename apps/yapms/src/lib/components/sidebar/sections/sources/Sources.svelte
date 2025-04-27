@@ -9,7 +9,7 @@
 </script>
 
 <div class="divider">Sources</div>
-<ul class="flex flex-col gap-4 m-4">
+<ul class="flex flex-col gap-4 items-center m-4">
 	{#each sources as source}
 		<li>
 			<a href={source.href} target="_blank" class="link link-info break-all">
