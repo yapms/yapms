@@ -20,4 +20,4 @@ FROM node:22.15.0 AS runner
 WORKDIR /app
 COPY --from=installer /app/apps/yapms/package.json .
 COPY --from=installer /app/apps/yapms/build/ .
-CMD node index.js
+CMD ["node", "index.js"]
