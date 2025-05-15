@@ -7,6 +7,8 @@
 	import { applyAutoStroke, applyPanZoom } from '$lib/utils/applyPanZoom';
 	import { loadRegionsForApp } from '$lib/utils/loadRegions';
 	import { setRegionStrokeColor } from '$lib/stores/RegionStrokeColorStore';
+	import { loadActionGroups } from '$lib/stores/ActionGroups';
+	import { loadSidebarSources, loadSidebarTitle } from '$lib/stores/SideBar';
 
 	const svg = get(ImportedSVGStore);
 	if (!svg.loaded) {
@@ -19,6 +21,9 @@
 			applyPanZoom(svg);
 			applyAutoStroke(svg);
 			setRegionStrokeColor(svg);
+			loadSidebarTitle(svg);
+			loadSidebarSources(svg);
+			loadActionGroups(svg);
 		}
 		loadRegionsForApp(node);
 	}
