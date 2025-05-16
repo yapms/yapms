@@ -29,7 +29,10 @@ export const DOMPurifyConfig = {
 		'default-mode',
 		'auto-border-stroke-width',
 		'auto-border-stroke-width-limit',
-		'map-type'
+		'map-type',
+		'title',
+		'original-source',
+		'action-groups'
 	]
 };
 
