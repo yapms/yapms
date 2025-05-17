@@ -2,8 +2,12 @@
 	import MapCard from '../MapCard.svelte';
 	const links = [
 		{
-			label: 'Assembly 2024',
-			route: '/app/prt/assembly/2024070/blank'
+			label: 'Assembly 2025',
+			route: '/app/prt/assembly/2025138/blank'
+		},
+		{
+			label: '2024 Results',
+			route: '/app/prt/assembly/2024070/results'
 		},
 		{
 			label: 'Districts',
