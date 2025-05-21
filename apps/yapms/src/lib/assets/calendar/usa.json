@@ -1,0 +1,67 @@
+{
+	"elections": [
+		{
+			"type": "presidential",
+			"data": [
+				{
+					"date": 20281107,
+					"map_link": "/app/usa/presidential/2028/blank",
+					"candidates": [
+						{
+							"party": "Republican",
+							"name": "Undecided"
+						},
+						{
+							"party": "Democrat",
+							"name": "Undecided"
+						}
+					]
+				},
+				{
+					"date": 20241105,
+					"map_link": "/app/usa/presidential/2024310/results",
+					"candidates": [
+						{
+							"party": "Republican",
+							"name": "Donald Trump",
+							"votes": 77302580
+						},
+						{
+							"party": "Democrat",
+							"name": "Kamala Harris",
+							"votes": 75017613
+						}
+					]
+				},
+				{
+					"date": 20201103,
+					"map_link": "/app/usa/presidential/2020/results",
+					"candidates": [
+						{
+							"party": "Democrat",
+							"name": "Joe Biden"
+						},
+						{
+							"party": "Republican",
+							"name": "Donald Trump"
+						}
+					]
+				},
+				{
+					"date": 20161108,
+					"map_link": "/app/usa/presidential/2016/results",
+					"candidates": [
+						{
+							"party": "Republican",
+							"name": "Donald Trump"
+						},
+						{
+							"party": "Democrat",
+							"name": "Hillary Clinton"
+						}
+					]
+				}
+			]
+		}
+	]
+}
