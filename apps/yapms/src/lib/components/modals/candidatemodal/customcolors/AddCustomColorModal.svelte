@@ -49,7 +49,7 @@
 		<button
 			class="btn btn-success"
 			on:click={add}
-			disabled={$AddCustomColorModalStore.newColors < 1}>Add Colors</button
+			disabled={$AddCustomColorModalStore.newColors.length < 1}>Add Colors</button
 		>
 	</div>
 </ModalBase>
