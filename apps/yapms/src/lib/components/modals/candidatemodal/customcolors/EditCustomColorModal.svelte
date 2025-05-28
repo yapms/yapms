@@ -32,7 +32,7 @@
 
 <ModalBase title="Edit Custom Color" store={EditCustomColorModalStore} onClose={close}>
 	<div slot="content">
-		<div class="flex flex-wrap gap-3">
+		<div class="flex flex-wrap gap-3 justify-center">
 			{#each $EditCustomColorModalStore.customColor as color, index}
 				<CustomColor
 					{color}
@@ -46,6 +46,10 @@
 		</div>
 	</div>
 	<div slot="action">
-		<button class="btn btn-success" on:click={confirm}>update</button>
+		<button
+			class="btn btn-success"
+			on:click={confirm}
+			disabled={$EditCustomColorModalStore.customColor.length < 1}>Confirm</button
+		>
 	</div>
 </ModalBase>

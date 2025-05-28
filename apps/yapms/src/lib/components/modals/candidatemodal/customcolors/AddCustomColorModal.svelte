@@ -32,7 +32,7 @@
 
 <ModalBase title="Add Custom Color" store={AddCustomColorModalStore} onClose={close}>
 	<div slot="content">
-		<div class="flex flex-row flex-wrap gap-3">
+		<div class="flex flex-row flex-wrap gap-3 justify-center">
 			{#each $AddCustomColorModalStore.newColors as color, index}
 				<CustomColor
 					{color}
@@ -46,6 +46,10 @@
 		</div>
 	</div>
 	<div slot="action">
-		<button class="btn btn-success" on:click={add}>add</button>
+		<button
+			class="btn btn-success"
+			on:click={add}
+			disabled={$AddCustomColorModalStore.newColors < 1}>Confirm</button
+		>
 	</div>
 </ModalBase>
