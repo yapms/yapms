@@ -24,7 +24,7 @@ function applyPanZoom(svg: SVGElement) {
 		panZoomSettings.panzoom.dispose();
 	}
 	const panzoomInstance = panzoom(svg, {
-		maxZoom: 100,
+		maxZoom: 500,
 		autocenter: true,
 		zoomDoubleClickSpeed: 1,
 		smoothScroll: false,
