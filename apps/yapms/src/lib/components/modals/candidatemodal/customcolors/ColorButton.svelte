@@ -17,19 +17,22 @@
 		>
 	{/if}
 	<button
-		class="btn btn-lg join-item flex flex-col flex-grow flex-shrink"
+		class="btn btn-lg join-item flex-grow flex-shrink"
+		class:h-fit={name !== undefined}
 		on:click={() => onSelect(colors)}
 	>
-		{#if name !== undefined}
-			<h3 class="font-semibold">{name}</h3>
-		{/if}
-		<div class="flex flex-row flex-wrap gap-2">
-			{#each colors as color}
-				<div
-					class="outline outline-1 outline-white w-4 h-4 rounded-full"
-					style:background-color={color}
-				></div>
-			{/each}
+		<div class="flex flex-col py-2 items-center gap-1">
+			{#if name !== undefined}
+				<h3 class="font-semibold">{name}</h3>
+			{/if}
+			<div class="flex flex-row flex-wrap gap-2">
+				{#each colors as color}
+					<div
+						class="outline outline-1 outline-white w-4 h-4 rounded-full"
+						style:background-color={color}
+					></div>
+				{/each}
+			</div>
 		</div>
 	</button>
 	{#if onDelete !== undefined}
