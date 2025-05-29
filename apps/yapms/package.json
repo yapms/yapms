@@ -45,7 +45,7 @@
 		"html-to-image": "1.11.13",
 		"panzoom": "9.4.3",
 		"pocketbase": "0.25.2",
-		"postcss": "8.5.3",
+		"postcss": "8.5.4",
 		"prettier": "3.5.3",
 		"prettier-plugin-svelte": "3.4.0",
 		"proj4": "2.17.0",
