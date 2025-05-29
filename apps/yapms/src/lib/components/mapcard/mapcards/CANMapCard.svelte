@@ -10,8 +10,8 @@
 			route: '/app/can/commons/next/blank'
 		},
 		{
-			label: '2021 Results',
-			route: '/app/can/commons/2021/results'
+			label: '2025 Results',
+			route: '/app/can/commons/2025118/results'
 		},
 		{
 			label: 'Senate',

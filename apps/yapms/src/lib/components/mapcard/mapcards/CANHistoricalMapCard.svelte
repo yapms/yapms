@@ -2,6 +2,10 @@
 	import MapCard from '../MapCard.svelte';
 	const links = [
 		{
+			label: '2025',
+			route: '/app/can/commons/2025118/results'
+		},
+		{
 			label: '2021',
 			route: '/app/can/commons/2021/results'
 		},
@@ -10,8 +14,8 @@
 			route: '/app/can/commons/2019/results'
 		},
 		{
-			label: '2015',
-			route: '/app/can/commons/2015/results'
+			label: 'House of Commons 2025',
+			route: '/app/can/commons/2025118/results'
 		},
 		{
 			label: 'House of Commons 2021',
