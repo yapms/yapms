@@ -81,6 +81,6 @@ rect {
 	}
 }
 
-input[type="color" i]::-webkit-color-swatch-wrapper {
-	padding:0;
+input[type='color' i]::-webkit-color-swatch-wrapper {
+	padding: 0;
 }
