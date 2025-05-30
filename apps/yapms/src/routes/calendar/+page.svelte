@@ -1,12 +1,12 @@
 <script lang="ts">
-	import UsaCalendar from '$lib/components/calendar/USACalendar.svelte';
+	import UsaPresidentialCalendar from '$lib/components/calendar/USAPresidentialCalendar.svelte';
 	import HomeNavBar from '$lib/components/navbar/HomeNavBar.svelte';
-	let selectedCalendar = $state<string>('usa');
+	let selectedCalendar = $state<string>('usa_presidential');
 </script>
 
 <div class="flex flex-col h-full overflow-hidden">
 	<HomeNavBar calendarSearch={true} bind:selectedCalendar />
-	{#if selectedCalendar === 'usa'}
-		<UsaCalendar />
+	{#if selectedCalendar === 'usa_presidential'}
+		<UsaPresidentialCalendar />
 	{/if}
 </div>
