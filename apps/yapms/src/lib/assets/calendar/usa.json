@@ -9,11 +9,13 @@
 					"candidates": [
 						{
 							"party": "Republican",
-							"name": "Undecided"
+							"name": "Undecided",
+							"votes": null
 						},
 						{
 							"party": "Democrat",
-							"name": "Undecided"
+							"name": "Undecided",
+							"votes": null
 						}
 					]
 				},
@@ -39,11 +41,13 @@
 					"candidates": [
 						{
 							"party": "Democrat",
-							"name": "Joe Biden"
+							"name": "Joe Biden",
+							"votes": null
 						},
 						{
 							"party": "Republican",
-							"name": "Donald Trump"
+							"name": "Donald Trump",
+							"votes": null
 						}
 					]
 				},
@@ -53,11 +57,13 @@
 					"candidates": [
 						{
 							"party": "Republican",
-							"name": "Donald Trump"
+							"name": "Donald Trump",
+							"votes": null
 						},
 						{
 							"party": "Democrat",
-							"name": "Hillary Clinton"
+							"name": "Hillary Clinton",
+							"votes": null
 						}
 					]
 				}
