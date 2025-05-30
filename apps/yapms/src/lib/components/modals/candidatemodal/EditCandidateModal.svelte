@@ -122,7 +122,7 @@
 			{#each $CandidatesStore.at(candidateIndex)?.margins || [] as margin, index (margin)}
 				<li class="join">
 					<input
-						class="join-item"
+						class="join-item h-full"
 						type="color"
 						value={margin.color}
 						onchange={(event) => updateColor(event, index)}

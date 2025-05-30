@@ -80,3 +80,7 @@ rect {
 		max-width: none;
 	}
 }
+
+input[type='color' i]::-webkit-color-swatch-wrapper {
+	padding: 0;
+}

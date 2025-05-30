@@ -85,7 +85,7 @@
 			{#each newColors as color, index (color)}
 				<li class="join">
 					<input
-						class="join-item"
+						class="join-item h-full"
 						type="color"
 						value={color.color}
 						onchange={(change) => {
