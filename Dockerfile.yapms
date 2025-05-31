@@ -19,7 +19,6 @@ ARG PUBLIC_UMAMI_DATA_WEBSITE_ID
 ARG PUBLIC_PRIVACY_POLICY_URI
 ARG PUBLIC_TURNSTILE_SITE
 WORKDIR /app
-COPY --from=builder /app/.env.vault .
 COPY --from=builder /app/out/package-lock.json .
 COPY --from=builder /app/out/full/ .
 
