@@ -11,6 +11,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: production
 
     permissions:
       contents: read
@@ -34,8 +35,6 @@ jobs:
         with:
           context: .
           file: ./Dockerfile.pocketbase
-          build-args: |
-            DOTENV_VAULT_KEY=${{ secrets.DOTENV_VAULT_KEY }}
           push: true
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
