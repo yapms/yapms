@@ -10,4 +10,4 @@ WORKDIR /app
 RUN apk add pngquant
 COPY --from=INSTALLER /app/pocketbase .
 COPY --from=INSTALLER /app/pb_data ./pb_data
-CMD ./pocketbase serve --http=0.0.0.0:8080
+CMD ["./pocketbase", "serve", "--http=0.0.0.0:8080"]
