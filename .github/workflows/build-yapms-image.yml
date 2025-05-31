@@ -11,6 +11,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: production
 
     permissions:
       contents: read
@@ -35,7 +36,13 @@ jobs:
           context: .
           file: ./Dockerfile.yapms
           build-args: |
-            DOTENV_VAULT_KEY=${{ secrets.DOTENV_VAULT_KEY }}
+            PUBLIC_POCKETBASE_URI=${{ vars.PUBLIC_POCKETBASE_URI }}
+            PUBLIC_PRIVACY_POLICY_URI=${{ vars.PUBLIC_PRIVACY_POLICY_URI }}
+            PUBLIC_REDIRECT_URI=${{ vars.PUBLIC_REDIRECT_URI }}
+            PUBLIC_TURNSTILE_SITE=${{ vars.PUBLIC_TURNSTILE_SITE }}
+            PUBLIC_UMAMI_DATA_WEBSITE_ID=${{ vars.PUBLIC_UMAMI_DATA_WEBSITE_ID }}
+            PUBLIC_UMAMI_URI=${{ vars.PUBLIC_UMAMI_URI }}
+
           push: true
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
