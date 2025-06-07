@@ -38,6 +38,7 @@
 		"daisyui": "5.0.43",
 		"dompurify": "3.2.6",
 		"eslint": "9.28.0",
+		"date-fns": "4.1.0",
 		"eslint-config-prettier": "10.1.5",
 		"eslint-plugin-svelte": "3.9.1",
 		"file-saver": "2.0.5",

@@ -1,12 +1,8 @@
 <script lang="ts">
 	import MapCardGrid from '$lib/components/mapcard/MapCardGrid.svelte';
-	import Login from '$lib/icons/Login.svelte';
-	import Swatch from '$lib/icons/Swatch.svelte';
 	import ThemeModal from '$lib/components/modals/thememodal/ThemeModal.svelte';
-	import { ImportModalStore, AuthModalStore, ThemeModalStore } from '$lib/stores/Modals';
 	import MoreMapsModal from '$lib/components/modals/moremapsmodal/MoreMapsModal.svelte';
 	import MapSearch from '$lib/components/mapsearch/MapSearch.svelte';
-	import ArrowUpTray from '$lib/icons/ArrowUpTray.svelte';
 	import ImportModal from '$lib/components/modals/importmodal/ImportModal.svelte';
 	import AuthModal from '$lib/components/modals/authmodal/AuthModal.svelte';
 	import type { PageData } from './$types';
@@ -44,29 +40,9 @@
 	import EspMapCard from '$lib/components/mapcard/mapcards/ESPMapCard.svelte';
 	import PolMapCard from '$lib/components/mapcard/mapcards/POLMapCard.svelte';
 	import AusStatesMapCard from '$lib/components/mapcard/mapcards/AUSStatesMapCard.svelte';
+	import HomeNavBar from '$lib/components/navbar/HomeNavBar.svelte';
 
 	export let data: PageData;
-
-	function openThemeModal() {
-		ThemeModalStore.set({
-			...$ThemeModalStore,
-			open: true
-		});
-	}
-
-	function openImportModal() {
-		ImportModalStore.set({
-			...$ImportModalStore,
-			open: true
-		});
-	}
-
-	function openAuthModal() {
-		AuthModalStore.set({
-			...$AuthModalStore,
-			open: true
-		});
-	}
 </script>
 
 <svelte:head>
@@ -75,25 +51,7 @@
 </svelte:head>
 
 <div class="flex flex-col h-full overflow-hidden">
-	<div class="navbar bg-base-300">
-		<div class="navbar-start w-auto grow">
-			<h1 class="ml-5 text-2xl font-bold">YAPMS</h1>
-		</div>
-		<div class="navbar-center w-auto grow hidden lg:inline">
-			<MapSearch data={data.post.search} />
-		</div>
-		<div class="navbar-end w-auto grow gap-1">
-			<button class="btn btn-circle" on:click={openImportModal}>
-				<ArrowUpTray class="h-6 m-auto" />
-			</button>
-			<button class="btn btn-circle" on:click={openThemeModal}>
-				<Swatch class="h-6 m-auto" />
-			</button>
-			<button class="btn btn-circle" on:click={openAuthModal}>
-				<Login class="h-6 m-auto" />
-			</button>
-		</div>
-	</div>
+	<HomeNavBar data={data.post.search} />
 
 	<div class="navbar bg-base-200 lg:hidden">
 		<div class="navbar-center w-auto grow">
