@@ -43,6 +43,7 @@
 	import UsaCanMapCard from '$lib/components/mapcard/mapcards/USACANMapCard.svelte';
 	import EspMapCard from '$lib/components/mapcard/mapcards/ESPMapCard.svelte';
 	import PolMapCard from '$lib/components/mapcard/mapcards/POLMapCard.svelte';
+	import AusStatesMapCard from '$lib/components/mapcard/mapcards/AUSStatesMapCard.svelte';
 
 	export let data: PageData;
 
@@ -137,6 +138,7 @@
 				<UsaStateSenateMapCard />
 				<UsaStateHouseMapCard />
 				<CanProvincesMapCard />
+				<AusStatesMapCard />
 			</MapCardGrid>
 
 			<MapCardGrid title="Historical Maps">
