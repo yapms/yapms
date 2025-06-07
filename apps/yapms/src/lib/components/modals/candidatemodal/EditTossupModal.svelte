@@ -16,7 +16,7 @@
 </script>
 
 <ModalBase title="Edit" store={EditTossupModalStore} onClose={close}>
-	<div slot="content" class="flex justify-center gap-4">
+	<div slot="content" class="flex justify-center items-center gap-4">
 		<input
 			type="text"
 			placeholder="Tossup Name"
