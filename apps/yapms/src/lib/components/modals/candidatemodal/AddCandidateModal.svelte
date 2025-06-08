@@ -10,8 +10,7 @@
 	import ModalBase from '../ModalBase.svelte';
 	import Trash from '$lib/icons/Trash.svelte';
 	import { reorder, useSortable } from '$lib/utils/sortableHook.svelte';
-	import { generateShades } from '$lib/utils/shades';
-	import { preventNonNumericalInput, preventNonNumericalPaste } from '$lib/utils/inputValidation';
+	import GenerateShades from './shadegeneration/GenerateShades.svelte';
 
 	let newName = $state<string>('New Candidate');
 	let newDefaultValue = $state<number>(0);
@@ -19,9 +18,6 @@
 	let newColors = $state([{ color: '#000000' }]);
 
 	let colorList = $state<HTMLUListElement | undefined>(undefined);
-
-	let generateAmount = $state<number>(4);
-	let generateColor = $state<string>('#080cab');
 
 	useSortable(() => colorList, {
 		animation: 140,
@@ -80,8 +76,8 @@
 		close();
 	}
 
-	function generateExtraColors() {
-		newColors = generateShades(generateColor, generateAmount);
+	function updateColors(newValue: { color: string }[]) {
+		newColors = newValue;
 	}
 </script>
 
@@ -130,31 +126,7 @@
 			{/each}
 		</ul>
 
-		<div>
-			<div class="flex flex-row gap-x-2 items-end">
-				<fieldset class="fieldset w-1/2">
-					<legend class="fieldset-legend">Base Color</legend>
-					<input type="color" class="w-full h-8" bind:value={generateColor} />
-				</fieldset>
-				<fieldset class="fieldset w-1/2">
-					<legend class="fieldset-legend">Number of Shades</legend>
-					<input
-						type="number"
-						min="1"
-						step="1"
-						class="input input-sm w-full"
-						onpaste={preventNonNumericalPaste}
-						onkeypress={preventNonNumericalInput}
-						bind:value={generateAmount}
-					/>
-				</fieldset>
-				<button
-					class="btn btn-sm btn-primary mb-1"
-					onclick={generateExtraColors}
-					disabled={generateAmount < 1}>Generate Shades</button
-				>
-			</div>
-		</div>
+		<GenerateShades colorUpdater={updateColors} />
 	</div>
 
 	<div slot="action" class="flex w-full gap-2">

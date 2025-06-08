@@ -11,8 +11,7 @@
 	import { RegionsStore } from '$lib/stores/regions/Regions';
 	import { reorder, useSortable } from '$lib/utils/sortableHook.svelte';
 	import ModalBase from '../ModalBase.svelte';
-	import { generateShades } from '$lib/utils/shades';
-	import { preventNonNumericalInput, preventNonNumericalPaste } from '$lib/utils/inputValidation';
+	import GenerateShades from './shadegeneration/GenerateShades.svelte';
 
 	let candidateIndex = $derived(
 		$CandidatesStore.findIndex((candidate) => candidate.id === $EditCandidateModalStore.candidateId)
@@ -20,9 +19,6 @@
 
 	let colorList = $state<HTMLUListElement | undefined>(undefined);
 	let colorToDelete = $state<number | undefined>(undefined);
-
-	let generateAmount = $state(4);
-	let generateColor = $state('#000000');
 
 	useSortable(() => colorList, {
 		animation: 140,
@@ -96,8 +92,8 @@
 		colorToDelete = undefined;
 	}
 
-	function generateExtraColors() {
-		$CandidatesStore[candidateIndex].margins = generateShades(generateColor, generateAmount);
+	function updateColors(newValue: { color: string }[]) {
+		$CandidatesStore[candidateIndex].margins = newValue;
 		$RegionsStore = $RegionsStore;
 	}
 </script>
@@ -159,29 +155,7 @@
 			{/each}
 		</ul>
 
-		<div class="flex flex-row gap-x-2 items-end">
-			<fieldset class="fieldset w-1/2">
-				<legend class="fieldset-legend">Base Color</legend>
-				<input type="color" class="w-full h-8" bind:value={generateColor} />
-			</fieldset>
-			<fieldset class="fieldset w-1/2">
-				<legend class="fieldset-legend">Number of Shades</legend>
-				<input
-					type="number"
-					min="1"
-					step="1"
-					class="input input-sm w-full"
-					onpaste={preventNonNumericalPaste}
-					onkeypress={preventNonNumericalInput}
-					bind:value={generateAmount}
-				/>
-			</fieldset>
-			<button
-				class="btn btn-sm btn-primary mb-1"
-				onclick={generateExtraColors}
-				disabled={generateAmount < 1}>Generate Shades</button
-			>
-		</div>
+		<GenerateShades colorUpdater={updateColors} />
 	</div>
 	<div slot="action" class="flex flex-grow justify-between">
 		<button class="btn btn-error" onclick={deleteCandidate}>Delete Candidate</button>
