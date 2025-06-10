@@ -5,7 +5,7 @@
 	let generateAmount = $state(4);
 	let generateColor = $state('#000000');
 
-	let { colorUpdater } = $props();
+	let { colorUpdater }: { colorUpdater: (colors: { color: string }[]) => void } = $props();
 
 	function generateExtraColors() {
 		colorUpdater(generateShades(generateColor, generateAmount));
