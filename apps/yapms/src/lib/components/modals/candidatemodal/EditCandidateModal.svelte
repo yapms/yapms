@@ -11,6 +11,7 @@
 	import { RegionsStore } from '$lib/stores/regions/Regions';
 	import { reorder, useSortable } from '$lib/utils/sortableHook.svelte';
 	import ModalBase from '../ModalBase.svelte';
+	import GenerateShades from './shadegeneration/GenerateShades.svelte';
 
 	let candidateIndex = $derived(
 		$CandidatesStore.findIndex((candidate) => candidate.id === $EditCandidateModalStore.candidateId)
@@ -90,9 +91,14 @@
 		$RegionsStore = $RegionsStore;
 		colorToDelete = undefined;
 	}
+
+	function updateColors(newValue: { color: string }[]) {
+		$CandidatesStore[candidateIndex].margins = newValue;
+		$RegionsStore = $RegionsStore;
+	}
 </script>
 
-<ModalBase title="Edit" store={EditCandidateModalStore} onClose={close}>
+<ModalBase title="Edit Candidate" store={EditCandidateModalStore} onClose={close}>
 	<div slot="content" class="flex flex-col gap-4">
 		<div class="flex flex-row gap-2 items-center w-full">
 			<fieldset class="fieldset grow basis-75">
@@ -148,6 +154,8 @@
 				</li>
 			{/each}
 		</ul>
+
+		<GenerateShades colorUpdater={updateColors} />
 	</div>
 	<div slot="action" class="flex flex-grow justify-between">
 		<button class="btn btn-error" onclick={deleteCandidate}>Delete Candidate</button>

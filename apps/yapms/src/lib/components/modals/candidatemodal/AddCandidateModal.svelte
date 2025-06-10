@@ -10,8 +10,11 @@
 	import ModalBase from '../ModalBase.svelte';
 	import Trash from '$lib/icons/Trash.svelte';
 	import { reorder, useSortable } from '$lib/utils/sortableHook.svelte';
+	import GenerateShades from './shadegeneration/GenerateShades.svelte';
 
 	let newName = $state<string>('New Candidate');
+	let newDefaultValue = $state<number>(0);
+
 	let newColors = $state([{ color: '#000000' }]);
 
 	let colorList = $state<HTMLUListElement | undefined>(undefined);
@@ -49,6 +52,7 @@
 		$AddCandidateModalStore.open = false;
 		$CandidateModalStore.open = true;
 		newName = 'New Candidate';
+		newDefaultValue = 0;
 		newColors = [{ color: '#000000' }];
 	}
 
@@ -62,7 +66,7 @@
 			...candidates,
 			{
 				id: uuidv4(),
-				defaultCount: 0,
+				defaultCount: newDefaultValue,
 				name: newName,
 				margins: newColors.map((color) => {
 					return { color: color.color };
@@ -71,16 +75,35 @@
 		]);
 		close();
 	}
+
+	function updateColors(newValue: { color: string }[]) {
+		newColors = newValue;
+	}
 </script>
 
 <ModalBase title="Add Candidate" store={AddCandidateModalStore} onClose={close}>
 	<div slot="content" class="flex flex-col gap-4">
-		<input
-			type="text"
-			placeholder="Candidate Name"
-			class="input input-sm w-full"
-			bind:value={newName}
-		/>
+		<div class="flex flex-row gap-2 items-center w-full">
+			<fieldset class="fieldset grow basis-75">
+				<legend class="fieldset-legend">Name</legend>
+				<input
+					type="text"
+					placeholder="Candidate Name"
+					class="input input-sm"
+					bind:value={newName}
+				/>
+			</fieldset>
+			<fieldset class="fieldset grow">
+				<legend class="fieldset-legend">Starting Value</legend>
+				<input
+					type="number"
+					placeholder="Starting Value"
+					class="input input-sm"
+					bind:value={newDefaultValue}
+				/>
+			</fieldset>
+		</div>
+
 		<ul class="flex flex-row flex-wrap gap-4 justify-center" bind:this={colorList}>
 			{#each newColors as color, index (color)}
 				<li class="join">
@@ -102,7 +125,10 @@
 				</li>
 			{/each}
 		</ul>
+
+		<GenerateShades colorUpdater={updateColors} />
 	</div>
+
 	<div slot="action" class="flex w-full gap-2">
 		<button class="btn btn-secondary" onclick={selectPresetColor}> Preset Colors </button>
 		<button class="btn btn-primary" onclick={addColor}>Add Color</button>
