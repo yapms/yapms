@@ -22,6 +22,7 @@
 	let isImported = $derived(page.url.pathname === '/app/imported');
 
 	let files: FileList | undefined = $state();
+	let tctFiles: FileList | undefined = $state();
 
 	let fetchingLink = $state(false);
 	let copiedLink = $state(false);
@@ -44,6 +45,8 @@
 			ShareModalStore.set({ ...$ShareModalStore, open: false });
 		}
 	}
+
+	function loadTCT() {}
 
 	async function generateLink() {
 		if (turnstileToken === null) {
@@ -157,6 +160,19 @@
 					<button class="btn" onclick={screenshot}>
 						<Camera class="w-5 h-5" />
 						<span>Screenshot</span>
+					</button>
+				</div>
+			</fieldset>
+
+			<fieldset class="fieldset flex flex-col gap-2">
+				<legend class="fieldset-legend">
+					Load <a href="https://www.newcampaigntrail.com" target="_blank" class="link">TCT</a> File
+				</legend>
+				<div class="flex flex-row gap-2">
+					<input type="file" class="file-input w-full" bind:files={tctFiles} />
+					<button class="btn btn-primary" onclick={loadTCT}>
+						<ArrowUpTray class="w-5 h-5" />
+						<span>Load</span>
 					</button>
 				</div>
 			</fieldset>
