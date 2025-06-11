@@ -31,11 +31,11 @@ function loadFromFile(files: FileList): void {
 }
 
 /**
-	* @param files
-	* Loads the first TCT fiel from the FileList
-	*
-	* @returns void
-	*/
+ * @param files
+ * Loads the first TCT fiel from the FileList
+ *
+ * @returns void
+ */
 function loadFromTCTFile(files: FileList): void {
 	const fileReader = new FileReader();
 
@@ -44,10 +44,10 @@ function loadFromTCTFile(files: FileList): void {
 			return;
 		}
 
-		convertTCTtoYapms("sdf");
-	}
+		convertTCTtoYapms('sdf');
+	};
 
-	fileReader.onerror = () => { }
+	fileReader.onerror = () => { };
 
 	fileReader.readAsText(files[0]);
 }
@@ -125,38 +125,38 @@ function convertTCTtoYapms(tct: unknown) {
 	}
 	const yapmsData = {
 		map: {
-			country: "usa",
-			type: "presidential",
-			year: "2024312",
-			variant: "blank",
+			country: 'usa',
+			type: 'presidential',
+			year: '2024312',
+			variant: 'blank'
 		},
 		tossup: {
-			id: "",
-			name: "Tossup",
+			id: '',
+			name: 'Tossup',
 			defaultCount: 0,
 			margins: [
 				{
-					color: "#cccccc"
+					color: '#cccccc'
 				}
 			]
 		},
 		candidates: [
 			{
-				id: "0",
-				name: "Democrat",
+				id: '0',
+				name: 'Democrat',
 				defaultCount: 0,
 				margins: [
 					{
-						color: "#1C408C"
+						color: '#1C408C'
 					},
 					{
-						color: "#577CCC"
+						color: '#577CCC'
 					},
 					{
-						color: "#8AAFFF"
+						color: '#8AAFFF'
 					},
 					{
-						color: "#949BB3"
+						color: '#949BB3'
 					}
 				]
 			}
@@ -168,20 +168,21 @@ function convertTCTtoYapms(tct: unknown) {
 			locked: boolean;
 			permaLocked: boolean;
 			disabled: boolean;
-			candidates: { id: string; count: number; margin: number }[]
+			candidates: { id: string; count: number; margin: number }[];
 		}>()
-	}
+	};
 
 	const candidates: {
 		id: string;
 
-		name: string; defaultCount: number; margins: number;
+		name: string;
+		defaultCount: number;
+		margins: number;
 	}[] = [];
 
 	console.log(candidates);
 
 	for (const state of parsedData.data.state_results) {
-
 		const value = state.result.reduce((prev, curr) => {
 			return prev + curr.electoral_votes;
 		}, 0);
@@ -190,8 +191,8 @@ function convertTCTtoYapms(tct: unknown) {
 			return {
 				id: candidate.candidate.toString(),
 				count: candidate.electoral_votes,
-				margin: 0,
-			}
+				margin: 0
+			};
 		});
 
 		yapmsData.regions.push({
@@ -206,20 +207,23 @@ function convertTCTtoYapms(tct: unknown) {
 	}
 }
 
-
 export { loadFromJson, loadFromFile, loadFromTCTFile };
 
 const FileSchema_TCT = z.object({
-	state_results: z.array(z.object({
-		state: z.number(),
-		result: z.array(z.object({
-			candidate: z.number(),
-			result: z.number(),
-			percent: z.number(),
-			votes: z.number(),
-			electoral_votes: z.number(),
-		})),
-		abbr: z.string(),
-		result_time: z.number(),
-	}))
+	state_results: z.array(
+		z.object({
+			state: z.number(),
+			result: z.array(
+				z.object({
+					candidate: z.number(),
+					result: z.number(),
+					percent: z.number(),
+					votes: z.number(),
+					electoral_votes: z.number()
+				})
+			),
+			abbr: z.string(),
+			result_time: z.number()
+		})
+	)
 });
