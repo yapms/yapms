@@ -56,7 +56,7 @@
 		<figure><img class="w-full object-left" src={image.default} alt={name} /></figure>
 	{/await}
 	<div class="card-body justify-between h-58 lg:h-48" class:xl:h-100={square}>
-		<h2 class="card-title text-white truncate text-2xl lg:text-3xl ">{name}</h2>
+		<h2 class="card-title text-white truncate text-2xl lg:text-3xl overflow-visible">{name}</h2>
 		<div
 			class="hidden sm:flex flex-col items-end space-y-4 lg:flex-row lg:justify-between lg:space-y-0"
 			class:xl:flex-col={square}
