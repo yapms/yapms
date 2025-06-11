@@ -9,6 +9,7 @@
 	import { CandidateModalStore } from '$lib/stores/Modals';
 	import { EditCandidateModalStore } from '$lib/stores/Modals';
 	import { RegionsStore } from '$lib/stores/regions/Regions';
+	import { preventNonNumericalInput, preventNonNumericalPaste } from '$lib/utils/inputValidation';
 	import { reorder, useSortable } from '$lib/utils/sortableHook.svelte';
 	import ModalBase from '../ModalBase.svelte';
 	import GenerateShades from './shadegeneration/GenerateShades.svelte';
@@ -117,6 +118,8 @@
 					type="number"
 					placeholder="Starting Value"
 					class="input input-sm"
+					onpaste={preventNonNumericalPaste}
+					onkeypress={preventNonNumericalInput}
 					oninput={updateDefaultValue}
 					value={$CandidatesStore.at(candidateIndex)?.defaultCount !== 0
 						? $CandidatesStore.at(candidateIndex)?.defaultCount
