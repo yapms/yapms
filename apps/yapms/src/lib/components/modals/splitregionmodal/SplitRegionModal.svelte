@@ -3,6 +3,7 @@
 	import { SplitRegionModalStore } from '$lib/stores/Modals';
 	import { RegionsStore } from '$lib/stores/regions/Regions';
 	import type { Candidate } from '$lib/types/Candidate';
+	import { preventNonNumericalInput, preventNonNumericalPaste } from '$lib/utils/inputValidation';
 	import ModalBase from '../ModalBase.svelte';
 
 	interface SplitRegionCandidate {
@@ -187,15 +188,6 @@
 
 		$SplitRegionModalStore.region.candidates = generateCandidates();
 		$RegionsStore = $RegionsStore;
-	}
-
-	function preventNonNumericalInput(e: KeyboardEvent) {
-		if (e.key !== 'Enter' && !e.key.match(/^[0-9]+$/)) e.preventDefault();
-	}
-
-	function preventNonNumericalPaste(e: ClipboardEvent) {
-		const pasteContents = e.clipboardData?.getData(e.clipboardData.types[0]);
-		if (!pasteContents?.match(/^[0-9]+$/)) e.preventDefault();
 	}
 </script>
 
