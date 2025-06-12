@@ -2,7 +2,11 @@
 	import Typeahead from 'svelte-typeahead';
 	import { goto } from '$app/navigation';
 
-	export let data: { title: string; route: string }[] = [];
+	let {
+		data
+	}: {
+		data: { title: string; route: string }[];
+	} = $props();
 </script>
 
 <Typeahead
