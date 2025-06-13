@@ -14,7 +14,7 @@ import { z } from 'zod';
 function loadFromFile(files: FileList): void {
 	const fileReader = new FileReader();
 
-	fileReader.onload = function () {
+	fileReader.onload = function() {
 		if (typeof fileReader.result !== 'string') {
 			return;
 		}
@@ -22,7 +22,7 @@ function loadFromFile(files: FileList): void {
 		loadFromJson(fileData);
 	};
 
-	fileReader.onerror = function () {
+	fileReader.onerror = function() {
 		console.error(fileReader.error);
 	};
 
@@ -43,10 +43,16 @@ function loadFromTCTFile(files: FileList): void {
 			return;
 		}
 
+		const fileData = fileReader.result.toString();
+		const reverseFileData = fileData.split('').reverse().join('');
+		const decodedFileData = atob(reverseFileData);
+
+		console.log(decodedFileData);
+
 		convertTCTtoYapms('sdf');
 	};
 
-	fileReader.onerror = () => {};
+	fileReader.onerror = () => { };
 
 	fileReader.readAsText(files[0]);
 }
