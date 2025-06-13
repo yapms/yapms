@@ -44,6 +44,12 @@ function loadFromTCTFile(files: FileList): void {
 			return;
 		}
 
+		const fileData = fileReader.result.toString();
+		const reverseFileData = fileData.split('').reverse().join('');
+		const decodedFileData = atob(reverseFileData);
+
+		console.log(decodedFileData);
+
 		convertTCTtoYapms('sdf');
 	};
 
