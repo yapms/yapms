@@ -1,5 +1,6 @@
 <script lang="ts">
 	import MinusCircle from '$lib/icons/MinusCircle.svelte';
+	import Rotate from '$lib/icons/Rotate.svelte';
 	import Trash from '$lib/icons/Trash.svelte';
 	import {
 		CandidatesStore,
@@ -13,6 +14,7 @@
 	import { reorder, useSortable } from '$lib/utils/sortableHook.svelte';
 	import ModalBase from '../ModalBase.svelte';
 	import GenerateShades from './shadegeneration/GenerateShades.svelte';
+	import { flip } from 'svelte/animate';
 
 	let candidateIndex = $derived(
 		$CandidatesStore.findIndex((candidate) => candidate.id === $EditCandidateModalStore.candidateId)
@@ -97,6 +99,11 @@
 		$CandidatesStore[candidateIndex].margins = newValue;
 		$RegionsStore = $RegionsStore;
 	}
+
+	function flipColors() {
+		$CandidatesStore[candidateIndex].margins = $CandidatesStore[candidateIndex].margins.reverse();
+		$RegionsStore = $RegionsStore;
+	}
 </script>
 
 <ModalBase title="Edit Candidate" store={EditCandidateModalStore} onClose={close}>
@@ -127,36 +134,46 @@
 				/>
 			</fieldset>
 		</div>
-		<ul class="flex flex-row flex-wrap gap-4 justify-center" bind:this={colorList}>
-			{#each $CandidatesStore.at(candidateIndex)?.margins || [] as margin, index (margin)}
-				<li class="join">
-					<input
-						class="join-item h-full"
-						type="color"
-						value={margin.color}
-						onchange={(event) => updateColor(event, index)}
-					/>
-					<button
-						class="btn btn-sm btn-primary join-item"
-						class:btn-error={colorToDelete === index}
-						onclick={() => {
-							if (index === colorToDelete) {
-								removeColor(index);
-							} else {
-								confirmRemove(index);
-							}
-						}}
-						disabled={$CandidatesStore.at(candidateIndex)?.margins.length === 1}
-					>
-						{#if colorToDelete === index}
-							<Trash class="w-6 h-6" />
-						{:else}
-							<MinusCircle class="w-6 h-6" />
-						{/if}
-					</button>
-				</li>
-			{/each}
-		</ul>
+
+		<fieldset class="fieldset">
+			<div class="flex gap-2">
+				<legend class="fieldset-legend">Colors</legend>
+				<button class="mt-1 w-4 cursor-pointer transition-transform" onclick={flipColors}>
+					<Rotate></Rotate>
+				</button>
+			</div>
+
+			<ul class="flex flex-row flex-wrap gap-4 justify-center" bind:this={colorList}>
+				{#each $CandidatesStore.at(candidateIndex)?.margins || [] as margin, index (margin)}
+					<li class="join" animate:flip={{ duration: 200 }}>
+						<input
+							class="join-item h-full"
+							type="color"
+							value={margin.color}
+							onchange={(event) => updateColor(event, index)}
+						/>
+						<button
+							class="btn btn-sm btn-primary join-item"
+							class:btn-error={colorToDelete === index}
+							onclick={() => {
+								if (index === colorToDelete) {
+									removeColor(index);
+								} else {
+									confirmRemove(index);
+								}
+							}}
+							disabled={$CandidatesStore.at(candidateIndex)?.margins.length === 1}
+						>
+							{#if colorToDelete === index}
+								<Trash class="w-6 h-6" />
+							{:else}
+								<MinusCircle class="w-6 h-6" />
+							{/if}
+						</button>
+					</li>
+				{/each}
+			</ul>
+		</fieldset>
 
 		<GenerateShades colorUpdater={updateColors} />
 	</div>
