@@ -46,7 +46,7 @@
 
 	function loadTCT() {
 		if (tctFiles && tctFiles.length > 0) {
-		loadFromTCT
+			loadFromTCTFile(tctFiles);
 		}
 	}
 
