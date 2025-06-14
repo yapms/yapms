@@ -16,7 +16,7 @@ import { stateCodes } from './stateCodes';
 function loadFromFile(files: FileList): void {
 	const fileReader = new FileReader();
 
-	fileReader.onload = function() {
+	fileReader.onload = function () {
 		if (typeof fileReader.result !== 'string') {
 			return;
 		}
@@ -24,7 +24,7 @@ function loadFromFile(files: FileList): void {
 		loadFromJson(fileData);
 	};
 
-	fileReader.onerror = function() {
+	fileReader.onerror = function () {
 		console.error(fileReader.error);
 	};
 
@@ -55,7 +55,7 @@ function loadFromTCTFile(files: FileList): void {
 		}
 	};
 
-	fileReader.onerror = () => { };
+	fileReader.onerror = () => {};
 
 	fileReader.readAsText(files[0]);
 }
@@ -157,7 +157,16 @@ function convertTCTtoYapms(tct: unknown) {
 			id: candidate.candidate.toString(),
 			name: candidate.candidate_name ?? candidate.candidate.toString(),
 			defaultCount: 0,
-			margins: [{ color: candidate.candidate_color ?? '#000000' }]
+			margins: [
+				{
+					color:
+						candidate.candidate_color ??
+						'#' +
+							Math.trunc(Math.random() * 16777215)
+								.toString(16)
+								.padStart(6, '0')
+				}
+			]
 		});
 	}
 
