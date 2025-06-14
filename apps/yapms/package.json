@@ -44,7 +44,7 @@
 		"file-saver": "2.0.5",
 		"glob": "11.0.3",
 		"html-to-image": "1.11.13",
-		"neverthrow": "^8.2.0",
+		"neverthrow": "8.2.0",
 		"panzoom": "9.4.3",
 		"pocketbase": "0.25.2",
 		"postcss": "8.5.6",
