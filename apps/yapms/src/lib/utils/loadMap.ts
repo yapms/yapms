@@ -4,7 +4,8 @@ import { CandidateSchema } from '$lib/types/Candidate';
 import { SavedRegionSchema } from '$lib/types/Region';
 import { get } from 'svelte/store';
 import { z } from 'zod';
-import safeJsonParse from './safeJsonParse';
+import { safeJsonParse } from './safeJsonParse';
+import { stateCodes } from './stateCodes';
 
 /**
  * @param files
@@ -48,13 +49,9 @@ function loadFromTCTFile(files: FileList): void {
 		const reverseFileData = fileData.split('').reverse().join('');
 		const decodedFileData = atob(reverseFileData);
 		const jsonData = safeJsonParse(decodedFileData);
-		console.log(decodedFileData);
-		console.log(jsonData);
 		if (jsonData.isOk()) {
 			const yapmsData = convertTCTtoYapms(jsonData.value);
 			loadFromJson(yapmsData);
-		} else {
-			console.log("failed to parse");
 		}
 	};
 
@@ -70,15 +67,12 @@ function loadFromTCTFile(files: FileList): void {
  * @returns void
  */
 function loadFromJson(mapData: unknown): void {
-	console.log("TEST");
-	console.log(mapData);
 	const parser = z.object({
 		tossup: CandidateSchema,
 		candidates: CandidateSchema.array(),
 		regions: SavedRegionSchema.array()
 	});
 	const parsedMapData = parser.parse(mapData);
-	console.log("TEST 2");
 
 	const tossupData = parsedMapData.tossup;
 	const candidatesData = parsedMapData.candidates;
@@ -119,17 +113,16 @@ function loadFromJson(mapData: unknown): void {
 
 function convertTCTtoYapms(tct: unknown) {
 	const parsedData = FileSchema_TCT.safeParse(tct);
-	console.log(parsedData.success);
 	if (parsedData.success === false) {
-		console.log(parsedData.error.issues);
 		return;
 	}
+
 	const yapmsData = {
 		map: {
 			country: 'usa',
 			type: 'presidential',
-			year: '2024312',
-			variant: 'blank'
+			year: '2028',
+			variant: 'takeall'
 		},
 		tossup: {
 			id: '',
@@ -141,28 +134,12 @@ function convertTCTtoYapms(tct: unknown) {
 				}
 			]
 		},
-		candidates: [
-			{
-				id: '300',
-				name: 'Democrat',
-				defaultCount: 0,
-				margins: [
-					{
-						color: '#0000ff'
-					}
-				]
-			},
-			{
-				id: '301',
-				name: 'Republican',
-				defaultCount: 0,
-				margins: [
-					{
-						color: '#ff0000'
-					}
-				]
-			}
-		],
+		candidates: Array<{
+			id: string;
+			name: string;
+			defaultCount: number;
+			margins: { color: string }[];
+		}>(),
 		regions: Array<{
 			id: string;
 			value: number;
@@ -174,16 +151,17 @@ function convertTCTtoYapms(tct: unknown) {
 		}>()
 	};
 
-	const candidates: {
-		id: string;
+	// Add all the candidates to the YAPms candidates list.
+	for (const candidate of parsedData.data.overall_results) {
+		yapmsData.candidates.push({
+			id: candidate.candidate.toString(),
+			name: candidate.candidate_name ?? candidate.candidate.toString(),
+			defaultCount: 0,
+			margins: [{ color: candidate.candidate_color ?? '#000000' }],
+		});
+	}
 
-		name: string;
-		defaultCount: number;
-		margins: number;
-	}[] = [];
-
-	console.log(candidates);
-
+	// Add all the state results to the YAPms regions.
 	for (const state of parsedData.data.state_results) {
 		const value = state.result.reduce((prev, curr) => {
 			return prev + curr.electoral_votes;
@@ -197,39 +175,33 @@ function convertTCTtoYapms(tct: unknown) {
 			};
 		});
 
-		if (state.abbr === "NE") {
-			["ne-01", "ne-02", "ne-03", "ne-al"].forEach((abbr) => {
-				yapmsData.regions.push({
-					id: abbr,
-					value: value,
-					permaVal: value,
-					locked: false,
-					permaLocked: false,
-					disabled: false,
-					candidates: candidates
-				});
-			});
-		} else if (state.abbr == "ME") {
-			["me-01", "me-02", "me-al"].forEach((abbr) => {
-				yapmsData.regions.push({
-					id: abbr,
-					value: value,
-					permaVal: value,
-					locked: false,
-					permaLocked: false,
-					disabled: false,
-					candidates: candidates
-				});
-			});
-		} else {
+		const abbr = ['NE', 'ME'].includes(state.abbr) ? state.abbr : state.abbr.toLowerCase();
+		yapmsData.regions.push({
+			id: abbr,
+			value: value,
+			permaVal: value,
+			locked: false,
+			permaLocked: false,
+			disabled: false,
+			candidates: candidates
+		});
+	}
+
+	// Any state results that didn't exist should be disabled in the YAPms regions.
+	for (const stateCode of stateCodes) {
+		const stateExists = yapmsData.regions.findIndex((region) => {
+			return region.id === stateCode
+		}) !== -1;
+
+		if (stateExists === false) {
 			yapmsData.regions.push({
-				id: state.abbr.toLowerCase(),
-				value: value,
-				permaVal: value,
+				id: stateCode,
+				value: 0,
+				permaVal: 0,
 				locked: false,
 				permaLocked: false,
-				disabled: false,
-				candidates: candidates
+				disabled: true,
+				candidates: []
 			});
 		}
 	}
@@ -240,6 +212,15 @@ function convertTCTtoYapms(tct: unknown) {
 export { loadFromJson, loadFromFile, loadFromTCTFile };
 
 const FileSchema_TCT = z.object({
+	overall_results: z.array(
+		z.object({
+			candidate_name: z.string().optional(),
+			candidate_color: z.string().optional(),
+			candidate: z.number(),
+			electoral_votes: z.number(),
+			popular_votes: z.number(),
+		})
+	),
 	state_results: z.array(
 		z.object({
 			state: z.number(),
