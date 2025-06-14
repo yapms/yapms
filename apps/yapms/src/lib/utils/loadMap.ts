@@ -55,7 +55,9 @@ function loadFromTCTFile(files: FileList): void {
 		}
 	};
 
-	fileReader.onerror = () => {};
+	fileReader.onerror = () => {
+		console.error(fileReader.error);
+	};
 
 	fileReader.readAsText(files[0]);
 }
