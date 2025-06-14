@@ -16,7 +16,7 @@ import { stateCodes } from './stateCodes';
 function loadFromFile(files: FileList): void {
 	const fileReader = new FileReader();
 
-	fileReader.onload = function () {
+	fileReader.onload = function() {
 		if (typeof fileReader.result !== 'string') {
 			return;
 		}
@@ -24,7 +24,7 @@ function loadFromFile(files: FileList): void {
 		loadFromJson(fileData);
 	};
 
-	fileReader.onerror = function () {
+	fileReader.onerror = function() {
 		console.error(fileReader.error);
 	};
 
@@ -33,7 +33,7 @@ function loadFromFile(files: FileList): void {
 
 /**
  * @param files
- * Loads the first TCT fiel from the FileList
+ * Loads the first TCT file from the FileList
  *
  * @returns void
  */
@@ -55,7 +55,7 @@ function loadFromTCTFile(files: FileList): void {
 		}
 	};
 
-	fileReader.onerror = () => {};
+	fileReader.onerror = () => { };
 
 	fileReader.readAsText(files[0]);
 }
