@@ -173,7 +173,16 @@ function convertTCTtoYapms(tct: unknown) {
 			id: candidate.candidate.toString(),
 			name: candidate.candidate_name ?? candidate.candidate.toString(),
 			defaultCount: 0,
-			margins: [{ color: candidate.candidate_color ?? '#000000' }]
+			margins: [
+				{
+					color:
+						candidate.candidate_color ??
+						'#' +
+						Math.trunc(Math.random() * 16777215)
+							.toString(16)
+							.padStart(6, '0')
+				}
+			]
 		});
 	}
 
