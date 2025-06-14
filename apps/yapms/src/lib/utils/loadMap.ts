@@ -16,7 +16,7 @@ import { stateCodes } from './stateCodes';
 function loadFromFile(files: FileList): void {
 	const fileReader = new FileReader();
 
-	fileReader.onload = function() {
+	fileReader.onload = function () {
 		if (typeof fileReader.result !== 'string') {
 			return;
 		}
@@ -24,7 +24,7 @@ function loadFromFile(files: FileList): void {
 		loadFromJson(fileData);
 	};
 
-	fileReader.onerror = function() {
+	fileReader.onerror = function () {
 		console.error(fileReader.error);
 	};
 
@@ -55,7 +55,7 @@ function loadFromTCTFile(files: FileList): void {
 		}
 	};
 
-	fileReader.onerror = () => { };
+	fileReader.onerror = () => {};
 
 	fileReader.readAsText(files[0]);
 }
@@ -157,7 +157,7 @@ function convertTCTtoYapms(tct: unknown) {
 			id: candidate.candidate.toString(),
 			name: candidate.candidate_name ?? candidate.candidate.toString(),
 			defaultCount: 0,
-			margins: [{ color: candidate.candidate_color ?? '#000000' }],
+			margins: [{ color: candidate.candidate_color ?? '#000000' }]
 		});
 	}
 
@@ -189,9 +189,10 @@ function convertTCTtoYapms(tct: unknown) {
 
 	// Any state results that didn't exist should be disabled in the YAPms regions.
 	for (const stateCode of stateCodes) {
-		const stateExists = yapmsData.regions.findIndex((region) => {
-			return region.id === stateCode
-		}) !== -1;
+		const stateExists =
+			yapmsData.regions.findIndex((region) => {
+				return region.id === stateCode;
+			}) !== -1;
 
 		if (stateExists === false) {
 			yapmsData.regions.push({
@@ -218,7 +219,7 @@ const FileSchema_TCT = z.object({
 			candidate_color: z.string().optional(),
 			candidate: z.number(),
 			electoral_votes: z.number(),
-			popular_votes: z.number(),
+			popular_votes: z.number()
 		})
 	),
 	state_results: z.array(
