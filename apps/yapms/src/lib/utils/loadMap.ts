@@ -5,6 +5,7 @@ import { CandidateSchema } from '$lib/types/Candidate';
 import { SavedRegionSchema } from '$lib/types/Region';
 import { get } from 'svelte/store';
 import { z } from 'zod';
+import { fromThrowable } from 'neverthrow';
 
 /**
  * @param files
@@ -47,10 +48,7 @@ function loadFromTCTFile(files: FileList): void {
 		const fileData = fileReader.result.toString();
 		const reverseFileData = fileData.split('').reverse().join('');
 		const decodedFileData = atob(reverseFileData);
-
-		console.log(decodedFileData);
-
-		convertTCTtoYapms('sdf');
+		convertTCTtoYapms(decodedFileData);
 	};
 
 	fileReader.onerror = () => { };
@@ -127,6 +125,7 @@ async function loadFromJson(mapData: unknown) {
 function convertTCTtoYapms(tct: unknown) {
 	const parsedData = FileSchema_TCT.safeParse(tct);
 	if (parsedData.success === false) {
+		console.log(parsedData.error.issues);
 		return;
 	}
 	const yapmsData = {
