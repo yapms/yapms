@@ -32,7 +32,7 @@
 		"@types/shapefile": "0.6.4",
 		"@types/sortablejs": "1.15.8",
 		"@types/uuid": "10.0.0",
-		"chart.js": "4.4.9",
+		"chart.js": "4.5.0",
 		"chartjs-plugin-datalabels": "2.2.0",
 		"color": "5.0.0",
 		"d3": "7.9.0",
