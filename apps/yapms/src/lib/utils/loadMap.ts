@@ -34,7 +34,7 @@ function loadFromFile(files: FileList): void {
 
 /**
  * @param files
- * Loads the first TCT fiel from the FileList
+ * Loads the first TCT file from the FileList
  *
  * @returns void
  */
