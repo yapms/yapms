@@ -1,3 +1,5 @@
-import { fromThrowable } from "neverthrow";
+import { fromThrowable } from 'neverthrow';
 
-export default fromThrowable(JSON.parse, (err) => err);
+const safeJsonParse = fromThrowable(JSON.parse, (err) => err);
+
+export { safeJsonParse };
