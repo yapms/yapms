@@ -136,10 +136,10 @@
 		</div>
 
 		<fieldset class="fieldset">
-			<div class="flex gap-2">
+			<div class="flex gap-1">
 				<legend class="fieldset-legend">Colors</legend>
-				<button class="mt-1 w-4 cursor-pointer transition-transform" onclick={flipColors}>
-					<Rotate></Rotate>
+				<button class="btn btn-xs btn-circle btn-ghost mt-1.5" onclick={flipColors}>
+					<Rotate class="size-4"></Rotate>
 				</button>
 			</div>
 
