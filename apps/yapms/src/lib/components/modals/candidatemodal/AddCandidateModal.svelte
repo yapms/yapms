@@ -11,6 +11,8 @@
 	import Trash from '$lib/icons/Trash.svelte';
 	import { reorder, useSortable } from '$lib/utils/sortableHook.svelte';
 	import GenerateShades from './shadegeneration/GenerateShades.svelte';
+	import Rotate from '$lib/icons/Rotate.svelte';
+	import { flip } from 'svelte/animate';
 
 	let newName = $state<string>('New Candidate');
 	let newDefaultValue = $state<number>(0);
@@ -79,6 +81,10 @@
 	function updateColors(newValue: { color: string }[]) {
 		newColors = newValue;
 	}
+
+	function flipColors() {
+		newColors.reverse();
+	}
 </script>
 
 <ModalBase title="Add Candidate" store={AddCandidateModalStore} onClose={close}>
@@ -104,27 +110,36 @@
 			</fieldset>
 		</div>
 
-		<ul class="flex flex-row flex-wrap gap-4 justify-center" bind:this={colorList}>
-			{#each newColors as color, index (color)}
-				<li class="join">
-					<input
-						class="join-item h-full"
-						type="color"
-						value={color.color}
-						onchange={(change) => {
-							newColors[index].color = change.currentTarget.value;
-						}}
-					/>
-					<button
-						class="btn btn-sm btn-error join-item"
-						onclick={() => removeColor(index)}
-						disabled={newColors.length === 1}
-					>
-						<Trash class="w-6 h-6" />
-					</button>
-				</li>
-			{/each}
-		</ul>
+		<fieldset class="fieldset">
+			<div class="flex gap-1 items-end">
+				<legend class="fieldset-legend">Colors</legend>
+				<button class="btn btn-xs btn-circle btn-ghost" onclick={flipColors}>
+					<Rotate class="size-4"></Rotate>
+				</button>
+			</div>
+
+			<ul class="flex flex-row flex-wrap gap-4 justify-center" bind:this={colorList}>
+				{#each newColors as color, index (color)}
+					<li class="join" animate:flip={{ duration: 200 }}>
+						<input
+							class="join-item h-full"
+							type="color"
+							value={color.color}
+							onchange={(change) => {
+								newColors[index].color = change.currentTarget.value;
+							}}
+						/>
+						<button
+							class="btn btn-sm btn-error join-item"
+							onclick={() => removeColor(index)}
+							disabled={newColors.length === 1}
+						>
+							<Trash class="w-6 h-6" />
+						</button>
+					</li>
+				{/each}
+			</ul>
+		</fieldset>
 
 		<GenerateShades colorUpdater={updateColors} />
 	</div>
