@@ -4,7 +4,7 @@
 	import { ShareModalStore } from '$lib/stores/Modals';
 	import { downloadJson, generateJson } from '$lib/utils/saveMap';
 	import Link from '$lib/icons/Link.svelte';
-	import { loadFromFile } from '$lib/utils/loadMap';
+	import { gotoLoadedMap, setLoadedMapFromFile } from '$lib/stores/LoadedMap';
 	import ExclamationCircle from '$lib/icons/ExclamationCircle.svelte';
 	import CheckCircle from '$lib/icons/CheckCircle.svelte';
 	import { get } from 'svelte/store';
@@ -38,7 +38,7 @@
 
 	function load() {
 		if (files && files.length > 0) {
-			loadFromFile(files);
+			setLoadedMapFromFile(files).then(() => gotoLoadedMap());
 			ShareModalStore.set({ ...$ShareModalStore, open: false });
 		}
 	}
