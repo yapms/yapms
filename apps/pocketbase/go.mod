@@ -5,7 +5,7 @@ go 1.23.0
 toolchain go1.24.4
 
 require (
-	github.com/chromedp/chromedp v0.13.6
+	github.com/chromedp/chromedp v0.13.7
 	github.com/pocketbase/pocketbase v0.28.3
 )
 
