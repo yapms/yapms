@@ -5,7 +5,7 @@
 
 	export let mapName: string;
 	export let mapID: string;
-	export let onDeleted: () => void;
+	export let onUpdated: () => void;
 
 	let submitting = false;
 
@@ -13,7 +13,7 @@
 		submitting = true;
 		await $PocketBaseStore.collection('user_maps').delete(mapID);
 		submitting = false;
-		onDeleted();
+		onUpdated();
 	}
 
 	async function openMap() {
@@ -21,7 +21,7 @@
 	}
 </script>
 
-<div class="join">
+<div class="join z-20" data-map-id={mapID}>
 	<button
 		class="btn btn-sm flex-shrink flex-grow join-item overflow-hidden"
 		on:click={openMap}
@@ -29,7 +29,7 @@
 	>
 		{mapName}
 	</button>
-	<div class="tooltip" data-tip="Delete">
+	<div class="tooltip tooltip-left" data-tip="Delete">
 		<button
 			class="btn btn-sm btn-error flex-shrink join-item"
 			on:click={deleteMap}
