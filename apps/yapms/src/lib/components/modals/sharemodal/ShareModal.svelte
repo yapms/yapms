@@ -4,7 +4,7 @@
 	import { ShareModalStore } from '$lib/stores/Modals';
 	import { downloadJson, generateJson } from '$lib/utils/saveMap';
 	import Link from '$lib/icons/Link.svelte';
-	import { loadFromFile } from '$lib/utils/loadMap';
+	import { loadFromFile, loadFromTCTFile } from '$lib/utils/loadMap';
 	import ExclamationCircle from '$lib/icons/ExclamationCircle.svelte';
 	import CheckCircle from '$lib/icons/CheckCircle.svelte';
 	import { get } from 'svelte/store';
@@ -22,6 +22,7 @@
 	let isImported = $derived(page.url.pathname === '/app/imported');
 
 	let files: FileList | undefined = $state();
+	let tctFiles: FileList | undefined = $state();
 
 	let fetchingLink = $state(false);
 	let copiedLink = $state(false);
@@ -40,6 +41,12 @@
 		if (files && files.length > 0) {
 			loadFromFile(files);
 			ShareModalStore.set({ ...$ShareModalStore, open: false });
+		}
+	}
+
+	function loadTCT() {
+		if (tctFiles && tctFiles.length > 0) {
+			loadFromTCTFile(tctFiles);
 		}
 	}
 
@@ -155,6 +162,19 @@
 					<button class="btn" onclick={screenshot}>
 						<Camera class="w-5 h-5" />
 						<span>Screenshot</span>
+					</button>
+				</div>
+			</fieldset>
+
+			<fieldset class="fieldset flex flex-col gap-2">
+				<legend class="fieldset-legend">
+					Load <a href="https://www.newcampaigntrail.com" target="_blank" class="link">TCT</a> File
+				</legend>
+				<div class="flex flex-row gap-2">
+					<input type="file" class="file-input w-full" bind:files={tctFiles} />
+					<button class="btn btn-primary" onclick={loadTCT}>
+						<ArrowUpTray class="w-5 h-5" />
+						<span>Load</span>
 					</button>
 				</div>
 			</fieldset>
