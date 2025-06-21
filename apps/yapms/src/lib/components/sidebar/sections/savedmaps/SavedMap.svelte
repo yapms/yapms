@@ -24,7 +24,7 @@
 	async function openMap() {
 		getUserMap(mapID)
 			.then(setLoadedMapFromJson)
-			.then(() => gotoLoadedMap())
+			.then(() => gotoLoadedMap({ s: true }))
 			.then(drawLoadedMap);
 	}
 </script>

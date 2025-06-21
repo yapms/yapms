@@ -37,17 +37,16 @@ export async function setLoadedMapFromFile(files: FileList) {
 	return new Promise((resolve, reject) => {
 		const fileReader = new FileReader();
 
-		fileReader.onload = async function () {
+		fileReader.onload = async function() {
 			if (typeof fileReader.result !== 'string') {
 				return;
 			}
 			const fileData = JSON.parse(fileReader.result.toString());
-			console.log(fileData);
 			setLoadedMapFromJson(fileData);
 			resolve(undefined);
 		};
 
-		fileReader.onerror = function () {
+		fileReader.onerror = function() {
 			console.error(fileReader.error);
 			reject(undefined);
 		};
@@ -65,13 +64,17 @@ export function setLoadedMapFromJson(data: unknown) {
 	}
 }
 
+/**
+	* Goto the required url for the loaded user_maps
+	* Providing an option will override the current data in the URL. 
+	*/
 export async function gotoLoadedMap(
 	options:
 		| {
-				m: string | undefined;
-				um: string | undefined;
-				s: string | undefined;
-		  }
+			m?: string | undefined;
+			um?: string | undefined;
+			s?: boolean | undefined;
+		}
 		| undefined = undefined
 ) {
 	const data = get(LoadedMapStore);
@@ -87,13 +90,13 @@ export async function gotoLoadedMap(
 		const newSearchParams = new URLSearchParams();
 		const m = options ? options.m : page.url.searchParams.get('m');
 		const um = options ? options.um : page.url.searchParams.get('um');
-		const s = options ? options.s : page.url.searchParams.get('s');
+		const s = options ? options.s : page.url.searchParams.has('s');
 		if (m) {
 			newSearchParams.set('m', m);
 		} else if (um) {
 			newSearchParams.set('um', um);
 		} else if (s) {
-			newSearchParams.set('s', s);
+			newSearchParams.set('s', '');
 		}
 		const newPath = `${neededPath}?${newSearchParams.toString()}`;
 		await goto(newPath);

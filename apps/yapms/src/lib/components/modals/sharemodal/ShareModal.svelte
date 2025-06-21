@@ -38,7 +38,7 @@
 
 	function load() {
 		if (files && files.length > 0) {
-			setLoadedMapFromFile(files).then(() => gotoLoadedMap());
+			setLoadedMapFromFile(files).then(() => gotoLoadedMap({ s: true }));
 			ShareModalStore.set({ ...$ShareModalStore, open: false });
 		}
 	}
