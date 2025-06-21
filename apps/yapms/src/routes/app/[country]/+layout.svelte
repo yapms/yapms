@@ -1,42 +1,58 @@
 <script lang="ts">
-	import { loadFromJson } from '$lib/utils/loadMap';
-	import { page } from '$app/stores';
 	import { MapInsetsStore } from '$lib/stores/MapInsetsStore';
 	import { applyAutoStroke, applyPanZoom } from '$lib/utils/applyPanZoom';
 	import { loadRegionsForApp } from '$lib/utils/loadRegions';
-	import { goto } from '$app/navigation';
-	import { browser } from '$app/environment';
-	import { loadMapFromURL, LoadedMapStore } from '$lib/stores/LoadedMap';
 	import { loadSidebarTitle, loadSidebarSources } from '$lib/stores/SideBar';
 	import { loadMapIdentifier } from '$lib/stores/MapIdentifier';
 	import { loadActionGroups } from '$lib/stores/ActionGroups';
 	import { RegionTextsStore } from '$lib/stores/RegionTextsStore';
 	import { setRegionStrokeColor } from '$lib/stores/RegionStrokeColorStore';
+	import { page } from '$app/state';
+	import {
+		getMap,
+		drawLoadedMap,
+		getUserMap,
+		setLoadedMapFromJson,
+		gotoLoadedMap
+	} from '$lib/stores/LoadedMap';
 
-	$: requestedMap = $page.url.pathname.replace('/app/', '').replaceAll('/', '-');
-	$: country = requestedMap.split('-').at(0);
-	$: map = import(`../../../lib/assets/maps/${country}/${requestedMap}.svg?raw`);
+	let requestedMap = $derived(page.url.pathname.replace('/app/', '').replaceAll('/', '-'));
+	let country = $derived(requestedMap.split('-').at(0));
 
-	$: map.catch(() => {
-		if (browser) goto('/');
-	});
+	let map = $derived(import(`../../../lib/assets/maps/${country}/${requestedMap}.svg?raw`));
 
 	function setupMap(node: HTMLDivElement) {
-		const svg = node.querySelector<SVGElement>('svg');
-		if (svg !== null) {
-			applyPanZoom(svg);
-			applyAutoStroke(svg);
-			setRegionStrokeColor(svg);
-			loadSidebarTitle(svg);
-			loadSidebarSources(svg);
-			loadMapIdentifier(svg);
-			loadActionGroups(svg);
-		}
-		loadRegionsForApp(node);
-		loadMapFromURL($page.url);
-	}
+		$effect(() => {
+			const svg = node.querySelector<SVGElement>('svg');
+			if (svg !== null) {
+				applyPanZoom(svg);
+				applyAutoStroke(svg);
+				setRegionStrokeColor(svg);
+				loadSidebarTitle(svg);
+				loadSidebarSources(svg);
+				loadMapIdentifier(svg);
+				loadActionGroups(svg);
+			}
+			loadRegionsForApp(node);
 
-	$: if ($LoadedMapStore) loadFromJson($LoadedMapStore);
+			const mapID = page.url.searchParams.get('m');
+			const userMapID = page.url.searchParams.get('um');
+			const useStore = page.url.searchParams.has('s');
+			if (mapID) {
+				getMap(mapID)
+					.then(setLoadedMapFromJson)
+					.then(() => gotoLoadedMap())
+					.then(drawLoadedMap);
+			} else if (userMapID) {
+				getUserMap(userMapID)
+					.then(setLoadedMapFromJson)
+					.then(() => gotoLoadedMap())
+					.then(drawLoadedMap);
+			} else if (useStore) {
+				drawLoadedMap();
+			}
+		});
+	}
 </script>
 
 {#await map}
@@ -54,4 +70,5 @@
 		{@html map.default}
 	</div>
 {/await}
+
 <slot />

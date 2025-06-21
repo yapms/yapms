@@ -1,6 +1,11 @@
 <script lang="ts">
 	import MinusCircle from '$lib/icons/MinusCircle.svelte';
-	import { loadUserMapFromID } from '$lib/stores/LoadedMap';
+	import {
+		drawLoadedMap,
+		getUserMap,
+		gotoLoadedMap,
+		setLoadedMapFromJson
+	} from '$lib/stores/LoadedMap';
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
 
 	export let mapName: string;
@@ -17,7 +22,10 @@
 	}
 
 	async function openMap() {
-		loadUserMapFromID(mapID);
+		getUserMap(mapID)
+			.then(setLoadedMapFromJson)
+			.then(() => gotoLoadedMap({ s: true }))
+			.then(drawLoadedMap);
 	}
 </script>
 
