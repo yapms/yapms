@@ -37,7 +37,7 @@ export async function setLoadedMapFromFile(files: FileList) {
 	return new Promise((resolve, reject) => {
 		const fileReader = new FileReader();
 
-		fileReader.onload = async function() {
+		fileReader.onload = async function () {
 			if (typeof fileReader.result !== 'string') {
 				return;
 			}
@@ -46,7 +46,7 @@ export async function setLoadedMapFromFile(files: FileList) {
 			resolve(undefined);
 		};
 
-		fileReader.onerror = function() {
+		fileReader.onerror = function () {
 			console.error(fileReader.error);
 			reject(undefined);
 		};
@@ -65,16 +65,16 @@ export function setLoadedMapFromJson(data: unknown) {
 }
 
 /**
-	* Goto the required url for the loaded user_maps
-	* Providing an option will override the current data in the URL. 
-	*/
+ * Goto the required url for the loaded user_maps
+ * Providing an option will override the current data in the URL.
+ */
 export async function gotoLoadedMap(
 	options:
 		| {
-			m?: string | undefined;
-			um?: string | undefined;
-			s?: boolean | undefined;
-		}
+				m?: string | undefined;
+				um?: string | undefined;
+				s?: boolean | undefined;
+		  }
 		| undefined = undefined
 ) {
 	const data = get(LoadedMapStore);
