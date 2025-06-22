@@ -178,3 +178,7 @@ export function handleModalOpenInteractions(keycode: string) {
 			break;
 	}
 }
+
+export const SimulatorModalStore = writable({
+	open: false
+});
