@@ -55,16 +55,14 @@
 	}
 
 	function setupMap(node: HTMLDivElement) {
-		$effect(() => {
-			const svg = node.querySelector<SVGElement>('svg');
-			if (svg !== null) {
-				applyAutoStroke(svg);
-				applyFastPanZoom(svg);
-				setRegionStrokeColor(svg);
-			}
-			loadRegionsForView(node);
-			drawLoadedMap();
-		});
+		const svg = node.querySelector<SVGElement>('svg');
+		if (svg !== null) {
+			applyAutoStroke(svg);
+			applyFastPanZoom(svg);
+			setRegionStrokeColor(svg);
+		}
+		loadRegionsForView(node);
+		drawLoadedMap();
 	}
 </script>
 

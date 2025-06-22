@@ -22,36 +22,34 @@
 	let map = $derived(import(`../../../lib/assets/maps/${country}/${requestedMap}.svg?raw`));
 
 	function setupMap(node: HTMLDivElement) {
-		$effect(() => {
-			const svg = node.querySelector<SVGElement>('svg');
-			if (svg !== null) {
-				applyPanZoom(svg);
-				applyAutoStroke(svg);
-				setRegionStrokeColor(svg);
-				loadSidebarTitle(svg);
-				loadSidebarSources(svg);
-				loadMapIdentifier(svg);
-				loadActionGroups(svg);
-			}
-			loadRegionsForApp(node);
+		const svg = node.querySelector<SVGElement>('svg');
+		if (svg !== null) {
+			applyPanZoom(svg);
+			applyAutoStroke(svg);
+			setRegionStrokeColor(svg);
+			loadSidebarTitle(svg);
+			loadSidebarSources(svg);
+			loadMapIdentifier(svg);
+			loadActionGroups(svg);
+		}
+		loadRegionsForApp(node);
 
-			const mapID = page.url.searchParams.get('m');
-			const userMapID = page.url.searchParams.get('um');
-			const useStore = page.url.searchParams.has('s');
-			if (mapID) {
-				getMap(mapID)
-					.then(setLoadedMapFromJson)
-					.then(() => gotoLoadedMap())
-					.then(drawLoadedMap);
-			} else if (userMapID) {
-				getUserMap(userMapID)
-					.then(setLoadedMapFromJson)
-					.then(() => gotoLoadedMap())
-					.then(drawLoadedMap);
-			} else if (useStore) {
-				drawLoadedMap();
-			}
-		});
+		const mapID = page.url.searchParams.get('m');
+		const userMapID = page.url.searchParams.get('um');
+		const useStore = page.url.searchParams.has('s');
+		if (mapID) {
+			getMap(mapID)
+				.then(setLoadedMapFromJson)
+				.then(() => gotoLoadedMap())
+				.then(drawLoadedMap);
+		} else if (userMapID) {
+			getUserMap(userMapID)
+				.then(setLoadedMapFromJson)
+				.then(() => gotoLoadedMap())
+				.then(drawLoadedMap);
+		} else if (useStore) {
+			drawLoadedMap();
+		}
 	}
 </script>
 
