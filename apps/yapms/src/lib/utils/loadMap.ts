@@ -1,3 +1,4 @@
+import { goto } from '$app/navigation';
 import { CandidatesStore, TossupCandidateStore } from '$lib/stores/Candidates';
 import { RegionsStore } from '$lib/stores/regions/Regions';
 import { CandidateSchema } from '$lib/types/Candidate';
@@ -14,12 +15,12 @@ import { z } from 'zod';
 function loadFromFile(files: FileList): void {
 	const fileReader = new FileReader();
 
-	fileReader.onload = function () {
+	fileReader.onload = async function () {
 		if (typeof fileReader.result !== 'string') {
 			return;
 		}
 		const fileData = JSON.parse(fileReader.result.toString());
-		loadFromJson(fileData);
+		await loadFromJson(fileData);
 	};
 
 	fileReader.onerror = function () {
@@ -35,13 +36,28 @@ function loadFromFile(files: FileList): void {
  *
  * @returns void
  */
-function loadFromJson(mapData: unknown): void {
+async function loadFromJson(mapData: unknown) {
 	const parser = z.object({
+		map: z.object({
+			country: z.string(),
+			type: z.string(),
+			year: z.string(),
+			variant: z.string()
+		}),
 		tossup: CandidateSchema,
 		candidates: CandidateSchema.array(),
 		regions: SavedRegionSchema.array()
 	});
 	const parsedMapData = parser.parse(mapData);
+
+	const country = parsedMapData.map.country;
+	const type = parsedMapData.map.type;
+	const year = parsedMapData.map.year;
+	const variant = parsedMapData.map.variant;
+
+	const url = ['/app', country, type, year, variant].filter((path) => path !== undefined).join('/');
+
+	await goto(url);
 
 	const tossupData = parsedMapData.tossup;
 	const candidatesData = parsedMapData.candidates;

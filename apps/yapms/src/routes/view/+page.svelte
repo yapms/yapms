@@ -1,8 +1,13 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import '$lib/styles/global.css';
-	import { loadFromJson } from '$lib/utils/loadMap';
-	import { LoadedMapStore, loadMapFromURL } from '$lib/stores/LoadedMap';
+	import {
+		drawLoadedMap,
+		getMap,
+		getUserMap,
+		LoadedMapStore,
+		setLoadedMapFromJson
+	} from '$lib/stores/LoadedMap';
 	import HorizontalBattleChart from '$lib/components/charts/battlechart/BattleChart.svelte';
 	import CandidateBoxContainer from '$lib/components/candidatebox/CandidateBoxContainer.svelte';
 	import { loadRegionsForView } from '$lib/utils/loadRegions';
@@ -10,22 +15,43 @@
 	import { browser } from '$app/environment';
 	import { setRegionStrokeColor } from '$lib/stores/RegionStrokeColorStore';
 
-	let filename = undefined as string | undefined;
-	let countryPath = undefined as string | undefined;
-	$: map =
+	let filename = $state(undefined as string | undefined);
+	let countryPath = $state(undefined as string | undefined);
+	let map = $derived(
 		filename !== undefined && countryPath !== undefined
 			? import(`../../lib/assets/maps/${countryPath}/${filename}.svg?raw`)
-			: undefined;
+			: undefined
+	);
 
 	if (browser) {
-		loadMapFromURL($page.url, false).then(() => {
-			if ($LoadedMapStore === null) {
-				return;
-			}
-			const { country, type, year, variant } = $LoadedMapStore.map;
-			countryPath = country;
-			filename = [country, type, year, variant].filter((path) => path !== undefined).join('-');
-		});
+		const mapID = page.url.searchParams.get('m');
+		const userMapID = page.url.searchParams.get('um');
+
+		if (mapID) {
+			getMap(mapID)
+				.then(setLoadedMapFromJson)
+				.then(() => {
+					if ($LoadedMapStore) {
+						const { country, type, year, variant } = $LoadedMapStore.map;
+						countryPath = country;
+						filename = [country, type, year, variant]
+							.filter((path) => path !== undefined)
+							.join('-');
+					}
+				});
+		} else if (userMapID) {
+			getUserMap(userMapID)
+				.then(setLoadedMapFromJson)
+				.then(() => {
+					if ($LoadedMapStore) {
+						const { country, type, year, variant } = $LoadedMapStore.map;
+						countryPath = country;
+						filename = [country, type, year, variant]
+							.filter((path) => path !== undefined)
+							.join('-');
+					}
+				});
+		}
 	}
 
 	function setupMap(node: HTMLDivElement) {
@@ -36,9 +62,7 @@
 			setRegionStrokeColor(svg);
 		}
 		loadRegionsForView(node);
-		if ($LoadedMapStore !== null) {
-			loadFromJson($LoadedMapStore);
-		}
+		drawLoadedMap();
 	}
 </script>
 
