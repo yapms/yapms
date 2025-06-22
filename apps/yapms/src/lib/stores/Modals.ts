@@ -113,3 +113,7 @@ export const MassEditModalStore = writable({
 export const TableModalStore = writable({
 	open: false
 });
+
+export const SimulatorModalStore = writable({
+	open: false
+});
