@@ -16,7 +16,7 @@
   "devDependencies": {
     "@devcontainers/cli": "0.77.0",
     "dotenv-cli": "8.0.0",
-    "dotenv-vault": "1.26.2",
+    "dotenv-vault": "1.27.0",
     "turbo": "2.5.4"
   },
   "workspaces": [
