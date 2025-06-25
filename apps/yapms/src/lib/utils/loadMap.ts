@@ -17,7 +17,7 @@ import { stateCodes } from './stateCodes';
 function loadFromFile(files: FileList): void {
 	const fileReader = new FileReader();
 
-	fileReader.onload = async function() {
+	fileReader.onload = async function () {
 		if (typeof fileReader.result !== 'string') {
 			return;
 		}
@@ -25,7 +25,7 @@ function loadFromFile(files: FileList): void {
 		await loadFromJson(fileData);
 	};
 
-	fileReader.onerror = function() {
+	fileReader.onerror = function () {
 		console.error(fileReader.error);
 	};
 
@@ -180,9 +180,9 @@ function convertTCTtoYapms(tct: unknown) {
 					color:
 						candidate.candidate_color ??
 						'#' +
-						Math.trunc(Math.random() * 16777215)
-							.toString(16)
-							.padStart(6, '0')
+							Math.trunc(Math.random() * 16777215)
+								.toString(16)
+								.padStart(6, '0')
 				}
 			]
 		});
