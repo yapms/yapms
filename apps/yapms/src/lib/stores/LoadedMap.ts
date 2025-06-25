@@ -33,11 +33,39 @@ export async function getUserMap(id: string) {
 	return parsedData.data;
 }
 
+export function tctFileToYapmsData(files: FileList) {
+
+	return new Promise((resolve) => {
+
+		const fileReader = new FileReader();
+
+		fileReader.onload = () => {
+			if (typeof fileReader.result !== 'string') {
+				return;
+			}
+
+			const fileData = fileReader.result.toString();
+			const reverseFileData = fileData.split('').reverse().join();
+			const decodedFileData = atob(reverseFileData);
+		}
+		resolve(1);
+	});
+	const fileReader = new FileReader();
+
+	fileReader.onload = () => {
+		if (typeof fileReader.result !== 'string') {
+			return;
+		}
+
+
+	}
+}
+
 export async function setLoadedMapFromFile(files: FileList) {
 	return new Promise((resolve, reject) => {
 		const fileReader = new FileReader();
 
-		fileReader.onload = async function () {
+		fileReader.onload = async function() {
 			if (typeof fileReader.result !== 'string') {
 				return;
 			}
@@ -46,7 +74,7 @@ export async function setLoadedMapFromFile(files: FileList) {
 			resolve(undefined);
 		};
 
-		fileReader.onerror = function () {
+		fileReader.onerror = function() {
 			console.error(fileReader.error);
 			reject(undefined);
 		};
@@ -71,10 +99,10 @@ export function setLoadedMapFromJson(data: unknown) {
 export async function gotoLoadedMap(
 	options:
 		| {
-				m?: string | undefined;
-				um?: string | undefined;
-				s?: boolean | undefined;
-		  }
+			m?: string | undefined;
+			um?: string | undefined;
+			s?: boolean | undefined;
+		}
 		| undefined = undefined
 ) {
 	const data = get(LoadedMapStore);
