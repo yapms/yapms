@@ -14,7 +14,7 @@
 			return region.longName.toLowerCase().trim().includes(lowerSearch) || lowerSearch == '';
 		})
 		.sort((regionA, regionB) => {
-			return regionA.longName > regionB.longName ? 1 : -1;
+			return regionA.longName.localeCompare(regionB.longName, undefined, { numeric: true });
 		});
 
 	function updateRegionValue(
