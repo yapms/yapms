@@ -100,6 +100,8 @@ github.com/chromedp/chromedp v0.13.5 h1:FrgR5oAJsKtKOQMeusSiF67Rvnw/cFV3yRC690Gf
 github.com/chromedp/chromedp v0.13.5/go.mod h1:pzEMe7rBROFW34SWhxqUr1AI7bNdkZ4WCgdEQfD39n0=
 github.com/chromedp/chromedp v0.13.6 h1:xlNunMyzS5bu3r/QKrb3fzX6ow3WBQ6oao+J65PGZxk=
 github.com/chromedp/chromedp v0.13.6/go.mod h1:h8GPP6ZtLMLsU8zFbTcb7ZDGCvCy8j/vRoFmRltQx9A=
+github.com/chromedp/chromedp v0.13.7 h1:vt+mslxscyvUr58eC+6DLSeeo74jpV/HI2nWetjv/W4=
+github.com/chromedp/chromedp v0.13.7/go.mod h1:h8GPP6ZtLMLsU8zFbTcb7ZDGCvCy8j/vRoFmRltQx9A=
 github.com/chromedp/sysutil v1.1.0 h1:PUFNv5EcprjqXZD9nJb9b/c9ibAbxiYo4exNWZyipwM=
 github.com/chromedp/sysutil v1.1.0/go.mod h1:WiThHUdltqCNKGc4gaU50XgYjwjYIhKWoHGPTUfWTJ8=
 github.com/client9/misspell v0.3.4/go.mod h1:qj6jICC3Q7zFZvVWo7KLAzC3yx5G7kyvSDkc90ppPyw=
