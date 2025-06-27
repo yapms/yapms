@@ -6,6 +6,9 @@ import { get, writable } from 'svelte/store';
 import { RegionsStore } from './regions/Regions';
 import { CandidatesStore, TossupCandidateStore } from './Candidates';
 import { page } from '$app/state';
+import { stateCodes } from '$lib/utils/stateCodes';
+import { z } from 'zod';
+import { safeJsonParse } from '$lib/utils/safeJsonParse';
 
 export const LoadedMapStore = writable<SavedMap | null>(null);
 
@@ -33,28 +36,33 @@ export async function getUserMap(id: string) {
 	return parsedData.data;
 }
 
-export function tctFileToYapmsData(files: FileList) {
-	return new Promise((resolve) => {
+export async function setLoadedMapFromTCTFile(files: FileList) {
+	return new Promise((resolve, reject) => {
 		const fileReader = new FileReader();
 
-		fileReader.onload = () => {
+		fileReader.onload = async function () {
 			if (typeof fileReader.result !== 'string') {
 				return;
 			}
-
 			const fileData = fileReader.result.toString();
-			const reverseFileData = fileData.split('').reverse().join();
+			const reverseFileData = fileData.split('').reverse().join('');
 			const decodedFileData = atob(reverseFileData);
+			const jsonData = safeJsonParse(decodedFileData);
+			if (jsonData.isErr()) {
+				return reject(undefined);
+			}
+			const yapmsData = convertTCTtoYapms(jsonData.value);
+			setLoadedMapFromJson(yapmsData);
+			resolve(undefined);
 		};
-		resolve(1);
-	});
-	const fileReader = new FileReader();
 
-	fileReader.onload = () => {
-		if (typeof fileReader.result !== 'string') {
-			return;
-		}
-	};
+		fileReader.onerror = function () {
+			console.error(fileReader.error);
+			reject(undefined);
+		};
+
+		fileReader.readAsText(files[0]);
+	});
 }
 
 export async function setLoadedMapFromFile(files: FileList) {
@@ -169,3 +177,139 @@ export async function drawLoadedMap() {
 	CandidatesStore.set(candidatesData);
 	RegionsStore.set(regionsStoreUpdated);
 }
+
+function convertTCTtoYapms(tct: unknown) {
+	const parsedData = FileSchema_TCT.safeParse(tct);
+	if (parsedData.success === false) {
+		return;
+	}
+
+	const yapmsData = {
+		map: {
+			country: 'usa',
+			type: 'presidential',
+			year: '2028',
+			variant: 'takeall'
+		},
+		tossup: {
+			id: '',
+			name: 'Tossup',
+			defaultCount: 0,
+			margins: [
+				{
+					color: '#cccccc'
+				}
+			]
+		},
+		candidates: Array<{
+			id: string;
+			name: string;
+			defaultCount: number;
+			margins: { color: string }[];
+		}>(),
+		regions: Array<{
+			id: string;
+			value: number;
+			permaVal: number;
+			locked: boolean;
+			permaLocked: boolean;
+			disabled: boolean;
+			candidates: { id: string; count: number; margin: number }[];
+		}>()
+	};
+
+	// Add all the candidates to the YAPms candidates list.
+	for (const candidate of parsedData.data.overall_results) {
+		yapmsData.candidates.push({
+			id: candidate.candidate.toString(),
+			name: candidate.candidate_name ?? candidate.candidate.toString(),
+			defaultCount: 0,
+			margins: [
+				{
+					color:
+						candidate.candidate_color ??
+						'#' +
+							Math.trunc(Math.random() * 16777215)
+								.toString(16)
+								.padStart(6, '0')
+				}
+			]
+		});
+	}
+
+	// Add all the state results to the YAPms regions.
+	for (const state of parsedData.data.state_results) {
+		const value = state.result.reduce((prev, curr) => {
+			return prev + curr.electoral_votes;
+		}, 0);
+
+		const candidates = state.result.map((candidate) => {
+			return {
+				id: candidate.candidate.toString(),
+				count: candidate.electoral_votes,
+				margin: 0
+			};
+		});
+
+		const abbr = ['NE', 'ME'].includes(state.abbr) ? state.abbr : state.abbr.toLowerCase();
+		yapmsData.regions.push({
+			id: abbr,
+			value: value,
+			permaVal: value,
+			locked: false,
+			permaLocked: false,
+			disabled: false,
+			candidates: candidates
+		});
+	}
+
+	// Any state results that didn't exist should be disabled in the YAPms regions.
+	for (const stateCode of stateCodes) {
+		const stateExists =
+			yapmsData.regions.findIndex((region) => {
+				return region.id === stateCode;
+			}) !== -1;
+
+		if (stateExists === false) {
+			yapmsData.regions.push({
+				id: stateCode,
+				value: 0,
+				permaVal: 0,
+				locked: false,
+				permaLocked: false,
+				disabled: true,
+				candidates: []
+			});
+		}
+	}
+
+	return yapmsData;
+}
+
+const FileSchema_TCT = z.object({
+	overall_results: z.array(
+		z.object({
+			candidate_name: z.string().optional(),
+			candidate_color: z.string().optional(),
+			candidate: z.number(),
+			electoral_votes: z.number(),
+			popular_votes: z.number()
+		})
+	),
+	state_results: z.array(
+		z.object({
+			state: z.number(),
+			result: z.array(
+				z.object({
+					candidate: z.number(),
+					result: z.number(),
+					percent: z.number(),
+					votes: z.number(),
+					electoral_votes: z.number()
+				})
+			),
+			abbr: z.string(),
+			result_time: z.number()
+		})
+	)
+});

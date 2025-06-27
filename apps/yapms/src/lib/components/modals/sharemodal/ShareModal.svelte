@@ -4,8 +4,12 @@
 	import { ShareModalStore } from '$lib/stores/Modals';
 	import { downloadJson, generateJson } from '$lib/utils/saveMap';
 	import Link from '$lib/icons/Link.svelte';
-	import { drawLoadedMap, gotoLoadedMap, setLoadedMapFromFile } from '$lib/stores/LoadedMap';
-	import { loadFromTCTFile } from '$lib/utils/loadMap';
+	import {
+		drawLoadedMap,
+		gotoLoadedMap,
+		setLoadedMapFromFile,
+		setLoadedMapFromTCTFile
+	} from '$lib/stores/LoadedMap';
 	import ExclamationCircle from '$lib/icons/ExclamationCircle.svelte';
 	import CheckCircle from '$lib/icons/CheckCircle.svelte';
 	import { get } from 'svelte/store';
@@ -49,7 +53,10 @@
 
 	function loadTCT() {
 		if (tctFiles && tctFiles.length > 0) {
-			loadFromTCTFile(tctFiles);
+			setLoadedMapFromTCTFile(tctFiles)
+				.then(() => gotoLoadedMap({ s: true }))
+				.then(drawLoadedMap);
+			ShareModalStore.set({ ...$ShareModalStore, open: false });
 		}
 	}
 
