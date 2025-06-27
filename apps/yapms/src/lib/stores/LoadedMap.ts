@@ -42,14 +42,14 @@ export async function setLoadedMapFromTCTFile(files: FileList) {
 
 		fileReader.onload = async function () {
 			if (typeof fileReader.result !== 'string') {
-				return reject("Failed to parse file data.");
+				return reject('Failed to parse file data.');
 			}
 			const fileData = fileReader.result.toString();
 			const reverseFileData = fileData.split('').reverse().join('');
 			const decodedFileData = atob(reverseFileData);
 			const jsonData = safeJsonParse(decodedFileData);
 			if (jsonData.isErr()) {
-				return reject("Failed to parse file data.");
+				return reject('Failed to parse file data.');
 			}
 			try {
 				const yapmsData = convertTCTJsontoYapmsJson(jsonData.value);
@@ -185,7 +185,7 @@ export async function drawLoadedMap() {
 function convertTCTJsontoYapmsJson(tct: unknown) {
 	const parsedData = FileSchema_TCT.safeParse(tct);
 	if (parsedData.success === false) {
-		throw "Failed to parse file data.";
+		throw 'Failed to parse file data.';
 	}
 
 	const yapmsData = {
@@ -268,12 +268,13 @@ function convertTCTJsontoYapmsJson(tct: unknown) {
 	}
 
 	for (const region of yapmsData.regions) {
-		const found = stateCodes.findIndex((state) => {
-			return region.id === state;
-		}) !== -1;
+		const found =
+			stateCodes.findIndex((state) => {
+				return region.id === state;
+			}) !== -1;
 
 		if (found === false) {
-			throw "This map is not supported.";
+			throw 'This map is not supported.';
 		}
 	}
 

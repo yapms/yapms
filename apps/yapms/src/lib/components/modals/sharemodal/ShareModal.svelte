@@ -189,7 +189,12 @@
 					Load <a href="https://www.newcampaigntrail.com" target="_blank" class="link">TCT</a> File
 				</legend>
 				<div class="flex flex-row gap-2">
-					<input type="file" class="file-input w-full" class:file-input-error={loadTCTFileError !== undefined} bind:files={tctFiles} />
+					<input
+						type="file"
+						class="file-input w-full"
+						class:file-input-error={loadTCTFileError !== undefined}
+						bind:files={tctFiles}
+					/>
 					<button class="btn btn-primary" onclick={loadTCT}>
 						<ArrowUpTray class="w-5 h-5" />
 						<span>Load</span>
