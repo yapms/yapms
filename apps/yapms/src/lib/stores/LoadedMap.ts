@@ -51,7 +51,7 @@ export async function setLoadedMapFromTCTFile(files: FileList) {
 			if (jsonData.isErr()) {
 				return reject(undefined);
 			}
-			const yapmsData = convertTCTtoYapms(jsonData.value);
+			const yapmsData = convertTCTJsontoYapmsJson(jsonData.value);
 			setLoadedMapFromJson(yapmsData);
 			resolve(undefined);
 		};
@@ -178,7 +178,7 @@ export async function drawLoadedMap() {
 	RegionsStore.set(regionsStoreUpdated);
 }
 
-function convertTCTtoYapms(tct: unknown) {
+function convertTCTJsontoYapmsJson(tct: unknown) {
 	const parsedData = FileSchema_TCT.safeParse(tct);
 	if (parsedData.success === false) {
 		return;
