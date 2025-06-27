@@ -177,7 +177,7 @@
 			</fieldset>
 
 			<fieldset class="fieldset flex flex-col gap-2">
-				<legend class="fieldset-legend">
+				<legend class="fieldset-legend gap-1">
 					Load <a href="https://www.newcampaigntrail.com" target="_blank" class="link">TCT</a> File
 				</legend>
 				<div class="flex flex-row gap-2">
