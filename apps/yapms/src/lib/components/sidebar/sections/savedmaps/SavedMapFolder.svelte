@@ -20,7 +20,14 @@
 		onToggle: (folderID: string) => void;
 	} = $props();
 
-	let maps = $state<Promise<RecordModel[]>>(Promise.resolve([]));
+	let maps = $state<Promise<RecordModel[]>>(
+		open
+			? $PocketBaseStore.collection('user_maps').getFullList({
+					filter: `folder = '${folderID}'`,
+					requestKey: null
+				})
+			: Promise.resolve([])
+	);
 
 	let submitting = $state(false);
 
