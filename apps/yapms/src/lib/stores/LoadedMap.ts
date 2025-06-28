@@ -8,7 +8,8 @@ import { CandidatesStore, TossupCandidateStore } from './Candidates';
 import { page } from '$app/state';
 import { stateCodes } from '$lib/utils/stateCodes';
 import { z } from 'zod';
-import { safeJsonParse } from '$lib/utils/safeJsonParse';
+import { safeATOB, safeJsonParse } from '$lib/utils/safeJsonParse';
+import { err, ok } from 'neverthrow';
 
 export const LoadedMapStore = writable<SavedMap | null>(null);
 
@@ -37,26 +38,28 @@ export async function getUserMap(id: string) {
 }
 
 export async function setLoadedMapFromTCTFile(files: FileList) {
-	return new Promise((resolve, reject) => {
+	return new Promise<undefined>((resolve, reject) => {
 		const fileReader = new FileReader();
 
-		fileReader.onload = async function () {
+		fileReader.onload = function () {
 			if (typeof fileReader.result !== 'string') {
-				return reject('Failed to parse file data.');
+				return reject('Failed to read file.');
 			}
 			const fileData = fileReader.result.toString();
 			const reverseFileData = fileData.split('').reverse().join('');
-			const decodedFileData = atob(reverseFileData);
-			const jsonData = safeJsonParse(decodedFileData);
+			const decodedFileData = safeATOB(reverseFileData);
+			if (decodedFileData.isErr()) {
+				return reject('Failed to read file.');
+			}
+			const jsonData = safeJsonParse(decodedFileData.value);
 			if (jsonData.isErr()) {
-				return reject('Failed to parse file data.');
+				return reject('Failed to read file.');
 			}
-			try {
-				const yapmsData = convertTCTJsontoYapmsJson(jsonData.value);
-				setLoadedMapFromJson(yapmsData);
-			} catch (error) {
-				return reject(error);
+			const yapmsData = convertTCTJsontoYapmsJson(jsonData.value);
+			if (yapmsData.isErr()) {
+				return reject(yapmsData.error);
 			}
+			setLoadedMapFromJson(yapmsData.value);
 			resolve(undefined);
 		};
 
@@ -185,7 +188,7 @@ export async function drawLoadedMap() {
 function convertTCTJsontoYapmsJson(tct: unknown) {
 	const parsedData = FileSchema_TCT.safeParse(tct);
 	if (parsedData.success === false) {
-		throw 'Failed to parse file data.';
+		return err('File data does not match TCT format.');
 	}
 
 	const yapmsData = {
@@ -274,7 +277,7 @@ function convertTCTJsontoYapmsJson(tct: unknown) {
 			}) !== -1;
 
 		if (found === false) {
-			throw 'This map is not supported.';
+			return err('This TCT map is not supported.');
 		}
 	}
 
@@ -298,7 +301,7 @@ function convertTCTJsontoYapmsJson(tct: unknown) {
 		}
 	}
 
-	return yapmsData;
+	return ok(yapmsData);
 }
 
 const FileSchema_TCT = z.object({
