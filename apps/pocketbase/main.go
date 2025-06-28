@@ -1,10 +1,12 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"strings"
 
+	"github.com/pocketbase/dbx"
 	"github.com/pocketbase/pocketbase"
 	"github.com/pocketbase/pocketbase/apis"
 	"github.com/pocketbase/pocketbase/core"
@@ -21,6 +23,9 @@ func main() {
 	browserlessFrontendURI := os.Getenv("BROWSERLESS_FRONTEND_URI")
 	turnstileSecret := os.Getenv("TURNSTILE_SECRET")
 
+	MAX_USER_MAPS := int64(1000)
+	MAX_USER_FOLDERS := int64(1000)
+
 	app := pocketbase.New()
 
 	migratecmd.MustRegister(app, app.RootCmd, migratecmd.Config{
@@ -36,11 +41,48 @@ func main() {
 	})
 
 	app.OnRecordCreateRequest("user_maps").BindFunc(func(e *core.RecordRequestEvent) error {
-		err := support.CompressMapData(e)
+		totalUserMaps, err := app.CountRecords("user_maps", dbx.HashExp{"user": e.Auth.Id})
+		if err != nil {
+			return apis.NewApiError(
+				403,
+				err.Error(),
+				nil,
+			)
+		}
+
+		if totalUserMaps >= MAX_USER_MAPS {
+			return apis.NewApiError(
+				403,
+				fmt.Sprintf("You have reached the limit of %d maps.", MAX_USER_MAPS),
+				nil,
+			)
+		}
+
+		err = support.CompressMapData(e)
 		if err != nil {
 			return apis.NewApiError(
 				500,
 				err.Error(),
+				nil,
+			)
+		}
+		return e.Next()
+	})
+
+	app.OnRecordCreateRequest("user_map_folders").BindFunc(func(e *core.RecordRequestEvent) error {
+		totalUserFolders, err := app.CountRecords("user_map_folders", dbx.HashExp{"user": e.Auth.Id})
+		if err != nil {
+			return apis.NewApiError(
+				403,
+				err.Error(),
+				nil,
+			)
+		}
+
+		if totalUserFolders >= MAX_USER_FOLDERS {
+			return apis.NewApiError(
+				403,
+				fmt.Sprintf("You have reached the limit of %d folders.", MAX_USER_FOLDERS),
 				nil,
 			)
 		}
