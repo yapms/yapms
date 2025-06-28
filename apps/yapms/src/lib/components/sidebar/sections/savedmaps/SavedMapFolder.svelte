@@ -3,6 +3,7 @@
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
 	import { updateSavedMapFolder } from '$lib/utils/savedMaps';
 	import { useSortable } from '$lib/utils/sortableHook.svelte';
+	import type { RecordModel } from 'pocketbase';
 	import SavedMap from './SavedMap.svelte';
 
 	let {
@@ -19,10 +20,7 @@
 		onToggle: (folderID: string) => void;
 	} = $props();
 
-	const maps = $PocketBaseStore.collection('user_maps').getFullList({
-		filter: `folder = '${folderID}'`,
-		requestKey: null
-	});
+	let maps = $state<Promise<RecordModel[]>>(Promise.resolve([]));
 
 	let submitting = $state(false);
 
@@ -53,6 +51,12 @@
 	});
 
 	function onCheck() {
+		if (open) {
+			maps = $PocketBaseStore.collection('user_maps').getFullList({
+				filter: `folder = '${folderID}'`,
+				requestKey: null
+			});
+		}
 		onToggle(folderID);
 	}
 </script>
