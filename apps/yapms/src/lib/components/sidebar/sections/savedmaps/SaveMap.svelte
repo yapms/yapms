@@ -6,7 +6,7 @@
 	import Folder from '$lib/icons/Folder.svelte';
 	import ExclamationCircle from '$lib/icons/ExclamationCircle.svelte';
 
-	let { disabled, onSubmitted }: { disabled: boolean, onSubmitted: () => void } = $props();
+	let { disabled, onSubmitted }: { disabled: boolean; onSubmitted: () => void } = $props();
 
 	let error = $state<string>('');
 	let submitting = $state<boolean>(false);
@@ -28,17 +28,19 @@
 		form.append('data', newMapData);
 		form.append('name', newMapName);
 		form.append('user', $PocketBaseStore.authStore.record.id);
-		await $PocketBaseStore.collection('user_maps').create(form)
-		.then(() => {
-			submitting = false;
-			newMapName = '';
-			onSubmitted();
-		})
-		.catch((e) => {
-			console.error(e);
-			error = e.message;
-			submitting = false;
-		});
+		await $PocketBaseStore
+			.collection('user_maps')
+			.create(form)
+			.then(() => {
+				submitting = false;
+				newMapName = '';
+				onSubmitted();
+			})
+			.catch((e) => {
+				console.error(e);
+				error = e.message;
+				submitting = false;
+			});
 	}
 
 	async function createFolder() {
@@ -50,19 +52,22 @@
 		}
 		submitting = true;
 		error = '';
-		await $PocketBaseStore.collection('user_map_folders').create({
-			name: newMapName,
-			user: $PocketBaseStore.authStore.record.id
-		}).then(() => {
-			submitting = false;
-			newMapName = '';
-			onSubmitted();
-		})
-		.catch((e) => {
-			console.error(e);
-			error = e.message;
-			submitting = false;
-		});
+		await $PocketBaseStore
+			.collection('user_map_folders')
+			.create({
+				name: newMapName,
+				user: $PocketBaseStore.authStore.record.id
+			})
+			.then(() => {
+				submitting = false;
+				newMapName = '';
+				onSubmitted();
+			})
+			.catch((e) => {
+				console.error(e);
+				error = e.message;
+				submitting = false;
+			});
 	}
 </script>
 
