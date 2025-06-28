@@ -6,8 +6,9 @@
 	import Folder from '$lib/icons/Folder.svelte';
 	import ExclamationCircle from '$lib/icons/ExclamationCircle.svelte';
 
-	let { disabled, onSubmitted }: { disabled: boolean; onSubmitted: () => void } = $props();
+	let { onSubmitted }: { onSubmitted: () => void } = $props();
 
+	let disabled = $state<boolean>(false);
 	let error = $state<string>('');
 	let submitting = $state<boolean>(false);
 	let newMapName = $state<string>('');
