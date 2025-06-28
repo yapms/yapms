@@ -4,7 +4,12 @@
 	import { ShareModalStore } from '$lib/stores/Modals';
 	import { downloadJson, generateJson } from '$lib/utils/saveMap';
 	import Link from '$lib/icons/Link.svelte';
-	import { drawLoadedMap, gotoLoadedMap, setLoadedMapFromFile } from '$lib/stores/LoadedMap';
+	import {
+		drawLoadedMap,
+		gotoLoadedMap,
+		setLoadedMapFromFile,
+		setLoadedMapFromTCTFile
+	} from '$lib/stores/LoadedMap';
 	import ExclamationCircle from '$lib/icons/ExclamationCircle.svelte';
 	import CheckCircle from '$lib/icons/CheckCircle.svelte';
 	import { get } from 'svelte/store';
@@ -22,6 +27,9 @@
 	let isImported = $derived(page.url.pathname === '/app/imported');
 
 	let files: FileList | undefined = $state();
+	let tctFiles: FileList | undefined = $state();
+
+	let loadTCTFileError: string | undefined = $state();
 
 	let fetchingLink = $state(false);
 	let copiedLink = $state(false);
@@ -42,6 +50,21 @@
 				.then(() => gotoLoadedMap({ s: true }))
 				.then(drawLoadedMap);
 			ShareModalStore.set({ ...$ShareModalStore, open: false });
+		}
+	}
+
+	function loadTCT() {
+		if (tctFiles && tctFiles.length > 0) {
+			setLoadedMapFromTCTFile(tctFiles)
+				.then(() => gotoLoadedMap({ s: true }))
+				.then(drawLoadedMap)
+				.then(() => {
+					ShareModalStore.set({ ...$ShareModalStore, open: false });
+					loadTCTFileError = undefined;
+				})
+				.catch((error) => {
+					loadTCTFileError = error;
+				});
 		}
 	}
 
@@ -159,6 +182,30 @@
 						<span>Screenshot</span>
 					</button>
 				</div>
+			</fieldset>
+
+			<fieldset class="fieldset flex flex-col gap-2">
+				<legend class="fieldset-legend gap-1">
+					Load <a href="https://www.newcampaigntrail.com" target="_blank" class="link">TCT</a> File
+				</legend>
+				<div class="flex flex-row gap-2">
+					<input
+						type="file"
+						class="file-input w-full"
+						class:file-input-error={loadTCTFileError !== undefined}
+						bind:files={tctFiles}
+					/>
+					<button class="btn btn-primary" onclick={loadTCT}>
+						<ArrowUpTray class="w-5 h-5" />
+						<span>Load</span>
+					</button>
+				</div>
+				{#if loadTCTFileError !== undefined}
+					<div class="alert alert-error mt-2">
+						<ExclamationCircle class="w-6 h-6" />
+						<span>{loadTCTFileError}</span>
+					</div>
+				{/if}
 			</fieldset>
 
 			{#if isImported}
