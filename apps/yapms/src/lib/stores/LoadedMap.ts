@@ -41,7 +41,7 @@ export async function setLoadedMapFromTCTFile(files: FileList) {
 	return new Promise<undefined>((resolve, reject) => {
 		const fileReader = new FileReader();
 
-		fileReader.onload = function() {
+		fileReader.onload = function () {
 			if (typeof fileReader.result !== 'string') {
 				return reject('Failed to read file.');
 			}
@@ -56,7 +56,7 @@ export async function setLoadedMapFromTCTFile(files: FileList) {
 
 			const parsedData = safeJsonParse(data.value);
 			if (parsedData.isErr()) {
-				return reject("Failed to read file.");
+				return reject('Failed to read file.');
 			}
 
 			const yapmsData = convertTCTJsontoYapmsJson(parsedData.value);
@@ -68,7 +68,7 @@ export async function setLoadedMapFromTCTFile(files: FileList) {
 			return resolve(undefined);
 		};
 
-		fileReader.onerror = function() {
+		fileReader.onerror = function () {
 			console.error(fileReader.error);
 			reject(undefined);
 		};
@@ -87,7 +87,7 @@ export async function setLoadedMapFromFile(files: FileList) {
 	return new Promise((resolve, reject) => {
 		const fileReader = new FileReader();
 
-		fileReader.onload = async function() {
+		fileReader.onload = async function () {
 			if (typeof fileReader.result !== 'string') {
 				return;
 			}
@@ -96,7 +96,7 @@ export async function setLoadedMapFromFile(files: FileList) {
 			resolve(undefined);
 		};
 
-		fileReader.onerror = function() {
+		fileReader.onerror = function () {
 			console.error(fileReader.error);
 			reject(undefined);
 		};
@@ -121,10 +121,10 @@ export function setLoadedMapFromJson(data: unknown) {
 export async function gotoLoadedMap(
 	options:
 		| {
-			m?: string | undefined;
-			um?: string | undefined;
-			s?: boolean | undefined;
-		}
+				m?: string | undefined;
+				um?: string | undefined;
+				s?: boolean | undefined;
+		  }
 		| undefined = undefined
 ) {
 	const data = get(LoadedMapStore);
@@ -250,11 +250,11 @@ function convertTCTJsontoYapmsJson(tct: unknown) {
 	};
 
 	if (nct.success) {
-		alert("NCT");
+		alert('NCT');
 		yapmsData.candidates = getCandidatesFromNCT(nct.data);
 		yapmsData.regions = getRegionsFromNCT(nct.data);
 	} else if (showcase.success) {
-		alert("Showcase");
+		alert('Showcase');
 		yapmsData.candidates = getCandidatesFromShowcase(showcase.data);
 		console.log(yapmsData.candidates);
 		yapmsData.regions = getRegionsFromShowCase(showcase.data);
@@ -305,26 +305,36 @@ function getVariantFromNCT(data: z.infer<typeof FileSchema_NCT>) {
 }
 
 function getCandidatesFromNCT(data: z.infer<typeof FileSchema_NCT>) {
-	const candidates = new Map<string, { color: string; name: string; }>();
+	const candidates = new Map<string, { color: string; name: string }>();
 	for (const candidate of data.overall_results) {
 		candidates.set(candidate.candidate.toString(), {
 			name: candidate.candidate_name ?? '',
-			color: candidate.candidate_color ?? '#' + Math.trunc(Math.random() * 16777215).toString(16).padStart(6, '0')
+			color:
+				candidate.candidate_color ??
+				'#' +
+					Math.trunc(Math.random() * 16777215)
+						.toString(16)
+						.padStart(6, '0')
 		});
 	}
 
-	return candidates.entries().map((candidate) => {
-		const key = candidate[0];
-		const value = candidate[1];
-		return {
-			id: key,
-			name: value.name,
-			defaultCount: 0,
-			margins: [{
-				color: value.color
-			}],
-		}
-	}).toArray();
+	return candidates
+		.entries()
+		.map((candidate) => {
+			const key = candidate[0];
+			const value = candidate[1];
+			return {
+				id: key,
+				name: value.name,
+				defaultCount: 0,
+				margins: [
+					{
+						color: value.color
+					}
+				]
+			};
+		})
+		.toArray();
 }
 
 function getRegionsFromNCT(data: z.infer<typeof FileSchema_NCT>) {
@@ -401,28 +411,37 @@ function getVariantFromShowcase(data: z.infer<typeof FileSchema_ShowCase>) {
 }
 
 function getCandidatesFromShowcase(data: z.infer<typeof FileSchema_ShowCase>) {
-	const candidates = new Map<string, { color: string; name: string; }>();
+	const candidates = new Map<string, { color: string; name: string }>();
 	for (const state of data.results) {
 		for (const result of state.results) {
 			candidates.set(result.candidate_name, {
 				name: result.candidate_name,
-				color: '#' + Math.trunc(Math.random() * 16777215).toString(16).padStart(6, '0')
+				color:
+					'#' +
+					Math.trunc(Math.random() * 16777215)
+						.toString(16)
+						.padStart(6, '0')
 			});
 		}
 	}
 
-	return candidates.entries().map((candidate) => {
-		const key = candidate[0];
-		const value = candidate[1];
-		return {
-			id: key,
-			name: value.name,
-			defaultCount: 0,
-			margins: [{
-				color: value.color
-			}],
-		}
-	}).toArray();
+	return candidates
+		.entries()
+		.map((candidate) => {
+			const key = candidate[0];
+			const value = candidate[1];
+			return {
+				id: key,
+				name: value.name,
+				defaultCount: 0,
+				margins: [
+					{
+						color: value.color
+					}
+				]
+			};
+		})
+		.toArray();
 }
 
 function getRegionsFromShowCase(data: z.infer<typeof FileSchema_ShowCase>) {
@@ -518,13 +537,17 @@ const FileSchema_NCT = z.object({
 });
 
 const FileSchema_ShowCase = z.object({
-	results: z.array(z.object({
-		state: z.string(),
-		results: z.array(z.object({
-			candidate_name: z.string(),
-			electoral_votes: z.number(),
-			popular_votes: z.number(),
-			vote_percentage: z.number(),
-		}))
-	}))
+	results: z.array(
+		z.object({
+			state: z.string(),
+			results: z.array(
+				z.object({
+					candidate_name: z.string(),
+					electoral_votes: z.number(),
+					popular_votes: z.number(),
+					vote_percentage: z.number()
+				})
+			)
+		})
+	)
 });
