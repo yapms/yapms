@@ -1,6 +1,8 @@
 import { get, writable } from 'svelte/store';
+import type { Writable } from 'svelte/store';
 import type { Region } from '$lib/types/Region';
 import { TossupCandidateStore } from './Candidates';
+import { ModeStore } from './Mode';
 
 export const CandidateModalStore = writable({
 	open: false
@@ -73,6 +75,32 @@ export const ModeModalStore = writable({
 	open: false
 });
 
+export function handleModeInteractions(keycode: string) {
+	switch (keycode) {
+		case 'KeyF':
+			ModeStore.set('fill');
+			break;
+		case 'KeyD':
+			ModeStore.set('disable');
+			break;
+		case 'KeyL':
+			ModeStore.set('lock');
+			break;
+		case 'KeyS':
+			ModeStore.set('split');
+			break;
+		case 'KeyE':
+			ModeStore.set('edit');
+			break;
+		default:
+			return;
+	}
+	ModeModalStore.set({
+		open: false,
+		...ModeModalStore
+	});
+}
+
 export const ShareModalStore = writable({
 	open: false
 });
@@ -113,3 +141,40 @@ export const MassEditModalStore = writable({
 export const TableModalStore = writable({
 	open: false
 });
+
+function toggleOpen(store: Writable<{ open: boolean }>) {
+	const openVal = get(store).open;
+	store.set({
+		open: !openVal,
+		...store
+	});
+}
+
+export function handleModalOpenInteractions(keycode: string) {
+	switch (keycode) {
+		case 'KeyH':
+			toggleOpen(NavigateHomeModalStore);
+			break;
+		case 'KeyC':
+			toggleOpen(CandidateModalStore);
+			break;
+		case 'KeyI':
+			toggleOpen(ImportModalStore);
+			break;
+		case 'KeyO':
+			toggleOpen(OptionsModalStore);
+			break;
+		case 'KeyM':
+			toggleOpen(ModeModalStore);
+			break;
+		case 'KeyS':
+			toggleOpen(ShareModalStore);
+			break;
+		case 'KeyT':
+			toggleOpen(ThemeModalStore);
+			break;
+		case 'KeyL':
+			toggleOpen(AuthModalStore);
+			break;
+	}
+}

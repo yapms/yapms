@@ -30,6 +30,11 @@
 	import { PresentationModeStore } from '$lib/stores/PresentationMode';
 	import PresentationNavBar from '$lib/components/navbar/PresentationNavBar.svelte';
 	import ToolsModal from '$lib/components/modals/toolsmodal/ToolsModal.svelte';
+	import {
+		ModeModalStore,
+		handleModeInteractions,
+		handleModalOpenInteractions
+	} from '$lib/stores/Modals';
 
 	function handleKeyDown(event: KeyboardEvent) {
 		$InteractionStore.set(event.code, true);
@@ -39,6 +44,15 @@
 				reapplyPanZoom();
 			}
 			handleCandidateSelectionShortcut(event.code);
+		}
+
+		if (event.target instanceof Element && event.target.tagName !== 'INPUT') {
+			if (event.shiftKey && !event.ctrlKey) {
+				handleModalOpenInteractions(event.code);
+			}
+			if ($ModeModalStore.open) {
+				handleModeInteractions(event.code);
+			}
 		}
 	}
 
