@@ -250,16 +250,14 @@ function convertTCTJsontoYapmsJson(tct: unknown) {
 	};
 
 	if (nct.success) {
-		alert('NCT');
 		yapmsData.candidates = getCandidatesFromNCT(nct.data);
 		yapmsData.regions = getRegionsFromNCT(nct.data);
 	} else if (showcase.success) {
-		alert('Showcase');
 		yapmsData.candidates = getCandidatesFromShowcase(showcase.data);
-		console.log(yapmsData.candidates);
 		yapmsData.regions = getRegionsFromShowCase(showcase.data);
 	}
 
+	// Check if there is an invalid state in the file
 	for (const region of yapmsData.regions) {
 		const found =
 			stateCodes.findIndex((state) => {
