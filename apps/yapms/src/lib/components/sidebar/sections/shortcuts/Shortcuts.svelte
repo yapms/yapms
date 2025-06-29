@@ -20,7 +20,7 @@
 	<div>Switch candidates.</div>
 
 	<div class="col-span-2 text-center content-center">
-		Hold <kbd class="kbd">shift</kbd> and Press
+		Press
 		<div class="flex flex-wrap justify-center gap-x-1 mt-1">
 			<kbd class="kbd">h</kbd>
 			<kbd class="kbd">c</kbd>

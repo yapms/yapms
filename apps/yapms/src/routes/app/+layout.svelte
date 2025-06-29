@@ -47,7 +47,7 @@
 		}
 
 		if (event.target instanceof Element && event.target.tagName !== 'INPUT') {
-			if (event.shiftKey && !event.ctrlKey) {
+			if (!event.ctrlKey && !$ModeModalStore.open) {
 				handleModalOpenInteractions(event.code);
 			}
 			if ($ModeModalStore.open) {
