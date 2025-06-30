@@ -19,6 +19,21 @@
 	</div>
 	<div>Switch candidates.</div>
 
+	<div class="col-span-2 text-center content-center">
+		Press
+		<div class="flex flex-wrap justify-center gap-x-1 mt-1">
+			<kbd class="kbd">h</kbd>
+			<kbd class="kbd">c</kbd>
+			<kbd class="kbd">i</kbd>
+			<kbd class="kbd">o</kbd>
+			<kbd class="kbd">m</kbd>
+			<kbd class="kbd">s</kbd>
+			<kbd class="kbd">t</kbd>
+			<kbd class="kbd">l</kbd>
+		</div>
+		to toggle menus.
+	</div>
+
 	{#if $ActionGroups.length !== 0}
 		<div class="text-right content-center">Hold <kbd class="kbd">g</kbd></div>
 		<div class="flex flex-col">
