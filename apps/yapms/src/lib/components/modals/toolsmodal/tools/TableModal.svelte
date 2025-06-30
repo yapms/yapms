@@ -8,14 +8,16 @@
 	import { preventNonNumericalInput, preventNonNumericalPaste } from '$lib/utils/inputValidation';
 
 	let filterInput = '';
-	$: sortedAndFilteredRegions = $RegionsStore
-		.filter((region) => {
-			const lowerSearch = filterInput.toLowerCase().trim();
-			return region.longName.toLowerCase().trim().includes(lowerSearch) || lowerSearch == '';
-		})
-		.sort((regionA, regionB) => {
-			return regionA.longName.localeCompare(regionB.longName, undefined, { numeric: true });
-		});
+	$: sortedAndFilteredRegions = $TableModalStore.open
+		? $RegionsStore
+				.filter((region) => {
+					const lowerSearch = filterInput.toLowerCase().trim();
+					return region.longName.toLowerCase().trim().includes(lowerSearch) || lowerSearch == '';
+				})
+				.sort((regionA, regionB) => {
+					return regionA.longName > regionB.longName ? 1 : -1;
+				})
+		: [];
 
 	function updateRegionValue(
 		event: Event & { currentTarget: EventTarget & HTMLInputElement },
