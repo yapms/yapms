@@ -4,7 +4,9 @@
 	import * as SolidIcons from '@fortawesome/free-solid-svg-icons';
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
 
-	let links = $PocketBaseStore.collection('social_links').getFullList();
+	let links = $derived(
+		$PocketBaseStore.collection('social_links').getFullList({ requestKey: null })
+	);
 
 	function isIconDefinition(
 		faItem: BrandIcons.IconDefinition | BrandIcons.IconPrefix | BrandIcons.IconPack
@@ -43,6 +45,6 @@
 			</a>
 		{/each}
 	{:catch error}
-		{error.status}
+		{error.status} {error.message}
 	{/await}
 </div>
