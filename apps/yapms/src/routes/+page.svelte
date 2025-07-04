@@ -44,6 +44,7 @@
 	import EspMapCard from '$lib/components/mapcard/mapcards/ESPMapCard.svelte';
 	import PolMapCard from '$lib/components/mapcard/mapcards/POLMapCard.svelte';
 	import AusStatesMapCard from '$lib/components/mapcard/mapcards/AUSStatesMapCard.svelte';
+	import SocialLinkGrid from '$lib/components/links/SocialLinkGrid.svelte';
 
 	export let data: PageData;
 
@@ -99,6 +100,10 @@
 		<div class="navbar-center w-auto grow">
 			<MapSearch data={data.post.search} />
 		</div>
+	</div>
+
+	<div class="lg:hidden m-2">
+		<SocialLinkGrid />
 	</div>
 
 	<div class="flex flex-row h-full overflow-hidden">
