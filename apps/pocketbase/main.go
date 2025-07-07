@@ -5,6 +5,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/pocketbase/dbx"
 	"github.com/pocketbase/pocketbase"
 	"github.com/pocketbase/pocketbase/apis"
 	"github.com/pocketbase/pocketbase/core"
@@ -44,6 +45,19 @@ func main() {
 				nil,
 			)
 		}
+		return e.Next()
+	})
+
+	app.OnRecordCreateRequest("user_colors").BindFunc(func(e *core.RecordRequestEvent) error {
+		totalUserColors, err := app.CountRecords("user_colors", dbx.HashExp{"user": e.Auth.Id})
+		if err != nil {
+			return apis.NewApiError(403, err.Error(), nil)
+		}
+
+		if totalUserColors > 100 {
+			return apis.NewApiError(403, "You have reached the limit of 100 colors.", nil)
+		}
+
 		return e.Next()
 	})
 
