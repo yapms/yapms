@@ -13,8 +13,7 @@
 	}
 
 	PresetColorsModalSelectedStore.subscribe((presetColors) => {
-		if (presetColors.length !== 0)
-			generateColor = presetColors[0];
+		if (presetColors.length !== 0) generateColor = presetColors[0];
 	});
 </script>
 
