@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { generateShades } from '$lib/utils/shades';
 	import { preventNonNumericalInput, preventNonNumericalPaste } from '$lib/utils/inputValidation';
+	import { PresetColorsModalSelectedStore } from '$lib/stores/Modals';
 
 	let generateAmount = $state(4);
 	let generateColor = $state('#000000');
@@ -10,6 +11,10 @@
 	function generateExtraColors() {
 		colorUpdater(generateShades(generateColor, generateAmount));
 	}
+
+	PresetColorsModalSelectedStore.subscribe((presetColors) => {
+		if (presetColors.length !== 0) generateColor = presetColors[0];
+	});
 </script>
 
 <div class="flex flex-row gap-x-2 items-end">
