@@ -215,9 +215,11 @@ async function getGeoJsonProperties(files: FileList): Promise<Set<string>> {
 
 	const resolvedTexts = await Promise.all(unresolvedTexts);
 	for (const text of resolvedTexts) {
-		Object.keys(JSON.parse(text).features[0].properties).forEach((property) => properties.add(property));
+		Object.keys(JSON.parse(text).features[0].properties).forEach((property) =>
+			properties.add(property)
+		);
 	}
-	
+
 	return properties;
 }
 
