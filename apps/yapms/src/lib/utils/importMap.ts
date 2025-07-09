@@ -205,11 +205,28 @@ function proj4ToProjection() {
 	return geoProjection(project as GeoRawProjection);
 }
 
+async function getGeoJsonProperties(files: FileList): Promise<Set<string>> {
+	const properties: Set<string> = new Set<string>();
+
+	const unresolvedTexts = [];
+	for (const file of files) {
+		unresolvedTexts.push(file.text());
+	}
+
+	const resolvedTexts = await Promise.all(unresolvedTexts);
+	for (const text of resolvedTexts) {
+		Object.keys(JSON.parse(text).features[0].properties).forEach((property) => properties.add(property));
+	}
+	
+	return properties;
+}
+
 export {
 	importFromGeoJson,
 	importFromShapefiles,
 	importFromSVG,
 	newImportedMap,
 	exportImportAsSVG,
-	proj4ToProjection
+	proj4ToProjection,
+	getGeoJsonProperties
 };

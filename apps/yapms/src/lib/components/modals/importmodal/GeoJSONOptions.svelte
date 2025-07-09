@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { ImportedSVGStore } from '$lib/stores/ImportedSVG';
 
-	let { disabled = false } = $props();
+	let { disabled = false, properties } = $props();
 </script>
 
 <fieldset class="fieldset">
@@ -13,26 +13,47 @@
 	</p>
 
 	<p class="fieldset-label">Short Name - Used as the region tooltip.</p>
-	<input
-		type="text"
-		class="input w-full"
+	<select
+		class="select select-bordered w-full"
 		{disabled}
 		bind:value={$ImportedSVGStore.options.shortNameProp}
-	/>
+	>
+		{#await properties}
+			<option value=''>Loading...</option>
+		{:then properties}
+			{#each properties as property}
+				<option value={property}>{property}</option>
+			{/each}
+		{/await}
+	</select>
 
 	<p class="fieldset-label">Long Name - Shown when editing or splitting a region.</p>
-	<input
-		type="text"
-		class="input w-full"
+	<select
+		class="select select-bordered w-full"
 		{disabled}
 		bind:value={$ImportedSVGStore.options.longNameProp}
-	/>
+	>
+		{#await properties}
+			<option value=''>Loading...</option>
+		{:then properties}
+			{#each properties as property}
+				<option value={property}>{property}</option>
+			{/each}
+		{/await}
+	</select>
 
 	<p class="fieldset-label">Value - The value of the region, must be numeric.</p>
-	<input
-		type="text"
-		class="input w-full"
+	<select
+		class="select select-bordered w-full"
 		{disabled}
 		bind:value={$ImportedSVGStore.options.valueProp}
-	/>
+	>
+		{#await properties}
+			<option value=''>Loading...</option>
+		{:then properties}
+			{#each properties as property}
+				<option value={property}>{property}</option>
+			{/each}
+		{/await}
+	</select>
 </fieldset>
