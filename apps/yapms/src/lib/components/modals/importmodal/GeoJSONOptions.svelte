@@ -19,7 +19,7 @@
 		bind:value={$ImportedSVGStore.options.shortNameProp}
 	>
 		{#await properties}
-			<option value=''>Loading...</option>
+			<option value="">Loading...</option>
 		{:then properties}
 			{#each properties as property}
 				<option value={property}>{property}</option>
@@ -34,7 +34,7 @@
 		bind:value={$ImportedSVGStore.options.longNameProp}
 	>
 		{#await properties}
-			<option value=''>Loading...</option>
+			<option value="">Loading...</option>
 		{:then properties}
 			{#each properties as property}
 				<option value={property}>{property}</option>
@@ -49,7 +49,7 @@
 		bind:value={$ImportedSVGStore.options.valueProp}
 	>
 		{#await properties}
-			<option value=''>Loading...</option>
+			<option value="">Loading...</option>
 		{:then properties}
 			{#each properties as property}
 				<option value={property}>{property}</option>
