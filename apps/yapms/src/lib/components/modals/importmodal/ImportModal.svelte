@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { ImportModalStore } from '$lib/stores/Modals';
-	import { importFromGeoJson, importFromShapefiles, importFromSVG } from '$lib/utils/importMap';
+	import { importFromGeoJson, importFromShapefiles, importFromSVG, getGeoJsonProperties } from '$lib/utils/importMap';
 	import { ImportedSVGStore } from '$lib/stores/ImportedSVG';
 	import ExclamationCircle from '$lib/icons/ExclamationCircle.svelte';
 	import ModalBase from '../ModalBase.svelte';
@@ -33,6 +33,10 @@
 			return 'invalid';
 		}, '')
 	);
+
+	let geoJsonProperties = $derived(
+		files && fileType === 'geojson' ? getGeoJsonProperties(files) : []
+	)
 
 	let fileTypeIsInvalid = $derived(
 		files && files.length > 0 && ['geojson', 'shp', 'svg'].includes(fileType) === false
@@ -127,7 +131,7 @@
 				{/if}
 
 				{#if fileType === 'geojson'}
-					<GeoJsonOptions disabled={isLoading} />
+					<GeoJsonOptions disabled={isLoading} properties={geoJsonProperties} />
 				{/if}
 
 				<fieldset class="fieldset">
