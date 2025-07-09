@@ -20,7 +20,7 @@
 		"@fontsource/roboto": "5.2.6",
 		"@fortawesome/free-brands-svg-icons": "6.7.2",
 		"@fortawesome/free-solid-svg-icons": "6.7.2",
-		"@sveltejs/adapter-node": "5.2.12",
+		"@sveltejs/adapter-node": "5.2.13",
 		"@sveltejs/kit": "2.22.2",
 		"@sveltejs/vite-plugin-svelte": "5.1.0",
 		"@tailwindcss/postcss": "4.1.11",
