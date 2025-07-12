@@ -13,6 +13,7 @@
 	import GenerateShades from './shadegeneration/GenerateShades.svelte';
 	import Rotate from '$lib/icons/Rotate.svelte';
 	import { flip } from 'svelte/animate';
+	import PresetColorsModal from './presetcolors/PresetColorsModal.svelte';
 
 	let newName = $state<string>('New Candidate');
 	let newDefaultValue = $state<number>(0);
@@ -20,6 +21,7 @@
 	let newColors = $state([{ color: '#000000' }]);
 
 	let colorList = $state<HTMLUListElement | undefined>(undefined);
+	let presetColorsModalIsOpen = $state(false);
 
 	useSortable(() => colorList, {
 		animation: 140,
@@ -37,8 +39,18 @@
 				return { color: presetColor };
 			});
 	});
+
 	function addColor() {
 		newColors = [...newColors, { color: '#000000' }];
+	}
+
+	function setPresetColors(margins: string[]) {
+		newColors = margins.map((margin) => {
+			return {
+				color: margin
+			};
+		});
+		presetColorsModalIsOpen = false;
 	}
 
 	function removeColor(index: number) {
@@ -58,9 +70,8 @@
 		newColors = [{ color: '#000000' }];
 	}
 
-	function selectPresetColor() {
-		$PresetColorsModalStore.open = true;
-		$AddCandidateModalStore.open = false;
+	function openPresetColorsModal() {
+		presetColorsModalIsOpen = true;
 	}
 
 	function confirm() {
@@ -145,9 +156,11 @@
 	</div>
 
 	<div slot="action" class="flex w-full gap-2">
-		<button class="btn btn-secondary" onclick={selectPresetColor}> Preset Colors </button>
+		<button class="btn btn-primary" onclick={openPresetColorsModal}> Preset Colors </button>
 		<button class="btn btn-primary" onclick={addColor}>Add Color</button>
 		<div class="grow"></div>
 		<button class="btn btn-success" onclick={confirm}>Add Candidate</button>
 	</div>
 </ModalBase>
+
+<PresetColorsModal open={presetColorsModalIsOpen} onSelectColors={setPresetColors} />
