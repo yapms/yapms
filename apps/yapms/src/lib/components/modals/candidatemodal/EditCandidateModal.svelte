@@ -13,6 +13,7 @@
 	import { preventNonNumericalInput, preventNonNumericalPaste } from '$lib/utils/inputValidation';
 	import { reorder, useSortable } from '$lib/utils/sortableHook.svelte';
 	import ModalBase from '../ModalBase.svelte';
+	import PresetColorsModal from './presetcolors/PresetColorsModal.svelte';
 	import GenerateShades from './shadegeneration/GenerateShades.svelte';
 	import { flip } from 'svelte/animate';
 
@@ -22,6 +23,7 @@
 
 	let colorList = $state<HTMLUListElement | undefined>(undefined);
 	let colorToDelete = $state<number | undefined>(undefined);
+	let presetColorsModalIsOpen = $state(false);
 
 	useSortable(() => colorList, {
 		animation: 140,
@@ -73,12 +75,24 @@
 		colorToDelete = undefined;
 	}
 
+	function openPresetColorsModal() {
+		presetColorsModalIsOpen = true;
+	}
+
 	function addColor() {
 		$CandidatesStore[candidateIndex].margins = [
 			...$CandidatesStore[candidateIndex].margins,
 			{ color: '#000000' }
 		];
 		colorToDelete = undefined;
+	}
+
+	function setPresetColors(margins: string[]) {
+		$CandidatesStore[candidateIndex].margins = margins.map((margin) => {
+			return { color: margin };
+		});
+		$RegionsStore = $RegionsStore;
+		presetColorsModalIsOpen = false;
 	}
 
 	function confirmRemove(index: number) {
@@ -177,8 +191,12 @@
 
 		<GenerateShades colorUpdater={updateColors} />
 	</div>
-	<div slot="action" class="flex flex-grow justify-between">
+	<div slot="action" class="flex flex-grow justify-between gap-2">
 		<button class="btn btn-error" onclick={deleteCandidate}>Delete Candidate</button>
-		<button class="btn btn-success" onclick={addColor}>Add Color</button>
+		<div class="grow"></div>
+		<button class="btn btn-primary" onclick={openPresetColorsModal}>Preset Colors</button>
+		<button class="btn btn-primary" onclick={addColor}>Add Color</button>
 	</div>
 </ModalBase>
+
+<PresetColorsModal bind:open={presetColorsModalIsOpen} onSelectColors={setPresetColors} />
