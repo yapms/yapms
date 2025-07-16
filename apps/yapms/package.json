@@ -40,7 +40,7 @@
 		"dompurify": "3.2.6",
 		"eslint": "9.31.0",
 		"eslint-config-prettier": "10.1.5",
-		"eslint-plugin-svelte": "3.10.1",
+		"eslint-plugin-svelte": "3.11.0",
 		"file-saver": "2.0.5",
 		"glob": "11.0.3",
 		"html-to-image": "1.11.13",
