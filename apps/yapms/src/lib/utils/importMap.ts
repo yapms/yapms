@@ -11,6 +11,8 @@ import fileSaver from 'file-saver';
 import DOMPurify from 'dompurify';
 import type { SavedRegionCandidates } from '$lib/types/Region';
 import proj4 from 'proj4';
+import { safeJsonParse } from './safeJsonParse';
+import z from 'zod';
 
 //This config allows all attributes used by the app to pass through DOMPurify without change.
 //If you are adding an attribute imported maps might need, add it here.
@@ -205,11 +207,50 @@ function proj4ToProjection() {
 	return geoProjection(project as GeoRawProjection);
 }
 
+async function getGeoJsonProperties(files: FileList): Promise<Set<string>> {
+	const parser = z.object({
+		features: z.array(
+			z.object({
+				properties: z.any()
+			})
+		)
+	});
+
+	const properties: Set<string> = new Set<string>();
+
+	const unresolvedTexts = [];
+	for (const file of files) {
+		unresolvedTexts.push(file.text());
+	}
+
+	const resolvedTexts = await Promise.all(unresolvedTexts);
+	for (const text of resolvedTexts) {
+		const json = safeJsonParse(text);
+		if (json.isErr()) {
+			console.error(json.error);
+			continue;
+		}
+
+		const parsedJson = parser.safeParse(json.value);
+		if (parsedJson.success === false) {
+			console.error(parsedJson.error);
+			continue;
+		}
+
+		Object.keys(parsedJson.data.features[0].properties).forEach((property) =>
+			properties.add(property)
+		);
+	}
+
+	return properties;
+}
+
 export {
 	importFromGeoJson,
 	importFromShapefiles,
 	importFromSVG,
 	newImportedMap,
 	exportImportAsSVG,
-	proj4ToProjection
+	proj4ToProjection,
+	getGeoJsonProperties
 };
