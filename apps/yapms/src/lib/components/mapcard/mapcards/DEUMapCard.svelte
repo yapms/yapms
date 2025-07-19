@@ -36,6 +36,10 @@
 		{
 			label: 'States',
 			route: '/app/deu/states/2023001/blank'
+		},
+		{
+			label: 'Counties',
+			route: '/app/deu/counties/2022135/blank'
 		}
 	];
 </script>
