@@ -68,7 +68,7 @@
 		{
 			label: 'Ceremonial Counties',
 			route: '/app/gbr/ceremonial_counties/2025001/blank'
-		},
+		}
 	];
 </script>
 
