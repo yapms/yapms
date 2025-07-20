@@ -18,7 +18,6 @@
 	<legend class="fieldset-legend">CRS Definition</legend>
 	<input type="file" accept=".prj" class="file-input w-full" bind:files />
 	<p class="fieldset-label">
-		Having trouble with your map? Try uploading the .prj file that came with your .shp here. Your
-		map will take significantly longer to load.
+		Having trouble with your map? Try uploading the .prj file that came with your .shp here.
 	</p>
 </fieldset>
