@@ -36,10 +36,7 @@
 
 	$effect(() => {
 		if (open === true) dialogElement?.showModal();
-	});
-
-	$effect(() => {
-		if (open === false) dialogElement?.close();
+		else if (open === false) dialogElement?.close();
 	});
 </script>
 
