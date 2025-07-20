@@ -68,10 +68,13 @@
 	}
 </script>
 
-<div class="collapse bg-base-300 border-base-300 rounded-r-none">
+<div class="collapse collapse-arrow bg-base-300 border-base-300 rounded-r-none">
 	<input type="checkbox" bind:checked={open} onchange={onCheck} />
-	<div class="collapse-title join p-0 flex items-center transition-[padding]" class:pb-2={open}>
-		<p class="text-xs font-semibold p-0 grow text-center">{folderName}</p>
+	<div
+		class="truncate collapse-title join p-0 flex items-center transition-[padding] after:mr-10 after:-mt-3.5"
+		class:pb-2={open}
+	>
+		<p class="truncate text-xs font-semibold pr-8 pl-4 grow text-center">{folderName}</p>
 		<div class="tooltip tooltip-left z-10" data-tip="Delete">
 			<button
 				class="btn btn-sm btn-error flex-shrink join-item"

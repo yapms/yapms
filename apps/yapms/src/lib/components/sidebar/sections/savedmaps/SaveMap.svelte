@@ -89,7 +89,7 @@
 	/>
 	<div class="tooltip" data-tip="New Folder">
 		<button
-			class="btn btn-sm join-item"
+			class="btn btn-sm btn-primary join-item"
 			onclick={createFolder}
 			disabled={disabled || submitting || $page.url.pathname === '/app/imported'}
 		>
