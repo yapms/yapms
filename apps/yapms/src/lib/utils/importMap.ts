@@ -66,6 +66,7 @@ async function importFromGeoJson(files: FileList): Promise<void> {
 		loaded: false,
 		content: ''
 	});
+
 	const districtShapes = JSON.parse(await files[0].text());
 	districtShapes.features = [];
 
@@ -134,8 +135,7 @@ function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
 	const importOptions = get(ImportedSVGStore).options;
 
 	if (importOptions.crsDefinition !== '') {
-		proj4.defs('defCRS', importOptions.crsDefinition);
-		districtShapes.features = reprojectCoordinates(districtShapes.features, 'defCRS', 'WGS84');
+		districtShapes.features = reprojectCoordinates(districtShapes.features, importOptions.crsDefinition, 'WGS84');
 	}
 
 	const projection = importOptions.projectionFunction().fitSize([width, height], districtShapes);
