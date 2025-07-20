@@ -11,7 +11,7 @@
 		content = undefined,
 		action = undefined
 	}: {
-		title: string | undefined;
+		title: string;
 		open: boolean;
 		fullWidth?: boolean;
 		onClose?: (() => void) | undefined;
@@ -43,7 +43,7 @@
 <dialog class="modal modal-bottom lg:modal-middle" bind:this={dialogElement} onclose={close}>
 	<div class="modal-box flex flex-col w-full" class:!max-w-full={fullWidth}>
 		<h3 class="font-bold">
-			{title ?? ''}
+			{title}
 		</h3>
 
 		<button class="btn btn-md btn-circle btn-ghost absolute right-4 top-4" onclick={close}>
