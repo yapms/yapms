@@ -101,17 +101,18 @@ function reprojectCoordinates(
 	crsFrom: string,
 	crsTo: string
 ) {
+	const projection = proj4(crsFrom, crsTo);
 	features.map((feature: GeoJSON.Feature) => {
 		let coordinateArray = (feature.geometry as GeoJSON.Polygon | GeoJSON.MultiPolygon).coordinates;
 		if (Array.isArray(coordinateArray[0][0][0])) {
 			// three deep (MultiPolygon)
 			coordinateArray = coordinateArray.map((subArrayOne) =>
 				subArrayOne.map((subArrayTwo) =>
-					subArrayTwo.map((coordinatePair) => proj4(crsFrom, crsTo, coordinatePair as number[]))
+					subArrayTwo.map((coordinatePair) => projection.forward(coordinatePair as number[]))
 				)
 			);
 		} else {
-			coordinateArray = coordinateArray.map(subArrayOne => subArrayOne.map(coordinatePair => proj4(crsFrom, crsTo, coordinatePair as number[])));
+			coordinateArray = coordinateArray.map(subArrayOne => subArrayOne.map(coordinatePair => projection.forward(coordinatePair as number[])));
 		}
 		(feature.geometry as GeoJSON.Polygon | GeoJSON.MultiPolygon).coordinates = coordinateArray;
 		return feature;
