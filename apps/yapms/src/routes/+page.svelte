@@ -45,6 +45,7 @@
 	import PolMapCard from '$lib/components/mapcard/mapcards/POLMapCard.svelte';
 	import AusStatesMapCard from '$lib/components/mapcard/mapcards/AUSStatesMapCard.svelte';
 	import SocialLinkGrid from '$lib/components/links/SocialLinkGrid.svelte';
+	import GbrHistoricalMapCard from '$lib/components/mapcard/mapcards/GBRHistoricalMapCard.svelte';
 
 	export let data: PageData;
 
@@ -149,6 +150,7 @@
 			<MapCardGrid title="Historical Maps">
 				<UsaCongressionalMapCard />
 				<UsaPresidentialMapCard />
+				<GbrHistoricalMapCard />
 				<CanHistoricalMapCard />
 			</MapCardGrid>
 
