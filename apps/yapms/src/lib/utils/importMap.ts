@@ -66,6 +66,7 @@ async function importFromGeoJson(files: FileList): Promise<void> {
 		loaded: false,
 		content: ''
 	});
+
 	const districtShapes = JSON.parse(await files[0].text());
 	districtShapes.features = [];
 
@@ -96,6 +97,30 @@ async function importFromSVG(files: FileList): Promise<void> {
 	});
 }
 
+function reprojectCoordinates(
+	features: GeoJSON.Feature<GeoJSON.Geometry, GeoJSON.GeoJsonProperties>[],
+	crsFrom: string,
+	crsTo: string
+) {
+	const projection = proj4(crsFrom, crsTo);
+	features.map((feature: GeoJSON.Feature) => {
+		let coordinateArray = (feature.geometry as GeoJSON.Polygon | GeoJSON.MultiPolygon).coordinates;
+		if (Array.isArray(coordinateArray[0][0][0])) {
+			// three deep (MultiPolygon)
+			coordinateArray = coordinateArray.map((subArrayOne) =>
+				subArrayOne.map((subArrayTwo) =>
+					subArrayTwo.map((coordinatePair) => projection.forward(coordinatePair as number[]))
+				)
+			);
+		} else {
+			coordinateArray = coordinateArray.map(subArrayOne => subArrayOne.map(coordinatePair => projection.forward(coordinatePair as number[])));
+		}
+		(feature.geometry as GeoJSON.Polygon | GeoJSON.MultiPolygon).coordinates = coordinateArray;
+		return feature;
+	});
+	return features;
+}
+
 function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
 	const width = 1000,
 		height = 1000;
@@ -108,6 +133,10 @@ function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
 	);
 
 	const importOptions = get(ImportedSVGStore).options;
+
+	if (importOptions.crsDefinition !== '') {
+		districtShapes.features = reprojectCoordinates(districtShapes.features, importOptions.crsDefinition, 'WGS84');
+	}
 
 	const projection = importOptions.projectionFunction().fitSize([width, height], districtShapes);
 
