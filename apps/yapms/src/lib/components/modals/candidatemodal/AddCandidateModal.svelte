@@ -163,4 +163,4 @@
 	</div>
 </ModalBase>
 
-<PresetColorsModal open={presetColorsModalIsOpen} onSelectColors={setPresetColors} />
+<PresetColorsModal bind:open={presetColorsModalIsOpen} onSelectColors={setPresetColors} />

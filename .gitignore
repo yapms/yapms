@@ -44,3 +44,6 @@ dist/**
 
 # pnpm
 .pnpm-store
+
+# direnv
+.direnv
