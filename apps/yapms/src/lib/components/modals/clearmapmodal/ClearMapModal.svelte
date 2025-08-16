@@ -5,9 +5,13 @@
 	import { get } from 'svelte/store';
 	import ModalBase from '../ModalBase.svelte';
 
-	function clearMap() {
+	function clearMap(clearLocks: boolean) {
 		const regions = get(RegionsStore);
-		regions.forEach((region) => {
+		for (const region of regions) {
+			if (clearLocks === false && region.locked === true) {
+				continue;
+			}
+			region.locked = region.permaLocked;
 			region.candidates = [
 				{
 					candidate: $TossupCandidateStore,
@@ -15,12 +19,12 @@
 					count: region.value
 				}
 			];
-		});
+		}
 		RegionsStore.set(regions);
 	}
 
-	function confirm() {
-		clearMap();
+	function confirm(clearLocks: boolean) {
+		clearMap(clearLocks);
 		$ClearMapModalStore.open = false;
 	}
 </script>
@@ -30,6 +34,7 @@
 		<p>Clearing the map will result in all of your progress being cleared. Are you sure?</p>
 	</div>
 	<div slot="action">
-		<button class="btn btn-error" on:click={confirm}>Confirm</button>
+		<button class="btn btn-error" on:click={() => confirm(true)}>Clear Locks</button>
+		<button class="btn btn-error" on:click={() => confirm(false)}>Clear</button>
 	</div>
 </ModalBase>
