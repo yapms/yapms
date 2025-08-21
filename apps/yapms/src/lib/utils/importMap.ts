@@ -113,7 +113,9 @@ function reprojectCoordinates(
 				)
 			);
 		} else {
-			coordinateArray = coordinateArray.map(subArrayOne => subArrayOne.map(coordinatePair => projection.forward(coordinatePair as number[])));
+			coordinateArray = coordinateArray.map((subArrayOne) =>
+				subArrayOne.map((coordinatePair) => projection.forward(coordinatePair as number[]))
+			);
 		}
 		(feature.geometry as GeoJSON.Polygon | GeoJSON.MultiPolygon).coordinates = coordinateArray;
 		return feature;
@@ -135,7 +137,11 @@ function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
 	const importOptions = get(ImportedSVGStore).options;
 
 	if (importOptions.crsDefinition !== '') {
-		districtShapes.features = reprojectCoordinates(districtShapes.features, importOptions.crsDefinition, 'WGS84');
+		districtShapes.features = reprojectCoordinates(
+			districtShapes.features,
+			importOptions.crsDefinition,
+			'WGS84'
+		);
 	}
 
 	const projection = importOptions.projectionFunction().fitSize([width, height], districtShapes);
