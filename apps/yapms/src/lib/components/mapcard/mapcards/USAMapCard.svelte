@@ -27,6 +27,10 @@
 			route: '/app/usa/house/2026/blank'
 		},
 		{
+			label: 'House 2026 (CA Redistricted)',
+			route: '/app/usa/house/2025233/ca_ab604'
+		},
+		{
 			label: 'Governors 2025',
 			route: '/app/usa/governors/2025/blank'
 		},
