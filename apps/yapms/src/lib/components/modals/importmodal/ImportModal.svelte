@@ -14,6 +14,7 @@
 	import { exportImportAsSVG } from '$lib/utils/importMap';
 	import GeoJsonOptions from './GeoJSONOptions.svelte';
 	import ProjectionOptions from './ProjectionOptions.svelte';
+	import CrsOptions from './CRSOptions.svelte';
 
 	let files = $state<FileList>();
 	let errorLoading = $state<boolean>(false);
@@ -137,6 +138,10 @@
 
 				{#if fileType === 'geojson'}
 					<GeoJsonOptions disabled={isLoading} properties={geoJsonProperties} />
+				{/if}
+
+				{#if fileType === 'shp'}
+					<CrsOptions />
 				{/if}
 
 				<fieldset class="fieldset">
