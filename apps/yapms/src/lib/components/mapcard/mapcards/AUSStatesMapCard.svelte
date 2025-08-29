@@ -10,7 +10,7 @@
 			route: '/app/aus/tas_upper/2025145/blank'
 		},
 		{
-			route: '/app/aus/sa/2026080/v2',
+			route: '/app/aus/sa/2026080/blank_v2',
 			label: 'South Australia'
 		},
 		{
@@ -30,7 +30,7 @@
 			label: 'Queensland 2024'
 		},
 		{
-			route: '/app/aus/sa/2026080/v2',
+			route: '/app/aus/sa/2026080/blank_v2',
 			label: 'South Australia 2026'
 		},
 		{
