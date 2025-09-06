@@ -14,7 +14,7 @@
     "format": "turbo run format"
   },
   "devDependencies": {
-    "@devcontainers/cli": "0.80.0",
+    "@devcontainers/cli": "0.80.1",
     "dotenv-cli": "10.0.0",
     "dotenv-vault": "1.27.0",
     "turbo": "2.5.6"
