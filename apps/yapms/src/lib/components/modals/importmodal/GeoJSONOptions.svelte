@@ -21,6 +21,7 @@
 		{#await properties}
 			<option value="">Loading...</option>
 		{:then properties}
+			<option value="">No Selection</option>
 			{#each properties as property}
 				<option value={property}>{property}</option>
 			{/each}
@@ -36,6 +37,7 @@
 		{#await properties}
 			<option value="">Loading...</option>
 		{:then properties}
+			<option value="">No Selection</option>
 			{#each properties as property}
 				<option value={property}>{property}</option>
 			{/each}
@@ -51,6 +53,7 @@
 		{#await properties}
 			<option value="">Loading...</option>
 		{:then properties}
+			<option value="">No Selection</option>
 			{#each properties as property}
 				<option value={property}>{property}</option>
 			{/each}
