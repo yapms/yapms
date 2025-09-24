@@ -1,5 +1,6 @@
 {
 	"$schema": "https://turbo.build/schema.json",
+	"ui": "tui",
 	"globalEnv": [
 		"PUBLIC_POCKETBASE_URI",
 		"PUBLIC_REDIRECT_URI",
