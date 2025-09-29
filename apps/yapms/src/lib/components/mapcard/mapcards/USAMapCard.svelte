@@ -31,6 +31,14 @@
 			route: '/app/usa/house/2025233/ca_ab604'
 		},
 		{
+			label: 'House 2026 (MO Redistricted)',
+			route: '/app/usa/house/2025271/mo_hb1'
+		},
+		{
+			label: 'House 2026 (CA & MO Redistricted)',
+			route: '/app/usa/house/2025271/ca_ab604_mo_hb1'
+		},
+		{
 			label: 'Governors 2025',
 			route: '/app/usa/governors/2025/blank'
 		},
