@@ -36,6 +36,9 @@ const config = [
 			globals: {
 				...globals.browser
 			}
+		},
+		rules: {
+			'svelte/no-navigation-without-resolve': 'off'
 		}
 	},
 	{
@@ -52,6 +55,7 @@ const config = [
 		rules: {
 			'svelte/require-each-key': 'off',
 			'svelte/no-at-html-tags': 'off',
+			'svelte/no-navigation-without-resolve': 'off',
 			'svelte/block-lang': [
 				'error',
 				{
