@@ -104,20 +104,25 @@ function reprojectCoordinates(
 ) {
 	const projection = proj4(crsFrom, crsTo);
 	features.map((feature: GeoJSON.Feature) => {
-		let coordinateArray = (feature.geometry as GeoJSON.Polygon | GeoJSON.MultiPolygon).coordinates;
-		if (Array.isArray(coordinateArray[0][0][0])) {
-			// three deep (MultiPolygon)
+
+		if (feature.geometry.type === 'Polygon') {
+			let coordinateArray = feature.geometry.coordinates;
+			coordinateArray = coordinateArray.map((subArrayOne) =>
+				subArrayOne.map((coordinatePair) => projection.forward(coordinatePair as number[]))
+			);
+			feature.geometry.coordinates = coordinateArray;
+		}
+
+		if (feature.geometry.type === 'MultiPolygon') {
+			let coordinateArray = feature.geometry.coordinates;
 			coordinateArray = coordinateArray.map((subArrayOne) =>
 				subArrayOne.map((subArrayTwo) =>
 					subArrayTwo.map((coordinatePair) => projection.forward(coordinatePair as number[]))
 				)
 			);
-		} else {
-			coordinateArray = coordinateArray.map((subArrayOne) =>
-				subArrayOne.map((coordinatePair) => projection.forward(coordinatePair as number[]))
-			);
+			feature.geometry.coordinates = coordinateArray;
 		}
-		(feature.geometry as GeoJSON.Polygon | GeoJSON.MultiPolygon).coordinates = coordinateArray;
+
 		return feature;
 	});
 	return features;
@@ -231,11 +236,11 @@ function exportImportAsSVG(): void {
 function proj4ToProjection() {
 	const proj4Projection = proj4(get(ImportedSVGStore).options.customProjectionDefinition);
 
-	const project = function (lambda: number, phi: number) {
+	const project = function(lambda: number, phi: number) {
 		return proj4Projection.forward([lambda, phi].map(radiansToDegrees));
 	};
 
-	project.invert = function (x: number, y: number) {
+	project.invert = function(x: number, y: number) {
 		return proj4Projection.inverse([x, y]).map(degreesToRadians);
 	};
 
