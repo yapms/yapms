@@ -104,7 +104,6 @@ function reprojectCoordinates(
 ) {
 	const projection = proj4(crsFrom, crsTo);
 	features.map((feature: GeoJSON.Feature) => {
-
 		if (feature.geometry.type === 'Polygon') {
 			let coordinateArray = feature.geometry.coordinates;
 			coordinateArray = coordinateArray.map((subArrayOne) =>
@@ -236,11 +235,11 @@ function exportImportAsSVG(): void {
 function proj4ToProjection() {
 	const proj4Projection = proj4(get(ImportedSVGStore).options.customProjectionDefinition);
 
-	const project = function(lambda: number, phi: number) {
+	const project = function (lambda: number, phi: number) {
 		return proj4Projection.forward([lambda, phi].map(radiansToDegrees));
 	};
 
-	project.invert = function(x: number, y: number) {
+	project.invert = function (x: number, y: number) {
 		return proj4Projection.inverse([x, y]).map(degreesToRadians);
 	};
 
