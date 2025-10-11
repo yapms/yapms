@@ -3,22 +3,30 @@
 	const links = [
 		{
 			label: 'House',
-			route: '/app/nzl/house/2023/blank'
+			route: '/app/nzl/house/2025220/blank'
 		},
 		{
 			label: 'Māori Electorates',
-			route: '/app/nzl/maori/2023/blank'
+			route: '/app/nzl/maori/2025220/blank'
 		},
 		{
 			label: 'Regional Councils',
 			route: '/app/nzl/regions/2023/blank'
 		},
 		{
-			label: 'Results 2023',
+			label: 'House 2023',
+			route: '/app/nzl/house/2023/blank'
+		},
+		{
+			label: 'Māori Electorates 2023',
+			route: '/app/nzl/maori/2023/blank'
+		},
+		{
+			label: '2023 House Results',
 			route: '/app/nzl/house/2023303/results'
 		},
 		{
-			label: 'Results 2020',
+			label: '2020 House Results',
 			route: '/app/nzl/house/2020/results'
 		}
 	];
