@@ -46,6 +46,7 @@
 	import AusStatesMapCard from '$lib/components/mapcard/mapcards/AUSStatesMapCard.svelte';
 	import SocialLinkGrid from '$lib/components/links/SocialLinkGrid.svelte';
 	import GbrHistoricalMapCard from '$lib/components/mapcard/mapcards/GBRHistoricalMapCard.svelte';
+	import YapMapCard from '$lib/components/mapcard/mapcards/YAPMapCard.svelte';
 
 	export let data: PageData;
 
@@ -156,6 +157,7 @@
 
 			<MapCardGrid title="Fantasy">
 				<UsaCanMapCard />
+				<YapMapCard />
 			</MapCardGrid>
 		</div>
 	</div>
