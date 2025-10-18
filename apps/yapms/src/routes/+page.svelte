@@ -47,6 +47,7 @@
 	import SocialLinkGrid from '$lib/components/links/SocialLinkGrid.svelte';
 	import GbrHistoricalMapCard from '$lib/components/mapcard/mapcards/GBRHistoricalMapCard.svelte';
 	import YapMapCard from '$lib/components/mapcard/mapcards/YAPMapCard.svelte';
+	import AutMapCard from '$lib/components/mapcard/mapcards/AUTMapCard.svelte';
 
 	export let data: PageData;
 
@@ -118,6 +119,7 @@
 				<CanMapCard />
 				<AusMapCard />
 
+				<AutMapCard />
 				<BraMapCard />
 				<DnkMapCard />
 				<FraMapCard />
