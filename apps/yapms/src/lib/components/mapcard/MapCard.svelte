@@ -22,7 +22,7 @@
 
 <div class="card w-92 h-58 lg:w-72 lg:h-48 bg-base-100 image-full">
 	{#await image then image}
-		<figure><img src={image.default} alt={name} /></figure>
+		<figure><img class="w-full" src={image.default} alt={name} /></figure>
 	{/await}
 	<div class="card-body items-center text-center">
 		<h2 class="card-title text-white">{name}</h2>
