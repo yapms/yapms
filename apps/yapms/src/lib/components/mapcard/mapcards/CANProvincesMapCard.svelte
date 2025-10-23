@@ -2,16 +2,16 @@
 	import MapCard from '../MapCard.svelte';
 	const links = [
 		{
-			label: 'Saskatchewan',
-			route: '/app/can/sk/2024/blank'
+			route: '/app/can/qc/2022/blank',
+			label: 'Quebec'
 		},
 		{
-			label: 'New Brunswick',
-			route: '/app/can/nb/2024264/blank'
+			label: 'Yukon Territory',
+			route: '/app/can/yt/2024283/blank'
 		},
 		{
-			route: '/app/can/bc/2023107/blank',
-			label: 'British Columbia'
+			route: '/app/can/nl/2021/blank',
+			label: 'Newfoundland & Labrador'
 		},
 		{
 			route: '/app/can/ab/2023/blank',
@@ -64,6 +64,10 @@
 		{
 			route: '/app/can/sk/2024/blank',
 			label: 'Saskatchewan 2024'
+		},
+		{
+			route: '/app/can/yt/2024283/blank',
+			label: 'Yukon Territory 2025'
 		},
 		{
 			route: '/app/can/yt/2021/blank',
