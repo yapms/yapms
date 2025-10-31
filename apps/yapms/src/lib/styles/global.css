@@ -1,6 +1,6 @@
-@import "@fontsource-variable/roboto-mono" layer(base);
+@import '@fontsource-variable/roboto-mono' layer(base);
 
-@import "tailwindcss";
+@import 'tailwindcss';
 @plugin "daisyui" {
 	themes:
 		light --default,
@@ -42,31 +42,31 @@ body {
 
 #map-div > svg {
 	--auto-border-stroke-width: 0px;
-	--region-stroke-color: "var(--color-base-100)";
+	--region-stroke-color: 'var(--color-base-100)';
 }
 
-[map-type="regions"] path,
+[map-type='regions'] path,
 rect {
 	stroke-width: var(--auto-border-stroke-width);
 	stroke: var(--region-stroke-color);
 }
 
-[map-type="inset-texts"] {
+[map-type='inset-texts'] {
 	fill: var(--color-base-content);
 }
 
-[map-type="inset-lines"] {
+[map-type='inset-lines'] {
 	fill: var(--color-base-content);
 	opacity: 50%;
 }
 
-.insets-hidden [map-type="insets"],
-.insets-hidden [map-type="inset-region"] {
+.insets-hidden [map-type='insets'],
+.insets-hidden [map-type='inset-region'] {
 	display: none;
 }
 
-.texts-hidden [map-type="region-texts"],
-.texts-hidden [map-type="button"] {
+.texts-hidden [map-type='region-texts'],
+.texts-hidden [map-type='button'] {
 	display: none;
 }
 
@@ -81,6 +81,6 @@ rect {
 	}
 }
 
-input[type="color" i]::-webkit-color-swatch-wrapper {
+input[type='color' i]::-webkit-color-swatch-wrapper {
 	padding: 0;
 }
