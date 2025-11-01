@@ -1,9 +1,15 @@
 <script lang="ts">
 	import CandidateBox from './CandidateBox.svelte';
 	import { TossupCandidateStore, CandidatesStore } from '$lib/stores/Candidates';
-	export let selectable = true;
-	export let transitions = true;
-	export let margins = false;
+	let {
+		selectable = true,
+		transitions = true,
+		margins = false
+	}: {
+		selectable: boolean;
+		transitions: boolean;
+		margins: boolean;
+	} = $props();
 </script>
 
 <div

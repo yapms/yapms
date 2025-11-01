@@ -6,14 +6,20 @@
 	import type { Candidate } from '$lib/types/Candidate';
 	import { CandidateBoxOptions } from '$lib/stores/CandidateBoxOptions';
 
-	export let candidate: Candidate;
-	export let selectable: boolean;
-	export let transitions = true;
+	const {
+		candidate,
+		selectable,
+		transitions = true
+	}: {
+		candidate: Candidate;
+		selectable: boolean;
+		transitions: boolean;
+	} = $props();
 
-	$: selected = selectable && $SelectedCandidateStore.id === candidate.id;
-	$: textColor = calculateLumaHEX(candidate.margins[0].color) > 0.5 ? 'black' : 'white';
-	$: backgroundColor = candidate.margins[0].color;
-	$: transitionSpeed = transitions ? '150ms' : '0ms';
+	let selected = $derived(selectable && $SelectedCandidateStore.id === candidate.id);
+	let textColor = $derived(calculateLumaHEX(candidate.margins[0].color) > 0.5 ? 'black' : 'white');
+	let backgroundColor = $derived(candidate.margins[0].color);
+	let transitionSpeed = $derived(transitions ? '150ms' : '0ms');
 
 	function updateSelectedCandidate() {
 		SelectedCandidateStore.set(candidate);
@@ -33,11 +39,12 @@
 	style:transition-duration={transitionSpeed}
 	style:background-color={backgroundColor}
 	style:color={textColor}
-	on:click={updateSelectedCandidate}
+	onclick={updateSelectedCandidate}
 >
 	<div class="flex flex-col justify-between h-full">
 		<div class="px-2 py-1">
 			{candidate.name}
+			{candidate.margins[0].color}
 			{$CandidateCounts.get(candidate.id) ?? 0}
 		</div>
 		{#if candidate.margins.length > 1}

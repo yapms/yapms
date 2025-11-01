@@ -4,20 +4,22 @@
 	import BattleChart from '../charts/battlechart/BattleChart.svelte';
 	import CircleChart from '../charts/circlechart/CircleChart.svelte';
 
-	let logoSize: { width: string | undefined; height: string | undefined } = {
+	let logoSize: { width: string | undefined; height: string | undefined } = $state({
 		width: '100%',
 		height: '100%'
-	};
+	});
 
-	$: if ($ChartPositionStore === 'bottom' && $ChartTypeStore !== 'battle') {
-		logoSize = { width: 'auto', height: '50%' };
-	} else if ($ChartPositionStore === 'bottom' && $ChartTypeStore === 'battle') {
-		logoSize = { width: 'auto', height: '100%' };
-	} else if ($ChartPositionStore === 'left' && $ChartTypeStore !== 'battle') {
-		logoSize = { width: '50%', height: 'auto' };
-	} else if ($ChartPositionStore === 'left' && $ChartTypeStore === 'battle') {
-		logoSize = { width: '100%', height: 'auto' };
-	}
+	$effect(() => {
+		if ($ChartPositionStore === 'bottom' && $ChartTypeStore !== 'battle') {
+			logoSize = { width: 'auto', height: '50%' };
+		} else if ($ChartPositionStore === 'bottom' && $ChartTypeStore === 'battle') {
+			logoSize = { width: 'auto', height: '100%' };
+		} else if ($ChartPositionStore === 'left' && $ChartTypeStore !== 'battle') {
+			logoSize = { width: '50%', height: 'auto' };
+		} else if ($ChartPositionStore === 'left' && $ChartTypeStore === 'battle') {
+			logoSize = { width: '100%', height: 'auto' };
+		}
+	});
 </script>
 
 <div
