@@ -119,6 +119,10 @@
 			route: '/app/usa/presidential/2028/takeall_territories'
 		},
 		{
+			label: 'New York City Council 2025',
+			route: '/app/usa/nyc_council/2025309/blank'
+		},
+		{
 			label: '2022 Senate Results',
 			route: '/app/usa/senate/2022/results'
 		},
