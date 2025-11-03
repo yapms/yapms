@@ -14,7 +14,7 @@
 		"format": "prettier --plugin prettier-plugin-svelte --write ."
 	},
 	"devDependencies": {
-		"@eslint/js": "9.39.0",
+		"@eslint/js": "9.39.1",
 		"@floating-ui/dom": "1.7.4",
 		"@fontsource-variable/roboto-mono": "5.2.8",
 		"@fontsource/roboto": "5.2.8",
@@ -37,7 +37,7 @@
 		"d3": "7.9.0",
 		"daisyui": "5.4.2",
 		"dompurify": "3.3.0",
-		"eslint": "9.39.0",
+		"eslint": "9.39.1",
 		"eslint-config-prettier": "10.1.8",
 		"eslint-plugin-svelte": "3.13.0",
 		"file-saver": "2.0.5",
