@@ -6,10 +6,11 @@
 		utils.url = "github:numtide/flake-utils";
 	};
 
-	outputs = { self, nixpkgs, utils }:
+	outputs = { nixpkgs, utils, ... }:
 	utils.lib.eachDefaultSystem(system:
 		let
 			pkgs = nixpkgs.legacyPackages.${system};
+			biome = (import ./pkgs/biome.nix) { pkgs = pkgs; };
 		in {
 			virtualisation.docker.enable = true;
 			devShells.default = pkgs.mkShell {
@@ -18,6 +19,7 @@
 					pkgs.go
 					pkgs.ansible
 					pkgs.libwebp
+					biome
 				];
 				shellHook = ''
 					npx devcontainer up --workspace-folder .
