@@ -19,6 +19,7 @@
 					pkgs.go
 					pkgs.ansible
 					pkgs.libwebp
+					pkgs.openssh_10_2
 					biome
 				];
 				shellHook = ''
