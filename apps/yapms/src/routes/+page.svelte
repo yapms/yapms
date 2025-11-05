@@ -48,6 +48,7 @@
 	import GbrHistoricalMapCard from '$lib/components/mapcard/mapcards/GBRHistoricalMapCard.svelte';
 	import YapMapCard from '$lib/components/mapcard/mapcards/YAPMapCard.svelte';
 	import AutMapCard from '$lib/components/mapcard/mapcards/AUTMapCard.svelte';
+	import YRCMapCard from '$lib/components/mapcard/mapcards/YRCMapCard.svelte';
 
 	export let data: PageData;
 
@@ -160,6 +161,7 @@
 			<MapCardGrid title="Fantasy">
 				<UsaCanMapCard />
 				<YapMapCard />
+				<YRCMapCard />
 			</MapCardGrid>
 		</div>
 	</div>
