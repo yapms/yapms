@@ -1,6 +1,11 @@
 <script lang="ts">
-	export let title: string;
-	export let description: string;
+	const {
+		title,
+		description
+	}: {
+		title: string;
+		description: string;
+	} = $props();
 </script>
 
 <div class="card card-bordered bg-base-300 shadow-md p-3">

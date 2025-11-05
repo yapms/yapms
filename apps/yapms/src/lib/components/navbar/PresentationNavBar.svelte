@@ -9,7 +9,7 @@
 
 <button
 	class="btn btn-sm btn-error w-min m-1 absolute right-0 float-right z-10"
-	on:click={togglePresentationMode}
+	onclick={togglePresentationMode}
 >
 	<VideoCameraSlash class="w-6 h-6" />
 </button>

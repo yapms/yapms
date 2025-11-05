@@ -1,7 +1,11 @@
 <script lang="ts">
-	let className = '';
-	export { className as class };
-	export let style = '';
+	const {
+		class: className = '',
+		style
+	}: {
+		class: string;
+		style?: string;
+	} = $props();
 </script>
 
 <svg
