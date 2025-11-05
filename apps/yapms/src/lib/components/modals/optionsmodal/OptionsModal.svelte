@@ -15,10 +15,10 @@
 	import { RegionTextsStore } from '$lib/stores/RegionTextsStore';
 	import { RegionStrokeColorStore } from '$lib/stores/RegionStrokeColorStore';
 
-	let logoFile: FileList | undefined;
+	let logoFile: FileList | undefined = $state();
 	let logoFileInput: HTMLInputElement | undefined;
 
-	let logos = $PocketBaseStore.collection('creator_logos').getFullList();
+	let logos = $derived($PocketBaseStore.collection('creator_logos').getFullList());
 
 	const chartTypeValues = ['pie', 'doughnut', 'battle', 'none'];
 	const chartPositionValues = ['bottom', 'left'];
@@ -66,7 +66,7 @@
 
 		<fieldset class="fieldset lg:col-span-2">
 			<legend class="fieldset-legend">Chart Logo</legend>
-			<select class="select w-full" bind:value={$LogoStore} on:change={clearLogoFile}>
+			<select class="select w-full" bind:value={$LogoStore} onchange={clearLogoFile}>
 				<option selected disabled>Choose one...</option>
 				<option value={null}>None</option>
 				{#await logos then logos}
@@ -85,7 +85,7 @@
 				accept="image/*"
 				bind:files={logoFile}
 				bind:this={logoFileInput}
-				on:change={readLogoFile}
+				onchange={readLogoFile}
 			/>
 		</fieldset>
 

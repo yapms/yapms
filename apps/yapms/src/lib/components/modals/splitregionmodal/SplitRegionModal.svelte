@@ -12,24 +12,27 @@
 		margin: number;
 	}
 
-	$: candidatesInRegion =
+	const candidatesInRegion = $derived(
 		$SplitRegionModalStore.region?.candidates.map<SplitRegionCandidate>((candidate) => {
 			return candidate;
-		}) ?? [];
+		}) ?? []
+	);
 
-	$: candidatesInStore = [...$CandidatesStore, $TossupCandidateStore]
-		.map<SplitRegionCandidate>((candidate) => {
-			return {
-				candidate,
-				count: 0,
-				margin: 0
-			};
-		})
-		.filter((candidate) => {
-			return !candidatesInRegion.some(
-				(regionCandidate) => regionCandidate.candidate.id === candidate.candidate.id
-			);
-		});
+	const candidatesInStore = $derived(
+		[...$CandidatesStore, $TossupCandidateStore]
+			.map<SplitRegionCandidate>((candidate) => {
+				return {
+					candidate,
+					count: 0,
+					margin: 0
+				};
+			})
+			.filter((candidate) => {
+				return !candidatesInRegion.some(
+					(regionCandidate) => regionCandidate.candidate.id === candidate.candidate.id
+				);
+			})
+	);
 
 	function keepTossupAtTop(left: SplitRegionCandidate, right: SplitRegionCandidate) {
 		if (left.candidate.id === $TossupCandidateStore.id) {
@@ -40,15 +43,15 @@
 		return left.candidate.name.localeCompare(right.candidate.name);
 	}
 
-	$: candidates = candidatesInRegion.concat(candidatesInStore).sort(keepTossupAtTop);
+	const candidates = $derived(candidatesInRegion.concat(candidatesInStore).sort(keepTossupAtTop));
 
-	$: tossupCandidate = candidates.find(
-		(candidate) => candidate.candidate.id === $TossupCandidateStore.id
-	) ?? {
-		candidate: $TossupCandidateStore,
-		count: 0,
-		margin: 0
-	};
+	const tossupCandidate = $derived(
+		candidates.find((candidate) => candidate.candidate.id === $TossupCandidateStore.id) ?? {
+			candidate: $TossupCandidateStore,
+			count: 0,
+			margin: 0
+		}
+	);
 
 	function convertToRegionCandidate(splitRegionCandidate: SplitRegionCandidate) {
 		const candidate = $CandidatesStore.find(
@@ -202,7 +205,7 @@
 							style="background-color:{candidate.candidate.margins.at(candidate.margin)?.color};"
 							class="w-5 h-5 rounded-md"
 							class:hidden={isTossupCandidate(candidate.candidate.id)}
-							on:click={(event) => updateCandidateMargin(event, candidate)}
+							onclick={(event) => updateCandidateMargin(event, candidate)}
 							aria-label="candidate-fill-color"
 						></button>
 					</div>
@@ -212,9 +215,9 @@
 							<span>{candidate.count}</span>
 						{:else}
 							<input
-								on:change={(event) => updateCandidateCount(event, candidate, tossupCandidate)}
-								on:keypress={preventNonNumericalInput}
-								on:paste={preventNonNumericalPaste}
+								onchange={(event) => updateCandidateCount(event, candidate, tossupCandidate)}
+								onkeypress={preventNonNumericalInput}
+								onpaste={preventNonNumericalPaste}
 								value={candidate.count}
 								class="rounded-md px-1 text-end resizing-input-split"
 							/>
@@ -233,7 +236,7 @@
 					min="0"
 					max={$SplitRegionModalStore.region?.value}
 					value={candidate.count}
-					on:input={(event) => updateCandidateCount(event, candidate, tossupCandidate)}
+					oninput={(event) => updateCandidateCount(event, candidate, tossupCandidate)}
 					disabled={isTossupCandidate(candidate.candidate.id)}
 				/>
 			</label>

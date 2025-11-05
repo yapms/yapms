@@ -40,7 +40,7 @@
 					onDelete={() => deleteColor(index)}
 				/>
 			{/each}
-			<button class="btn btn-sm btn-success" on:click={addColor}
+			<button class="btn btn-sm btn-success" onclick={addColor}
 				><PlusCircle class="w-6 h-6" /></button
 			>
 		</div>
@@ -48,7 +48,7 @@
 	<div slot="action">
 		<button
 			class="btn btn-success"
-			on:click={add}
+			onclick={add}
 			disabled={$AddCustomColorModalStore.newColors.length < 1}>Add Colors</button
 		>
 	</div>

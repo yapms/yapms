@@ -20,7 +20,7 @@
 			{#each authMethods.oauth2.providers as method}
 				<button
 					class="btn btn-primary capitalize"
-					on:click={async () => {
+					onclick={async () => {
 						await authenticate(method.name);
 					}}
 				>
