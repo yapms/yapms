@@ -3,7 +3,7 @@
 		class: className = '',
 		style
 	}: {
-		class: string;
+		class?: string;
 		style?: string;
 	} = $props();
 </script>
