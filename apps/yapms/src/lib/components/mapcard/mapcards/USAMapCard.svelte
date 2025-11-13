@@ -28,7 +28,7 @@
 		},
 		{
 			label: 'House 2026 (MO Redistricted)',
-			route: '/app/usa/house/2025309/mo_hb1'
+			route: '/app/usa/house/2025315/mo_hb1'
 		},
 		{
 			label: 'Governors 2025',
