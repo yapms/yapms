@@ -7,48 +7,54 @@
 	import { ChartPositionStore } from '$lib/stores/Chart';
 	import { ChartLeansStore } from '$lib/stores/ChartLeansStore';
 
-	export let type: 'pie' | 'doughnut';
+	const {
+		type
+	}: {
+		type: 'pie' | 'doughnut';
+	} = $props();
 
 	let canvasBind: HTMLCanvasElement;
-	let myChart: Chart<'pie' | 'doughnut'>;
+	let myChart: Chart<'pie' | 'doughnut'> | undefined = $state(undefined);
 
-	$: if (myChart) {
-		const counts: number[] = [];
-		const colors: string[] = [];
-		const labels: string[] = [];
+	$effect(() => {
+		if (myChart) {
+			const counts: number[] = [];
+			const colors: string[] = [];
+			const labels: string[] = [];
 
-		if ($ChartLeansStore.enabled) {
-			$CandidatesStore.forEach((candidate) => {
-				$CandidateCountsMargins.get(candidate.id)?.forEach((margin, index) => {
-					counts.push(margin);
-					colors.push(candidate.margins[index].color);
+			if ($ChartLeansStore.enabled) {
+				$CandidatesStore.forEach((candidate) => {
+					$CandidateCountsMargins.get(candidate.id)?.forEach((margin, index) => {
+						counts.push(margin);
+						colors.push(candidate.margins[index].color);
+						labels.push(candidate.name);
+					});
+				});
+			} else {
+				$CandidatesStore.forEach((candidate) => {
+					let count = $CandidateCounts.get(candidate.id);
+					if (count === undefined) {
+						count = 0;
+					}
+					counts.push(count);
+					colors.push(candidate.margins[0].color);
 					labels.push(candidate.name);
 				});
-			});
-		} else {
-			$CandidatesStore.forEach((candidate) => {
-				let count = $CandidateCounts.get(candidate.id);
-				if (count === undefined) {
-					count = 0;
-				}
-				counts.push(count);
-				colors.push(candidate.margins[0].color);
-				labels.push(candidate.name);
-			});
-		}
+			}
 
-		const tossupCount = $CandidateCounts.get($TossupCandidateStore.id);
-		if (tossupCount !== undefined) {
-			counts.push(tossupCount);
-			colors.push($TossupCandidateStore.margins[0].color);
-			labels.push($TossupCandidateStore.name);
-		}
+			const tossupCount = $CandidateCounts.get($TossupCandidateStore.id);
+			if (tossupCount !== undefined) {
+				counts.push(tossupCount);
+				colors.push($TossupCandidateStore.margins[0].color);
+				labels.push($TossupCandidateStore.name);
+			}
 
-		myChart.data.datasets[0].data = counts;
-		myChart.data.datasets[0].backgroundColor = colors;
-		myChart.data.labels = labels;
-		myChart.update();
-	}
+			myChart.data.datasets[0].data = counts;
+			myChart.data.datasets[0].backgroundColor = colors;
+			myChart.data.labels = labels;
+			myChart.update();
+		}
+	});
 
 	onMount(() => {
 		const ctx = canvasBind.getContext('2d');

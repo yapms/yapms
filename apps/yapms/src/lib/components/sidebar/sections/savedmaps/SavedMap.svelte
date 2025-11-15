@@ -8,11 +8,17 @@
 	} from '$lib/stores/LoadedMap';
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
 
-	export let mapName: string;
-	export let mapID: string;
-	export let onUpdated: () => void;
+	const {
+		mapName,
+		mapID,
+		onUpdated
+	}: {
+		mapName: string;
+		mapID: string;
+		onUpdated: () => void;
+	} = $props();
 
-	let submitting = false;
+	let submitting = $state(false);
 
 	async function deleteMap() {
 		submitting = true;
@@ -32,7 +38,7 @@
 <div class="join z-20" data-map-id={mapID}>
 	<button
 		class="btn btn-sm flex-shrink flex-grow join-item overflow-hidden"
-		on:click={openMap}
+		onclick={openMap}
 		disabled={submitting}
 	>
 		{mapName}
@@ -40,7 +46,7 @@
 	<div class="tooltip tooltip-left" data-tip="Delete">
 		<button
 			class="btn btn-sm btn-error flex-shrink join-item"
-			on:click={deleteMap}
+			onclick={deleteMap}
 			disabled={submitting}
 		>
 			<MinusCircle class="w-6 h-6" />

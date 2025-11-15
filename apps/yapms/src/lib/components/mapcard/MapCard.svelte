@@ -3,11 +3,19 @@
 	import { MoreMapsModalStore } from '$lib/stores/HomeModals';
 	import type { HomeLinkData } from '$lib/types/HomeData';
 
-	export let name: string;
-	export let bg: string;
-	export let attribution: string;
-	export let attributionLink: string | undefined = undefined;
-	export let links: { label: string; route: string }[];
+	const {
+		name,
+		bg,
+		attribution,
+		attributionLink = undefined,
+		links
+	}: {
+		name: string;
+		bg: string;
+		attribution: string;
+		attributionLink: string | undefined;
+		links: { label: string; route: string }[];
+	} = $props();
 
 	const image = import(`../../assets/images/countries/${bg}.webp`);
 
@@ -44,7 +52,7 @@
 				{/each}
 				<button
 					class="btn btn-sm btn-primary w-full"
-					on:click={() => {
+					onclick={() => {
 						openMoreModal(links.slice(3));
 					}}
 					>More

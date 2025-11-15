@@ -4,16 +4,18 @@
 	import { preventNonNumericalInput, preventNonNumericalPaste } from '$lib/utils/inputValidation';
 	import ModalBase from '../ModalBase.svelte';
 
-	$: displayName = $EditRegionModalStore.region?.longName ?? '';
-	$: displayValue = $EditRegionModalStore.region?.value ?? 0;
+	const displayName = $derived($EditRegionModalStore.region?.longName ?? '');
+	const displayValue = $derived($EditRegionModalStore.region?.value ?? 0);
 
 	let valueInput: HTMLInputElement;
-	let valueBind = 0;
+	let valueBind = $state(0);
 
-	$: if ($EditRegionModalStore.open) {
-		setInput();
-		focusInput();
-	}
+	$effect(() => {
+		if ($EditRegionModalStore.open) {
+			setInput();
+			focusInput();
+		}
+	});
 
 	function focusInput() {
 		if (valueInput) {
@@ -42,13 +44,13 @@
 	<div slot="content">
 		<fieldset class="fieldset">
 			<legend class="fieldset-legend">Region Value</legend>
-			<form on:submit={confirm}>
+			<form onsubmit={confirm}>
 				<input
 					type="number"
 					class="input input-bordered w-full"
 					min="0"
-					on:keypress={preventNonNumericalInput}
-					on:paste={preventNonNumericalPaste}
+					onkeypress={preventNonNumericalInput}
+					onpaste={preventNonNumericalPaste}
 					bind:value={valueBind}
 					bind:this={valueInput}
 				/>
@@ -56,6 +58,6 @@
 		</fieldset>
 	</div>
 	<div slot="action">
-		<button class="btn btn-success" on:click={confirm}>Confirm</button>
+		<button class="btn btn-success" onclick={confirm}>Confirm</button>
 	</div>
 </ModalBase>

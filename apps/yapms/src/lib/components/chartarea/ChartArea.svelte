@@ -4,20 +4,19 @@
 	import BattleChart from '../charts/battlechart/BattleChart.svelte';
 	import CircleChart from '../charts/circlechart/CircleChart.svelte';
 
-	let logoSize: { width: string | undefined; height: string | undefined } = {
-		width: '100%',
-		height: '100%'
-	};
-
-	$: if ($ChartPositionStore === 'bottom' && $ChartTypeStore !== 'battle') {
-		logoSize = { width: 'auto', height: '50%' };
-	} else if ($ChartPositionStore === 'bottom' && $ChartTypeStore === 'battle') {
-		logoSize = { width: 'auto', height: '100%' };
-	} else if ($ChartPositionStore === 'left' && $ChartTypeStore !== 'battle') {
-		logoSize = { width: '50%', height: 'auto' };
-	} else if ($ChartPositionStore === 'left' && $ChartTypeStore === 'battle') {
-		logoSize = { width: '100%', height: 'auto' };
-	}
+	const logoSize = $derived.by(() => {
+		if ($ChartPositionStore === 'bottom' && $ChartTypeStore !== 'battle') {
+			return { width: 'auto', height: '50%' };
+		} else if ($ChartPositionStore === 'bottom' && $ChartTypeStore === 'battle') {
+			return { width: 'auto', height: '100%' };
+		} else if ($ChartPositionStore === 'left' && $ChartTypeStore !== 'battle') {
+			return { width: '50%', height: 'auto' };
+		} else if ($ChartPositionStore === 'left' && $ChartTypeStore === 'battle') {
+			return { width: '100%', height: 'auto' };
+		} else {
+			return { width: '100%', height: '100%' };
+		}
+	});
 </script>
 
 <div

@@ -1,13 +1,19 @@
 <script lang="ts">
 	import { calculateLumaHEX } from '$lib/utils/luma';
 
-	export let count: number;
-	export let percentage: number;
-	export let color: string;
+	const {
+		count,
+		percentage,
+		color,
+		transitions = true
+	}: {
+		count: number;
+		percentage: number;
+		color: string;
+		transitions?: boolean;
+	} = $props();
 
-	export let transitions: boolean = true;
-
-	$: fontColor = calculateLumaHEX(color) > 0.5 ? '#000000' : '#ffffff';
+	const fontColor = $derived(calculateLumaHEX(color) > 0.5 ? '#000000' : '#ffffff');
 </script>
 
 <div

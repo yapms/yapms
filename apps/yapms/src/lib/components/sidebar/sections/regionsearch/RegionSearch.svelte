@@ -28,6 +28,6 @@
 		type="text"
 		class="input input-bordered w-full"
 		placeholder="Search by region name"
-		on:input={onchange}
+		oninput={onchange}
 	/>
 </div>

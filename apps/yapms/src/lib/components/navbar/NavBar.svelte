@@ -20,9 +20,9 @@
 	import VideoCamera from '$lib/icons/VideoCamera.svelte';
 
 	let content: HTMLDivElement | undefined;
-	let offsetWidth: number | undefined;
+	let offsetWidth: number | undefined = $state(undefined);
 
-	$: isOverflow = offsetWidth && offsetWidth < (content?.scrollWidth ?? 0);
+	const isOverflow = $derived(offsetWidth && offsetWidth < (content?.scrollWidth ?? 0));
 
 	function openNavigateHomeModal() {
 		$NavigateHomeModalStore.open = true;
@@ -76,26 +76,26 @@
 		bind:this={content}
 		bind:offsetWidth
 	>
-		<button class="btn btn-sm snap-start" on:click={openNavigateHomeModal}>Home</button>
-		<button class="btn btn-sm btn-error snap-start" on:click={openClearMapModal}>Clear</button>
-		<button class="btn btn-sm snap-start" on:click={openCandidateModal}>Candidates</button>
-		<button class="btn btn-sm snap-start" on:click={newImportedMap}>Custom</button>
-		<button class="btn btn-sm snap-start" on:click={openOptions}>Options</button>
-		<button class="btn btn-sm snap-start" on:click={openMode}
+		<button class="btn btn-sm snap-start" onclick={openNavigateHomeModal}>Home</button>
+		<button class="btn btn-sm btn-error snap-start" onclick={openClearMapModal}>Clear</button>
+		<button class="btn btn-sm snap-start" onclick={openCandidateModal}>Candidates</button>
+		<button class="btn btn-sm snap-start" onclick={newImportedMap}>Custom</button>
+		<button class="btn btn-sm snap-start" onclick={openOptions}>Options</button>
+		<button class="btn btn-sm snap-start" onclick={openMode}
 			>Mode: <b>{$ModeStore.toUpperCase()}</b></button
 		>
-		<button class="btn btn-sm snap-start" on:click={openShare}>Share</button>
-		<button class="btn btn-sm snap-start" on:click={openTheme}>Theme</button>
-		<button class="btn btn-sm snap-start" on:click={openTools}>Tools</button>
-		<button class="btn btn-sm snap-end" on:click={openAuth}
+		<button class="btn btn-sm snap-start" onclick={openShare}>Share</button>
+		<button class="btn btn-sm snap-start" onclick={openTheme}>Theme</button>
+		<button class="btn btn-sm snap-start" onclick={openTools}>Tools</button>
+		<button class="btn btn-sm snap-end" onclick={openAuth}
 			>{$PocketBaseStore.authStore.isValid ? 'Account' : 'Login'}</button
 		>
 	</div>
 	<div class="divider divider-horizontal m-0 w-0" class:hidden={isOverflow === false}></div>
-	<button class="btn btn-sm btn-neutral" on:click={togglePresentationMode}>
+	<button class="btn btn-sm btn-neutral" onclick={togglePresentationMode}>
 		<VideoCamera class="w-6 h-6" />
 	</button>
-	<button class="btn btn-sm btn-neutral ml-1" on:click={toggleSidebar}>
+	<button class="btn btn-sm btn-neutral ml-1" onclick={toggleSidebar}>
 		{#if $SideBarStore.open}
 			<ChevronDoubleRight class="w-6 h-6" />
 		{:else}

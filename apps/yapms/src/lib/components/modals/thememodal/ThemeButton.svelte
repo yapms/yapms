@@ -1,7 +1,13 @@
 <script lang="ts">
-	export let theme: string;
-	export let title: string;
-	export let margins: string[];
+	const {
+		theme,
+		title,
+		margins
+	}: {
+		theme: string;
+		title: string;
+		margins: string[];
+	} = $props();
 </script>
 
 <button class="btn p-8" data-set-theme={theme} data-act-class="ACTIVECLASS">
