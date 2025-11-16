@@ -18,6 +18,6 @@
 
 <div class="flex flex-row gap-3 flex-wrap justify-center">
 	{#each logos as logo}
-		<button class="btn btn-md" on:click={() => onClick(logo.name)}>{logo.name}</button>
+		<button class="btn btn-md" onclick={() => onClick(logo.name)}>{logo.name}</button>
 	{/each}
 </div>

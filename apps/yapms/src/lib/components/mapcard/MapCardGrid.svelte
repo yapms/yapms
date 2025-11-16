@@ -1,5 +1,8 @@
 <script lang="ts">
-	export let title: string | undefined = undefined;
+	import type { Snippet } from 'svelte';
+
+	const { title = undefined, children }: { title?: string | undefined; children: Snippet } =
+		$props();
 </script>
 
 <div class="flex flex-col gap-2">
@@ -10,6 +13,6 @@
 	{/if}
 
 	<div class="flex w-full flex-wrap gap-4 justify-center lg:justify-start">
-		<slot />
+		{@render children()}
 	</div>
 </div>

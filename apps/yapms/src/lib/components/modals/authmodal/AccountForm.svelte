@@ -9,7 +9,7 @@
 	</h3>
 	<button
 		class="btn btn-sm btn-error"
-		on:click={() => {
+		onclick={() => {
 			$PocketBaseStore.authStore.clear();
 			PocketBaseStore.set($PocketBaseStore);
 		}}

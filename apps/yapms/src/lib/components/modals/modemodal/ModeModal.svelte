@@ -21,7 +21,7 @@
 					class:btn-primary={$ModeStore !== mode}
 					class:btn-success={$ModeStore === mode}
 					value={mode}
-					on:click={() => {
+					onclick={() => {
 						setMode(mode);
 					}}
 				>
