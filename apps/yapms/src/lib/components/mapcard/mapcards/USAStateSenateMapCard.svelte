@@ -11,7 +11,11 @@
 		},
 		{
 			label: 'Mississippi',
-			route: '/app/usa/ms_upper/2025057/blank'
+			route: '/app/usa/ms_upper/2025127/blank'
+		},
+		{
+			route: '/app/usa/al_upper/2025322/blank',
+			label: 'Alabama 2026'
 		},
 		{
 			route: '/app/usa/al_upper/2022/blank',
@@ -114,7 +118,7 @@
 			label: 'Minnesota 2022'
 		},
 		{
-			route: '/app/usa/ms_upper/2025057/blank',
+			route: '/app/usa/ms_upper/2025127/blank',
 			label: 'Mississippi 2025'
 		},
 		{
