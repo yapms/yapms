@@ -2,16 +2,16 @@
 	import MapCard from '../MapCard.svelte';
 	const links = [
 		{
-			label: 'Virginia',
-			route: '/app/usa/va_upper/2023/blank'
+			label: 'Arizona',
+			route: '/app/usa/az_upper/2022/blank'
 		},
 		{
-			label: 'New Jersey',
-			route: '/app/usa/nj_upper/2023/blank'
+			label: 'Michigan',
+			route: '/app/usa/mi_upper/2024208/blank'
 		},
 		{
-			label: 'Mississippi',
-			route: '/app/usa/ms_upper/2025127/blank'
+			label: 'Pennsylvania',
+			route: '/app/usa/pa_upper/2022/blank'
 		},
 		{
 			route: '/app/usa/al_upper/2025322/blank',
