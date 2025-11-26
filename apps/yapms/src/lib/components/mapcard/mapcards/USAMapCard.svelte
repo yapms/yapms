@@ -39,10 +39,6 @@
 			route: '/app/usa/house/2025325/mo_hb1_no_tx_hb4'
 		},
 		{
-			label: 'Governors 2025',
-			route: '/app/usa/governors/2025/blank'
-		},
-		{
 			label: 'Governors 2026',
 			route: '/app/usa/governors/2026/blank'
 		},
