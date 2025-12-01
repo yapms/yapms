@@ -1,5 +1,5 @@
 <script lang="ts">
-	import MapCard from '../../MapCard.svelte"
+	import MapCard from '../../MapCard.svelte'
 	const links = [
 		{
 			label: 'Administrative Divisions',
