@@ -1,1 +1,124 @@
-<svg viewBox="0 0 1000 1000" auto-border-stroke-width="1" auto-border-stroke-width-limit="0.1" style="--auto-border-stroke-width: 0.5px; --region-stroke-color: var(--color-base-100); transform-origin: 0px 0px 0px; transform: matrix(0.753158, 0, 0, 0.753158, 141.891, 0);" candidates="[{&quot;id&quot;:&quot;4cd8bb02-2c44-4007-8ff0-76c9b8bee855&quot;,&quot;name&quot;:&quot;Kraljeva Stranka - KS&quot;,&quot;defaultCount&quot;:0,&quot;margins&quot;:[{&quot;color&quot;:&quot;#000C3D&quot;},{&quot;color&quot;:&quot;#333B67&quot;},{&quot;color&quot;:&quot;#666A8F&quot;},{&quot;color&quot;:&quot;#999BB6&quot;}]},{&quot;id&quot;:&quot;1b8eff1e-a594-4120-b6e3-68d1ce55b3e2&quot;,&quot;name&quot;:&quot;Republikanska Stranka - RS&quot;,&quot;defaultCount&quot;:0,&quot;margins&quot;:[{&quot;color&quot;:&quot;#3D0000&quot;},{&quot;color&quot;:&quot;#673333&quot;},{&quot;color&quot;:&quot;#8F6666&quot;},{&quot;color&quot;:&quot;#B69999&quot;}]}]" tossup-candidate="{&quot;id&quot;:&quot;&quot;,&quot;name&quot;:&quot;Neodločeno&quot;,&quot;defaultCount&quot;:0,&quot;margins&quot;:[{&quot;color&quot;:&quot;#cccccc&quot;}]}"><g map-type="regions"><path region="0" short-name="SVT-3" long-name="Svetelkija - Sestrska" value="0" d="M227.405,684.069L288.569,665.125L301.351,704.079L244.14,726.161Z" style="fill: rgb(204, 204, 204); visibility: visible; fill-opacity: 0.25; cursor: pointer; transition: fill 0.2s ease-in-out;" candidates="[{&quot;candidate&quot;:&quot;&quot;,&quot;count&quot;:0,&quot;margin&quot;:0}]" disabled="true" locked="true"></path><path region="1" short-name="SVT-4" long-name="Svetelkija - Rodovišče" value="2" d="M227.829,631.561L316.564,595.708L374.141,735.329L317.578,752.921L289.838,663.205L243.694,676.331Z" style="fill: rgb(204, 204, 204); visibility: visible; fill-opacity: 1; cursor: pointer; transition: fill 0.2s ease-in-out;" candidates="[{&quot;candidate&quot;:&quot;&quot;,&quot;count&quot;:2,&quot;margin&quot;:0}]"></path><path region="2" short-name="SVT-1" long-name="Perecia Regalis" value="1" d="M318.975,753.676L374.59,736.085L387.987,768.967L330.747,792.512Z" style="fill: rgb(204, 204, 204); visibility: visible; fill-opacity: 1; cursor: pointer; transition: fill 0.2s ease-in-out;" candidates="[{&quot;candidate&quot;:&quot;&quot;,&quot;count&quot;:1,&quot;margin&quot;:0}]"></path><path region="3" short-name="SVT-2" long-name="Svetelkija - Bratovska" value="1" d="M263.224,772.079L317.08,754.623L328.582,792.783L280.003,812.675Z" style="fill: rgb(204, 204, 204); visibility: visible; fill-opacity: 1; cursor: pointer; transition: fill 0.2s ease-in-out;" candidates="[{&quot;candidate&quot;:&quot;&quot;,&quot;count&quot;:1,&quot;margin&quot;:0}]"></path><path region="4" short-name="SVT-5" long-name="Svetelkija - Starinska" value="2" d="M244.55,727.424L301.654,705.909L316.133,752.729L262.547,771.132Z" style="fill: rgb(204, 204, 204); visibility: visible; fill-opacity: 1; cursor: pointer; transition: fill 0.2s ease-in-out;" candidates="[{&quot;candidate&quot;:&quot;&quot;,&quot;count&quot;:2,&quot;margin&quot;:0}]"></path><path region="5" short-name="SVT-0-1" long-name="Svetelkija - Gornopolje" value="0" d="M35.27,743.529L0,611.147L207.071,52.639L963.138,134.931L1000,164.032L845.762,420.13L657.571,668.465L411.176,549.147L316.066,593.095L225.138,630.242L241.093,676.777L226.208,682.731L155.927,761.093L92.926,753.838L50.543,756.129L40.997,760.711Z" style="fill: rgb(204, 204, 204); visibility: visible; fill-opacity: 0.25; cursor: pointer; transition: fill 0.2s ease-in-out;" candidates="[{&quot;candidate&quot;:&quot;&quot;,&quot;count&quot;:0,&quot;margin&quot;:0}]" disabled="true" locked="true"></path><path region="6" short-name="SVT-0-2" long-name="Svetelkija - Dvoriščina" value="0" d="M158.894,762.147L225.8,686.613L277.389,816.617L392.797,771.822L319.997,594.58L410.142,552.105L655.751,670.561L552.684,794.215L314.851,947.361L298.132,911.213L219.535,790.001Z" style="fill: rgb(204, 204, 204); visibility: visible; fill-opacity: 0.25; cursor: pointer; transition: fill 0.2s ease-in-out;" candidates="[{&quot;candidate&quot;:&quot;&quot;,&quot;count&quot;:0,&quot;margin&quot;:0}]" disabled="true" locked="true"></path></g></svg>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="558.962558pt" height="345.6pt" viewBox="0 0 558.962558 345.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2025-12-01T16:21:31.845011</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.7.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 345.6 
+L 558.962558 345.6 
+L 558.962558 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 0 345.6 
+L 558.962558 345.6 
+L 558.962558 0 
+L 0 0 
+z
+" style="fill: #212830"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 140.962885 237.435506 
+L 149.46637 252.215899 
+L 178.538278 244.461907 
+L 172.04317 230.783107 
+L 140.962885 237.435506 
+" clip-path="url(#pad4d0a7e17)" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 141.178327 218.997113 
+L 149.2402 234.717993 
+L 172.687937 230.108831 
+L 186.784081 261.612697 
+L 215.526469 255.435463 
+L 186.268481 206.407492 
+L 141.178327 218.997113 
+" clip-path="url(#pad4d0a7e17)" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 187.493645 261.877904 
+L 193.475912 275.515342 
+L 222.562108 267.247347 
+L 215.7547 255.700669 
+L 187.493645 261.877904 
+" clip-path="url(#pad4d0a7e17)" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 159.163828 268.340243 
+L 167.690277 282.59541 
+L 192.375725 275.610377 
+L 186.530981 262.210524 
+L 159.163828 268.340243 
+" clip-path="url(#pad4d0a7e17)" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 149.674714 252.65957 
+L 158.820019 268.007622 
+L 186.049649 261.545283 
+L 178.692148 245.10434 
+L 149.674714 252.65957 
+" clip-path="url(#pad4d0a7e17)" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 43.329671 258.314834 
+L 46.240042 264.348397 
+L 51.090661 262.739447 
+L 72.627407 261.934972 
+L 104.641489 264.482477 
+L 140.354301 236.965686 
+L 147.918087 234.874932 
+L 139.810908 218.533892 
+L 186.01575 205.489666 
+L 234.345413 190.057566 
+L 359.550443 231.955868 
+L 455.179483 144.752985 
+L 533.555169 54.824785 
+L 514.823708 44.605761 
+L 130.630056 15.709091 
+L 25.407389 211.82874 
+L 43.329671 258.314834 
+" clip-path="url(#pad4d0a7e17)" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 106.148938 264.852577 
+L 136.963528 274.633368 
+L 176.902613 317.197371 
+L 185.398088 329.890909 
+L 306.252344 276.113374 
+L 358.625836 232.692009 
+L 233.819932 191.096222 
+L 188.01292 206.011107 
+L 225.006299 268.249803 
+L 166.362189 283.979703 
+L 140.147208 238.328832 
+L 106.148938 264.852577 
+" clip-path="url(#pad4d0a7e17)" style="fill: #ffffff"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pad4d0a7e17">
+   <rect x="0" y="0" width="558.962558" height="345.6"/>
+  </clipPath>
+ </defs>
+</svg>
