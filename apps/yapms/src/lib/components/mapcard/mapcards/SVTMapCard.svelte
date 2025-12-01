@@ -11,7 +11,7 @@
 
 <MapCard
 	name="Kingdom of Svetelkia"
-	bg="kos" 
+	bg="svt" 
 	attribution="Flag of Svetelkia"
 	attributionLink="https://github.com/svetelkia-hub" 
 	{links}
