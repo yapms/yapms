@@ -71,7 +71,7 @@
 <div class="collapse collapse-arrow bg-base-300 border-base-300 rounded-r-none">
 	<input type="checkbox" bind:checked={open} onchange={onCheck} />
 	<div
-		class="truncate collapse-title join p-0 flex items-center transition-[padding] after:mr-[calc(100%-2.5rem)] after:-mt-3.5"
+		class="truncate collapse-title join p-0 flex items-center transition-[padding] after:mr-[calc(100%-2.5rem)]"
 		class:pb-2={open}
 	>
 		<p class="truncate text-xs font-semibold pr-4 pl-8 grow text-center">{folderName}</p>
