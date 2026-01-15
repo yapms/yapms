@@ -166,6 +166,10 @@
 			label: 'North Carolina 2022'
 		},
 		{
+			route: '/app/usa/nd_lower/2024009/blank',
+			label: 'North Dakota 2024'
+		},
+		{
 			route: '/app/usa/nd_lower/2022/blank',
 			label: 'North Dakota 2022'
 		},
@@ -192,6 +196,10 @@
 		{
 			route: '/app/usa/ri_lower/2022/blank',
 			label: 'Rhode Island 2022'
+		},
+		{
+			route: '/app/usa/sc_lower/2024001/blank',
+			label: 'South Carolina 2024'
 		},
 		{
 			route: '/app/usa/sc_lower/2022/blank',

@@ -170,6 +170,10 @@
 			label: 'North Carolina 2022'
 		},
 		{
+			route: '/app/usa/nd_upper/2024009/blank',
+			label: 'North Dakota 2024'
+		},
+		{
 			route: '/app/usa/nd_upper/2022/blank',
 			label: 'North Dakota 2022'
 		},
