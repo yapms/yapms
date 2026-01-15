@@ -1,11 +1,13 @@
 <script lang="ts">
 	import Cog6Tooth from '$lib/icons/Cog6Tooth.svelte';
 	import MinusCircle from '$lib/icons/MinusCircle.svelte';
+	import Trash from '$lib/icons/Trash.svelte';
 
 	let {
 		name,
 		colors,
 		selected,
+		deleteSelected = false,
 		hideName = false,
 		onSelect = undefined,
 		onConfirm = undefined,
@@ -15,6 +17,7 @@
 		name: string;
 		colors: string[];
 		selected: boolean;
+		deleteSelected?: boolean;
 		hideName?: boolean;
 		onSelect?: ((name: string) => void) | undefined;
 		onConfirm?: ((colors: string[]) => void) | undefined;
@@ -61,7 +64,11 @@
 	{/if}
 	{#if onDelete !== undefined}
 		<button class="btn btn-lg btn-error join-item" onclick={onDelete}>
-			<MinusCircle class="w-6 h-6" />
+			{#if deleteSelected}
+				<Trash class="w-6 h-6" />
+			{:else}
+				<MinusCircle class="w-6 h-6" />
+			{/if}
 		</button>
 	{/if}
 </div>

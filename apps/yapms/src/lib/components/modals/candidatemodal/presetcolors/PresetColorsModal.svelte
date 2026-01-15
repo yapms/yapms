@@ -19,10 +19,20 @@
 
 	let tab = $state(0);
 	let selected: string | undefined = $state(undefined);
+	let deleteSelected: string | undefined = $state(undefined);
 
 	function addCustomColor() {
 		$AddCustomColorModalStore.open = true;
 		$PresetColorsModalStore.open = false;
+	}
+
+	function onDeleteSelected(index: number) {
+		if (deleteSelected === index.toString()) {
+			removeCustomColor(index);
+			deleteSelected = undefined;
+		} else {
+			deleteSelected = index.toString();
+		}
 	}
 
 	function removeCustomColor(index: number) {
@@ -219,10 +229,11 @@
 						hideName={true}
 						{colors}
 						selected={selected === index.toString()}
+						deleteSelected={deleteSelected === index.toString()}
 						{onSelect}
 						{onConfirm}
 						onEdit={() => editCustomColor(index)}
-						onDelete={() => removeCustomColor(index)}
+						onDelete={() => onDeleteSelected(index)}
 					/>
 				{/each}
 			{/if}
