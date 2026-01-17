@@ -218,6 +218,8 @@ function exportImportAsSVG(): void {
 			});
 			region.nodes.region.setAttribute('candidates', JSON.stringify(candidateAttr));
 			region.nodes.region.setAttribute('value', region.permaVal.toString());
+			region.nodes.region.setAttribute('short-name', region.shortName.toString());
+			region.nodes.region.setAttribute('long-name', region.longName.toString());
 			if (region.disabled) {
 				region.nodes.region.setAttribute('disabled', region.disabled.toString());
 			}
