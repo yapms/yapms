@@ -7,6 +7,10 @@
 		},
 		{
 			label: 'Senate',
+			route: '/app/yap/senate/2026025/blank'
+		},
+		{
+			label: 'Senate (Old)',
 			route: '/app/yap/senate/2025285/blank'
 		}
 	];
