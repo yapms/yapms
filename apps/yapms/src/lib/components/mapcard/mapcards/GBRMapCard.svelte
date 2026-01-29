@@ -62,7 +62,11 @@
 			route: '/app/gbr/counties/1844/blank'
 		},
 		{
-			label: 'Counties and Unitary Authorities',
+			label: '2026 Counties and Unitary Authorities',
+			route: '/app/gbr/counties/2026026/blank'
+		},
+		{
+			label: '2023 Counties and Unitary Authorities',
 			route: '/app/gbr/counties/2023/blank'
 		},
 		{
