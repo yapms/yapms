@@ -14,8 +14,16 @@
 			route: '/app/nzl/regions/2023/blank'
 		},
 		{
+			label: 'House 2026',
+			route: '/app/nzl/house/2025220/blank'
+		},
+		{
 			label: 'House 2023',
 			route: '/app/nzl/house/2023/blank'
+		},
+		{
+			label: 'Māori Electorates 2026',
+			route: '/app/nzl/maori/2025220/blank'
 		},
 		{
 			label: 'Māori Electorates 2023',
@@ -28,6 +36,10 @@
 		{
 			label: '2020 House Results',
 			route: '/app/nzl/house/2020/results'
+		},
+		{
+			label: 'Regional Councils',
+			route: '/app/nzl/regions/2023/blank'
 		}
 	];
 </script>
