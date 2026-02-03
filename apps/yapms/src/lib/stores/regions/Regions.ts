@@ -290,8 +290,14 @@ export const setPointerEvents = (): void => {
 
 			const currentMode = get(ModeStore);
 			const currentInteractions = get(InteractionStore);
-			if (currentMode === 'fill' && currentInteractions.has('KeyF')) {
-				fillRegion(region.id, false);
+			if (currentInteractions.has('KeyF')) {
+				switch (currentMode) {
+					case 'fill':
+						fillRegion(region.id, false);
+						break;
+					case 'disable':
+						disableRegion(region.id, true);
+				}
 			}
 		};
 
