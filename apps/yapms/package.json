@@ -52,7 +52,7 @@
 		"proj4": "2.20.2",
 		"shapefile": "0.6.6",
 		"sortablejs": "1.15.6",
-		"svelte": "5.49.2",
+		"svelte": "5.50.0",
 		"svelte-check": "4.3.6",
 		"svelte-eslint-parser": "1.4.1",
 		"svelte-fa": "4.0.4",
