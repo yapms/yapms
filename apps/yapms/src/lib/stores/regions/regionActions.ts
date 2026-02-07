@@ -118,11 +118,11 @@ export function editRegion(regionID: string): void {
 	});
 }
 
-export function disableRegion(regionID: string) {
+export function disableRegion(regionID: string, onlyDisable: boolean = false) {
 	const regions = get(RegionsStore);
 	const region = regions.find((region) => region.id === regionID);
 	if (region) {
-		if (region?.disabled) {
+		if (region?.disabled && !onlyDisable) {
 			region.disabled = false;
 			region.value = region.permaVal;
 		} else {
