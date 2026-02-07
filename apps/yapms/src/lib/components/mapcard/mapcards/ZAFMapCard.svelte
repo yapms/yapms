@@ -14,18 +14,6 @@
 			route: '/app/zaf/provinces'
 		},
 		{
-			label: '2019 National Assembly',
-			route: '/app/zaf/assembly/2019128/blank'
-		},
-		{
-			label: '2019 National Assembly Results',
-			route: '/app/zaf/assembly/2019128/results'
-		},
-		{
-			label: 'Provinces',
-			route: '/app/zaf/provinces'
-		},
-		{
 			label: 'Municipalities',
 			route: '/app/zaf/municipalities/2019275/blank'
 		}
