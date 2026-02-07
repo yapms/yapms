@@ -12,7 +12,7 @@ export const useSortable = (getter: () => HTMLElement | undefined, options?: Sor
 	});
 };
 
-export function reorder<T>(array: T[], evt: Sortable.SortableEvent): $state.Snapshot<T>[] {
+export function reorder<T>(array: T[], evt: Sortable.SortableEvent) {
 	// should have no effect on stores or regular array
 	const workArray = $state.snapshot(array);
 
