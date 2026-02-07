@@ -8,6 +8,10 @@
 		{
 			label: 'Countries (NE)',
 			route: '/app/glb/countries/2020078/natural_earth'
+		},
+		{
+			label: 'European Parliament',
+			route: '/app/glb/eu_parliament/2024158/blank'
 		}
 	];
 </script>
