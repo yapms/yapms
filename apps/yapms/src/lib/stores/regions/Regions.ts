@@ -111,8 +111,8 @@ RegionsStore.subscribe((regions) => {
 			marginIndex = 0;
 		}
 
-		let fill = '';
-		let lumaColor = '';
+		let fill;
+		let lumaColor;
 		if (winners.length === 1) {
 			fill = winners[0].candidate.margins[marginIndex]?.color;
 			lumaColor = fill;
