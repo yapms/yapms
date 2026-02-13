@@ -14,7 +14,7 @@
 		"format": "prettier --plugin prettier-plugin-svelte --write ."
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.3.14",
+		"@biomejs/biome": "2.3.15",
 		"@eslint/js": "10.0.1",
 		"@floating-ui/dom": "1.7.5",
 		"@fontsource-variable/roboto-mono": "5.2.8",
