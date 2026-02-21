@@ -146,13 +146,22 @@
 		}
 	];
 
-	const imageLinks: HomeLinkData[] = [];
+	const imageLinks = [
+		{
+			label: 'House Floor by Lawrence Jackson',
+			route: 'https://keating.house.gov/policy-work/floor'
+		},
+		{
+			label: 'U.S Capitol by Andi Feliciotti',
+			route: 'https://unsplash.com/photos/brown-concrete-building-near-green-trees-during-daytime-6kA9FjqUxhM'
+		}
+	];
 
 </script>
 
 <MapCard
 	name="Historical USA House"
-	bg="usahouse"
+	bg="usa_house"
 	{groups}
 	{imageLinks}
 />

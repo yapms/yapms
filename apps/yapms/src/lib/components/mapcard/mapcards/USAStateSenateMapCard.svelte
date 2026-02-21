@@ -320,13 +320,30 @@
 		}
 	];
 
-	const imageLinks: HomeLinkData[] = [];
+	const imageLinks = [
+		{
+			label: 'Oregon State Capitol by M.O. Stevens',
+			route: 'https://commons.wikimedia.org/wiki/File:Oregon_State_Capitol_1.jpg'
+		},
+		{
+			label: 'Kansas State Capitol by Elli',
+			route: 'https://commons.wikimedia.org/wiki/File:Kansas_State_Capitol_(March_17,_2023)_01.jpg'
+		},
+		{
+			label: 'Minnesota State Capitol by Czbik',
+			route: 'https://commons.wikimedia.org/wiki/File:Third_Minnesota_State_Capitol_in_Saint_Paul,_Minnesota._(October_28,_2025).jpg'
+		},
+		{
+			label: 'Colorado State Capitol by Eekim',
+			route: 'https://commons.wikimedia.org/wiki/File:Colorado_State_Capitol_Building.jpg'
+		}
+	]
 
 </script>
 
 <MapCard
 	name="USA State Senates"
-	bg="usastatesenate"
+	bg="usa_states_2"
 	{groups}
 	{imageLinks}
 	full

@@ -65,13 +65,30 @@
 		}
 	];
 
-	const imageLinks: HomeLinkData[] = [];
+	const imageLinks = [
+		{
+			label: 'Brisbane Parliament House by Figaro',
+			route: 'https://commons.wikimedia.org/wiki/File:Parliament-House-Brisbane-2.jpg'
+		},
+		{
+			label: 'Melbourne Parliament House by Elekhh',
+			route: 'https://commons.wikimedia.org/wiki/File:Parliament_House_Melbourne_2010.jpg'
+		},
+		{
+			label: 'Adelaide Parliament House by Rexness',
+			route: 'https://commons.wikimedia.org/wiki/File:Parliament_House,_Adelaide_on_October_22,_2010.jpg'
+		},
+		{
+			label: 'Perth Parliament House by -wuppertaler',
+			route: 'https://commons.wikimedia.org/wiki/File:AUS_Perth,_Central_Business_District,_Parliament_House_011.jpg'
+		}
+	]
 
 </script>
 
 <MapCard
 	name="Australian States"
-	bg="auslegassem"
+	bg="aus_states"
 	{groups}
 	{imageLinks}
 	full

@@ -31,8 +31,16 @@
 		}
 	];
 
-	const imageLinks: HomeLinkData[] = [];
-
+	const imageLinks = [
+		{
+			label: 'National Assembly by frakorea',
+			route: 'https://en.wikipedia.org/wiki/File:Seoul-National.Assembly-02.jpg'
+		},
+		{
+			label: 'Haeundae Skyline, Busan by amanderson2',
+			route: 'https://commons.wikimedia.org/wiki/File:Skyline_of_Haeundae_from_Igidae.png'
+		}
+	]
 </script>
 
 <MapCard
