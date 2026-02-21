@@ -30,7 +30,16 @@
 		}
 	];
 
-	const imageLinks: HomeLinkData[] = [];
+	const imageLinks = [
+		{
+			label: 'National Congress by João Pavese',
+			route: 'https://www.pexels.com/photo/national-congress-of-brazil-under-blue-skies-30179016/'
+		},
+		{
+			label: 'Christ the Redeemer by Joao Ricardo Januzzi',
+			route: 'https://www.pexels.com/photo/statue-of-jesus-with-the-moon-in-the-background-9229056/'
+		}
+	];
 
 </script>
 

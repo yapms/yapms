@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
+	import { CANImageLinks } from './CANMapCard.svelte';
 	const links = [
 		{
 			label: '2025',
@@ -99,5 +100,5 @@
 	name="Canadian Commons Results"
 	bg="can"
 	{groups}
-	{imageLinks}
+	imageLinks={CANImageLinks}
 />

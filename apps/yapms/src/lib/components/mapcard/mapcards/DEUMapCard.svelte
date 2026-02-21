@@ -47,7 +47,17 @@
 	// These type annotations can go away once this is actually populated
 	const groups: HomeGroupData[] = [];
 
-	const imageLinks: HomeLinkData[] = [];
+	const imageLinks = [
+		{
+			label: 'Reichstag by Guy Percival',
+			route:
+				'https://www.publicdomainpictures.net/en/view-image.php?image=307270&picture=reichstag-building-in-berlin'
+		},
+		{
+			label: 'Neuschwanstein Castle by Kylene Hashimoto',
+			route: 'https://www.pexels.com/photo/white-castle-surrounded-by-trees-1334441/'
+		}
+	];
 
 </script>
 
