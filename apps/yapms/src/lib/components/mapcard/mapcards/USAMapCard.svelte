@@ -1,8 +1,6 @@
-<script lang="ts">
-	import type { HomeLinkData } from '$lib/types/HomeData';
+<script lang="ts" context="module">
 	import MapCard from '../MapCard.svelte';
 	
-	// These type annotations can go away once this is actually populated
 	const groups = [
 		{
 			label: 'Presidential',
@@ -84,19 +82,32 @@
 			]
 		},
 		{
+			label: 'Primaries',
+			routes: [
+				{
+					label: 'Democratic Primary 2024',
+					route: '/app/usa/dem_primary/2024/blank'
+				},
+				{
+					label: 'Republican Primary 2024',
+					route: '/app/usa/rep_primary/2024/blank'
+				}
+			]
+		},
+		{
 			label: '',
 			routes: [
 				{
-					label: '2024 House Results',
-					route: '/app/usa/house/2024310/results'
+					label: 'Presidential 2028 Take-All',
+					route: '/app/usa/presidential/2028/takeall'
 				},
 				{
-					label: '2024 Gubernatorial Results',
-					route: '/app/usa/governors/2024310/results'
+					label: 'Presidential 2028 with Territories',
+					route: '/app/usa/presidential/2028/territories'
 				},
 				{
-					label: 'Counties 2020',
-					route: '/app/usa/counties/2020/blank'
+					label: 'Presidential 2028 Take-All with Territories',
+					route: '/app/usa/presidential/2028/takeall_territories'
 				},
 				{
 					label: 'Senate',
@@ -115,6 +126,18 @@
 					route: '/app/usa/senate_class3'
 				},
 				{
+					label: '2022 Senate Results',
+					route: '/app/usa/senate/2022/results'
+				},
+				{
+					label: '2024 House Results',
+					route: '/app/usa/house/2024310/results'
+				},
+				{
+					label: '2022 House Results',
+					route: '/app/usa/house/2022/results'
+				},
+				{
 					label: 'Governors',
 					route: '/app/usa/governors'
 				},
@@ -131,34 +154,39 @@
 					route: '/app/usa/governors/2023/blank'
 				},
 				{
-					label: 'Presidential 2028 Take-All',
-					route: '/app/usa/presidential/2028/takeall'
+					label: '2024 Gubernatorial Results',
+					route: '/app/usa/governors/2024310/results'
 				},
 				{
-					label: 'Presidential 2028 with Territories',
-					route: '/app/usa/presidential/2028/territories'
-				},
-				{
-					label: 'Presidential 2028 Take-All with Territories',
-					route: '/app/usa/presidential/2028/takeall_territories'
+					label: 'Counties 2020',
+					route: '/app/usa/counties/2020/blank'
 				},
 				{
 					label: 'New York City Council 2025',
 					route: '/app/usa/nyc_council/2025309/blank'
-				},
-				{
-					label: '2022 Senate Results',
-					route: '/app/usa/senate/2022/results'
-				},
-				{
-					label: '2022 House Results',
-					route: '/app/usa/house/2022/results'
 				}
 			]
 		}
 	];
 
-	const imageLinks: HomeLinkData[] = [];
+	export const USAImageLinks = [
+		{
+			label: 'U.S Capitol by Andi Feliciotti',
+			route: 'https://unsplash.com/photos/brown-concrete-building-near-green-trees-during-daytime-6kA9FjqUxhM'
+		},
+		{
+			label: 'Statue of Liberty by Christian Domingues',
+			route: 'https://www.pexels.com/photo/statue-of-liberty-670530/'
+		},
+		{
+			label: 'Mount Rushmore by Tom Fisk',
+			route: 'https://www.pexels.com/photo/curved-mount-rushmore-under-the-cloudy-sky-11563790/'
+		},
+		{
+			label: 'Golden Gate Bridge by Vlada Karpovich',
+			route: 'https://www.pexels.com/photo/golden-gate-bridge-4449617/'
+		}
+	];
 
 </script>
 
@@ -166,6 +194,6 @@
 	name="United States"
 	bg="usa"
 	{groups}
-	{imageLinks}
+	imageLinks={USAImageLinks}
 	square
 />

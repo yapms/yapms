@@ -1,6 +1,6 @@
-<script lang="ts">
-	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
+<script lang="ts" context="module">
 	import MapCard from '../MapCard.svelte';
+
 	const groups = [
 		{
 			label: 'House of Commons', routes: [
@@ -30,7 +30,25 @@
 		}
 	];
 
-	const imageLinks: HomeLinkData[] = [];
+	export const CANImageLinks = [
+		{
+			label: 'Parliament Hill by Tetyana Kovyrina',
+			route: 'https://www.pexels.com/photo/photo-of-beige-and-green-castle-1045915/'
+		},
+		{
+			label: 'Toronto by Andre Furtado',
+			route: 'https://www.pexels.com/photo/high-rise-buildings-photo-800694/'
+		}//, // I don't actually use these last two images anymore
+		//{
+		//	label: 'Montreal by Cyrill',
+		//	route: 'https://www.pexels.com/photo/skyscrapers-in-city-at-sunset-19739618/'
+		//},
+		//{
+		//	label: 'Vancouver by Adi K',
+		//	route:
+		//		'https://www.pexels.com/photo/bird-s-eye-view-photography-of-high-rise-buildings-2382868/'
+		//}
+	];
 
 </script>
 
@@ -38,5 +56,5 @@
 	name="Canada"
 	bg="can"
 	{groups}
-	{imageLinks}
+	imageLinks={CANImageLinks}
 />
