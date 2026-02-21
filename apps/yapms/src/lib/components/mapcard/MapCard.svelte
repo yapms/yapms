@@ -1,13 +1,13 @@
 <script lang="ts">
 	import InformationCircle from '$lib/icons/InformationCircle.svelte';
 	import { MoreMapsModalStore } from '$lib/stores/HomeModals';
-	import type { HomeLinkData } from '$lib/types/HomeData';
+	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
 	import MapCardLinkGroup from './MapCardLinkGroup.svelte';
 
 	export let name: string;
 	export let bg: string;
 	export let imageLinks: HomeLinkData[];
-	export let groups: { label: string; routes: HomeLinkData[] }[];
+	export let groups: HomeGroupData[];
 	export let full: boolean = false;
 	export let square: boolean = false;
 
@@ -18,7 +18,7 @@
 	// If one group only, show the first two links from that group.
 	// If only one group with one link, show only that one link.
 	// If no groups, you screwed up, but I was nice and wrote a fallback.
-	const mobileLinks = !groups
+	const mobileLinks = (!groups || groups.length === 0)
 		? []
 		: groups.length > 1
 			? [groups[0].routes[0], groups[1].routes[0]]

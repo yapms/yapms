@@ -44,4 +44,4 @@
 	];
 </script>
 
-<MapCard name="Denmark" bg="dnk" {imageLinks} {groups} />
+<MapCard name="Denmark" bg="dnk" {groups} {imageLinks} />
