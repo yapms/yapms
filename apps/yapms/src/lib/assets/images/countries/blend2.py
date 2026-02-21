@@ -113,7 +113,7 @@ if __name__ == "__main__":
         import cv2
         from PIL import Image
     except ImportError:
-        printError("This script requires OpenCV and Pillow.\nTo install, run command: pip install opencv-python Pillow")
+        printError("This script requires OpenCV and Pillow.\nTo install, run command: python -m pip install opencv-python Pillow")
         exit(1)
     import numpy as np # np is a necessary dependency of cv2 so no independent check needed
 
