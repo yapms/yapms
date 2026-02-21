@@ -7,6 +7,8 @@ export type HomeLinkData = {
 export type HomeGroupData = {
 	label: string | undefined;
 	routes: HomeLinkData[];
+	showOnCard: boolean;
+	showInModal: boolean;
 }
 
 export type HomeModalData = {

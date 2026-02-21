@@ -3,7 +3,9 @@
 	import MapCard from '../MapCard.svelte';
 	const groups = [
 		{
-			label: '',
+			label: undefined,
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'Chamber of Deputies 2022',
@@ -17,6 +19,8 @@
 		},
 		{
 			label: 'Senate',
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'Senate 2022',

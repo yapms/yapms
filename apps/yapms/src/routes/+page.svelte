@@ -145,8 +145,8 @@
 			</MapCardGrid>
 
 			<MapCardGrid title="State & Provincial Maps">
-				<UsaStateSenateMapCard />
 				<UsaStateHouseMapCard />
+				<UsaStateSenateMapCard />
 				<CanProvincesMapCard />
 				<AusStatesMapCard />
 			</MapCardGrid>

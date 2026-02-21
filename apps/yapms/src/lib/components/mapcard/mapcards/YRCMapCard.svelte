@@ -4,7 +4,9 @@
 
 	const groups = [
 		{
-			label: '',
+			label: undefined,
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'Fair Map',

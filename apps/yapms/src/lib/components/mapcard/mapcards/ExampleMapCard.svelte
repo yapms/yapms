@@ -7,11 +7,17 @@
 	// That means routes is an array of type HomeLinkData[].
 	// modalLabel is an optional property, and controls what text shows for a map in the MoreMapsModal opened via "Browse Maps"
 	// Routes within a group will display left to right and then down, with the number of cols = ceil(# routes/2)
+
 	// If the group is named (label !== undefined) and there is not sufficient width to show all columns, the entire group will not show.
 	// If label is undefined, columns will show one by one as space becomes available
+
+	// If the property showOnCard is set to false, the group will not show on the card.
+	// If the property showInModal is set to false, the routes from this group will not show in the MoreMapsModal.
 	const groups = [
 		{
 			label: 'Group 1', // If space is not available for two columns, will not show entire group
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'Map',
@@ -32,6 +38,8 @@
 		},
 		{
 			label: undefined, // If space for two columns is not available, will just show Municipalities and Regions
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'Municipalities',
