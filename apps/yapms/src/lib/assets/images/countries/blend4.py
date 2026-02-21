@@ -96,7 +96,7 @@ def laplacian_blend(img1, img2, mask, levels=6):
 ## This script takes in two images, one.jpg and two.jpg of size IN_W, IN_H
 if __name__ == "__main__":
     IN_W, IN_H = 800, 600 # input image size
-    OUT_W, OUT_H = 1200, 600 # final blended image size
+    OUT_W, OUT_H = 1200, 600 # intermediate 2x blended image size
     BLEND_W = 200 # width of the blend/overlap zone in the middle. set to between 0 and 400.
     LEVELS = 6 # More levels means a smoother transition  
 
@@ -113,7 +113,7 @@ if __name__ == "__main__":
         import cv2
         from PIL import Image
     except ImportError:
-        printError("This script requires OpenCV and Pillow.\nTo install, run command: pip install opencv-python Pillow")
+        printError("This script requires OpenCV and Pillow.\nTo install, run command: python -m pip install opencv-python Pillow")
         exit(1)
     import numpy as np # np is a necessary dependency of cv2 so no independent check needed
 
@@ -129,7 +129,7 @@ if __name__ == "__main__":
         exit(1)
 
     # Check that images exist
-    paths = [f"./{country_code}/one.jpg", f"./{country_code}/two.jpg", f"./{country_code}/one.jpg", f"./{country_code}/two.jpg"]
+    paths = [f"./{country_code}/one.jpg", f"./{country_code}/two.jpg", f"./{country_code}/three.jpg", f"./{country_code}/four.jpg"]
     for path in paths:
         if not os.path.isfile(path):
             printError(f"Could not find image {path}")
@@ -154,11 +154,11 @@ if __name__ == "__main__":
 
 
     # For the first pass, extend images out to 1200x600 with the 400 pixels on the right/left being unused in the final blend
-    imgs[0] = cv2.copyMakeBorder(imgs[0], 0, 0, 0, 400, cv2.BORDER_CONSTANT)
-    imgs[1] = cv2.copyMakeBorder(imgs[1], 0, 0, 400, 0, cv2.BORDER_CONSTANT)
+    imgs[0] = cv2.copyMakeBorder(imgs[0], 0, 0, 0, OUT_W-IN_W, cv2.BORDER_CONSTANT)
+    imgs[1] = cv2.copyMakeBorder(imgs[1], 0, 0, OUT_W-IN_W, 0, cv2.BORDER_CONSTANT)
 
-    imgs[2] = cv2.copyMakeBorder(imgs[2], 0, 0, 0, 400, cv2.BORDER_CONSTANT)
-    imgs[3] = cv2.copyMakeBorder(imgs[3], 0, 0, 400, 0, cv2.BORDER_CONSTANT)
+    imgs[2] = cv2.copyMakeBorder(imgs[2], 0, 0, 0, OUT_W-IN_W, cv2.BORDER_CONSTANT)
+    imgs[3] = cv2.copyMakeBorder(imgs[3], 0, 0, OUT_W-IN_W, 0, cv2.BORDER_CONSTANT)
 
     # Build a mask for the full canvas where 255 = img1, 0 = img2
     mask = np.zeros((OUT_H, OUT_W), dtype=np.float32)
@@ -179,13 +179,35 @@ if __name__ == "__main__":
     blended_1 = laplacian_blend(imgs[0], imgs[1], mask, levels=LEVELS)
     blended_2 = laplacian_blend(imgs[2], imgs[3], mask, levels=LEVELS)
 
+    # Redefine parameters for second pass
+    IN_W, IN_H = 1200, 600 # input image size after 2x blending
+    OUT_W, OUT_H = 2160, 600 # final 4xblended image size
+    BLEND_W = 120
+    LEVELS = 6
 
+    # For the first pass, extend images out to 2160x600 with the 400 pixels on the right/left being unused in the final blend
+    blended_1 = cv2.copyMakeBorder(blended_1, 0, 0, 0, OUT_W-IN_W, cv2.BORDER_CONSTANT)
+    blended_2 = cv2.copyMakeBorder(blended_2, 0, 0, OUT_W-IN_W, 0, cv2.BORDER_CONSTANT)
 
+    # Create larger mask
+    mask = np.zeros((OUT_H, OUT_W), dtype=np.float32)
 
-    jpegImg = Image.fromarray(cv2.cvtColor(blended_1, cv2.COLOR_BGR2RGB))
-    jpegImg_2 = Image.fromarray(cv2.cvtColor(blended_2, cv2.COLOR_BGR2RGB))
+    blend_start = OUT_W // 2 - BLEND_W // 2
+    blend_end = OUT_W // 2 + BLEND_W // 2
 
-    jpegImg.save(f"./{country_code}/blended_1.webp", format="WEBP", quality=20)
-    jpegImg_2.save(f"./{country_code}/blended_2.webp", format="WEBP", quality=20)
+    mask[:, :blend_start] = 255
+    mask[:, blend_end:]   = 0
+    # Middle blended region
+    for x in range(blend_start, blend_end):
+        alpha = 1.0 - (x - blend_start) / BLEND_W
+        mask[:, x] = alpha * 255
+
+    mask = mask.astype(np.uint8)
+
+    # Do second blend, convert to webp, and save
+    blended_f = laplacian_blend(blended_1, blended_2, mask, levels=LEVELS)
+    jpegImg = Image.fromarray(cv2.cvtColor(blended_f, cv2.COLOR_BGR2RGB))
+
+    jpegImg.save(f"./{country_code}/blended.webp", format="WEBP", quality=20)
 
     printSuccess(f"Saved blended.webp ({OUT_W}x{OUT_H})")
