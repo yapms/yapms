@@ -1,23 +1,35 @@
 <script lang="ts">
-	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
+	import type { HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
-	const links = [
+
+	const groups = [
 		{
-			label: "National Assembly '20",
-			route: '/app/kor/assembly/2020001/blank'
+			label: 'National Assembly',
+			showOnCard: true,
+			showInModal: true,
+			routes: [
+				{
+					label: "National Assembly '20",
+					route: '/app/kor/assembly/2020001/blank'
+				},
+				{
+					label: "National Assembly '24",
+					route: '/app/kor/assembly/2024101/blank'
+				}
+			]
 		},
 		{
-			label: "National Assembly '24",
-			route: '/app/kor/assembly/2024101/blank'
-		},
-		{
-			label: 'Municipalities',
-			route: '/app/kor/municipalities/2018001/blank'
+			label: undefined,
+			showOnCard: true,
+			showInModal: true,
+			routes: [
+				{
+					label: 'Municipalities',
+					route: '/app/kor/municipalities/2018001/blank'
+				}
+			]
 		}
 	];
-	
-	// These type annotations can go away once this is actually populated
-	const groups: HomeGroupData[] = [];
 
 	const imageLinks: HomeLinkData[] = [];
 

@@ -4,6 +4,8 @@
 	const groups = [
 		{
 			label: 'Presidential',
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'Presidential 2028',
@@ -18,6 +20,8 @@
 		},
 		{
 			label: 'Senate',
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'Senate 2026',
@@ -32,6 +36,8 @@
 		},
 		{
 			label: 'House',
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'House 2026',
@@ -56,6 +62,8 @@
 		},
 		{
 			label: 'Governors',
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'Governors 2026',
@@ -70,6 +78,8 @@
 		},
 		{
 			label: 'States/Counties',
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'States & Territories',
@@ -83,6 +93,8 @@
 		},
 		{
 			label: 'Primaries',
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'Democratic Primary 2024',
@@ -95,7 +107,9 @@
 			]
 		},
 		{
-			label: '',
+			label: undefined,
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'Presidential 2028 Take-All',

@@ -3,7 +3,9 @@
 	import MapCard from '../MapCard.svelte';
 	const groups = [
 		{
-			label: '',
+			label: undefined,
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'National Assembly',

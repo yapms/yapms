@@ -3,7 +3,9 @@
 
 	const groups = [
 		{
-			label: 'House of Commons', routes: [
+			label: 'House of Commons', showOnCard: true,
+			showInModal: true,
+			routes: [
 				{
 					label: 'House of Commons',
 					route: '/app/can/commons/next/blank'
@@ -16,7 +18,9 @@
 			]
 		},
 		{
-			label: '',
+			label: undefined,
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'Provinces',

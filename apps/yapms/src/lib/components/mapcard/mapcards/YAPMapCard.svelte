@@ -3,7 +3,9 @@
 	import MapCard from '../MapCard.svelte';
 	const groups = [
 		{
-			label: '',
+			label: undefined,
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'Presidential',
@@ -13,6 +15,8 @@
 		},
 		{
 			label: 'Senate',
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'Senate',
@@ -26,7 +30,12 @@
 		}
 	];
 
-	const imageLinks: HomeLinkData[] = [];
+	const imageLinks = [
+		{
+			label: 'Yapmeria flag from the Yapmeria Wiki',
+			route: 'https://yapmeria.miraheze.org/wiki/File:Flag_of_Yapmeria.webp'
+		}
+	]
 
 </script>
 

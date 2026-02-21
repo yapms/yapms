@@ -45,6 +45,12 @@
 					{link.label}
 				</a>
 			{/each}
+			{#if links.length === 1}
+				<!-- Add empty "bottom link" spacing to ensure group label is at same height-->
+				<div class="text-lg">
+					<br/>
+				</div>
+			{/if}
 		</div>
 	</div>
 {/if}
