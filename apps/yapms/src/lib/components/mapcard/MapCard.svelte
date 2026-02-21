@@ -70,7 +70,7 @@
 				class:xl:justify-center={square}
 			>
 				{#each groups as group}
-					<MapCardLinkGroup name={group.label} links={group.routes} />
+					<MapCardLinkGroup label={group.label} links={group.routes} />
 				{/each}
 			</div>
 			<button class="btn btn-md btn-primary" on:click={openMoreMapsModal}>Browse Maps </button>

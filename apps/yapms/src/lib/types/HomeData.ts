@@ -5,7 +5,7 @@ export type HomeLinkData = {
 };
 
 export type HomeGroupData = {
-	label: string;
+	label: string | undefined;
 	routes: HomeLinkData[];
 }
 
