@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
+	import { USAImageLinks } from './USAMapCard.svelte';
 	import MapCard from '../MapCard.svelte';
 
 	const groups = [
@@ -18,13 +18,11 @@
 		}
 	];
 
-	const imageLinks: HomeLinkData[] = [];
-
 </script>
 
 <MapCard
 	name="YAPms Redistricting Council"
 	bg="usa"
 	{groups}
-	{imageLinks}
+	imageLinks={USAImageLinks}
 />

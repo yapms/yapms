@@ -13,7 +13,16 @@
 		}
 	];
 
-	const imageLinks: HomeLinkData[] = [];
+	const imageLinks = [
+		{
+			label: 'Vienna Parliament by Jean Fonseca',
+			route: 'https://commons.wikimedia.org/wiki/File:WienParlament.jpg'
+		},
+		{
+			label: 'Großvenediger by PietJay',
+			route: 'https://commons.wikimedia.org/wiki/File:Gro%C3%9Fvenediger.JPG'
+		}
+	]
 
 </script>
 

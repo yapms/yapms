@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
+	import { GBRImageLinks } from './GBRMapCard.svelte';
 	const links = [
 		{
 			label: '2024',
@@ -51,13 +52,11 @@
 	// These type annotations can go away once this is actually populated
 	const groups: HomeGroupData[] = [];
 
-	const imageLinks: HomeLinkData[] = [];
-
 </script>
 
 <MapCard
 	name="UK Commons Results"
 	bg="gbr"
 	{groups}
-	{imageLinks}
+	imageLinks={GBRImageLinks}
 />
