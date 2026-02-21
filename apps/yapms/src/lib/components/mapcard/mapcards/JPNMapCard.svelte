@@ -24,7 +24,16 @@
 		}
 	]
 
-	const imageLinks: HomeLinkData[] = [];
+	const imageLinks = [
+		{
+			label: 'National Diet Building by Kakidai',
+			route: 'https://commons.wikimedia.org/wiki/File:National_Diet_Building_02.jpg'
+		},
+		{
+			label: 'Tokyo Tower by Supanut Arunoprayote',
+			route: 'https://commons.wikimedia.org/wiki/File:Tokyo_Tower,_View_from_Yebisu_Garden_Place_20241020_(II).jpg'
+		}
+	]
 
 </script>
 

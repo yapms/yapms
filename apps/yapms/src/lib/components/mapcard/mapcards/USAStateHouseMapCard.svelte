@@ -320,13 +320,30 @@
 		}
 	];
 
-	const imageLinks: HomeLinkData[] = [];
+	const imageLinks = [
+		{
+			label: 'California State Capitol by Earthquakesurprise',
+			route: 'https://commons.wikimedia.org/wiki/File:CA_State_Capitol.png'
+		},
+		{
+			label: 'Massachusetts State House by Daderot',
+			route: 'https://commons.wikimedia.org/wiki/File:Massachusetts_State_House_-_Boston,_MA_-_DSC05485.JPG'
+		},
+		{
+			label: 'Wisconsin State Capitol by ORDSpotter41',
+			route: 'https://commons.wikimedia.org/wiki/File:Wisconsin_State_Capitol_Building_with_Forward_Statue.jpg'
+		},
+		{
+			label: 'Oklahoma State Capitol by Oklahoma Legislative Services Bureau',
+			route: 'https://commons.wikimedia.org/wiki/File:Oklahoma_State_Capitol_2024.jpg'
+		}
+	]
 
 </script>
 
 <MapCard
 	name="USA State Houses"
-	bg="usastatehouse"
+	bg="usa_states"
 	{groups}
 	{imageLinks}
 	full
