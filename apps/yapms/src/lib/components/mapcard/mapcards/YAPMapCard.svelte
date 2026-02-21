@@ -1,19 +1,33 @@
 <script lang="ts">
+	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
-	const links = [
+	const groups = [
 		{
-			label: 'Presidential',
-			route: '/app/yap/presidential/2025285/blank'
+			label: '',
+			routes: [
+				{
+					label: 'Presidential',
+					route: '/app/yap/presidential/2025285/blank'
+				}
+			]
 		},
 		{
 			label: 'Senate',
-			route: '/app/yap/senate/2026025/blank'
-		},
-		{
-			label: 'Senate (Old)',
-			route: '/app/yap/senate/2025285/blank'
+			routes: [
+				{
+					label: 'Senate',
+					route: '/app/yap/senate/2026025/blank'
+				},
+				{
+					label: 'Senate (Old)',
+					route: '/app/yap/senate/2025285/blank'
+				}
+			]
 		}
 	];
+
+	const imageLinks: HomeLinkData[] = [];
+
 </script>
 
-<MapCard name="Yapmeria" bg="yap" attribution="" attributionLink="" {links} />
+<MapCard name="Yapmeria" bg="yap" {groups} {imageLinks} />

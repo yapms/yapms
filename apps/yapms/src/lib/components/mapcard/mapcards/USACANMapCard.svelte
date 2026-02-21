@@ -1,18 +1,26 @@
 <script lang="ts">
+	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
 
-	const links = [
+	const groups = [
 		{
-			label: 'States',
-			route: '/app/usa_can/states/2024001/blank'
+			label: '',
+			routes: [
+				{
+					label: 'States',
+					route: '/app/usa_can/states/2024001/blank'
+				}
+			]
 		}
 	];
+
+	const imageLinks: HomeLinkData[] = [];
+
 </script>
 
 <MapCard
 	name="United States & Canada"
 	bg="usacan"
-	attribution="Photo by US Embassy & Consulates in Canada"
-	attributionLink="https://ca.usembassy.gov/united-states-canada-strength-partnership/"
-	{links}
+	{groups}
+	{imageLinks}
 />
