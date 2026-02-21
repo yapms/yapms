@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
 	const links = [
 		{
@@ -18,12 +19,17 @@
 			route: '/app/zaf/municipalities/2019275/blank'
 		}
 	];
+	
+	// These type annotations can go away once this is actually populated
+	const groups: HomeGroupData[] = [];
+
+	const imageLinks: HomeLinkData[] = [];
+
 </script>
 
 <MapCard
 	name="South Africa"
 	bg="zaf"
-	attribution="Photo by Clayton"
-	attributionLink="https://www.pexels.com/photo/the-statue-of-nelson-mandela-on-the-union-buildings-grounds-pretoria-gauteng-south-africa-10527763/"
-	{links}
+	{groups}
+	{imageLinks}
 />

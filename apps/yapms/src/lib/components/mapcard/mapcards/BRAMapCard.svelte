@@ -1,29 +1,42 @@
 <script lang="ts">
+	import type { HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
-	const links = [
+	const groups = [
 		{
-			label: 'Chamber of Deputies',
-			route: '/app/bra/deputies/2022/blank'
-		},
-		{
-			label: 'Senate 2022',
-			route: '/app/bra/senate/2022/blank'
-		},
-		{
-			label: 'Federative Units',
-			route: '/app/bra/regions/2023/blank'
+			label: '',
+			routes: [
+				{
+					label: 'Chamber of Deputies 2022',
+					route: '/app/bra/deputies/2022/blank'
+				},
+				{
+					label: 'Federative Units',
+					route: '/app/bra/regions/2023/blank'
+				}
+			]
 		},
 		{
 			label: 'Senate',
-			route: '/app/bra/senate'
+			routes: [
+				{
+					label: 'Senate 2022',
+					route: '/app/bra/senate/2022/blank'
+				},
+				{
+					label: 'Senate',
+					route: '/app/bra/senate'
+				}
+			]
 		}
 	];
+
+	const imageLinks: HomeLinkData[] = [];
+
 </script>
 
 <MapCard
 	name="Brazil"
 	bg="bra"
-	attribution="Photo by Magali Guimarães"
-	attributionLink="https://www.pexels.com/@magali-guimaraes-3411930/"
-	{links}
+	{groups}
+	{imageLinks}
 />
