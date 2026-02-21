@@ -73,7 +73,7 @@
 					<MapCardLinkGroup name={group.label} links={group.routes} />
 				{/each}
 			</div>
-			<button class="btn btn-md btn-primary" on:click={openMoreMapsModal}>Browse All Maps </button>
+			<button class="btn btn-md btn-primary" on:click={openMoreMapsModal}>Browse Maps </button>
 		</div>
 		<!-- Mobile Buttons -->
 		<div class="flex flex-col items-center space-y-2 sm:hidden">
