@@ -3,6 +3,8 @@
 	const groups = [
 		{
 			label: 'Folketing',
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'Folketing',
@@ -17,7 +19,9 @@
 			]
 		},
 		{
-			label: '',
+			label: undefined,
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'Municipalities',

@@ -4,6 +4,8 @@
 	const groups = [
 		{
 			label: 'House of Commons',
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'Commons 2024',
@@ -19,6 +21,8 @@
 		},
 		{
 			label: 'Counties',
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: '2026 Counties',
@@ -34,6 +38,8 @@
 		},
 		{
 			label: 'Devolved Legislatures',
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'Scottish Parliament',
@@ -57,7 +63,9 @@
 			]
 		},
 		{
-			label: '',
+			label: undefined,
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'Historic Counties',

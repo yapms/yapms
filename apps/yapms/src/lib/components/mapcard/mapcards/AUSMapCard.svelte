@@ -4,6 +4,8 @@
 	const groups = [
 		{
 			label: 'House of Reps',
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'House',
@@ -19,6 +21,8 @@
 		},
 		{
 			label: 'Senate',
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'Senate',
@@ -33,6 +37,8 @@
 		},
 		{
 			label: '2022 Elections',
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'House',
@@ -57,7 +63,9 @@
 			]
 		},
 		{
-			label: '',
+			label: undefined,
+			showOnCard: true,
+			showInModal: true,
 			routes: [
 				{
 					label: 'States & Territories',

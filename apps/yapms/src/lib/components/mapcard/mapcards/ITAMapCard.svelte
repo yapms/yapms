@@ -1,47 +1,56 @@
 <script lang="ts">
-	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
+	import type { HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
-	const links = [
+
+	const groups = [
 		{
 			label: 'Chamber of Deputies',
-			route: '/app/ita/deputies/2022/blank'
+			showOnCard: true,
+			showInModal: true,
+			routes: [
+				{
+					label: 'Chamber of Deputies',
+					route: '/app/ita/deputies/2022/blank'
+				},
+				{
+					label: '2022 Results',
+					modalLabel: '2022 Chamber of Deputies Results',
+					route: '/app/ita/deputies/2022/results'
+				}
+			]
 		},
 		{
 			label: 'Senate',
-			route: '/app/ita/senate/2022/blank'
+			showOnCard: true,
+			showInModal: true,
+			routes: [
+				{
+					label: 'Senate 2022',
+					route: '/app/ita/senate/2022/blank'
+				},
+				{
+					label: '2022 Results',
+					modalLabel: '2022 Senate Results',
+					route: '/app/ita/senate/2022/results'
+				}
+			]
 		},
 		{
 			label: 'Regions',
-			route: '/app/ita/regions/2023/blank'
-		},
-		{
-			label: 'Chamber of Deputies 2022',
-			route: '/app/ita/deputies/2022/blank'
-		},
-		{
-			label: 'Senate 2022',
-			route: '/app/ita/senate/2022/blank'
-		},
-		{
-			label: 'Regions',
-			route: '/app/ita/regions/2023/blank'
-		},
-		{
-			label: 'Provinces',
-			route: '/app/ita/provinces/2023/blank'
-		},
-		{
-			label: '2022 Chamber of Deputies Results',
-			route: '/app/ita/deputies/2022/results'
-		},
-		{
-			label: '2022 Senate Results',
-			route: '/app/ita/senate/2022/results'
+			showOnCard: true,
+			showInModal: true,
+			routes: [
+				{
+					label: 'Regions',
+					route: '/app/ita/regions/2023/blank'
+				},
+				{
+					label: 'Provinces',
+					route: '/app/ita/provinces/2023/blank'
+				}
+			]
 		}
 	];
-	
-	// These type annotations can go away once this is actually populated
-	const groups: HomeGroupData[] = [];
 
 	const imageLinks: HomeLinkData[] = [];
 
@@ -51,5 +60,4 @@
 	name="Italy"
 	bg="ita"
 	{groups}
-	{imageLinks}
-/>
+	{imageLinks}/>

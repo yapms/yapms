@@ -28,7 +28,7 @@
 
 	function openMoreMapsModal() {
 		const arr: HomeLinkData[] = [];
-		const links = groups.reduce((accum, group) => accum.concat(group.routes), arr);
+		const links = groups.reduce((accum, group) => group.showInModal ? accum.concat(group.routes) : accum, arr);
 		MoreMapsModalStore.set({
 			buttons: links,
 			title: `${name} Maps`,
@@ -69,11 +69,11 @@
 				class:xl:w-full={square}
 				class:xl:justify-center={square}
 			>
-				{#each groups as group}
+				{#each groups.filter((g) => g.showOnCard) as group}
 					<MapCardLinkGroup label={group.label} links={group.routes} />
 				{/each}
 			</div>
-			<button class="btn btn-md btn-primary" on:click={openMoreMapsModal}>Browse Maps </button>
+			<button class="btn btn-md btn-primary" on:click={openMoreMapsModal}>All Maps </button>
 		</div>
 		<!-- Mobile Buttons -->
 		<div class="flex flex-col items-center space-y-2 sm:hidden">
@@ -85,7 +85,7 @@
 				{/each}
 			</div>
 			<button class="btn btn-sm btn-primary w-48" on:click={openMoreMapsModal}
-				>Browse Maps
+				>All Maps
 			</button>
 		</div>
 		<button
