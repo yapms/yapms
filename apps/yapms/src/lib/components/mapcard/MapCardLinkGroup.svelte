@@ -1,24 +1,50 @@
 <script lang="ts">
-	export let name: string;
-	export let links: { label: string; route: string }[];
+	import type { HomeLinkData } from "$lib/types/HomeData";
 
-	const cols = Math.ceil(links.length / 2);
+	export let label: string | undefined;
+	export let links: HomeLinkData[];
+
+	const nCols = Math.ceil(links.length / 2);
+
+	let columns: HomeLinkData[][] = [];
+	if (label === undefined) {
+		// Breaks array into chunks of two, ex:
+		// [ [links[0], links[1] ], [ links[2] ] ]
+		columns = Array.from({ length: Math.ceil(links.length/2) }, (_, i) =>
+			links.slice(i*2, (i+1)*2)
+		);
+	}
 </script>
 
-<div class="flex flex-col items-center">
-	<h1 class="font-semibold text-lg text-white block underline">
-		{#if name === ''}
-			<br />
-		{:else}
-			{name}
-		{/if}
-	</h1>
-	<div class="grid grid-cols-{cols} gap-x-4" class:grid-cols-4={cols >= 4}>
-		{#each links as link}
-			<!-- hidden links will be prerendered -->
-			<a href={link.route} class="text-lg text-center">
-				{link.label}
-			</a>
-		{/each}
+{#if label === undefined}
+	<!-- Display each column as a seperate div so each column can show one by one instead of needing space for all -->
+	{#each columns as col}
+		<div class="flex flex-col items-center">
+			<div class="text-lg">
+				<br/>
+			</div>
+			<div class="grid grid-cols-1 gap-x-4">
+				{#each col as link}
+					<!-- hidden links will be prerendered -->
+					<a href={link.route} class="text-lg text-center text-blue-300 underline">
+						{link.label}
+					</a>
+				{/each}
+			</div>
+		</div>
+	{/each}
+{:else}
+	<div class="flex flex-col items-center">
+		<h1 class="font-semibold text-lg text-white block">
+			{label}
+		</h1>
+		<div class="grid gap-x-4" style="grid-template-columns: repeat({nCols}, minmax(0, 1fr));">
+			{#each links as link}
+				<!-- hidden links will be prerendered -->
+				<a href={link.route} class="text-lg text-center text-blue-300 underline">
+					{link.label}
+				</a>
+			{/each}
+		</div>
 	</div>
-</div>
+{/if}
