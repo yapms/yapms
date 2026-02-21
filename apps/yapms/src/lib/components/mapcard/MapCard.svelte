@@ -52,7 +52,9 @@
 	class:xl:row-span-2={square}
 	class:xl:h-100={square}
 >
-	{#await image then image}
+	{#await image}
+		<figure><div class="w-full h-full bg-base-content"></div></figure>
+	{:then image}
 		<figure><img class="w-full object-left" src={image.default} alt={name} /></figure>
 	{/await}
 	<div class="card-body justify-between h-58 lg:h-48" class:xl:h-100={square}>
