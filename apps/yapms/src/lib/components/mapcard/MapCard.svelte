@@ -85,7 +85,7 @@
 				{/each}
 			</div>
 			<button class="btn btn-sm btn-primary w-48" on:click={openMoreMapsModal}
-				>Browse All Maps
+				>Browse Maps
 			</button>
 		</div>
 		<button
