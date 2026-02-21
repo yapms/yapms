@@ -52,7 +52,16 @@
 		}
 	];
 
-	const imageLinks: HomeLinkData[] = [];
+	const imageLinks = [
+		{
+			label: 'Palazzo Montecitorio by Enzo Abramo',
+			route: 'https://www.publicdomainpictures.net/en/view-image.php?image=118762&picture=palazzo-montecitorio-in-rome'
+		},
+		{
+			label: 'Venice by Syced',
+			route: 'https://commons.wikimedia.org/wiki/File:March_2009_Venezia_38.jpg'
+		}
+	]
 
 </script>
 

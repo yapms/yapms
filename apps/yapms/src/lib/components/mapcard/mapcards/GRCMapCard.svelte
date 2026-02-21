@@ -29,7 +29,16 @@
 		}
 	]
 
-	const imageLinks: HomeLinkData[] = [];
+	const imageLinks = [
+		{
+			label: 'Hellenic Parliament by NikosLikomitros',
+			route: 'https://commons.wikimedia.org/wiki/File:Hellenic_Parliament,_general_view.jpg'
+		},
+		{
+			label: 'Parthenon by George E. Koronaios',
+			route: 'https://commons.wikimedia.org/wiki/File:East_Facade_of_the_Parthenon_on_July_30,_2019.jpg'
+		}
+	]
 
 </script>
 
