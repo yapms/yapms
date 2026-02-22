@@ -1,6 +1,6 @@
 <script lang="ts">
 	import MapCard from '../MapCard.svelte';
-	import { CANImageLinks } from './CANMapCard.svelte';
+	import { CANAttribution } from './CANMapCard.svelte';
 
 	const groups = [
 		{
@@ -108,5 +108,5 @@
 	name="Canadian Commons Results"
 	bg="can"
 	{groups}
-	imageLinks={CANImageLinks}
+	attribution={CANAttribution}
 />

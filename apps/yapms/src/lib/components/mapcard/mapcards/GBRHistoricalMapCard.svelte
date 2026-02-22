@@ -1,6 +1,6 @@
 <script lang="ts">
 	import MapCard from '../MapCard.svelte';
-	import { GBRImageLinks } from './GBRMapCard.svelte';
+	import { GBRAttribution } from './GBRMapCard.svelte';
 
 	const groups = [
 		{
@@ -58,5 +58,5 @@
 	name="UK Commons Results"
 	bg="gbr"
 	{groups}
-	imageLinks={GBRImageLinks}
+	attribution={GBRAttribution}
 />

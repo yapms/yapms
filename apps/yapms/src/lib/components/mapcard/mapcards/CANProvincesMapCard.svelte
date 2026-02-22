@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
+
 	const groups = [
 		{
 			label: undefined,
@@ -83,7 +83,7 @@
 		}
 	];
 
-	const imageLinks = [
+	const attribution = [
 		{
 			label: 'Queens Park by Charles Hoffman',
 			route: 'https://commons.wikimedia.org/wiki/File:Ontario_Provincial_Parliament,_Queens_Park,_Toronto.jpg'
@@ -108,6 +108,6 @@
 	name="Canadian Provinces"
 	bg="can_provinces"
 	{groups}
-	{imageLinks}
+	{attribution}
 	full
 />

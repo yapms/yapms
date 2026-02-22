@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
+
 	const groups = [
 		{
 			label: undefined,
@@ -29,7 +29,7 @@
 		}
 	]
 
-	const imageLinks = [
+	const attribution = [
 		{
 			label: 'Hellenic Parliament by NikosLikomitros',
 			route: 'https://commons.wikimedia.org/wiki/File:Hellenic_Parliament,_general_view.jpg'
@@ -46,5 +46,5 @@
 	name="Greece"
 	bg="grc"
 	{groups}
-	{imageLinks}
+	{attribution}
 />

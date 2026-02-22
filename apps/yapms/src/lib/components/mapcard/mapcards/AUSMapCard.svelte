@@ -75,7 +75,7 @@
 		}
 	]
 
-	const imageLinks = [
+	const attribution = [
 		{
 			label: 'Parliament House by Ben McCarthy',
 			route: 'https://commons.wikimedia.org/wiki/File:Parliament_house3.jpg'
@@ -101,6 +101,6 @@
 	name="Australia"
 	bg="aus"
 	{groups}
-	{imageLinks}
+	{attribution}
 	full
 />

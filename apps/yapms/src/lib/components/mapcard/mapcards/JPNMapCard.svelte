@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
 	
 	const groups = [
@@ -24,7 +23,7 @@
 		}
 	]
 
-	const imageLinks = [
+	const attribution = [
 		{
 			label: 'National Diet Building by Kakidai',
 			route: 'https://commons.wikimedia.org/wiki/File:National_Diet_Building_02.jpg'
@@ -41,5 +40,5 @@
 	name="Japan"
 	bg="jpn"
 	{groups}
-	{imageLinks}
+	{attribution}
 />

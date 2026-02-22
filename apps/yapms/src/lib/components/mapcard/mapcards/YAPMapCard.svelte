@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
+	
 	const groups = [
 		{
 			label: undefined,
@@ -30,7 +30,7 @@
 		}
 	];
 
-	const imageLinks = [
+	const attribution = [
 		{
 			label: 'Yapmeria flag from the Yapmeria Wiki',
 			route: 'https://yapmeria.miraheze.org/wiki/File:Flag_of_Yapmeria.webp'
@@ -39,4 +39,4 @@
 
 </script>
 
-<MapCard name="Yapmeria" bg="yap" {groups} {imageLinks} />
+<MapCard name="Yapmeria" bg="yap" {groups} {attribution} />
