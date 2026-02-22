@@ -18,7 +18,7 @@
 		"@eslint/js": "10.0.1",
 		"@floating-ui/dom": "1.7.5",
 		"@fontsource-variable/roboto-mono": "5.2.8",
-		"@fontsource/roboto": "5.2.9",
+		"@fontsource/roboto": "5.2.10",
 		"@fortawesome/free-brands-svg-icons": "7.2.0",
 		"@fortawesome/free-solid-svg-icons": "7.2.0",
 		"@sveltejs/adapter-node": "5.5.3",
