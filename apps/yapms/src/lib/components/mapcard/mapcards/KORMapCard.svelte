@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
 
 	const groups = [
@@ -31,7 +30,7 @@
 		}
 	];
 
-	const imageLinks = [
+	const attribution = [
 		{
 			label: 'National Assembly by frakorea',
 			route: 'https://en.wikipedia.org/wiki/File:Seoul-National.Assembly-02.jpg'
@@ -47,5 +46,5 @@
 	name="South Korea"
 	bg="kor"
 	{groups}
-	{imageLinks}
+	{attribution}
 />

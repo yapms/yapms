@@ -1,12 +1,7 @@
 <script lang="ts">
-	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
-	const links = [
-		
-	];
-	
-	// These type annotations can go away once this is actually populated
-	const groups: HomeGroupData[] = [
+
+	const groups = [
 		{
 			label: 'Storting',
 			showOnCard: true,
@@ -44,7 +39,16 @@
 		}
 	];
 
-	const imageLinks: HomeLinkData[] = [];
+	const attribution = [
+		{
+			label: 'Stortinget by gcardinal',
+			route: 'https://commons.wikimedia.org/wiki/File:Stortinget,_Oslo,_Norway.jpg'
+		},
+		{
+			label: 'Geiranger Fjord by Timmy_L',
+			route: 'https://commons.wikimedia.org/wiki/File:Geiranger_fjord,_Norway.jpg'
+		}
+	];
 
 </script>
 
@@ -52,5 +56,5 @@
 	name="Norway"
 	bg="nor"
 	{groups}
-	{imageLinks}
+	{attribution}
 />

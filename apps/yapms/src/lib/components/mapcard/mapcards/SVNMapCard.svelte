@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
 	
 	const groups = [
@@ -36,7 +35,16 @@
 		}
 	];
 
-	const imageLinks: HomeLinkData[] = [];
+	const attribution = [
+		{
+			label: 'Zgradba Državnega zbora by Philippe Hässig',
+			route: 'https://en.wikipedia.org/wiki/File:Zgradba_Dr%C5%BEavnega_zbora.jpg'
+		},
+		{
+			label: 'Bled Castle by frl1988',
+			route: 'https://commons.wikimedia.org/wiki/File:Bled-1071453.jpg'
+		}
+	];
 
 </script>
 
@@ -44,5 +52,5 @@
 	name="Slovenia"
 	bg="svn"
 	{groups}
-	{imageLinks}
+	{attribution}
 />

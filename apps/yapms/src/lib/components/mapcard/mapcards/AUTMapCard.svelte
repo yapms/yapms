@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
+
 	const groups = [
 		{ 
 			label: undefined,
@@ -15,7 +15,7 @@
 		}
 	];
 
-	const imageLinks = [
+	const attribution = [
 		{
 			label: 'Vienna Parliament by Jean Fonseca',
 			route: 'https://commons.wikimedia.org/wiki/File:WienParlament.jpg'
@@ -32,5 +32,5 @@
 	name="Austria"
 	bg="aut"
 	{groups}
-	{imageLinks}
+	{attribution}
 />

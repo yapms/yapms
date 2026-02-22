@@ -15,7 +15,7 @@
 		}
 	];
 
-	const imageLinks = [
+	const attribution = [
 		{
 			label: 'Blue Water Bridge by Yihan Wang',
 			route: 'https://www.pexels.com/photo/blue-water-bridge-connecting-usa-and-canada-30402414/'
@@ -32,5 +32,5 @@
 	name="United States & Canada"
 	bg="usa_can"
 	{groups}
-	{imageLinks}
+	{attribution}
 />

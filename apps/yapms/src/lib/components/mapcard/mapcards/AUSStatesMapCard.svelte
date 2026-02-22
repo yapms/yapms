@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
+
 	const groups = [
 		{
 			label: undefined,
@@ -65,7 +65,7 @@
 		}
 	];
 
-	const imageLinks = [
+	const attribution = [
 		{
 			label: 'Brisbane Parliament House by Figaro',
 			route: 'https://commons.wikimedia.org/wiki/File:Parliament-House-Brisbane-2.jpg'
@@ -90,6 +90,6 @@
 	name="Australian States"
 	bg="aus_states"
 	{groups}
-	{imageLinks}
+	{attribution}
 	full
 />

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
+
 	const groups = [
 		{
 			label: 'National Assembly',
@@ -35,7 +35,7 @@
 		}
 	];
 
-	const imageLinks = [
+	const attribution = [
 		{
 			label: 'Union Buildings by Clayton',
 			route: 'https://www.pexels.com/photo/the-statue-of-nelson-mandela-on-the-union-buildings-grounds-pretoria-gauteng-south-africa-10527763/'
@@ -52,5 +52,5 @@
 	name="South Africa"
 	bg="zaf"
 	{groups}
-	{imageLinks}
+	{attribution}
 />

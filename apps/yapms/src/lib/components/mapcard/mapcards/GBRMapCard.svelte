@@ -99,7 +99,7 @@
 		}
 	]
 
-	export const GBRImageLinks = [
+	export const GBRAttribution = [
 		{
 			label: 'Palace of Westminster by derwiki',
 			route: 'https://pixabay.com/photos/palace-london-parliament-big-ben-530055/'
@@ -125,6 +125,6 @@
 	name="United Kingdom"
 	bg="gbr"
 	{groups}
-	imageLinks={GBRImageLinks}
+	attribution={GBRAttribution}
 	square
 />

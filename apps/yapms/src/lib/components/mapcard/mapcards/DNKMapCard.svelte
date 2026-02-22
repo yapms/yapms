@@ -1,5 +1,6 @@
 <script lang="ts">
 	import MapCard from '../MapCard.svelte';
+
 	const groups = [
 		{
 			label: 'Folketing',
@@ -35,7 +36,7 @@
 		}
 	];
 
-	const imageLinks = [
+	const attribution = [
 		{
 			label: 'Christiansborg Palace by merkulos',
 			route: 'https://pixabay.com/photos/christiansborg-palace-copenhagen-3700331/'
@@ -47,4 +48,4 @@
 	];
 </script>
 
-<MapCard name="Denmark" bg="dnk" {groups} {imageLinks} />
+<MapCard name="Denmark" bg="dnk" {groups} {attribution} />

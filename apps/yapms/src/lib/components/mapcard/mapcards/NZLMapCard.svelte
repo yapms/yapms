@@ -1,16 +1,5 @@
 <script lang="ts">
-	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
-	const links = [
-		{
-			label: '2023 House Results',
-			route: '/app/nzl/house/2023303/results'
-		},
-		{
-			label: '2020 House Results',
-			route: '/app/nzl/house/2020/results'
-		},
-	];
 	
 	const groups = [
 		{
@@ -67,7 +56,16 @@
 		}
 	];
 
-	const imageLinks: HomeLinkData[] = [];
+	const attribution = [
+		{
+			label: 'Beehive Building by 飞谢',
+			route: 'https://www.pexels.com/photo/the-beehive-building-in-wellington-new-zealand-10116189/'
+		},
+		{
+			label: 'Auckland by Psuedopanax',
+			route: 'https://commons.wikimedia.org/wiki/File:Auckland_CBD_skyline_from_Waitemata_Harbour_entrance.jpg'
+		}
+	];
 
 </script>
 
@@ -75,5 +73,5 @@
 	name="New Zealand"
 	bg="nzl"
 	{groups}
-	{imageLinks}
+	{attribution}
 />

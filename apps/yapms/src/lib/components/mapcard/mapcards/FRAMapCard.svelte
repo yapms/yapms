@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
+
 	const groups = [
 		{
 			label: undefined,
@@ -19,7 +19,7 @@
 		}
 	];
 
-	const imageLinks = [
+	const attribution = [
 		{
 			label: 'Palais Bourbon by DXR',
 			route: 'https://en.m.wikipedia.org/wiki/File:Palais_Bourbon,_Paris_7e,_NW_View_140402_1.jpg'
@@ -36,5 +36,5 @@
 	name="France"
 	bg="fra"
 	{groups}
-	{imageLinks}
+	{attribution}
 />

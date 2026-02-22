@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { USAImageLinks } from './USAMapCard.svelte';
+	import { USAAttribution } from './USAMapCard.svelte';
 	import MapCard from '../MapCard.svelte';
 
 	const groups = [
@@ -26,5 +26,5 @@
 	name="YAPms Redistricting Council"
 	bg="usa"
 	{groups}
-	imageLinks={USAImageLinks}
+	attribution={USAAttribution}
 />

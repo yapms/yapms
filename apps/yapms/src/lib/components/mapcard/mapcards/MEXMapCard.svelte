@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
+
 	const groups = [
 		{
 			label: undefined,
@@ -19,7 +19,16 @@
 		}
 	]
 
-	const imageLinks: HomeLinkData[] = [];
+	const attribution = [
+		{
+			label: 'Legislative Palace by Thelmadatter',
+			route: 'https://commons.wikimedia.org/wiki/File:LegPalaceDF.JPG'
+		},
+		{
+			label: 'Chichén Itzá by Hollowayvideo',
+			route: 'https://commons.wikimedia.org/wiki/File:Chich%C3%A9n_Itz%C3%A1_in_2022.jpg'
+		}
+	];
 
 </script>
 
@@ -27,5 +36,5 @@
 	name="Mexico"
 	bg="mex"
 	{groups}
-	{imageLinks}
+	{attribution}
 />

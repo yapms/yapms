@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
+	
 	const groups = [
 		{
 			label: 'Closely Divided',
@@ -320,7 +320,7 @@
 		}
 	];
 
-	const imageLinks = [
+	const attribution = [
 		{
 			label: 'Oregon State Capitol by M.O. Stevens',
 			route: 'https://commons.wikimedia.org/wiki/File:Oregon_State_Capitol_1.jpg'
@@ -345,6 +345,6 @@
 	name="USA State Senates"
 	bg="usa_states_2"
 	{groups}
-	{imageLinks}
+	{attribution}
 	full
 />

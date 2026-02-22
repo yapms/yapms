@@ -1,5 +1,6 @@
 <script lang="ts">
 	import MapCard from '../MapCard.svelte';
+
 	const groups = [
 		{
 			label: undefined,
@@ -22,7 +23,7 @@
 		}
 	]
 
-	const imageLinks = [
+	const attribution = [
 		{
 			label: 'UN Headquarters by Charles Parker',
 			route: 'https://www.pexels.com/photo/modern-city-with-skyscrapers-and-residential-buildings-located-near-river-5847579/'
@@ -39,5 +40,5 @@
 	name="World"
 	bg="glb"
 	{groups}
-	{imageLinks}
+	{attribution}
 />

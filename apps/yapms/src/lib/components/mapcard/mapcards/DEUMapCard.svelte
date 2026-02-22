@@ -1,10 +1,5 @@
 <script lang="ts">
-	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
-	const links = [
-		
-		
-	];
 	
 	const groups = [
 		{
@@ -60,7 +55,7 @@
 		}
 	]
 
-	const imageLinks = [
+	const attribution = [
 		{
 			label: 'Reichstag by Guy Percival',
 			route:
@@ -78,5 +73,5 @@
 	name="Germany"
 	bg="deu"
 	{groups}
-	{imageLinks}
+	{attribution}
 />
