@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
+
 	const groups = [
 		{
 			label: undefined,
@@ -146,7 +146,7 @@
 		}
 	];
 
-	const imageLinks = [
+	const attribution = [
 		{
 			label: 'House Floor by Lawrence Jackson',
 			route: 'https://keating.house.gov/policy-work/floor'
@@ -163,5 +163,5 @@
 	name="Historical USA House"
 	bg="usa_house"
 	{groups}
-	{imageLinks}
+	{attribution}
 />

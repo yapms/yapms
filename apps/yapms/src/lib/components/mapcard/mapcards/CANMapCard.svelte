@@ -3,7 +3,8 @@
 
 	const groups = [
 		{
-			label: 'House of Commons', showOnCard: true,
+			label: 'House of Commons',
+			showOnCard: true,
 			showInModal: true,
 			routes: [
 				{
@@ -34,7 +35,7 @@
 		}
 	];
 
-	export const CANImageLinks = [
+	export const CANAttribution = [
 		{
 			label: 'Parliament Hill by Tetyana Kovyrina',
 			route: 'https://www.pexels.com/photo/photo-of-beige-and-green-castle-1045915/'
@@ -60,5 +61,5 @@
 	name="Canada"
 	bg="can"
 	{groups}
-	imageLinks={CANImageLinks}
+	attribution={CANAttribution}
 />

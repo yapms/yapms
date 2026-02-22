@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
+
 	const groups = [
 		{
 			label: undefined,
@@ -311,7 +311,7 @@
 		}
 	];
 
-	const imageLinks = [
+	const attribution = [
 		{
 			label: "White House by Tom Fisk",
 			route: 'https://www.pexels.com/photo/the-white-house-in-autumn-11563771/'
@@ -328,5 +328,5 @@
 	name="USA Presidential Results"
 	bg="usa_pres"
 	{groups}
-	{imageLinks}
+	{attribution}
 />

@@ -6,7 +6,7 @@
 
 	export let name: string;
 	export let bg: string;
-	export let imageLinks: HomeLinkData[];
+	export let attribution: HomeLinkData[];
 	export let groups: HomeGroupData[];
 	export let full: boolean = false;
 	export let square: boolean = false;
@@ -38,7 +38,7 @@
 
 	function openAttributionModal() {
 		MoreMapsModalStore.set({
-			buttons: imageLinks,
+			buttons: attribution,
 			title: `${name} Images`,
 			open: true
 		});

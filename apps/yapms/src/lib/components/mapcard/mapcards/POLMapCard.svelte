@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
 	
 	const groups = [
@@ -52,7 +51,16 @@
 		}
 	];
 
-	const imageLinks: HomeLinkData[] = [];
+	const attribution = [
+		{
+			label: 'Sejm Building by Piotr VaGla Waglowski',
+			route: 'https://commons.wikimedia.org/wiki/File:20070131_sejm_widok_od_ul_matejki.jpg'
+		},
+		{
+			label: 'Poznan Old Town by Radek Kucharski',
+			route: 'https://commons.wikimedia.org/wiki/File:Pozna%C5%84_Old_Town_-_Flickr_-_Radek.Kucharski.jpg'
+		}
+	];
 
 </script>
 
@@ -60,5 +68,5 @@
 	name="Poland"
 	bg="pol"
 	{groups}
-	{imageLinks}
+	{attribution}
 />

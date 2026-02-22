@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
+
 	const groups = [
 		{
 			label: 'Dáil',
@@ -36,7 +36,16 @@
 		}
 	];
 
-	const imageLinks: HomeLinkData[] = [];
+	const attribution = [
+		{
+			label: 'Dublin River by Robzle',
+			route: 'https://commons.wikimedia.org/wiki/File:Dublin_River_Liffey3.jpg'
+		},
+		{
+			label: 'Cliffs of Moher by Malte Baumann',
+			route: 'https://commons.wikimedia.org/wiki/File:Cliffs_of_Moher_-_Unsplash.jpeg'
+		}
+	];
 
 </script>
 
@@ -44,5 +53,5 @@
 	name="Ireland"
 	bg="irl"
 	{groups}
-	{imageLinks}
+	{attribution}
 />

@@ -183,7 +183,7 @@
 		}
 	];
 
-	export const USAImageLinks = [
+	export const USAAttribution = [
 		{
 			label: 'U.S Capitol by Andi Feliciotti',
 			route: 'https://unsplash.com/photos/brown-concrete-building-near-green-trees-during-daytime-6kA9FjqUxhM'
@@ -208,6 +208,6 @@
 	name="United States"
 	bg="usa"
 	{groups}
-	imageLinks={USAImageLinks}
+	attribution={USAAttribution}
 	square
 />

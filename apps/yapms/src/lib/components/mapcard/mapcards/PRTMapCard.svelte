@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
+
 	const groups = [
 		{
 			label: 'Assembly',
@@ -38,7 +38,16 @@
 		}
 	];
 	
-	const imageLinks: HomeLinkData[] = [];
+	const attribution = [
+		{
+			label: 'São Bento Palace by Max Avans',
+			route: 'https://www.pexels.com/photo/white-concrete-building-under-blue-sky-5072289/'
+		},
+		{
+			label: 'Padrão dos Descobrimentos with Ponte 25 de Abril by DimiTalen',
+			route: 'https://commons.wikimedia.org/wiki/File:Padr%C3%A3o_dos_Descobrimentos_with_Ponte_25_de_Abril_in_the_background,_Lisbon,_2010.jpg'
+		}
+	];
 
 </script>
 
@@ -46,5 +55,5 @@
 	name="Portugal"
 	bg="prt"
 	{groups}
-	{imageLinks}
+	{attribution}
 />

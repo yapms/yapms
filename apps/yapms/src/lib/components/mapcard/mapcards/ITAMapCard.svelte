@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
 
 	const groups = [
@@ -52,7 +51,7 @@
 		}
 	];
 
-	const imageLinks = [
+	const attribution = [
 		{
 			label: 'Palazzo Montecitorio by Enzo Abramo',
 			route: 'https://www.publicdomainpictures.net/en/view-image.php?image=118762&picture=palazzo-montecitorio-in-rome'
@@ -69,4 +68,4 @@
 	name="Italy"
 	bg="ita"
 	{groups}
-	{imageLinks}/>
+	{attribution}/>

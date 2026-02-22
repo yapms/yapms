@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
+	
 	const groups = [
 		{
 			label: 'Closely Divided',
@@ -320,7 +320,7 @@
 		}
 	];
 
-	const imageLinks = [
+	const attribution = [
 		{
 			label: 'California State Capitol by Earthquakesurprise',
 			route: 'https://commons.wikimedia.org/wiki/File:CA_State_Capitol.png'
@@ -345,6 +345,6 @@
 	name="USA State Houses"
 	bg="usa_states"
 	{groups}
-	{imageLinks}
+	{attribution}
 	full
 />

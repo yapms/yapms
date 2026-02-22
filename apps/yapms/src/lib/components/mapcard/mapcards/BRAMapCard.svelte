@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
+
 	const groups = [
 		{
 			label: undefined,
@@ -34,7 +34,7 @@
 		}
 	];
 
-	const imageLinks = [
+	const attribution = [
 		{
 			label: 'National Congress by João Pavese',
 			route: 'https://www.pexels.com/photo/national-congress-of-brazil-under-blue-skies-30179016/'
@@ -51,5 +51,5 @@
 	name="Brazil"
 	bg="bra"
 	{groups}
-	{imageLinks}
+	{attribution}
 />

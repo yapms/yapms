@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
 	import MapCard from '../MapCard.svelte';
+
 	const groups = [
 		{
 			label: undefined,
@@ -19,9 +19,9 @@
 		}
 	];
 
-	const imageLinks = [
+	const attribution = [
 		{
-			label: 'New Parliament Building by the Ministry of Parliamentary Affairs, Government of India',
+			label: 'New Parliament Building by the Ministry of Parliamentary Affairs',
 			route: 'https://commons.wikimedia.org/wiki/File:Glimpse_of_the_new_Parliament_Building,_in_New_Delhi.jpg'
 		},
 		{
@@ -36,5 +36,5 @@
 	name="India"
 	bg="ind"
 	{groups}
-	{imageLinks}
+	{attribution}
 />
