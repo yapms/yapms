@@ -36,7 +36,15 @@
 			<option value={projection.projectionFunction}>{projection.label}</option>
 		{/each}
 	</select>
-	{#if $ImportedSVGStore.options.projectionFunction == proj4ToProjection}
+	{#if $ImportedSVGStore.options.projectionFunction !== proj4ToProjection}
+		<fieldset class="fieldset">
+			<label class="fieldset-label">
+				<input type="checkbox" class="toggle toggle-xs" bind:checked={$ImportedSVGStore.options.rotateAndCenter} />
+				Rotate and Center Projection
+			</label>
+		</fieldset>
+	{/if}
+	{#if $ImportedSVGStore.options.projectionFunction === proj4ToProjection}
 		<input
 			type="text"
 			class="input input-bordered w-full"
