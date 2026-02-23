@@ -37,7 +37,7 @@
 		"d3": "7.9.0",
 		"daisyui": "5.5.19",
 		"dompurify": "3.3.1",
-		"eslint": "10.0.1",
+		"eslint": "10.0.2",
 		"eslint-config-prettier": "10.1.8",
 		"eslint-plugin-svelte": "3.15.0",
 		"file-saver": "2.0.5",
