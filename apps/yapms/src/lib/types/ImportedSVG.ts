@@ -5,6 +5,7 @@ export type ImportedSVG = {
 	content: string;
 	options: {
 		projectionFunction: () => GeoProjection;
+		rotateAndCenter: boolean;
 		customProjectionDefinition: string;
 		crsDefinition: string;
 		shortNameProp: string;

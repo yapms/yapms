@@ -10,6 +10,7 @@ export const ImportedSVGStore = writable<ImportedSVG>({
 	content: '',
 	options: {
 		projectionFunction: geoMercator,
+		rotateAndCenter: true,
 		crsDefinition: '',
 		customProjectionDefinition: '',
 		shortNameProp: '',

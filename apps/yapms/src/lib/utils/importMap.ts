@@ -1,7 +1,7 @@
 import { ImportedSVGStore } from '$lib/stores/ImportedSVG';
 import { ImportModalStore } from '$lib/stores/Modals';
 import rewind from '@turf/rewind';
-import { geoPath, geoProjection, type GeoRawProjection } from 'd3';
+import { geoCentroid, geoPath, geoProjection, type GeoRawProjection } from 'd3';
 import * as shapefile from 'shapefile';
 import { degreesToRadians, type AllGeoJSON, radiansToDegrees } from '@turf/helpers';
 import { get } from 'svelte/store';
@@ -148,7 +148,19 @@ function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
 		);
 	}
 
-	const projection = importOptions.projectionFunction().fitSize([width, height], districtShapes);
+	let projection = importOptions.projectionFunction();
+
+	if (
+		importOptions.rotateAndCenter &&
+		importOptions.projectionFunction !== proj4ToProjection &&
+		projection.rotate !== undefined &&
+		projection.center !== undefined
+	) {
+		const centroid = geoCentroid(districtShapes);
+		projection = projection.rotate([-centroid[0], -centroid[1]]);
+	}
+
+	projection = projection.fitSize([width, height], districtShapes);
 
 	const render = geoPath().projection(projection);
 
