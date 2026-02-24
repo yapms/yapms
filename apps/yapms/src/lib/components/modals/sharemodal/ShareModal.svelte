@@ -227,7 +227,7 @@
 						onclick={generateLink}
 						disabled={fetchingLink ||
 							turnstileToken === null ||
-							page.url.pathname === '/app/imported'}
+							String(page.url.pathname) === '/app/imported'}
 					>
 						<Link class="w-5 h-5" />
 						<span>Generate a link to share with others!</span>
