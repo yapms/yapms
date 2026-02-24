@@ -39,7 +39,11 @@
 	{#if $ImportedSVGStore.options.projectionFunction !== proj4ToProjection}
 		<fieldset class="fieldset">
 			<label class="fieldset-label">
-				<input type="checkbox" class="toggle toggle-xs" bind:checked={$ImportedSVGStore.options.rotateAndCenter} />
+				<input
+					type="checkbox"
+					class="toggle toggle-xs"
+					bind:checked={$ImportedSVGStore.options.rotateAndCenter}
+				/>
 				Rotate and Center Projection
 			</label>
 		</fieldset>
