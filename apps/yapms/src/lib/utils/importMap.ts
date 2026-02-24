@@ -1,7 +1,7 @@
 import { ImportedSVGStore } from '$lib/stores/ImportedSVG';
 import { ImportModalStore } from '$lib/stores/Modals';
 import rewind from '@turf/rewind';
-import { geoBounds, geoCentroid, geoPath, geoProjection, type GeoRawProjection } from 'd3';
+import { geoCentroid, geoPath, geoProjection, type GeoRawProjection } from 'd3';
 import * as shapefile from 'shapefile';
 import { degreesToRadians, type AllGeoJSON, radiansToDegrees } from '@turf/helpers';
 import { get } from 'svelte/store';
