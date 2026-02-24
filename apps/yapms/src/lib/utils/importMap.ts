@@ -152,7 +152,7 @@ function geoJsonToSVG(districtShapes: GeoJSON.FeatureCollection) {
 
 	if (importOptions.rotateAndCenter && importOptions.projectionFunction !== proj4ToProjection && projection.rotate !== undefined && projection.center !== undefined) {
 		const centroid = geoCentroid(districtShapes);
-		projection = projection.rotate([-centroid[0], 0]);
+		projection = projection.rotate([-centroid[0], -centroid[1]]);
 	}
 
 	projection = projection.fitSize([width, height], districtShapes);
