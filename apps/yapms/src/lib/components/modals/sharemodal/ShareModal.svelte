@@ -225,8 +225,7 @@
 					<button
 						class="btn btn-primary"
 						onclick={generateLink}
-						disabled={fetchingLink ||
-							turnstileToken === null}
+						disabled={fetchingLink || turnstileToken === null}
 					>
 						<Link class="w-5 h-5" />
 						<span>Generate a link to share with others!</span>
