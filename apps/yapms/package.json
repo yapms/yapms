@@ -54,7 +54,7 @@
 		"shapefile": "0.6.6",
 		"sortablejs": "1.15.7",
 		"svelte": "5.53.5",
-		"svelte-check": "4.4.3",
+		"svelte-check": "4.4.4",
 		"svelte-eslint-parser": "1.5.1",
 		"svelte-fa": "4.0.4",
 		"svelte-local-storage-store": "0.6.4",
