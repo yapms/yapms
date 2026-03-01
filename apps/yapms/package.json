@@ -50,7 +50,7 @@
 		"postcss": "8.5.6",
 		"prettier": "3.8.1",
 		"prettier-plugin-svelte": "3.5.0",
-		"proj4": "2.20.2",
+		"proj4": "2.20.3",
 		"shapefile": "0.6.6",
 		"sortablejs": "1.15.7",
 		"svelte": "5.53.6",
