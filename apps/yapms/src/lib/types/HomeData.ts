@@ -9,7 +9,7 @@ export type HomeGroupData = {
 	routes: HomeLinkData[];
 	showOnCard: boolean;
 	showInModal: boolean;
-}
+};
 
 export type HomeModalData = {
 	label: string;

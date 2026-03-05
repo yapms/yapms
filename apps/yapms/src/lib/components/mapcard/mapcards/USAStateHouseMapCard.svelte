@@ -1,6 +1,6 @@
 <script lang="ts">
 	import MapCard from '../MapCard.svelte';
-	
+
 	const groups = [
 		{
 			label: 'Closely Divided',
@@ -327,24 +327,19 @@
 		},
 		{
 			label: 'Massachusetts State House by Daderot',
-			route: 'https://commons.wikimedia.org/wiki/File:Massachusetts_State_House_-_Boston,_MA_-_DSC05485.JPG'
+			route:
+				'https://commons.wikimedia.org/wiki/File:Massachusetts_State_House_-_Boston,_MA_-_DSC05485.JPG'
 		},
 		{
 			label: 'Wisconsin State Capitol by ORDSpotter41',
-			route: 'https://commons.wikimedia.org/wiki/File:Wisconsin_State_Capitol_Building_with_Forward_Statue.jpg'
+			route:
+				'https://commons.wikimedia.org/wiki/File:Wisconsin_State_Capitol_Building_with_Forward_Statue.jpg'
 		},
 		{
 			label: 'Oklahoma State Capitol by Oklahoma Legislative Services Bureau',
 			route: 'https://commons.wikimedia.org/wiki/File:Oklahoma_State_Capitol_2024.jpg'
 		}
-	]
-
+	];
 </script>
 
-<MapCard
-	name="USA State Houses"
-	bg="usa_states"
-	{groups}
-	{attribution}
-	full
-/>
+<MapCard name="USA State Houses" bg="usa_states" {groups} {attribution} full />

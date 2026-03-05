@@ -17,7 +17,7 @@
 				}
 			]
 		}
-	]
+	];
 
 	const attribution = [
 		{
@@ -29,12 +29,6 @@
 			route: 'https://commons.wikimedia.org/wiki/File:Chich%C3%A9n_Itz%C3%A1_in_2022.jpg'
 		}
 	];
-
 </script>
 
-<MapCard
-	name="Mexico"
-	bg="mex"
-	{groups}
-	{attribution}
-/>
+<MapCard name="Mexico" bg="mex" {groups} {attribution} />

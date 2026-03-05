@@ -101,12 +101,6 @@
 			]
 		}
 	];
-
 </script>
 
-<MapCard
-	name="Canadian Commons Results"
-	bg="can"
-	{groups}
-	attribution={CANAttribution}
-/>
+<MapCard name="Canadian Commons Results" bg="can" {groups} attribution={CANAttribution} />

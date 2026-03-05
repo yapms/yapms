@@ -60,7 +60,7 @@
 				{
 					route: '/app/aus/sa/2022078/blank',
 					label: 'South Australia 2022'
-				},
+				}
 			]
 		}
 	];
@@ -76,20 +76,15 @@
 		},
 		{
 			label: 'Adelaide Parliament House by Rexness',
-			route: 'https://commons.wikimedia.org/wiki/File:Parliament_House,_Adelaide_on_October_22,_2010.jpg'
+			route:
+				'https://commons.wikimedia.org/wiki/File:Parliament_House,_Adelaide_on_October_22,_2010.jpg'
 		},
 		{
 			label: 'Perth Parliament House by -wuppertaler',
-			route: 'https://commons.wikimedia.org/wiki/File:AUS_Perth,_Central_Business_District,_Parliament_House_011.jpg'
+			route:
+				'https://commons.wikimedia.org/wiki/File:AUS_Perth,_Central_Business_District,_Parliament_House_011.jpg'
 		}
-	]
-
+	];
 </script>
 
-<MapCard
-	name="Australian States"
-	bg="aus_states"
-	{groups}
-	{attribution}
-	full
-/>
+<MapCard name="Australian States" bg="aus_states" {groups} {attribution} full />

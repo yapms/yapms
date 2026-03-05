@@ -25,12 +25,6 @@
 			route: 'https://www.pexels.com/photo/waterfalls-under-blue-sky-and-white-clouds-3490963/'
 		}
 	];
-
 </script>
 
-<MapCard
-	name="United States & Canada"
-	bg="usa_can"
-	{groups}
-	{attribution}
-/>
+<MapCard name="United States & Canada" bg="usa_can" {groups} {attribution} />

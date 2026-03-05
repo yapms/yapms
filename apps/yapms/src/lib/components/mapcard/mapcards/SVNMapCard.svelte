@@ -1,6 +1,6 @@
 <script lang="ts">
 	import MapCard from '../MapCard.svelte';
-	
+
 	const groups = [
 		{
 			label: 'National Assembly',
@@ -45,12 +45,6 @@
 			route: 'https://commons.wikimedia.org/wiki/File:Bled-1071453.jpg'
 		}
 	];
-
 </script>
 
-<MapCard
-	name="Slovenia"
-	bg="svn"
-	{groups}
-	{attribution}
-/>
+<MapCard name="Slovenia" bg="svn" {groups} {attribution} />

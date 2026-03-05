@@ -21,24 +21,19 @@
 				}
 			]
 		}
-	]
+	];
 
 	const attribution = [
 		{
 			label: 'UN Headquarters by Charles Parker',
-			route: 'https://www.pexels.com/photo/modern-city-with-skyscrapers-and-residential-buildings-located-near-river-5847579/'
+			route:
+				'https://www.pexels.com/photo/modern-city-with-skyscrapers-and-residential-buildings-located-near-river-5847579/'
 		},
 		{
 			label: 'Earth by Pixabay',
 			route: 'https://www.pexels.com/photo/planet-earth-87651/'
 		}
 	];
-
 </script>
 
-<MapCard
-	name="World"
-	bg="glb"
-	{groups}
-	{attribution}
-/>
+<MapCard name="World" bg="glb" {groups} {attribution} />

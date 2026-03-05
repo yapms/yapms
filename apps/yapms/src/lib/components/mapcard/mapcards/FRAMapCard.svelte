@@ -29,12 +29,6 @@
 			route: 'https://www.pexels.com/photo/eiffel-tower-2082103/'
 		}
 	];
-
 </script>
 
-<MapCard
-	name="France"
-	bg="fra"
-	{groups}
-	{attribution}
-/>
+<MapCard name="France" bg="fra" {groups} {attribution} />

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import MapCard from '../MapCard.svelte';
-	
+
 	const groups = [
 		{
 			label: undefined,
@@ -35,8 +35,7 @@
 			label: 'Yapmeria flag from the Yapmeria Wiki',
 			route: 'https://yapmeria.miraheze.org/wiki/File:Flag_of_Yapmeria.webp'
 		}
-	]
-
+	];
 </script>
 
 <MapCard name="Yapmeria" bg="yap" {groups} {attribution} />
