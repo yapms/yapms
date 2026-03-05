@@ -51,12 +51,12 @@
 				{
 					label: 'VA Redistricted',
 					modalLabel: 'House 2026 (VA Redistricted)',
-					route: '/app/usa/house/2026037/va_hj4'
+					route: '/app/usa/house/2026051/va_hj4'
 				},
 				{
 					label: 'MO & VA Redistricted',
 					modalLabel: 'House 2026 (MO Redistricted, VA Redistricted)',
-					route: '/app/usa/house/2026037/mo_hb1_va_hj4'
+					route: '/app/usa/house/2026051/mo_hb1_va_hj4'
 				}
 			]
 		},
