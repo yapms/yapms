@@ -153,15 +153,10 @@
 		},
 		{
 			label: 'U.S Capitol by Andi Feliciotti',
-			route: 'https://unsplash.com/photos/brown-concrete-building-near-green-trees-during-daytime-6kA9FjqUxhM'
+			route:
+				'https://unsplash.com/photos/brown-concrete-building-near-green-trees-during-daytime-6kA9FjqUxhM'
 		}
 	];
-
 </script>
 
-<MapCard
-	name="Historical USA House"
-	bg="usa_house"
-	{groups}
-	{attribution}
-/>
+<MapCard name="Historical USA House" bg="usa_house" {groups} {attribution} />

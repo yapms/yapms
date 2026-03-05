@@ -27,7 +27,7 @@
 				}
 			]
 		}
-	]
+	];
 
 	const attribution = [
 		{
@@ -36,15 +36,10 @@
 		},
 		{
 			label: 'Parthenon by George E. Koronaios',
-			route: 'https://commons.wikimedia.org/wiki/File:East_Facade_of_the_Parthenon_on_July_30,_2019.jpg'
+			route:
+				'https://commons.wikimedia.org/wiki/File:East_Facade_of_the_Parthenon_on_July_30,_2019.jpg'
 		}
-	]
-
+	];
 </script>
 
-<MapCard
-	name="Greece"
-	bg="grc"
-	{groups}
-	{attribution}
-/>
+<MapCard name="Greece" bg="grc" {groups} {attribution} />

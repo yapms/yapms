@@ -78,7 +78,7 @@
 				{
 					route: '/app/can/yt/2021/blank',
 					label: 'Yukon Territory 2021'
-				},
+				}
 			]
 		}
 	];
@@ -86,28 +86,25 @@
 	const attribution = [
 		{
 			label: 'Queens Park by Charles Hoffman',
-			route: 'https://commons.wikimedia.org/wiki/File:Ontario_Provincial_Parliament,_Queens_Park,_Toronto.jpg'
+			route:
+				'https://commons.wikimedia.org/wiki/File:Ontario_Provincial_Parliament,_Queens_Park,_Toronto.jpg'
 		},
 		{
 			label: 'Assemblée nationale du Québec by Wilfredor',
-			route: 'https://commons.wikimedia.org/wiki/File:Assembl%C3%A9e_nationale_du_Qu%C3%A9bec_(5587688724).jpg'
+			route:
+				'https://commons.wikimedia.org/wiki/File:Assembl%C3%A9e_nationale_du_Qu%C3%A9bec_(5587688724).jpg'
 		},
 		{
 			label: 'Alberta Legislature Building by D. Benjamin Miller',
-			route: 'https://commons.wikimedia.org/wiki/File:Alberta_Legislature_Building,_June_7,_2024.jpg'
+			route:
+				'https://commons.wikimedia.org/wiki/File:Alberta_Legislature_Building,_June_7,_2024.jpg'
 		},
 		{
 			label: 'British Columbia Parliament Buildings by Thomson M',
-			route: 'https://commons.wikimedia.org/wiki/File:British_Columbia_Parliament_Buildings_-_panoramio.jpg'
+			route:
+				'https://commons.wikimedia.org/wiki/File:British_Columbia_Parliament_Buildings_-_panoramio.jpg'
 		}
-	]
-
+	];
 </script>
 
-<MapCard
-	name="Canadian Provinces"
-	bg="can_provinces"
-	{groups}
-	{attribution}
-	full
-/>
+<MapCard name="Canadian Provinces" bg="can_provinces" {groups} {attribution} full />

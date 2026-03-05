@@ -32,7 +32,7 @@
 					label: '2025 Results',
 					modalLabel: '2025 Senate Results',
 					route: '/app/aus/senate/2025123/results'
-				},
+				}
 			]
 		},
 		{
@@ -73,7 +73,7 @@
 				}
 			]
 		}
-	]
+	];
 
 	const attribution = [
 		{
@@ -97,10 +97,4 @@
 	];
 </script>
 
-<MapCard
-	name="Australia"
-	bg="aus"
-	{groups}
-	{attribution}
-	full
-/>
+<MapCard name="Australia" bg="aus" {groups} {attribution} full />

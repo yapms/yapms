@@ -1,6 +1,6 @@
 <script lang="ts">
 	import MapCard from '../MapCard.svelte';
-	
+
 	const groups = [
 		{
 			label: 'Sejm',
@@ -58,15 +58,10 @@
 		},
 		{
 			label: 'Poznan Old Town by Radek Kucharski',
-			route: 'https://commons.wikimedia.org/wiki/File:Pozna%C5%84_Old_Town_-_Flickr_-_Radek.Kucharski.jpg'
+			route:
+				'https://commons.wikimedia.org/wiki/File:Pozna%C5%84_Old_Town_-_Flickr_-_Radek.Kucharski.jpg'
 		}
 	];
-
 </script>
 
-<MapCard
-	name="Poland"
-	bg="pol"
-	{groups}
-	{attribution}
-/>
+<MapCard name="Poland" bg="pol" {groups} {attribution} />

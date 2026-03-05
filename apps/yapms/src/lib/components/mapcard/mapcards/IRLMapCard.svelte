@@ -11,7 +11,7 @@
 					label: 'Dáil',
 					route: '/app/irl/dail/next/blank'
 				},
-				
+
 				{
 					label: '2020 Results',
 					modalLabel: '2020 Dáil Results',
@@ -46,12 +46,6 @@
 			route: 'https://commons.wikimedia.org/wiki/File:Cliffs_of_Moher_-_Unsplash.jpeg'
 		}
 	];
-
 </script>
 
-<MapCard
-	name="Ireland"
-	bg="irl"
-	{groups}
-	{attribution}
-/>
+<MapCard name="Ireland" bg="irl" {groups} {attribution} />

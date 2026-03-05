@@ -37,7 +37,7 @@
 			]
 		}
 	];
-	
+
 	const attribution = [
 		{
 			label: 'São Bento Palace by Max Avans',
@@ -45,15 +45,10 @@
 		},
 		{
 			label: 'Padrão dos Descobrimentos with Ponte 25 de Abril by DimiTalen',
-			route: 'https://commons.wikimedia.org/wiki/File:Padr%C3%A3o_dos_Descobrimentos_with_Ponte_25_de_Abril_in_the_background,_Lisbon,_2010.jpg'
+			route:
+				'https://commons.wikimedia.org/wiki/File:Padr%C3%A3o_dos_Descobrimentos_with_Ponte_25_de_Abril_in_the_background,_Lisbon,_2010.jpg'
 		}
 	];
-
 </script>
 
-<MapCard
-	name="Portugal"
-	bg="prt"
-	{groups}
-	{attribution}
-/>
+<MapCard name="Portugal" bg="prt" {groups} {attribution} />

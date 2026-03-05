@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
 	import MapCard from '../MapCard.svelte';
-	
+
 	const groups = [
 		{
 			label: 'Presidential',
@@ -186,7 +186,8 @@
 	export const USAAttribution = [
 		{
 			label: 'U.S Capitol by Andi Feliciotti',
-			route: 'https://unsplash.com/photos/brown-concrete-building-near-green-trees-during-daytime-6kA9FjqUxhM'
+			route:
+				'https://unsplash.com/photos/brown-concrete-building-near-green-trees-during-daytime-6kA9FjqUxhM'
 		},
 		{
 			label: 'Statue of Liberty by Christian Domingues',
@@ -201,13 +202,6 @@
 			route: 'https://www.pexels.com/photo/golden-gate-bridge-4449617/'
 		}
 	];
-
 </script>
 
-<MapCard
-	name="United States"
-	bg="usa"
-	{groups}
-	attribution={USAAttribution}
-	square
-/>
+<MapCard name="United States" bg="usa" {groups} attribution={USAAttribution} square />

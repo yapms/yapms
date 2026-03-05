@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
 	import MapCard from '../MapCard.svelte';
-	
+
 	const groups = [
 		{
 			label: 'House of Commons',
@@ -16,7 +16,7 @@
 					label: '2024 Results',
 					modalLabel: '2024 House of Commons Results',
 					route: '/app/gbr/commons/2024185/results'
-				},
+				}
 			]
 		},
 		{
@@ -59,7 +59,7 @@
 					label: 'London Assembly',
 					modalLabel: '2024 London Assembly Results',
 					route: '/app/gbr/ldn_assembly/2024122/results'
-				},
+				}
 			]
 		},
 		{
@@ -97,7 +97,7 @@
 				}
 			]
 		}
-	]
+	];
 
 	export const GBRAttribution = [
 		{
@@ -118,13 +118,6 @@
 			route: 'https://www.pexels.com/photo/edinburgh-castle-on-the-mountain-14643999/'
 		}
 	];
-
 </script>
 
-<MapCard
-	name="United Kingdom"
-	bg="gbr"
-	{groups}
-	attribution={GBRAttribution}
-	square
-/>
+<MapCard name="United Kingdom" bg="gbr" {groups} attribution={GBRAttribution} square />

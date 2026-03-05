@@ -1,6 +1,6 @@
 <script lang="ts">
 	import MapCard from '../MapCard.svelte';
-	
+
 	const groups = [
 		{
 			label: 'House',
@@ -51,7 +51,7 @@
 				{
 					label: 'Māori Electorates 2023',
 					route: '/app/nzl/maori/2023/blank'
-				},
+				}
 			]
 		}
 	];
@@ -63,15 +63,10 @@
 		},
 		{
 			label: 'Auckland by Psuedopanax',
-			route: 'https://commons.wikimedia.org/wiki/File:Auckland_CBD_skyline_from_Waitemata_Harbour_entrance.jpg'
+			route:
+				'https://commons.wikimedia.org/wiki/File:Auckland_CBD_skyline_from_Waitemata_Harbour_entrance.jpg'
 		}
 	];
-
 </script>
 
-<MapCard
-	name="New Zealand"
-	bg="nzl"
-	{groups}
-	{attribution}
-/>
+<MapCard name="New Zealand" bg="nzl" {groups} {attribution} />

@@ -2,12 +2,12 @@
 	import MapCard from '../MapCard.svelte';
 
 	const groups = [
-		{ 
+		{
 			label: undefined,
 			showOnCard: true,
 			showInModal: true,
-			routes: [	
-				{ 
+			routes: [
+				{
 					label: 'States',
 					route: '/app/aut/states/2025291/blank'
 				}
@@ -24,13 +24,7 @@
 			label: 'Großvenediger by PietJay',
 			route: 'https://commons.wikimedia.org/wiki/File:Gro%C3%9Fvenediger.JPG'
 		}
-	]
-
+	];
 </script>
 
-<MapCard
-	name="Austria"
-	bg="aut"
-	{groups}
-	{attribution}
-/>
+<MapCard name="Austria" bg="aut" {groups} {attribution} />

@@ -44,7 +44,7 @@
 				}
 			]
 		}
-	]
+	];
 
 	const attribution = [
 		{
@@ -57,20 +57,14 @@
 		},
 		{
 			label: 'Dike at Oost-Vlieland by Paul Arps',
-			route: 'https://upload.wikimedia.org/wikipedia/commons/5/5e/Dike_at_Oost-Vlieland_%28Netherlands_2015%29_%2820071244968%29.jpg'
+			route:
+				'https://upload.wikimedia.org/wikipedia/commons/5/5e/Dike_at_Oost-Vlieland_%28Netherlands_2015%29_%2820071244968%29.jpg'
 		},
 		{
 			label: 'Windmill at Kinderdijk by Alf van Beem',
 			route: 'https://commons.wikimedia.org/wiki/File:Dutch_windmill_at_Kinderdijk_pic27.JPG'
 		}
 	];
-
 </script>
 
-<MapCard
-	name="The Netherlands"
-	bg="nld"
-	{groups}
-	{attribution}
-	full
-/>
+<MapCard name="The Netherlands" bg="nld" {groups} {attribution} full />
