@@ -51,12 +51,6 @@
 			]
 		}
 	];
-
 </script>
 
-<MapCard
-	name="UK Commons Results"
-	bg="gbr"
-	{groups}
-	attribution={GBRAttribution}
-/>
+<MapCard name="UK Commons Results" bg="gbr" {groups} attribution={GBRAttribution} />

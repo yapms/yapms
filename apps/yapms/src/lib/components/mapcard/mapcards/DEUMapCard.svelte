@@ -1,6 +1,6 @@
 <script lang="ts">
 	import MapCard from '../MapCard.svelte';
-	
+
 	const groups = [
 		{
 			label: 'Bundestag',
@@ -53,7 +53,7 @@
 				}
 			]
 		}
-	]
+	];
 
 	const attribution = [
 		{
@@ -66,12 +66,6 @@
 			route: 'https://www.pexels.com/photo/white-castle-surrounded-by-trees-1334441/'
 		}
 	];
-
 </script>
 
-<MapCard
-	name="Germany"
-	bg="deu"
-	{groups}
-	{attribution}
-/>
+<MapCard name="Germany" bg="deu" {groups} {attribution} />

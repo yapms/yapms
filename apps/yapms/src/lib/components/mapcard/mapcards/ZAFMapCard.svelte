@@ -38,19 +38,14 @@
 	const attribution = [
 		{
 			label: 'Union Buildings by Clayton',
-			route: 'https://www.pexels.com/photo/the-statue-of-nelson-mandela-on-the-union-buildings-grounds-pretoria-gauteng-south-africa-10527763/'
+			route:
+				'https://www.pexels.com/photo/the-statue-of-nelson-mandela-on-the-union-buildings-grounds-pretoria-gauteng-south-africa-10527763/'
 		},
 		{
 			label: 'Table Mountatin by KodachromeFan',
 			route: 'https://commons.wikimedia.org/wiki/File:Cape_Town,_Table_Mountain,_Table_Cloth.jpg'
 		}
-	]
-
+	];
 </script>
 
-<MapCard
-	name="South Africa"
-	bg="zaf"
-	{groups}
-	{attribution}
-/>
+<MapCard name="South Africa" bg="zaf" {groups} {attribution} />

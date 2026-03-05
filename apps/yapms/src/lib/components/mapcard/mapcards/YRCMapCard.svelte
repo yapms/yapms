@@ -19,12 +19,6 @@
 			]
 		}
 	];
-
 </script>
 
-<MapCard
-	name="YAPms Redistricting Council"
-	bg="usa"
-	{groups}
-	attribution={USAAttribution}
-/>
+<MapCard name="YAPms Redistricting Council" bg="usa" {groups} attribution={USAAttribution} />

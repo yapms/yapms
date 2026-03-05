@@ -19,7 +19,7 @@
 					label: '2021 Results',
 					modalLabel: '2021 Storting Results',
 					route: '/app/nor/storting/2021256/results'
-				},
+				}
 			]
 		},
 		{
@@ -49,12 +49,6 @@
 			route: 'https://commons.wikimedia.org/wiki/File:Geiranger_fjord,_Norway.jpg'
 		}
 	];
-
 </script>
 
-<MapCard
-	name="Norway"
-	bg="nor"
-	{groups}
-	{attribution}
-/>
+<MapCard name="Norway" bg="nor" {groups} {attribution} />

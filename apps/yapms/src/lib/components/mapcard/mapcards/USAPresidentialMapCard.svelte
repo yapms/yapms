@@ -313,20 +313,15 @@
 
 	const attribution = [
 		{
-			label: "White House by Tom Fisk",
+			label: 'White House by Tom Fisk',
 			route: 'https://www.pexels.com/photo/the-white-house-in-autumn-11563771/'
 		},
 		{
 			label: 'Marine One by Adam Schultz',
-			route: 'https://commons.wikimedia.org/wiki/File:Marine_One,_with_President_Joe_Biden_aboard,_approaches_the_South_Lawn_of_the_White_House,_Monday,_November_4,_2024.jpg'
+			route:
+				'https://commons.wikimedia.org/wiki/File:Marine_One,_with_President_Joe_Biden_aboard,_approaches_the_South_Lawn_of_the_White_House,_Monday,_November_4,_2024.jpg'
 		}
 	];
-
 </script>
 
-<MapCard
-	name="USA Presidential Results"
-	bg="usa_pres"
-	{groups}
-	{attribution}
-/>
+<MapCard name="USA Presidential Results" bg="usa_pres" {groups} {attribution} />

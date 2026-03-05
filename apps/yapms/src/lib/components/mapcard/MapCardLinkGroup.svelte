@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { HomeLinkData } from "$lib/types/HomeData";
+	import type { HomeLinkData } from '$lib/types/HomeData';
 
 	export let label: string | undefined;
 	export let links: HomeLinkData[];
@@ -10,8 +10,8 @@
 	if (label === undefined) {
 		// Breaks array into chunks of two, ex:
 		// [ [links[0], links[1] ], [ links[2] ] ]
-		columns = Array.from({ length: Math.ceil(links.length/2) }, (_, i) =>
-			links.slice(i*2, (i+1)*2)
+		columns = Array.from({ length: Math.ceil(links.length / 2) }, (_, i) =>
+			links.slice(i * 2, (i + 1) * 2)
 		);
 	}
 </script>
@@ -21,7 +21,7 @@
 	{#each columns as col}
 		<div class="flex flex-col items-center">
 			<div class="text-lg">
-				<br/>
+				<br />
 			</div>
 			<div class="grid grid-cols-1 gap-x-4">
 				{#each col as link}
@@ -48,7 +48,7 @@
 			{#if links.length === 1}
 				<!-- Add empty "bottom link" spacing to ensure group label is at same height-->
 				<div class="text-lg">
-					<br/>
+					<br />
 				</div>
 			{/if}
 		</div>

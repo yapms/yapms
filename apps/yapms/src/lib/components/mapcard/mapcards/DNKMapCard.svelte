@@ -43,7 +43,8 @@
 		},
 		{
 			label: 'Copenhagen by Efrem Efre',
-			route: 'https://www.pexels.com/photo/scenic-view-of-nyhavn-canal-in-copenhagen-denmark-31400921/'
+			route:
+				'https://www.pexels.com/photo/scenic-view-of-nyhavn-canal-in-copenhagen-denmark-31400921/'
 		}
 	];
 </script>

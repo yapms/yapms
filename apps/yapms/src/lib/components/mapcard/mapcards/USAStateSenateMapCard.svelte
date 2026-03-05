@@ -1,6 +1,6 @@
 <script lang="ts">
 	import MapCard from '../MapCard.svelte';
-	
+
 	const groups = [
 		{
 			label: 'Closely Divided',
@@ -331,20 +331,14 @@
 		},
 		{
 			label: 'Minnesota State Capitol by Czbik',
-			route: 'https://commons.wikimedia.org/wiki/File:Third_Minnesota_State_Capitol_in_Saint_Paul,_Minnesota._(October_28,_2025).jpg'
+			route:
+				'https://commons.wikimedia.org/wiki/File:Third_Minnesota_State_Capitol_in_Saint_Paul,_Minnesota._(October_28,_2025).jpg'
 		},
 		{
 			label: 'Colorado State Capitol by Eekim',
 			route: 'https://commons.wikimedia.org/wiki/File:Colorado_State_Capitol_Building.jpg'
 		}
-	]
-
+	];
 </script>
 
-<MapCard
-	name="USA State Senates"
-	bg="usa_states_2"
-	{groups}
-	{attribution}
-	full
-/>
+<MapCard name="USA State Senates" bg="usa_states_2" {groups} {attribution} full />

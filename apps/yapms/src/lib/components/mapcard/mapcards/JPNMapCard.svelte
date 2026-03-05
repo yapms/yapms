@@ -1,6 +1,6 @@
 <script lang="ts">
 	import MapCard from '../MapCard.svelte';
-	
+
 	const groups = [
 		{
 			label: undefined,
@@ -21,7 +21,7 @@
 				}
 			]
 		}
-	]
+	];
 
 	const attribution = [
 		{
@@ -30,15 +30,10 @@
 		},
 		{
 			label: 'Tokyo Tower by Supanut Arunoprayote',
-			route: 'https://commons.wikimedia.org/wiki/File:Tokyo_Tower,_View_from_Yebisu_Garden_Place_20241020_(II).jpg'
+			route:
+				'https://commons.wikimedia.org/wiki/File:Tokyo_Tower,_View_from_Yebisu_Garden_Place_20241020_(II).jpg'
 		}
-	]
-
+	];
 </script>
 
-<MapCard
-	name="Japan"
-	bg="jpn"
-	{groups}
-	{attribution}
-/>
+<MapCard name="Japan" bg="jpn" {groups} {attribution} />

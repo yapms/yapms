@@ -44,12 +44,6 @@
 			route: 'https://www.pexels.com/photo/statue-of-jesus-with-the-moon-in-the-background-9229056/'
 		}
 	];
-
 </script>
 
-<MapCard
-	name="Brazil"
-	bg="bra"
-	{groups}
-	{attribution}
-/>
+<MapCard name="Brazil" bg="bra" {groups} {attribution} />

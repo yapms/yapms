@@ -39,12 +39,7 @@
 			label: 'Haeundae Skyline, Busan by amanderson2',
 			route: 'https://commons.wikimedia.org/wiki/File:Skyline_of_Haeundae_from_Igidae.png'
 		}
-	]
+	];
 </script>
 
-<MapCard
-	name="South Korea"
-	bg="kor"
-	{groups}
-	{attribution}
-/>
+<MapCard name="South Korea" bg="kor" {groups} {attribution} />
