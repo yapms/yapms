@@ -14,10 +14,10 @@
 	const image = import(`../../assets/images/countries/${bg}/blended.webp`);
 
 	// If on Mobile:
-	// If more than one group, show the first link from the first two groups.
-	// If one group only, show the first two links from that group.
-	// If only one group with one link, show only that one link.
-	// If no groups, you screwed up, but I was nice and wrote a fallback.
+	// If 4 groups or greater, show the first link from the first four groups.
+	// If two groups, show the first two links from the first two groups. Show less if two per group are not available.
+	// If one group, show the first 4 links from that group, showing less if less than 4 are available.
+	// If no groups, you messed up. This will return an empty array and show nothing.
 	function getMobileLinks() {
 		if (groups.length >= 4) {
 			return [groups[0].routes[0], groups[1].routes[0], groups[2].routes[0], groups[3].routes[0]];
@@ -94,7 +94,11 @@
 				class:grid-cols-2={mobileLinks.length > 2}
 			>
 				{#each mobileLinks as link}
-					<a href={link.route} class="btn btn-sm btn-primary btn-block">
+					<a
+						href={link.route}
+						class="btn btn-sm btn-primary btn-block"
+						class:first:col-span-2={mobileLinks.length === 3}
+					>
 						{link.label}
 					</a>
 				{/each}
