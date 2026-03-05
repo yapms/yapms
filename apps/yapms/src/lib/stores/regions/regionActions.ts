@@ -163,6 +163,24 @@ export function disableNotGroup(group: number, subgroup: number) {
 	RegionsStore.set(regions);
 }
 
+export function disableAll() {
+	const regions = get(RegionsStore);
+	regions.forEach((region) => {
+		region.disabled = true;
+		region.value = 0;
+	});
+	RegionsStore.set(regions);
+}
+
+export function enableAll() {
+	const regions = get(RegionsStore);
+	regions.forEach((region) => {
+		region.disabled = false;
+		region.value = region.permaVal;
+	});
+	RegionsStore.set(regions);
+}
+
 export function lockRegion(regionID: string) {
 	const regions = get(RegionsStore);
 	const region = regions.find((region) => region.id === regionID);
@@ -187,5 +205,17 @@ export function lockNotGroup(group: number, subgroup: number) {
 		if (region.actionGroups.at(group) === subgroup) continue;
 		region.locked = !region.locked;
 	}
+	RegionsStore.set(regions);
+}
+
+export function lockAll() {
+	const regions = get(RegionsStore);
+	regions.forEach((region) => (region.locked = true));
+	RegionsStore.set(regions);
+}
+
+export function unlockAll() {
+	const regions = get(RegionsStore);
+	regions.forEach((region) => (region.locked = false));
 	RegionsStore.set(regions);
 }
