@@ -55,7 +55,7 @@
 </script>
 
 <div
-	class="card before:!opacity-65 image-full h-58 lg:h-48 col-span-2 lg:col-span-2 3xl:max-w-4xl 3xl:col-span-1"
+	class="card before:!opacity-65 image-full h-58 lg:h-48 col-span-2 lg:col-span-2"
 	class:sm:col-span-1={!square && !full}
 	class:xl:col-span-1={square || !full}
 	class:xl:row-span-2={square}

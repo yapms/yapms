@@ -10,7 +10,7 @@
 	{/if}
 
 	<div
-		class="grid grid-cols-2 3xl:grid-cols-3 4xl:grid-cols-4 gap-4 justify-center w-full max-w-5xl 3xl:max-w-[96rem] 4xl:max-w-[112rem]"
+		class="grid grid-flow-row-dense gap-4 justify-center w-full max-w-5xl 3xl:max-w-[96rem] 4xl:max-w-[112rem] grid-cols-2 3xl:grid-cols-[repeat(auto-fit,minmax(31rem,_1fr))] 4xl:grid-cols-[repeat(auto-fit,minmax(27rem,_1fr))]"
 	>
 		<slot />
 	</div>
