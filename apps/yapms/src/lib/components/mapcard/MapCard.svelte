@@ -13,22 +13,31 @@
 
 	const image = import(`../../assets/images/countries/${bg}/blended.webp`);
 
-	// If on mobile:
+	// If on Mobile:
 	// If more than one group, show the first link from the first two groups.
 	// If one group only, show the first two links from that group.
 	// If only one group with one link, show only that one link.
 	// If no groups, you screwed up, but I was nice and wrote a fallback.
-	const mobileLinks = (!groups || groups.length === 0)
-		? []
-		: groups.length > 1
-			? [groups[0].routes[0], groups[1].routes[0]]
-			: groups[0].routes.length > 1
-				? [groups[0].routes[0], groups[0].routes[1]]
-				: [groups[0].routes[0]];
+	function getMobileLinks() {
+		if (groups.length >= 4) {
+			return [groups[0].routes[0], groups[1].routes[0], groups[2].routes[0], groups[3].routes[0]];
+		} else if (groups.length >= 2) {
+			return [...groups[0].routes.slice(0, 2), ...groups[1].routes.slice(0, 2)];
+		} else if (groups.length === 1) {
+			return groups[0].routes.slice(0, 4);
+		} else {
+			return [];
+		}
+	}
+
+	const mobileLinks = getMobileLinks();
 
 	function openMoreMapsModal() {
 		const arr: HomeLinkData[] = [];
-		const links = groups.reduce((accum, group) => group.showInModal ? accum.concat(group.routes) : accum, arr);
+		const links = groups.reduce(
+			(accum, group) => (group.showInModal ? accum.concat(group.routes) : accum),
+			arr
+		);
 		MoreMapsModalStore.set({
 			buttons: links,
 			title: `${name} Maps`,
@@ -57,8 +66,8 @@
 	{:then image}
 		<figure><img class="w-full object-left" src={image.default} alt={name} /></figure>
 	{/await}
-	<div class="card-body justify-between h-58 lg:h-48" class:xl:h-100={square}>
-		<h2 class="card-title text-white truncate text-2xl lg:text-3xl overflow-visible">{name}</h2>
+	<div class="card-body justify-between h-58 lg:h-48 overflow-hidden" class:xl:h-100={square}>
+		<h2 class="card-title text-white truncate text-xl sm:text-2xl lg:text-3xl">{name}</h2>
 		<div
 			class="hidden sm:flex flex-col items-end space-y-4 lg:flex-row lg:justify-between lg:space-y-0"
 			class:xl:flex-col={square}
@@ -79,21 +88,20 @@
 		</div>
 		<!-- Mobile Buttons -->
 		<div class="flex flex-col items-center space-y-2 sm:hidden">
-			<div class="w-48 flex-wrap space-y-2">
+			<div
+				class="grid gap-2 w-full"
+				class:grid-rows-2={mobileLinks.length > 1}
+				class:grid-cols-2={mobileLinks.length > 2}
+			>
 				{#each mobileLinks as link}
-					<a href={link.route} class="btn btn-sm btn-accent btn-block">
+					<a href={link.route} class="btn btn-sm btn-primary btn-block">
 						{link.label}
 					</a>
 				{/each}
 			</div>
-			<button class="btn btn-sm btn-primary w-48" on:click={openMoreMapsModal}
-				>All Maps
-			</button>
+			<button class="btn btn-sm btn-accent w-full" on:click={openMoreMapsModal}>All Maps </button>
 		</div>
-		<button
-			on:click={openAttributionModal}
-			class="absolute top-0 right-0 w-6 m-2 cursor-pointer"
-		>
+		<button on:click={openAttributionModal} class="absolute top-0 right-0 w-6 m-2 cursor-pointer">
 			<InformationCircle />
 		</button>
 	</div>
