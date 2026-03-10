@@ -1,13 +1,12 @@
 <script lang="ts">
 	import { ToolsModalStore } from '$lib/stores/Modals';
 
-	export let text: string;
-	export let callback: () => void;
+	const { text, callback } = $props();
 </script>
 
 <button
 	class="btn btn-primary"
-	on:click={() => {
+	onclick={() => {
 		callback();
 		$ToolsModalStore.open = false;
 	}}
