@@ -1,16 +1,15 @@
 <script lang="ts">
 	import { ToolsModalStore } from '$lib/stores/Modals';
-	import type { Writable } from 'svelte/store';
 
-	export let text: string;
-	export let store: Writable<{ open: boolean }>;
-
-	function openToolModal() {
-		$store.open = true;
-		$ToolsModalStore.open = false;
-	}
+	const { text, callback }: { text: string; callback: () => void } = $props();
 </script>
 
-<button class="btn btn-primary" on:click={openToolModal}>
+<button
+	class="btn btn-primary"
+	onclick={() => {
+		callback();
+		$ToolsModalStore.open = false;
+	}}
+>
 	{text}
 </button>
