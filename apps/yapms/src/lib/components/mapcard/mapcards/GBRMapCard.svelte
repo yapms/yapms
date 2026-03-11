@@ -2,8 +2,8 @@
 	import MapCard from '../MapCard.svelte';
 	const links = [
 		{
-			label: 'Commons 2024',
-			route: '/app/gbr/commons/2024/blank'
+			label: 'House of Commons',
+			route: '/app/gbr/commons/next/blank'
 		},
 		{
 			label: 'Commons 2019',
@@ -12,6 +12,10 @@
 		{
 			label: '2024 Results',
 			route: '/app/gbr/commons/2024185/results'
+		},
+		{
+			label: 'House of Commons',
+			route: '/app/gbr/commons/next/blank'
 		},
 		{
 			label: 'House of Commons 2024',
