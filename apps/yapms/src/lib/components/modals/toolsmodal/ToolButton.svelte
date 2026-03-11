@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { ToolsModalStore } from '$lib/stores/Modals';
 
-	const { text, callback } = $props();
+	const { text, callback }: { text: string; callback: () => void } = $props();
 </script>
 
 <button
