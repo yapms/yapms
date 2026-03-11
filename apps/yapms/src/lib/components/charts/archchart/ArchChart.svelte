@@ -61,13 +61,7 @@
 
 		// Determine point colors
 		const pointColors = $ChartLeansStore.enabled
-			? arrangedCandidates.flatMap((c) =>
-					$CandidateCountsMargins.get(c.id) !== undefined
-						? $CandidateCountsMargins
-								.get(c.id)!
-								.flatMap((m, i) => Array(m).fill(c.margins[i].color))
-						: []
-				)
+			? getPointColorsWithMargins()
 			: arrangedCandidates.flatMap((c) =>
 					Array($CandidateCounts.get(c.id)).fill(c.margins[0].color)
 				);
@@ -101,6 +95,20 @@
 		const arcRad = nRow * rowHeight;
 
 		return Math.floor((2 * Math.PI * arcRad) / (2 * rowHeight));
+	}
+
+	function getPointColorsWithMargins() {
+		const colors = arrangedCandidates.map((c) =>
+			$CandidateCountsMargins.get(c.id) !== undefined
+				? $CandidateCountsMargins.get(c.id)!.flatMap((m, i) => Array(m).fill(c.margins[i].color))
+				: []
+		);
+
+		if (arrangedCandidates.length === 3) {
+			colors[2].reverse();
+		}
+
+		return colors.flat();
 	}
 </script>
 
