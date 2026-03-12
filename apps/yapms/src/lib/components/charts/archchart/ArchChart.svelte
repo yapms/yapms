@@ -23,11 +23,33 @@
 		...candidatesWithCounts.slice(Math.ceil(candidatesWithCounts.length / 2))
 	]);
 
+	const pointColors = $derived.by(() => {
+		if (!$ChartLeansStore.enabled) {
+			return arrangedCandidates.flatMap((c) =>
+				Array($CandidateCounts.get(c.id)).fill(c.margins[0].color)
+			);
+		}
+
+		const colors = arrangedCandidates.map((c) =>
+			$CandidateCountsMargins.get(c.id) !== undefined
+				? $CandidateCountsMargins.get(c.id)!.flatMap((m, i) => Array(m).fill(c.margins[i].color))
+				: []
+		);
+
+		if (arrangedCandidates.length === 3) {
+			colors[2].reverse();
+		}
+
+		return colors.flat();
+	});
+
 	const numSeats = $derived([...$CandidateCounts.values()].reduce((total, cur) => total + cur, 0));
 
-	const width = $derived(getWidthFromSeats(numSeats));
+	const rows = $derived(getRowsFromSeats(numSeats));
 
-	let points = $state<{ r: number; theta: number; color: string }[]>();
+	const width = $derived(rows * 2 * rowHeight);
+
+	let points = $state<{ radius: number; theta: number }[]>();
 
 	$effect(() => {
 		// Determine point positions
@@ -41,45 +63,23 @@
 
 			const radius = i * rowHeight;
 			for (let j = 0; j < numInRow && pointIdx < numSeats; j++) {
-				// Determine position on the unit circle. Add 0.5 to j to rest on the upper semicircle
-				let radians = ((j + 0.5) * Math.PI) / numInRow;
+				// Determine position along the top half of the unit circle.
+				const percentageAlongSemicircle = (j / numInRow);
+				//Adjust to the midpoint of the interval from [i/numInRow, i+1/numInRow]. e.x: [0, 0.5] becomes [0.25, 0.75] for 2 points
+				const midpointOffset = (0.5 / numInRow);
 
-				// If point on the circle will end up on the lower semicircle, bring it back around to the upper semicircle
-				if (radians > Math.PI) {
-					radians += Math.PI;
-				}
+				const theta = (percentageAlongSemicircle + midpointOffset) * Math.PI;
 
 				// Append position of circle in polar coordinates.
-				unsortedPoints.push({ r: radius, theta: radians, color: '' });
+				unsortedPoints.push({ radius, theta });
 
 				pointIdx++;
 			}
 		}
 
 		// Sort large radius to small radius and then small angle to large angle from beginning
-		const sortedPoints = unsortedPoints.sort((a, b) => a.r - b.r).sort((a, b) => a.theta - b.theta);
-
-		// Determine point colors
-		const pointColors = $ChartLeansStore.enabled
-			? getPointColorsWithMargins()
-			: arrangedCandidates.flatMap((c) =>
-					Array($CandidateCounts.get(c.id)).fill(c.margins[0].color)
-				);
-
-		sortedPoints.forEach((point, i) => (point.color = pointColors[i]));
-
-		points = sortedPoints;
+		points = unsortedPoints.sort((a, b) => a.radius - b.radius).sort((a, b) => a.theta - b.theta);
 	});
-
-	function getWidthFromSeats(targetSeats: number) {
-		let rows = 0;
-		let seats = 0;
-		while (seats < targetSeats) {
-			seats += dotsOnRow(rows);
-			rows++;
-		}
-		return rows * (2 * rowHeight);
-	}
 
 	function getRowsFromSeats(targetSeats: number) {
 		let rows = 0;
@@ -96,20 +96,6 @@
 
 		return Math.floor((2 * Math.PI * arcRad) / (2 * rowHeight));
 	}
-
-	function getPointColorsWithMargins() {
-		const colors = arrangedCandidates.map((c) =>
-			$CandidateCountsMargins.get(c.id) !== undefined
-				? $CandidateCountsMargins.get(c.id)!.flatMap((m, i) => Array(m).fill(c.margins[i].color))
-				: []
-		);
-
-		if (arrangedCandidates.length === 3) {
-			colors[2].reverse();
-		}
-
-		return colors.flat();
-	}
 </script>
 
 <div
@@ -117,18 +103,22 @@
 	class:h-full={$ChartPositionStore === 'bottom'}
 	class:w-full={$ChartPositionStore === 'left'}
 >
-	<div class="w-full h-full">
+	<div class="flex w-full h-full">
 		<svg
 			viewBox={`-${width / 2 + seatRadius} -${width / 2 + seatRadius} ${width + seatRadius * 2} ${width / 2 + seatRadius * 2}`}
 		>
-			{#each points as point}
+			{#each points as point, idx}
 				<circle
 					r={seatRadius}
-					fill={point.color}
-					cy={point.r * Math.sin(point.theta) * -1}
-					cx={point.r * Math.cos(point.theta) * -1}
+					fill={pointColors[idx]}
+					cy={point.radius * Math.sin(point.theta) * -1}
+					cx={point.radius * Math.cos(point.theta) * -1}
 				></circle>
 			{/each}
 		</svg>
+		{#each Array(rows).keys() as row}
+			{dotsOnRow(row)}
+			<br>
+		{/each}
 	</div>
 </div>
