@@ -47,6 +47,23 @@
 
 	const rows = $derived(getRowsFromSeats(numSeats));
 
+	const maxForRows = $derived(getSeatsFromRow(rows));
+
+	const startingRow = $derived.by(() => {
+		let starter = 1;
+		let spotsRemoved = 0;
+
+		while (maxForRows-(getSeatsFromRow(starter+1) + spotsRemoved) >= numSeats) {
+			starter++;
+			spotsRemoved += getSeatsFromRow(starter+1);
+		}
+		return starter;
+	});
+
+	const actualSpots = $derived(maxForRows - getSeatsFromRow(startingRow));
+
+	const fillFactor = $derived(numSeats/actualSpots);
+
 	const width = $derived(rows * 2 * rowHeight);
 
 	let points = $state<{ radius: number; theta: number }[]>();
@@ -57,9 +74,18 @@
 
 		let pointIdx = 0;
 		const unsortedPoints = [];
-		for (let i = rows; i > 0 && pointIdx < numSeats; i--) {
-			let numInRow = dotsOnRow(i);
+
+		console.log("max for rows", maxForRows)
+		console.log("starting row", startingRow)
+		console.log("fill factor", fillFactor)
+		console.log("actual spots", actualSpots)
+		console.log("num needed", numSeats)
+
+		for (let i = startingRow; i < rows && pointIdx < numSeats; i++) {
+			let numInRow = Math.round(fillFactor*dotsOnRow(i));
 			numInRow = Math.min(numInRow, numSeats - pointIdx);
+
+			if (i === rows-1) numInRow = numSeats - pointIdx;
 
 			const radius = i * rowHeight;
 			for (let j = 0; j < numInRow && pointIdx < numSeats; j++) {
@@ -89,6 +115,16 @@
 			rows++;
 		}
 		return rows;
+	}
+
+	function getSeatsFromRow(targetRows: number) {
+		let rows = 0;
+		let seats = 0;
+		while (rows < targetRows) {
+			seats += dotsOnRow(rows);
+			rows++;
+		}
+		return seats;
 	}
 
 	function dotsOnRow(nRow: number) {
