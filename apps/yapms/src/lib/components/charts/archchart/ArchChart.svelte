@@ -4,6 +4,8 @@
 	import { ChartPositionStore } from '$lib/stores/Chart';
 	import { ChartLeansStore } from '$lib/stores/ChartLeansStore';
 
+	import { fade } from 'svelte/transition';
+
 	const seatRadius = 6;
 
 	const marginBetweenSeats = 2;
@@ -138,8 +140,9 @@
 		<svg
 			viewBox={`-${width / 2 + seatRadius} -${width / 2 + seatRadius} ${width + seatRadius * 2} ${width / 2 + seatRadius * 2}`}
 		>
-			{#each points as point, idx}
+			{#each points as point, idx (idx)}
 				<circle
+					class="transition-colors"
 					r={seatRadius}
 					fill={pointColors[idx]}
 					cy={point.radius * Math.sin(point.theta) * -1}
@@ -147,9 +150,5 @@
 				></circle>
 			{/each}
 		</svg>
-		{#each Array(rows).keys() as row}
-			{dotsOnRow(row)}
-			<br>
-		{/each}
 	</div>
 </div>
