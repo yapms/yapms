@@ -45,7 +45,8 @@
 
 	const numSeats = $derived([...$CandidateCounts.values()].reduce((total, cur) => total + cur, 0));
 
-	const rows = $derived(getRowsFromSeats(numSeats));
+	// Use one extra row on the outside so we have to use less rows in the inside to make for a nice visual appearance
+	const rows = $derived(getRowsFromSeats(numSeats)+1);
 
 	const maxForRows = $derived(getSeatsFromRow(rows));
 
@@ -53,9 +54,9 @@
 		let starter = 1;
 		let spotsRemoved = 0;
 
-		while (maxForRows-(getSeatsFromRow(starter+1) + spotsRemoved) >= numSeats) {
+		while (maxForRows-(dotsOnRow(starter) + spotsRemoved) >= numSeats) {
+			spotsRemoved += dotsOnRow(starter);
 			starter++;
-			spotsRemoved += getSeatsFromRow(starter+1);
 		}
 		return starter;
 	});
@@ -75,17 +76,11 @@
 		let pointIdx = 0;
 		const unsortedPoints = [];
 
-		console.log("max for rows", maxForRows)
-		console.log("starting row", startingRow)
-		console.log("fill factor", fillFactor)
-		console.log("actual spots", actualSpots)
-		console.log("num needed", numSeats)
-
-		for (let i = startingRow; i < rows && pointIdx < numSeats; i++) {
+		for (let i = startingRow; i <= rows && pointIdx < numSeats; i++) {
 			let numInRow = Math.round(fillFactor*dotsOnRow(i));
 			numInRow = Math.min(numInRow, numSeats - pointIdx);
-
-			if (i === rows-1) numInRow = numSeats - pointIdx;
+			// Put all remaining seats lost in rounding on the outside row
+			if (i === rows) numInRow = numSeats - pointIdx;
 
 			const radius = i * rowHeight;
 			for (let j = 0; j < numInRow && pointIdx < numSeats; j++) {
