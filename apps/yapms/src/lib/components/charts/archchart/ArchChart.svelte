@@ -75,6 +75,8 @@
 		for (let i = startingRow; i < rows && pointIdx < numSeats; i++) {
 			let numInRow = Math.round(fillFactor * dotsOnRow(i));
 			numInRow = Math.min(numInRow, numSeats - pointIdx);
+			// Put all remaining seats lost in rounding on the outside row
+			if (i === rows-1) numInRow = numSeats - pointIdx;
 
 			const radius = i * rowHeight;
 			for (let j = 0; j < numInRow && pointIdx < numSeats; j++) {
