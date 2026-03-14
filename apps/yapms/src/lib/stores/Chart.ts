@@ -4,4 +4,4 @@ import { writable } from 'svelte/store';
 
 export const ChartPositionStore = writable<ChartPosition>('bottom');
 
-export const ChartTypeStore = writable<ChartType>('arch');
+export const ChartTypeStore = writable<ChartType>('battle');

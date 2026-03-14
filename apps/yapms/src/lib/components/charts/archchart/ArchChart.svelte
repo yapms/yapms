@@ -68,16 +68,11 @@
 
 	const width = $derived(rows * 2 * rowHeight);
 
-	let points = $state<{ radius: number; theta: number }[]>();
-
-	$effect(() => {
-		// Determine point positions
-		const rows = getRowsFromSeats(numSeats);
-
+	const points = $derived.by(() => {
 		let pointIdx = 0;
 		const unsortedPoints = [];
 
-		for (let i = startingRow; i <= rows && pointIdx < numSeats; i++) {
+		for (let i = startingRow; i < rows && pointIdx < numSeats; i++) {
 			let numInRow = Math.round(fillFactor * dotsOnRow(i));
 			numInRow = Math.min(numInRow, numSeats - pointIdx);
 			// Put all remaining seats lost in rounding on the outside row
@@ -100,7 +95,7 @@
 		}
 
 		// Sort large radius to small radius and then small angle to large angle from beginning
-		points = unsortedPoints.sort((a, b) => a.radius - b.radius).sort((a, b) => a.theta - b.theta);
+		return unsortedPoints.sort((a, b) => a.radius - b.radius).sort((a, b) => a.theta - b.theta);
 	});
 
 	function getRowsFromSeats(targetSeats: number) {
