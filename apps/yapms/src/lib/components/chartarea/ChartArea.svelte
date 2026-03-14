@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { ChartTypeStore, ChartPositionStore } from '$lib/stores/Chart';
 	import { LogoStore } from '$lib/stores/Logo';
+	import ArchChart from '../charts/archchart/ArchChart.svelte';
 	import BattleChart from '../charts/battlechart/BattleChart.svelte';
 	import CircleChart from '../charts/circlechart/CircleChart.svelte';
 
@@ -29,7 +30,9 @@
 	class:w-96={$ChartPositionStore === 'left' && $ChartTypeStore !== 'battle'}
 	class:h-80={$ChartPositionStore === 'bottom' && $ChartTypeStore !== 'battle'}
 >
-	{#if $ChartTypeStore === 'battle'}
+	{#if $ChartTypeStore === 'arch'}
+		<ArchChart />
+	{:else if $ChartTypeStore === 'battle'}
 		<BattleChart />
 	{:else if $ChartTypeStore === 'pie'}
 		<CircleChart type="pie" />
