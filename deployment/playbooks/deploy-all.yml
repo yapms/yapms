@@ -15,7 +15,7 @@
         - ghcr.io/yapms/yapms-pocketbase:latest
         - portainer/portainer-ce:latest
         - postgres:16-alpine
-        - docker.umami.dev/umami-software/umami:postgresql-latest
+        - docker.umami.is/umami-software/umami:latest
 
     - name: remove containers
       community.docker.docker_container:
@@ -104,7 +104,7 @@
     - name: deploy umami
       community.docker.docker_container:
         name: umami
-        image: docker.umami.dev/umami-software/umami:postgresql-latest
+        image: docker.umami.is/umami-software/umami:latest
         restart_policy: always
         networks:
           - name: yapms

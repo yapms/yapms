@@ -15,7 +15,7 @@ services:
     restart: always
 
   umami:
-    image: docker.umami.dev/umami-software/umami:postgresql-latest
+    image: docker.umami.is/umami-software/umami:latest
     ports:
       - 8079:3000
     environment:
