@@ -37,7 +37,6 @@
 	import IrlMapCard from '$lib/components/mapcard/mapcards/IRLMapCard.svelte';
 	import GrcMapCard from '$lib/components/mapcard/mapcards/GRCMapCard.svelte';
 	import NorMapCard from '$lib/components/mapcard/mapcards/NORMapCard.svelte';
-	import UsaPrimariesMapCard from '$lib/components/mapcard/mapcards/USAPrimariesMapCard.svelte';
 	import SvnMapCard from '$lib/components/mapcard/mapcards/SVNMapCard.svelte';
 	import IndMapCard from '$lib/components/mapcard/mapcards/INDMapCard.svelte';
 	import UsaCanMapCard from '$lib/components/mapcard/mapcards/USACANMapCard.svelte';
@@ -115,10 +114,9 @@
 		<div class="flex flex-col gap-6 flex-1 p-4 overflow-auto overflow-x-clip">
 			<MapCardGrid>
 				<UsaMapCard />
-				<UsaPrimariesMapCard />
 				<GbrMapCard />
-				<CanMapCard />
 				<AusMapCard />
+				<CanMapCard />
 
 				<AutMapCard />
 				<BraMapCard />
@@ -145,8 +143,8 @@
 			</MapCardGrid>
 
 			<MapCardGrid title="State & Provincial Maps">
-				<UsaStateSenateMapCard />
 				<UsaStateHouseMapCard />
+				<UsaStateSenateMapCard />
 				<CanProvincesMapCard />
 				<AusStatesMapCard />
 			</MapCardGrid>
