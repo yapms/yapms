@@ -72,7 +72,7 @@
 
 <!-- 
 Name property is the country name, bg property specifies which directory from src/lib/assets/images/countries to look for blended.webp in
-To create blended.webp for a given directory, you must find 2 or 4 800x600 images, and set their names to one.jpg thru four.jpg.
+To create blended.webp for a given directory, you must find 2 or 4 800x600 images, and set their names to 1.jpg thru 4.jpg.
 You then need to run blend.ts using node with the bg string as the first argument & number of images to blend (2 or 4) as the second argument.
 That script repeats these instructions.
 -->

@@ -1,17 +1,17 @@
-// This script blends two images (one.jpg + two.jpg) using Laplacian pyramid blending
+// This script blends two images (1.jpg + 2.jpg) using Laplacian pyramid blending
 // to produce a 1200x600 blended.webp card background image. See additional elaboration below:
 
 const INTRO_MESSAGE = `
 This script blends two or four images using Laplacian blending to create a 1200x600 (2) or 2160x600 (4) country card background image.
 
 To use, either:
-  Place two 800x600 JPGs named one.jpg and two.jpg into a country folder and call this script with the folder name as an argument and 2 as the number to blend.
+  Place two 800x600 JPGs named 1.jpg and 2.jpg into a country folder and call this script with the folder name as an argument and 2 as the number to blend.
   Ex: node blend.ts bra 2
-  This script will then output a 1200x600 blended.webp in that folder. one.jpg will appear on the LEFT and two.jpg on the RIGHT.
+  This script will then output a 1200x600 blended.webp in that folder. 1.jpg will appear on the LEFT and 2.jpg on the RIGHT.
 OR
-  Place four 800x600 JPGs named one.jpg, two.jpg, three.jpg, and four.jpg into a country folder and call this script with the folder name as an argument and 4 as the number to blend.
+  Place four 800x600 JPGs named 1.jpg, 2.jpg, 3.jpg, and 4.jpg into a country folder and call this script with the folder name as an argument and 4 as the number to blend.
   Ex: node blend.ts bra 4
-  This script will then output a 2160x600 blended.webp in that folder. Images will appear from left to right, i.e one.jpg, two.jpg, three.jpg, four.jpg.
+  This script will then output a 2160x600 blended.webp in that folder. Images will appear from left to right, i.e 1.jpg, 2.jpg, 3.jpg, 4.jpg.
 `;
 
 import path from "path";
@@ -177,7 +177,7 @@ function blend2(img1: cv.Mat, img2: cv.Mat) {
   cv.copyMakeBorder(img2, img2, 0, 0, OUT_W - IN_W, 0, cv.BORDER_CONSTANT, new cv.Scalar(0, 0, 0, 255));
 
   // Create mask ranging from (0, 1), going from 1 on the left to 0 on the right.
-  // 255 = take from one.jpg, 0 = take from two.jpg
+  // 255 = take from 1.jpg, 0 = take from 2.jpg
   const maskData = new Float32Array(OUT_W * OUT_H);
   const blendStart = Math.floor(OUT_W / 2 - BLEND_W / 2);
   const blendEnd = Math.floor(OUT_W / 2 + BLEND_W / 2);
@@ -230,8 +230,8 @@ cv.onRuntimeInitialized = async () => {
     process.exit(1);
   }
 
-  const img1Path = path.join(countryDir, "one.jpg");
-  const img2Path = path.join(countryDir, "two.jpg");
+  const img1Path = path.join(countryDir, "1.jpg");
+  const img2Path = path.join(countryDir, "2.jpg");
   const outPath = path.join(countryDir, "blended.webp");
 
   if (!fs.existsSync(img1Path)) { printError(`Could not find image ${img1Path}`); process.exit(1); }
@@ -244,8 +244,8 @@ cv.onRuntimeInitialized = async () => {
     const blended = blend2(img1, img2)
     writeToWebp(blended, outPath);
   } else if (numToBlend == 4) {
-    const img3Path = path.join(countryDir, "three.jpg");
-    const img4Path = path.join(countryDir, "four.jpg");
+    const img3Path = path.join(countryDir, "3.jpg");
+    const img4Path = path.join(countryDir, "4.jpg");
 
     if (!fs.existsSync(img3Path)) { printError(`Could not find image ${img3Path}`); process.exit(1); }
     if (!fs.existsSync(img4Path)) { printError(`Could not find image ${img4Path}`); process.exit(1); }
