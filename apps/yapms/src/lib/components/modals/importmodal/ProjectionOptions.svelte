@@ -1,13 +1,13 @@
 <script lang="ts">
 	import {
 		geoAlbers,
-		geoAlbersUsa,
 		geoConicConformal,
 		geoConicEqualArea,
 		geoConicEquidistant,
 		geoMercator,
 		geoTransverseMercator
 	} from 'd3';
+	import * as composite from 'd3-composite-projections';
 	import { proj4ToProjection } from '$lib/utils/importMap';
 	import { ImportedSVGStore } from '$lib/stores/ImportedSVG';
 
@@ -16,9 +16,11 @@
 	const projectionOptions = [
 		{ label: 'Mercator', projectionFunction: geoMercator },
 		{ label: 'Albers', projectionFunction: geoAlbers },
-		{ label: 'Albers USA', projectionFunction: geoAlbersUsa },
+		{ label: 'Albers USA', projectionFunction: composite.geoAlbersUsaTerritories },
+		{ label: 'Albers UK', projectionFunction: composite.geoAlbersUk },
 		{ label: 'Conic Equal Area', projectionFunction: geoConicEqualArea },
 		{ label: 'Conic Conformal', projectionFunction: geoConicConformal },
+		{ label: 'Conic Conformal Europe', projectionFunction: composite.geoConicConformalEurope },
 		{ label: 'Conic Equidistant', projectionFunction: geoConicEquidistant },
 		{ label: 'Transverse Mercator', projectionFunction: geoTransverseMercator },
 		{ label: 'Custom', projectionFunction: proj4ToProjection }
