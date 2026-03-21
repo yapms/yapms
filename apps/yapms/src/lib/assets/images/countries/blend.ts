@@ -68,7 +68,7 @@ async function writeToWebp(result: cv.Mat, outPath: string) {
 // pyramid functions
 function buildGaussianPyramid(img: cv.Mat, levels: number) {
 	const pyramid = [];
-	let current = new cv.Mat();
+	const current = new cv.Mat();
 	img.convertTo(current, cv.CV_32FC4); // no op if already 32fc4
 	pyramid.push(current);
 
@@ -136,7 +136,7 @@ function blendPyramids(lp1: cv.Mat[], lp2: cv.Mat[], maskPyramid: cv.Mat[]) {
 
 // reconstruct image from it's laplacian pyramid
 function reconstructFromLaplacian(pyramid: cv.Mat[]) {
-	let img = pyramid[pyramid.length - 1].clone();
+	const img = pyramid[pyramid.length - 1].clone();
 
 	for (let i = pyramid.length - 2; i >= 0; i--) {
 		const dstSize = new cv.Size(pyramid[i].cols, pyramid[i].rows);
