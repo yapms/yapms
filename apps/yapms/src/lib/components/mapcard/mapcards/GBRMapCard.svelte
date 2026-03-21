@@ -8,9 +8,8 @@
 			showInModal: true,
 			routes: [
 				{
-					label: 'Commons 2024',
-					modalLabel: 'House of Commons 2024',
-					route: '/app/gbr/commons/2024/blank'
+					label: 'House of Commons',
+					route: '/app/gbr/commons/next/blank'
 				},
 				{
 					label: '2024 Results',
@@ -90,6 +89,10 @@
 				{
 					label: 'European Electoral Regions 2018',
 					route: '/app/gbr/european_regions/2018001/blank'
+				},
+				{
+					label: 'House of Commons 2024',
+					route: '/app/gbr/commons/2024/blank'
 				},
 				{
 					label: 'House of Commons 2019',
