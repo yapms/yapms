@@ -49,6 +49,7 @@
 	import YapMapCard from '$lib/components/mapcard/mapcards/YAPMapCard.svelte';
 	import AutMapCard from '$lib/components/mapcard/mapcards/AUTMapCard.svelte';
 	import YRCMapCard from '$lib/components/mapcard/mapcards/YRCMapCard.svelte';
+	import HUNMapCard from '$lib/components/mapcard/mapcards/HUNMapCard.svelte';
 
 	export let data: PageData;
 
@@ -126,6 +127,7 @@
 				<FraMapCard />
 				<DeuMapCard />
 				<GrcMapCard />
+				<HUNMapCard />
 				<IndMapCard />
 				<IrlMapCard />
 				<ItaMapCard />
