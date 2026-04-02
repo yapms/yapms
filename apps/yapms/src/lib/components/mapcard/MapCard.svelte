@@ -68,8 +68,7 @@
 	{/await}
 	<div class="card-body justify-between h-58 lg:h-48 overflow-hidden" class:xl:h-100={square}>
 		<h2
-			class="card-title text-white truncate text-xl sm:text-2xl lg:text-3xl"
-			class:md:h-[3ch]={square}
+			class="card-title text-white text-xl sm:text-2xl lg:text-3xl max-h-8"
 		>
 			{name}
 		</h2>
