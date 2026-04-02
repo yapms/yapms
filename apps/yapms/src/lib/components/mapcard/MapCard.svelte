@@ -79,7 +79,7 @@
 			class:xl:mt-8={square}
 		>
 			<div
-				class="inline-flex flex-row flex-wrap items-end overflow-hidden w-full h-22 gap-6 py-1 lg:w-4/5"
+				class="inline-flex flex-row flex-wrap items-end overflow-hidden w-full h-22 gap-6 py-1 lg:pr-4 lg:w-4/5"
 				class:xl:h-50={square}
 				class:xl:w-full={square}
 				class:xl:justify-center={square}
