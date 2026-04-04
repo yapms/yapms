@@ -1,10 +1,10 @@
 <script lang="ts">
-	export let title: string | undefined = undefined;
+	const { title }: { title: string } = $props();
 </script>
 
 <div class="flex flex-col gap-4 w-full items-center">
 	{#if title !== undefined}
-		<div class="text-3xl text-center">
+		<div class="text-2xl text-center">
 			{title}
 		</div>
 	{/if}
