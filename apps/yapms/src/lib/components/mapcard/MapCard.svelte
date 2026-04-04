@@ -4,21 +4,30 @@
 	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
 	import MapCardLinkGroup from './MapCardLinkGroup.svelte';
 
-	export let name: string;
-	export let bg: string;
-	export let attribution: HomeLinkData[];
-	export let groups: HomeGroupData[];
-	export let full: boolean = false;
-	export let square: boolean = false;
+	const {
+		name,
+		bg,
+		attribution,
+		groups,
+		full,
+		square
+	}: {
+		name: string;
+		bg: string;
+		attribution: HomeLinkData[];
+		groups: HomeGroupData[];
+		full: boolean;
+		square: boolean;
+	} = $props();
 
-	const image = import(`../../assets/images/countries/${bg}/blended.webp`);
+	const image = $derived(import(`../../assets/images/countries/${bg}/blended.webp`));
 
 	// If on Mobile:
 	// If 4 groups or greater, show the first link from the first four groups.
 	// If two groups, show the first two links from the first two groups. Show less if two per group are not available.
 	// If one group, show the first 4 links from that group, showing less if less than 4 are available.
 	// If no groups, you messed up. This will return an empty array and show nothing.
-	function getMobileLinks() {
+	const mobileLinks = $derived.by(() => {
 		if (groups.length >= 4) {
 			return [groups[0].routes[0], groups[1].routes[0], groups[2].routes[0], groups[3].routes[0]];
 		} else if (groups.length >= 2) {
@@ -28,9 +37,7 @@
 		} else {
 			return [];
 		}
-	}
-
-	const mobileLinks = getMobileLinks();
+	});
 
 	function openMoreMapsModal() {
 		const arr: HomeLinkData[] = [];
@@ -86,7 +93,7 @@
 					<MapCardLinkGroup label={group.label} links={group.routes} />
 				{/each}
 			</div>
-			<button class="btn btn-md btn-primary" on:click={openMoreMapsModal}>All Maps </button>
+			<button class="btn btn-md btn-primary" onclick={openMoreMapsModal}>All Maps </button>
 		</div>
 		<!-- Mobile Buttons -->
 		<div class="flex flex-col items-center space-y-2 sm:hidden">
@@ -105,9 +112,9 @@
 					</a>
 				{/each}
 			</div>
-			<button class="btn btn-sm btn-accent w-full" on:click={openMoreMapsModal}>All Maps </button>
+			<button class="btn btn-sm btn-accent w-full" onclick={openMoreMapsModal}>All Maps </button>
 		</div>
-		<button on:click={openAttributionModal} class="absolute top-0 right-0 w-6 m-2 cursor-pointer">
+		<button onclick={openAttributionModal} class="absolute top-0 right-0 w-6 m-2 cursor-pointer">
 			<InformationCircle />
 		</button>
 	</div>

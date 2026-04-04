@@ -1,19 +1,19 @@
 <script lang="ts">
 	import type { HomeLinkData } from '$lib/types/HomeData';
 
-	export let label: string | undefined;
-	export let links: HomeLinkData[];
+	const { label, links }: { label: string | undefined; links: HomeLinkData[] } = $props();
 
-	const nCols = Math.ceil(links.length / 2);
+	const nCols = $derived(Math.ceil(links.length / 2));
 
-	let columns: HomeLinkData[][] = [];
-	if (label === undefined) {
-		// Breaks array into chunks of two, ex:
-		// [ [links[0], links[1] ], [ links[2] ] ]
-		columns = Array.from({ length: Math.ceil(links.length / 2) }, (_, i) =>
-			links.slice(i * 2, (i + 1) * 2)
-		);
-	}
+	// Breaks array into chunks of two if no label defined, ex:
+	// [ [links[0], links[1] ], [ links[2] ] ]
+	const columns: HomeLinkData[][] = $derived(
+		label === undefined
+			? Array.from({ length: Math.ceil(links.length / 2) }, (_, i) =>
+					links.slice(i * 2, (i + 1) * 2)
+				)
+			: []
+	);
 </script>
 
 {#if label === undefined}
