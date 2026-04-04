@@ -1,5 +1,5 @@
 <script lang="ts">
-	const { title }: { title: string } = $props();
+	const { title }: { title?: string } = $props();
 </script>
 
 <div class="flex flex-col gap-4 w-full items-center">
