@@ -43,16 +43,7 @@
 		{
 			label: 'Toronto by Andre Furtado',
 			route: 'https://www.pexels.com/photo/high-rise-buildings-photo-800694/'
-		} //, // I don't actually use these last two images anymore
-		//{
-		//	label: 'Montreal by Cyrill',
-		//	route: 'https://www.pexels.com/photo/skyscrapers-in-city-at-sunset-19739618/'
-		//},
-		//{
-		//	label: 'Vancouver by Adi K',
-		//	route:
-		//		'https://www.pexels.com/photo/bird-s-eye-view-photography-of-high-rise-buildings-2382868/'
-		//}
+		}
 	];
 </script>
 

@@ -55,32 +55,30 @@
 </script>
 
 <div
-	class="card before:!opacity-65 image-full h-58 lg:h-48 col-span-2 lg:col-span-2"
+	class="card before:!opacity-65 image-full h-52 lg:h-40 col-span-2 lg:col-span-2"
 	class:sm:col-span-1={!square && !full}
 	class:xl:col-span-1={square || !full}
 	class:xl:row-span-2={square}
-	class:xl:h-100={square}
+	class:xl:h-82={square}
 >
 	{#await image}
 		<figure><div class="w-full h-full bg-base-content"></div></figure>
 	{:then image}
-		<figure><img class="w-full object-left" src={image.default} alt={name} /></figure>
+		<figure><img class="w-full object-center" src={image.default} alt={name} /></figure>
 	{/await}
-	<div class="card-body justify-between h-58 lg:h-48 overflow-hidden" class:xl:h-100={square}>
-		<h2
-			class="card-title text-white text-xl sm:text-2xl lg:text-3xl max-h-8"
-		>
+	<div class="card-body justify-between h-52 lg:h-40 overflow-hidden py-4" class:xl:h-82={square}>
+		<h2 class="card-title text-white text-lg sm:text-xl lg:text-2xl max-h-10">
 			{name}
 		</h2>
 		<div
-			class="hidden sm:flex flex-col items-end space-y-4 lg:flex-row lg:justify-between lg:space-y-0"
+			class="hidden sm:flex flex-col items-end space-y-2 lg:flex-row lg:justify-between lg:space-y-0"
 			class:xl:flex-col={square}
 			class:xl:h-full={square}
-			class:xl:mt-8={square}
+			class:xl:mt-4={square}
 		>
 			<div
-				class="inline-flex flex-row flex-wrap items-end overflow-hidden w-full h-22 gap-6 py-1 lg:pr-4 lg:w-4/5"
-				class:xl:h-50={square}
+				class="inline-flex flex-row flex-wrap items-end overflow-hidden w-full h-20 gap-4 py-1 lg:pr-4 lg:w-4/5"
+				class:xl:h-45={square}
 				class:xl:w-full={square}
 				class:xl:justify-center={square}
 			>
