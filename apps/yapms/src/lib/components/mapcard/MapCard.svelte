@@ -9,15 +9,15 @@
 		bg,
 		attribution,
 		groups,
-		full,
-		square
+		full = false,
+		square = false
 	}: {
 		name: string;
 		bg: string;
 		attribution: HomeLinkData[];
 		groups: HomeGroupData[];
-		full: boolean;
-		square: boolean;
+		full?: boolean;
+		square?: boolean;
 	} = $props();
 
 	const image = $derived(import(`../../assets/images/countries/${bg}/blended.webp`));
