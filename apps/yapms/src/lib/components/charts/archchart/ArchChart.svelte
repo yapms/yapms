@@ -26,7 +26,7 @@
 	const pointColors = $derived.by(() => {
 		if (!$ChartLeansStore.enabled) {
 			return arrangedCandidates.flatMap((c) =>
-				Array($CandidateCounts.get(c.id)).fill(c.margins[0].color)
+				Array($CandidateCounts.get(c.id) ?? 0).fill(c.margins[0].color)
 			);
 		}
 
