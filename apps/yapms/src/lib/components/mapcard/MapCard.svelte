@@ -1,71 +1,121 @@
 <script lang="ts">
 	import InformationCircle from '$lib/icons/InformationCircle.svelte';
 	import { MoreMapsModalStore } from '$lib/stores/HomeModals';
-	import type { HomeLinkData } from '$lib/types/HomeData';
+	import type { HomeGroupData, HomeLinkData } from '$lib/types/HomeData';
+	import MapCardLinkGroup from './MapCardLinkGroup.svelte';
 
 	const {
 		name,
 		bg,
 		attribution,
-		attributionLink = undefined,
-		links
+		groups,
+		full = false,
+		square = false
 	}: {
 		name: string;
 		bg: string;
-		attribution: string;
-		attributionLink: string | undefined;
-		links: { label: string; route: string }[];
+		attribution: HomeLinkData[];
+		groups: HomeGroupData[];
+		full?: boolean;
+		square?: boolean;
 	} = $props();
 
-	const image = import(`../../assets/images/countries/${bg}.webp`);
+	const image = $derived(import(`../../assets/images/countries/${bg}/blended.webp`));
 
-	function openMoreModal(buttons: HomeLinkData[]) {
+	// If on Mobile:
+	// If 4 groups or greater, show the first link from the first four groups.
+	// If two groups, show the first two links from the first two groups. Show less if two per group are not available.
+	// If one group, show the first 4 links from that group, showing less if less than 4 are available.
+	// If no groups, you messed up. This will return an empty array and show nothing.
+	const mobileLinks = $derived.by(() => {
+		if (groups.length >= 4) {
+			return [groups[0].routes[0], groups[1].routes[0], groups[2].routes[0], groups[3].routes[0]];
+		} else if (groups.length >= 2) {
+			return [...groups[0].routes.slice(0, 2), ...groups[1].routes.slice(0, 2)];
+		} else if (groups.length === 1) {
+			return groups[0].routes.slice(0, 4);
+		} else {
+			return [];
+		}
+	});
+
+	function openMoreMapsModal() {
+		const arr: HomeLinkData[] = [];
+		const links = groups.reduce(
+			(accum, group) => (group.showInModal ? accum.concat(group.routes) : accum),
+			arr
+		);
 		MoreMapsModalStore.set({
-			buttons,
-			title: name,
+			buttons: links,
+			title: `${name} Maps`,
+			open: true
+		});
+	}
+
+	function openAttributionModal() {
+		MoreMapsModalStore.set({
+			buttons: attribution,
+			title: `${name} Images`,
 			open: true
 		});
 	}
 </script>
 
-<div class="card w-92 h-58 lg:w-72 lg:h-48 bg-base-100 image-full">
-	{#await image then image}
-		<figure><img class="w-full" src={image.default} alt={name} /></figure>
+<div
+	class="card before:!opacity-65 image-full h-52 lg:h-40 col-span-2 lg:col-span-2"
+	class:sm:col-span-1={!square && !full}
+	class:xl:col-span-1={square || !full}
+	class:xl:row-span-2={square}
+	class:xl:h-84={square}
+>
+	{#await image}
+		<figure><div class="w-full h-full bg-base-content"></div></figure>
+	{:then image}
+		<figure><img class="w-full object-center" src={image.default} alt={name} /></figure>
 	{/await}
-	<div class="card-body items-center text-center">
-		<h2 class="card-title text-white">{name}</h2>
-		<div class:grid-cols-2={links.length > 1} class="grid gap-4">
-			{#if links.length <= 4}
-				{#each links as link}
-					<a href={link.route} class="btn btn-sm btn-primary w-full leading-3.5">{link.label}</a>
+	<div class="card-body justify-between h-52 lg:h-40 overflow-hidden py-4" class:xl:h-84={square}>
+		<h2 class="card-title text-white text-lg sm:text-xl lg:text-2xl max-h-10">
+			{name}
+		</h2>
+		<div
+			class="hidden sm:flex flex-col items-end space-y-2 lg:flex-row lg:justify-between lg:space-y-0"
+			class:xl:flex-col={square}
+			class:xl:h-full={square}
+			class:xl:mt-5={square}
+		>
+			<div
+				class="inline-flex flex-row flex-wrap items-end overflow-hidden w-full h-20 gap-4 py-1 lg:pr-4"
+				class:xl:h-45={square}
+				class:xl:w-full={square}
+				class:xl:justify-center={square}
+			>
+				{#each groups.filter((g) => g.showOnCard) as group}
+					<MapCardLinkGroup label={group.label} links={group.routes} />
 				{/each}
-			{:else}
-				{#each links as link, index}
-					<!-- hidden links will be prerendered -->
+			</div>
+			<button class="btn btn-md btn-primary" onclick={openMoreMapsModal}>All Maps </button>
+		</div>
+		<!-- Mobile Buttons -->
+		<div class="flex flex-col items-center space-y-2 sm:hidden">
+			<div
+				class="grid gap-2 w-full"
+				class:grid-rows-2={mobileLinks.length > 1}
+				class:grid-cols-2={mobileLinks.length > 2}
+			>
+				{#each mobileLinks as link}
 					<a
 						href={link.route}
-						class="btn btn-sm btn-primary w-full -bg-linear-30 leading-3.5"
-						class:hidden={index >= 3}
+						class="btn btn-sm btn-primary btn-block"
+						class:first:col-span-2={mobileLinks.length === 3}
 					>
 						{link.label}
 					</a>
 				{/each}
-				<button
-					class="btn btn-sm btn-primary w-full"
-					onclick={() => {
-						openMoreModal(links.slice(3));
-					}}
-					>More
-				</button>
-			{/if}
+			</div>
+			<button class="btn btn-sm btn-accent w-full" onclick={openMoreMapsModal}>All Maps </button>
 		</div>
-		<a
-			target="_blank"
-			href={attributionLink}
-			class="tooltip tooltip-left absolute top-0 right-0 w-6 m-2 before:w-64 before:max-w-max"
-			data-tip={attribution}
-		>
+		<button onclick={openAttributionModal} class="absolute top-0 right-0 w-6 m-2 cursor-pointer">
 			<InformationCircle />
-		</a>
+		</button>
 	</div>
 </div>

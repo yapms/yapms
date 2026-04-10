@@ -1,29 +1,50 @@
-<script lang="ts">
+<script lang="ts" context="module">
 	import MapCard from '../MapCard.svelte';
-	const links = [
-		{
-			label: 'Provinces',
-			route: '/app/can/provinces'
-		},
+
+	const groups = [
 		{
 			label: 'House of Commons',
-			route: '/app/can/commons/next/blank'
+			showOnCard: true,
+			showInModal: true,
+			routes: [
+				{
+					label: 'House of Commons',
+					route: '/app/can/commons/next/blank'
+				},
+				{
+					label: '2025 Results',
+					modalLabel: '2025 Commons Results',
+					route: '/app/can/commons/2025118/results'
+				}
+			]
 		},
 		{
-			label: '2025 Results',
-			route: '/app/can/commons/2025118/results'
+			label: undefined,
+			showOnCard: true,
+			showInModal: true,
+			routes: [
+				{
+					label: 'Provinces',
+					route: '/app/can/provinces'
+				},
+				{
+					label: 'Senate',
+					route: '/app/can/senate'
+				}
+			]
+		}
+	];
+
+	export const CANAttribution = [
+		{
+			label: 'Parliament Hill by Tetyana Kovyrina',
+			route: 'https://www.pexels.com/photo/photo-of-beige-and-green-castle-1045915/'
 		},
 		{
-			label: 'Senate',
-			route: '/app/can/senate'
+			label: 'Toronto by Andre Furtado',
+			route: 'https://www.pexels.com/photo/high-rise-buildings-photo-800694/'
 		}
 	];
 </script>
 
-<MapCard
-	name="Canada"
-	bg="can"
-	attribution="Photo by Tetyana Kovyrina"
-	attributionLink="https://www.pexels.com/photo/parliament-hill-in-ottawa-canada-15715832/"
-	{links}
-/>
+<MapCard name="Canada" bg="can" {groups} attribution={CANAttribution} />
