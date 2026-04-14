@@ -1,19 +1,41 @@
 <script lang="ts">
 	import MapCard from '../MapCard.svelte';
-	const links = [
+
+	const groups = [
 		{
-			label: 'Presidential',
-			route: '/app/yap/presidential/2025285/blank'
+			label: undefined,
+			showOnCard: true,
+			showInModal: true,
+			routes: [
+				{
+					label: 'Presidential',
+					route: '/app/yap/presidential/2025285/blank'
+				}
+			]
 		},
 		{
 			label: 'Senate',
-			route: '/app/yap/senate/2026025/blank'
-		},
+			showOnCard: true,
+			showInModal: true,
+			routes: [
+				{
+					label: 'Senate',
+					route: '/app/yap/senate/2026025/blank'
+				},
+				{
+					label: 'Senate (Old)',
+					route: '/app/yap/senate/2025285/blank'
+				}
+			]
+		}
+	];
+
+	const attribution = [
 		{
-			label: 'Senate (Old)',
-			route: '/app/yap/senate/2025285/blank'
+			label: 'Yapmeria flag from the Yapmeria Wiki',
+			route: 'https://yapmeria.miraheze.org/wiki/File:Flag_of_Yapmeria.webp'
 		}
 	];
 </script>
 
-<MapCard name="Yapmeria" bg="yap" attribution="" attributionLink="" {links} />
+<MapCard name="Yapmeria" bg="yap" {groups} {attribution} />
