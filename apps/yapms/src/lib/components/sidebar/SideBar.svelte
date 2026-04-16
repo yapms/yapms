@@ -2,15 +2,12 @@
 	import { PocketBaseStore } from '$lib/stores/PocketBase';
 	import { SideBarStore } from '$lib/stores/SideBar';
 	import { PresentationModeStore } from '$lib/stores/PresentationMode';
-	import { reapplyPanZoom } from '$lib/utils/applyPanZoom';
-	import { afterUpdate, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import Shortcuts from './sections/shortcuts/Shortcuts.svelte';
 	import SavedMaps from './sections/savedmaps/SavedMaps.svelte';
 	import Sources from './sections/sources/Sources.svelte';
 	import SocialLinkGrid from '../links/SocialLinkGrid.svelte';
 	import RegionSearch from './sections/regionsearch/RegionSearch.svelte';
-
-	afterUpdate(reapplyPanZoom);
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	let adsbygoogle: unknown;
