@@ -1,12 +1,11 @@
 <script lang="ts">
-	import { afterUpdate } from 'svelte';
 	import CandidateBoxContainer from '../candidatebox/CandidateBoxContainer.svelte';
 	import ChartArea from '../chartarea/ChartArea.svelte';
 	import { ChartPositionStore } from '$lib/stores/Chart';
-	import { reapplyPanZoom } from '$lib/utils/applyPanZoom';
 	import { PresentationModeStore } from '$lib/stores/PresentationMode';
+	import type { Snippet } from 'svelte';
 
-	afterUpdate(reapplyPanZoom);
+	const { children }: { children: Snippet } = $props();
 </script>
 
 <div
@@ -18,6 +17,6 @@
 	<ChartArea />
 	<div class="overflow-hidden w-full h-full">
 		<CandidateBoxContainer margins={$PresentationModeStore.enabled} />
-		<slot />
+		{@render children()}
 	</div>
 </div>
