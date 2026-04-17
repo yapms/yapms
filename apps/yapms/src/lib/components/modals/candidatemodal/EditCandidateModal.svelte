@@ -1,12 +1,14 @@
 <script lang="ts">
 	import MinusCircle from '$lib/icons/MinusCircle.svelte';
 	import Rotate from '$lib/icons/Rotate.svelte';
+	import Swatch from '$lib/icons/Swatch.svelte';
 	import Trash from '$lib/icons/Trash.svelte';
 	import {
 		CandidatesStore,
 		SelectedCandidateStore,
 		TossupCandidateStore
 	} from '$lib/stores/Candidates';
+	import { CustomColorsStore } from '$lib/stores/CustomColors';
 	import { CandidateModalStore } from '$lib/stores/Modals';
 	import { EditCandidateModalStore } from '$lib/stores/Modals';
 	import { RegionsStore } from '$lib/stores/regions/Regions';
@@ -118,6 +120,16 @@
 		$CandidatesStore[candidateIndex].margins = $CandidatesStore[candidateIndex].margins.reverse();
 		$RegionsStore = $RegionsStore;
 	}
+
+	let savePresetTip = $state('Save as Preset');
+	function saveAsPreset() {
+		$CustomColorsStore = [
+			...$CustomColorsStore,
+			$CandidatesStore[candidateIndex].margins.map((m) => m.color)
+		];
+		savePresetTip = 'Preset Saved!';
+		setTimeout(() => (savePresetTip = 'Save as Preset'), 1500);
+	}
 </script>
 
 <ModalBase title="Edit Candidate" store={EditCandidateModalStore} onClose={close}>
@@ -150,11 +162,16 @@
 		</div>
 
 		<fieldset class="fieldset">
-			<div class="flex gap-1 items-end">
-				<legend class="fieldset-legend">Colors</legend>
+			<div class="flex items-end">
+				<legend class="fieldset-legend pr-1">Colors</legend>
 				<button class="btn btn-xs btn-circle btn-ghost" onclick={flipColors}>
 					<Rotate class="size-4"></Rotate>
 				</button>
+				<div class="tooltip tooltip-right" data-tip={savePresetTip}>
+					<button class="btn btn-xs btn-circle btn-ghost" onclick={saveAsPreset}>
+						<Swatch class="size-4"></Swatch>
+					</button>
+				</div>
 			</div>
 
 			<ul class="flex flex-row flex-wrap gap-4 justify-center" bind:this={colorList}>
