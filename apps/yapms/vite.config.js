@@ -1,8 +1,9 @@
 import { sveltekit } from '@sveltejs/kit/vite';
+import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
 
 const config = defineConfig({
-	plugins: [sveltekit()],
+	plugins: [sveltekit(), tailwindcss()],
 	server: {
 		host: '0.0.0.0',
 		port: 8081
