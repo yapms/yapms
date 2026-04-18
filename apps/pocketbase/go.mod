@@ -1,8 +1,6 @@
 module yapms/pocketbase
 
-go 1.26
-
-toolchain go1.26.2
+go 1.26.2
 
 require (
 	github.com/chromedp/chromedp v0.15.1
