@@ -34,6 +34,9 @@
 		handleModeInteractions,
 		handleModalOpenInteractions
 	} from '$lib/stores/Modals';
+	import type { Snippet } from 'svelte';
+
+	const { children }: { children: Snippet } = $props();
 
 	function handleKeyDown(event: KeyboardEvent) {
 		$InteractionStore.set(event.code, true);
@@ -91,7 +94,7 @@
 	{/if}
 	<div class="flex flex-row h-full overflow-hidden">
 		<MapChartContainer>
-			<slot />
+			{@render children()}
 		</MapChartContainer>
 		<SideBar />
 	</div>
