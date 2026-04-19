@@ -178,6 +178,10 @@
 				{
 					label: 'New York City Council 2025',
 					route: '/app/usa/nyc_council/2025309/blank'
+				},
+				{
+					label: 'DC City Council 2022',
+					route: '/app/usa/dc_council/2022001/blank'
 				}
 			]
 		}
