@@ -103,7 +103,6 @@
 	function saveAsPreset() {
 		$CustomColorsStore = [...$CustomColorsStore, newColors.map((m) => m.color)];
 		savePresetTip = 'Preset Saved!';
-		setTimeout(() => (savePresetTip = 'Save as Preset'), 1500);
 	}
 </script>
 
@@ -137,7 +136,13 @@
 					<Rotate class="size-4"></Rotate>
 				</button>
 				<div class="tooltip tooltip-right" data-tip={savePresetTip}>
-					<button class="btn btn-xs btn-circle btn-ghost" onclick={saveAsPreset}>
+					<button
+						class="btn btn-xs btn-circle btn-ghost"
+						onclick={saveAsPreset}
+						onmouseenter={() => {
+							savePresetTip = 'Save as Preset';
+						}}
+					>
 						<Swatch class="size-4"></Swatch>
 					</button>
 				</div>
