@@ -23,6 +23,10 @@
 			showInModal: true,
 			routes: [
 				{
+					label: '2026 Provinces',
+					route: '/app/kor/provinces/2026182/blank'
+				},
+				{
 					label: 'Municipalities',
 					route: '/app/kor/municipalities/2018001/blank'
 				}
