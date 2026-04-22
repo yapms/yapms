@@ -27,6 +27,14 @@
 				"pocketbase"
 			],
 			"automerge": false
+		},
+		{
+			"matchPackageNames": [
+				"tailwindcss",
+				"@tailwindcss/postcss",
+				"@tailwindcss/vite"
+			],
+			"automerge": false
 		}
 	]
 }
