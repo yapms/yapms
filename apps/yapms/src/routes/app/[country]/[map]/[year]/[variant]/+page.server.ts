@@ -1,5 +1,5 @@
 export function entries() {
-	const maps = import.meta.glob('$lib/assets/maps/*/*.svg');
+	const maps = import.meta.glob('$lib/assets/maps/**/*.svg');
 
 	const result = [];
 	for (const key in maps) {
