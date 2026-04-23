@@ -16,6 +16,8 @@
 		gotoLoadedMap
 	} from '$lib/stores/LoadedMap';
 
+	let { children } = $props();
+
 	const requestedMap = $derived(page.url.pathname.replace('/app/', '').replaceAll('/', '-'));
 
 	const map = $derived.by(() => {
@@ -60,12 +62,12 @@
 	}
 </script>
 
-{#await map}
-	<div class="flex justify-center w-full h-full">
-		<span class="loading loading-ring loading-lg text-primary"></span>
-	</div>
-{:then map}
-	{#if map !== undefined}
+{#if map !== undefined}
+	{#await map}
+		<div class="flex justify-center w-full h-full">
+			<span class="loading loading-ring loading-lg text-primary"></span>
+		</div>
+	{:then map}
 		<div
 			use:setupMap
 			id="map-div"
@@ -75,11 +77,11 @@
 		>
 			{@html map}
 		</div>
-	{:else}
-		<div class="flex justify-center items-center w-full h-full">
-			<h1>Map "{requestedMap}" not found!</h1>
-		</div>
-	{/if}
-{/await}
+	{/await}
+{:else}
+	<div class="flex justify-center items-center w-full h-full">
+		<h1>Map "{requestedMap}" not found!</h1>
+	</div>
+{/if}
 
-<slot />
+{@render children()} 
