@@ -44,19 +44,19 @@
 					route: '/app/usa/house/2026/blank'
 				},
 				{
-					label: 'MO Redistricted',
-					modalLabel: 'House 2026 (MO Redistricted)',
-					route: '/app/usa/house/2026037/mo_hb1'
+					label: 'MO Not Redistricted',
+					modalLabel: 'House 2026 (MO Not Redistricted)',
+					route: '/app/usa/house/2026112/no_mo_hb1'
 				},
 				{
-					label: 'VA Redistricted',
-					modalLabel: 'House 2026 (VA Redistricted)',
-					route: '/app/usa/house/2026051/va_hj4'
+					label: 'VA Not Redistricted',
+					modalLabel: 'House 2026 (VA Not Redistricted)',
+					route: '/app/usa/house/2026112/no_va_hj4'
 				},
 				{
-					label: 'MO & VA Redistricted',
-					modalLabel: 'House 2026 (MO Redistricted, VA Redistricted)',
-					route: '/app/usa/house/2026051/mo_hb1_va_hj4'
+					label: 'MO & VA Not Redistricted',
+					modalLabel: 'House 2026 (MO Not Redistricted, VA Not Redistricted)',
+					route: '/app/usa/house/2026112/no_mo_hb1_va_hj4'
 				}
 			]
 		},
