@@ -16,10 +16,19 @@
 		gotoLoadedMap
 	} from '$lib/stores/LoadedMap';
 
-	let requestedMap = $derived(page.url.pathname.replace('/app/', '').replaceAll('/', '-'));
-	let country = $derived(requestedMap.split('-').at(0));
+	let { children } = $props();
 
-	let map = $derived(import(`../../../lib/assets/maps/${country}/${requestedMap}.svg?raw`));
+	const requestedMap = $derived(page.url.pathname.replace('/app/', '').replaceAll('/', '-'));
+
+	const map = $derived.by(() => {
+		const maps = import.meta.glob<string>('../../../lib/assets/maps/**/*.svg', {
+			import: 'default',
+			query: '?raw'
+		});
+		const match = Object.entries(maps).find(([path]) => path.endsWith(`/${requestedMap}.svg`));
+
+		return match !== undefined ? match[1]() : undefined;
+	});
 
 	function setupMap(node: HTMLDivElement) {
 		const svg = node.querySelector<SVGElement>('svg');
@@ -53,20 +62,26 @@
 	}
 </script>
 
-{#await map}
-	<div class="flex justify-center w-full h-full">
-		<span class="loading loading-ring loading-lg text-primary"></span>
+{#if map !== undefined}
+	{#await map}
+		<div class="flex justify-center w-full h-full">
+			<span class="loading loading-ring loading-lg text-primary"></span>
+		</div>
+	{:then map}
+		<div
+			use:setupMap
+			id="map-div"
+			class="overflow-hidden h-full outline-none"
+			class:insets-hidden={$MapInsetsStore.hidden}
+			class:texts-hidden={$RegionTextsStore.hidden}
+		>
+			{@html map}
+		</div>
+	{/await}
+{:else}
+	<div class="flex justify-center items-center w-full h-full">
+		<h1>Map "{requestedMap}" not found!</h1>
 	</div>
-{:then map}
-	<div
-		use:setupMap
-		id="map-div"
-		class="overflow-hidden h-full outline-none"
-		class:insets-hidden={$MapInsetsStore.hidden}
-		class:texts-hidden={$RegionTextsStore.hidden}
-	>
-		{@html map.default}
-	</div>
-{/await}
+{/if}
 
-<slot />
+{@render children()}
