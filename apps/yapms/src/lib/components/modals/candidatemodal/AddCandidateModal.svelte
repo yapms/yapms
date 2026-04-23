@@ -14,6 +14,8 @@
 	import Rotate from '$lib/icons/Rotate.svelte';
 	import { flip } from 'svelte/animate';
 	import PresetColorsModal from './presetcolors/PresetColorsModal.svelte';
+	import Swatch from '$lib/icons/Swatch.svelte';
+	import { CustomColorsStore } from '$lib/stores/CustomColors';
 
 	let newName = $state<string>('New Candidate');
 	let newDefaultValue = $state<number>(0);
@@ -96,6 +98,12 @@
 	function flipColors() {
 		newColors.reverse();
 	}
+
+	let savePresetTip = $state('Save as Preset');
+	function saveAsPreset() {
+		$CustomColorsStore = [...$CustomColorsStore, newColors.map((m) => m.color)];
+		savePresetTip = 'Preset Saved!';
+	}
 </script>
 
 <ModalBase title="Add Candidate" store={AddCandidateModalStore} onClose={close}>
@@ -122,11 +130,22 @@
 		</div>
 
 		<fieldset class="fieldset">
-			<div class="flex gap-1 items-end">
-				<legend class="fieldset-legend">Colors</legend>
+			<div class="flex items-end">
+				<legend class="fieldset-legend pr-1">Colors</legend>
 				<button class="btn btn-xs btn-circle btn-ghost" onclick={flipColors}>
 					<Rotate class="size-4"></Rotate>
 				</button>
+				<div class="tooltip tooltip-right" data-tip={savePresetTip}>
+					<button
+						class="btn btn-xs btn-circle btn-ghost"
+						onclick={saveAsPreset}
+						onmouseenter={() => {
+							savePresetTip = 'Save as Preset';
+						}}
+					>
+						<Swatch class="size-4"></Swatch>
+					</button>
+				</div>
 			</div>
 
 			<ul class="flex flex-row flex-wrap gap-4 justify-center" bind:this={colorList}>
