@@ -39,7 +39,7 @@
 		{
 			label: 'Snow Forest Winter Gäddede by Jon Flobrant',
 			route:
-				'https://commons.wikimedia.org/wiki/File:Padr%C3%A3o_dos_Descobrimentos_with_Ponte_25_de_Abril_in_the_background,_Lisbon,_2010.jpg'
+				'https://commons.wikimedia.org/wiki/File:Snow_Forest_Winter_Gäddede_(Unsplash_3BWzjqbMlDk).jpg'
 		}
 	];
 </script>
