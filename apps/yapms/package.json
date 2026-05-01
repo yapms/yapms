@@ -39,7 +39,7 @@
 		"d3-composite-projections": "2.0.0",
 		"daisyui": "5.5.19",
 		"dompurify": "3.4.2",
-		"eslint": "10.2.1",
+		"eslint": "10.3.0",
 		"eslint-config-prettier": "10.1.8",
 		"eslint-plugin-svelte": "3.17.1",
 		"file-saver": "2.0.5",
