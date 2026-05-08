@@ -8,7 +8,7 @@
 	default-mode="split"
 	original-source='["https://cartes.gouv.fr/rechercher-une-donnee/dataset/IGNF_ADMIN-EXPRESS?redirected_from=geoservices.ign.fr#telechargement","https://commons.wikimedia.org/wiki/File:Senatoriales2023.svg"]'
 	title="French 2026 Senate"
-	type="departments"
+	type="senate"
 	variant="blank"
 	viewBox="0 0 950 639.98"
 >
