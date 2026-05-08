@@ -13,7 +13,22 @@
 				},
 				{
 					label: 'Departments',
-					route: '/app/fra/departments/2022/blank'
+					route: '/app/fra/departments/2026001/blank'
+				}
+			]
+		},
+		{
+			label: 'Senate',
+			showOnCard: true,
+			showInModal: true,
+			routes: [
+				{
+					label: 'Senate 2026',
+					route: '/app/fra/senate/2026001/blank'
+				},
+				{
+					label: 'Senate 2023',
+					route: '/app/fra/senate/2023267/blank'
 				}
 			]
 		}
