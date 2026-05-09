@@ -3,7 +3,7 @@
 	type="departments"
 	date="2022"
 	variant="blank"
-	title="French Departments"
+	title="French Departments (Old)"
 	original-source='["https://github.com/gregoiredavid/france-geojson"]'
 	tossup-candidate='{"id":"","name":"Tossup","defaultCount":0,"margins":[{"color":"#cccccc"}]}'
 	candidates='[{"id":"f35fbeeb-63e1-4b4d-8185-ff4dd4785fd0","defaultCount":0,"name":"Emmanuel Macron","margins":[{"color":"#e6b700"},{"color":"#e8c84d"},{"color":"#ffe78a"},{"color":"#b8a252"}]},{"id":"0059ee96-31df-4a23-8f08-ce1eff10b098","defaultCount":0,"name":"Marine Le Pen","margins":[{"color":"#1c408c"},{"color":"#577ccc"},{"color":"#8aafff"},{"color":"#949bb3"}]}]'
