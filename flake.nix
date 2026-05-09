@@ -10,7 +10,6 @@
 	utils.lib.eachDefaultSystem(system:
 		let
 			pkgs = nixpkgs.legacyPackages.${system};
-			biome = (import ./pkgs/biome.nix) { pkgs = pkgs; };
 		in {
 			virtualisation.docker.enable = true;
 			devShells.default = pkgs.mkShell {
@@ -19,8 +18,7 @@
 					pkgs.go
 					pkgs.ansible
 					pkgs.libwebp
-					pkgs.openssh_10_2
-					biome
+					pkgs.biome
 				];
 				shellHook = ''
 					npx devcontainer up --workspace-folder .
