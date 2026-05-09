@@ -47,16 +47,6 @@
 					label: 'MO Not Redistricted',
 					modalLabel: 'House 2026 (MO Not Redistricted)',
 					route: '/app/usa/house/2026128/no_mo_hb1'
-				},
-				{
-					label: 'VA Not Redistricted',
-					modalLabel: 'House 2026 (VA Not Redistricted)',
-					route: '/app/usa/house/2026128/no_va_hj4'
-				},
-				{
-					label: 'MO & VA Not Redistricted',
-					modalLabel: 'House 2026 (MO Not Redistricted, VA Not Redistricted)',
-					route: '/app/usa/house/2026128/no_mo_hb1_va_hj4'
 				}
 			]
 		},
