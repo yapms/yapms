@@ -3,7 +3,7 @@
   "engines": {
     "node": "24"
   },
-  "packageManager": "npm@11.14.1",
+  "packageManager": "npm@11.15.0",
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
