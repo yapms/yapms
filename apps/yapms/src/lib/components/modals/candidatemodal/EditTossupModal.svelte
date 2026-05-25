@@ -10,7 +10,7 @@
 	}
 
 	function updateColor(event: Event & { currentTarget: EventTarget & HTMLInputElement }) {
-		$TossupCandidateStore.margins[0].color = event.currentTarget.value;
+		$TossupCandidateStore.margins = [{ color: event.currentTarget.value }];
 		$RegionsStore = $RegionsStore;
 	}
 </script>

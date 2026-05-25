@@ -72,7 +72,9 @@
 		event: Event & { currentTarget: EventTarget & HTMLInputElement },
 		index: number
 	) {
-		$CandidatesStore[candidateIndex].margins[index].color = event.currentTarget.value;
+		$CandidatesStore[candidateIndex].margins = $CandidatesStore[candidateIndex].margins.map(
+			(margin, i) => (i === index ? { ...margin, color: event.currentTarget.value } : margin)
+		);
 		$RegionsStore = $RegionsStore;
 		colorToDelete = undefined;
 	}
