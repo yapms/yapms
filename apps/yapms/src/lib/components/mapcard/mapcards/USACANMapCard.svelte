@@ -9,7 +9,7 @@
 			routes: [
 				{
 					label: 'States',
-					route: '/app/usa_can/states/2024001/blank'
+					route: '/app/usa_can/states/2026001/blank'
 				}
 			]
 		}
