@@ -817,7 +817,6 @@
 		</g>
 		<g style="stroke-width: 0.624297" map-type="inset-texts" transform="translate(4)">
 			<text
-				xml:space="preserve"
 				x="197.53"
 				y="614.22"
 				style="font-size: 24px; line-height: 1.25; font-family: sans-serif; stroke-width: 0.998877"
@@ -829,7 +828,6 @@
 		</g>
 		<g style="stroke-width: 0.624297" map-type="inset-texts" transform="translate(4 250)">
 			<text
-				xml:space="preserve"
 				x="197.53"
 				y="614.22"
 				style="font-size: 24px; line-height: 1.25; font-family: sans-serif; stroke-width: 0.998877"

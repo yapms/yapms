@@ -825,7 +825,6 @@
 		</g>
 		<g style="stroke-width: 0.624297" map-type="inset-texts">
 			<text
-				xml:space="preserve"
 				x="121.56"
 				y="614.22"
 				style="font-size: 24px; line-height: 1.25; font-family: sans-serif; stroke-width: 0.998877"
@@ -837,7 +836,6 @@
 				</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				x="476.78"
 				y="815.75"
 				style="font-size: 24px; line-height: 1.25; font-family: sans-serif; stroke-width: 0.998877"
@@ -845,7 +843,6 @@
 				<tspan x="476.78" y="815.75">Rockhampton</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				x="476.13"
 				y="1014.22"
 				style="font-size: 24px; line-height: 1.25; font-family: sans-serif; stroke-width: 0.998877"
@@ -853,7 +850,6 @@
 				<tspan x="476.13" y="1014.22" style="stroke-width: 0.998877">Bundaberg</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				x="476.13"
 				y="1214.22"
 				style="font-size: 24px; line-height: 1.25; font-family: sans-serif; stroke-width: 0.998877"
@@ -861,7 +857,6 @@
 				<tspan x="476.13" y="1214.22" style="stroke-width: 0.998877">Toowomba</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				x="-79.87"
 				y="614.22"
 				style="font-size: 24px; line-height: 1.25; font-family: sans-serif; stroke-width: 0.998877"
@@ -869,7 +864,6 @@
 				<tspan x="-79.87" y="614.22" style="stroke-width: 0.998877">Cairns</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				x="-79.87"
 				y="814.22"
 				style="font-size: 24px; line-height: 1.25; font-family: sans-serif; stroke-width: 0.998877"
@@ -877,7 +871,6 @@
 				<tspan x="-79.87" y="814.22" style="stroke-width: 0.998877">Townsville</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				x="476.56"
 				y="614.22"
 				style="font-size: 24px; line-height: 1.25; font-family: sans-serif; stroke-width: 0.998877"

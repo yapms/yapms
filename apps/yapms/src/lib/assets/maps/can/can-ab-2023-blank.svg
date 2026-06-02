@@ -755,7 +755,6 @@
 		</g>
 		<g map-type="inset-texts">
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -768,7 +767,6 @@
 				<tspan style="stroke-width: 2.66856" x="-.61" y="577.27">Red Deer</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -781,7 +779,6 @@
 				<tspan style="stroke-width: 2.66856" x="485.5" y="638.27">Calgary</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -794,7 +791,6 @@
 				<tspan style="stroke-width: 2.66856" x="485.39" y="436.27">Edmonton</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -810,7 +806,6 @@
 				<tspan x="2.5" y="721.63">Prairie</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;

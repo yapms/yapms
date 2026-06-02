@@ -3448,7 +3448,6 @@
 	<g map-type="insets" transform="translate(.9 2.52)" id="g387">
 		<g id="g72" map-type="inset-texts">
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -3463,7 +3462,6 @@
 				<tspan x="875.40002" y="1096.27" style="stroke-width: 2.66856" id="tspan388">Munich</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -3479,7 +3477,6 @@
 			</text>
 			<g map-type="insets" transform="translate(-284.1 251.65)" id="g389">
 				<text
-					xml:space="preserve"
 					style="
 						font-size: 26.6856px;
 						line-height: 1.25;
@@ -3495,7 +3492,6 @@
 				</text>
 			</g>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -3510,7 +3506,6 @@
 				<tspan x="456.25" y="1095.75" style="stroke-width: 2.66856" id="tspan390">Stuttgart</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -3527,7 +3522,6 @@
 				</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -3544,7 +3538,6 @@
 				</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -3559,7 +3552,6 @@
 				<tspan x="1020.4" y="1096.27" style="stroke-width: 2.66856" id="tspan393">Leipzig</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -3576,7 +3568,6 @@
 				</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -3593,7 +3584,6 @@
 				</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -3610,7 +3600,6 @@
 				</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				x="5.4000025"
 				y="846.27002"
 				style="
@@ -3627,7 +3616,6 @@
 				</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 53.3712px;
 					line-height: 1.25;
@@ -3641,7 +3629,6 @@
 				<tspan x="744.78998" y="49.509998" id="tspan398">List Seats</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 53.3712px;
 					line-height: 1.25;

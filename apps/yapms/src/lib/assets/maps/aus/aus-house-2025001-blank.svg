@@ -1278,32 +1278,16 @@
 			<path d="M92.46 0v73.72H0v1.25h185.35V0h-1.25v73.72H93.7V0Z" />
 		</g>
 		<g map-type="inset-texts">
-			<text
-				xml:space="preserve"
-				style="font-size: 14px; line-height: 1.25; font-family: sans-serif"
-				x="2.63"
-				y="14.25"
-			>
+			<text style="font-size: 14px; line-height: 1.25; font-family: sans-serif" x="2.63" y="14.25">
 				<tspan x="2.63" y="14.25">Darwin</tspan>
 			</text>
-			<text
-				xml:space="preserve"
-				style="font-size: 14px; line-height: 1.25; font-family: sans-serif"
-				x="97.7"
-				y="14.64"
-			>
+			<text style="font-size: 14px; line-height: 1.25; font-family: sans-serif" x="97.7" y="14.64">
 				<tspan x="97.7" y="14.64">Townsville</tspan>
 			</text>
-			<text
-				xml:space="preserve"
-				style="font-size: 14px; line-height: 1.25; font-family: sans-serif"
-				x="2.63"
-				y="581.19"
-			>
+			<text style="font-size: 14px; line-height: 1.25; font-family: sans-serif" x="2.63" y="581.19">
 				<tspan x="2.63" y="581.19">Perth</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="font-size: 14px; line-height: 1.25; font-family: sans-serif"
 				x="1028.44"
 				y="516.14"
@@ -1311,7 +1295,6 @@
 				<tspan x="1028.44" y="516.14">Central Coast</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="font-size: 14px; line-height: 1.25; font-family: sans-serif"
 				x="489.61"
 				y="674.71"
@@ -1319,7 +1302,6 @@
 				<tspan x="489.61" y="674.71">A.C.T</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="font-size: 14px; line-height: 1.25; font-family: sans-serif"
 				x="1028.5"
 				y="300.15"
@@ -1327,7 +1309,6 @@
 				<tspan x="1028.5" y="300.15">South Brisbane</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="font-size: 14px; line-height: 1.25; font-family: sans-serif"
 				x="710.79"
 				y="731.06"
@@ -1335,7 +1316,6 @@
 				<tspan x="710.79" y="731.06">Hobart</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="font-size: 14px; line-height: 1.25; font-family: sans-serif"
 				x="869.48"
 				y="516.06"
@@ -1343,7 +1323,6 @@
 				<tspan x="869.48" y="516.06">Sydney</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="font-size: 14px; line-height: 1.25; font-family: sans-serif"
 				x="869.91"
 				y="300.18"
@@ -1351,7 +1330,6 @@
 				<tspan x="869.91" y="300.18">North Brisbane</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="font-size: 14px; line-height: 1.25; font-family: sans-serif"
 				x="157.37"
 				y="581.16"
@@ -1359,7 +1337,6 @@
 				<tspan x="157.37" y="581.16">Adelaide</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="font-size: 14px; line-height: 1.25; font-family: sans-serif"
 				x="263.38"
 				y="581.21"

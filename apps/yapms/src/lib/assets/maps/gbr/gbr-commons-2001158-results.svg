@@ -2882,7 +2882,6 @@
 			</g>
 			<g map-type="inset-texts">
 				<text
-					xml:space="preserve"
 					x="-78.98"
 					y="1416.23"
 					style="font-size: 24px; line-height: 1.25; font-family: sans-serif; stroke-width: 1.30572"
@@ -2892,7 +2891,6 @@
 					</tspan>
 				</text>
 				<text
-					xml:space="preserve"
 					x="-77.48"
 					y="1141.1"
 					style="font-size: 24px; line-height: 1.25; font-family: sans-serif; stroke-width: 1.30572"
@@ -2902,7 +2900,6 @@
 					</tspan>
 				</text>
 				<text
-					xml:space="preserve"
 					x="-79.75"
 					y="657.44"
 					style="font-size: 24px; line-height: 1.25; font-family: sans-serif; stroke-width: 1.30572"
@@ -2910,7 +2907,6 @@
 					<tspan x="-84.75" y="657.44" style="stroke-width: 1.30572">Belfast</tspan>
 				</text>
 				<text
-					xml:space="preserve"
 					x="-79.75"
 					y="899.27"
 					style="font-size: 24px; line-height: 1.25; font-family: sans-serif; stroke-width: 1.30572"
@@ -2918,7 +2914,6 @@
 					<tspan x="-84.75" y="899.27" style="stroke-width: 1.30572">West Midlands</tspan>
 				</text>
 				<text
-					xml:space="preserve"
 					x="998.47"
 					y="596"
 					style="font-size: 24px; line-height: 1.25; font-family: sans-serif; stroke-width: 1.30572"
@@ -2926,7 +2921,6 @@
 					<tspan x="998.47" y="596" style="stroke-width: 1.30572">Orkney and Shetland</tspan>
 				</text>
 				<text
-					xml:space="preserve"
 					x="901.41"
 					y="794.69"
 					style="font-size: 24px; line-height: 1.25; font-family: sans-serif; stroke-width: 1.30572"
@@ -2934,7 +2928,6 @@
 					<tspan x="901.41" y="794.69" style="stroke-width: 1.30572">Central Belt</tspan>
 				</text>
 				<text
-					xml:space="preserve"
 					x="947.7"
 					y="1050.9"
 					style="font-size: 24px; line-height: 1.25; font-family: sans-serif; stroke-width: 1.30572"
@@ -2942,7 +2935,6 @@
 					<tspan x="947.7" y="1050.9" style="stroke-width: 1.30572">North East England</tspan>
 				</text>
 				<text
-					xml:space="preserve"
 					x="947.39"
 					y="1371.16"
 					style="font-size: 24px; line-height: 1.25; font-family: sans-serif; stroke-width: 1.30572"

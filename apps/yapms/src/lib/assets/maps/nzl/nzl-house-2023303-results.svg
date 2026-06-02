@@ -34,7 +34,6 @@
 				y="14.59"
 				x="482.85"
 				style="font-size: 16.297px; line-height: 1.25; font-family: sans-serif"
-				xml:space="preserve"
 			>
 				<tspan y="14.59" x="482.85">Tauranga</tspan>
 			</text>
@@ -42,7 +41,6 @@
 				y="15.13"
 				x="2.06"
 				style="font-size: 16.297px; line-height: 1.25; font-family: sans-serif"
-				xml:space="preserve"
 			>
 				<tspan y="15.13" x="2.06">Auckland Metro</tspan>
 			</text>
@@ -50,7 +48,6 @@
 				y="312.81"
 				x=".67"
 				style="font-size: 16.297px; line-height: 1.25; font-family: sans-serif"
-				xml:space="preserve"
 			>
 				<tspan y="312.81" x=".67">Hamilton</tspan>
 			</text>
@@ -58,7 +55,6 @@
 				y="490.79"
 				x="461.41"
 				style="font-size: 16.297px; line-height: 1.25; font-family: sans-serif"
-				xml:space="preserve"
 			>
 				<tspan y="490.79" x="461.41">Palmerston</tspan>
 				<tspan y="511.16" x="461.41">North</tspan>
@@ -67,7 +63,6 @@
 				y="634.15"
 				x="295.22"
 				style="font-size: 16.297px; line-height: 1.25; font-family: sans-serif"
-				xml:space="preserve"
 			>
 				<tspan y="634.15" x="295.22">Christchurch</tspan>
 			</text>
@@ -75,7 +70,6 @@
 				y="634.27"
 				x="410.28"
 				style="font-size: 16.297px; line-height: 1.25; font-family: sans-serif"
-				xml:space="preserve"
 			>
 				<tspan y="634.27" x="410.28">Wellington</tspan>
 			</text>
@@ -1344,7 +1338,6 @@
 			for-region="LS"
 			y="308.17"
 			x="379.06"
-			xml:space="preserve"
 		>
 			List Seats
 		</text>
@@ -1358,7 +1351,6 @@
 			for-region="MA"
 			y="338.11"
 			x="377.88"
-			xml:space="preserve"
 		>
 			Māori
 		</text>

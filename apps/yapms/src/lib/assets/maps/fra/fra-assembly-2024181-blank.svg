@@ -3950,7 +3950,6 @@
 	</g>
 	<g map-type="region-texts">
 		<text
-			xml:space="preserve"
 			x="85.15"
 			y="682.29"
 			for-region="OS"
@@ -3979,7 +3978,6 @@
 			<path d="M116 125v2H0v-2z" style="stroke-width: 0.664758" />
 		</g>
 		<text
-			xml:space="preserve"
 			style="
 				font-size: 13.3428px;
 				line-height: 1.25;

@@ -648,7 +648,6 @@
 		</g>
 		<g map-type="inset-texts" style="stroke-width: 0.527252">
 			<text
-				xml:space="preserve"
 				style="font-size: 14px; line-height: 1.25; font-family: sans-serif; stroke-width: 0.527252"
 				x="2.63"
 				y="581.19"
@@ -656,7 +655,6 @@
 				<tspan x="2.63" y="581.19" style="stroke-width: 0.527252">Perth</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="font-size: 14px; line-height: 1.25; font-family: sans-serif; stroke-width: 0.527252"
 				x="2.63"
 				y="502.64"
