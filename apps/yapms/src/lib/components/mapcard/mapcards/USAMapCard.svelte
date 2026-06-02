@@ -44,9 +44,9 @@
 					route: '/app/usa/house/2026/blank'
 				},
 				{
-					label: '2024 Results',
-					modalLabel: '2024 House Results',
-					route: '/app/usa/house/2024310/results'
+					label: 'MO Not Redistricted',
+					modalLabel: 'House 2026 (MO Not Redistricted)',
+					route: '/app/usa/house/2026128/no_mo_hb1'
 				}
 			]
 		},
@@ -132,6 +132,10 @@
 				{
 					label: '2022 Senate Results',
 					route: '/app/usa/senate/2022/results'
+				},
+				{
+					label: '2024 House Results',
+					route: '/app/usa/house/2024310/results'
 				},
 				{
 					label: '2022 House Results',
