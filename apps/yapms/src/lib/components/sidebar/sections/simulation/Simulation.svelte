@@ -1,17 +1,22 @@
 <script lang="ts">
-	import { CandidatesStore, CandidatesTable, TossupCandidateStore, isTossupCandidate } from "$lib/stores/Candidates";
-	import { DefaultModeStore } from "$lib/stores/DefaultMode";
-	import { RegionsStore } from "$lib/stores/regions/Regions";
-	import { preventNonNumericalInput, preventNonNumericalPaste } from "$lib/utils/inputValidation";
-	import { SvelteMap } from "svelte/reactivity";
-	import { get } from "svelte/store";
+	import {
+		CandidatesStore,
+		CandidatesTable,
+		TossupCandidateStore,
+		isTossupCandidate
+	} from '$lib/stores/Candidates';
+	import { DefaultModeStore } from '$lib/stores/DefaultMode';
+	import { RegionsStore } from '$lib/stores/regions/Regions';
+	import { preventNonNumericalInput, preventNonNumericalPaste } from '$lib/utils/inputValidation';
+	import { SvelteMap } from 'svelte/reactivity';
+	import { get } from 'svelte/store';
 
 	// track if user has interacted with the weights and preserve their changes on candidate addition/deletion if so
 	let weightsTouched = $state(false);
 
 	// determine if we want to split regions or fill them when simulating
 	// DefaultModeStore only set on map load, so this reads what the default for any given map is.
-	let splitRegions = $derived($DefaultModeStore === "split");
+	let splitRegions = $derived($DefaultModeStore === 'split');
 
 	const weights = $state(new SvelteMap<string, number>());
 
@@ -33,7 +38,7 @@
 	$effect(() => {
 		for (const [candidateId, weight] of weights) {
 			if (!isTossupCandidate(candidateId) && $CandidatesTable.get(candidateId) === undefined) {
-				weights.set($TossupCandidateStore.id, weights.get($TossupCandidateStore.id)! ?? 0 + weight)
+				weights.set($TossupCandidateStore.id, weights.get($TossupCandidateStore.id)! ?? 0 + weight);
 				weights.delete(candidateId);
 			}
 		}
@@ -55,7 +60,7 @@
 
 	function updateCandidateWeight(
 		event: Event & { currentTarget: EventTarget & HTMLInputElement },
-		candidateId: string,
+		candidateId: string
 	) {
 		if (!weightsTouched) {
 			weightsTouched = true;
@@ -93,8 +98,10 @@
 		for (const region of regions) {
 			if (splitRegions) {
 				// assign each value in a region to a candidate
-				const rolls = Array.from({ length: region.value }, () => getCandidateIdFromRandom(Math.random() * 100))
-								
+				const rolls = Array.from({ length: region.value }, () =>
+					getCandidateIdFromRandom(Math.random() * 100)
+				);
+
 				const candidateCounts = rolls.reduce((acc, candidateId) => {
 					acc.set(candidateId, (acc.get(candidateId) ?? 0) + 1);
 					return acc;
@@ -105,7 +112,7 @@
 					count,
 					margin: 0
 				}));
-			}  else {
+			} else {
 				const candidateId = getCandidateIdFromRandom(Math.random() * 100);
 				region.candidates = [
 					{
@@ -115,7 +122,6 @@
 					}
 				];
 			}
-			
 		}
 		RegionsStore.set(regions);
 	}
@@ -140,13 +146,15 @@
 		<div class="collapse-title text-center font-semibold py-2.5 px-0 text-sm">Weights</div>
 
 		<div class="collapse-content flex flex-col text-sm gap-2">
-			{#each [...weights] as [candidateId, weight] }
+			{#each [...weights] as [candidateId, weight]}
 				<label class="flex flex-col w-full gap-y-1">
 					<div class="flex w-full justify-between">
 						{#if isTossupCandidate(candidateId)}
 							<span class="truncate font-medium">{$TossupCandidateStore.name}</span>
 						{:else}
-							<span class="truncate font-medium">{$CandidatesTable.get(candidateId)?.name ?? ""}</span>
+							<span class="truncate font-medium"
+								>{$CandidatesTable.get(candidateId)?.name ?? ''}</span
+							>
 						{/if}
 						<div class="flex space-x-0 font-thin font-mono">
 							<span class="px-0"></span>
@@ -155,15 +163,17 @@
 							{:else}
 								<input
 									onchange={(event) => updateCandidateWeight(event, candidateId)}
-									onkeypress={(e) => { preventNonNumericalInput(e, true) } }
-									onpaste={(e) => { preventNonNumericalPaste(e, true) } }
+									onkeypress={(e) => {
+										preventNonNumericalInput(e, true);
+									}}
+									onpaste={(e) => {
+										preventNonNumericalPaste(e, true);
+									}}
 									value={weight.toFixed(2)}
 									class="rounded-md px-1 text-end resizing-input-split"
 								/>
 							{/if}
-							<span
-								>%</span
-							>
+							<span>%</span>
 						</div>
 					</div>
 					<input
