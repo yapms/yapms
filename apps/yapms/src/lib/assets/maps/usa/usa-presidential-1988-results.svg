@@ -807,14 +807,7 @@
 			</tspan>
 			<tspan x="890.49" y="468.69" map-type="value-text">00</tspan>
 		</text>
-		<text
-			xml:space="preserve"
-			x="784.39"
-			y="27.92"
-			for-region="me-al"
-			font-family="Roboto"
-			style="line-height: 1.25"
-		>
+		<text x="784.39" y="27.92" for-region="me-al" font-family="Roboto" style="line-height: 1.25">
 			<tspan x="784.39" y="27.92">ME-AL</tspan>
 			<tspan x="818.39" y="27.92" map-type="value-text">00</tspan>
 		</text>
@@ -824,13 +817,7 @@
 		</text>
 		<g for-region="me-02">
 			<text x="871.53" y="82.04" text-align="center"><tspan x="871.53" y="82.04">ME</tspan></text>
-			<text
-				xml:space="preserve"
-				x="799.61"
-				y="69.56"
-				font-family="Roboto"
-				style="line-height: 1.25"
-			>
+			<text x="799.61" y="69.56" font-family="Roboto" style="line-height: 1.25">
 				<tspan x="784.15" y="69.56">ME-02</tspan>
 				<tspan x="818.15" y="69.56" map-type="value-text">00</tspan>
 			</text>

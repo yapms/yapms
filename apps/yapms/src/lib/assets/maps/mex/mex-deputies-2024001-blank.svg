@@ -1641,14 +1641,12 @@
 	</g>
 	<g map-type="inset-texts" transform="matrix(0 1.33 1.33 0 -388.53 -99.82)">
 		<text
-			xml:space="preserve"
 			transform="matrix(0 .75 .75 0 74.87 767.05)"
 			style="font-size: 341.333px; font-family: sans-serif; stroke-width: 0.15874"
 		>
 			<tspan x="609.43" y="395.05">Districts</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			transform="matrix(0 .75 .75 0 74.87 3722.05)"
 			style="font-size: 341.333px; font-family: sans-serif; stroke-width: 0.15874"
 		>

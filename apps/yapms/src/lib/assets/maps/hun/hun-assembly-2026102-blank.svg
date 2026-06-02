@@ -844,7 +844,6 @@
 		transform="matrix(0.9999971827679303,0,0,1,-25.70089747572511,-75.06361694335936)"
 	>
 		<text
-			xml:space="preserve"
 			x="414.91"
 			y="187.22"
 			font-family="Roboto"
@@ -858,7 +857,6 @@
 	<g map-type="insets">
 		<g map-type="inset-texts">
 			<text
-				xml:space="preserve"
 				x="10.27"
 				y="37.29"
 				style="

@@ -539,7 +539,6 @@
 		/>
 		<g map-type="inset-texts">
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -555,7 +554,6 @@
 				<tspan x="385.5" y="669.76">Current</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -569,7 +567,6 @@
 				<tspan x="385" y="529.63">Battlefords</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -582,7 +579,6 @@
 				<tspan x="521.92" y="496.27">Yorkton</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -595,7 +591,6 @@
 				<tspan x="384.39" y="321.53">Regina</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -608,7 +603,6 @@
 				<tspan x="385.25" y="146.27">Saskatoon</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -621,7 +615,6 @@
 				<tspan x="477.39" y="24.27">Prince Albert</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;

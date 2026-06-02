@@ -1,6 +1,5 @@
 <svg
 	xmlns="http://www.w3.org/2000/svg"
-	xml:space="preserve"
 	auto-border-stroke-width="1"
 	auto-border-stroke-width-limit=".1"
 	candidates='[{"id":"0", "name":"Democrats", "margins": [{ "color": "#1C408C" }, { "color": "#577CCC" }, { "color": "#8AAFFF" }, { "color": "#949BB3" }]}, {"id":"1", "name":"Republicans", "margins": [{ "color": "#BF1D29" }, { "color": "#FF5865" }, { "color": "#FF8B98" }, { "color": "#CF8980" }]}]'

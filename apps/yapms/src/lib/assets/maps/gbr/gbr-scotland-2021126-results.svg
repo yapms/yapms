@@ -849,7 +849,6 @@
 	<g map-type="insets" transform="translate(0.0020000000000948)">
 		<g map-type="inset-texts">
 			<text
-				xml:space="preserve"
 				x="643.97"
 				y="19.95"
 				style="
@@ -862,7 +861,6 @@
 				<tspan x="643.97" y="19.95" style="stroke-width: 0.998876">Shetlands</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				x="643.97"
 				y="171.95"
 				style="
@@ -875,7 +873,6 @@
 				<tspan x="643.97" y="171.95" style="stroke-width: 0.998876">Aberdeen</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				x="612.27"
 				y="425.95"
 				style="
@@ -888,7 +885,6 @@
 				<tspan x="612.27" y="425.95" style="stroke-width: 0.998876">Glasgow</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				x="612.27"
 				y="609.95"
 				style="
@@ -901,7 +897,6 @@
 				<tspan x="612.27" y="609.95" style="stroke-width: 0.998876">Edinburgh</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				x="643.97"
 				y="330.2"
 				style="
@@ -917,7 +912,6 @@
 	</g>
 	<g map-type="region-texts" fill="currentColor" transform="translate(0.0020000000000948)">
 		<text
-			xml:space="preserve"
 			x="133.05"
 			y="78.32"
 			for-region="LS"

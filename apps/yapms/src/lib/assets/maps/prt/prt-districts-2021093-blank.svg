@@ -163,7 +163,6 @@
 	</g>
 	<g map-type="inset-texts">
 		<text
-			xml:space="preserve"
 			style="
 				font-size: 26.6856px;
 				line-height: 1.25;
@@ -176,7 +175,6 @@
 			<tspan style="stroke-width: 2.66856" x="3.39" y="648.27">Madeira</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			style="
 				font-size: 26.6856px;
 				line-height: 1.25;

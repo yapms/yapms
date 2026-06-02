@@ -1,6 +1,5 @@
 <svg
 	xmlns="http://www.w3.org/2000/svg"
-	xml:space="preserve"
 	candidates='[{"id":"89153aa3-e33c-470f-a9d9-afd5f77ca056","name":"Purple","defaultCount":0,"margins":[{"color":"#9b59b6"}]},{"id":"69fc289c-92f9-4d24-a490-9315f56b9866","name":"Green","defaultCount":0,"margins":[{"color":"#2ecc71"}]},{"id":"b0f6227b-3735-4b92-9f2c-162f164a0658","name":"Blue","defaultCount":0,"margins":[{"color":"#206694"}]},{"id":"2278c3db-d2d2-4abd-a17e-b22504cdb4e4","name":"Orange","defaultCount":0,"margins":[{"color":"#c9782c"}]}]'
 	style="
 		--region-stroke-color: var(--color-base-100);
@@ -674,7 +673,6 @@
 		transform="matrix(0.75838884,0,0,0.75838884,-413.03978,22.778771)"
 	>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="KO"
@@ -696,7 +694,6 @@
 			<tspan x="659.78" y="290.22" style="transition: color 0.2s ease-in-out">KO</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="CA"
@@ -718,7 +715,6 @@
 			<tspan x="659.78" y="290.22" style="transition: color 0.2s ease-in-out">CA</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="CM"
@@ -740,7 +736,6 @@
 			<tspan x="659.78" y="290.22" style="transition: color 0.2s ease-in-out">CM</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="CE"
@@ -762,7 +757,6 @@
 			<tspan x="659.78" y="290.22" style="transition: color 0.2s ease-in-out">CE</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="AR"
@@ -784,7 +778,6 @@
 			<tspan x="659.78" y="290.22" style="transition: color 0.2s ease-in-out">AR</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="ST"
@@ -806,7 +799,6 @@
 			<tspan x="659.78" y="290.22" style="transition: color 0.2s ease-in-out">ST</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="AC"
@@ -828,7 +820,6 @@
 			<tspan x="659.78" y="290.22" style="transition: color 0.2s ease-in-out">AC</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="BL"
@@ -850,7 +841,6 @@
 			<tspan x="659.78" y="290.22" style="transition: color 0.2s ease-in-out">BL</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="TL"
@@ -872,7 +862,6 @@
 			<tspan x="659.78" y="290.22" style="transition: color 0.2s ease-in-out">TL</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="RO"
@@ -894,7 +883,6 @@
 			<tspan x="659.78" y="290.22" style="transition: color 0.2s ease-in-out">RO</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="PR"
@@ -916,7 +904,6 @@
 			<tspan x="659.78" y="290.22" style="transition: color 0.2s ease-in-out">PR</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="OP"
@@ -938,7 +925,6 @@
 			<tspan x="659.78" y="290.22" style="transition: color 0.2s ease-in-out">OP</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="ES"
@@ -960,7 +946,6 @@
 			<tspan x="659.78" y="290.22" style="transition: color 0.2s ease-in-out">ES</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="LA"
@@ -982,7 +967,6 @@
 			<tspan x="659.78" y="290.22" style="transition: color 0.2s ease-in-out">LA</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="MA"
@@ -1004,7 +988,6 @@
 			<tspan x="659.78" y="290.22" style="transition: color 0.2s ease-in-out">MA</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="NQ"
@@ -1026,7 +1009,6 @@
 			<tspan x="659.78" y="290.22" style="transition: color 0.2s ease-in-out">NQ</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="DF"
