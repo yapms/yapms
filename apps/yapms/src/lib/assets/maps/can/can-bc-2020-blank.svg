@@ -776,7 +776,6 @@
 		/>
 		<g map-type="inset-texts">
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -789,7 +788,6 @@
 				<tspan style="stroke-width: 2.66856" x="3.66" y="298.4">Vancouver Metro</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -802,7 +800,6 @@
 				<tspan style="stroke-width: 2.66856" x="295.33" y="469.27">Kelowna</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -815,7 +812,6 @@
 				<tspan style="stroke-width: 2.66856" x="5.56" y="148.53">Victoria</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;

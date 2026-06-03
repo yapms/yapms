@@ -298,7 +298,6 @@
 		transform="matrix(0.75,0,0,0.7499999999999999,-0.1607704162597656,0.2752040100097755)"
 	>
 		<text
-			xml:space="preserve"
 			x="113.94"
 			y="175.43"
 			font-family="Roboto"
@@ -342,7 +341,6 @@
 			transform="matrix(0.9000000000000001,0,0,0.8999999999999998,0.3692463886738437,68.67998894900097)"
 		>
 			<text
-				xml:space="preserve"
 				x="9.39"
 				y="595.88"
 				style="
@@ -355,7 +353,6 @@
 				<tspan x="9.39" y="595.88" style="stroke-width: 0.624298">Stockholm</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				x="9.55"
 				y="700.04"
 				style="
@@ -368,7 +365,6 @@
 				<tspan x="9.55" y="700.04" style="stroke-width: 0.624298">Gothenburg</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				x="8.86"
 				y="804.21"
 				style="

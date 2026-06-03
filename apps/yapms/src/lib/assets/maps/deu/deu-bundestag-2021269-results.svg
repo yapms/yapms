@@ -3039,7 +3039,6 @@
 			transform="matrix(0 1 -1.52 0 1155 242.7)"
 		/>
 		<text
-			xml:space="preserve"
 			style="
 				font-size: 26.6856px;
 				line-height: 1.25;
@@ -3055,7 +3054,6 @@
 	</g>
 	<g map-type="insets" transform="translate(.9 252.52)">
 		<text
-			xml:space="preserve"
 			style="
 				font-size: 26.6856px;
 				line-height: 1.25;
@@ -3071,7 +3069,6 @@
 	</g>
 	<g map-type="insets" transform="translate(-284.1 251.65)">
 		<text
-			xml:space="preserve"
 			style="
 				font-size: 26.6856px;
 				line-height: 1.25;
@@ -3087,7 +3084,6 @@
 	</g>
 	<g map-type="insets" transform="translate(-418.25 252)">
 		<text
-			xml:space="preserve"
 			style="
 				font-size: 26.6856px;
 				line-height: 1.25;
@@ -3103,7 +3099,6 @@
 	</g>
 	<g map-type="insets" transform="translate(-155.02 249.76)">
 		<text
-			xml:space="preserve"
 			style="
 				font-size: 26.6856px;
 				line-height: 1.25;
@@ -3119,7 +3114,6 @@
 	</g>
 	<g map-type="insets" transform="translate(-575.02 249.76)">
 		<text
-			xml:space="preserve"
 			style="
 				font-size: 26.6856px;
 				line-height: 1.25;
@@ -3135,7 +3129,6 @@
 	</g>
 	<g map-type="insets" transform="translate(145.9 252.52)">
 		<text
-			xml:space="preserve"
 			style="
 				font-size: 26.6856px;
 				line-height: 1.25;
@@ -3151,7 +3144,6 @@
 	</g>
 	<g map-type="insets" transform="translate(-469.1 2.52)">
 		<text
-			xml:space="preserve"
 			style="
 				font-size: 26.6856px;
 				line-height: 1.25;
@@ -3167,7 +3159,6 @@
 	</g>
 	<g map-type="insets" transform="translate(-339.1 2.52)">
 		<text
-			xml:space="preserve"
 			style="
 				font-size: 26.6856px;
 				line-height: 1.25;
@@ -3183,7 +3174,6 @@
 	</g>
 	<g map-type="insets" transform="translate(-175.54 2.1)">
 		<text
-			xml:space="preserve"
 			style="
 				font-size: 26.6856px;
 				line-height: 1.25;
@@ -3199,7 +3189,6 @@
 	</g>
 	<g map-type="insets" transform="translate(-873.54 1.9)">
 		<text
-			xml:space="preserve"
 			x="878.94"
 			y="844.37"
 			style="
@@ -3215,7 +3204,6 @@
 	</g>
 	<g map-type="inset-texts">
 		<text
-			xml:space="preserve"
 			style="
 				font-size: 53.3712px;
 				line-height: 1.25;
@@ -3228,7 +3216,6 @@
 			<tspan x="744.79" y="49.51">List Seats</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			style="
 				font-size: 53.3712px;
 				line-height: 1.25;

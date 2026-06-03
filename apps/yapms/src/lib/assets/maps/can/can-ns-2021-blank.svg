@@ -477,7 +477,6 @@
 		/>
 		<g map-type="inset-texts">
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -490,7 +489,6 @@
 				<tspan style="stroke-width: 2.66856" x="226.28" y="24.27">Sydney</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;

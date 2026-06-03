@@ -407,7 +407,6 @@
 		/>
 		<g map-type="inset-texts">
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -420,7 +419,6 @@
 				<tspan style="stroke-width: 2.66856" x="776.25" y="516.27">Saint John</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -433,7 +431,6 @@
 				<tspan style="stroke-width: 2.66856" x="775.39" y="316.4">Moncton</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 18.6667px;
 					line-height: 1.25;

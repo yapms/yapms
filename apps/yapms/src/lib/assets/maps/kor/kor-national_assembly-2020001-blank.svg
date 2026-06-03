@@ -1290,13 +1290,7 @@
 		/>
 	</g>
 	<g map-type="region-texts" fill="currentColor">
-		<text
-			for-region="Proportional"
-			x="690.56"
-			y="812.73"
-			style="font-size: 37.333px"
-			xml:space="preserve"
-		>
+		<text for-region="Proportional" x="690.56" y="812.73" style="font-size: 37.333px">
 			<tspan x="690.56" y="812.73" style="font-size: 37.333px">Proportional</tspan>
 		</text>
 	</g>

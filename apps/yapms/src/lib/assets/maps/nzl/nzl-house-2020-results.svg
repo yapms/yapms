@@ -25,7 +25,6 @@
 		</g>
 		<g map-type="inset-texts" transform="matrix(2 0 0 2 -1.65 2.69)">
 			<text
-				xml:space="preserve"
 				style="font-size: 16.297px; line-height: 1.25; font-family: sans-serif"
 				x="482.85"
 				y="14.59"
@@ -33,7 +32,6 @@
 				<tspan x="482.85" y="14.59">Tauranga</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="font-size: 16.297px; line-height: 1.25; font-family: sans-serif"
 				x="2.06"
 				y="15.13"
@@ -41,7 +39,6 @@
 				<tspan x="2.06" y="15.13">Auckland Metro</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="font-size: 16.297px; line-height: 1.25; font-family: sans-serif"
 				x=".67"
 				y="312.81"
@@ -49,7 +46,6 @@
 				<tspan x=".67" y="312.81">Hamilton</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="font-size: 16.297px; line-height: 1.25; font-family: sans-serif"
 				x="461.41"
 				y="490.79"
@@ -58,7 +54,6 @@
 				<tspan x="461.41" y="511.16">North</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="font-size: 16.297px; line-height: 1.25; font-family: sans-serif"
 				x="295.22"
 				y="634.15"
@@ -66,7 +61,6 @@
 				<tspan x="295.22" y="634.15">Christchurch</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="font-size: 16.297px; line-height: 1.25; font-family: sans-serif"
 				x="410.28"
 				y="634.27"
@@ -859,7 +853,7 @@
 		font-size="14"
 		text-anchor="middle"
 	>
-		<text xml:space="preserve" x="379.06" y="308.17" for-region="LS">List Seats</text>
-		<text xml:space="preserve" x="377.88" y="338.11" for-region="MA">Māori</text>
+		<text x="379.06" y="308.17" for-region="LS">List Seats</text>
+		<text x="377.88" y="338.11" for-region="MA">Māori</text>
 	</g>
 </svg>

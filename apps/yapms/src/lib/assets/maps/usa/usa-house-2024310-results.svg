@@ -12,7 +12,6 @@
 	style="transform-origin: 0 0 0; transform: matrix(0.85, 0, 0, 0.85, 117.825, 67.6945)"
 	candidates='[{"id":"1", "name":"Republicans", "margins": [{ "color": "#BF1D29" }, { "color": "#FF5865" }, { "color": "#FF8B98" }, { "color": "#CF8980" }]}, {"id":"0", "name":"Democrats", "margins": [{ "color": "#1C408C" }, { "color": "#577CCC" }, { "color": "#8AAFFF" }, { "color": "#949BB3" }]}]'
 	action-groups="States"
-	xml:space="preserve"
 	xmlns="http://www.w3.org/2000/svg"
 >
 	<g map-type="regions">

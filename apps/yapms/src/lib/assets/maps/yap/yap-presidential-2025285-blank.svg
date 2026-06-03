@@ -1,6 +1,5 @@
 <svg
 	xmlns="http://www.w3.org/2000/svg"
-	xml:space="preserve"
 	candidates='[{"id":"d826a0b8-2975-490c-85b3-e4ec37092acd","defaultCount":0,"name":"Red","margins":[{"color":"#912B2B"},{"color":"#AC5050"},{"color":"#C57878"},{"color":"#DBA3A3"}]},{"id":"6f2a6691-ef78-4f4b-9a3b-11be30852c6d","defaultCount":0,"name":"Teal","margins":[{"color":"#11806A"},{"color":"#3B9F8B"},{"color":"#68BBAB"},{"color":"#99D5C8"}]},{"id":"2c604b98-2f5d-4317-b2e8-32b4ebee1fba","defaultCount":0,"name":"Pink","margins":[{"color":"#9B59B6"},{"color":"#B176C9"},{"color":"#C694DA"},{"color":"#DAB6E9"}]},{"id":"7ef2cfe5-00df-40e4-89aa-34d25b3c054b","defaultCount":0,"name":"Orange","margins":[{"color":"#C9782C"},{"color":"#DC934E"},{"color":"#EAAE75"},{"color":"#F5C99F"}]}]'
 	country="yap"
 	date="2025285"
@@ -304,7 +303,6 @@
 		transform="matrix(0.75838884,0,0,0.75838884,-413.03978,1.6121032)"
 	>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="KO"
@@ -329,7 +327,6 @@
 			</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="CA"
@@ -354,7 +351,6 @@
 			</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="CM"
@@ -379,7 +375,6 @@
 			</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="CE"
@@ -404,7 +399,6 @@
 			</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="AR"
@@ -429,7 +423,6 @@
 			</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="ST"
@@ -454,7 +447,6 @@
 			</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="AC"
@@ -479,7 +471,6 @@
 			</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="BL"
@@ -504,7 +495,6 @@
 			</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="TL"
@@ -529,7 +519,6 @@
 			</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="RO"
@@ -554,7 +543,6 @@
 			</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="PR"
@@ -579,7 +567,6 @@
 			</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="OP"
@@ -604,7 +591,6 @@
 			</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="ES"
@@ -629,7 +615,6 @@
 			</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="LA"
@@ -654,7 +639,6 @@
 			</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="MA"
@@ -679,7 +663,6 @@
 			</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="NQ"
@@ -704,7 +687,6 @@
 			</tspan>
 		</text>
 		<text
-			xml:space="preserve"
 			x="659.78"
 			y="290.22"
 			for-region="DF"

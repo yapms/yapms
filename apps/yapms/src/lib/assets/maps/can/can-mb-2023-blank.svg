@@ -491,7 +491,6 @@
 		</g>
 		<g map-type="inset-texts">
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -504,7 +503,6 @@
 				<tspan style="stroke-width: 2.66856" x="337.8" y="575.53">Winnipeg</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
@@ -520,7 +518,6 @@
 				<tspan x="386.8" y="56.76">Winkler</tspan>
 			</text>
 			<text
-				xml:space="preserve"
 				style="
 					font-size: 26.6856px;
 					line-height: 1.25;
