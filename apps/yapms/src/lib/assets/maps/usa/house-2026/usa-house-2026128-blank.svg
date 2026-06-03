@@ -1,6 +1,5 @@
 <svg
 	xmlns="http://www.w3.org/2000/svg"
-	xml:space="preserve"
 	action-groups="States"
 	auto-border-stroke-width="1"
 	auto-border-stroke-width-limit=".1"
@@ -9,7 +8,7 @@
 	date="2026128"
 	original-source='["https://www.census.gov/geographies/mapping-files/2023/geo/tiger-line-file.html","https://2023-court-ordered-congressional-plan-algeohub.hub.arcgis.com/","https://www.ncleg.gov/BillLookUp/2023/S757","https://www.legis.ga.gov/joint-office/reapportionment","https://redist.legis.la.gov/2024_Files/ShapeFiles2024_1ES","https://www.latfor.state.ny.us/maps/?sec=2024_congress","https://data.capitol.texas.gov/dataset/planc2333","https://aelc.assembly.ca.gov/proposed-congressional-map","https://davesredistricting.org/maps#viewmap::6d6250f3-a4de-4f6a-9c9d-8cfaee4332eb","https://www.ncleg.gov/Committees/CommitteeInfo/SenateStanding/154/Documents/19984","https://redistricting.ohio.gov/maps","https://campaignlegal.org/document/plaintiffs-map-submission","https://www.flsenate.gov/Session/Redistricting/Congressional","https://davesredistricting.org/maps#viewmap::2921405d-6913-4623-81f6-79499eb10a90"]'
 	style="transform-origin: 0 0 0; transform: matrix(0.85, 0, 0, 0.85, 117.825, 67.6945)"
-	title="USA 2026 House (May 8th, 2026)"
+	title="USA 2026 House"
 	type="house"
 	variant="blank"
 	viewBox="0 0 800 501"
