@@ -18,7 +18,7 @@
 	// DefaultModeStore only set on map load, so this reads what the default for any given map is.
 	let splitRegions = $derived($DefaultModeStore === 'split');
 
-	const weights = $state(new SvelteMap<string, number>());
+	const weights = new SvelteMap<string, number>();
 
 	// Add new candidates
 	$effect(() => {
@@ -51,7 +51,7 @@
 
 	function equallyRedistributeWeights() {
 		weights.set($TossupCandidateStore.id, 0);
-		for (const [candidateId, _] of weights) {
+		for (const [candidateId] of weights) {
 			if (!isTossupCandidate(candidateId)) {
 				weights.set(candidateId, 100 / $CandidatesStore.length);
 			}
