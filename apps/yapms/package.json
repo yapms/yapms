@@ -57,7 +57,7 @@
 		"sortablejs": "1.15.7",
 		"svelte": "5.56.1",
 		"svelte-check": "4.6.0",
-		"svelte-eslint-parser": "1.7.1",
+		"svelte-eslint-parser": "1.8.0",
 		"svelte-fa": "4.0.4",
 		"svelte-local-storage-store": "0.6.4",
 		"svelte-preprocess": "6.0.5",
