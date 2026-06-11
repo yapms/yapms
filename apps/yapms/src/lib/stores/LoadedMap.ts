@@ -175,6 +175,7 @@ export async function drawLoadedMap() {
 		return {
 			...currentRegion,
 			value: loadedRegion.value,
+			permaVal: loadedRegion.permaVal,
 			disabled: loadedRegion.disabled,
 			locked: loadedRegion.locked,
 			permaLocked: loadedRegion.permaLocked,
