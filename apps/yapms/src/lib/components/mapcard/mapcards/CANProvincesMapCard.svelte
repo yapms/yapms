@@ -53,9 +53,9 @@
 					modalLabel: 'Prince Edward Island 2023'
 				},
 				{
-					route: '/app/can/qc/2022/blank',
+					route: '/app/can/qc/2026196/blank',
 					label: 'Quebec',
-					modalLabel: 'Quebec 2022'
+					modalLabel: 'Quebec 2026'
 				},
 				{
 					route: '/app/can/sk/2024/blank',
@@ -74,6 +74,10 @@
 				{
 					route: '/app/can/nb/2020/blank',
 					label: 'New Brunswick 2020'
+				},
+				{
+					route: '/app/can/qc/2022/blank',
+					label: 'Quebec 2022'
 				},
 				{
 					route: '/app/can/yt/2021/blank',
