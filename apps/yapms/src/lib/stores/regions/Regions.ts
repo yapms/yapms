@@ -74,7 +74,7 @@ RegionsStore.subscribe((regions) => {
 				);
 			})
 			.map((candidate) => {
-				if (candidate.margin > candidate.candidate.margins.length) {
+				if (candidate.margin >= candidate.candidate.margins.length) {
 					candidate.margin = candidate.candidate.margins.length - 1;
 				}
 				return candidate;
