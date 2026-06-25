@@ -19,15 +19,18 @@ import { ModeSchema } from '$lib/types/Mode';
 import { CandidateSchema } from '$lib/types/Candidate';
 import { SavedRegionCandidatesSchema } from '$lib/types/Region';
 import { dev } from '$app/environment';
+import { DefaultModeStore } from '$lib/stores/DefaultMode';
 
 function createDefaultModeStore(node: HTMLDivElement) {
 	const defaultModeAttribute = node.querySelector('svg')?.getAttribute('default-mode');
 	const defaultMode = ModeSchema.safeParse(defaultModeAttribute);
 	if (defaultMode.success) {
 		ModeStore.set(defaultMode.data);
+		DefaultModeStore.set(defaultMode.data);
 	} else {
 		console.error('Error Parsing defaultMode attribute from Map:\n\n' + defaultMode.error);
 		ModeStore.set('fill');
+		DefaultModeStore.set(undefined);
 	}
 }
 
