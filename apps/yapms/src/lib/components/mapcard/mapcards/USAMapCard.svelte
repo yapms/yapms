@@ -130,6 +130,10 @@
 					route: '/app/usa/senate_class3'
 				},
 				{
+					label: 'Senate With Territories',
+					route: '/app/usa/senate/2026/with_territories'
+				},
+				{
 					label: '2022 Senate Results',
 					route: '/app/usa/senate/2022/results'
 				},
