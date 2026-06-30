@@ -2,7 +2,7 @@
 	xmlns="http://www.w3.org/2000/svg"
 	auto-border-stroke-width="1"
 	auto-border-stroke-width-limit=".1"
-	candidates='[{"id":"0","defaultCount":0,"name":"LNP","margins":[{"color":"#1456F1"},{"color":"#3773FF"},{"color":"#6693FF"},{"color":"#99B4FF"}]},{"id":"1","defaultCount":0,"name":"LAB","margins":[{"color":"#F00011"},{"color":"#FF3336"},{"color":"#FF6666"},{"color":"#FF9999"}]},{"id":"2","defaultCount":0,"name":"KAP","margins":[{"color":"#B50204"},{"color":"#CD3333"},{"color":"#E16666"},{"color":"#F09999"}]},{"id":"3","defaultCount":0,"name":"GRN","margins":[{"color":"#10C25B"},{"color":"#36D87A"},{"color":"#66E99A"},{"color":"#99F5BB"}]},{"id":"4","defaultCount":0,"name":"IND","margins":[{"color":"#DCDCDC"},{"color":"#E3E3E3"},{"color":"#EAEAEA"},{"color":"#F1F1F1"}]}]'
+	candidates='[{"id":"0","defaultCount":0,"name":"LNP","margins":[{"color":"#1456F1"},{"color":"#3773FF"},{"color":"#6693FF"},{"color":"#99B4FF"}]},{"id":"1","defaultCount":0,"name":"LAB","margins":[{"color":"#F00011"},{"color":"#FF3336"},{"color":"#FF6666"},{"color":"#FF9999"}]},{"id":"2","defaultCount":0,"name":"KAP","margins":[{"color":"#B50204"},{"color":"#CD3333"},{"color":"#E16666"},{"color":"#F09999"}]},{"id":"3","defaultCount":0,"name":"GRN","margins":[{"color":"#10C25B"},{"color":"#36D87A"},{"color":"#66E99A"},{"color":"#99F5BB"}]},{"id":"4","defaultCount":0,"name":"ONP","margins":[{"color":"#FF6900"},{"color":"#FF8533"},{"color":"#FFA266"},{"color":"#FFC099"}]},{"id":"5","defaultCount":0,"name":"IND","margins":[{"color":"#DCDCDC"},{"color":"#E3E3E3"},{"color":"#EAEAEA"},{"color":"#F1F1F1"}]}]'
 	country="aus"
 	date="2026180"
 	original-source='["https://redistribution.ecq.qld.gov.au/current-enrolment-and-boundaries/electorate-maps"]'
