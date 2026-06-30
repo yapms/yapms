@@ -23,9 +23,9 @@
 					modalLabel: 'Northern Territory 2024'
 				},
 				{
-					route: '/app/aus/qld/2024299/blank',
+					route: '/app/aus/qld/2026180/blank',
 					label: 'Queensland',
-					modalLabel: 'Queensland 2024'
+					modalLabel: 'Queensland 2028'
 				},
 				{
 					route: '/app/aus/sa/2026080/blank_v2',
@@ -56,6 +56,10 @@
 					route: '/app/aus/wa/2025067/blank',
 					label: 'Western Australia',
 					modalLabel: 'Western Australia 2025'
+				},
+				{
+					route: '/app/aus/qld/2024299/blank',
+					label: 'Queensland 2024'
 				},
 				{
 					route: '/app/aus/sa/2022078/blank',
