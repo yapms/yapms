@@ -33,9 +33,9 @@
 					modalLabel: 'Newfoundland & Labrador 2021'
 				},
 				{
-					route: '/app/can/ns/2021/blank',
+					route: '/app/can/ns/2026099/blank',
 					label: 'Nova Scotia',
-					modalLabel: 'Nova Scotia 2021'
+					modalLabel: 'Nova Scotia 2026'
 				},
 				{
 					route: '/app/can/nt/2023/blank',
@@ -74,6 +74,10 @@
 				{
 					route: '/app/can/nb/2020/blank',
 					label: 'New Brunswick 2020'
+				},
+				{
+					route: '/app/can/ns/2021/blank',
+					label: 'Nova Scotia 2021'
 				},
 				{
 					route: '/app/can/qc/2022/blank',
