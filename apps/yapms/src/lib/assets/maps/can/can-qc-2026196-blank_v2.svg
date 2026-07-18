@@ -8,7 +8,7 @@
 	original-source='["https://www.electionsquebec.qc.ca/en/electoral-maps/review-of-quebecs-electoral-map/electoral-map-final-boundaries/"]'
 	title="Quebec 2026 National Assembly"
 	type="qc"
-	variant="v2"
+	variant="blank_v2"
 	viewBox="0 0 935.465 1003.367"
 >
 	<g map-type="regions" transform="translate(-126.721,3.367499999999723)">
