@@ -129,6 +129,12 @@ export const ShareDisabledModalStore = writable({
 	open: false
 });
 
+export const RenameSavedMapModalStore = writable({
+	open: false,
+	name: '',
+	onRename: async (newName: string): Promise<void> => {}
+});
+
 //Tool modals
 export const ToolsModalStore = writable({
 	open: false

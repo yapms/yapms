@@ -5,6 +5,8 @@
 	import { useSortable } from '$lib/utils/sortableHook.svelte';
 	import type { RecordModel } from 'pocketbase';
 	import SavedMap from './SavedMap.svelte';
+	import { RenameSavedMapModalStore } from '$lib/stores/Modals';
+	import PenToSquare from '$lib/icons/PenToSquare.svelte';
 
 	let {
 		folderName,
@@ -36,6 +38,17 @@
 		await $PocketBaseStore.collection('user_map_folders').delete(folderID);
 		submitting = false;
 		onUpdated();
+	}
+
+	async function renameFolder() {
+		$RenameSavedMapModalStore = {
+			open: true,
+			name: folderName,
+			onRename: async (newName: string) => {
+				await $PocketBaseStore.collection('user_map_folders').update(folderID, { name: newName });
+				onUpdated();
+			}
+		};
 	}
 
 	let mapList = $state<HTMLDivElement | undefined>(undefined);
@@ -75,11 +88,20 @@
 		class:pb-2={open}
 	>
 		<p class="truncate text-xs font-semibold pr-4 pl-8 grow text-center">{folderName}</p>
+		<div class="tooltip tooltip-left z-10" data-tip="Rename">
+			<button
+				class="btn btn-sm bg-base-300 flex-shrink join-item"
+				class:rounded-bl-sm={open}
+				onclick={renameFolder}
+				disabled={submitting}
+			>
+				<PenToSquare class="w-6 h-6" />
+			</button>
+		</div>
 		<div class="tooltip tooltip-left z-10" data-tip="Delete">
 			<button
 				class="btn btn-sm btn-error flex-shrink join-item"
 				class:rounded-br-none={open}
-				class:rounded-bl-sm={open}
 				onclick={deleteFolder}
 				disabled={submitting}
 			>

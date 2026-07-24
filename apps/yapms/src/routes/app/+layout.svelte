@@ -35,6 +35,7 @@
 		handleModalOpenInteractions
 	} from '$lib/stores/Modals';
 	import type { Snippet } from 'svelte';
+	import RenameSavedMapModal from '$lib/components/modals/renamesavedmapmodal/RenameSavedMapModal.svelte';
 
 	const { children }: { children: Snippet } = $props();
 
@@ -135,5 +136,7 @@
 <ImportModal />
 
 <ToolsModal />
+
+<RenameSavedMapModal />
 
 <RegionTooltip />
