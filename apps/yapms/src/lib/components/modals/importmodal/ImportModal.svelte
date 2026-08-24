@@ -97,7 +97,7 @@
 						<input
 							multiple
 							type="file"
-							accept=".geojson, .json, .svg, .shp"
+							accept=".geojson, .json, image/svg+xml, .svg, .shp"
 							class="file-input w-full"
 							class:file-input-error={errorLoading || fileTypeIsInvalid}
 							disabled={isLoading}
