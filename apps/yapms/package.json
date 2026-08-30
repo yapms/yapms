@@ -69,7 +69,7 @@
 		"typescript": "6.0.3",
 		"typescript-eslint": "8.66.0",
 		"uuid": "14.0.2",
-		"vite": "8.2.1",
+		"vite": "8.2.2",
 		"zod": "4.4.3"
 	}
 }
