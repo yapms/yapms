@@ -44,7 +44,7 @@
 		"eslint-plugin-svelte": "3.23.0",
 		"file-saver": "2.0.5",
 		"glob": "13.0.6",
-		"globals": "17.9.0",
+		"globals": "17.11.0",
 		"html-to-image": "1.11.13",
 		"neverthrow": "8.2.0",
 		"panzoom": "9.4.4",
