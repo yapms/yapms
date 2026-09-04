@@ -8,6 +8,7 @@
 	import Sources from './sections/sources/Sources.svelte';
 	import SocialLinkGrid from '../links/SocialLinkGrid.svelte';
 	import RegionSearch from './sections/regionsearch/RegionSearch.svelte';
+	import Simulation from './sections/simulation/Simulation.svelte';
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	let adsbygoogle: unknown;
@@ -38,6 +39,7 @@
 		{#if $PocketBaseStore.authStore.isValid}
 			<SavedMaps />
 		{/if}
+		<Simulation />
 		<Sources />
 	</div>
 </div>
