@@ -16,12 +16,16 @@
 	import { setRegionStrokeColor } from '$lib/stores/RegionStrokeColorStore';
 
 	let filename = $state(undefined as string | undefined);
-	let countryPath = $state(undefined as string | undefined);
-	let map = $derived(
-		filename !== undefined && countryPath !== undefined
-			? import(`../../lib/assets/maps/${countryPath}/${filename}.svg?raw`)
-			: undefined
-	);
+	let map = $derived.by(() => {
+		const maps = import.meta.glob<string>('../../lib/assets/maps/**/*.svg', {
+			import: 'default',
+			query: '?raw'
+		});
+
+		const match = Object.entries(maps).find(([path]) => path.endsWith(`/${filename}.svg`));
+
+		return match !== undefined ? match[1]() : undefined;
+	});
 
 	if (browser) {
 		const mapID = page.url.searchParams.get('m');
@@ -33,7 +37,6 @@
 				.then(() => {
 					if ($LoadedMapStore) {
 						const { country, type, year, variant } = $LoadedMapStore.map;
-						countryPath = country;
 						filename = [country, type, year, variant]
 							.filter((path) => path !== undefined)
 							.join('-');
@@ -45,7 +48,6 @@
 				.then(() => {
 					if ($LoadedMapStore) {
 						const { country, type, year, variant } = $LoadedMapStore.map;
-						countryPath = country;
 						filename = [country, type, year, variant]
 							.filter((path) => path !== undefined)
 							.join('-');
@@ -76,7 +78,7 @@
 			<CandidateBoxContainer selectable={false} transitions={false} />
 			<div class="grow"></div>
 			<div use:setupMap id="map-div" class="overflow-hidden">
-				{@html map.default}
+				{@html map}
 			</div>
 			<div class="grow"></div>
 			<div>
