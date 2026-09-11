@@ -16,7 +16,6 @@
 	import { setRegionStrokeColor } from '$lib/stores/RegionStrokeColorStore';
 
 	let filename = $state(undefined as string | undefined);
-	let countryPath = $state(undefined as string | undefined);
 	let map = $derived.by(() => {
 		const maps = import.meta.glob<string>('../../lib/assets/maps/**/*.svg', {
 			import: 'default',
@@ -38,7 +37,6 @@
 				.then(() => {
 					if ($LoadedMapStore) {
 						const { country, type, year, variant } = $LoadedMapStore.map;
-						countryPath = country;
 						filename = [country, type, year, variant]
 							.filter((path) => path !== undefined)
 							.join('-');
@@ -50,7 +48,6 @@
 				.then(() => {
 					if ($LoadedMapStore) {
 						const { country, type, year, variant } = $LoadedMapStore.map;
-						countryPath = country;
 						filename = [country, type, year, variant]
 							.filter((path) => path !== undefined)
 							.join('-');
