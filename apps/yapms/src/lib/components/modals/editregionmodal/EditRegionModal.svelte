@@ -44,12 +44,10 @@
 			//Don't update value if disabled so the state stays disabled!
 			$RegionsStore[index].value = valueBind;
 		}
-		$RegionsStore[index] = {
-			...$RegionsStore[index],
-			permaVal: valueBind,
-			shortName: shortNameBind,
-			longName: longNameBind
-		};
+		$RegionsStore[index].permaVal = valueBind;
+		$RegionsStore[index].shortName = shortNameBind;
+		$RegionsStore[index].longName = longNameBind;
+
 		$EditRegionModalStore.open = false;
 	}
 </script>
