@@ -8,6 +8,7 @@
 	import { DefaultModeStore } from '$lib/stores/DefaultMode';
 	import { RegionsStore } from '$lib/stores/regions/Regions';
 	import { preventNonNumericalInput, preventNonNumericalPaste } from '$lib/utils/inputValidation';
+	import { untrack } from 'svelte';
 	import { SvelteMap } from 'svelte/reactivity';
 	import { get } from 'svelte/store';
 
@@ -22,31 +23,41 @@
 
 	// Add new candidates
 	$effect(() => {
-		for (const candidate of [$TossupCandidateStore, ...$CandidatesStore]) {
-			if (!weights.has(candidate.id)) {
-				weights.set(candidate.id, 0);
-			}
-		}
+		console.log('add effect')
 
-		// if no changes have been made to weights, distribute weight equally among candidates, not including tossup.
-		if (!weightsTouched) {
-			equallyRedistributeWeights();
-		}
+		const candidates = $CandidatesStore;
+
+		untrack(() => {
+			for (const candidate of [$TossupCandidateStore, ...candidates]) {
+				if (!weights.has(candidate.id)) {
+					weights.set(candidate.id, 0);
+				}
+			}
+
+			// if no changes have been made to weights, distribute weight equally among candidates, not including tossup.
+			if (!weightsTouched) {
+				equallyRedistributeWeights();
+			}
+		});
 	});
 
 	// Remove deleted candidates
 	$effect(() => {
-		for (const [candidateId, weight] of weights) {
-			if (!isTossupCandidate(candidateId) && $CandidatesTable.get(candidateId) === undefined) {
-				weights.set($TossupCandidateStore.id, weights.get($TossupCandidateStore.id)! ?? 0 + weight);
-				weights.delete(candidateId);
-			}
-		}
+		const candidates = $CandidatesTable;
 
-		// if no changes have been made to weights, distribute weight equally among candidates, not including tossup.
-		if (!weightsTouched) {
-			equallyRedistributeWeights();
-		}
+		untrack(() => {
+			for (const [candidateId, weight] of weights) {
+				if (!isTossupCandidate(candidateId) && candidates.get(candidateId) === undefined) {
+					weights.set($TossupCandidateStore.id, weights.get($TossupCandidateStore.id)! ?? 0 + weight);
+					weights.delete(candidateId);
+				}
+			}
+
+			// if no changes have been made to weights, distribute weight equally among candidates, not including tossup.
+			if (!weightsTouched) {
+				equallyRedistributeWeights();
+			}
+		});
 	});
 
 	function equallyRedistributeWeights() {
