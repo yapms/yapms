@@ -23,8 +23,6 @@
 
 	// Add new candidates
 	$effect(() => {
-		console.log('add effect')
-
 		const candidates = $CandidatesStore;
 
 		untrack(() => {
