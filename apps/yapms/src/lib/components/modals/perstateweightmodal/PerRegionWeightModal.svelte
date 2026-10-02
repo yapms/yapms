@@ -25,7 +25,7 @@
 	<div slot="content" class="flex flex-col gap-2">
 		<input class="input w-full" placeholder="Filter Regions" bind:value={filterInput}/>
 		{#each [...sortedAndFilteredRegions] as region (region.id)}
-			<RegionWeights {region}></RegionWeights>
+			<RegionWeights regionId={region.id} regionName={region.longName} simWeights={region.simWeights}></RegionWeights>
 		{/each}
 	</div>
 	<div slot="action">
