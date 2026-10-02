@@ -1,20 +1,26 @@
 <script lang="ts">
-	import { CandidatesStore, CandidatesTable, isTossupCandidate, TossupCandidateStore } from "$lib/stores/Candidates";
-	import { RegionsStore } from "$lib/stores/regions/Regions";
-	import { SimulationWeightsStore } from "$lib/stores/SimulationWeights";
-	import type { SimWeights } from "$lib/types/Region";
-	import { preventNonNumericalInput, preventNonNumericalPaste } from "$lib/utils/inputValidation";
+	import Star from '$lib/icons/Star.svelte';
+	import {
+		CandidatesStore,
+		CandidatesTable,
+		isTossupCandidate,
+		TossupCandidateStore
+	} from '$lib/stores/Candidates';
+	import { RegionsStore } from '$lib/stores/regions/Regions';
+	import { SimulationWeightsStore } from '$lib/stores/SimulationWeights';
+	import type { SimWeights } from '$lib/types/Region';
+	import { preventNonNumericalInput, preventNonNumericalPaste } from '$lib/utils/inputValidation';
 
 	const {
 		regionId,
 		regionName,
-		simWeights,
+		simWeights
 	}: {
 		regionId: string;
 		regionName: string;
 		simWeights: SimWeights;
 	} = $props();
-	
+
 	const regionHasWeights = $derived(Object.keys(simWeights).length !== 0);
 
 	const weightsToUse = $derived(regionHasWeights ? simWeights : $SimulationWeightsStore);
@@ -42,29 +48,52 @@
 		newWeights[$TossupCandidateStore.id] = tossupWeight - actualDiff;
 
 		// Write back to trigger reactive update
-		$RegionsStore[regionIndex] = { ...$RegionsStore[regionIndex], simWeights: newWeights }
+		$RegionsStore[regionIndex] = { ...$RegionsStore[regionIndex], simWeights: newWeights };
 
 		event.currentTarget.value = String(actualNewValue);
 	}
 
+	function guaranteeCandidate(candidateId: string) {
+		const regionIndex = $RegionsStore.findIndex((r) => r.id === regionId);
+		const newWeights = structuredClone(weightsToUse);
+
+		for (const key of Object.keys(newWeights)) {
+			newWeights[key] = 0;
+		}
+
+		newWeights[candidateId] = 100;
+
+		// Write back to trigger reactive update
+		$RegionsStore[regionIndex] = { ...$RegionsStore[regionIndex], simWeights: newWeights };
+	}
 </script>
 
 <div class="collapse collapse-arrow bg-base-300 border border-base-300">
-  <input type="checkbox" />
-  <div class="collapse-title font-semibold">{regionName}</div>
-  <div class="collapse-content text-sm">
-    <div class="flex flex-col gap-2">
+	<input type="checkbox" />
+	<div class="collapse-title font-semibold">{regionName}</div>
+	<div class="collapse-content text-sm">
+		<div class="flex flex-col gap-2">
 			{#each candidateIds as candidateId}
 				{@const weight = weightsToUse[candidateId]}
 				<label class="flex flex-col w-full gap-y-1">
 					<div class="flex w-full justify-between">
-						{#if isTossupCandidate(candidateId)}
-							<span class="truncate font-medium">{$TossupCandidateStore.name}</span>
-						{:else}
-							<span class="truncate font-medium"
-								>{$CandidatesTable.get(candidateId)?.name ?? ''}</span
+						<div class="flex space-x-1 items-center">
+							{#if isTossupCandidate(candidateId)}
+								<span class="truncate font-medium">{$TossupCandidateStore.name}</span>
+							{:else}
+								<span class="truncate font-medium"
+									>{$CandidatesTable.get(candidateId)?.name ?? ''}</span
+								>
+							{/if}
+
+							<button
+								class="btn btn-xs btn-circle btn-ghost"
+								onclick={() => guaranteeCandidate(candidateId)}
 							>
-						{/if}
+								<Star class="size-4"></Star>
+							</button>
+						</div>
+
 						<div class="flex space-x-0 font-thin font-mono">
 							<span class="px-0"></span>
 							{#if isTossupCandidate(candidateId)}
@@ -97,7 +126,6 @@
 					/>
 				</label>
 			{/each}
-			</div>
-  </div>
+		</div>
+	</div>
 </div>
-
