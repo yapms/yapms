@@ -233,7 +233,7 @@ function exportImportAsSVG(): void {
 			region.nodes.region.setAttribute('value', region.permaVal.toString());
 			region.nodes.region.setAttribute('short-name', region.shortName.toString());
 			region.nodes.region.setAttribute('long-name', region.longName.toString());
-			
+
 			if (Object.keys(region.simWeights).length !== 0) {
 				region.nodes.region.setAttribute('sim-weights', JSON.stringify(region.simWeights));
 			}

@@ -31,9 +31,12 @@
 			for (const candidate of [$TossupCandidateStore, ...candidates]) {
 				if ($SimulationWeightsStore[candidate.id] === undefined) {
 					$SimulationWeightsStore[candidate.id] = 0;
-					
+
 					for (const region of $RegionsStore) {
-						if (Object.keys(region.simWeights).length !== 0 && region.simWeights[candidate.id] === undefined) {
+						if (
+							Object.keys(region.simWeights).length !== 0 &&
+							region.simWeights[candidate.id] === undefined
+						) {
 							region.simWeights[candidate.id] = 0;
 						}
 					}
@@ -54,7 +57,8 @@
 		untrack(() => {
 			for (const [candidateId, weight] of Object.entries($SimulationWeightsStore)) {
 				if (!isTossupCandidate(candidateId) && candidates.get(candidateId) === undefined) {
-					$SimulationWeightsStore[$TossupCandidateStore.id] = ($SimulationWeightsStore[$TossupCandidateStore.id]! ?? 0) + weight;
+					$SimulationWeightsStore[$TossupCandidateStore.id] =
+						($SimulationWeightsStore[$TossupCandidateStore.id]! ?? 0) + weight;
 
 					// Delete old candidate weight
 					const { [candidateId]: _, ...newWeights } = $SimulationWeightsStore;
@@ -65,7 +69,8 @@
 			for (const region of $RegionsStore) {
 				for (const [candidateId, weight] of Object.entries(region.simWeights)) {
 					if (!isTossupCandidate(candidateId) && candidates.get(candidateId) === undefined) {
-						region.simWeights[$TossupCandidateStore.id] = (region.simWeights[$TossupCandidateStore.id]! ?? 0) + weight
+						region.simWeights[$TossupCandidateStore.id] =
+							(region.simWeights[$TossupCandidateStore.id]! ?? 0) + weight;
 
 						// Delete old candidate weight
 						const { [candidateId]: _, ...newWeights } = region.simWeights;
@@ -128,7 +133,8 @@
 	function simulate() {
 		const regions = get(RegionsStore);
 		for (const region of regions) {
-			const weights = Object.keys(region.simWeights).length !== 0 ? region.simWeights : $SimulationWeightsStore;
+			const weights =
+				Object.keys(region.simWeights).length !== 0 ? region.simWeights : $SimulationWeightsStore;
 			if (splitRegions) {
 				// assign each value in a region to a candidate
 				const rolls = Array.from({ length: region.value }, () =>
@@ -184,49 +190,49 @@
 
 		<div class="collapse-content flex flex-col text-sm gap-4">
 			<div class="flex flex-col gap-2">
-			{#each candidateIds as candidateId}
-				{@const weight = $SimulationWeightsStore[candidateId] ?? 0}
-				<label class="flex flex-col w-full gap-y-1">
-					<div class="flex w-full justify-between">
-						{#if isTossupCandidate(candidateId)}
-							<span class="truncate font-medium">{$TossupCandidateStore.name}</span>
-						{:else}
-							<span class="truncate font-medium"
-								>{$CandidatesTable.get(candidateId)?.name ?? ''}</span
-							>
-						{/if}
-						<div class="flex space-x-0 font-thin font-mono">
-							<span class="px-0"></span>
+				{#each candidateIds as candidateId}
+					{@const weight = $SimulationWeightsStore[candidateId] ?? 0}
+					<label class="flex flex-col w-full gap-y-1">
+						<div class="flex w-full justify-between">
 							{#if isTossupCandidate(candidateId)}
-								<span>{weight.toFixed(2)}</span>
+								<span class="truncate font-medium">{$TossupCandidateStore.name}</span>
 							{:else}
-								<input
-									onchange={(event) => updateGlobalCandidateWeight(event, candidateId)}
-									onkeypress={(e) => {
-										preventNonNumericalInput(e, true);
-									}}
-									onpaste={(e) => {
-										preventNonNumericalPaste(e, true);
-									}}
-									value={weight.toFixed(2)}
-									class="rounded-md px-1 text-end resizing-input-split"
-								/>
+								<span class="truncate font-medium"
+									>{$CandidatesTable.get(candidateId)?.name ?? ''}</span
+								>
 							{/if}
-							<span>%</span>
+							<div class="flex space-x-0 font-thin font-mono">
+								<span class="px-0"></span>
+								{#if isTossupCandidate(candidateId)}
+									<span>{weight.toFixed(2)}</span>
+								{:else}
+									<input
+										onchange={(event) => updateGlobalCandidateWeight(event, candidateId)}
+										onkeypress={(e) => {
+											preventNonNumericalInput(e, true);
+										}}
+										onpaste={(e) => {
+											preventNonNumericalPaste(e, true);
+										}}
+										value={weight.toFixed(2)}
+										class="rounded-md px-1 text-end resizing-input-split"
+									/>
+								{/if}
+								<span>%</span>
+							</div>
 						</div>
-					</div>
-					<input
-						type="range"
-						class="range w-full"
-						min="0"
-						max="100"
-						step="1"
-						value={weight.toFixed(2)}
-						oninput={(event) => updateGlobalCandidateWeight(event, candidateId)}
-						disabled={isTossupCandidate(candidateId)}
-					/>
-				</label>
-			{/each}
+						<input
+							type="range"
+							class="range w-full"
+							min="0"
+							max="100"
+							step="1"
+							value={weight.toFixed(2)}
+							oninput={(event) => updateGlobalCandidateWeight(event, candidateId)}
+							disabled={isTossupCandidate(candidateId)}
+						/>
+					</label>
+				{/each}
 			</div>
 			<button onclick={openRegionWeights} class="btn btn-neutral">Set per-Region Weights</button>
 		</div>
