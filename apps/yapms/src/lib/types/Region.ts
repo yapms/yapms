@@ -60,6 +60,8 @@ export const SavedRegionCandidatesSchema = z
 	})
 	.array();
 
+export type SimWeights = z.infer<typeof SimWeightsSchema>;
+
 export type Region = z.infer<typeof RegionSchema>;
 
 export type RegionCandidate = z.infer<typeof RegionCandidateSchema>;

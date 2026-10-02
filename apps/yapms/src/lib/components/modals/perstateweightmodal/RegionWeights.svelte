@@ -2,18 +2,22 @@
 	import { CandidatesStore, CandidatesTable, isTossupCandidate, TossupCandidateStore } from "$lib/stores/Candidates";
 	import { RegionsStore } from "$lib/stores/regions/Regions";
 	import { SimulationWeightsStore } from "$lib/stores/SimulationWeights";
-	import type { Region } from "$lib/types/Region";
+	import type { SimWeights } from "$lib/types/Region";
 	import { preventNonNumericalInput, preventNonNumericalPaste } from "$lib/utils/inputValidation";
 
 	const {
-		region
+		regionId,
+		regionName,
+		simWeights,
 	}: {
-		region: Region;
+		regionId: string;
+		regionName: string;
+		simWeights: SimWeights;
 	} = $props();
 	
-	const regionHasWeights = $derived(Object.keys(region.simWeights).length !== 0);
+	const regionHasWeights = $derived(Object.keys(simWeights).length !== 0);
 
-	const weightsToUse = $derived(regionHasWeights ? region.simWeights : $SimulationWeightsStore);
+	const weightsToUse = $derived(regionHasWeights ? simWeights : $SimulationWeightsStore);
 
 	const tossupWeight = $derived(weightsToUse[$TossupCandidateStore.id] ?? 0);
 
@@ -32,11 +36,13 @@
 		const actualNewValue = curWeight + Math.min(requestedDiff, tossupWeight);
 		const actualDiff = actualNewValue - curWeight;
 
-		const regionIndex = $RegionsStore.findIndex((r) => r.id === region.id);
-		const simWeights = regionHasWeights ? structuredClone($RegionsStore[regionIndex].simWeights) : structuredClone($SimulationWeightsStore);
-		simWeights[candidateId] = actualNewValue;
-		simWeights[$TossupCandidateStore.id] = tossupWeight - actualDiff;
-		$RegionsStore[regionIndex] = { ...$RegionsStore[regionIndex], simWeights }
+		const regionIndex = $RegionsStore.findIndex((r) => r.id === regionId);
+		const newWeights = structuredClone(weightsToUse);
+		newWeights[candidateId] = actualNewValue;
+		newWeights[$TossupCandidateStore.id] = tossupWeight - actualDiff;
+
+		// Write back to trigger reactive update
+		$RegionsStore[regionIndex] = { ...$RegionsStore[regionIndex], simWeights: newWeights }
 
 		event.currentTarget.value = String(actualNewValue);
 	}
@@ -45,7 +51,7 @@
 
 <div class="collapse collapse-arrow bg-base-300 border border-base-300">
   <input type="checkbox" />
-  <div class="collapse-title font-semibold">{region.longName}</div>
+  <div class="collapse-title font-semibold">{regionName}</div>
   <div class="collapse-content text-sm">
     <div class="flex flex-col gap-2">
 			{#each candidateIds as candidateId}
