@@ -6,6 +6,8 @@
 
 	let filterInput = $state('');
 
+	const collator = new Intl.Collator('en', { numeric: true, sensitivity: 'base' });
+
 	let sortedAndFilteredRegions = $derived(
 		$PerRegionWeightModalStore.open
 			? $RegionsStore
@@ -15,7 +17,7 @@
 						return region.longName.toLowerCase().trim().includes(lowerSearch) || lowerSearch == '';
 					})
 					.sort((regionA, regionB) => {
-						return regionA.longName > regionB.longName ? 1 : -1;
+						return collator.compare(regionA.longName, regionB.longName);
 					})
 			: []
 	);
