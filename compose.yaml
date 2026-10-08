@@ -1,17 +1,11 @@
-version: "3.4"
 services:
 
-  devcontainer:
-    image: mcr.microsoft.com/devcontainers/base:jammy
-    network_mode: host
-    command: sleep infinity
-  
   browserless:
     image: ghcr.io/browserless/chrome:latest
-    network_mode: service:devcontainer
     environment:
       CONCURRENT: 10
       TOKEN: null
+    network_mode: host
     restart: always
 
   umami:
@@ -20,6 +14,8 @@ services:
       - 8079:3000
     environment:
       DATABASE_URL: postgresql://postgres:password@postgres:5432/umami
+    networks:
+      - yapms
     restart: always
 
   postgres:
@@ -27,4 +23,9 @@ services:
     environment:
       POSTGRES_DB: umami
       POSTGRES_PASSWORD: password
+    networks:
+      - yapms
     restart: always
+
+networks:
+  yapms:
