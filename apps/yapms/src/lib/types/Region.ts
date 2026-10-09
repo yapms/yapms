@@ -41,7 +41,8 @@ export const SavedRegionSchema = RegionSchema.omit({
 	nodes: true,
 	candidates: true,
 	actionGroups: true,
-	visible: true
+	visible: true,
+	simWeights: true
 }).extend({
 	candidates: z
 		.object({

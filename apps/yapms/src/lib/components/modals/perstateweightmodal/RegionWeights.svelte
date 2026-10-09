@@ -53,6 +53,17 @@
 		event.currentTarget.value = String(actualNewValue);
 	}
 
+	// Reset region weights back to global weights
+	function resetWeights(event: Event & { currentTarget: EventTarget & HTMLInputElement }) {
+		if (event.currentTarget.checked === false) {
+			const regionIndex = $RegionsStore.findIndex((r) => r.id === regionId);
+			$RegionsStore[regionIndex] = { ...$RegionsStore[regionIndex], simWeights: {} };
+		} else {
+			const regionIndex = $RegionsStore.findIndex((r) => r.id === regionId);
+			$RegionsStore[regionIndex] = { ...$RegionsStore[regionIndex], simWeights: structuredClone(weightsToUse) };
+		}
+	}
+
 	function guaranteeCandidate(candidateId: string) {
 		const regionIndex = $RegionsStore.findIndex((r) => r.id === regionId);
 		const newWeights = structuredClone(weightsToUse);
@@ -70,7 +81,15 @@
 
 <div class="collapse collapse-arrow bg-base-300 border border-base-300">
 	<input type="checkbox" />
-	<div class="collapse-title font-semibold">{regionName}</div>
+	<div class="collapse-title font-semibold flex items-center justify-between">
+		{regionName}
+		<fieldset class="fieldset z-50">
+			<label class="fieldset-label">
+				Override Global
+				<input class="toggle" type="checkbox" onchange={resetWeights} checked={regionHasWeights} />
+			</label>
+		</fieldset>
+	</div>
 	<div class="collapse-content text-sm">
 		<div class="flex flex-col gap-2">
 			{#each candidateIds as candidateId}
