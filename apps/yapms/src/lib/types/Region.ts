@@ -1,6 +1,8 @@
 import { CandidateSchema } from './Candidate';
 import { z } from 'zod';
 
+export const SimWeightsSchema = z.record(z.string(), z.number());
+
 export const RegionSchema = z.object({
 	id: z.string(),
 	actionGroups: z.number().optional().array(),
@@ -19,6 +21,7 @@ export const RegionSchema = z.object({
 			margin: z.number()
 		})
 		.array(),
+	simWeights: SimWeightsSchema,
 	nodes: z.object({
 		region: z.custom<HTMLElement>((val) => val instanceof HTMLElement),
 		button: z.custom<HTMLElement>((val) => val instanceof HTMLElement).nullable(),
@@ -38,7 +41,8 @@ export const SavedRegionSchema = RegionSchema.omit({
 	nodes: true,
 	candidates: true,
 	actionGroups: true,
-	visible: true
+	visible: true,
+	simWeights: true
 }).extend({
 	candidates: z
 		.object({
@@ -56,6 +60,8 @@ export const SavedRegionCandidatesSchema = z
 		margin: z.number().nonnegative()
 	})
 	.array();
+
+export type SimWeights = z.infer<typeof SimWeightsSchema>;
 
 export type Region = z.infer<typeof RegionSchema>;
 
