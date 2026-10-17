@@ -1,0 +1,38 @@
+<script lang="ts">
+	import { PerRegionWeightModalStore } from '$lib/stores/Modals';
+	import { RegionsStore } from '$lib/stores/regions/Regions';
+	import ModalBase from '../ModalBase.svelte';
+	import RegionWeights from './RegionWeights.svelte';
+
+	let filterInput = $state('');
+
+	const collator = new Intl.Collator('en', { numeric: true, sensitivity: 'base' });
+
+	let sortedAndFilteredRegions = $derived(
+		$PerRegionWeightModalStore.open
+			? $RegionsStore
+					.filter((region) => !region.disabled)
+					.filter((region) => {
+						const lowerSearch = filterInput.toLowerCase().trim();
+						return region.longName.toLowerCase().trim().includes(lowerSearch) || lowerSearch == '';
+					})
+					.sort((regionA, regionB) => {
+						return collator.compare(regionA.longName, regionB.longName);
+					})
+			: []
+	);
+</script>
+
+<ModalBase title="Set Region Weights" store={PerRegionWeightModalStore}>
+	<div slot="content" class="flex flex-col gap-2">
+		<input class="input w-full" placeholder="Filter Regions" bind:value={filterInput} />
+		{#each [...sortedAndFilteredRegions] as region (region.id)}
+			<RegionWeights
+				regionId={region.id}
+				regionName={region.longName}
+				simWeights={region.simWeights}
+			></RegionWeights>
+		{/each}
+	</div>
+	<div slot="action"></div>
+</ModalBase>

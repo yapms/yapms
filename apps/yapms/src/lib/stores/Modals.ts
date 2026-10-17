@@ -135,6 +135,10 @@ export const RenameSavedMapModalStore = writable({
 	onRename: async (_newName: string) => {}
 });
 
+export const PerRegionWeightModalStore = writable({
+	open: false
+});
+
 //Tool modals
 export const ToolsModalStore = writable({
 	open: false
