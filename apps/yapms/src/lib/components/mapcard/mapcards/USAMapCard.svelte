@@ -82,6 +82,17 @@
 			]
 		},
 		{
+			label: 'Counties with NE Towns',
+			showOnCard: false,
+			showInModal: true,
+			routes: [
+				{
+					label: 'Counties 2025 with New England Towns',
+					route: '/app/usa/counties/2025001/with_towns'
+				}
+			]
+		},
+		{
 			label: 'Primaries',
 			showOnCard: true,
 			showInModal: true,
