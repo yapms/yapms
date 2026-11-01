@@ -8,12 +8,10 @@ const BrowserRenderingStore = writable({
 });
 
 async function checkWebGPUAcceleration(): Promise<boolean> {
-	console.log(navigator)
 	try {
 		const adapter = await (navigator as any).gpu?.requestAdapter();
 
 		if (!adapter) return false;
-		console.log(adapter)
 		return !adapter.info?.isFallbackAdapater;
 	} catch {
 		return false;
@@ -22,8 +20,9 @@ async function checkWebGPUAcceleration(): Promise<boolean> {
 
 if (browser) {
 	const isChromium =
-		(navigator as any).userAgentData?.brands.some((b: { brand: string }) => b.brand === 'Google Chrome') ??
-		false;
+		(navigator as any).userAgentData?.brands.some(
+			(b: { brand: string }) => b.brand === 'Google Chrome'
+		) ?? false;
 
 	checkWebGPUAcceleration().then((hasHardwareGPU) => {
 		BrowserRenderingStore.set({

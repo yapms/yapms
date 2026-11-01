@@ -62,7 +62,11 @@
 		}
 	}
 
-	let shapeRenderingPolicy = $derived<'crispEdges' | 'auto'>($BrowserRenderingStore.isChromium && $BrowserRenderingStore.hasHardwareGPU ? 'crispEdges' : 'auto');
+	let shapeRenderingPolicy = $derived<'crispEdges' | 'auto'>(
+		$BrowserRenderingStore.isChromium && $BrowserRenderingStore.hasHardwareGPU
+			? 'crispEdges'
+			: 'auto'
+	);
 </script>
 
 {#if map !== undefined}
