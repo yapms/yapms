@@ -22,7 +22,7 @@ async function checkWebGPUAcceleration(): Promise<boolean> {
 
 if (browser) {
 	const isChromium =
-		(navigator as any).userAgentData?.brands.some((b: { brand: string }) => b.brand === 'Chromium') ??
+		(navigator as any).userAgentData?.brands.some((b: { brand: string }) => b.brand === 'Google Chrome') ??
 		false;
 
 	checkWebGPUAcceleration().then((hasHardwareGPU) => {
