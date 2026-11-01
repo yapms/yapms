@@ -15,6 +15,7 @@
 		setLoadedMapFromJson,
 		gotoLoadedMap
 	} from '$lib/stores/LoadedMap';
+	import { BrowserRenderingStore } from '$lib/stores/BrowserRendering';
 
 	let { children } = $props();
 
@@ -60,6 +61,8 @@
 			drawLoadedMap();
 		}
 	}
+
+	let shapeRenderingPolicy = $derived<'crispEdges' | 'auto'>($BrowserRenderingStore.isChromium && $BrowserRenderingStore.hasHardwareGPU ? 'crispEdges' : 'auto');
 </script>
 
 {#if map !== undefined}
@@ -74,6 +77,7 @@
 			class="overflow-hidden h-full outline-none"
 			class:insets-hidden={$MapInsetsStore.hidden}
 			class:texts-hidden={$RegionTextsStore.hidden}
+			style="shape-rendering:{shapeRenderingPolicy};"
 		>
 			{@html map}
 		</div>
