@@ -46,7 +46,10 @@
 		untrack(() => {
 			for (const [candidateId, weight] of weights) {
 				if (!isTossupCandidate(candidateId) && candidates.get(candidateId) === undefined) {
-					weights.set($TossupCandidateStore.id, weights.get($TossupCandidateStore.id)! ?? 0 + weight);
+					weights.set(
+						$TossupCandidateStore.id,
+						weights.get($TossupCandidateStore.id)! ?? 0 + weight
+					);
 					weights.delete(candidateId);
 				}
 			}
