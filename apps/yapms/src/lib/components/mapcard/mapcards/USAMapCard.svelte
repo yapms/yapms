@@ -24,13 +24,13 @@
 			showInModal: true,
 			routes: [
 				{
-					label: 'Senate 2026',
-					route: '/app/usa/senate/2026/blank'
+					label: 'Senate 2028',
+					route: '/app/usa/senate/2028/blank'
 				},
 				{
-					label: '2024 Results',
-					modalLabel: '2024 Senate Results',
-					route: '/app/usa/senate/2024310/results'
+					label: '2026 Results',
+					modalLabel: '2026 Senate Results',
+					route: '/app/usa/senate/2024312/results'
 				}
 			]
 		},
@@ -40,29 +40,13 @@
 			showInModal: true,
 			routes: [
 				{
-					label: 'House 2026',
-					route: '/app/usa/house/2026/blank'
+					label: 'House 2028',
+					route: '/app/usa/house/2028/blank'
 				},
 				{
 					label: '2024 Results',
 					modalLabel: '2024 House Results',
 					route: '/app/usa/house/2024310/results'
-				}
-			]
-		},
-		{
-			label: 'Governors',
-			showOnCard: true,
-			showInModal: true,
-			routes: [
-				{
-					label: 'Governors 2026',
-					route: '/app/usa/governors/2026/blank'
-				},
-				{
-					label: '2022 Results',
-					modalLabel: '2022 Gubernatorial Results',
-					route: '/app/usa/governors/2022/results'
 				}
 			]
 		},
@@ -98,12 +82,28 @@
 			showInModal: true,
 			routes: [
 				{
-					label: 'Democratic Primary 2024',
-					route: '/app/usa/dem_primary/2024/blank'
+					label: 'Democratic Primary 2028',
+					route: '/app/usa/dem_primary/2026227/blank'
 				},
 				{
 					label: 'Republican Primary 2024',
 					route: '/app/usa/rep_primary/2024/blank'
+				}
+			]
+		},
+		{
+			label: 'Governors',
+			showOnCard: true,
+			showInModal: true,
+			routes: [
+				{
+					label: 'Governors 2027',
+					route: '/app/usa/governors/2027/blank'
+				},
+				{
+					label: '2026 Results',
+					modalLabel: '2026 Gubernatorial Results',
+					route: '/app/usa/governors/2024312/results'
 				}
 			]
 		},
@@ -145,6 +145,14 @@
 					route: '/app/usa/senate/2026/with_territories'
 				},
 				{
+					label: '2024 Senate Results',
+					route: '/app/usa/senate/2024310/results'
+				},
+				{
+					label: '2024 House Results',
+					route: '/app/usa/house/2024310/results'
+				},
+				{
 					label: '2022 Senate Results',
 					route: '/app/usa/senate/2022/results'
 				},
@@ -155,6 +163,10 @@
 				{
 					label: 'Governors',
 					route: '/app/usa/governors'
+				},
+				{
+					label: 'Governors 2026',
+					route: '/app/usa/governors/2026/blank'
 				},
 				{
 					label: 'Governors 2025',
@@ -173,8 +185,16 @@
 					route: '/app/usa/governors/2024310/results'
 				},
 				{
+					label: '2022 Gubernatorial Results',
+					route: '/app/usa/governors/2022/results'
+				},
+				{
 					label: 'Counties 2020',
 					route: '/app/usa/counties/2020/blank'
+				},
+				{
+					label: 'Democratic Primary 2024',
+					route: '/app/usa/dem_primary/2024/blank'
 				},
 				{
 					label: 'New York City Council 2025',
