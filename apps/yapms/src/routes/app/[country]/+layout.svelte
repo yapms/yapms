@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { UAParser } from 'ua-parser-js';
 	import { MapInsetsStore } from '$lib/stores/MapInsetsStore';
 	import { applyAutoStroke, applyPanZoom } from '$lib/utils/applyPanZoom';
 	import { loadRegionsForApp } from '$lib/utils/loadRegions';
