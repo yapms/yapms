@@ -61,16 +61,6 @@
 			drawLoadedMap();
 		}
 	}
-
-	/* 
-		The latest versions of Chrome has issues rendering lines in SVG.
-		Setting crispEdges seems to fix it
-	*/
-	const parser = new UAParser();
-	const browser = parser.getBrowser().name;
-	const major = parseInt(parser.getBrowser().version ?? '');
-	const shapeRendering: 'crispEdges' | 'auto' =
-		browser === 'Chrome' && major >= 156 ? 'crispEdges' : 'auto';
 </script>
 
 {#if map !== undefined}
@@ -85,7 +75,6 @@
 			class="overflow-hidden h-full outline-none"
 			class:insets-hidden={$MapInsetsStore.hidden}
 			class:texts-hidden={$RegionTextsStore.hidden}
-			style="shape-rendering:{shapeRendering};"
 		>
 			{@html map}
 		</div>

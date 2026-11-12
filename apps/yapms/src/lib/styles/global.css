@@ -54,6 +54,7 @@ body {
 rect {
 	stroke-width: var(--auto-border-stroke-width);
 	stroke: var(--region-stroke-color);
+	stroke-opacity: var(--auto-border-stroke-opacity, 1)
 }
 
 [map-type='inset-texts'] {
