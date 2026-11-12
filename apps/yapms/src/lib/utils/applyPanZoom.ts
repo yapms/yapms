@@ -108,7 +108,7 @@ function adjustStroke(scale: number) {
 	const onScreenPx = newStroke * scale * dpr; // Width the stroke will actually occupy on screen
 
 	const MIN_ON_SCREEN_PX = 0.5; // minimum stroke width we draw; lower = more jagged
-	const BASE_MIN_OPACITY = 0.3; // minimum opacity at multiplier = 1, so lines never vanish
+	const BASE_MIN_OPACITY = 0.25; // minimum opacity at multiplier = 1, so lines never vanish
 
 	// Scale the floor by the multiplier so the slider still has a visible
 	// effect while the stroke is stuck at its minimum width.
