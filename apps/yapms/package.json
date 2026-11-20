@@ -35,7 +35,7 @@
 		"chart.js": "4.5.1",
 		"chartjs-plugin-datalabels": "2.2.0",
 		"color": "5.0.3",
-		"d3": "7.9.0",
+		"d3": "7.9.2",
 		"d3-composite-projections": "2.0.0",
 		"daisyui": "5.7.47",
 		"dompurify": "3.4.17",
