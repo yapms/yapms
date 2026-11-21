@@ -60,7 +60,10 @@
 			$RegionsStore[regionIndex] = { ...$RegionsStore[regionIndex], simWeights: {} };
 		} else {
 			const regionIndex = $RegionsStore.findIndex((r) => r.id === regionId);
-			$RegionsStore[regionIndex] = { ...$RegionsStore[regionIndex], simWeights: structuredClone(weightsToUse) };
+			$RegionsStore[regionIndex] = {
+				...$RegionsStore[regionIndex],
+				simWeights: structuredClone(weightsToUse)
+			};
 		}
 	}
 
