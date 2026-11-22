@@ -36,6 +36,7 @@
 	} from '$lib/stores/Modals';
 	import type { Snippet } from 'svelte';
 	import RenameSavedMapModal from '$lib/components/modals/renamesavedmapmodal/RenameSavedMapModal.svelte';
+	import PerRegionWeightModal from '$lib/components/modals/perstateweightmodal/PerRegionWeightModal.svelte';
 
 	const { children }: { children: Snippet } = $props();
 
@@ -138,5 +139,7 @@
 <ToolsModal />
 
 <RenameSavedMapModal />
+
+<PerRegionWeightModal />
 
 <RegionTooltip />

@@ -34,7 +34,8 @@ export const DOMPurifyConfig = {
 		'map-type',
 		'title',
 		'original-source',
-		'action-groups'
+		'action-groups',
+		'sim-weights'
 	]
 };
 
@@ -232,6 +233,10 @@ function exportImportAsSVG(): void {
 			region.nodes.region.setAttribute('value', region.permaVal.toString());
 			region.nodes.region.setAttribute('short-name', region.shortName.toString());
 			region.nodes.region.setAttribute('long-name', region.longName.toString());
+
+			if (Object.keys(region.simWeights).length !== 0) {
+				region.nodes.region.setAttribute('sim-weights', JSON.stringify(region.simWeights));
+			}
 
 			region.nodes.region.removeAttribute('disabled');
 			region.nodes.region.removeAttribute('locked');

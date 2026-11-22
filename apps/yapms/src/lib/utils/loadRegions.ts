@@ -17,7 +17,7 @@ import {
 import type { Region } from '$lib/types/Region';
 import { ModeSchema } from '$lib/types/Mode';
 import { CandidateSchema } from '$lib/types/Candidate';
-import { SavedRegionCandidatesSchema } from '$lib/types/Region';
+import { SavedRegionCandidatesSchema, SimWeightsSchema } from '$lib/types/Region';
 import { dev } from '$app/environment';
 import { DefaultModeStore } from '$lib/stores/DefaultMode';
 
@@ -117,6 +117,15 @@ function getCandidatesForRegion(candidateStr: string, value: number) {
 	}
 }
 
+function getWeightsForRegion(weightStr: string) {
+	try {
+		return SimWeightsSchema.parse(JSON.parse(weightStr));
+	} catch (err) {
+		console.error('Error Parsing sim weights attribute from region:\n\n' + err);
+		return {};
+	}
+}
+
 function createRegionStore(node: HTMLDivElement) {
 	const regionsForStore = Array<Region>();
 	const regions = node.querySelector<HTMLElement>('[map-type="regions"]');
@@ -148,6 +157,7 @@ function createRegionStore(node: HTMLDivElement) {
 			value = 1;
 		}
 		const candidateString = childHTML.getAttribute('candidates');
+		const weightsString = childHTML.getAttribute('sim-weights');
 		const newRegion: Region = {
 			id: childHTML.getAttribute('region') ?? '',
 			actionGroups:
@@ -167,6 +177,7 @@ function createRegionStore(node: HTMLDivElement) {
 				candidateString !== null //God bless our linting overlords.
 					? getCandidatesForRegion(candidateString, value)
 					: [{ candidate: tossupCandidate, count: value, margin: 0 }],
+			simWeights: weightsString !== null ? getWeightsForRegion(weightsString) : {},
 			nodes: {
 				region: childHTML,
 				button: null,
