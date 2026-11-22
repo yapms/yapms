@@ -61,7 +61,8 @@
 						($SimulationWeightsStore[$TossupCandidateStore.id]! ?? 0) + weight;
 
 					// Delete old candidate weight
-					const { [candidateId]: _, ...newWeights } = $SimulationWeightsStore;
+					const newWeights = { ...$SimulationWeightsStore };
+					delete newWeights[candidateId];
 					$SimulationWeightsStore = newWeights;
 				}
 			}
@@ -73,7 +74,8 @@
 							(region.simWeights[$TossupCandidateStore.id]! ?? 0) + weight;
 
 						// Delete old candidate weight
-						const { [candidateId]: _, ...newWeights } = region.simWeights;
+						const newWeights = { ...region.simWeights };
+						delete newWeights[candidateId];
 						region.simWeights = newWeights;
 					}
 				}
