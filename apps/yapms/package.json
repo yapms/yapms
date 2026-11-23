@@ -41,7 +41,7 @@
 		"dompurify": "3.5.0",
 		"eslint": "10.15.0",
 		"eslint-config-prettier": "10.1.8",
-		"eslint-plugin-svelte": "3.23.1",
+		"eslint-plugin-svelte": "3.24.1",
 		"file-saver": "2.0.5",
 		"glob": "13.0.7",
 		"globals": "17.12.0",
