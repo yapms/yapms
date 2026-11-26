@@ -37,7 +37,7 @@
 		"color": "5.0.3",
 		"d3": "7.9.2",
 		"d3-composite-projections": "2.0.0",
-		"daisyui": "5.8.2",
+		"daisyui": "5.8.3",
 		"dompurify": "3.5.0",
 		"eslint": "10.15.0",
 		"eslint-config-prettier": "10.1.8",
