@@ -67,7 +67,7 @@
 		"theme-change": "2.5.2",
 		"tslib": "2.9.1",
 		"typescript": "6.0.3",
-		"typescript-eslint": "8.70.0",
+		"typescript-eslint": "8.74.0",
 		"ua-parser-js": "2.0.10",
 		"uuid": "14.0.3",
 		"vite": "8.3.8",
